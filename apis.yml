@@ -6,9 +6,9 @@ apis:
     name: Airbus OneAtlas
     tags:
       - API
-    humanURL: ' https://www.geoapi-airbusds.com/'
+    humanURL: https://api.oneatlas.airbus.com/
     properties:
-      - url: ' https://www.geoapi-airbusds.com/'
+      - url: https://api.oneatlas.airbus.com/
         type: Documentation
     description: >-
       With OneAtlas APIs, you can access Airbus satellite imagery, web services

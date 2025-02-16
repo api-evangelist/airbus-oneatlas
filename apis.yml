@@ -9,12 +9,17 @@ apis:
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
     properties: []
     description: >-
-      Welcome to our OneAtlas Data Living Library guides. These guides have been
-      structured to demonstrate the API functionality that OneAtlas Data Living
-      Library has to offer. Organised by category, you can find exactly what you
-      are looking for. Whether it is retrieving user information, searching an
-      AOI or ordering a change detection report, we will have the API
-      documentation to help you walk through exactly what you need.
+      OneAtlas Data Living Library is a platform that provides users with access
+      to a diverse range of geospatial data and satellite imagery. The library
+      is constantly updated with the latest data, ensuring that users have
+      access to accurate and timely information for their projects. Users can
+      easily search for and find the data they need, whether it be for
+      environmental monitoring, urban planning, agriculture, or any other
+      application. The platform also offers tools for analysis and
+      visualization, allowing users to derive insights and make informed
+      decisions based on the data they have access to. Overall, OneAtlas Data
+      Living Library is a valuable resource for anyone looking to harness the
+      power of geospatial data for their work.
   - aid: airbus-oneatlas:oneatlas-data-pay-per-order-api
     name: OneAtlas Data Pay-Per-Order API
     tags: []
@@ -22,11 +27,17 @@ apis:
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-archives/overview/index.html
     properties: []
     description: >-
-      These guides have been structured to demonstrate the API functionality
-      that the OneAtlas Data Pay-Per-Order archive has to offer. The content in
-      this guide is organized by category, so, whether it is retrieving user
-      information, ordering or tracking your order, the API documentation will
-      walk you through each step.
+      The OneAtlas Data Pay-Per-Order API is a powerful tool that enables users
+      to access and purchase high-resolution satellite imagery, elevation data,
+      and other geospatial information on a pay-as-you-go basis. By integrating
+      this API into their applications or systems, users can quickly and easily
+      obtain the precise data they need for their projects without committing to
+      long-term subscriptions or contracts. This flexibility allows for greater
+      efficiency and cost-effectiveness, as users only pay for the data they
+      actually use. With the OneAtlas Data Pay-Per-Order API, users can access a
+      wealth of geospatial information at their fingertips, making it easier
+      than ever to incorporate accurate and up-to-date data into their
+      workflows.
   - aid: airbus-oneatlas:oneatlas-data-pay-per-order-tasking-api
     name: OneAtlas Data Pay-Per-Order Tasking API
     tags: []
@@ -34,11 +45,16 @@ apis:
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-tasking/overview/index.html
     properties: []
     description: >-
-      These guides have been structured to demonstrate the API functionality
-      that the OneAtlas Data Pay-Per-Order tasking has to offer. The content in
-      this guide is organized by category, so, whether it is retrieving user
-      information, ordering or tracking your order, the API documentation will
-      walk you through each step.
+      The OneAtlas Data Pay-Per-Order Tasking API allows users to directly
+      request high-resolution satellite imagery of specific locations at their
+      convenience. With this API, users can easily select areas of interest,
+      order and pay for the data they need, and receive the requested imagery
+      quickly and efficiently. This tool enables users to access up-to-date
+      satellite data for a wide range of applications, such as environmental
+      monitoring, agriculture, urban planning, and disaster response. By
+      providing on-demand access to satellite imagery, the OneAtlas Data
+      Pay-Per-Order Tasking API empowers users to make informed decisions based
+      on the most current and accurate information available.
   - aid: airbus-oneatlas:oneatlas-basemap-api
     name: OneAtlas Basemap API
     tags: []
@@ -46,26 +62,49 @@ apis:
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/overview/index.html
     properties: []
     description: >-
-      Welcome to our OneAtlas Basemap guide. You will learn how to access the
-      Basemap streaming service in order to display the Basemap imagery layer in
-      your working environment or to integrate it in your application.
+      OneAtlas Basemap API is a geospatial service that provides access to
+      high-resolution satellite imagery and basemaps. It allows users to
+      retrieve up-to-date visual information of any location on Earth, enabling
+      them to analyze and monitor changes in the environment, infrastructure,
+      and land use. The API offers a seamless and easy-to-use interface for
+      developers to integrate mapping capabilities into their applications,
+      providing valuable insights for a wide range of industries such as
+      agriculture, urban planning, disaster management, and more. With OneAtlas
+      Basemap API, users can access reliable and accurate geospatial data to
+      support decision-making processes and enhance their understanding of the
+      world around them.
   - aid: airbus-oneatlas:oneatlas-radar-api
     name: OneAtlas Radar API
     tags: []
     humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/radar/overview/index.html
     properties: []
     description: >-
-      Tasking our Radar satellites and receiving the imagery you requested has
-      just become much easier.Access the radar tasking and archive service and
-      benefit from our brand new intuitive interface, enabling you to task our
-      radar satellites in just a few simple steps.
+      OneAtlas Radar API is a powerful tool that allows developers to access and
+      integrate radar satellite data into their applications and processes. By
+      utilizing this API, users can access real-time and historical radar
+      imagery, which can be used for a wide range of applications including
+      agriculture, disaster management, urban planning, and security. The API
+      provides high-resolution radar images that can be used for monitoring
+      changes in land cover, detecting anomalies, and analyzing patterns over
+      time. With OneAtlas Radar API, users can access valuable radar data to
+      enhance their decision-making processes and improve their overall
+      operational efficiency.
   - aid: airbus-oneatlas:worlddem-api
     name: OneAtlas WorldDEM API
     tags: []
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/overview/index.html
     properties: []
-    description: 'The WorldDEM Portal '
+    description: >-
+      The OneAtlas WorldDEM API is a tool that provides access to
+      high-resolution global elevation data. This data, collected by satellites
+      and processed using advanced technologies, offers a detailed and accurate
+      representation of the Earth's surface. By integrating the WorldDEM API
+      into their applications, users can benefit from precise terrain
+      information for a wide range of use cases, such as urban planning,
+      disaster response, agriculture, and infrastructure development. This API
+      allows developers to easily incorporate elevation data into their
+      projects, enabling them to create more accurate and effective solutions.
 name: Airbus OneAtlas
 tags:
   - Satellites

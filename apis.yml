@@ -114,7 +114,10 @@ apis:
       on the most current and accurate information available.
   - aid: airbus-oneatlas:oneatlas-basemap-api
     name: OneAtlas Basemap API
-    tags: []
+    tags:
+      - Satellites
+      - Imagery
+      - Basemaps
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/overview/index.html
     properties:

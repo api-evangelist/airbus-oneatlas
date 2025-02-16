@@ -1,10 +1,16 @@
 info:
-  title: Airbus DS - Basemap API
-  description: >
-    This document describes Airbus DS Basemap APIs provided by OneAtlasData
-    system. <br> <br>Those commands can be used to test and understand the
-    services provided by the APIs.You can use them in a third party application
-    such as Postman.
+  title: OneAtlas Basemap API
+  description: >-
+    OneAtlas Basemap API is a geospatial service that provides access to
+    high-resolution satellite imagery and basemaps. It allows users to retrieve
+    up-to-date visual information of any location on Earth, enabling them to
+    analyze and monitor changes in the environment, infrastructure, and land
+    use. The API offers a seamless and easy-to-use interface for developers to
+    integrate mapping capabilities into their applications, providing valuable
+    insights for a wide range of industries such as agriculture, urban planning,
+    disaster management, and more. With OneAtlas Basemap API, users can access
+    reliable and accurate geospatial data to support decision-making processes
+    and enhance their understanding of the world around them.
   version: '2.0'
 consumes:
   - application/json

@@ -114,15 +114,27 @@ apis:
       on the most current and accurate information available.
   - aid: airbus-oneatlas:oneatlas-basemap-api
     name: OneAtlas Basemap API
-    tags:
-      - Satellites
-      - Imagery
-      - Basemaps
+    tags: []
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/overview/index.html
     properties:
-      - type: OpenAPI
-        url: properties/oneatlas-basemap-api-openapi.yml
+      - name: OneAtlas Basemap - Tutorials
+        description: 'null'
+        url: >-
+          https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/tutorials/#basemap-access
+        type: Tutorials
+      - name: OneAtlas Data Basemap Notebooks & Postman collections
+        description: 'null'
+        url: https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/notebooks/
+        type: PostmanCollection
+      - name: OneAtlas Data Basemap Notebooks & Postman collections
+        description: 'null'
+        url: https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/notebooks/
+        type: JupyterNotebook
+      - name: Releases
+        description: 'null'
+        url: https://api.oneatlas.airbus.com/releases/#oad-basemap
+        type: ChangeLog
     description: >-
       OneAtlas Basemap API is a geospatial service that provides access to
       high-resolution satellite imagery and basemaps. It allows users to

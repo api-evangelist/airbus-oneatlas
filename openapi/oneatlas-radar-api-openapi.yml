@@ -1,14 +1,19 @@
 openapi: 3.0.3
 info:
-  title: OneAtlas - Radar Tasking & Archive
+  title: OneAtlas Radar API
   version: 1.0.0
   contact:
     email: dl_webservices_geo@airbus.com
-  description: >
-    REST API to search, order and access TerraSAR and PAZ Data (Radar API)<br/>
-
-    Those commands can be used to test and understand the services provided by
-    the APIs. You can use them in a third party application such as Postman.
+  description: >-
+    OneAtlas Radar API is a powerful tool that allows developers to access and
+    integrate radar satellite data into their applications and processes. By
+    utilizing this API, users can access real-time and historical radar imagery,
+    which can be used for a wide range of applications including agriculture,
+    disaster management, urban planning, and security. The API provides
+    high-resolution radar images that can be used for monitoring changes in land
+    cover, detecting anomalies, and analyzing patterns over time. With OneAtlas
+    Radar API, users can access valuable radar data to enhance their
+    decision-making processes and improve their overall operational efficiency.
 tags:
   - name: user
     description: |

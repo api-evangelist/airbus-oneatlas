@@ -181,7 +181,10 @@ apis:
       operational efficiency.
   - aid: airbus-oneatlas:oneatlas-worlddem-api
     name: OneAtlas WorldDEM API
-    tags: []
+    tags:
+      - Satellites
+      - Elevations
+      - Imagery
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/overview/index.html
     properties:
@@ -201,8 +204,8 @@ apis:
         name: Releases
         type: ChangeLog
         description: 'null'
-      - type: OpenAPI
-        url: properties/oneatlas-worlddem-api-openapi.yml
+      - url: properties/oneatlas-worlddem-api-openapi.yml
+        type: OpenAPI
     description: >-
       The OneAtlas WorldDEM API is a tool that provides access to
       high-resolution global elevation data. This data, collected by satellites

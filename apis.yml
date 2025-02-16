@@ -117,7 +117,9 @@ apis:
     tags: []
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/overview/index.html
-    properties: []
+    properties:
+      - type: OpenAPI
+        url: properties/oneatlas-basemap-api-openapi.yml
     description: >-
       OneAtlas Basemap API is a geospatial service that provides access to
       high-resolution satellite imagery and basemaps. It allows users to

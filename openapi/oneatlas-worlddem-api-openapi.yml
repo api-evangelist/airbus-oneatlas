@@ -1,22 +1,19 @@
 openapi: 3.0.3
 info:
-  title: OneAtlas - Elevation
+  title: OneAtlas WorldDEM API
   version: 1.0.1
   contact:
     email: dl-geo-webservices@airbus.com
-  description: >
-    REST API to order DEM data (Elevation API) <br/>
-
-    <ul>
-      <li>place orders</li>
-      <li>show placed orders</li>
-      <li>download purchased data</li>
-    </ul>
-
-    <br/> 
-
-    Those commands can be used to test and understand the services provided by
-    the APIs. You can use them in a third party application such as Postman.
+  description: >-
+    The OneAtlas WorldDEM API is a tool that provides access to high-resolution
+    global elevation data. This data, collected by satellites and processed
+    using advanced technologies, offers a detailed and accurate representation
+    of the Earth's surface. By integrating the WorldDEM API into their
+    applications, users can benefit from precise terrain information for a wide
+    range of use cases, such as urban planning, disaster response, agriculture,
+    and infrastructure development. This API allows developers to easily
+    incorporate elevation data into their projects, enabling them to create more
+    accurate and effective solutions.
 tags:
   - name: user
     description: |

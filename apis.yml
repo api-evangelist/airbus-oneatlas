@@ -41,7 +41,11 @@ apis:
       power of geospatial data for their work.
   - aid: airbus-oneatlas:oneatlas-data-pay-per-order-api
     name: OneAtlas Data Pay-Per-Order API
-    tags: []
+    tags:
+      - Satellites
+      - Imagery
+      - Elevation Data
+      - Geospatial
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-archives/overview/index.html
     properties:

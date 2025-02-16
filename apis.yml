@@ -151,7 +151,9 @@ apis:
     name: OneAtlas Radar API
     tags: []
     humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/radar/overview/index.html
-    properties: []
+    properties:
+      - type: OpenAPI
+        url: properties/oneatlas-radar-api-openapi.yml
     description: >-
       OneAtlas Radar API is a powerful tool that allows developers to access and
       integrate radar satellite data into their applications and processes. By

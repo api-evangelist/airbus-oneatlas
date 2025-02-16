@@ -78,7 +78,11 @@ apis:
       workflows.
   - aid: airbus-oneatlas:oneatlas-data-pay-per-order-tasking-api
     name: OneAtlas Data Pay-Per-Order Tasking API
-    tags: []
+    tags:
+      - Satellites
+      - Imagery
+      - High-Resolution
+      - Locations
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-tasking/overview/index.html
     properties:

@@ -44,7 +44,9 @@ apis:
     tags: []
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-archives/overview/index.html
-    properties: []
+    properties:
+      - type: OpenAPI
+        url: properties/oneatlas-data-pay-per-order-api-openapi.yml
     description: >-
       The OneAtlas Data Pay-Per-Order API is a powerful tool that enables users
       to access and purchase high-resolution satellite imagery, elevation data,

@@ -1,0 +1,190 @@
+info:
+  title: Airbus DS - Basemap API
+  description: >
+    This document describes Airbus DS Basemap APIs provided by OneAtlasData
+    system. <br> <br>Those commands can be used to test and understand the
+    services provided by the APIs.You can use them in a third party application
+    such as Postman.
+  version: '2.0'
+consumes:
+  - application/json
+produces:
+  - application/json
+schemes:
+  - https
+host: view-bm.api.oneatlas.airbus.com
+swagger: '2.0'
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Enter the token with the `Bearer: ` prefix, e.g. "Bearer abcde12345".'
+paths:
+  /basemap/wmts?SERVICE=WMTS&REQUEST=GetCapabilities:
+    get:
+      summary: Service capabilities.
+      description: Allows authorized users to see the capacities of the service.
+      security:
+        - Bearer: []
+      responses:
+        '200':
+          description: Request successful
+        '401':
+          description: 'Unauthorized: the authorization is missing or has expired.'
+      tags:
+        - Get Capabilities
+  /basemap/wmts?layer=advancedBasemap&tilematrixset={tileSet}&Service={service}&Request={request}&Version=1.0.0&Format={format}&TileMatrix={zoomLevel}&TileCol={tileColumn}&TileRow={tileRow}:
+    get:
+      summary: Returns a tile from a layer.
+      description: >
+        Returns a 256x256 tile from a layer in JPEG or PNG format.
+
+
+        __IMPORTANT:__ whatever the requested image format is, a transparent
+        image will be delivered in PNG format if no tile is found at the
+        specified location.
+
+
+        __Example__:
+        https://view-bm.api.oneatlas.airbus.com/basemap/wmts?layer=advancedBasemap&style=default&tilematrixset=3857&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/unknown&TileMatrix=18&TileCol=132063&TileRow=95710
+      security:
+        - Bearer: []
+      parameters:
+        - description: The format of the image you want to display
+          format: string
+          in: path
+          name: service
+          enum:
+            - WMTS
+          required: true
+          type: string
+        - description: The service you request
+          format: string
+          in: path
+          name: request
+          enum:
+            - GetTile
+          required: true
+          type: string
+        - name: tileSet
+          description: >-
+            The desired tile set from which to retrieve the tiles (currently
+            supported set are 4326 (projected coordinates) and 3857 (spherical
+            coordinates)). 3857 only is available at the moment.
+          type: integer
+          in: path
+          required: true
+          enum:
+            - 3857
+        - name: format
+          description: the requested image format (image/jpeg or image/png).
+          type: string
+          format: mime type
+          enum:
+            - image/jpeg
+            - image/png
+          in: path
+          required: true
+        - name: zoomLevel
+          description: >-
+            The map zoom level (Tilegrid depth). Starts at 0 and ends at 16 for
+            SPOT layers, 17 for Pleiades layers and 19 for Pléiades Neo layers.
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+            - 13
+            - 14
+            - 15
+            - 16
+            - 17
+            - 18
+            - 19
+          in: path
+          required: true
+        - name: tileColumn
+          description: >-
+            Tilegrid column. The index of the tile column within the chosen
+            tilegrid (different options are available with GetCapabilities).
+            Must be inferior or equal to MatrixWidth
+          type: integer
+          in: path
+          required: true
+        - name: tileRow
+          description: >-
+            Tilegrid row. The index of the tile row within the chosen tilegrid
+            (different options are available with GetCapabilities) Must be
+            inferior or equal to MatrixHeight.
+          type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          description: Request successful - returns the requested tile as an image.
+          headers:
+            Content-Type:
+              description: the image mime type returned (decided by the server)
+              type: string
+        '401':
+          description: 'Unauthorized: the authorization is missing or has expired.'
+      tags:
+        - Maps
+definitions:
+  TileMatrix:
+    type: object
+    description: >-
+      Object returned after a GetCapabilities request that allow you to know the
+      available properties of the basemap matrix
+    properties:
+      ows:Identifier:
+        description: zoom level
+        type: integer
+        example: 4
+      ScaleDenominator:
+        type: number
+        description: scale denominator
+        example: 34123.67334159655
+      TopLeftCorner:
+        type: number
+        description: >-
+          2 numbers separated by a space matching the top left corner
+          coordinates
+        example: '-20037508.3427892 20037508.3427892'
+      TileWidth:
+        type: integer
+        description: >-
+          Number of pixel in a tile width. Equals to tile eight if tile set is
+          3857
+        example: 256
+      TileHeight:
+        type: integer
+        description: >-
+          Number of pixel in a tile height. Equals to tile width if tile set is
+          3857
+        example: 256
+      MatrixWidth:
+        type: integer
+        description: >-
+          Number of tiles in a matrix width at this zoom level. Equals to Matrix
+          height if tile set is 3857
+        example: 65536
+      MatrixHeight:
+        type: integer
+        description: >-
+          Number of tiles in a matrix height at this zoom level. Equals to
+          Matrix width if tile set is 3857
+        example: 65536
+    xml:
+      name: TileMatrix

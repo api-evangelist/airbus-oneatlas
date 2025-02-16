@@ -2,22 +2,12 @@ aid: airbus-oneatlas
 url: >-
   https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/apis.yml
 apis:
-  - aid: airbus-oneatlas:airbus-oneatlas
-    name: Airbus OneAtlas
-    tags:
-      - API
-    humanURL: https://api.oneatlas.airbus.com/
-    properties:
-      - url: https://api.oneatlas.airbus.com/
-        type: Documentation
-    description: >-
-      With OneAtlas APIs, you can access Airbus satellite imagery, web services
-      and add maps to your application. After authentication, the API
-      automatically handles access to our servers, data downloading and
-      streaming. You can also use API calls to manage your subscription and data
-      consumption. 
   - aid: airbus-oneatlas:oneatlas-data-living-library
     name: OneAtlas Data Living Library
+    tags: []
+    humanURL: >-
+      https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
+    properties: []
     description: >-
       Welcome to our OneAtlas Data Living Library guides. These guides have been
       structured to demonstrate the API functionality that OneAtlas Data Living
@@ -25,61 +15,57 @@ apis:
       are looking for. Whether it is retrieving user information, searching an
       AOI or ordering a change detection report, we will have the API
       documentation to help you walk through exactly what you need.
-    humanURL: >-
-      https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
-    tags: []
-    properties: []
   - aid: airbus-oneatlas:oneatlas-data-pay-per-order-api
     name: OneAtlas Data Pay-Per-Order API
+    tags: []
+    humanURL: >-
+      https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-archives/overview/index.html
+    properties: []
     description: >-
       These guides have been structured to demonstrate the API functionality
       that the OneAtlas Data Pay-Per-Order archive has to offer. The content in
       this guide is organized by category, so, whether it is retrieving user
       information, ordering or tracking your order, the API documentation will
       walk you through each step.
-    humanURL: >-
-      https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-archives/overview/index.html
-    tags: []
-    properties: []
   - aid: airbus-oneatlas:oneatlas-data-pay-per-order-tasking-api
     name: OneAtlas Data Pay-Per-Order Tasking API
+    tags: []
+    humanURL: >-
+      https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-tasking/overview/index.html
+    properties: []
     description: >-
       These guides have been structured to demonstrate the API functionality
       that the OneAtlas Data Pay-Per-Order tasking has to offer. The content in
       this guide is organized by category, so, whether it is retrieving user
       information, ordering or tracking your order, the API documentation will
       walk you through each step.
-    humanURL: >-
-      https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-tasking/overview/index.html
-    tags: []
-    properties: []
   - aid: airbus-oneatlas:oneatlas-basemap-api
     name: OneAtlas Basemap API
+    tags: []
+    humanURL: >-
+      https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/overview/index.html
+    properties: []
     description: >-
       Welcome to our OneAtlas Basemap guide. You will learn how to access the
       Basemap streaming service in order to display the Basemap imagery layer in
       your working environment or to integrate it in your application.
-    humanURL: >-
-      https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/overview/index.html
-    tags: []
-    properties: []
   - aid: airbus-oneatlas:oneatlas-radar-api
     name: OneAtlas Radar API
+    tags: []
+    humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/radar/overview/index.html
+    properties: []
     description: >-
       Tasking our Radar satellites and receiving the imagery you requested has
       just become much easier.Access the radar tasking and archive service and
       benefit from our brand new intuitive interface, enabling you to task our
       radar satellites in just a few simple steps.
-    humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/radar/overview/index.html
-    tags: []
-    properties: []
   - aid: airbus-oneatlas:worlddem-api
-    name: WorldDEM API
-    description: 'The WorldDEM Portal '
+    name: OneAtlas WorldDEM API
+    tags: []
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/overview/index.html
-    tags: []
     properties: []
+    description: 'The WorldDEM Portal '
 name: Airbus OneAtlas
 tags:
   - Satellites
@@ -87,6 +73,7 @@ tags:
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
+common: []
 created: '2025-02-06'
 modified: '2025-02-15'
 position: Consumer
@@ -99,4 +86,3 @@ maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
 specificationVersion: '0.19'
-common: []

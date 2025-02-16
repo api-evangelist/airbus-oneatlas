@@ -81,7 +81,9 @@ apis:
     tags: []
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-tasking/overview/index.html
-    properties: []
+    properties:
+      - type: OpenAPI
+        url: properties/oneatlas-data-pay-per-order-tasking-api-openapi.yml
     description: >-
       The OneAtlas Data Pay-Per-Order Tasking API allows users to directly
       request high-resolution satellite imagery of specific locations at their

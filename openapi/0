@@ -1,0 +1,6640 @@
+executed: '2025-02-16T00:51:40.685Z'
+results:
+  - code: openapi-external-docs-error
+    message: OpenAPI MUST Have External Documentation
+    path: []
+    severity: 0
+    range:
+      start:
+        line: 0
+        character: 0
+      end:
+        line: 7329
+        character: 19
+  - code: openapi-info-license-error
+    message: Info MUST Have License
+    path:
+      - info
+    severity: 0
+    range:
+      start:
+        line: 1
+        character: 5
+      end:
+        line: 15
+        character: 37
+  - code: openapi-info-terms-of-service-error
+    message: Info MUST Have Terms of Service
+    path:
+      - info
+    severity: 0
+    range:
+      start:
+        line: 1
+        character: 5
+      end:
+        line: 15
+        character: 37
+  - code: openapi-info-title-info
+    message: Info Has Title
+    path:
+      - info
+      - title
+    severity: 2
+    range:
+      start:
+        line: 2
+        character: 9
+      end:
+        line: 2
+        character: 30
+  - code: openapi-info-title-upper-case-info
+    message: Info Title MUST Have First Characters Capitalized
+    path:
+      - info
+      - title
+    severity: 2
+    range:
+      start:
+        line: 2
+        character: 9
+      end:
+        line: 2
+        character: 30
+  - code: openapi-info-version-info
+    message: Info Has Version
+    path:
+      - info
+      - version
+    severity: 2
+    range:
+      start:
+        line: 3
+        character: 11
+      end:
+        line: 3
+        character: 16
+  - code: openapi-info-contact-info
+    message: Info Has Contact Object
+    path:
+      - info
+      - contact
+    severity: 2
+    range:
+      start:
+        line: 4
+        character: 10
+      end:
+        line: 5
+        character: 40
+  - code: openapi-info-contact-name-error
+    message: Info MUST Have Contact Name
+    path:
+      - info
+      - contact
+    severity: 0
+    range:
+      start:
+        line: 4
+        character: 10
+      end:
+        line: 5
+        character: 40
+  - code: openapi-info-contact-url-error
+    message: Info MUST Have Contact URL
+    path:
+      - info
+      - contact
+    severity: 0
+    range:
+      start:
+        line: 4
+        character: 10
+      end:
+        line: 5
+        character: 40
+  - code: openapi-info-contact-email-info
+    message: Info Has Contact Email
+    path:
+      - info
+      - contact
+      - email
+    severity: 2
+    range:
+      start:
+        line: 5
+        character: 11
+      end:
+        line: 5
+        character: 40
+  - code: openapi-info-description-info
+    message: Info Has Description
+    path:
+      - info
+      - description
+    severity: 2
+    range:
+      start:
+        line: 6
+        character: 15
+      end:
+        line: 15
+        character: 37
+  - code: openapi-info-description-length-error
+    message: Info description MUST be less than 500 characters.
+    path:
+      - info
+      - description
+    severity: 0
+    range:
+      start:
+        line: 6
+        character: 15
+      end:
+        line: 15
+        character: 37
+  - code: openapi-tags-object-info
+    message: OpenAPIs Have a Tag Object
+    path:
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 16
+        character: 5
+      end:
+        line: 34
+        character: 33
+  - code: openapi-tags-name-info
+    message: Tags Have a Name
+    path:
+      - tags
+      - '0'
+      - name
+    severity: 2
+    range:
+      start:
+        line: 17
+        character: 10
+      end:
+        line: 17
+        character: 14
+  - code: openapi-tags-upper-case-error
+    message: Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - tags
+      - '0'
+      - name
+    severity: 0
+    range:
+      start:
+        line: 17
+        character: 10
+      end:
+        line: 17
+        character: 14
+  - code: openapi-tags-description-info
+    message: Tags Have a Description
+    path:
+      - tags
+      - '0'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 18
+        character: 17
+      end:
+        line: 19
+        character: 44
+  - code: openapi-tags-name-info
+    message: Tags Have a Name
+    path:
+      - tags
+      - '1'
+      - name
+    severity: 2
+    range:
+      start:
+        line: 20
+        character: 10
+      end:
+        line: 20
+        character: 28
+  - code: openapi-tags-upper-case-error
+    message: Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - tags
+      - '1'
+      - name
+    severity: 0
+    range:
+      start:
+        line: 20
+        character: 10
+      end:
+        line: 20
+        character: 28
+  - code: openapi-tags-description-info
+    message: Tags Have a Description
+    path:
+      - tags
+      - '1'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 21
+        character: 17
+      end:
+        line: 22
+        character: 50
+  - code: openapi-tags-name-info
+    message: Tags Have a Name
+    path:
+      - tags
+      - '2'
+      - name
+    severity: 2
+    range:
+      start:
+        line: 23
+        character: 10
+      end:
+        line: 23
+        character: 33
+  - code: openapi-tags-upper-case-error
+    message: Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - tags
+      - '2'
+      - name
+    severity: 0
+    range:
+      start:
+        line: 23
+        character: 10
+      end:
+        line: 23
+        character: 33
+  - code: openapi-tags-description-info
+    message: Tags Have a Description
+    path:
+      - tags
+      - '2'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 24
+        character: 17
+      end:
+        line: 25
+        character: 47
+  - code: openapi-tags-name-info
+    message: Tags Have a Name
+    path:
+      - tags
+      - '3'
+      - name
+    severity: 2
+    range:
+      start:
+        line: 26
+        character: 10
+      end:
+        line: 26
+        character: 25
+  - code: openapi-tags-upper-case-error
+    message: Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - tags
+      - '3'
+      - name
+    severity: 0
+    range:
+      start:
+        line: 26
+        character: 10
+      end:
+        line: 26
+        character: 25
+  - code: openapi-tags-description-info
+    message: Tags Have a Description
+    path:
+      - tags
+      - '3'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 27
+        character: 17
+      end:
+        line: 28
+        character: 55
+  - code: openapi-tags-name-info
+    message: Tags Have a Name
+    path:
+      - tags
+      - '4'
+      - name
+    severity: 2
+    range:
+      start:
+        line: 29
+        character: 10
+      end:
+        line: 29
+        character: 26
+  - code: openapi-tags-upper-case-error
+    message: Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - tags
+      - '4'
+      - name
+    severity: 0
+    range:
+      start:
+        line: 29
+        character: 10
+      end:
+        line: 29
+        character: 26
+  - code: openapi-tags-description-info
+    message: Tags Have a Description
+    path:
+      - tags
+      - '4'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 30
+        character: 17
+      end:
+        line: 34
+        character: 33
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /user/whoami
+    severity: 0
+    range:
+      start:
+        line: 39
+        character: 15
+      end:
+        line: 259
+        character: 25
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /user/whoami
+    severity: 2
+    range:
+      start:
+        line: 39
+        character: 15
+      end:
+        line: 259
+        character: 25
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /user/whoami
+    severity: 2
+    range:
+      start:
+        line: 39
+        character: 15
+      end:
+        line: 259
+        character: 25
+  - code: openapi-no-request-body-on-get-info
+    message: GET Request Body
+    path:
+      - paths
+      - /user/whoami
+      - get
+    severity: 2
+    range:
+      start:
+        line: 40
+        character: 8
+      end:
+        line: 259
+        character: 25
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /user/whoami
+      - get
+    severity: 0
+    range:
+      start:
+        line: 40
+        character: 8
+      end:
+        line: 259
+        character: 25
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /user/whoami
+      - get
+    severity: 0
+    range:
+      start:
+        line: 40
+        character: 8
+      end:
+        line: 259
+        character: 25
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /user/whoami
+      - get
+    severity: 0
+    range:
+      start:
+        line: 40
+        character: 8
+      end:
+        line: 259
+        character: 25
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 41
+        character: 15
+      end:
+        line: 41
+        character: 61
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 41
+        character: 15
+      end:
+        line: 41
+        character: 61
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 42
+        character: 11
+      end:
+        line: 43
+        character: 14
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 43
+        character: 10
+      end:
+        line: 43
+        character: 14
+  - code: openapi-response-get-429-status-code-error
+    message: GET Responses Has 429 Status Code
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 44
+        character: 16
+      end:
+        line: 259
+        character: 25
+  - code: openapi-response-get-200-status-code-info
+    message: GET Responses Has 200 Status Codes
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '200'
+    severity: 2
+    range:
+      start:
+        line: 45
+        character: 14
+      end:
+        line: 103
+        character: 34
+  - code: openapi-response-get-200-description-info
+    message: GET 200 Response has description.
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '200'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 46
+        character: 23
+      end:
+        line: 46
+        character: 48
+  - code: openapi-response-get-200-content-info
+    message: GET 200 Response Has Content.
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '200'
+      - content
+    severity: 2
+    range:
+      start:
+        line: 47
+        character: 18
+      end:
+        line: 103
+        character: 34
+  - code: openapi-response-get-200-media-type-examples-error
+    message: GET 200 Response MUST Have Examples
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 48
+        character: 29
+      end:
+        line: 103
+        character: 34
+  - code: openapi-response-get-200-media-type-info
+    message: GET 200 Response Has Media Type.
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 48
+        character: 29
+      end:
+        line: 103
+        character: 34
+  - code: openapi-response-get-200-media-type-schema-info
+    message: GET 200 Response Has Schema
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 49
+        character: 21
+      end:
+        line: 103
+        character: 34
+  - code: openapi-response-get-200-media-type-schema-ref-info
+    message: GET 200 Responses Uses Schema Reference
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 49
+        character: 21
+      end:
+        line: 103
+        character: 34
+  - code: openapi-response-get-400-schema-ref-info
+    message: GET 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 104
+        character: 14
+      end:
+        line: 142
+        character: 25
+  - code: openapi-response-get-400-status-code-info
+    message: GET Responses Has 400 Status Codes
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 104
+        character: 14
+      end:
+        line: 142
+        character: 25
+  - code: openapi-response-get-401-schema-ref-info
+    message: GET 401 Responses Has Schema Reference
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 143
+        character: 14
+      end:
+        line: 181
+        character: 25
+  - code: openapi-response-get-401-status-code-info
+    message: GET Responses MUST Have 401 Status Code
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 143
+        character: 14
+      end:
+        line: 181
+        character: 25
+  - code: openapi-response-get-403-schema-ref-info
+    message: GET 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 182
+        character: 14
+      end:
+        line: 220
+        character: 25
+  - code: openapi-response-get-403-status-code-info
+    message: GET Responses MUST Have 403 Status Code
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 182
+        character: 14
+      end:
+        line: 220
+        character: 25
+  - code: openapi-response-get-500-schema-ref-info
+    message: GET 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 221
+        character: 14
+      end:
+        line: 259
+        character: 25
+  - code: openapi-response-get-500-status-code-info
+    message: GET Responses Has 500 Status Code
+    path:
+      - paths
+      - /user/whoami
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 221
+        character: 14
+      end:
+        line: 259
+        character: 25
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /accounting/balance
+    severity: 0
+    range:
+      start:
+        line: 260
+        character: 22
+      end:
+        line: 365
+        character: 32
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /accounting/balance
+    severity: 2
+    range:
+      start:
+        line: 260
+        character: 22
+      end:
+        line: 365
+        character: 32
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /accounting/balance
+    severity: 2
+    range:
+      start:
+        line: 260
+        character: 22
+      end:
+        line: 365
+        character: 32
+  - code: openapi-no-request-body-on-get-info
+    message: GET Request Body
+    path:
+      - paths
+      - /accounting/balance
+      - get
+    severity: 2
+    range:
+      start:
+        line: 261
+        character: 8
+      end:
+        line: 365
+        character: 32
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /accounting/balance
+      - get
+    severity: 0
+    range:
+      start:
+        line: 261
+        character: 8
+      end:
+        line: 365
+        character: 32
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /accounting/balance
+      - get
+    severity: 0
+    range:
+      start:
+        line: 261
+        character: 8
+      end:
+        line: 365
+        character: 32
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /accounting/balance
+      - get
+    severity: 0
+    range:
+      start:
+        line: 261
+        character: 8
+      end:
+        line: 365
+        character: 32
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 262
+        character: 15
+      end:
+        line: 262
+        character: 30
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 262
+        character: 15
+      end:
+        line: 262
+        character: 30
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 263
+        character: 11
+      end:
+        line: 264
+        character: 28
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 264
+        character: 10
+      end:
+        line: 264
+        character: 28
+  - code: openapi-response-get-429-status-code-error
+    message: GET Responses Has 429 Status Code
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 265
+        character: 16
+      end:
+        line: 365
+        character: 32
+  - code: openapi-response-get-200-status-code-info
+    message: GET Responses Has 200 Status Codes
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '200'
+    severity: 2
+    range:
+      start:
+        line: 266
+        character: 14
+      end:
+        line: 300
+        character: 42
+  - code: openapi-response-get-200-description-info
+    message: GET 200 Response has description.
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '200'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 267
+        character: 23
+      end:
+        line: 267
+        character: 40
+  - code: openapi-response-get-200-content-info
+    message: GET 200 Response Has Content.
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '200'
+      - content
+    severity: 2
+    range:
+      start:
+        line: 268
+        character: 18
+      end:
+        line: 300
+        character: 42
+  - code: openapi-response-get-200-media-type-examples-error
+    message: GET 200 Response MUST Have Examples
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 269
+        character: 29
+      end:
+        line: 300
+        character: 42
+  - code: openapi-response-get-200-media-type-info
+    message: GET 200 Response Has Media Type.
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 269
+        character: 29
+      end:
+        line: 300
+        character: 42
+  - code: openapi-response-get-200-media-type-schema-info
+    message: GET 200 Response Has Schema
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 270
+        character: 21
+      end:
+        line: 300
+        character: 42
+  - code: openapi-response-get-200-media-type-schema-ref-info
+    message: GET 200 Responses Uses Schema Reference
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 270
+        character: 21
+      end:
+        line: 300
+        character: 42
+  - code: openapi-response-get-400-schema-ref-info
+    message: GET 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 301
+        character: 14
+      end:
+        line: 313
+        character: 32
+  - code: openapi-response-get-400-status-code-info
+    message: GET Responses Has 400 Status Codes
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 301
+        character: 14
+      end:
+        line: 313
+        character: 32
+  - code: openapi-response-get-401-schema-ref-info
+    message: GET 401 Responses Has Schema Reference
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 314
+        character: 14
+      end:
+        line: 326
+        character: 32
+  - code: openapi-response-get-401-status-code-info
+    message: GET Responses MUST Have 401 Status Code
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 314
+        character: 14
+      end:
+        line: 326
+        character: 32
+  - code: openapi-response-get-403-schema-ref-info
+    message: GET 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 327
+        character: 14
+      end:
+        line: 339
+        character: 32
+  - code: openapi-response-get-403-status-code-info
+    message: GET Responses MUST Have 403 Status Code
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 327
+        character: 14
+      end:
+        line: 339
+        character: 32
+  - code: openapi-response-get-500-schema-ref-info
+    message: GET 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 340
+        character: 14
+      end:
+        line: 352
+        character: 32
+  - code: openapi-response-get-500-status-code-info
+    message: GET Responses Has 500 Status Code
+    path:
+      - paths
+      - /accounting/balance
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 340
+        character: 14
+      end:
+        line: 352
+        character: 32
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /accounting/transactions
+    severity: 0
+    range:
+      start:
+        line: 366
+        character: 27
+      end:
+        line: 492
+        character: 32
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /accounting/transactions
+    severity: 2
+    range:
+      start:
+        line: 366
+        character: 27
+      end:
+        line: 492
+        character: 32
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /accounting/transactions
+    severity: 2
+    range:
+      start:
+        line: 366
+        character: 27
+      end:
+        line: 492
+        character: 32
+  - code: openapi-no-request-body-on-get-info
+    message: GET Request Body
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+    severity: 2
+    range:
+      start:
+        line: 367
+        character: 8
+      end:
+        line: 492
+        character: 32
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+    severity: 0
+    range:
+      start:
+        line: 367
+        character: 8
+      end:
+        line: 492
+        character: 32
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+    severity: 0
+    range:
+      start:
+        line: 367
+        character: 8
+      end:
+        line: 492
+        character: 32
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+    severity: 0
+    range:
+      start:
+        line: 367
+        character: 8
+      end:
+        line: 492
+        character: 32
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 368
+        character: 15
+      end:
+        line: 368
+        character: 51
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 368
+        character: 15
+      end:
+        line: 368
+        character: 51
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 369
+        character: 11
+      end:
+        line: 370
+        character: 33
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 370
+        character: 10
+      end:
+        line: 370
+        character: 33
+  - code: openapi-response-get-429-status-code-error
+    message: GET Responses Has 429 Status Code
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 371
+        character: 16
+      end:
+        line: 492
+        character: 32
+  - code: openapi-response-get-200-status-code-info
+    message: GET Responses Has 200 Status Codes
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '200'
+    severity: 2
+    range:
+      start:
+        line: 372
+        character: 14
+      end:
+        line: 427
+        character: 43
+  - code: openapi-response-get-200-description-info
+    message: GET 200 Response has description.
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '200'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 373
+        character: 23
+      end:
+        line: 373
+        character: 37
+  - code: openapi-response-get-200-content-info
+    message: GET 200 Response Has Content.
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '200'
+      - content
+    severity: 2
+    range:
+      start:
+        line: 374
+        character: 18
+      end:
+        line: 427
+        character: 43
+  - code: openapi-response-get-200-media-type-examples-error
+    message: GET 200 Response MUST Have Examples
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 375
+        character: 29
+      end:
+        line: 427
+        character: 43
+  - code: openapi-response-get-200-media-type-info
+    message: GET 200 Response Has Media Type.
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 375
+        character: 29
+      end:
+        line: 427
+        character: 43
+  - code: openapi-response-get-200-media-type-schema-info
+    message: GET 200 Response Has Schema
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 376
+        character: 21
+      end:
+        line: 427
+        character: 43
+  - code: openapi-response-get-200-media-type-schema-ref-info
+    message: GET 200 Responses Uses Schema Reference
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 376
+        character: 21
+      end:
+        line: 427
+        character: 43
+  - code: openapi-response-get-400-schema-ref-info
+    message: GET 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 428
+        character: 14
+      end:
+        line: 440
+        character: 32
+  - code: openapi-response-get-400-status-code-info
+    message: GET Responses Has 400 Status Codes
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 428
+        character: 14
+      end:
+        line: 440
+        character: 32
+  - code: openapi-response-get-401-schema-ref-info
+    message: GET 401 Responses Has Schema Reference
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 441
+        character: 14
+      end:
+        line: 453
+        character: 32
+  - code: openapi-response-get-401-status-code-info
+    message: GET Responses MUST Have 401 Status Code
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 441
+        character: 14
+      end:
+        line: 453
+        character: 32
+  - code: openapi-response-get-403-schema-ref-info
+    message: GET 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 454
+        character: 14
+      end:
+        line: 466
+        character: 32
+  - code: openapi-response-get-403-status-code-info
+    message: GET Responses MUST Have 403 Status Code
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 454
+        character: 14
+      end:
+        line: 466
+        character: 32
+  - code: openapi-response-get-500-schema-ref-info
+    message: GET 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 467
+        character: 14
+      end:
+        line: 479
+        character: 32
+  - code: openapi-response-get-500-status-code-info
+    message: GET Responses Has 500 Status Code
+    path:
+      - paths
+      - /accounting/transactions
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 467
+        character: 14
+      end:
+        line: 479
+        character: 32
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+    severity: 0
+    range:
+      start:
+        line: 493
+        character: 36
+      end:
+        line: 642
+        character: 32
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+    severity: 2
+    range:
+      start:
+        line: 493
+        character: 36
+      end:
+        line: 642
+        character: 32
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+    severity: 2
+    range:
+      start:
+        line: 493
+        character: 36
+      end:
+        line: 642
+        character: 32
+  - code: openapi-no-request-body-on-get-info
+    message: GET Request Body
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+    severity: 2
+    range:
+      start:
+        line: 504
+        character: 8
+      end:
+        line: 642
+        character: 32
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+    severity: 0
+    range:
+      start:
+        line: 504
+        character: 8
+      end:
+        line: 642
+        character: 32
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+    severity: 0
+    range:
+      start:
+        line: 504
+        character: 8
+      end:
+        line: 642
+        character: 32
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+    severity: 0
+    range:
+      start:
+        line: 504
+        character: 8
+      end:
+        line: 642
+        character: 32
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 505
+        character: 15
+      end:
+        line: 505
+        character: 59
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 505
+        character: 15
+      end:
+        line: 505
+        character: 59
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 506
+        character: 11
+      end:
+        line: 507
+        character: 33
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 507
+        character: 10
+      end:
+        line: 507
+        character: 33
+  - code: openapi-response-get-429-status-code-error
+    message: GET Responses Has 429 Status Code
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 508
+        character: 16
+      end:
+        line: 642
+        character: 32
+  - code: openapi-response-get-200-status-code-info
+    message: GET Responses Has 200 Status Codes
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '200'
+    severity: 2
+    range:
+      start:
+        line: 509
+        character: 14
+      end:
+        line: 564
+        character: 43
+  - code: openapi-response-get-200-description-info
+    message: GET 200 Response has description.
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '200'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 510
+        character: 23
+      end:
+        line: 510
+        character: 37
+  - code: openapi-response-get-200-content-info
+    message: GET 200 Response Has Content.
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '200'
+      - content
+    severity: 2
+    range:
+      start:
+        line: 511
+        character: 18
+      end:
+        line: 564
+        character: 43
+  - code: openapi-response-get-200-media-type-examples-error
+    message: GET 200 Response MUST Have Examples
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 512
+        character: 29
+      end:
+        line: 564
+        character: 43
+  - code: openapi-response-get-200-media-type-info
+    message: GET 200 Response Has Media Type.
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 512
+        character: 29
+      end:
+        line: 564
+        character: 43
+  - code: openapi-response-get-200-media-type-schema-info
+    message: GET 200 Response Has Schema
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 513
+        character: 21
+      end:
+        line: 564
+        character: 43
+  - code: openapi-response-get-200-media-type-schema-ref-info
+    message: GET 200 Responses Uses Schema Reference
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 513
+        character: 21
+      end:
+        line: 564
+        character: 43
+  - code: openapi-response-get-400-schema-ref-info
+    message: GET 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 565
+        character: 14
+      end:
+        line: 577
+        character: 32
+  - code: openapi-response-get-400-status-code-info
+    message: GET Responses Has 400 Status Codes
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 565
+        character: 14
+      end:
+        line: 577
+        character: 32
+  - code: openapi-response-get-401-schema-ref-info
+    message: GET 401 Responses Has Schema Reference
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 578
+        character: 14
+      end:
+        line: 590
+        character: 32
+  - code: openapi-response-get-401-status-code-info
+    message: GET Responses MUST Have 401 Status Code
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 578
+        character: 14
+      end:
+        line: 590
+        character: 32
+  - code: openapi-response-get-403-schema-ref-info
+    message: GET 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 591
+        character: 14
+      end:
+        line: 603
+        character: 32
+  - code: openapi-response-get-403-status-code-info
+    message: GET Responses MUST Have 403 Status Code
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 591
+        character: 14
+      end:
+        line: 603
+        character: 32
+  - code: openapi-response-get-404-schema-ref-info
+    message: GET 404 Responses Uses Schema Reference
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '404'
+    severity: 2
+    range:
+      start:
+        line: 604
+        character: 14
+      end:
+        line: 616
+        character: 32
+  - code: openapi-response-get-500-schema-ref-info
+    message: GET 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 617
+        character: 14
+      end:
+        line: 629
+        character: 32
+  - code: openapi-response-get-500-status-code-info
+    message: GET Responses Has 500 Status Code
+    path:
+      - paths
+      - /accounting/transactions/{itemId}
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 617
+        character: 14
+      end:
+        line: 629
+        character: 32
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /elevation/price
+    severity: 0
+    range:
+      start:
+        line: 643
+        character: 19
+      end:
+        line: 1623
+        character: 32
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /elevation/price
+    severity: 2
+    range:
+      start:
+        line: 643
+        character: 19
+      end:
+        line: 1623
+        character: 32
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /elevation/price
+    severity: 2
+    range:
+      start:
+        line: 643
+        character: 19
+      end:
+        line: 1623
+        character: 32
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /elevation/price
+      - post
+    severity: 0
+    range:
+      start:
+        line: 644
+        character: 9
+      end:
+        line: 1623
+        character: 32
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /elevation/price
+      - post
+    severity: 0
+    range:
+      start:
+        line: 644
+        character: 9
+      end:
+        line: 1623
+        character: 32
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /elevation/price
+      - post
+    severity: 0
+    range:
+      start:
+        line: 644
+        character: 9
+      end:
+        line: 1623
+        character: 32
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 645
+        character: 15
+      end:
+        line: 645
+        character: 63
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 645
+        character: 15
+      end:
+        line: 645
+        character: 63
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 646
+        character: 11
+      end:
+        line: 647
+        character: 25
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 647
+        character: 10
+      end:
+        line: 647
+        character: 25
+  - code: openapi-request-body-on-post-info
+    message: POST Requests Has a Body
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - requestBody
+    severity: 2
+    range:
+      start:
+        line: 648
+        character: 18
+      end:
+        line: 936
+        character: 38
+  - code: openapi-request-body-content-on-post-info
+    message: Request Body Content POST
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - requestBody
+      - content
+    severity: 2
+    range:
+      start:
+        line: 653
+        character: 16
+      end:
+        line: 936
+        character: 38
+  - code: openapi-request-body-have-application-json-info
+    message: Request Body Application JSON
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - requestBody
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 654
+        character: 27
+      end:
+        line: 936
+        character: 38
+  - code: openapi-request-body-have-examples-error
+    message: Request Bodies MUST Have Examples
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - requestBody
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 654
+        character: 27
+      end:
+        line: 936
+        character: 38
+  - code: openapi-request-body-have-schema-info
+    message: Request Body Schema
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - requestBody
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 655
+        character: 19
+      end:
+        line: 936
+        character: 38
+  - code: openapi-request-body-have-schema-ref-info
+    message: Request Bodies Use Schema Reference
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - requestBody
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 655
+        character: 19
+      end:
+        line: 936
+        character: 38
+  - code: openapi-response-post-201-status-code-error
+    message: POST Responses MUST Have 201 Status Codes
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 937
+        character: 16
+      end:
+        line: 1623
+        character: 32
+  - code: openapi-response-post-429-status-code-error
+    message: POST Responses MUST Have 429 Status Codes
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 937
+        character: 16
+      end:
+        line: 1623
+        character: 32
+  - code: openapi-response-post-400-schema-ref-info
+    message: POST 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 1546
+        character: 14
+      end:
+        line: 1558
+        character: 32
+  - code: openapi-response-post-400-status-code-info
+    message: POST Responses MUST Have 400 Status Codes
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 1546
+        character: 14
+      end:
+        line: 1558
+        character: 32
+  - code: openapi-response-post-401-schema-ref-info
+    message: POST 401 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 1559
+        character: 14
+      end:
+        line: 1571
+        character: 32
+  - code: openapi-response-post-401-status-code-info
+    message: POST Responses MUST Have 401 Status Codes
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 1559
+        character: 14
+      end:
+        line: 1571
+        character: 32
+  - code: openapi-response-post-403-schema-ref-info
+    message: POST 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 1572
+        character: 14
+      end:
+        line: 1584
+        character: 32
+  - code: openapi-response-post-403-status-code-info
+    message: POST Responses MUST Have 403 Status Codes
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 1572
+        character: 14
+      end:
+        line: 1584
+        character: 32
+  - code: openapi-response-post-404-schema-ref-info
+    message: POST 404 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - responses
+      - '404'
+    severity: 2
+    range:
+      start:
+        line: 1585
+        character: 14
+      end:
+        line: 1597
+        character: 32
+  - code: openapi-response-post-404-status-code-info
+    message: POST Responses MUST Have 404 Status Codes
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - responses
+      - '404'
+    severity: 2
+    range:
+      start:
+        line: 1585
+        character: 14
+      end:
+        line: 1597
+        character: 32
+  - code: openapi-response-post-500-schema-ref-info
+    message: POST 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 1598
+        character: 14
+      end:
+        line: 1610
+        character: 32
+  - code: openapi-response-post-500-status-code-info
+    message: POST Responses Has 500 Status Codes
+    path:
+      - paths
+      - /elevation/price
+      - post
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 1598
+        character: 14
+      end:
+        line: 1610
+        character: 32
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /elevation/orders
+    severity: 0
+    range:
+      start:
+        line: 1624
+        character: 20
+      end:
+        line: 3088
+        character: 32
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /elevation/orders
+    severity: 2
+    range:
+      start:
+        line: 1624
+        character: 20
+      end:
+        line: 3088
+        character: 32
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /elevation/orders
+    severity: 2
+    range:
+      start:
+        line: 1624
+        character: 20
+      end:
+        line: 3088
+        character: 32
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /elevation/orders
+      - post
+    severity: 0
+    range:
+      start:
+        line: 1625
+        character: 9
+      end:
+        line: 2977
+        character: 32
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /elevation/orders
+      - post
+    severity: 0
+    range:
+      start:
+        line: 1625
+        character: 9
+      end:
+        line: 2977
+        character: 32
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /elevation/orders
+      - post
+    severity: 0
+    range:
+      start:
+        line: 1625
+        character: 9
+      end:
+        line: 2977
+        character: 32
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 1626
+        character: 15
+      end:
+        line: 1626
+        character: 31
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 1626
+        character: 15
+      end:
+        line: 1626
+        character: 31
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 1627
+        character: 11
+      end:
+        line: 1628
+        character: 26
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 1628
+        character: 10
+      end:
+        line: 1628
+        character: 26
+  - code: openapi-request-body-on-post-info
+    message: POST Requests Has a Body
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - requestBody
+    severity: 2
+    range:
+      start:
+        line: 1629
+        character: 18
+      end:
+        line: 2879
+        character: 31
+  - code: openapi-request-body-content-on-post-info
+    message: Request Body Content POST
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - requestBody
+      - content
+    severity: 2
+    range:
+      start:
+        line: 1636
+        character: 16
+      end:
+        line: 2879
+        character: 31
+  - code: openapi-request-body-have-application-json-info
+    message: Request Body Application JSON
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - requestBody
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 1637
+        character: 27
+      end:
+        line: 2879
+        character: 31
+  - code: openapi-request-body-have-examples-error
+    message: Request Bodies MUST Have Examples
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - requestBody
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 1637
+        character: 27
+      end:
+        line: 2879
+        character: 31
+  - code: openapi-request-body-have-schema-info
+    message: Request Body Schema
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - requestBody
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 1638
+        character: 19
+      end:
+        line: 2879
+        character: 31
+  - code: openapi-request-body-have-schema-ref-info
+    message: Request Bodies Use Schema Reference
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - requestBody
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 1638
+        character: 19
+      end:
+        line: 2879
+        character: 31
+  - code: openapi-response-post-201-status-code-error
+    message: POST Responses MUST Have 201 Status Codes
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 2880
+        character: 16
+      end:
+        line: 2977
+        character: 32
+  - code: openapi-response-post-429-status-code-error
+    message: POST Responses MUST Have 429 Status Codes
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 2880
+        character: 16
+      end:
+        line: 2977
+        character: 32
+  - code: openapi-response-post-400-schema-ref-info
+    message: POST 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 2900
+        character: 14
+      end:
+        line: 2912
+        character: 32
+  - code: openapi-response-post-400-status-code-info
+    message: POST Responses MUST Have 400 Status Codes
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 2900
+        character: 14
+      end:
+        line: 2912
+        character: 32
+  - code: openapi-response-post-401-schema-ref-info
+    message: POST 401 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 2913
+        character: 14
+      end:
+        line: 2925
+        character: 32
+  - code: openapi-response-post-401-status-code-info
+    message: POST Responses MUST Have 401 Status Codes
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 2913
+        character: 14
+      end:
+        line: 2925
+        character: 32
+  - code: openapi-response-post-403-schema-ref-info
+    message: POST 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 2926
+        character: 14
+      end:
+        line: 2938
+        character: 32
+  - code: openapi-response-post-403-status-code-info
+    message: POST Responses MUST Have 403 Status Codes
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 2926
+        character: 14
+      end:
+        line: 2938
+        character: 32
+  - code: openapi-response-post-404-schema-ref-info
+    message: POST 404 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - responses
+      - '404'
+    severity: 2
+    range:
+      start:
+        line: 2939
+        character: 14
+      end:
+        line: 2951
+        character: 32
+  - code: openapi-response-post-404-status-code-info
+    message: POST Responses MUST Have 404 Status Codes
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - responses
+      - '404'
+    severity: 2
+    range:
+      start:
+        line: 2939
+        character: 14
+      end:
+        line: 2951
+        character: 32
+  - code: openapi-response-post-500-schema-ref-info
+    message: POST 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 2952
+        character: 14
+      end:
+        line: 2964
+        character: 32
+  - code: openapi-response-post-500-status-code-info
+    message: POST Responses Has 500 Status Codes
+    path:
+      - paths
+      - /elevation/orders
+      - post
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 2952
+        character: 14
+      end:
+        line: 2964
+        character: 32
+  - code: openapi-no-request-body-on-get-info
+    message: GET Request Body
+    path:
+      - paths
+      - /elevation/orders
+      - get
+    severity: 2
+    range:
+      start:
+        line: 2978
+        character: 8
+      end:
+        line: 3088
+        character: 32
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /elevation/orders
+      - get
+    severity: 0
+    range:
+      start:
+        line: 2978
+        character: 8
+      end:
+        line: 3088
+        character: 32
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /elevation/orders
+      - get
+    severity: 0
+    range:
+      start:
+        line: 2978
+        character: 8
+      end:
+        line: 3088
+        character: 32
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /elevation/orders
+      - get
+    severity: 0
+    range:
+      start:
+        line: 2978
+        character: 8
+      end:
+        line: 3088
+        character: 32
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 2979
+        character: 15
+      end:
+        line: 2979
+        character: 43
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 2979
+        character: 15
+      end:
+        line: 2979
+        character: 43
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 2980
+        character: 11
+      end:
+        line: 2981
+        character: 26
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 2981
+        character: 10
+      end:
+        line: 2981
+        character: 26
+  - code: openapi-response-get-429-status-code-error
+    message: GET Responses Has 429 Status Code
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 2982
+        character: 16
+      end:
+        line: 3088
+        character: 32
+  - code: openapi-response-get-200-status-code-info
+    message: GET Responses Has 200 Status Codes
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '200'
+    severity: 2
+    range:
+      start:
+        line: 2983
+        character: 14
+      end:
+        line: 3010
+        character: 38
+  - code: openapi-response-get-200-description-info
+    message: GET 200 Response has description.
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '200'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 2984
+        character: 23
+      end:
+        line: 2984
+        character: 72
+  - code: openapi-response-get-200-content-info
+    message: GET 200 Response Has Content.
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '200'
+      - content
+    severity: 2
+    range:
+      start:
+        line: 2985
+        character: 18
+      end:
+        line: 3010
+        character: 38
+  - code: openapi-response-get-200-media-type-examples-error
+    message: GET 200 Response MUST Have Examples
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 2986
+        character: 29
+      end:
+        line: 3010
+        character: 38
+  - code: openapi-response-get-200-media-type-info
+    message: GET 200 Response Has Media Type.
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 2986
+        character: 29
+      end:
+        line: 3010
+        character: 38
+  - code: openapi-response-get-200-media-type-schema-info
+    message: GET 200 Response Has Schema
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 2987
+        character: 21
+      end:
+        line: 3010
+        character: 38
+  - code: openapi-response-get-200-media-type-schema-ref-info
+    message: GET 200 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 2987
+        character: 21
+      end:
+        line: 3010
+        character: 38
+  - code: openapi-response-get-400-schema-ref-info
+    message: GET 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 3011
+        character: 14
+      end:
+        line: 3023
+        character: 32
+  - code: openapi-response-get-400-status-code-info
+    message: GET Responses Has 400 Status Codes
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 3011
+        character: 14
+      end:
+        line: 3023
+        character: 32
+  - code: openapi-response-get-401-schema-ref-info
+    message: GET 401 Responses Has Schema Reference
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 3024
+        character: 14
+      end:
+        line: 3036
+        character: 32
+  - code: openapi-response-get-401-status-code-info
+    message: GET Responses MUST Have 401 Status Code
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 3024
+        character: 14
+      end:
+        line: 3036
+        character: 32
+  - code: openapi-response-get-403-schema-ref-info
+    message: GET 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 3037
+        character: 14
+      end:
+        line: 3049
+        character: 32
+  - code: openapi-response-get-403-status-code-info
+    message: GET Responses MUST Have 403 Status Code
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 3037
+        character: 14
+      end:
+        line: 3049
+        character: 32
+  - code: openapi-response-get-404-schema-ref-info
+    message: GET 404 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '404'
+    severity: 2
+    range:
+      start:
+        line: 3050
+        character: 14
+      end:
+        line: 3062
+        character: 32
+  - code: openapi-response-get-500-schema-ref-info
+    message: GET 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 3063
+        character: 14
+      end:
+        line: 3075
+        character: 32
+  - code: openapi-response-get-500-status-code-info
+    message: GET Responses Has 500 Status Code
+    path:
+      - paths
+      - /elevation/orders
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 3063
+        character: 14
+      end:
+        line: 3075
+        character: 32
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /elevation/orders/full
+    severity: 0
+    range:
+      start:
+        line: 3089
+        character: 25
+      end:
+        line: 4116
+        character: 32
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /elevation/orders/full
+    severity: 2
+    range:
+      start:
+        line: 3089
+        character: 25
+      end:
+        line: 4116
+        character: 32
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /elevation/orders/full
+    severity: 2
+    range:
+      start:
+        line: 3089
+        character: 25
+      end:
+        line: 4116
+        character: 32
+  - code: openapi-no-request-body-on-get-info
+    message: GET Request Body
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+    severity: 2
+    range:
+      start:
+        line: 3090
+        character: 8
+      end:
+        line: 4116
+        character: 32
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+    severity: 0
+    range:
+      start:
+        line: 3090
+        character: 8
+      end:
+        line: 4116
+        character: 32
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+    severity: 0
+    range:
+      start:
+        line: 3090
+        character: 8
+      end:
+        line: 4116
+        character: 32
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+    severity: 0
+    range:
+      start:
+        line: 3090
+        character: 8
+      end:
+        line: 4116
+        character: 32
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 3091
+        character: 15
+      end:
+        line: 3091
+        character: 29
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 3091
+        character: 15
+      end:
+        line: 3091
+        character: 29
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 3092
+        character: 11
+      end:
+        line: 3093
+        character: 26
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 3093
+        character: 10
+      end:
+        line: 3093
+        character: 26
+  - code: openapi-response-get-429-status-code-error
+    message: GET Responses Has 429 Status Code
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 3094
+        character: 16
+      end:
+        line: 4116
+        character: 32
+  - code: openapi-response-get-200-status-code-info
+    message: GET Responses Has 200 Status Codes
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '200'
+    severity: 2
+    range:
+      start:
+        line: 3095
+        character: 14
+      end:
+        line: 4038
+        character: 51
+  - code: openapi-response-get-200-description-info
+    message: GET 200 Response has description.
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '200'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 3096
+        character: 23
+      end:
+        line: 3096
+        character: 59
+  - code: openapi-response-get-200-content-info
+    message: GET 200 Response Has Content.
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '200'
+      - content
+    severity: 2
+    range:
+      start:
+        line: 3097
+        character: 18
+      end:
+        line: 4038
+        character: 51
+  - code: openapi-response-get-200-media-type-examples-error
+    message: GET 200 Response MUST Have Examples
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 3098
+        character: 29
+      end:
+        line: 4038
+        character: 51
+  - code: openapi-response-get-200-media-type-info
+    message: GET 200 Response Has Media Type.
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 3098
+        character: 29
+      end:
+        line: 4038
+        character: 51
+  - code: openapi-response-get-200-media-type-schema-info
+    message: GET 200 Response Has Schema
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 3099
+        character: 21
+      end:
+        line: 4038
+        character: 51
+  - code: openapi-response-get-200-media-type-schema-ref-info
+    message: GET 200 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 3099
+        character: 21
+      end:
+        line: 4038
+        character: 51
+  - code: openapi-response-get-400-schema-ref-info
+    message: GET 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 4039
+        character: 14
+      end:
+        line: 4051
+        character: 32
+  - code: openapi-response-get-400-status-code-info
+    message: GET Responses Has 400 Status Codes
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 4039
+        character: 14
+      end:
+        line: 4051
+        character: 32
+  - code: openapi-response-get-401-schema-ref-info
+    message: GET 401 Responses Has Schema Reference
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 4052
+        character: 14
+      end:
+        line: 4064
+        character: 32
+  - code: openapi-response-get-401-status-code-info
+    message: GET Responses MUST Have 401 Status Code
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 4052
+        character: 14
+      end:
+        line: 4064
+        character: 32
+  - code: openapi-response-get-403-schema-ref-info
+    message: GET 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 4065
+        character: 14
+      end:
+        line: 4077
+        character: 32
+  - code: openapi-response-get-403-status-code-info
+    message: GET Responses MUST Have 403 Status Code
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 4065
+        character: 14
+      end:
+        line: 4077
+        character: 32
+  - code: openapi-response-get-404-schema-ref-info
+    message: GET 404 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '404'
+    severity: 2
+    range:
+      start:
+        line: 4078
+        character: 14
+      end:
+        line: 4090
+        character: 32
+  - code: openapi-response-get-500-schema-ref-info
+    message: GET 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 4091
+        character: 14
+      end:
+        line: 4103
+        character: 32
+  - code: openapi-response-get-500-status-code-info
+    message: GET Responses Has 500 Status Code
+    path:
+      - paths
+      - /elevation/orders/full
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 4091
+        character: 14
+      end:
+        line: 4103
+        character: 32
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+    severity: 0
+    range:
+      start:
+        line: 4117
+        character: 30
+      end:
+        line: 4593
+        character: 32
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+    severity: 2
+    range:
+      start:
+        line: 4117
+        character: 30
+      end:
+        line: 4593
+        character: 32
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+    severity: 2
+    range:
+      start:
+        line: 4117
+        character: 30
+      end:
+        line: 4593
+        character: 32
+  - code: openapi-no-request-body-on-get-info
+    message: GET Request Body
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+    severity: 2
+    range:
+      start:
+        line: 4118
+        character: 8
+      end:
+        line: 4593
+        character: 32
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+    severity: 0
+    range:
+      start:
+        line: 4118
+        character: 8
+      end:
+        line: 4593
+        character: 32
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+    severity: 0
+    range:
+      start:
+        line: 4118
+        character: 8
+      end:
+        line: 4593
+        character: 32
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+    severity: 0
+    range:
+      start:
+        line: 4118
+        character: 8
+      end:
+        line: 4593
+        character: 32
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 4119
+        character: 15
+      end:
+        line: 4119
+        character: 75
+  - code: openapi-operations-summary-length-error
+    message: Operation Summary MUST Be Less Than 50 Characters
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - summary
+    severity: 1
+    range:
+      start:
+        line: 4119
+        character: 15
+      end:
+        line: 4119
+        character: 75
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 4119
+        character: 15
+      end:
+        line: 4119
+        character: 75
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 4120
+        character: 11
+      end:
+        line: 4121
+        character: 26
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 4121
+        character: 10
+      end:
+        line: 4121
+        character: 26
+  - code: openapi-parameters-componentized-error
+    message: Parameters MUST use components $ref.
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - parameters
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 4123
+        character: 10
+      end:
+        line: 4131
+        character: 83
+  - code: openapi-response-get-429-status-code-error
+    message: GET Responses Has 429 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 4132
+        character: 16
+      end:
+        line: 4593
+        character: 32
+  - code: openapi-response-get-200-status-code-info
+    message: GET Responses Has 200 Status Codes
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '200'
+    severity: 2
+    range:
+      start:
+        line: 4133
+        character: 14
+      end:
+        line: 4515
+        character: 136
+  - code: openapi-response-get-200-description-info
+    message: GET 200 Response has description.
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '200'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 4134
+        character: 23
+      end:
+        line: 4134
+        character: 40
+  - code: openapi-response-get-200-content-info
+    message: GET 200 Response Has Content.
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '200'
+      - content
+    severity: 2
+    range:
+      start:
+        line: 4135
+        character: 18
+      end:
+        line: 4515
+        character: 136
+  - code: openapi-response-get-200-media-type-examples-error
+    message: GET 200 Response MUST Have Examples
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 4136
+        character: 29
+      end:
+        line: 4515
+        character: 136
+  - code: openapi-response-get-200-media-type-info
+    message: GET 200 Response Has Media Type.
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 4136
+        character: 29
+      end:
+        line: 4515
+        character: 136
+  - code: openapi-response-get-200-media-type-schema-info
+    message: GET 200 Response Has Schema
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 4137
+        character: 21
+      end:
+        line: 4515
+        character: 136
+  - code: openapi-response-get-200-media-type-schema-ref-info
+    message: GET 200 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 4137
+        character: 21
+      end:
+        line: 4515
+        character: 136
+  - code: openapi-response-get-400-schema-ref-info
+    message: GET 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 4516
+        character: 14
+      end:
+        line: 4528
+        character: 32
+  - code: openapi-response-get-400-status-code-info
+    message: GET Responses Has 400 Status Codes
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 4516
+        character: 14
+      end:
+        line: 4528
+        character: 32
+  - code: openapi-response-get-401-schema-ref-info
+    message: GET 401 Responses Has Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 4529
+        character: 14
+      end:
+        line: 4541
+        character: 32
+  - code: openapi-response-get-401-status-code-info
+    message: GET Responses MUST Have 401 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 4529
+        character: 14
+      end:
+        line: 4541
+        character: 32
+  - code: openapi-response-get-403-schema-ref-info
+    message: GET 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 4542
+        character: 14
+      end:
+        line: 4554
+        character: 32
+  - code: openapi-response-get-403-status-code-info
+    message: GET Responses MUST Have 403 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 4542
+        character: 14
+      end:
+        line: 4554
+        character: 32
+  - code: openapi-response-get-404-schema-ref-info
+    message: GET 404 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '404'
+    severity: 2
+    range:
+      start:
+        line: 4555
+        character: 14
+      end:
+        line: 4567
+        character: 32
+  - code: openapi-response-get-500-schema-ref-info
+    message: GET 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 4568
+        character: 14
+      end:
+        line: 4580
+        character: 32
+  - code: openapi-response-get-500-status-code-info
+    message: GET Responses Has 500 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 4568
+        character: 14
+      end:
+        line: 4580
+        character: 32
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+    severity: 0
+    range:
+      start:
+        line: 4594
+        character: 35
+      end:
+        line: 5629
+        character: 32
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+    severity: 2
+    range:
+      start:
+        line: 4594
+        character: 35
+      end:
+        line: 5629
+        character: 32
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+    severity: 2
+    range:
+      start:
+        line: 4594
+        character: 35
+      end:
+        line: 5629
+        character: 32
+  - code: openapi-no-request-body-on-get-info
+    message: GET Request Body
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+    severity: 2
+    range:
+      start:
+        line: 4595
+        character: 8
+      end:
+        line: 5629
+        character: 32
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+    severity: 0
+    range:
+      start:
+        line: 4595
+        character: 8
+      end:
+        line: 5629
+        character: 32
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+    severity: 0
+    range:
+      start:
+        line: 4595
+        character: 8
+      end:
+        line: 5629
+        character: 32
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+    severity: 0
+    range:
+      start:
+        line: 4595
+        character: 8
+      end:
+        line: 5629
+        character: 32
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 4596
+        character: 15
+      end:
+        line: 4596
+        character: 62
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 4596
+        character: 15
+      end:
+        line: 4596
+        character: 62
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 4597
+        character: 11
+      end:
+        line: 4598
+        character: 26
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 4598
+        character: 10
+      end:
+        line: 4598
+        character: 26
+  - code: openapi-parameters-componentized-error
+    message: Parameters MUST use components $ref.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - parameters
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 4600
+        character: 10
+      end:
+        line: 4608
+        character: 83
+  - code: openapi-response-get-429-status-code-error
+    message: GET Responses Has 429 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 4609
+        character: 16
+      end:
+        line: 5629
+        character: 32
+  - code: openapi-response-get-200-status-code-info
+    message: GET Responses Has 200 Status Codes
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '200'
+    severity: 2
+    range:
+      start:
+        line: 4610
+        character: 14
+      end:
+        line: 5551
+        character: 49
+  - code: openapi-response-get-200-description-info
+    message: GET 200 Response has description.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '200'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 4611
+        character: 23
+      end:
+        line: 4611
+        character: 40
+  - code: openapi-response-get-200-content-info
+    message: GET 200 Response Has Content.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '200'
+      - content
+    severity: 2
+    range:
+      start:
+        line: 4612
+        character: 18
+      end:
+        line: 5551
+        character: 49
+  - code: openapi-response-get-200-media-type-examples-error
+    message: GET 200 Response MUST Have Examples
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 4613
+        character: 29
+      end:
+        line: 5551
+        character: 49
+  - code: openapi-response-get-200-media-type-info
+    message: GET 200 Response Has Media Type.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 4613
+        character: 29
+      end:
+        line: 5551
+        character: 49
+  - code: openapi-response-get-200-media-type-schema-info
+    message: GET 200 Response Has Schema
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 4614
+        character: 21
+      end:
+        line: 5551
+        character: 49
+  - code: openapi-response-get-200-media-type-schema-ref-info
+    message: GET 200 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 4614
+        character: 21
+      end:
+        line: 5551
+        character: 49
+  - code: openapi-response-get-400-schema-ref-info
+    message: GET 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 5552
+        character: 14
+      end:
+        line: 5564
+        character: 32
+  - code: openapi-response-get-400-status-code-info
+    message: GET Responses Has 400 Status Codes
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 5552
+        character: 14
+      end:
+        line: 5564
+        character: 32
+  - code: openapi-response-get-401-schema-ref-info
+    message: GET 401 Responses Has Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 5565
+        character: 14
+      end:
+        line: 5577
+        character: 32
+  - code: openapi-response-get-401-status-code-info
+    message: GET Responses MUST Have 401 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 5565
+        character: 14
+      end:
+        line: 5577
+        character: 32
+  - code: openapi-response-get-403-schema-ref-info
+    message: GET 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 5578
+        character: 14
+      end:
+        line: 5590
+        character: 32
+  - code: openapi-response-get-403-status-code-info
+    message: GET Responses MUST Have 403 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 5578
+        character: 14
+      end:
+        line: 5590
+        character: 32
+  - code: openapi-response-get-404-schema-ref-info
+    message: GET 404 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '404'
+    severity: 2
+    range:
+      start:
+        line: 5591
+        character: 14
+      end:
+        line: 5603
+        character: 32
+  - code: openapi-response-get-500-schema-ref-info
+    message: GET 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 5604
+        character: 14
+      end:
+        line: 5616
+        character: 32
+  - code: openapi-response-get-500-status-code-info
+    message: GET Responses Has 500 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/full
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 5604
+        character: 14
+      end:
+        line: 5616
+        character: 32
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+    severity: 0
+    range:
+      start:
+        line: 5630
+        character: 36
+      end:
+        line: 5764
+        character: 32
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+    severity: 2
+    range:
+      start:
+        line: 5630
+        character: 36
+      end:
+        line: 5764
+        character: 32
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+    severity: 2
+    range:
+      start:
+        line: 5630
+        character: 36
+      end:
+        line: 5764
+        character: 32
+  - code: openapi-no-request-body-on-get-info
+    message: GET Request Body
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+    severity: 2
+    range:
+      start:
+        line: 5631
+        character: 8
+      end:
+        line: 5764
+        character: 32
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+    severity: 0
+    range:
+      start:
+        line: 5631
+        character: 8
+      end:
+        line: 5764
+        character: 32
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+    severity: 0
+    range:
+      start:
+        line: 5631
+        character: 8
+      end:
+        line: 5764
+        character: 32
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+    severity: 0
+    range:
+      start:
+        line: 5631
+        character: 8
+      end:
+        line: 5764
+        character: 32
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 5632
+        character: 15
+      end:
+        line: 5632
+        character: 60
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 5632
+        character: 15
+      end:
+        line: 5632
+        character: 60
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 5633
+        character: 11
+      end:
+        line: 5634
+        character: 26
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 5634
+        character: 10
+      end:
+        line: 5634
+        character: 26
+  - code: openapi-parameters-componentized-error
+    message: Parameters MUST use components $ref.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - parameters
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 5636
+        character: 10
+      end:
+        line: 5644
+        character: 83
+  - code: openapi-response-get-429-status-code-error
+    message: GET Responses Has 429 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 5645
+        character: 16
+      end:
+        line: 5764
+        character: 32
+  - code: openapi-response-get-200-status-code-info
+    message: GET Responses Has 200 Status Codes
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '200'
+    severity: 2
+    range:
+      start:
+        line: 5646
+        character: 14
+      end:
+        line: 5686
+        character: 128
+  - code: openapi-response-get-200-description-info
+    message: GET 200 Response has description.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '200'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 5647
+        character: 23
+      end:
+        line: 5647
+        character: 63
+  - code: openapi-response-get-200-content-info
+    message: GET 200 Response Has Content.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '200'
+      - content
+    severity: 2
+    range:
+      start:
+        line: 5648
+        character: 18
+      end:
+        line: 5686
+        character: 128
+  - code: openapi-response-get-200-media-type-examples-error
+    message: GET 200 Response MUST Have Examples
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 5649
+        character: 29
+      end:
+        line: 5686
+        character: 128
+  - code: openapi-response-get-200-media-type-info
+    message: GET 200 Response Has Media Type.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 5649
+        character: 29
+      end:
+        line: 5686
+        character: 128
+  - code: openapi-response-get-200-media-type-schema-info
+    message: GET 200 Response Has Schema
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 5650
+        character: 21
+      end:
+        line: 5686
+        character: 128
+  - code: openapi-response-get-200-media-type-schema-ref-info
+    message: GET 200 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 5650
+        character: 21
+      end:
+        line: 5686
+        character: 128
+  - code: openapi-response-get-400-schema-ref-info
+    message: GET 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 5687
+        character: 14
+      end:
+        line: 5699
+        character: 32
+  - code: openapi-response-get-400-status-code-info
+    message: GET Responses Has 400 Status Codes
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 5687
+        character: 14
+      end:
+        line: 5699
+        character: 32
+  - code: openapi-response-get-401-schema-ref-info
+    message: GET 401 Responses Has Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 5700
+        character: 14
+      end:
+        line: 5712
+        character: 32
+  - code: openapi-response-get-401-status-code-info
+    message: GET Responses MUST Have 401 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 5700
+        character: 14
+      end:
+        line: 5712
+        character: 32
+  - code: openapi-response-get-403-schema-ref-info
+    message: GET 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 5713
+        character: 14
+      end:
+        line: 5725
+        character: 32
+  - code: openapi-response-get-403-status-code-info
+    message: GET Responses MUST Have 403 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 5713
+        character: 14
+      end:
+        line: 5725
+        character: 32
+  - code: openapi-response-get-404-schema-ref-info
+    message: GET 404 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '404'
+    severity: 2
+    range:
+      start:
+        line: 5726
+        character: 14
+      end:
+        line: 5738
+        character: 32
+  - code: openapi-response-get-500-schema-ref-info
+    message: GET 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 5739
+        character: 14
+      end:
+        line: 5751
+        character: 32
+  - code: openapi-response-get-500-status-code-info
+    message: GET Responses Has 500 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 5739
+        character: 14
+      end:
+        line: 5751
+        character: 32
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+    severity: 0
+    range:
+      start:
+        line: 5765
+        character: 41
+      end:
+        line: 6455
+        character: 32
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+    severity: 2
+    range:
+      start:
+        line: 5765
+        character: 41
+      end:
+        line: 6455
+        character: 32
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+    severity: 2
+    range:
+      start:
+        line: 5765
+        character: 41
+      end:
+        line: 6455
+        character: 32
+  - code: openapi-no-request-body-on-get-info
+    message: GET Request Body
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+    severity: 2
+    range:
+      start:
+        line: 5766
+        character: 8
+      end:
+        line: 6455
+        character: 32
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+    severity: 0
+    range:
+      start:
+        line: 5766
+        character: 8
+      end:
+        line: 6455
+        character: 32
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+    severity: 0
+    range:
+      start:
+        line: 5766
+        character: 8
+      end:
+        line: 6455
+        character: 32
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+    severity: 0
+    range:
+      start:
+        line: 5766
+        character: 8
+      end:
+        line: 6455
+        character: 32
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 5767
+        character: 15
+      end:
+        line: 5767
+        character: 52
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 5767
+        character: 15
+      end:
+        line: 5767
+        character: 52
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 5768
+        character: 11
+      end:
+        line: 5769
+        character: 26
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 5769
+        character: 10
+      end:
+        line: 5769
+        character: 26
+  - code: openapi-parameters-componentized-error
+    message: Parameters MUST use components $ref.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - parameters
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 5771
+        character: 10
+      end:
+        line: 5779
+        character: 83
+  - code: openapi-response-get-429-status-code-error
+    message: GET Responses Has 429 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 5780
+        character: 16
+      end:
+        line: 6455
+        character: 32
+  - code: openapi-response-get-200-status-code-info
+    message: GET Responses Has 200 Status Codes
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '200'
+    severity: 2
+    range:
+      start:
+        line: 5781
+        character: 14
+      end:
+        line: 6377
+        character: 41
+  - code: openapi-response-get-200-description-info
+    message: GET 200 Response has description.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '200'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 5782
+        character: 23
+      end:
+        line: 5782
+        character: 45
+  - code: openapi-response-get-200-content-info
+    message: GET 200 Response Has Content.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '200'
+      - content
+    severity: 2
+    range:
+      start:
+        line: 5783
+        character: 18
+      end:
+        line: 6377
+        character: 41
+  - code: openapi-response-get-200-media-type-examples-error
+    message: GET 200 Response MUST Have Examples
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 5784
+        character: 29
+      end:
+        line: 6377
+        character: 41
+  - code: openapi-response-get-200-media-type-info
+    message: GET 200 Response Has Media Type.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 5784
+        character: 29
+      end:
+        line: 6377
+        character: 41
+  - code: openapi-response-get-200-media-type-schema-info
+    message: GET 200 Response Has Schema
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 5785
+        character: 21
+      end:
+        line: 6377
+        character: 41
+  - code: openapi-response-get-200-media-type-schema-ref-info
+    message: GET 200 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 5785
+        character: 21
+      end:
+        line: 6377
+        character: 41
+  - code: openapi-response-get-400-schema-ref-info
+    message: GET 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 6378
+        character: 14
+      end:
+        line: 6390
+        character: 32
+  - code: openapi-response-get-400-status-code-info
+    message: GET Responses Has 400 Status Codes
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 6378
+        character: 14
+      end:
+        line: 6390
+        character: 32
+  - code: openapi-response-get-401-schema-ref-info
+    message: GET 401 Responses Has Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 6391
+        character: 14
+      end:
+        line: 6403
+        character: 32
+  - code: openapi-response-get-401-status-code-info
+    message: GET Responses MUST Have 401 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 6391
+        character: 14
+      end:
+        line: 6403
+        character: 32
+  - code: openapi-response-get-403-schema-ref-info
+    message: GET 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 6404
+        character: 14
+      end:
+        line: 6416
+        character: 32
+  - code: openapi-response-get-403-status-code-info
+    message: GET Responses MUST Have 403 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 6404
+        character: 14
+      end:
+        line: 6416
+        character: 32
+  - code: openapi-response-get-404-schema-ref-info
+    message: GET 404 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '404'
+    severity: 2
+    range:
+      start:
+        line: 6417
+        character: 14
+      end:
+        line: 6429
+        character: 32
+  - code: openapi-response-get-500-schema-ref-info
+    message: GET 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 6430
+        character: 14
+      end:
+        line: 6442
+        character: 32
+  - code: openapi-response-get-500-status-code-info
+    message: GET Responses Has 500 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/full
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 6430
+        character: 14
+      end:
+        line: 6442
+        character: 32
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+    severity: 0
+    range:
+      start:
+        line: 6456
+        character: 45
+      end:
+        line: 7146
+        character: 32
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+    severity: 2
+    range:
+      start:
+        line: 6456
+        character: 45
+      end:
+        line: 7146
+        character: 32
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+    severity: 2
+    range:
+      start:
+        line: 6456
+        character: 45
+      end:
+        line: 7146
+        character: 32
+  - code: openapi-no-request-body-on-get-info
+    message: GET Request Body
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+    severity: 2
+    range:
+      start:
+        line: 6457
+        character: 8
+      end:
+        line: 7146
+        character: 32
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+    severity: 0
+    range:
+      start:
+        line: 6457
+        character: 8
+      end:
+        line: 7146
+        character: 32
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+    severity: 0
+    range:
+      start:
+        line: 6457
+        character: 8
+      end:
+        line: 7146
+        character: 32
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+    severity: 0
+    range:
+      start:
+        line: 6457
+        character: 8
+      end:
+        line: 7146
+        character: 32
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 6458
+        character: 15
+      end:
+        line: 6458
+        character: 49
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 6458
+        character: 15
+      end:
+        line: 6458
+        character: 49
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 6459
+        character: 11
+      end:
+        line: 6460
+        character: 26
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 6460
+        character: 10
+      end:
+        line: 6460
+        character: 26
+  - code: openapi-parameters-componentized-error
+    message: Parameters MUST use components $ref.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - parameters
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 6462
+        character: 10
+      end:
+        line: 6470
+        character: 83
+  - code: openapi-parameters-componentized-error
+    message: Parameters MUST use components $ref.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - parameters
+      - '1'
+    severity: 0
+    range:
+      start:
+        line: 6471
+        character: 10
+      end:
+        line: 6479
+        character: 83
+  - code: openapi-response-get-429-status-code-error
+    message: GET Responses Has 429 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 6480
+        character: 16
+      end:
+        line: 7146
+        character: 32
+  - code: openapi-response-get-200-status-code-info
+    message: GET Responses Has 200 Status Codes
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '200'
+    severity: 2
+    range:
+      start:
+        line: 6481
+        character: 14
+      end:
+        line: 7068
+        character: 39
+  - code: openapi-response-get-200-description-info
+    message: GET 200 Response has description.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '200'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 6482
+        character: 23
+      end:
+        line: 6482
+        character: 39
+  - code: openapi-response-get-200-content-info
+    message: GET 200 Response Has Content.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '200'
+      - content
+    severity: 2
+    range:
+      start:
+        line: 6483
+        character: 18
+      end:
+        line: 7068
+        character: 39
+  - code: openapi-response-get-200-media-type-examples-error
+    message: GET 200 Response MUST Have Examples
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 6484
+        character: 29
+      end:
+        line: 7068
+        character: 39
+  - code: openapi-response-get-200-media-type-info
+    message: GET 200 Response Has Media Type.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 6484
+        character: 29
+      end:
+        line: 7068
+        character: 39
+  - code: openapi-response-get-200-media-type-schema-info
+    message: GET 200 Response Has Schema
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 6485
+        character: 21
+      end:
+        line: 7068
+        character: 39
+  - code: openapi-response-get-200-media-type-schema-ref-info
+    message: GET 200 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 6485
+        character: 21
+      end:
+        line: 7068
+        character: 39
+  - code: openapi-response-get-400-schema-ref-info
+    message: GET 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 7069
+        character: 14
+      end:
+        line: 7081
+        character: 32
+  - code: openapi-response-get-400-status-code-info
+    message: GET Responses Has 400 Status Codes
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 7069
+        character: 14
+      end:
+        line: 7081
+        character: 32
+  - code: openapi-response-get-401-schema-ref-info
+    message: GET 401 Responses Has Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 7082
+        character: 14
+      end:
+        line: 7094
+        character: 32
+  - code: openapi-response-get-401-status-code-info
+    message: GET Responses MUST Have 401 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 7082
+        character: 14
+      end:
+        line: 7094
+        character: 32
+  - code: openapi-response-get-403-schema-ref-info
+    message: GET 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 7095
+        character: 14
+      end:
+        line: 7107
+        character: 32
+  - code: openapi-response-get-403-status-code-info
+    message: GET Responses MUST Have 403 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 7095
+        character: 14
+      end:
+        line: 7107
+        character: 32
+  - code: openapi-response-get-404-schema-ref-info
+    message: GET 404 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '404'
+    severity: 2
+    range:
+      start:
+        line: 7108
+        character: 14
+      end:
+        line: 7120
+        character: 32
+  - code: openapi-response-get-500-schema-ref-info
+    message: GET 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 7121
+        character: 14
+      end:
+        line: 7133
+        character: 32
+  - code: openapi-response-get-500-status-code-info
+    message: GET Responses Has 500 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 7121
+        character: 14
+      end:
+        line: 7133
+        character: 32
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+    severity: 0
+    range:
+      start:
+        line: 7147
+        character: 54
+      end:
+        line: 7322
+        character: 32
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+    severity: 2
+    range:
+      start:
+        line: 7147
+        character: 54
+      end:
+        line: 7322
+        character: 32
+  - code: openapi-version-in-path-info
+    message: Version in Path
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+    severity: 2
+    range:
+      start:
+        line: 7147
+        character: 54
+      end:
+        line: 7322
+        character: 32
+  - code: openapi-no-request-body-on-get-info
+    message: GET Request Body
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+    severity: 2
+    range:
+      start:
+        line: 7148
+        character: 8
+      end:
+        line: 7322
+        character: 32
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+    severity: 0
+    range:
+      start:
+        line: 7148
+        character: 8
+      end:
+        line: 7322
+        character: 32
+  - code: openapi-operations-description-error
+    message: Operation MUST Have Description
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+    severity: 0
+    range:
+      start:
+        line: 7148
+        character: 8
+      end:
+        line: 7322
+        character: 32
+  - code: openapi-operations-operation-ids-error
+    message: Operation MUST Have Identifier
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+    severity: 0
+    range:
+      start:
+        line: 7148
+        character: 8
+      end:
+        line: 7322
+        character: 32
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 7149
+        character: 15
+      end:
+        line: 7149
+        character: 42
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 7149
+        character: 15
+      end:
+        line: 7149
+        character: 42
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 7150
+        character: 11
+      end:
+        line: 7151
+        character: 26
+  - code: openapi-operations-tags-upper-case-error
+    message: Operation Tag Names MUST Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - tags
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 7151
+        character: 10
+      end:
+        line: 7151
+        character: 26
+  - code: openapi-parameters-componentized-error
+    message: Parameters MUST use components $ref.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - parameters
+      - '0'
+    severity: 0
+    range:
+      start:
+        line: 7153
+        character: 10
+      end:
+        line: 7161
+        character: 83
+  - code: openapi-parameters-componentized-error
+    message: Parameters MUST use components $ref.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - parameters
+      - '1'
+    severity: 0
+    range:
+      start:
+        line: 7162
+        character: 10
+      end:
+        line: 7170
+        character: 83
+  - code: openapi-response-get-429-status-code-error
+    message: GET Responses Has 429 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 7171
+        character: 16
+      end:
+        line: 7322
+        character: 32
+  - code: openapi-response-get-200-status-code-info
+    message: GET Responses Has 200 Status Codes
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '200'
+    severity: 2
+    range:
+      start:
+        line: 7172
+        character: 14
+      end:
+        line: 7244
+        character: 32
+  - code: openapi-response-get-200-description-info
+    message: GET 200 Response has description.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '200'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 7173
+        character: 23
+      end:
+        line: 7173
+        character: 50
+  - code: openapi-response-get-200-content-info
+    message: GET 200 Response Has Content.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '200'
+      - content
+    severity: 2
+    range:
+      start:
+        line: 7174
+        character: 18
+      end:
+        line: 7244
+        character: 32
+  - code: openapi-response-get-200-media-type-examples-error
+    message: GET 200 Response MUST Have Examples
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 0
+    range:
+      start:
+        line: 7180
+        character: 29
+      end:
+        line: 7244
+        character: 32
+  - code: openapi-response-get-200-media-type-info
+    message: GET 200 Response Has Media Type.
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 7180
+        character: 29
+      end:
+        line: 7244
+        character: 32
+  - code: openapi-response-get-200-media-type-schema-info
+    message: GET 200 Response Has Schema
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 7181
+        character: 21
+      end:
+        line: 7244
+        character: 32
+  - code: openapi-response-get-200-media-type-schema-ref-info
+    message: GET 200 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '200'
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 7181
+        character: 21
+      end:
+        line: 7244
+        character: 32
+  - code: openapi-response-get-400-schema-ref-info
+    message: GET 400 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 7245
+        character: 14
+      end:
+        line: 7257
+        character: 32
+  - code: openapi-response-get-400-status-code-info
+    message: GET Responses Has 400 Status Codes
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '400'
+    severity: 2
+    range:
+      start:
+        line: 7245
+        character: 14
+      end:
+        line: 7257
+        character: 32
+  - code: openapi-response-get-401-schema-ref-info
+    message: GET 401 Responses Has Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 7258
+        character: 14
+      end:
+        line: 7270
+        character: 32
+  - code: openapi-response-get-401-status-code-info
+    message: GET Responses MUST Have 401 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '401'
+    severity: 2
+    range:
+      start:
+        line: 7258
+        character: 14
+      end:
+        line: 7270
+        character: 32
+  - code: openapi-response-get-403-schema-ref-info
+    message: GET 403 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 7271
+        character: 14
+      end:
+        line: 7283
+        character: 32
+  - code: openapi-response-get-403-status-code-info
+    message: GET Responses MUST Have 403 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '403'
+    severity: 2
+    range:
+      start:
+        line: 7271
+        character: 14
+      end:
+        line: 7283
+        character: 32
+  - code: openapi-response-get-404-schema-ref-info
+    message: GET 404 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '404'
+    severity: 2
+    range:
+      start:
+        line: 7284
+        character: 14
+      end:
+        line: 7296
+        character: 32
+  - code: openapi-response-get-500-schema-ref-info
+    message: GET 500 Responses Uses Schema Reference
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 7297
+        character: 14
+      end:
+        line: 7309
+        character: 32
+  - code: openapi-response-get-500-status-code-info
+    message: GET Responses Has 500 Status Code
+    path:
+      - paths
+      - /elevation/orders/{orderId}/items/{itemId}/download
+      - get
+      - responses
+      - '500'
+    severity: 2
+    range:
+      start:
+        line: 7297
+        character: 14
+      end:
+        line: 7309
+        character: 32
+  - code: openapi-components-examples-error
+    message: Components MUST Have a Examples Property
+    path:
+      - components
+    severity: 0
+    range:
+      start:
+        line: 7325
+        character: 11
+      end:
+        line: 7329
+        character: 19
+  - code: openapi-components-headers-error
+    message: Components MUST Have a Headers Property
+    path:
+      - components
+    severity: 0
+    range:
+      start:
+        line: 7325
+        character: 11
+      end:
+        line: 7329
+        character: 19
+  - code: openapi-components-parameters-error
+    message: Components MUST Have a Parameters Property
+    path:
+      - components
+    severity: 0
+    range:
+      start:
+        line: 7325
+        character: 11
+      end:
+        line: 7329
+        character: 19
+  - code: openapi-components-responses-error
+    message: Components MUST have a responses property.
+    path:
+      - components
+    severity: 0
+    range:
+      start:
+        line: 7325
+        character: 11
+      end:
+        line: 7329
+        character: 19
+  - code: openapi-components-schemas-error
+    message: Components MUST Have a Schema Property
+    path:
+      - components
+    severity: 0
+    range:
+      start:
+        line: 7325
+        character: 11
+      end:
+        line: 7329
+        character: 19
+  - code: openapi-security-schemes-info
+    message: Components Have a Security Schemes
+    path:
+      - components
+      - securitySchemes
+    severity: 2
+    range:
+      start:
+        line: 7326
+        character: 18
+      end:
+        line: 7329
+        character: 19

@@ -4,15 +4,29 @@ url: >-
 apis:
   - aid: airbus-oneatlas:oneatlas-data-living-library
     name: OneAtlas Data Living Library
-    tags:
-      - Satellites
-      - Geospatial
-      - Imagery
+    tags: []
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
     properties:
-      - url: properties/oneatlas-data-living-library-openapi.yml
-        type: OpenAPI
+      - name: OneAtlas Data - Living Library
+        description: 'null'
+        url: >-
+          https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/tutorials/
+        type: Tutorials
+      - name: OneAtlas Data Living Library Notebooks & Postman collections
+        description: 'null'
+        url: >-
+          https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/notebooks/
+        type: PostmanCollection
+      - name: OneAtlas Data Living Library Notebooks & Postman collections
+        description: 'null'
+        url: >-
+          https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/notebooks/
+        type: JupyterNotebook
+      - name: Releases
+        description: 'null'
+        url: https://api.oneatlas.airbus.com/releases/#oad-living-library
+        type: ChangeLog
     description: >-
       OneAtlas Data Living Library is a platform that provides users with access
       to a diverse range of geospatial data and satellite imagery. The library
@@ -118,31 +132,31 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
-  - name: Getting started
-    description: 'null'
-    url: https://api.oneatlas.airbus.com/getting-started/
+  - url: https://api.oneatlas.airbus.com/getting-started/
+    name: Getting started
     type: GettingStarted
-  - name: OneAtlas - Authentication
     description: 'null'
-    url: >-
+  - url: >-
       https://api.oneatlas.airbus.com/getting-started/authentication/#authenticate
+    name: OneAtlas - Authentication
     type: Authentication
-  - name: APIs overview
     description: 'null'
-    url: https://api.oneatlas.airbus.com/getting-started/api-testing-guide/
+  - url: https://api.oneatlas.airbus.com/getting-started/api-testing-guide/
+    name: APIs overview
     type: Testing
-  - name: Status Page OneAtlas
     description: 'null'
-    url: https://status.oneatlas.airbus.com/
+  - url: https://status.oneatlas.airbus.com/
+    name: Status Page OneAtlas
     type: Status
-  - name: Releases
     description: 'null'
-    url: https://api.oneatlas.airbus.com/releases/
+  - url: https://api.oneatlas.airbus.com/releases/
+    name: Releases
     type: ChangeLog
-  - name: Airbus - OneAtlas Developer Portal
     description: 'null'
-    url: https://api.oneatlas.airbus.com/
+  - url: https://api.oneatlas.airbus.com/
+    name: Airbus - OneAtlas Developer Portal
     type: Portal
+    description: 'null'
 created: '2025-02-06'
 modified: '2025-02-15'
 position: Consumer

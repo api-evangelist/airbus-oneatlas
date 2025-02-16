@@ -4370,11 +4370,18 @@ info:
     email: intelligence-customertechnicalsupport@fr.airbus.com
     name: API support
     url: https://oneatlas.airbus.com
-  title: Airbus Intelligence OneAtlas - API Reference
+  title: OneAtlas Data Pay-Per-Order API
   description: >-
-    OneAtlas Data API [Order and Contract]. <br> <br>Those commands can be used
-    to test and understand the services provided by the APIs.You can use them in
-    a third party application such as Postman.
+    The OneAtlas Data Pay-Per-Order API is a powerful tool that enables users to
+    access and purchase high-resolution satellite imagery, elevation data, and
+    other geospatial information on a pay-as-you-go basis. By integrating this
+    API into their applications or systems, users can quickly and easily obtain
+    the precise data they need for their projects without committing to
+    long-term subscriptions or contracts. This flexibility allows for greater
+    efficiency and cost-effectiveness, as users only pay for the data they
+    actually use. With the OneAtlas Data Pay-Per-Order API, users can access a
+    wealth of geospatial information at their fingertips, making it easier than
+    ever to incorporate accurate and up-to-date data into their workflows.
 openapi: 3.0.0
 paths:
   /api/v1/activities/search:

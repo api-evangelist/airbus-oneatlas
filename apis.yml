@@ -184,7 +184,23 @@ apis:
     tags: []
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/overview/index.html
-    properties: []
+    properties:
+      - name: WorldDEM - API
+        description: 'null'
+        url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/tutorials/
+        type: Tutorials
+      - name: WorldDEM Notebooks & Postman collections
+        description: 'null'
+        url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/notebooks/
+        type: JupyterNotebook
+      - name: WorldDEM Notebooks & Postman collections
+        description: 'null'
+        url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/notebooks/
+        type: PostmanCollection
+      - name: Releases
+        description: 'null'
+        url: https://api.oneatlas.airbus.com/releases/#worlddem
+        type: ChangeLog
     description: >-
       The OneAtlas WorldDEM API is a tool that provides access to
       high-resolution global elevation data. This data, collected by satellites

@@ -149,7 +149,11 @@ apis:
       world around them.
   - aid: airbus-oneatlas:oneatlas-radar-api
     name: OneAtlas Radar API
-    tags: []
+    tags:
+      - Satellites
+      - Imagery
+      - Historical
+      - Radar
     humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/radar/overview/index.html
     properties:
       - type: OpenAPI

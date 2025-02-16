@@ -41,16 +41,29 @@ apis:
       power of geospatial data for their work.
   - aid: airbus-oneatlas:oneatlas-data-pay-per-order-api
     name: OneAtlas Data Pay-Per-Order API
-    tags:
-      - Satellites
-      - Imagery
-      - Elevation Data
-      - Geospatial
+    tags: []
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-archives/overview/index.html
     properties:
-      - type: OpenAPI
-        url: properties/oneatlas-data-pay-per-order-api-openapi.yml
+      - name: OneAtlas Data - Pay-Per-Order Archives
+        description: 'null'
+        url: >-
+          https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-archives/tutorials/
+        type: Tutorials
+      - name: OneAtlas Data pay-per-order archives Notebooks & Postman collections
+        description: 'null'
+        url: >-
+          https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-archives/notebooks/
+        type: PostmanCollection
+      - name: OneAtlas Data pay-per-order archives Notebooks & Postman collections
+        description: 'null'
+        url: >-
+          https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-archives/notebooks/
+        type: JupyterNotebook
+      - name: Releases
+        description: 'null'
+        url: https://api.oneatlas.airbus.com/releases/#oad-pay-per-order-archives
+        type: ChangeLog
     description: >-
       The OneAtlas Data Pay-Per-Order API is a powerful tool that enables users
       to access and purchase high-resolution satellite imagery, elevation data,

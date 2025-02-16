@@ -112,7 +112,32 @@ tags:
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
-common: []
+common:
+  - name: Getting started
+    description: 'null'
+    url: https://api.oneatlas.airbus.com/getting-started/
+    type: GettingStarted
+  - name: OneAtlas - Authentication
+    description: 'null'
+    url: >-
+      https://api.oneatlas.airbus.com/getting-started/authentication/#authenticate
+    type: Authentication
+  - name: APIs overview
+    description: 'null'
+    url: https://api.oneatlas.airbus.com/getting-started/api-testing-guide/
+    type: Testing
+  - name: Status Page OneAtlas
+    description: 'null'
+    url: https://status.oneatlas.airbus.com/
+    type: Status
+  - name: Releases
+    description: 'null'
+    url: https://api.oneatlas.airbus.com/releases/
+    type: ChangeLog
+  - name: Airbus - OneAtlas Developer Portal
+    description: 'null'
+    url: https://api.oneatlas.airbus.com/
+    type: Portal
 created: '2025-02-06'
 modified: '2025-02-15'
 position: Consumer

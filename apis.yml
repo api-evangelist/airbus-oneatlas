@@ -7,7 +7,9 @@ apis:
     tags: []
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
-    properties: []
+    properties:
+      - type: OpenAPI
+        url: properties/oneatlas-data-living-library-openapi.yml
     description: >-
       OneAtlas Data Living Library is a platform that provides users with access
       to a diverse range of geospatial data and satellite imagery. The library

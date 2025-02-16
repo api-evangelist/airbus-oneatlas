@@ -4331,11 +4331,18 @@ info:
     email: intelligence-customertechnicalsupport@fr.airbus.com
     name: API support
     url: https://oneatlas.airbus.com
-  title: Airbus Intelligence OneAtlas - API Reference
+  title: OneAtlas Data Living Library
   description: >-
-    OneAtlas Data API [Order and Contract]<br> <br>Those commands can be used to
-    test and understand the services provided by the APIs.You can use them in a
-    third party application such as Postman.
+    OneAtlas Data Living Library is a platform that provides users with access
+    to a diverse range of geospatial data and satellite imagery. The library is
+    constantly updated with the latest data, ensuring that users have access to
+    accurate and timely information for their projects. Users can easily search
+    for and find the data they need, whether it be for environmental monitoring,
+    urban planning, agriculture, or any other application. The platform also
+    offers tools for analysis and visualization, allowing users to derive
+    insights and make informed decisions based on the data they have access to.
+    Overall, OneAtlas Data Living Library is a valuable resource for anyone
+    looking to harness the power of geospatial data for their work.
 openapi: 3.0.0
 paths:
   /api/v1/activities/search:

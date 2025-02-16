@@ -179,7 +179,7 @@ apis:
       time. With OneAtlas Radar API, users can access valuable radar data to
       enhance their decision-making processes and improve their overall
       operational efficiency.
-  - aid: airbus-oneatlas:worlddem-api
+  - aid: airbus-oneatlas:airbus-oneatlas-worlddem-api
     name: OneAtlas WorldDEM API
     tags: []
     humanURL: >-

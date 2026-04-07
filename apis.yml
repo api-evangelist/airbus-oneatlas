@@ -47,18 +47,15 @@ apis:
         description: 'null'
       - url: >-
           https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-archives/notebooks/
-        name: OneAtlas Data pay-per-order archives Notebooks & Postman 
-          collections
+        name: OneAtlas Data pay-per-order archives Notebooks & Postman collections
         type: PostmanCollection
         description: 'null'
       - url: >-
           https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-archives/notebooks/
-        name: OneAtlas Data pay-per-order archives Notebooks & Postman 
-          collections
+        name: OneAtlas Data pay-per-order archives Notebooks & Postman collections
         type: JupyterNotebook
         description: 'null'
-      - url: 
-          https://api.oneatlas.airbus.com/releases/#oad-pay-per-order-archives
+      - url: https://api.oneatlas.airbus.com/releases/#oad-pay-per-order-archives
         name: Releases
         type: ChangeLog
         description: 'null'
@@ -82,14 +79,12 @@ apis:
         description: 'null'
       - url: >-
           https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-tasking/notebooks/
-        name: OneAtlas Data pay-per-order tasking Notebooks & Postman 
-          collections
+        name: OneAtlas Data pay-per-order tasking Notebooks & Postman collections
         type: PostmanCollection
         description: 'null'
       - url: >-
           https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-tasking/notebooks/
-        name: OneAtlas Data pay-per-order tasking Notebooks & Postman 
-          collections
+        name: OneAtlas Data pay-per-order tasking Notebooks & Postman collections
         type: JupyterNotebook
         description: 'null'
       - url: https://api.oneatlas.airbus.com/releases/#oad-pay-per-order-tasking
@@ -115,13 +110,11 @@ apis:
         name: OneAtlas Basemap - Tutorials
         type: Tutorials
         description: 'null'
-      - url: 
-          https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/notebooks/
+      - url: https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/notebooks/
         name: OneAtlas Data Basemap Notebooks & Postman collections
         type: PostmanCollection
         description: 'null'
-      - url: 
-          https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/notebooks/
+      - url: https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/notebooks/
         name: OneAtlas Data Basemap Notebooks & Postman collections
         type: JupyterNotebook
         description: 'null'
@@ -137,8 +130,7 @@ apis:
   - aid: airbus-oneatlas:oneatlas-radar-api
     name: OneAtlas Radar API
     tags: []
-    humanURL: 
-      https://api.oneatlas.airbus.com/api-catalog-v2/radar/overview/index.html
+    humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/radar/overview/index.html
     properties:
       - url: https://api.oneatlas.airbus.com/api-catalog-v2/radar/tutorials/
         name: Radar Tasking & Archive - API
@@ -165,9 +157,9 @@ apis:
   - aid: airbus-oneatlas:oneatlas-worlddem-api
     name: OneAtlas WorldDEM API
     tags:
-      - Satellites
       - Elevations
       - Imagery
+      - Satellites
     humanURL: >-
       https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/overview/index.html
     properties:
@@ -198,8 +190,8 @@ apis:
       such as urban planning, disaster response, agriculture, and infrastructure development.
 name: Airbus OneAtlas
 tags:
-  - Satellites
   - Imagery
+  - Satellites
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party

@@ -15,30 +15,31 @@ info:
     Radar API, users can access valuable radar data to enhance their
     decision-making processes and improve their overall operational efficiency.
 tags:
-  - name: user
-    description: |
-      Endpoint for generic user information.
-  - name: sar/config
-    description: |
-      Endpoint for SAR specific user configuration.
-  - name: sar/search
-    description: |
-      Endpoint to search for possible SAR acquisitions.
-  - name: sar/prices
-    description: |
-      Query the price of an SAR acquisition.
-  - name: sar/editing
-    description: |
-      Endpoint to modify an SAR acquisition.
-  - name: sar/baskets
+  - name: Sar/Baskets
     description: |
       Handle your baskets to order SAR acquisitions.
-  - name: sar/shopcart
+  - name: Sar/Config
     description: |
-      <b>Deprecated!</b> Please use baskets instead.
-  - name: sar/monitoring
+      Endpoint for SAR specific user configuration.
+  - name: Sar/Editing
+    description: |
+      Endpoint to modify an SAR acquisition.
+  - name: Sar/Monitoring
     description: |
       Monitor your ordered SAR acquisitions.
+  - name: Sar/Prices
+    description: |
+      Query the price of an SAR acquisition.
+  - name: Sar/Replication
+  - name: Sar/Search
+    description: |
+      Endpoint to search for possible SAR acquisitions.
+  - name: Sar/Shopcart
+    description: |
+      <b>Deprecated!</b> Please use baskets instead.
+  - name: User
+    description: |
+      Endpoint for generic user information.
 servers:
   - url: https://sar.api.oneatlas.airbus.com/v1
     description: OneAtlas - Radar Tasking & Archive
@@ -47,7 +48,7 @@ paths:
     get:
       summary: Airbus OneAtlas Return account information of the current user
       tags:
-        - user
+        - User
       responses:
         '200':
           description: Basic account information
@@ -124,7 +125,7 @@ paths:
     get:
       summary: Airbus OneAtlas retrieve entire configuration
       tags:
-        - sar/config
+        - Sar/Config
       responses:
         '200':
           description: omnibus configuration
@@ -276,7 +277,7 @@ paths:
     get:
       summary: Airbus OneAtlas retrieve list of order templates
       tags:
-        - sar/config
+        - Sar/Config
       responses:
         '200':
           description: list of order templates
@@ -402,7 +403,7 @@ paths:
     get:
       summary: Airbus OneAtlas get user permissions
       tags:
-        - sar/config
+        - Sar/Config
       responses:
         '200':
           description: user permissions
@@ -533,7 +534,7 @@ paths:
     get:
       summary: Airbus OneAtlas get allowed receiving stations
       tags:
-        - sar/config
+        - Sar/Config
       responses:
         '200':
           description: list of receiving stations
@@ -655,7 +656,7 @@ paths:
     post:
       summary: Airbus OneAtlas search for possible acquisitions for tasking
       tags:
-        - sar/search
+        - Sar/Search
       requestBody:
         description: Search parameters
         required: true
@@ -1631,7 +1632,7 @@ paths:
     post:
       summary: Airbus OneAtlas search for possible acquisitions in catalogue
       tags:
-        - sar/search
+        - Sar/Search
       requestBody:
         description: Search parameters
         required: true
@@ -2538,7 +2539,7 @@ paths:
     post:
       summary: Airbus OneAtlas retrieve ordered items from catalogue
       tags:
-        - sar/search
+        - Sar/Search
       requestBody:
         description: items to be retrieved from the catalogue
         required: true
@@ -3143,7 +3144,7 @@ paths:
       summary: Airbus OneAtlas replicate catalogue
       description: Replicate the catalogue and retrieve latest datatakes.
       tags:
-        - sar/replication
+        - Sar/Replication
       responses:
         '200':
           description: List of datatakes.
@@ -3524,7 +3525,7 @@ paths:
         Download the complete catalogue as vector dataset suitable for GIS
         analysis.
       tags:
-        - sar/replication
+        - Sar/Replication
       responses:
         '200':
           description: Vector dataset.
@@ -3668,7 +3669,7 @@ paths:
         Retrieve catalogue revocations, i.e. catalogue datatakes that cannot be
         ordered anymore.
       tags:
-        - sar/replication
+        - Sar/Replication
       responses:
         '200':
           description: List of revocations.
@@ -3823,7 +3824,7 @@ paths:
     post:
       summary: Airbus OneAtlas get prices for items
       tags:
-        - sar/prices
+        - Sar/Prices
       requestBody:
         description: items to get the price for
         required: true
@@ -4073,7 +4074,7 @@ paths:
     post:
       summary: Airbus OneAtlas create stacks from template items
       tags:
-        - sar/search
+        - Sar/Search
       requestBody:
         description: template items for new stacks
         required: true
@@ -4709,7 +4710,7 @@ paths:
     post:
       summary: Airbus OneAtlas get swath editing information for items
       tags:
-        - sar/editing
+        - Sar/Editing
       requestBody:
         description: requested items
         required: true
@@ -4968,7 +4969,7 @@ paths:
     patch:
       summary: Airbus OneAtlas update swath editing information for items
       tags:
-        - sar/editing
+        - Sar/Editing
       requestBody:
         description: items to updated (either based on times or on geometries)
         required: true
@@ -5717,7 +5718,7 @@ paths:
     patch:
       summary: Airbus OneAtlas update order options
       tags:
-        - sar/editing
+        - Sar/Editing
       requestBody:
         required: true
         content:
@@ -6406,7 +6407,7 @@ paths:
     get:
       summary: Airbus OneAtlas get all baskets
       tags:
-        - sar/baskets
+        - Sar/Baskets
       responses:
         '200':
           description: list of baskets
@@ -6599,7 +6600,7 @@ paths:
     post:
       summary: Airbus OneAtlas create basket
       tags:
-        - sar/baskets
+        - Sar/Baskets
       requestBody:
         content:
           application/json:
@@ -7400,7 +7401,7 @@ paths:
     get:
       summary: Airbus OneAtlas get basket
       tags:
-        - sar/baskets
+        - Sar/Baskets
       responses:
         '200':
           description: basket
@@ -8107,7 +8108,7 @@ paths:
     patch:
       summary: Airbus OneAtlas update basket parameters
       tags:
-        - sar/baskets
+        - Sar/Baskets
       requestBody:
         content:
           application/json:
@@ -8886,7 +8887,7 @@ paths:
     put:
       summary: Airbus OneAtlas replace basket parameters
       tags:
-        - sar/baskets
+        - Sar/Baskets
       requestBody:
         content:
           application/json:
@@ -9665,7 +9666,7 @@ paths:
     delete:
       summary: Airbus OneAtlas delete basket
       tags:
-        - sar/baskets
+        - Sar/Baskets
       responses:
         '200':
           description: Basket has been deleted
@@ -9787,7 +9788,7 @@ paths:
     post:
       summary: Airbus OneAtlas add items to basket
       tags:
-        - sar/baskets
+        - Sar/Baskets
       requestBody:
         description: acquisitionId to add
         required: true
@@ -10589,7 +10590,7 @@ paths:
     post:
       summary: Airbus OneAtlas remove items from basket
       tags:
-        - sar/baskets
+        - Sar/Baskets
       requestBody:
         description: items to be removed
         required: true
@@ -11329,7 +11330,7 @@ paths:
     post:
       summary: Airbus OneAtlas submit basket
       tags:
-        - sar/baskets
+        - Sar/Baskets
       responses:
         '200':
           description: order
@@ -12065,7 +12066,7 @@ paths:
       deprecated: true
       summary: Airbus OneAtlas get shopcart
       tags:
-        - sar/shopcart
+        - Sar/Shopcart
       responses:
         '200':
           description: shopcart
@@ -13302,7 +13303,7 @@ paths:
       deprecated: true
       summary: Airbus OneAtlas Update shopcart parameters
       tags:
-        - sar/shopcart
+        - Sar/Shopcart
       requestBody:
         description: update values
         required: true
@@ -14614,7 +14615,7 @@ paths:
       deprecated: true
       summary: Airbus OneAtlas add items to shopcart
       tags:
-        - sar/shopcart
+        - Sar/Shopcart
       requestBody:
         description: acquisitionId to add
         required: true
@@ -15354,7 +15355,7 @@ paths:
       deprecated: true
       summary: Airbus OneAtlas remove items from shopcart
       tags:
-        - sar/shopcart
+        - Sar/Shopcart
       requestBody:
         description: >-
           items to be removed; non-existent items are allowed and don't return a
@@ -15509,7 +15510,7 @@ paths:
       deprecated: true
       summary: Airbus OneAtlas Update item parameters.
       tags:
-        - sar/shopcart
+        - Sar/Shopcart
       requestBody:
         description: update values
         required: true
@@ -16243,7 +16244,7 @@ paths:
       deprecated: true
       summary: Airbus OneAtlas Update item parameters.
       tags:
-        - sar/shopcart
+        - Sar/Shopcart
       requestBody:
         description: update values
         required: true
@@ -16961,7 +16962,7 @@ paths:
       deprecated: true
       summary: Airbus OneAtlas submit shopcart
       tags:
-        - sar/shopcart
+        - Sar/Shopcart
       responses:
         '200':
           description: order
@@ -18246,7 +18247,7 @@ paths:
     get:
       summary: Airbus OneAtlas get list of orders
       tags:
-        - sar/monitoring
+        - Sar/Monitoring
       responses:
         '200':
           description: orders
@@ -18474,7 +18475,7 @@ paths:
     get:
       summary: Airbus OneAtlas get order details
       tags:
-        - sar/monitoring
+        - Sar/Monitoring
       responses:
         '200':
           description: order
@@ -19753,7 +19754,7 @@ paths:
     post:
       summary: Airbus OneAtlas get status of items with filter
       tags:
-        - sar/monitoring
+        - Sar/Monitoring
       requestBody:
         description: filter for items to get the status for
         required: false
@@ -20461,7 +20462,7 @@ paths:
     post:
       summary: Airbus OneAtlas get items only with orderItemId
       tags:
-        - sar/monitoring
+        - Sar/Monitoring
       requestBody:
         description: array with orderItemIds
         required: true

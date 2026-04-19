@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-segment-schema.json",
+  "title": "segment",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "footprint": {
+      "$ref": "#/components/schemas/footprint"
+    },
+    "instrumentMode": {
+      "type": "string"
+    },
+    "orderDeadline": {
+      "format": "datetime",
+      "type": "string"
+    },
+    "extendedAngle": {
+      "type": "boolean"
+    },
+    "acquisitionStartDate": {
+      "format": "datetime",
+      "type": "string"
+    },
+    "acquisitionEndDate": {
+      "format": "datetime",
+      "type": "string"
+    },
+    "incidenceAngle": {
+      "format": "float",
+      "type": "number"
+    },
+    "segmentKey": {
+      "type": "string"
+    },
+    "acrossTrackIncidenceAngle": {
+      "format": "float",
+      "type": "number"
+    },
+    "maxIncidenceAngle": {
+      "format": "float",
+      "type": "number"
+    }
+  }
+}

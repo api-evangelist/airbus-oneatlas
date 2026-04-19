@@ -1,0 +1,15 @@
+{
+  "name": "AcquisitionDate",
+  "fields": [
+    {
+      "name": "startDate",
+      "type": "string",
+      "description": "Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date"
+    },
+    {
+      "name": "endDate",
+      "type": "string",
+      "description": "Defines the acquisition end date"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "ActivityStage",
+  "fields": [
+    {
+      "name": "date",
+      "type": "string",
+      "description": "Date of the stage"
+    },
+    {
+      "name": "message",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Name of the completed stage"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "Status of the activity"
+    },
+    {
+      "name": "userId",
+      "type": "string"
+    }
+  ]
+}

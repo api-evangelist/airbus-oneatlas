@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-dem-schema.json",
+  "title": "dem",
+  "type": "object",
+  "properties": {
+    "key": {
+      "enum": [
+        "dem_i"
+      ]
+    },
+    "value": {
+      "description": "Defines the digital elevation model, i refers to the aoi's id (To be filled only if processing_level = ortho)",
+      "enum": [
+        "best_available",
+        "FLAT_DEM_WITH_GTOPO30_WAT",
+        "FLAT_DEM_WITH_WAT",
+        "GTOPO30",
+        "MIXEDDEM",
+        "PAS-DEM",
+        "PAS-DEM_IVV",
+        "REF3D-DEM",
+        "REF3D-DEM_IVV",
+        "SRTMV4",
+        "SRTMV4_IVV"
+      ]
+    }
+  }
+}

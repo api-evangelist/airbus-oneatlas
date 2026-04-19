@@ -1,0 +1,9 @@
+{
+  "createdAt": "example-createdAt",
+  "defaultItemTtl": 1.0,
+  "id": "example-id",
+  "labels": [],
+  "name": "example-name",
+  "title": "example-title",
+  "userId": "example-userId"
+}

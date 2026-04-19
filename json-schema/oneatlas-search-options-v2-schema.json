@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-search-options-v2-schema.json",
+  "title": "search-options-v2",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/search-options"
+    },
+    {
+      "properties": {
+        "acquisitionIdentifier": {
+          "type": "string",
+          "description": "The acquisition identifier",
+          "example": "DS_PNEO3_201602011017034"
+        },
+        "archiveAnonymousIdentifier": {
+          "type": "string",
+          "description": "The archive anonymous identifier",
+          "example": "31476131"
+        },
+        "archiveIdentifier": {
+          "type": "string",
+          "description": "The archive identifier",
+          "example": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+        }
+      }
+    }
+  ]
+}

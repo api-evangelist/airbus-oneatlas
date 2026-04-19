@@ -1,0 +1,27 @@
+{
+  "name": "NotificationSubscription",
+  "fields": [
+    {
+      "name": "channels",
+      "type": "array<object>"
+    },
+    {
+      "name": "filter",
+      "type": "string",
+      "description": "Object used to filter notifications."
+    },
+    {
+      "name": "id",
+      "type": "Id"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "Type of notification"
+    },
+    {
+      "name": "userId",
+      "type": "string"
+    }
+  ]
+}

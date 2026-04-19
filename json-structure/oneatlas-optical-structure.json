@@ -1,0 +1,17 @@
+{
+  "name": "Optical",
+  "fields": [
+    {
+      "name": "acquisitionMode",
+      "type": "string"
+    },
+    {
+      "name": "maxCloudCover",
+      "type": "double"
+    },
+    {
+      "name": "maxIncidenceAngle",
+      "type": "double"
+    }
+  ]
+}

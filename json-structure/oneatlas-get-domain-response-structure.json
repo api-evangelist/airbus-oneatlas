@@ -1,0 +1,10 @@
+{
+  "name": "get-domain-response",
+  "fields": [
+    {
+      "name": "warning",
+      "type": "string",
+      "description": "Warning message when the result does not contain all possible values"
+    }
+  ]
+}

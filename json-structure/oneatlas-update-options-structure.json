@@ -1,0 +1,13 @@
+{
+  "name": "update-options",
+  "fields": [
+    {
+      "name": "query",
+      "type": "search-options"
+    },
+    {
+      "name": "update",
+      "type": "object"
+    }
+  ]
+}

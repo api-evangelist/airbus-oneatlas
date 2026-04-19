@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-search-deleted-options-schema.json",
+  "title": "search-deleted-options",
+  "type": "object",
+  "properties": {
+    "deletedDate": {
+      "description": "The date of items deletions",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "description": "The downloading start date.",
+          "example": "2017-08-29T00:00:00Z"
+        },
+        {
+          "type": "string",
+          "format": "date-time-range",
+          "description": "The downloading start dates range.\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n",
+          "example": "[2017-08-29T00:00:00Z"
+        }
+      ]
+    },
+    "itemsPerPage": {
+      "type": "integer",
+      "format": "int32",
+      "description": "The maximum number of items that the response can contain.",
+      "default": 50,
+      "maximum": 500,
+      "example": 100
+    },
+    "startIndex": {
+      "type": "integer",
+      "format": "int32",
+      "description": "The number of skipped items",
+      "default": 0,
+      "example": 10
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-process-hal-link-common-schema.json",
+  "title": "processHALLinkCommon",
+  "type": "object",
+  "description": "the HAL target uri for a process",
+  "properties": {
+    "documentation": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Link"
+        },
+        {
+          "description": "The target resource to retrieve the documentation of this process"
+        }
+      ]
+    },
+    "icon": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Link"
+        },
+        {
+          "description": "The target resource to retrieve the icon of this process"
+        }
+      ]
+    },
+    "license": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Link"
+        },
+        {
+          "description": "The target resource to retrieve the license of this process"
+        }
+      ]
+    }
+  }
+}

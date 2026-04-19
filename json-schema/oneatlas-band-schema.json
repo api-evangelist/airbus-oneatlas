@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-band-schema.json",
+  "title": "band",
+  "type": "object",
+  "properties": {
+    "actualBitDepth": {
+      "description": "cf ABPP de NITF",
+      "example": 8,
+      "format": "integer",
+      "minimum": 0,
+      "type": "number"
+    },
+    "colorInterpretation": {
+      "description": "possible values one of `RED`, `GREEN`, `BLUE`, `GRAY`, `ALPHA` or a custom string (ex `NIR`)",
+      "example": "GRAY",
+      "type": "string"
+    },
+    "compression": {
+      "description": "TO BE DISCUSSED (raw, deflate,...)",
+      "example": "raw",
+      "type": "string"
+    },
+    "description": {
+      "example": "band panchromatic",
+      "type": "string"
+    },
+    "isMask": {
+      "example": false,
+      "type": "boolean"
+    },
+    "name": {
+      "description": "The name of the **mask bands** are normalized as:\n  - `CLD` for Cloud Cotation\n  - `COR` for Correlation\n  - `DET` for Detector Quality\n  - `EXO` for Exogenous mask\n  - `MER` for Dem merging mask\n  - `QTE` for Technical Index\n  - `REG` for Regulation mask\n  - `ROI` for Area of interest\n  - `SLT` for Saturation Cotation\n  - `SNW` for Snow Cotation\n  - `VAL` for Validated area mask\n  - `VIS` for Visibility / occlusion\n  - `VQA` for Visual control\n  - `WAT` for Water mask\n\n\nMask is a binary data always encoded in 8 bits with only 2 values:\n  - 0 value means exclusion\n  - 1 value means inclusion\n\n\nThere is no **spectral band** name convention, it depends of the sensor. By example:\n  - `B2`, `B1`, `B0`, `B3`, `P` for SPOT and PLEIADES\n  - `B03`, `B01`, `B02`, `B04`, `B05`, `B06`, `B07`, `B08`, `B8A`, `B09`, `B10`, `B11`, `B12` for Sentinel2\n  - `P` for Ref3D Ortho\n",
+      "example": "PAN",
+      "type": "string"
+    },
+    "noDataValue": {
+      "description": "the value of a pixel that does not correspond to a real data",
+      "example": 0,
+      "format": "float",
+      "type": "number"
+    },
+    "offset": {
+      "description": "offset used in the buffer for this band",
+      "example": 0,
+      "format": "integer",
+      "minimum": 0,
+      "type": "number"
+    },
+    "pixelType": {
+      "description": "the type of pixel of the buffer",
+      "enum": [
+        "Byte",
+        "UInt16",
+        "Int16",
+        "UInt32",
+        "Int32",
+        "Float32",
+        "Float64"
+      ],
+      "type": "string"
+    },
+    "size": {
+      "description": "size of this band in the buffer",
+      "example": 25,
+      "format": "integer",
+      "minimum": 0,
+      "type": "number"
+    }
+  }
+}

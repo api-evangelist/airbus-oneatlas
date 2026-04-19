@@ -1,0 +1,59 @@
+{
+  "name": "ActivitySearchOptions",
+  "fields": [
+    {
+      "name": "creationDate",
+      "type": "string",
+      "description": "The creation date or creation date range of the activity"
+    },
+    {
+      "name": "endDate",
+      "type": "string",
+      "description": "The end date pf the activity (copy of the date associated to the SUCCEEDED or FAILED stage)"
+    },
+    {
+      "name": "itemsPerPage",
+      "type": "double",
+      "description": "Number of requested items per page"
+    },
+    {
+      "name": "payload",
+      "type": "string",
+      "description": "The copy of the origin user request. It could be the whole object or only some elements."
+    },
+    {
+      "name": "progress",
+      "type": "double",
+      "description": "A progress indicator between 0 and 100"
+    },
+    {
+      "name": "sortBy",
+      "type": "string",
+      "description": "Unbounded list or parameters to sort by. The '+' indicates ascendant ordering, the '-' indicates descendant ordering. If not precised, default to '+'"
+    },
+    {
+      "name": "startDate",
+      "type": "string",
+      "description": "The start date of the activity (date of the first stage that is not QUEUED)"
+    },
+    {
+      "name": "startIndex",
+      "type": "double",
+      "description": "The index of the first item present in the response"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "The status or status list (comma separated list) of the activity."
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "Type of activity"
+    },
+    {
+      "name": "userId",
+      "type": "Id"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "WorkspaceSearchOptions",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string",
+      "description": "The name of the workspace"
+    },
+    {
+      "name": "userId",
+      "type": "Id"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-processes-response-schema.json",
+  "title": "ProcessesResponse",
+  "type": "object",
+  "description": "response to a get processes call.",
+  "properties": {
+    "_embedded": {
+      "properties": {
+        "processes": {
+          "items": {
+            "$ref": "#/components/schemas/processHALCatalog"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "_links": {
+      "properties": {
+        "self": {
+          "$ref": "#/components/schemas/Link"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "required": [
+    "_links",
+    "_embedded"
+  ]
+}

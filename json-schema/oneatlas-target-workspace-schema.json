@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-target-workspace-schema.json",
+  "title": "TargetWorkspace",
+  "type": "object",
+  "properties": {
+    "targetWorkspace": {
+      "$ref": "#/components/schemas/WorkspaceIdentifier"
+    },
+    "ttl": {
+      "description": "The ttl for the item, in seconds. If not set, the default will be the target workspace ttl.",
+      "example": 123456,
+      "format": "int",
+      "minimum": 1,
+      "type": "number"
+    }
+  }
+}

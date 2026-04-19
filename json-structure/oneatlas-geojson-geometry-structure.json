@@ -1,0 +1,14 @@
+{
+  "name": "GeojsonGeometry",
+  "fields": [
+    {
+      "name": "geometry",
+      "type": "object",
+      "description": "A valid geojson geometry coordinates"
+    },
+    {
+      "name": "type",
+      "type": "string"
+    }
+  ]
+}

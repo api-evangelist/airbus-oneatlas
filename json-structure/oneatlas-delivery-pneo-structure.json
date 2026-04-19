@@ -1,0 +1,9 @@
+{
+  "name": "deliveryPNEO",
+  "fields": [
+    {
+      "name": "type",
+      "type": "string"
+    }
+  ]
+}

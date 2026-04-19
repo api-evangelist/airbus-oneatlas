@@ -1,0 +1,7 @@
+{
+  "date": "example-date",
+  "message": "example-message",
+  "name": "example-name",
+  "status": "QUEUED",
+  "userId": "example-userId"
+}

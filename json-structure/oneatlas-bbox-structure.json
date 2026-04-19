@@ -1,0 +1,17 @@
+{
+  "name": "bbox",
+  "fields": [
+    {
+      "name": "lr",
+      "type": "point"
+    },
+    {
+      "name": "srs",
+      "type": "string"
+    },
+    {
+      "name": "ul",
+      "type": "point"
+    }
+  ]
+}

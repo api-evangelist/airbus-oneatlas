@@ -1,0 +1,10 @@
+{
+  "name": "ApiKeyPage",
+  "fields": [
+    {
+      "name": "items",
+      "type": "array<ApiKey>",
+      "description": "API Keys"
+    }
+  ]
+}

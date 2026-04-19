@@ -1,0 +1,9 @@
+{
+  "name": "HistogramResponse",
+  "fields": [
+    {
+      "name": "histograms",
+      "type": "array<object>"
+    }
+  ]
+}

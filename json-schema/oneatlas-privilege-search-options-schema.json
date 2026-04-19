@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-privilege-search-options-schema.json",
+  "title": "PrivilegeSearchOptions",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "$ref": "#/components/schemas/Id"
+    }
+  },
+  "required": [
+    "userId"
+  ]
+}

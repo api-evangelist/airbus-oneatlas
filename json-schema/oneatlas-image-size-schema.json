@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-image-size-schema.json",
+  "title": "imageSize",
+  "type": "object",
+  "description": "size (in pixels) of the result",
+  "properties": {
+    "columns": {
+      "description": "number of columns of the output buffer",
+      "example": 500,
+      "format": "integer",
+      "maximum": 5000,
+      "minimum": 1,
+      "type": "number"
+    },
+    "lines": {
+      "description": "number of lines of the output buffer",
+      "example": 500,
+      "format": "integer",
+      "maximum": 5000,
+      "minimum": 1,
+      "type": "number"
+    }
+  },
+  "required": [
+    "columns",
+    "lines"
+  ]
+}

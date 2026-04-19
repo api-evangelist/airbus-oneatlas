@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-control-job-schema.json",
+  "title": "ControlJob",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "priority": {
+      "description": "The control priority. The highest priority is 1.",
+      "example": 1,
+      "format": "integer",
+      "maximum": 9,
+      "minimum": 1,
+      "type": "number"
+    },
+    "steps": {
+      "description": "The control steps to validate in order to complete control.",
+      "items": {
+        "properties": {
+          "description": {
+            "description": "The control step definition.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "description"
+  ]
+}

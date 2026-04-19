@@ -1,0 +1,75 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "oneatlas": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/",
+    "CatalogItem": {
+      "@id": "schema:ImageObject"
+    },
+    "id": {
+      "@id": "@id"
+    },
+    "title": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "acquisitionDate": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "cloudCover": {
+      "@id": "schema:additionalProperty",
+      "@type": "xsd:decimal"
+    },
+    "geometry": {
+      "@id": "geo:hasGeometry"
+    },
+    "bbox": {
+      "@id": "schema:spatialCoverage"
+    },
+    "Activity": {
+      "@id": "schema:Action"
+    },
+    "status": {
+      "@id": "schema:actionStatus",
+      "@type": "xsd:string"
+    },
+    "created": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updated": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "ApiKey": {
+      "@id": "schema:DigitalDocument"
+    },
+    "key": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+    "expiresAt": {
+      "@id": "schema:expires",
+      "@type": "xsd:dateTime"
+    },
+    "elevation": {
+      "@id": "schema:elevation",
+      "@type": "xsd:decimal"
+    },
+    "latitude": {
+      "@id": "schema:latitude",
+      "@type": "xsd:decimal"
+    },
+    "longitude": {
+      "@id": "schema:longitude",
+      "@type": "xsd:decimal"
+    }
+  }
+}

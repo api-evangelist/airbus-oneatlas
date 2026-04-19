@@ -1,0 +1,24 @@
+{
+  "name": "Metadata",
+  "description": "Metadata of a product.",
+  "fields": [
+    {
+      "name": "geometry",
+      "type": "GeojsonGeometry"
+    },
+    {
+      "name": "id",
+      "type": "Id"
+    },
+    {
+      "name": "properties",
+      "type": "object",
+      "description": "Metadata properties"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "The type of the object"
+    }
+  ]
+}

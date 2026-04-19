@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-delivery-schema.json",
+  "title": "delivery",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "network"
+      ]
+    },
+    "workspace": {
+      "$ref": "#/components/schemas/workspace"
+    },
+    "platformId": {
+      "type": "string",
+      "enum": [
+        "PublicMOC"
+      ]
+    }
+  }
+}

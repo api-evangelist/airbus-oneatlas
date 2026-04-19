@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-messagequeue-notification-parameters-schema.json",
+  "title": "MessagequeueNotificationParameters",
+  "type": "object",
+  "properties": {
+    "message": {
+      "description": "",
+      "properties": {
+        "header": {
+          "description": "Message headers transmitted in message queue request.",
+          "example": {
+            "routing-key": "magic-key"
+          },
+          "type": "object"
+        },
+        "properties": {
+          "description": "Message properties transmitted in message queue request.",
+          "example": {
+            "correlation-id": "magic-id"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "target": {
+      "description": "Name of the target in message queue service.",
+      "example": "magic-queue",
+      "type": "string"
+    },
+    "url": {
+      "description": "URL form is verified. To be done: Endpoint need to be validated.",
+      "example": "amqp://user:password@hostname:port/virtualHost",
+      "format": "url",
+      "type": "string"
+    }
+  },
+  "required": [
+    "url"
+  ]
+}

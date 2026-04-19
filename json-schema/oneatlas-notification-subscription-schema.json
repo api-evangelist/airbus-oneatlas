@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-notification-subscription-schema.json",
+  "title": "NotificationSubscription",
+  "type": "object",
+  "properties": {
+    "channels": {
+      "items": {
+        "properties": {
+          "parameters": {
+            "description": "Key/value options of the notification channel. Properties depend on the type of notification channel.",
+            "discriminator": {
+              "mapping": {
+                "email": "#/components/schemas/EmailNotificationParameters",
+                "messagequeue": "#/components/schemas/MessagequeueNotificationParameters",
+                "webhook": "#/components/schemas/WebhookNotificationParameters"
+              },
+              "propertyName": "type"
+            },
+            "example": {
+              "addresses": [
+                "toto@gmail.com",
+                "titi@gmail.com"
+              ]
+            },
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmailNotificationParameters"
+              },
+              {
+                "$ref": "#/components/schemas/WebhookNotificationParameters"
+              },
+              {
+                "$ref": "#/components/schemas/MessagequeueNotificationParameters"
+              }
+            ]
+          },
+          "type": {
+            "description": "Type of chanel",
+            "enum": [
+              "email",
+              "messagequeue",
+              "webhook"
+            ],
+            "example": "email",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "filter": {
+      "description": "Object used to filter notifications.",
+      "discriminator": {
+        "mapping": {
+          "activity": "#/components/schemas/ActivitySearchOptions",
+          "catalogitem": "#/components/schemas/SearchOptions"
+        },
+        "propertyName": "type"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/ActivitySearchOptions"
+        },
+        {
+          "$ref": "#/components/schemas/SearchOptions"
+        }
+      ]
+    },
+    "id": {
+      "$ref": "#/components/schemas/Id"
+    },
+    "type": {
+      "description": "Type of notification",
+      "enum": [
+        "activity",
+        "catalogitem"
+      ],
+      "type": "string"
+    },
+    "userId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Id"
+        },
+        {
+          "description": "The id of the user that is the origin of the notification (extracted from the X-Forwarded-User request header)"
+        }
+      ]
+    }
+  },
+  "required": [
+    "channels",
+    "type"
+  ]
+}

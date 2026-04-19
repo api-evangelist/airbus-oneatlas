@@ -1,0 +1,9 @@
+{
+  "name": "NotificationSearchResponse",
+  "fields": [
+    {
+      "name": "data",
+      "type": "array<NotificationSubscription>"
+    }
+  ]
+}

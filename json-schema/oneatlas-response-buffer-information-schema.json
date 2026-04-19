@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-response-buffer-information-schema.json",
+  "title": "responseBufferInformation",
+  "type": "object",
+  "description": "GeoJSon feature describing a buffer",
+  "properties": {
+    "geometry": {
+      "$ref": "#/components/schemas/GeojsonGeometry"
+    },
+    "properties": {
+      "properties": {
+        "aoi": {
+          "$ref": "#/components/schemas/bbox"
+        },
+        "bands": {
+          "items": {
+            "$ref": "#/components/schemas/band"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "format": {
+          "description": "the MIME type of the buffer",
+          "enum": [
+            "image/jp2",
+            "image/jpeg",
+            "image/png",
+            "application/octet-stream"
+          ],
+          "type": "string"
+        },
+        "height": {
+          "description": "height of the buffer",
+          "example": 500,
+          "format": "integer",
+          "maximum": 5000,
+          "minimum": 1,
+          "type": "number"
+        },
+        "imageID": {
+          "$ref": "#/components/schemas/Id"
+        },
+        "interleave": {
+          "description": "the interleave type of the buffer",
+          "enum": [
+            "band",
+            "line",
+            "pixel"
+          ],
+          "type": "string"
+        },
+        "nbBands": {
+          "description": "the number of bands of the buffer",
+          "example": 1,
+          "format": "integer",
+          "minimum": 1,
+          "type": "number"
+        },
+        "noDataValue": {
+          "description": "the value of a pixel that does not correspond to a real data",
+          "format": "integer",
+          "minimum": 0,
+          "type": "number"
+        },
+        "pixelType": {
+          "description": "the type of pixel of the buffer",
+          "example": "UInt16",
+          "type": "string"
+        },
+        "processingLevel": {
+          "example": "processingLevel",
+          "type": "string"
+        },
+        "radiometricProcessing": {
+          "example": "reflectance",
+          "type": "string"
+        },
+        "roi": {
+          "$ref": "#/components/schemas/bbox"
+        },
+        "spectralProcessing": {
+          "example": "P",
+          "type": "string"
+        },
+        "step": {
+          "$ref": "#/components/schemas/step"
+        },
+        "width": {
+          "description": "width of the buffer",
+          "example": 500,
+          "format": "integer",
+          "maximum": 5000,
+          "minimum": 1,
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "type": {
+      "description": "the type of the GeoJSon object",
+      "enum": [
+        "Feature"
+      ],
+      "type": "string"
+    }
+  }
+}

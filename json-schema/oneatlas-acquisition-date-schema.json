@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-acquisition-date-schema.json",
+  "title": "AcquisitionDate",
+  "type": "object",
+  "properties": {
+    "startDate": {
+      "type": "string",
+      "format": "datetime",
+      "pattern": "^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$",
+      "description": "Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "datetime",
+      "pattern": "^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$",
+      "description": "Defines the acquisition end date"
+    }
+  }
+}

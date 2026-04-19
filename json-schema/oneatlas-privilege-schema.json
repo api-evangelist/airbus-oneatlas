@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-privilege-schema.json",
+  "title": "Privilege",
+  "type": "object",
+  "properties": {
+    "createdAt": {
+      "description": "The creation time of the created Privilege. This is returned when the Privilege is properly created.",
+      "format": "datetime",
+      "readOnly": true,
+      "type": "string"
+    },
+    "filter": {
+      "description": "Filters the scope of the privilege (e.g. by workspace, id)",
+      "properties": {
+        "id": {
+          "$ref": "#/components/schemas/Id"
+        },
+        "workspace": {
+          "$ref": "#/components/schemas/WorkspaceIdentifier"
+        }
+      },
+      "required": [
+        "workspace"
+      ],
+      "type": "object"
+    },
+    "id": {
+      "$ref": "#/components/schemas/Id"
+    },
+    "priority": {
+      "description": "The priority of the privilege",
+      "example": 10,
+      "format": "int64",
+      "type": "integer"
+    },
+    "rights": {
+      "description": "List of rights granted to a user. For now, only \"browse\" is supported. Therefore, it will give all the rights for now.",
+      "properties": {
+        "browse": {
+          "description": "Indicates that the user is granted the right to browse the target of the privilege",
+          "type": "object"
+        },
+        "buffer": {
+          "description": "Indicates that the user is granted the right to request buffer dissemination",
+          "type": "object"
+        },
+        "download": {
+          "description": "Indicates that the user is granted the right to request download dissemination",
+          "type": "object"
+        },
+        "wms": {
+          "description": "Indicates that the user is granted the right to request WMS disseminatione",
+          "type": "object"
+        },
+        "wmts": {
+          "description": "Indicates that the user is granted the right to request WMTS dissemination",
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "subscriptionId": {
+      "$ref": "#/components/schemas/Id"
+    },
+    "userId": {
+      "$ref": "#/components/schemas/Id"
+    }
+  },
+  "required": [
+    "userId",
+    "filter",
+    "rights"
+  ]
+}

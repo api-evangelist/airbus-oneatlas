@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-notification-search-response-schema.json",
+  "title": "NotificationSearchResponse",
+  "type": "object",
+  "properties": {
+    "data": {
+      "items": {
+        "$ref": "#/components/schemas/NotificationSubscription"
+      },
+      "type": "array",
+      "uniqueItems": true
+    }
+  }
+}

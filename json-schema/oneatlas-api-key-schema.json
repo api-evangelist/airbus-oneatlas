@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-api-key-schema.json",
+  "title": "ApiKey",
+  "type": "object",
+  "properties": {
+    "date": {
+      "description": "API key creation date in ISO 8601 format",
+      "type": "string"
+    },
+    "description": {
+      "description": "A free-text human readable description of this API key",
+      "type": "string"
+    },
+    "expirationDate": {
+      "description": "API key expiration date in ISO 8601 format",
+      "type": "string"
+    },
+    "id": {
+      "description": "API Key identifier",
+      "type": "string"
+    },
+    "secret": {
+      "description": "The API Key secret to be used to retrieve acces tokens. This field is only provided once, then the client should store this information in a secure place.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "description",
+    "date",
+    "expirationDate"
+  ]
+}

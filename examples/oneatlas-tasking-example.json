@@ -1,0 +1,22 @@
+{
+  "contractId": "example-contractId",
+  "orderId": "example-orderId",
+  "productTypeId": "example-productTypeId",
+  "customerId": "example-customerId",
+  "taskingId": "example-taskingId",
+  "segmentId": "example-segmentId",
+  "licenceId": "example-licenceId",
+  "quotationId": "example-quotationId",
+  "taskingIds": [],
+  "count": 1,
+  "customerRef": "example-customerRef",
+  "program": "example-program",
+  "status": [],
+  "mission": "example-mission",
+  "progTypeNames": "example-progTypeNames",
+  "acquisitionDate": "example-acquisitionDate",
+  "icrEndOfPeriodDate": "example-icrEndOfPeriodDate",
+  "hasProposedSegments": true,
+  "startPage": 1,
+  "sortKeys": "example-sortKeys"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "geo-json-point",
+  "fields": [
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "coordinates",
+      "type": "array<double>"
+    },
+    {
+      "name": "bbox",
+      "type": "array<double>"
+    }
+  ]
+}

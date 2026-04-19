@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-footprint-schema.json",
+  "title": "footprint",
+  "type": "object",
+  "properties": {
+    "geometry": {
+      "type": "string",
+      "example": "POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))"
+    },
+    "center": {
+      "type": "string",
+      "example": "POINT(23.755357 37.97611)"
+    }
+  }
+}

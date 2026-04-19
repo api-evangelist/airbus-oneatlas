@@ -1,0 +1,13 @@
+{
+  "name": "footprint",
+  "fields": [
+    {
+      "name": "geometry",
+      "type": "string"
+    },
+    {
+      "name": "center",
+      "type": "string"
+    }
+  ]
+}

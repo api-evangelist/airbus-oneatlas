@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-search-response-schema.json",
+  "title": "SearchResponse",
+  "type": "object",
+  "properties": {
+    "error": {
+      "example": false,
+      "type": "boolean"
+    },
+    "features": {
+      "items": {
+        "$ref": "#/components/schemas/CatalogItem"
+      },
+      "type": "array"
+    },
+    "itemsPerPage": {
+      "description": "Number of requested items per page",
+      "example": 100,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "startIndex": {
+      "description": "The index of the first item present in the response",
+      "example": 0,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "totalResults": {
+      "description": "The total number of items present in the catalog",
+      "example": 956126,
+      "maximum": 10000,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "type": {
+      "example": "FeatureCollection",
+      "type": "string"
+    }
+  }
+}

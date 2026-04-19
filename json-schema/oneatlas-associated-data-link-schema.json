@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-associated-data-link-schema.json",
+  "title": "AssociatedDataLink",
+  "type": "object",
+  "properties": {
+    "content": {
+      "example": "GML MASK",
+      "type": "string"
+    },
+    "mimeType": {
+      "example": "application/gml+xml",
+      "type": "string"
+    },
+    "path": {
+      "example": "MASKS/ROI_SPOT6_P_201602011017034_SEN_2551123101_MSK.GML",
+      "type": "string"
+    },
+    "title": {
+      "example": "LUT Mask",
+      "type": "string"
+    },
+    "url": {
+      "description": "See [Get associated data](#/paths/~1api~1v1~1items~1{catalogItemId}~1images~1{imageId}~1associatedData~1{associatedDataType}~1data/get)",
+      "example": "https://view.foundation.api.oneatlas.com/api/v1/items/f494e323-e132-4aac-aad2-5123176a6800/images/5a277ab0-5315-4042-a676-267152d71e17/associatedData/LUT/data",
+      "format": "url",
+      "type": "string"
+    }
+  }
+}

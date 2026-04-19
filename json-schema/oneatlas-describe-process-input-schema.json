@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-describe-process-input-schema.json",
+  "title": "DescribeProcessInput",
+  "type": "object",
+  "description": "A JSON Object that conforms to the InputObject as specified in the Describe Process Specification v1.0. It describes the input schema needed in the job creation payload.",
+  "properties": {
+    "definitions": {
+      "type": "object"
+    },
+    "properties": {
+      "type": "object"
+    },
+    "required": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "properties"
+  ]
+}

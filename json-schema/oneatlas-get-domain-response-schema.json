@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-get-domain-response-schema.json",
+  "title": "get-domain-response",
+  "type": "object",
+  "properties": {
+    "warning": {
+      "description": "Warning message when the result does not contain all possible values",
+      "type": "string"
+    }
+  }
+}

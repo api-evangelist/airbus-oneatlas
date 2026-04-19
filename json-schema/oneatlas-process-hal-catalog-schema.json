@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-process-hal-catalog-schema.json",
+  "title": "processHALCatalog",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/process"
+    },
+    {
+      "properties": {
+        "_links": {
+          "$ref": "#/components/schemas/processHALLinkCatalog"
+        }
+      },
+      "type": "object"
+    }
+  ]
+}

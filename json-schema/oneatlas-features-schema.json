@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-features-schema.json",
+  "title": "Features",
+  "type": "object",
+  "properties": {
+    "paging": {
+      "type": "object",
+      "properties": {
+        "itemsPerPage": {
+          "format": "integer",
+          "type": "number"
+        },
+        "startIndex": {
+          "format": "integer",
+          "type": "number"
+        },
+        "pagingMode": {
+          "type": "string"
+        },
+        "totalResult": {
+          "format": "integer",
+          "type": "number"
+        }
+      }
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "contractId": {
+            "type": "string"
+          },
+          "customerReference": {
+            "$ref": "#/components/schemas/CustomerReference"
+          },
+          "quotationId": {
+            "$ref": "#/components/schemas/quotationId"
+          },
+          "salesOrderId": {
+            "type": "string"
+          },
+          "program": {
+            "type": "string"
+          },
+          "productType": {
+            "type": "string"
+          },
+          "licence": {
+            "type": "string"
+          },
+          "aoi": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "geometry": {
+                "$ref": "#/components/schemas/geometry"
+              }
+            }
+          },
+          "mission": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "archive": {
+            "type": "string"
+          },
+          "processingLevel": {
+            "type": "string"
+          },
+          "spectralProcessing": {
+            "type": "string"
+          },
+          "productFormat": {
+            "type": "string"
+          },
+          "pixelCoding": {
+            "type": "string"
+          },
+          "radiometricProcessing": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string"
+          },
+          "deliveryMethod": {
+            "type": "string"
+          },
+          "deliveryAddress": {
+            "type": "string"
+          },
+          "endUser": {
+            "type": "string"
+          },
+          "dumpingStation": {
+            "type": "string"
+          },
+          "quotationStatus": {
+            "type": "string"
+          },
+          "quotationCreationDate": {
+            "type": "string"
+          },
+          "orderCreationDate": {
+            "type": "string"
+          },
+          "orderLineAmount": {
+            "format": "float",
+            "type": "number"
+          },
+          "customerName": {
+            "type": "string"
+          },
+          "contact": {
+            "type": "string"
+          },
+          "orderLineAmountWithoutDiscount": {
+            "format": "float",
+            "type": "number"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "orderLineAmountDiscountPct": {
+            "format": "float",
+            "type": "number"
+          },
+          "orderLineAmountWithDiscount": {
+            "format": "float",
+            "type": "number"
+          },
+          "priceCalculationArea": {
+            "format": "float",
+            "type": "number"
+          },
+          "orderMinimumApplied": {
+            "type": "boolean"
+          },
+          "customerId": {
+            "type": "string"
+          },
+          "producedArea": {
+            "format": "float",
+            "type": "number"
+          },
+          "deliveryType": {
+            "type": "string"
+          },
+          "deliveryPlatformId": {
+            "type": "string"
+          },
+          "deliveryWorkspace": {
+            "type": "string"
+          },
+          "requestedArea": {
+            "format": "float",
+            "type": "number"
+          },
+          "notifications": {
+            "type": "string"
+          },
+          "projectionCode": {
+            "type": "string"
+          },
+          "quotationEndOfValidityDate": {
+            "type": "string"
+          },
+          "initialOrderLineAmountWithoutDiscount": {
+            "format": "float",
+            "type": "number"
+          },
+          "initialOrderLineAmountDiscountPct": {
+            "format": "float",
+            "type": "number"
+          },
+          "initialOrderLineAmountWithDiscount": {
+            "format": "float",
+            "type": "number"
+          },
+          "initialPriceCalculationArea": {
+            "format": "float",
+            "type": "number"
+          },
+          "producedAreaPct": {
+            "format": "float",
+            "type": "number"
+          },
+          "productionRoute": {
+            "type": "string"
+          },
+          "quotationVersion": {
+            "format": "integer",
+            "type": "number"
+          },
+          "orderItemId": {
+            "type": "string"
+          },
+          "lastStatusChangeDate": {
+            "type": "string"
+          },
+          "orderCreator": {
+            "type": "string"
+          },
+          "orderLineId": {
+            "format": "integer",
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

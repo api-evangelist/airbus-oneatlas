@@ -1,0 +1,216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-tasking-schema.json",
+  "title": "tasking",
+  "properties": {
+    "contractId": {
+      "name": "contractId",
+      "in": "path",
+      "required": true,
+      "description": "The contract id",
+      "schema": {
+        "type": "string"
+      }
+    },
+    "orderId": {
+      "name": "orderId",
+      "in": "path",
+      "required": true,
+      "description": "The order id",
+      "schema": {
+        "type": "string"
+      }
+    },
+    "productTypeId": {
+      "name": "productTypeId",
+      "in": "path",
+      "required": true,
+      "description": "The product type id",
+      "schema": {
+        "type": "string"
+      }
+    },
+    "customerId": {
+      "name": "customerId",
+      "in": "path",
+      "required": true,
+      "description": "The customer id",
+      "schema": {
+        "type": "string"
+      }
+    },
+    "taskingId": {
+      "name": "taskingId",
+      "in": "path",
+      "required": true,
+      "description": "The tasking id",
+      "type": "string",
+      "schema": {
+        "type": "string"
+      }
+    },
+    "segmentId": {
+      "name": "segmentId",
+      "in": "path",
+      "required": true,
+      "description": "The segment id",
+      "schema": {
+        "type": "string"
+      }
+    },
+    "licenceId": {
+      "name": "licenceId",
+      "in": "path",
+      "required": true,
+      "description": "The licence id",
+      "schema": {
+        "type": "string"
+      }
+    },
+    "quotationId": {
+      "name": "quotationId",
+      "in": "path",
+      "required": true,
+      "description": "The quotation id",
+      "schema": {
+        "type": "string"
+      }
+    },
+    "taskingIds": {
+      "name": "taskingIds",
+      "in": "query",
+      "description": "ICR's list",
+      "type": "array",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "count": {
+      "name": "count",
+      "in": "query",
+      "description": "Number of items per page",
+      "type": "integer",
+      "schema": {
+        "type": "integer",
+        "default": 10
+      }
+    },
+    "customerRef": {
+      "name": "customerRef",
+      "in": "query",
+      "description": "Customer reference",
+      "type": "string",
+      "schema": {
+        "type": "string"
+      }
+    },
+    "program": {
+      "name": "program",
+      "in": "query",
+      "description": "Program name",
+      "type": "string",
+      "schema": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "name": "status",
+      "in": "query",
+      "description": "ICR Status",
+      "type": "array",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Feasibility study in progress",
+            "In Progress",
+            "Paused",
+            "Canceled",
+            "Completed"
+          ]
+        }
+      }
+    },
+    "mission": {
+      "name": "mission",
+      "in": "query",
+      "description": "mission name",
+      "type": "string",
+      "schema": {
+        "type": "string",
+        "enum": [
+          "SPOT",
+          "PLEIADES"
+        ]
+      }
+    },
+    "progTypeNames": {
+      "name": "progTypeNames",
+      "in": "query",
+      "description": "Refer to one-tasking online documentation at http://www.intelligence-airbusds.com/ for more information",
+      "type": "string",
+      "schema": {
+        "type": "string",
+        "enum": [
+          "ONEDAY",
+          "ONENOW",
+          "ONEPLAN",
+          "ONESERIES"
+        ]
+      }
+    },
+    "acquisitionDate": {
+      "name": "acquisitionDate",
+      "in": "query",
+      "description": "A date or date interval that must match the product acquisition date. Only taskings in this range are returned in the response. Example: [2017-01-01,2017-02-01[ to select all taskings done in January 2017.",
+      "type": "string",
+      "schema": {
+        "type": "string",
+        "format": "Interval of dates in ISO 8601"
+      }
+    },
+    "icrEndOfPeriodDate": {
+      "name": "icrEndOfPeriodDate",
+      "in": "query",
+      "description": "A date or date interval that must match the icr end of period date. Only taskings in this range are returned in the response. Example: [2017-01-01,2017-02-01[ to select all taskings done in January 2017.",
+      "type": "string",
+      "schema": {
+        "type": "string",
+        "format": "Interval of dates in ISO 8601"
+      }
+    },
+    "hasProposedSegments": {
+      "name": "hasProposedSegments",
+      "in": "query",
+      "description": "Indicates whether the search should filter on proposed segments. If set to true, only ICR with proposed segments should be returned. If set to false, only ICR with no proposed segments. If not set, returns all ICR ignoring presence/absence of proposed segments",
+      "type": "boolean",
+      "schema": {
+        "type": "boolean"
+      }
+    },
+    "startPage": {
+      "name": "startPage",
+      "in": "query",
+      "description": "The desired page, starting from 1 for the first page.",
+      "type": "integer",
+      "schema": {
+        "type": "integer",
+        "default": 1
+      }
+    },
+    "sortKeys": {
+      "name": "sortKeys",
+      "in": "query",
+      "description": "A sorting request to the server conforming the OpenSearch SRU specification. Example: sortKeys=acquisitionDate,,0 meaning a request to sort by newest acquired image first or sortKeys=cloudCover,,1 to sort by the smallest cloud coverage percentage. Available values are: status, startDate, endDate, taskingProgress",
+      "type": "string",
+      "schema": {
+        "type": "string",
+        "format": "OpenSearch SRU"
+      }
+    }
+  }
+}

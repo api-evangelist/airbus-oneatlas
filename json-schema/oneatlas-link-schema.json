@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-link-schema.json",
+  "title": "Link",
+  "type": "object",
+  "description": "Link object",
+  "properties": {
+    "href": {
+      "description": "The absolute web link",
+      "example": "https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051",
+      "format": "uri",
+      "type": "string"
+    },
+    "method": {
+      "default": "GET",
+      "description": "HTTP verb to distinguish between several possible actions on the same ressource.",
+      "enum": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "HEAD"
+      ],
+      "type": "string"
+    },
+    "name": {
+      "description": "The name of the link",
+      "example": "Self",
+      "type": "string"
+    },
+    "resourceId": {
+      "$ref": "#/components/schemas/Id"
+    },
+    "type": {
+      "description": "The mime-type when deferencing the link",
+      "example": "application/json",
+      "type": "string"
+    }
+  },
+  "required": [
+    "href"
+  ]
+}

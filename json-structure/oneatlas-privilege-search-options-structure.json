@@ -1,0 +1,9 @@
+{
+  "name": "PrivilegeSearchOptions",
+  "fields": [
+    {
+      "name": "userId",
+      "type": "Id"
+    }
+  ]
+}

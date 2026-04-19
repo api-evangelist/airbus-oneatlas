@@ -1,0 +1,14 @@
+{
+  "name": "deleted-item",
+  "fields": [
+    {
+      "name": "id",
+      "type": "Id"
+    },
+    {
+      "name": "deletedDate",
+      "type": "datetime",
+      "description": "Date of deletion of the data in the platform and deletion of the metadata item if no other production status is defined.\n"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "segment",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "footprint",
+      "type": "footprint"
+    },
+    {
+      "name": "instrumentMode",
+      "type": "string"
+    },
+    {
+      "name": "orderDeadline",
+      "type": "string"
+    },
+    {
+      "name": "extendedAngle",
+      "type": "boolean"
+    },
+    {
+      "name": "acquisitionStartDate",
+      "type": "string"
+    },
+    {
+      "name": "acquisitionEndDate",
+      "type": "string"
+    },
+    {
+      "name": "incidenceAngle",
+      "type": "double"
+    },
+    {
+      "name": "segmentKey",
+      "type": "string"
+    },
+    {
+      "name": "acrossTrackIncidenceAngle",
+      "type": "double"
+    },
+    {
+      "name": "maxIncidenceAngle",
+      "type": "double"
+    }
+  ]
+}

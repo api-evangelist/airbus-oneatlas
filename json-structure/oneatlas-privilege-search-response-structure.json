@@ -1,0 +1,9 @@
+{
+  "name": "PrivilegeSearchResponse",
+  "fields": [
+    {
+      "name": "data",
+      "type": "array<Privilege>"
+    }
+  ]
+}

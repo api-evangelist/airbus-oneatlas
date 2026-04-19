@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-buffer-description-schema.json",
+  "title": "bufferDescription",
+  "type": "object",
+  "properties": {
+    "bands": {
+      "default": "all bands",
+      "description": "Ordered list of requested bands. Bands can be retrieve with `metadata` link given in `_links` property of a feature.",
+      "items": {
+        "example": "R",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "bbox": {
+      "$ref": "#/components/schemas/bbox"
+    },
+    "step": {
+      "$ref": "#/components/schemas/step"
+    },
+    "target-model": {
+      "description": "specification of the output buffer",
+      "properties": {
+        "crs": {
+          "default": "Bbox srs",
+          "description": "Output crs.",
+          "example": "epsg:4326",
+          "type": "string"
+        },
+        "size": {
+          "$ref": "#/components/schemas/imageSize"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "required": [
+    "bbox",
+    "step",
+    "target-model"
+  ]
+}

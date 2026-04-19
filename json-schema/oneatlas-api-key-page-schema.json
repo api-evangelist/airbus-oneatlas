@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-api-key-page-schema.json",
+  "title": "ApiKeyPage",
+  "type": "object",
+  "properties": {
+    "items": {
+      "description": "API Keys",
+      "items": {
+        "$ref": "#/components/schemas/ApiKey"
+      },
+      "type": "array"
+    }
+  }
+}

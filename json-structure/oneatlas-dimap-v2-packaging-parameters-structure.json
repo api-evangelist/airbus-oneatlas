@@ -1,0 +1,9 @@
+{
+  "name": "DimapV2PackagingParameters",
+  "fields": [
+    {
+      "name": "imageFormat",
+      "type": "string"
+    }
+  ]
+}

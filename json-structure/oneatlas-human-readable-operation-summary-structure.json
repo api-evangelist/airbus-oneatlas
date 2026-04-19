@@ -1,0 +1,10 @@
+{
+  "name": "HumanReadableOperationSummary",
+  "fields": [
+    {
+      "name": "message",
+      "type": "string",
+      "description": "Human readable summary of the operation execution"
+    }
+  ]
+}

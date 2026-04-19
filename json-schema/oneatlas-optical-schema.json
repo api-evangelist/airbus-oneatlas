@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-optical-schema.json",
+  "title": "Optical",
+  "properties": {
+    "acquisitionMode": {
+      "enum": [
+        "MONO",
+        "STEREO",
+        "TRISTEREO"
+      ],
+      "type": "string"
+    },
+    "maxCloudCover": {
+      "format": "float",
+      "type": "number"
+    },
+    "maxIncidenceAngle": {
+      "format": "float",
+      "type": "number"
+    }
+  }
+}

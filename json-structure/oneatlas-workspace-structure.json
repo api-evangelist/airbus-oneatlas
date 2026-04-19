@@ -1,0 +1,39 @@
+{
+  "name": "Workspace",
+  "fields": [
+    {
+      "name": "createdAt",
+      "type": "string",
+      "description": "The creation date"
+    },
+    {
+      "name": "defaultItemTtl",
+      "type": "double",
+      "description": "The default ttl for the workspaces items, in seconds. If not set, the default will be set by server configuration (currently 1 year)"
+    },
+    {
+      "name": "id",
+      "type": "Id"
+    },
+    {
+      "name": "labels",
+      "type": "array<string>",
+      "description": "A list of user defined labels or tags"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "description": "Human readable workspace title for convenience"
+    },
+    {
+      "name": "userId",
+      "type": "string",
+      "description": "The id of the user who own the workspace"
+    }
+  ]
+}

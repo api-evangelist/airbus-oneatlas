@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-human-readable-operation-summary-schema.json",
+  "title": "HumanReadableOperationSummary",
+  "type": "object",
+  "properties": {
+    "message": {
+      "description": "Human readable summary of the operation execution",
+      "type": "string"
+    }
+  }
+}

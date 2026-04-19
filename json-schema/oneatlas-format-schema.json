@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-format-schema.json",
+  "title": "Format",
+  "type": "object",
+  "properties": {
+    "checksum": {
+      "properties": {
+        "parameters": {
+          "example": {
+            "crcCode": "dhdf54"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/Md5ChecksumParameters"
+            }
+          ]
+        },
+        "type": {
+          "enum": [
+            "md5",
+            "none"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "compression": {
+      "enum": [
+        "zip"
+      ],
+      "type": "string"
+    },
+    "packaging": {
+      "properties": {
+        "parameters": {
+          "description": "Key/value options of the packaging. Properties depend on the type of packaging",
+          "example": {
+            "imageFormat": "image/jp2"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/DimapV2PackagingParameters"
+            }
+          ]
+        },
+        "type": {
+          "enum": [
+            "dimapV2"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Link",
+  "description": "Link object",
+  "fields": [
+    {
+      "name": "href",
+      "type": "uri",
+      "description": "The absolute web link"
+    },
+    {
+      "name": "method",
+      "type": "string",
+      "description": "HTTP verb to distinguish between several possible actions on the same ressource."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "The name of the link"
+    },
+    {
+      "name": "resourceId",
+      "type": "Id"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "The mime-type when deferencing the link"
+    }
+  ]
+}

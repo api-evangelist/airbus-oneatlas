@@ -1,0 +1,20 @@
+{
+  "name": "search-deleted-options",
+  "fields": [
+    {
+      "name": "deletedDate",
+      "type": "string",
+      "description": "The date of items deletions"
+    },
+    {
+      "name": "itemsPerPage",
+      "type": "int32",
+      "description": "The maximum number of items that the response can contain."
+    },
+    {
+      "name": "startIndex",
+      "type": "int32",
+      "description": "The number of skipped items"
+    }
+  ]
+}

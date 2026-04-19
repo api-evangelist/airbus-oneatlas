@@ -1,0 +1,14 @@
+{
+  "name": "ProcessesResponse",
+  "description": "response to a get processes call.",
+  "fields": [
+    {
+      "name": "_embedded",
+      "type": "object"
+    },
+    {
+      "name": "_links",
+      "type": "object"
+    }
+  ]
+}

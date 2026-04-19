@@ -1,0 +1,12 @@
+{
+  "actualBitDepth": 1.0,
+  "colorInterpretation": "example-colorInterpretation",
+  "compression": "example-compression",
+  "description": "example-description",
+  "isMask": true,
+  "name": "example-name",
+  "noDataValue": 1.0,
+  "offset": 1.0,
+  "pixelType": "Byte",
+  "size": 1.0
+}

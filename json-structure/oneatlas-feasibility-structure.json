@@ -1,0 +1,9 @@
+{
+  "name": "Feasibility",
+  "fields": [
+    {
+      "name": "progCapacities",
+      "type": "array<object>"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+name: Airbus OneAtlas Vocabulary
+description: Vocabulary of resources and actions for the Airbus OneAtlas geospatial APIs
+resources:
+- name: CatalogItem
+  description: A satellite imagery item in the OneAtlas catalog
+  schema: json-schema/oneatlas-catalog-item-schema.json
+- name: Activity
+  description: A satellite acquisition activity or tasking request
+  schema: json-schema/oneatlas-activity-schema.json
+- name: TaskingAttempt
+  description: An attempt to fulfill a satellite tasking request
+  schema: json-schema/oneatlas-tasking-attempt-schema.json
+- name: ControlJob
+  description: A processing job for satellite imagery
+  schema: json-schema/oneatlas-control-job-schema.json
+- name: ApiKey
+  description: An API authentication key for OneAtlas access
+  schema: json-schema/oneatlas-api-key-schema.json
+- name: Workspace
+  description: A workspace identifier for data management
+  schema: json-schema/oneatlas-workspace-identifier-schema.json
+actions:
+- name: SearchCatalog
+  description: Search the satellite imagery catalog by area and time
+- name: DownloadImage
+  description: Download a satellite image file
+- name: CreateTasking
+  description: Create a new satellite tasking order for future acquisition
+- name: GetElevation
+  description: Retrieve WorldDEM elevation data for a location
+- name: SearchRadar
+  description: Search for SAR radar satellite imagery
+- name: GetBasemap
+  description: Retrieve a basemap tile for a given location and zoom level
+- name: ManageApiKey
+  description: Create, list, or revoke API keys

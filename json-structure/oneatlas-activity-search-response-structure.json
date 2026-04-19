@@ -1,0 +1,24 @@
+{
+  "name": "ActivitySearchResponse",
+  "fields": [
+    {
+      "name": "data",
+      "type": "array<Activity>"
+    },
+    {
+      "name": "itemsPerPage",
+      "type": "double",
+      "description": "Number of requested items per page"
+    },
+    {
+      "name": "startIndex",
+      "type": "double",
+      "description": "The index of the first item present in the response"
+    },
+    {
+      "name": "totalResults",
+      "type": "double",
+      "description": "The total number of activities"
+    }
+  ]
+}

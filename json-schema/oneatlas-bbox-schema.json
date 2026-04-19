@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-bbox-schema.json",
+  "title": "bbox",
+  "type": "object",
+  "properties": {
+    "lr": {
+      "$ref": "#/components/schemas/point"
+    },
+    "srs": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/srs"
+        },
+        {
+          "description": "Referential for the points of this bbox.",
+          "properties": {
+            "type": {
+              "enum": [
+                "urn",
+                "epsg",
+                "image"
+              ]
+            }
+          },
+          "type": "object"
+        }
+      ]
+    },
+    "ul": {
+      "$ref": "#/components/schemas/point"
+    }
+  },
+  "required": [
+    "srs",
+    "ul",
+    "lr"
+  ]
+}

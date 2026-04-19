@@ -1,0 +1,14 @@
+{
+  "name": "pixelCoding",
+  "fields": [
+    {
+      "name": "key",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Defines the pixel coding. <br>'8bits' when radiometric_processing = 'display'<br>, '12bits' otherwise"
+    }
+  ]
+}

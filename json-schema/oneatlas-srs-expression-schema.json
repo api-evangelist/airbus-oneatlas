@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-srs-expression-schema.json",
+  "title": "srsExpression",
+  "type": "object",
+  "properties": {
+    "axes": {
+      "example": [
+        {
+          "abbreviation": "Lat",
+          "direction": "north"
+        },
+        {
+          "abbreviation": "Lon",
+          "direction": "east"
+        }
+      ],
+      "items": {
+        "properties": {
+          "abbreviation": {
+            "type": "string"
+          },
+          "direction": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "names": {
+      "items": {
+        "$ref": "#/components/schemas/srs"
+      },
+      "type": "array",
+      "uniqueItems": true
+    }
+  }
+}

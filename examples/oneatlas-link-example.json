@@ -1,0 +1,7 @@
+{
+  "href": "example-href",
+  "method": "GET",
+  "name": "example-name",
+  "resourceId": "example-resourceId",
+  "type": "example-type"
+}

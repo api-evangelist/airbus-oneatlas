@@ -1,0 +1,37 @@
+{
+  "name": "Privilege",
+  "fields": [
+    {
+      "name": "createdAt",
+      "type": "string",
+      "description": "The creation time of the created Privilege. This is returned when the Privilege is properly created."
+    },
+    {
+      "name": "filter",
+      "type": "object",
+      "description": "Filters the scope of the privilege (e.g. by workspace, id)"
+    },
+    {
+      "name": "id",
+      "type": "Id"
+    },
+    {
+      "name": "priority",
+      "type": "int32",
+      "description": "The priority of the privilege"
+    },
+    {
+      "name": "rights",
+      "type": "object",
+      "description": "List of rights granted to a user. For now, only \"browse\" is supported. Therefore, it will give all the rights for now."
+    },
+    {
+      "name": "subscriptionId",
+      "type": "Id"
+    },
+    {
+      "name": "userId",
+      "type": "Id"
+    }
+  ]
+}

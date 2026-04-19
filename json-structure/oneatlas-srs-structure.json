@@ -1,0 +1,14 @@
+{
+  "name": "srs",
+  "description": "Referential",
+  "fields": [
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "type": "string"
+    }
+  ]
+}

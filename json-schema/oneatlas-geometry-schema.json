@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-geometry-schema.json",
+  "title": "geometry",
+  "type": "object",
+  "properties": {
+    "type": {
+      "enum": [
+        "Polygon"
+      ],
+      "type": "string"
+    },
+    "coordinates": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "format": "float",
+            "type": "number"
+          },
+          "maxItems": 2
+        }
+      }
+    }
+  }
+}

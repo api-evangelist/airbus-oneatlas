@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-md5-checksum-parameters-schema.json",
+  "title": "Md5ChecksumParameters",
+  "type": "object",
+  "properties": {
+    "crcCode": {
+      "type": "string"
+    }
+  }
+}

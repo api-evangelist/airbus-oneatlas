@@ -1,0 +1,17 @@
+{
+  "name": "geo-json-multipolygon",
+  "fields": [
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "coordinates",
+      "type": "array<array>"
+    },
+    {
+      "name": "bbox",
+      "type": "array<double>"
+    }
+  ]
+}

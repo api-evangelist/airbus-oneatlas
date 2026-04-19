@@ -1,0 +1,7 @@
+{
+  "deleteOrigin": true,
+  "nativeCopy": true,
+  "sourceUri": "example-sourceUri",
+  "type": "changeDetectionReport",
+  "workspace": "example-workspace"
+}

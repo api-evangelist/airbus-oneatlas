@@ -1,0 +1,17 @@
+{
+  "name": "delivery",
+  "fields": [
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "workspace",
+      "type": "workspace"
+    },
+    {
+      "name": "platformId",
+      "type": "string"
+    }
+  ]
+}

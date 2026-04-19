@@ -1,0 +1,9 @@
+{
+  "name": "Md5ChecksumParameters",
+  "fields": [
+    {
+      "name": "crcCode",
+      "type": "string"
+    }
+  ]
+}

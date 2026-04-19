@@ -1,0 +1,16 @@
+{
+  "name": "point",
+  "description": "A geo point.",
+  "fields": [
+    {
+      "name": "x",
+      "type": "double",
+      "description": "x coordinate"
+    },
+    {
+      "name": "y",
+      "type": "double",
+      "description": "y coordinate"
+    }
+  ]
+}

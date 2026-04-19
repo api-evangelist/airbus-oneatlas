@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-geojson-geometry-schema.json",
+  "title": "GeojsonGeometry",
+  "type": "object",
+  "properties": {
+    "geometry": {
+      "description": "A valid geojson geometry coordinates",
+      "type": "object"
+    },
+    "type": {
+      "enum": [
+        "Polygon"
+      ]
+    }
+  }
+}

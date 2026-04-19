@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-deleted-item-schema.json",
+  "title": "deleted-item",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/components/schemas/Id"
+    },
+    "deletedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date of deletion of the data in the platform and deletion of the metadata item if no other production status is defined.\n",
+      "example": "2017-08-29T00:00:00Z"
+    }
+  }
+}

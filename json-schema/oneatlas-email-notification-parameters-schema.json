@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-email-notification-parameters-schema.json",
+  "title": "EmailNotificationParameters",
+  "type": "object",
+  "properties": {
+    "addresses": {
+      "items": {
+        "description": "To be done: Email need to be validated.",
+        "format": "email",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "addresses"
+  ]
+}

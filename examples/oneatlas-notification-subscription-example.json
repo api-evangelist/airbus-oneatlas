@@ -1,0 +1,7 @@
+{
+  "channels": [],
+  "filter": "example-filter",
+  "id": "example-id",
+  "type": "activity",
+  "userId": "example-userId"
+}

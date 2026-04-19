@@ -1,0 +1,25 @@
+{
+  "name": "CatalogItem",
+  "fields": [
+    {
+      "name": "_links",
+      "type": "object"
+    },
+    {
+      "name": "geometry",
+      "type": "GeojsonGeometry"
+    },
+    {
+      "name": "properties",
+      "type": "object"
+    },
+    {
+      "name": "rights",
+      "type": "object"
+    },
+    {
+      "name": "type",
+      "type": "string"
+    }
+  ]
+}

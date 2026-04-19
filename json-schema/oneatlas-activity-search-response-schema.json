@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-activity-search-response-schema.json",
+  "title": "ActivitySearchResponse",
+  "type": "object",
+  "properties": {
+    "data": {
+      "items": {
+        "$ref": "#/components/schemas/Activity"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "itemsPerPage": {
+      "description": "Number of requested items per page",
+      "example": 100,
+      "format": "integer",
+      "minimum": 1,
+      "type": "number"
+    },
+    "startIndex": {
+      "description": "The index of the first item present in the response",
+      "example": 0,
+      "format": "integer",
+      "minimum": 0,
+      "type": "number"
+    },
+    "totalResults": {
+      "description": "The total number of activities",
+      "example": 582,
+      "format": "integer",
+      "maximum": 10000,
+      "minimum": 0,
+      "type": "number"
+    }
+  }
+}

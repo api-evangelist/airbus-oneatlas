@@ -1,0 +1,25 @@
+{
+  "name": "DeleteOperationResult",
+  "fields": [
+    {
+      "name": "deleted",
+      "type": "double",
+      "description": "The number of deleted items"
+    },
+    {
+      "name": "failures",
+      "type": "double",
+      "description": "The number of item deletion failures"
+    },
+    {
+      "name": "notFound",
+      "type": "double",
+      "description": "The number of items not found"
+    },
+    {
+      "name": "total",
+      "type": "double",
+      "description": "The number of processed items"
+    }
+  ]
+}

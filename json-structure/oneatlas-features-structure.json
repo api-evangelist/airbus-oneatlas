@@ -1,0 +1,13 @@
+{
+  "name": "Features",
+  "fields": [
+    {
+      "name": "paging",
+      "type": "object"
+    },
+    {
+      "name": "features",
+      "type": "array<object>"
+    }
+  ]
+}

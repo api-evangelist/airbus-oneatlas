@@ -1,0 +1,14 @@
+{
+  "name": "dem",
+  "fields": [
+    {
+      "name": "key",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Defines the digital elevation model, i refers to the aoi's id (To be filled only if processing_level = ortho)"
+    }
+  ]
+}

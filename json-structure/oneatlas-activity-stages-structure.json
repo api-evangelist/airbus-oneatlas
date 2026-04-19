@@ -1,0 +1,9 @@
+{
+  "name": "ActivityStages",
+  "fields": [
+    {
+      "name": "data",
+      "type": "array<ActivityStage>"
+    }
+  ]
+}

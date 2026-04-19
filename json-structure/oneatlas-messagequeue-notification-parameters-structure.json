@@ -1,0 +1,20 @@
+{
+  "name": "MessagequeueNotificationParameters",
+  "fields": [
+    {
+      "name": "message",
+      "type": "object",
+      "description": ""
+    },
+    {
+      "name": "target",
+      "type": "string",
+      "description": "Name of the target in message queue service."
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "description": "URL form is verified. To be done: Endpoint need to be validated."
+    }
+  ]
+}

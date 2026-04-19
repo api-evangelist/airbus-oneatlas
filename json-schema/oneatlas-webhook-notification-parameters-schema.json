@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-webhook-notification-parameters-schema.json",
+  "title": "WebhookNotificationParameters",
+  "type": "object",
+  "properties": {
+    "url": {
+      "description": "URL form is verified. To be done: Endpoint need to be validated.",
+      "format": "url",
+      "type": "string"
+    }
+  },
+  "required": [
+    "url"
+  ]
+}

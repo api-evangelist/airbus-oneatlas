@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-update-options-schema.json",
+  "title": "update-options",
+  "type": "object",
+  "properties": {
+    "query": {
+      "$ref": "#/components/schemas/search-options"
+    },
+    "update": {
+      "type": "object",
+      "properties": {
+        "expirationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date of deletion of the data in the platform and deletion of the\nmetadata item if no other production status is defined.\n",
+          "example": "2017-08-29T00:00:00Z"
+        }
+      }
+    }
+  }
+}

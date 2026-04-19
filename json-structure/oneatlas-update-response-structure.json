@@ -1,0 +1,10 @@
+{
+  "name": "update-response",
+  "fields": [
+    {
+      "name": "updated",
+      "type": "int32",
+      "description": "Number of items updated"
+    }
+  ]
+}

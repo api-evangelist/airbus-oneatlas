@@ -1,0 +1,9 @@
+{
+  "_links": "example-_links",
+  "description": "example-description",
+  "family": "example-family",
+  "id": "example-id",
+  "input": "example-input",
+  "label": "example-label",
+  "version": "example-version"
+}

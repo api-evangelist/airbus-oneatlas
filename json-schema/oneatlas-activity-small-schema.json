@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-activity-small-schema.json",
+  "title": "ActivitySmall",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "properties": {
+        "history": {
+          "allOf": [
+            {
+              "description": "See [Get activity stages](#/paths/~1api~1v1~1activities~1{correlationId}~1stages/get)"
+            },
+            {
+              "$ref": "#/components/schemas/Link"
+            }
+          ]
+        },
+        "monitoring": {
+          "allOf": [
+            {
+              "description": "See [Get activity](#/paths/~1api~1v1~1activities~1{correlationId}/get)"
+            },
+            {
+              "$ref": "#/components/schemas/Link"
+            }
+          ]
+        }
+      },
+      "readOnly": true,
+      "type": "object"
+    },
+    "message": {
+      "description": "A free text (copy of the last stage message)",
+      "readOnly": true,
+      "type": "string"
+    }
+  }
+}

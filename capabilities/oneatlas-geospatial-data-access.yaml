@@ -1,0 +1,75 @@
+name: Airbus OneAtlas Geospatial Data Access
+description: Workflow capability for searching, ordering, and downloading satellite imagery from OneAtlas
+version: 1.0.0
+type: workflow
+mcp_tools:
+- name: search_satellite_imagery
+  description: Search the OneAtlas catalog for satellite imagery by area of interest, date range, and cloud cover
+  inputs:
+    bbox: array
+    start_date: string
+    end_date: string
+    max_cloud_cover: number
+  outputs:
+    items: array
+    total_count: integer
+  rest_adapter:
+    ref: oneatlas-api
+    operations:
+    - searchCatalog
+- name: order_satellite_image
+  description: Place a pay-per-order request to purchase and download a specific satellite image
+  inputs:
+    item_id: string
+    delivery_format: string
+  outputs:
+    order_id: string
+    status: string
+    download_url: string
+  rest_adapter:
+    ref: oneatlas-api
+    operations:
+    - getItem
+    - downloadItem
+- name: create_tasking_order
+  description: Request new satellite imagery acquisition of a specific area at a future date
+  inputs:
+    area_of_interest: object
+    acquisition_start: string
+    acquisition_end: string
+    priority: string
+  outputs:
+    order_id: string
+    estimated_date: string
+    status: string
+  rest_adapter:
+    ref: oneatlas-api
+    operations:
+    - createTasking
+- name: get_elevation_data
+  description: Retrieve WorldDEM elevation data for a given location or bounding box
+  inputs:
+    latitude: number
+    longitude: number
+    bbox: array
+  outputs:
+    elevation_meters: number
+    data: object
+  rest_adapter:
+    ref: oneatlas-api
+    operations:
+    - getElevation
+- name: search_radar_imagery
+  description: Search for SAR (synthetic aperture radar) satellite imagery from Airbus Radar
+  inputs:
+    bbox: array
+    start_date: string
+    end_date: string
+    polarization: string
+  outputs:
+    items: array
+    total: integer
+  rest_adapter:
+    ref: oneatlas-api
+    operations:
+    - searchRadar

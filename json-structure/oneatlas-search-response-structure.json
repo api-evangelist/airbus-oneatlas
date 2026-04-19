@@ -1,0 +1,32 @@
+{
+  "name": "SearchResponse",
+  "fields": [
+    {
+      "name": "error",
+      "type": "boolean"
+    },
+    {
+      "name": "features",
+      "type": "array<CatalogItem>"
+    },
+    {
+      "name": "itemsPerPage",
+      "type": "int32",
+      "description": "Number of requested items per page"
+    },
+    {
+      "name": "startIndex",
+      "type": "int32",
+      "description": "The index of the first item present in the response"
+    },
+    {
+      "name": "totalResults",
+      "type": "int32",
+      "description": "The total number of items present in the catalog"
+    },
+    {
+      "name": "type",
+      "type": "string"
+    }
+  ]
+}

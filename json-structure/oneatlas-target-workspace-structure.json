@@ -1,0 +1,14 @@
+{
+  "name": "TargetWorkspace",
+  "fields": [
+    {
+      "name": "targetWorkspace",
+      "type": "WorkspaceIdentifier"
+    },
+    {
+      "name": "ttl",
+      "type": "double",
+      "description": "The ttl for the item, in seconds. If not set, the default will be the target workspace ttl."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-update-response-schema.json",
+  "title": "update-response",
+  "type": "object",
+  "properties": {
+    "updated": {
+      "type": "integer",
+      "example": 5,
+      "description": "Number of items updated"
+    }
+  }
+}

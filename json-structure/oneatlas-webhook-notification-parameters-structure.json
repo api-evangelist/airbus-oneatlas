@@ -1,0 +1,10 @@
+{
+  "name": "WebhookNotificationParameters",
+  "fields": [
+    {
+      "name": "url",
+      "type": "string",
+      "description": "URL form is verified. To be done: Endpoint need to be validated."
+    }
+  ]
+}

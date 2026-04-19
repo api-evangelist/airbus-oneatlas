@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-process-schema.json",
+  "title": "process",
+  "type": "object",
+  "description": "a JSON Object that conforms to the InfoObject as specified in the Describe Process Specification v1.0",
+  "properties": {
+    "description": {
+      "example": "process ortho rectification of a pack",
+      "type": "string"
+    },
+    "family": {
+      "example": "Ortho",
+      "type": "string"
+    },
+    "id": {
+      "example": "com.airbus.massive.ortho",
+      "type": "string"
+    },
+    "label": {
+      "example": "MassiveOrtho",
+      "type": "string"
+    },
+    "version": {
+      "example": 1,
+      "type": "string"
+    }
+  }
+}

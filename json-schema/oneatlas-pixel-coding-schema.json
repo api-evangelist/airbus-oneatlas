@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-pixel-coding-schema.json",
+  "title": "pixelCoding",
+  "type": "object",
+  "properties": {
+    "key": {
+      "enum": [
+        "pixel_coding"
+      ]
+    },
+    "value": {
+      "enum": [
+        "8bits",
+        "12bits"
+      ],
+      "description": "Defines the pixel coding. <br>'8bits' when radiometric_processing = 'display'<br>, '12bits' otherwise"
+    }
+  }
+}

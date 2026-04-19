@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-histogram-response-schema.json",
+  "title": "HistogramResponse",
+  "type": "object",
+  "properties": {
+    "histograms": {
+      "items": {
+        "properties": {
+          "band": {
+            "example": "B0",
+            "type": "string"
+          },
+          "max": {
+            "example": 9613,
+            "format": "integer",
+            "minimum": 1,
+            "type": "number"
+          },
+          "mean": {
+            "example": 785.7152806485769,
+            "format": "float",
+            "minimum": 1,
+            "type": "number"
+          },
+          "min": {
+            "example": 1,
+            "format": "integer",
+            "minimum": 1,
+            "type": "number"
+          },
+          "stdev": {
+            "example": 364.8379459959255,
+            "format": "float",
+            "minimum": 1,
+            "type": "number"
+          },
+          "step": {
+            "example": 1,
+            "format": "integer",
+            "minimum": 1,
+            "type": "number"
+          },
+          "values": {
+            "example": [
+              3,
+              0,
+              0,
+              6
+            ],
+            "items": {
+              "format": "integer",
+              "minimum": 0,
+              "type": "number"
+            },
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-activity-search-options-schema.json",
+  "title": "ActivitySearchOptions",
+  "type": "object",
+  "properties": {
+    "creationDate": {
+      "description": "The creation date or creation date range of the activity",
+      "oneOf": [
+        {
+          "description": "The creation date of the activity.",
+          "example": "2017-08-29T00:00:00Z",
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "description": "The creation dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*",
+          "example": "[2017-08-29T00:00:00Z",
+          "format": "date-time-range",
+          "type": "string"
+        }
+      ]
+    },
+    "endDate": {
+      "description": "The end date pf the activity (copy of the date associated to the SUCCEEDED or FAILED stage)",
+      "format": "datetime",
+      "oneOf": [
+        {
+          "description": "The end date of the activity.",
+          "example": "2017-08-29T00:00:00Z",
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "description": "The end dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*",
+          "example": "[2017-08-29T00:00:00Z",
+          "format": "date-time-range",
+          "type": "string"
+        }
+      ],
+      "type": "string"
+    },
+    "itemsPerPage": {
+      "description": "Number of requested items per page",
+      "example": 50,
+      "format": "integer",
+      "minimum": 1,
+      "type": "number"
+    },
+    "payload": {
+      "description": "The copy of the origin user request. It could be the whole object or only some elements.",
+      "oneOf": [
+        {
+          "description": "The json object.",
+          "example": [
+            {
+              "workspace": "public"
+            }
+          ],
+          "type": "object"
+        },
+        {
+          "description": "String representation of the json object.",
+          "example": "{\"workspace\":\"public\"}",
+          "type": "string"
+        }
+      ]
+    },
+    "progress": {
+      "description": "A progress indicator between 0 and 100",
+      "format": "integer",
+      "maximum": 100,
+      "minimum": 0,
+      "type": "number"
+    },
+    "sortBy": {
+      "description": "Unbounded list or parameters to sort by. The '+' indicates ascendant ordering, the '-' indicates descendant ordering. If not precised, default to '+'",
+      "example": "+startDate,-endDate",
+      "type": "string"
+    },
+    "startDate": {
+      "description": "The start date of the activity (date of the first stage that is not QUEUED)",
+      "format": "datetime",
+      "oneOf": [
+        {
+          "description": "The start date of the activity.",
+          "example": "2017-08-29T00:00:00Z",
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "description": "The start dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*",
+          "example": "[2017-08-29T00:00:00Z",
+          "format": "date-time-range",
+          "type": "string"
+        }
+      ],
+      "type": "string"
+    },
+    "startIndex": {
+      "description": "The index of the first item present in the response",
+      "example": 1,
+      "format": "integer",
+      "minimum": 0,
+      "type": "number"
+    },
+    "status": {
+      "description": "The status or status list (comma separated list) of the activity.",
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "ON_HOLD",
+        "CANCELED",
+        "WAITING_CANCEL",
+        "SUCCEEDED",
+        "FAILED",
+        "ARCHIVED"
+      ],
+      "type": "string"
+    },
+    "type": {
+      "description": "Type of activity",
+      "enum": [
+        "ingestion",
+        "processing",
+        "formatting",
+        "delivering"
+      ],
+      "type": "string"
+    },
+    "userId": {
+      "$ref": "#/components/schemas/Id"
+    }
+  }
+}

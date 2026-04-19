@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-ingestion-job-schema.json",
+  "title": "IngestionJob",
+  "type": "object",
+  "properties": {
+    "deleteOrigin": {
+      "default": false,
+      "description": "Indicate if data described in source uri shall be deleted after ingestion. Source uri must be a cloud storage uri. If deletion failed, ingestion status is set to `FAILED`.",
+      "type": "boolean"
+    },
+    "nativeCopy": {
+      "default": false,
+      "description": "Indicate if data described in source uri shall be copied for archive after ingestion. If copy failed, ingestion status is set to `FAILED`.",
+      "type": "boolean"
+    },
+    "sourceUri": {
+      "description": "Uri of the resource to ingest. The uri must point to the main file of the resource.",
+      "example": "gs://gcp-public-data-sentinel-2/tiles/28/R/DP/S2A_MSIL1C_20171224T113501_N0206_R080_T28RDP_20171224T133237.SAFE",
+      "type": "string"
+    },
+    "type": {
+      "description": "Type of data to ingest",
+      "enum": [
+        "changeDetectionReport",
+        "oceanWayReport",
+        "pleiades",
+        "sentinel2",
+        "spot",
+        "vectorFile"
+      ],
+      "example": "sentinel2",
+      "type": "string"
+    },
+    "workspace": {
+      "$ref": "#/components/schemas/WorkspaceIdentifier"
+    }
+  },
+  "required": [
+    "workspace",
+    "sourceUri",
+    "type"
+  ]
+}

@@ -1,0 +1,41 @@
+name: Airbus OneAtlas API
+description: Shared capability definition for Airbus OneAtlas geospatial data APIs
+version: 2025.03.31
+baseURL: https://api.oneatlas.airbus.com
+auth:
+  type: apiKey
+  in: header
+  name: Authorization
+operations:
+- operationId: searchCatalog
+  summary: Search Satellite Imagery Catalog
+  method: POST
+  path: /v1/items/search
+- operationId: getItem
+  summary: Get a Catalog Item
+  method: GET
+  path: /v1/items/{itemId}
+- operationId: downloadItem
+  summary: Download a Satellite Image
+  method: GET
+  path: /v1/items/{itemId}/download
+- operationId: createTasking
+  summary: Create a Tasking Order
+  method: POST
+  path: /v1/tasking/orders
+- operationId: getTaskingOrder
+  summary: Get a Tasking Order
+  method: GET
+  path: /v1/tasking/orders/{orderId}
+- operationId: getElevation
+  summary: Get Elevation Data
+  method: GET
+  path: /v1/worlddem/elevation
+- operationId: getBasemap
+  summary: Get Basemap Tile
+  method: GET
+  path: /v1/basemap/{z}/{x}/{y}
+- operationId: searchRadar
+  summary: Search Radar Imagery
+  method: POST
+  path: /v1/radar/items/search

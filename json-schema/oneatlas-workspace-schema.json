@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-workspace-schema.json",
+  "title": "Workspace",
+  "type": "object",
+  "properties": {
+    "createdAt": {
+      "description": "The creation date",
+      "example": "2017-10-12T08:55:52.651155Z",
+      "format": "datetime",
+      "readOnly": true,
+      "type": "string"
+    },
+    "defaultItemTtl": {
+      "description": "The default ttl for the workspaces items, in seconds. If not set, the default will be set by server configuration (currently 1 year)",
+      "example": 123456,
+      "format": "int",
+      "type": "number"
+    },
+    "id": {
+      "$ref": "#/components/schemas/Id"
+    },
+    "labels": {
+      "description": "A list of user defined labels or tags",
+      "example": [
+        "p\u00eache",
+        "lac de biscarosse",
+        "carpe"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "name": {
+      "description": "The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.",
+      "example": "flyinghippo",
+      "type": "string"
+    },
+    "title": {
+      "description": "Human readable workspace title for convenience",
+      "example": "S2 items",
+      "type": "string"
+    },
+    "userId": {
+      "description": "The id of the user who own the workspace",
+      "example": "aEr5695feGGn0ob",
+      "type": "string"
+    }
+  },
+  "required": [
+    "userId"
+  ]
+}

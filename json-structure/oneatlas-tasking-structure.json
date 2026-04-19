@@ -1,0 +1,105 @@
+{
+  "name": "tasking",
+  "fields": [
+    {
+      "name": "contractId",
+      "type": "string",
+      "description": "The contract id"
+    },
+    {
+      "name": "orderId",
+      "type": "string",
+      "description": "The order id"
+    },
+    {
+      "name": "productTypeId",
+      "type": "string",
+      "description": "The product type id"
+    },
+    {
+      "name": "customerId",
+      "type": "string",
+      "description": "The customer id"
+    },
+    {
+      "name": "taskingId",
+      "type": "string",
+      "description": "The tasking id"
+    },
+    {
+      "name": "segmentId",
+      "type": "string",
+      "description": "The segment id"
+    },
+    {
+      "name": "licenceId",
+      "type": "string",
+      "description": "The licence id"
+    },
+    {
+      "name": "quotationId",
+      "type": "string",
+      "description": "The quotation id"
+    },
+    {
+      "name": "taskingIds",
+      "type": "array<string>",
+      "description": "ICR's list"
+    },
+    {
+      "name": "count",
+      "type": "int32",
+      "description": "Number of items per page"
+    },
+    {
+      "name": "customerRef",
+      "type": "string",
+      "description": "Customer reference"
+    },
+    {
+      "name": "program",
+      "type": "string",
+      "description": "Program name"
+    },
+    {
+      "name": "status",
+      "type": "array<string>",
+      "description": "ICR Status"
+    },
+    {
+      "name": "mission",
+      "type": "string",
+      "description": "mission name"
+    },
+    {
+      "name": "progTypeNames",
+      "type": "string",
+      "description": "Refer to one-tasking online documentation at http://www.intelligence-airbusds.com/ for more information"
+    },
+    {
+      "name": "acquisitionDate",
+      "type": "string",
+      "description": "A date or date interval that must match the product acquisition date. Only taskings in this range are returned in the response. Example: [2017-01-01,2017-02-01[ to select all taskings done in January 2017."
+    },
+    {
+      "name": "icrEndOfPeriodDate",
+      "type": "string",
+      "description": "A date or date interval that must match the icr end of period date. Only taskings in this range are returned in the response. Example: [2017-01-01,2017-02-01[ to select all taskings done in January 2017."
+    },
+    {
+      "name": "hasProposedSegments",
+      "type": "boolean",
+      "description": "Indicates whether the search should filter on proposed segments. If set to true, only ICR with proposed segments should be returned. If set to false, only ICR with no proposed segments. If not set, returns all ICR ignoring presence/absence of proposed segments"
+    },
+    {
+      "name": "startPage",
+      "type": "int32",
+      "description": "The desired page, starting from 1 for the first page."
+    },
+    {
+      "name": "sortKeys",
+      "type": "string",
+      "description": "A sorting request to the server conforming the OpenSearch SRU specification. Example: sortKeys=acquisitionDate,,0 meaning a request to sort by newest acquired image first or sortKeys=cloudCover,,1 to sort by the smallest cloud coverage percentage. Available values are: status, startDate, endDate, taskingProgress"
+    }
+  ]
+}

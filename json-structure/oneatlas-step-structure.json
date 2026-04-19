@@ -1,0 +1,19 @@
+{
+  "name": "step",
+  "description": "Resolution (step) of the image in the output referential. Unit must respect the srs definition.",
+  "fields": [
+    {
+      "name": "unit",
+      "type": "string",
+      "description": "Unit of the step"
+    },
+    {
+      "name": "x",
+      "type": "double"
+    },
+    {
+      "name": "y",
+      "type": "double"
+    }
+  ]
+}

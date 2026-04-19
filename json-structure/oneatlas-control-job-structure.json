@@ -1,0 +1,19 @@
+{
+  "name": "ControlJob",
+  "fields": [
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "priority",
+      "type": "double",
+      "description": "The control priority. The highest priority is 1."
+    },
+    {
+      "name": "steps",
+      "type": "array<object>",
+      "description": "The control steps to validate in order to complete control."
+    }
+  ]
+}

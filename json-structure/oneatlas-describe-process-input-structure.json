@@ -1,0 +1,18 @@
+{
+  "name": "DescribeProcessInput",
+  "description": "A JSON Object that conforms to the InputObject as specified in the Describe Process Specification v1.0. It describes the input schema needed in the job creation payload.",
+  "fields": [
+    {
+      "name": "definitions",
+      "type": "object"
+    },
+    {
+      "name": "properties",
+      "type": "object"
+    },
+    {
+      "name": "required",
+      "type": "array<string>"
+    }
+  ]
+}

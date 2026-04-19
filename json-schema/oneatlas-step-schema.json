@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-step-schema.json",
+  "title": "step",
+  "type": "object",
+  "description": "Resolution (step) of the image in the output referential. Unit must respect the srs definition.",
+  "properties": {
+    "unit": {
+      "description": "Unit of the step",
+      "enum": [
+        "degree"
+      ],
+      "type": "string"
+    },
+    "x": {
+      "type": "number"
+    },
+    "y": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "x",
+    "y"
+  ]
+}

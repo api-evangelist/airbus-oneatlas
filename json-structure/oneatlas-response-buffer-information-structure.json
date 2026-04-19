@@ -1,0 +1,19 @@
+{
+  "name": "responseBufferInformation",
+  "description": "GeoJSon feature describing a buffer",
+  "fields": [
+    {
+      "name": "geometry",
+      "type": "GeojsonGeometry"
+    },
+    {
+      "name": "properties",
+      "type": "object"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "the type of the GeoJSon object"
+    }
+  ]
+}

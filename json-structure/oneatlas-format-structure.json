@@ -1,0 +1,17 @@
+{
+  "name": "Format",
+  "fields": [
+    {
+      "name": "checksum",
+      "type": "object"
+    },
+    {
+      "name": "compression",
+      "type": "string"
+    },
+    {
+      "name": "packaging",
+      "type": "object"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-describe-process-links-schema.json",
+  "title": "DescribeProcessLinks",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/processHALLinkCommon"
+    },
+    {
+      "properties": {
+        "self": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Link"
+            },
+            {
+              "description": "The resource that return this process description"
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    {
+      "properties": {
+        "execution": {
+          "allOf": [
+            {
+              "description": "See [Describe process](#/paths/~1api~1v1~1processes~1{processId}/post)"
+            },
+            {
+              "$ref": "#/components/schemas/Link"
+            }
+          ]
+        }
+      },
+      "type": "object"
+    }
+  ]
+}

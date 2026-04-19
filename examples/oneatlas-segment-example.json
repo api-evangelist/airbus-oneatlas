@@ -1,0 +1,13 @@
+{
+  "id": "example-id",
+  "footprint": "example-footprint",
+  "instrumentMode": "example-instrumentMode",
+  "orderDeadline": "example-orderDeadline",
+  "extendedAngle": true,
+  "acquisitionStartDate": "example-acquisitionStartDate",
+  "acquisitionEndDate": "example-acquisitionEndDate",
+  "incidenceAngle": 1.0,
+  "segmentKey": "example-segmentKey",
+  "acrossTrackIncidenceAngle": 1.0,
+  "maxIncidenceAngle": 1.0
+}

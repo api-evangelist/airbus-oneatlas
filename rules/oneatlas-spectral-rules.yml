@@ -1,0 +1,88 @@
+rules:
+  oneatlas-operation-summary-title-case:
+    description: All operation summaries must use Title Case
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: summary
+      function: pattern
+      functionOptions:
+        match: ^[A-Z]
+  oneatlas-require-operation-id:
+    description: All operations must have an operationId
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+  oneatlas-require-operation-tags:
+    description: All operations must have tags
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+  oneatlas-require-response-200:
+    description: GET operations must define a 200 response
+    severity: error
+    given: $.paths[*].get
+    then:
+      field: responses.200
+      function: truthy
+  oneatlas-schema-title-required:
+    description: Component schemas must have a title
+    severity: warn
+    given: $.components.schemas[*]
+    then:
+      field: title
+      function: truthy
+  oneatlas-require-api-key-security:
+    description: All operations must include API key security
+    severity: error
+    given: $
+    then:
+      field: security
+      function: truthy
+  oneatlas-require-server-url:
+    description: API must define at least one server
+    severity: error
+    given: $
+    then:
+      field: servers
+      function: truthy
+  oneatlas-require-info-description:
+    description: API info must have a description
+    severity: warn
+    given: $.info
+    then:
+      field: description
+      function: truthy
+  oneatlas-require-external-docs:
+    description: API should reference external documentation
+    severity: warn
+    given: $
+    then:
+      field: externalDocs
+      function: truthy
+  oneatlas-require-operation-description:
+    description: All operations must have a description
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: description
+      function: truthy
+  oneatlas-geometry-type-required:
+    description: Geometry schemas must specify a type field
+    severity: warn
+    given: $.components.schemas[?(@.description =~ /.*[Gg]eometr.*/)]
+    then:
+      field: properties.type
+      function: truthy
+  oneatlas-catalog-item-required-fields:
+    description: CatalogItem schema must include id and geometry
+    severity: warn
+    given: $.components.schemas.CatalogItem.properties
+    then:
+      function: schema
+      functionOptions:
+        schema: {}

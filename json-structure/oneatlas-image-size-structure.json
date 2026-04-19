@@ -1,0 +1,16 @@
+{
+  "name": "imageSize",
+  "description": "size (in pixels) of the result",
+  "fields": [
+    {
+      "name": "columns",
+      "type": "double",
+      "description": "number of columns of the output buffer"
+    },
+    {
+      "name": "lines",
+      "type": "double",
+      "description": "number of lines of the output buffer"
+    }
+  ]
+}

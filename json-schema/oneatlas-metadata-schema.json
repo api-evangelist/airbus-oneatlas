@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-metadata-schema.json",
+  "title": "Metadata",
+  "type": "object",
+  "description": "Metadata of a product.",
+  "properties": {
+    "geometry": {
+      "$ref": "#/components/schemas/GeojsonGeometry"
+    },
+    "id": {
+      "$ref": "#/components/schemas/Id"
+    },
+    "properties": {
+      "description": "Metadata properties",
+      "properties": {
+        "_links": {
+          "properties": {
+            "getBuffer": {
+              "$ref": "#/components/schemas/Link"
+            },
+            "getHistogram": {
+              "$ref": "#/components/schemas/Link"
+            },
+            "sourcesMetadata": {
+              "items": {
+                "$ref": "#/components/schemas/Link"
+              },
+              "type": "array",
+              "uniqueItems": true
+            }
+          },
+          "type": "object"
+        },
+        "acquisitionDate": {
+          "example": "2016-02-01T10:17:03.374353Z",
+          "format": "datetime",
+          "type": "string"
+        },
+        "acquisitionStation": {
+          "example": "SE1",
+          "type": "string"
+        },
+        "actualBitDepth": {
+          "example": 16,
+          "format": "integer",
+          "type": "number"
+        },
+        "aoiFactor": {
+          "example": 1.6996806689687964e-05,
+          "format": "float",
+          "type": "number"
+        },
+        "archivingCenter": {
+          "example": "FR1",
+          "type": "string"
+        },
+        "associatedData": {
+          "properties": {
+            "LUT": {
+              "$ref": "#/components/schemas/AssociatedDataLink"
+            },
+            "imageDimap": {
+              "$ref": "#/components/schemas/AssociatedDataLink"
+            }
+          },
+          "type": "object"
+        },
+        "azimuthAngle": {
+          "example": 149.994171293,
+          "format": "float",
+          "type": "number"
+        },
+        "bands": {
+          "items": {
+            "$ref": "#/components/schemas/band"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "cloudCover": {
+          "example": 0,
+          "format": "integer",
+          "type": "number"
+        },
+        "comment": {
+          "example": "14-1088-160/GEOSTORE VRS - DRS Meeting",
+          "type": "string"
+        },
+        "commercialReference": {
+          "example": "SO17023156",
+          "type": "string"
+        },
+        "constellation": {
+          "example": "SPOT",
+          "type": "string"
+        },
+        "crsCode": {
+          "example": "urn:ogc:def:crs:EPSG::4326",
+          "type": "string"
+        },
+        "customerReference": {
+          "example": "C301000",
+          "type": "string"
+        },
+        "endDate": {
+          "example": "2016-02-01T10:17:10.499353Z",
+          "format": "datetime",
+          "type": "string"
+        },
+        "format": {
+          "example": "image/jp2",
+          "type": "string"
+        },
+        "gsdAcrossTrack": {
+          "example": 2.15466485152,
+          "format": "float",
+          "type": "number"
+        },
+        "gsdAlongTrack": {
+          "example": 2.28641421848,
+          "format": "float",
+          "type": "number"
+        },
+        "height": {
+          "example": 27021,
+          "format": "integer",
+          "minimum": 1,
+          "type": "number"
+        },
+        "illuminationAzimuthAngle": {
+          "example": 151.455124155,
+          "format": "float",
+          "type": "number"
+        },
+        "illuminationElevationAngle": {
+          "example": 26.166189855,
+          "format": "float",
+          "type": "number"
+        },
+        "imageId": {
+          "example": "5a277ab0-5315-4042-a676-267152d71e17",
+          "type": "string"
+        },
+        "incidenceAngle": {
+          "example": 11.4367984691,
+          "format": "float",
+          "type": "number"
+        },
+        "incidenceAngleAcrossTrack": {
+          "example": 6.07491942255,
+          "format": "float",
+          "type": "number"
+        },
+        "incidenceAngleAlongTrack": {
+          "example": 9.68737383231,
+          "format": "float",
+          "type": "number"
+        },
+        "jobIdentifier": {
+          "example": "2551123101",
+          "type": "string"
+        },
+        "license": {
+          "example": "NA",
+          "type": "string"
+        },
+        "nBands": {
+          "example": 1,
+          "format": "integer",
+          "type": "number"
+        },
+        "noDataValue": {
+          "example": 0,
+          "format": "integer",
+          "type": "number"
+        },
+        "optimalZoomLevel": {
+          "example": 16,
+          "format": "integer",
+          "type": "number"
+        },
+        "organisationName": {
+          "example": "AIRBUS DS",
+          "type": "string"
+        },
+        "parentIdentifier": {
+          "example": "DS_SPOT6_201602011017034_FR1_FR1_SE1_SE1_E002N41_01384",
+          "type": "string"
+        },
+        "pixelType": {
+          "example": "UInt16",
+          "type": "string"
+        },
+        "platform": {
+          "example": "SPOT6",
+          "type": "string"
+        },
+        "processingCenter": {
+          "example": "AOC",
+          "type": "string"
+        },
+        "processingDate": {
+          "example": "2017-11-22T10:28:23.00Z",
+          "format": "datetime",
+          "type": "string"
+        },
+        "processingLevel": {
+          "example": "SENSOR",
+          "type": "string"
+        },
+        "processorName": {
+          "example": "IMFv6",
+          "type": "string"
+        },
+        "productCategory": {
+          "example": "IMAGERY",
+          "type": "string"
+        },
+        "productId": {
+          "example": "f494e323-e132-4aac-aad2-5123176a6800",
+          "type": "string"
+        },
+        "radiometricProcessing": {
+          "example": "reflectance",
+          "type": "string"
+        },
+        "resolution": {
+          "example": 1.57016,
+          "format": "float",
+          "type": "number"
+        },
+        "sensorType": {
+          "example": "OPTICAL",
+          "type": "string"
+        },
+        "snowCover": {
+          "example": 0,
+          "format": "integer",
+          "type": "number"
+        },
+        "sourceIdentifier": {
+          "example": "SEN_SPOT6_20160201_101703500_000",
+          "type": "string"
+        },
+        "spectralProcessing": {
+          "example": "P",
+          "type": "string"
+        },
+        "spectralRange": {
+          "example": "VISIBLE",
+          "type": "string"
+        },
+        "srsExpression": {
+          "$ref": "#/components/schemas/srsExpression"
+        },
+        "startDate": {
+          "example": "2016-02-01T10:17:03.374353Z",
+          "format": "datetime",
+          "type": "string"
+        },
+        "viewingAngleAcrossTrack": {
+          "example": -7.01806835205,
+          "format": "float",
+          "type": "number"
+        },
+        "viewingAngleAlongTrack": {
+          "example": -7.07707767894,
+          "format": "float",
+          "type": "number"
+        },
+        "width": {
+          "example": 38609,
+          "format": "integer",
+          "minimum": 1,
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "type": {
+      "description": "The type of the object",
+      "enum": [
+        "Feature"
+      ],
+      "example": "Feature",
+      "type": "string"
+    }
+  }
+}

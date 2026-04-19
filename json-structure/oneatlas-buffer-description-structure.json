@@ -1,0 +1,23 @@
+{
+  "name": "bufferDescription",
+  "fields": [
+    {
+      "name": "bands",
+      "type": "array<string>",
+      "description": "Ordered list of requested bands. Bands can be retrieve with `metadata` link given in `_links` property of a feature."
+    },
+    {
+      "name": "bbox",
+      "type": "bbox"
+    },
+    {
+      "name": "step",
+      "type": "step"
+    },
+    {
+      "name": "target-model",
+      "type": "object",
+      "description": "specification of the output buffer"
+    }
+  ]
+}

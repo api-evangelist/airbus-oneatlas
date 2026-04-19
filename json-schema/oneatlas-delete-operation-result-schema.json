@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-delete-operation-result-schema.json",
+  "title": "DeleteOperationResult",
+  "type": "object",
+  "properties": {
+    "deleted": {
+      "description": "The number of deleted items",
+      "format": "integer",
+      "type": "number"
+    },
+    "failures": {
+      "description": "The number of item deletion failures",
+      "format": "integer",
+      "type": "number"
+    },
+    "notFound": {
+      "description": "The number of items not found",
+      "format": "integer",
+      "type": "number"
+    },
+    "total": {
+      "description": "The number of processed items",
+      "format": "integer",
+      "type": "number"
+    }
+  }
+}

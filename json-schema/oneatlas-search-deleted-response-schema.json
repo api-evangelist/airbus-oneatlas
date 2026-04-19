@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-search-deleted-response-schema.json",
+  "title": "search-deleted-response",
+  "type": "object",
+  "properties": {
+    "itemsPerPage": {
+      "type": "integer",
+      "description": "Number of requested items per page",
+      "example": 100,
+      "minimum": 1
+    },
+    "startIndex": {
+      "type": "integer",
+      "description": "The index of the first item present in the response",
+      "example": 0,
+      "minimum": 0
+    },
+    "totalResults": {
+      "type": "integer",
+      "description": "The total number of items present in the catalog",
+      "example": 956126,
+      "minimum": 0
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/deleted-item"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "EmailNotificationParameters",
+  "fields": [
+    {
+      "name": "addresses",
+      "type": "array<string>"
+    }
+  ]
+}

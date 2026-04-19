@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-describe-process-response-schema.json",
+  "title": "DescribeProcessResponse",
+  "type": "object",
+  "description": "a JSON Object that conforms to the Describe Process Specification v1.0",
+  "properties": {
+    "_links": {
+      "$ref": "#/components/schemas/DescribeProcessLinks"
+    },
+    "description": {
+      "type": "string"
+    },
+    "family": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "input": {
+      "$ref": "#/components/schemas/DescribeProcessInput"
+    },
+    "label": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "label",
+    "family",
+    "version",
+    "input",
+    "links"
+  ]
+}

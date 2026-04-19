@@ -1,0 +1,29 @@
+{
+  "name": "IngestionJob",
+  "fields": [
+    {
+      "name": "deleteOrigin",
+      "type": "boolean",
+      "description": "Indicate if data described in source uri shall be deleted after ingestion. Source uri must be a cloud storage uri. If deletion failed, ingestion status is set to `FAILED`."
+    },
+    {
+      "name": "nativeCopy",
+      "type": "boolean",
+      "description": "Indicate if data described in source uri shall be copied for archive after ingestion. If copy failed, ingestion status is set to `FAILED`."
+    },
+    {
+      "name": "sourceUri",
+      "type": "string",
+      "description": "Uri of the resource to ingest. The uri must point to the main file of the resource."
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "Type of data to ingest"
+    },
+    {
+      "name": "workspace",
+      "type": "WorkspaceIdentifier"
+    }
+  ]
+}

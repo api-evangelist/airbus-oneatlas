@@ -1,0 +1,15 @@
+{
+  "_links": {},
+  "creationDate": "example-creationDate",
+  "endDate": "example-endDate",
+  "id": "example-id",
+  "lastStageName": "example-lastStageName",
+  "message": "example-message",
+  "payload": {},
+  "priority": 1.0,
+  "progress": 1.0,
+  "startDate": "example-startDate",
+  "status": "QUEUED",
+  "type": "ingestion",
+  "userId": "example-userId"
+}

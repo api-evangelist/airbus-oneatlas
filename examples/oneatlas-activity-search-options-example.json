@@ -1,0 +1,13 @@
+{
+  "creationDate": "example-creationDate",
+  "endDate": "example-endDate",
+  "itemsPerPage": 1.0,
+  "payload": "example-payload",
+  "progress": 1.0,
+  "sortBy": "example-sortBy",
+  "startDate": "example-startDate",
+  "startIndex": 1.0,
+  "status": "QUEUED",
+  "type": "ingestion",
+  "userId": "example-userId"
+}

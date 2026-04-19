@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-feasibility-schema.json",
+  "title": "Feasibility",
+  "type": "object",
+  "properties": {
+    "progCapacities": {
+      "items": {
+        "properties": {
+          "mission": {
+            "enum": [
+              "PLEIADESNEO"
+            ],
+            "type": "string"
+          },
+          "progTypes": {
+            "items": {
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "mission": {
+                  "enum": [
+                    "PLEIADESNEO"
+                  ],
+                  "type": "string"
+                },
+                "feasibility": {
+                  "properties": {
+                    "automation": {
+                      "description": "To be used when creating the order and/or requesting the quotation",
+                      "enum": [
+                        "AUTOMATIC",
+                        "MANUAL"
+                      ],
+                      "type": "string"
+                    },
+                    "classification": {
+                      "description": "To be used when creating the order and/or requesting the quotation",
+                      "enum": [
+                        "CHALLENGING",
+                        "EASY"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "available": {
+                  "type": "boolean"
+                },
+                "expirationDate": {
+                  "format": "datetime",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    }
+  }
+}

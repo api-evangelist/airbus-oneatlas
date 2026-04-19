@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airbus-oneatlas/refs/heads/main/json-schema/oneatlas-activity-stage-schema.json",
+  "title": "ActivityStage",
+  "type": "object",
+  "properties": {
+    "date": {
+      "default": "now",
+      "description": "Date of the stage",
+      "example": "2018-06-12T11:24:31.254Z",
+      "format": "datetime",
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "name": {
+      "description": "Name of the completed stage",
+      "type": "string"
+    },
+    "status": {
+      "description": "Status of the activity",
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "ON_HOLD",
+        "CANCELED",
+        "WAITING_CANCEL",
+        "SUCCEEDED",
+        "FAILED",
+        "ARCHIVED"
+      ],
+      "type": "string"
+    },
+    "userId": {
+      "allOf": [
+        {
+          "readOnly": true
+        },
+        {
+          "$ref": "#/components/schemas/Id"
+        },
+        {
+          "description": "If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)"
+        }
+      ]
+    }
+  }
+}

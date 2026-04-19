@@ -1,0 +1,13 @@
+{
+  "name": "srsExpression",
+  "fields": [
+    {
+      "name": "axes",
+      "type": "array<object>"
+    },
+    {
+      "name": "names",
+      "type": "array<srs>"
+    }
+  ]
+}

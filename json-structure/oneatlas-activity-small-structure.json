@@ -1,0 +1,14 @@
+{
+  "name": "ActivitySmall",
+  "fields": [
+    {
+      "name": "_links",
+      "type": "object"
+    },
+    {
+      "name": "message",
+      "type": "string",
+      "description": "A free text (copy of the last stage message)"
+    }
+  ]
+}

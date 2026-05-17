@@ -279,7 +279,7 @@ common:
   description: 'null'
 - url: https://status.oneatlas.airbus.com/
   name: Status Page OneAtlas
-  type: Status
+  type: StatusPage
   description: 'null'
 - url: https://api.oneatlas.airbus.com/releases/
   name: Releases
@@ -303,7 +303,7 @@ common:
   url: capabilities/oneatlas-geospatial-data-access.yaml
 - type: Vocabulary
   url: vocabulary/oneatlas-vocabulary.yaml
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/oneatlas-context.jsonld
 - type: JSONSchema
   url: json-schema/oneatlas-acquisition-date-schema.json

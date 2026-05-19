@@ -1,0 +1,306 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Airbus OneAtlas OneAtlas Radar API — Sar/Shopcart
+  description: 'Airbus OneAtlas OneAtlas Radar API — Sar/Shopcart. 7 operations. Lead operation: Airbus OneAtlas Get Shopcart.
+    Self-contained Naftiko capability covering one Airbus Oneatlas business surface.'
+  tags:
+  - Airbus Oneatlas
+  - Sar/Shopcart
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AIRBUS_ONEATLAS_API_KEY: AIRBUS_ONEATLAS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: oneatlas-radar-sar-shopcart
+    baseUri: https://sar.api.oneatlas.airbus.com/v1
+    description: Airbus OneAtlas OneAtlas Radar API — Sar/Shopcart business capability. Self-contained, no shared references.
+    resources:
+    - name: sar-shopcart
+      path: /sar/shopcart
+      operations:
+      - name: get
+        method: GET
+        description: Airbus OneAtlas Get Shopcart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: patch
+        method: PATCH
+        description: Airbus OneAtlas Update Shopcart Parameters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sar-shopcart-addItems
+      path: /sar/shopcart/addItems
+      operations:
+      - name: post
+        method: POST
+        description: Airbus OneAtlas Add Items to Shopcart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sar-shopcart-items
+      path: /sar/shopcart/items
+      operations:
+      - name: patch
+        method: PATCH
+        description: Airbus OneAtlas Update Item Parameters.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sar-shopcart-items-itemId
+      path: /sar/shopcart/items/{itemId}
+      operations:
+      - name: patch
+        method: PATCH
+        description: Airbus OneAtlas Update Item Parameters.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sar-shopcart-removeItems
+      path: /sar/shopcart/removeItems
+      operations:
+      - name: post
+        method: POST
+        description: Airbus OneAtlas Remove Items from Shopcart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sar-shopcart-submit
+      path: /sar/shopcart/submit
+      operations:
+      - name: post
+        method: POST
+        description: Airbus OneAtlas Submit Shopcart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.AIRBUS_ONEATLAS_USER}}'
+      password: '{{env.AIRBUS_ONEATLAS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: oneatlas-radar-sar-shopcart-rest
+    port: 8080
+    description: REST adapter for Airbus OneAtlas OneAtlas Radar API — Sar/Shopcart. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/sar/shopcart
+      name: sar-shopcart
+      description: REST surface for sar-shopcart.
+      operations:
+      - method: GET
+        name: get
+        description: Airbus OneAtlas Get Shopcart
+        call: oneatlas-radar-sar-shopcart.get
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patch
+        description: Airbus OneAtlas Update Shopcart Parameters
+        call: oneatlas-radar-sar-shopcart.patch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sar/shopcart/additems
+      name: sar-shopcart-additems
+      description: REST surface for sar-shopcart-addItems.
+      operations:
+      - method: POST
+        name: post
+        description: Airbus OneAtlas Add Items to Shopcart
+        call: oneatlas-radar-sar-shopcart.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sar/shopcart/items
+      name: sar-shopcart-items
+      description: REST surface for sar-shopcart-items.
+      operations:
+      - method: PATCH
+        name: patch
+        description: Airbus OneAtlas Update Item Parameters.
+        call: oneatlas-radar-sar-shopcart.patch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sar/shopcart/items/{itemid}
+      name: sar-shopcart-items-itemid
+      description: REST surface for sar-shopcart-items-itemId.
+      operations:
+      - method: PATCH
+        name: patch
+        description: Airbus OneAtlas Update Item Parameters.
+        call: oneatlas-radar-sar-shopcart.patch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sar/shopcart/removeitems
+      name: sar-shopcart-removeitems
+      description: REST surface for sar-shopcart-removeItems.
+      operations:
+      - method: POST
+        name: post
+        description: Airbus OneAtlas Remove Items from Shopcart
+        call: oneatlas-radar-sar-shopcart.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sar/shopcart/submit
+      name: sar-shopcart-submit
+      description: REST surface for sar-shopcart-submit.
+      operations:
+      - method: POST
+        name: post
+        description: Airbus OneAtlas Submit Shopcart
+        call: oneatlas-radar-sar-shopcart.post
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: oneatlas-radar-sar-shopcart-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Airbus OneAtlas OneAtlas Radar API — Sar/Shopcart. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: airbus-oneatlas-get-shopcart
+      description: Airbus OneAtlas Get Shopcart
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oneatlas-radar-sar-shopcart.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-update-shopcart-parameters
+      description: Airbus OneAtlas Update Shopcart Parameters
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: oneatlas-radar-sar-shopcart.patch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-add-items-shopcart
+      description: Airbus OneAtlas Add Items to Shopcart
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: oneatlas-radar-sar-shopcart.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-update-item-parameters
+      description: Airbus OneAtlas Update Item Parameters.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: oneatlas-radar-sar-shopcart.patch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-update-item-parameters-2
+      description: Airbus OneAtlas Update Item Parameters.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: oneatlas-radar-sar-shopcart.patch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-remove-items-shopcart
+      description: Airbus OneAtlas Remove Items from Shopcart
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: oneatlas-radar-sar-shopcart.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-submit-shopcart
+      description: Airbus OneAtlas Submit Shopcart
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: oneatlas-radar-sar-shopcart.post
+      outputParameters:
+      - type: object
+        mapping: $.

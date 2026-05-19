@@ -1,0 +1,207 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Airbus OneAtlas OneAtlas Radar API — Sar/Search
+  description: 'Airbus OneAtlas OneAtlas Radar API — Sar/Search. 4 operations. Lead operation: Airbus OneAtlas Search for
+    Possible Acquisitions in Catalogue. Self-contained Naftiko capability covering one Airbus Oneatlas business surface.'
+  tags:
+  - Airbus Oneatlas
+  - Sar/Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AIRBUS_ONEATLAS_API_KEY: AIRBUS_ONEATLAS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: oneatlas-radar-sar-search
+    baseUri: https://sar.api.oneatlas.airbus.com/v1
+    description: Airbus OneAtlas OneAtlas Radar API — Sar/Search business capability. Self-contained, no shared references.
+    resources:
+    - name: sar-catalogue
+      path: /sar/catalogue
+      operations:
+      - name: post
+        method: POST
+        description: Airbus OneAtlas Search for Possible Acquisitions in Catalogue
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sar-catalogue-retrieve
+      path: /sar/catalogue/retrieve
+      operations:
+      - name: post
+        method: POST
+        description: Airbus OneAtlas Retrieve Ordered Items from Catalogue
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sar-feasibility
+      path: /sar/feasibility
+      operations:
+      - name: post
+        method: POST
+        description: Airbus OneAtlas Search for Possible Acquisitions for Tasking
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sar-stacks
+      path: /sar/stacks
+      operations:
+      - name: post
+        method: POST
+        description: Airbus OneAtlas Create Stacks from Template Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.AIRBUS_ONEATLAS_USER}}'
+      password: '{{env.AIRBUS_ONEATLAS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: oneatlas-radar-sar-search-rest
+    port: 8080
+    description: REST adapter for Airbus OneAtlas OneAtlas Radar API — Sar/Search. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/sar/catalogue
+      name: sar-catalogue
+      description: REST surface for sar-catalogue.
+      operations:
+      - method: POST
+        name: post
+        description: Airbus OneAtlas Search for Possible Acquisitions in Catalogue
+        call: oneatlas-radar-sar-search.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sar/catalogue/retrieve
+      name: sar-catalogue-retrieve
+      description: REST surface for sar-catalogue-retrieve.
+      operations:
+      - method: POST
+        name: post
+        description: Airbus OneAtlas Retrieve Ordered Items from Catalogue
+        call: oneatlas-radar-sar-search.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sar/feasibility
+      name: sar-feasibility
+      description: REST surface for sar-feasibility.
+      operations:
+      - method: POST
+        name: post
+        description: Airbus OneAtlas Search for Possible Acquisitions for Tasking
+        call: oneatlas-radar-sar-search.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sar/stacks
+      name: sar-stacks
+      description: REST surface for sar-stacks.
+      operations:
+      - method: POST
+        name: post
+        description: Airbus OneAtlas Create Stacks from Template Items
+        call: oneatlas-radar-sar-search.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: oneatlas-radar-sar-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Airbus OneAtlas OneAtlas Radar API — Sar/Search. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: airbus-oneatlas-search-possible-acquisitions
+      description: Airbus OneAtlas Search for Possible Acquisitions in Catalogue
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: oneatlas-radar-sar-search.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-retrieve-ordered-items
+      description: Airbus OneAtlas Retrieve Ordered Items from Catalogue
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: oneatlas-radar-sar-search.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-search-possible-acquisitions-2
+      description: Airbus OneAtlas Search for Possible Acquisitions for Tasking
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: oneatlas-radar-sar-search.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-create-stacks-template
+      description: Airbus OneAtlas Create Stacks from Template Items
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: oneatlas-radar-sar-search.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,349 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Airbus OneAtlas OneAtlas Radar API — Sar/Baskets
+  description: 'Airbus OneAtlas OneAtlas Radar API — Sar/Baskets. 9 operations. Lead operation: Airbus OneAtlas Get All Baskets.
+    Self-contained Naftiko capability covering one Airbus Oneatlas business surface.'
+  tags:
+  - Airbus Oneatlas
+  - Sar/Baskets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AIRBUS_ONEATLAS_API_KEY: AIRBUS_ONEATLAS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: oneatlas-radar-sar-baskets
+    baseUri: https://sar.api.oneatlas.airbus.com/v1
+    description: Airbus OneAtlas OneAtlas Radar API — Sar/Baskets business capability. Self-contained, no shared references.
+    resources:
+    - name: sar-baskets
+      path: /sar/baskets
+      operations:
+      - name: get
+        method: GET
+        description: Airbus OneAtlas Get All Baskets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: post
+        method: POST
+        description: Airbus OneAtlas Create Basket
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: sar-baskets-basketId
+      path: /sar/baskets/{basketId}
+      operations:
+      - name: get
+        method: GET
+        description: Airbus OneAtlas Get Basket
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: patch
+        method: PATCH
+        description: Airbus OneAtlas Update Basket Parameters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: put
+        method: PUT
+        description: Airbus OneAtlas Replace Basket Parameters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Airbus OneAtlas Delete Basket
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: sar-baskets-basketId-addItems
+      path: /sar/baskets/{basketId}/addItems
+      operations:
+      - name: post
+        method: POST
+        description: Airbus OneAtlas Add Items to Basket
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sar-baskets-basketId-removeItems
+      path: /sar/baskets/{basketId}/removeItems
+      operations:
+      - name: post
+        method: POST
+        description: Airbus OneAtlas Remove Items from Basket
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sar-baskets-basketId-submit
+      path: /sar/baskets/{basketId}/submit
+      operations:
+      - name: post
+        method: POST
+        description: Airbus OneAtlas Submit Basket
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.AIRBUS_ONEATLAS_USER}}'
+      password: '{{env.AIRBUS_ONEATLAS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: oneatlas-radar-sar-baskets-rest
+    port: 8080
+    description: REST adapter for Airbus OneAtlas OneAtlas Radar API — Sar/Baskets. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/sar/baskets
+      name: sar-baskets
+      description: REST surface for sar-baskets.
+      operations:
+      - method: GET
+        name: get
+        description: Airbus OneAtlas Get All Baskets
+        call: oneatlas-radar-sar-baskets.get
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: post
+        description: Airbus OneAtlas Create Basket
+        call: oneatlas-radar-sar-baskets.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sar/baskets/{basketid}
+      name: sar-baskets-basketid
+      description: REST surface for sar-baskets-basketId.
+      operations:
+      - method: GET
+        name: get
+        description: Airbus OneAtlas Get Basket
+        call: oneatlas-radar-sar-baskets.get
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patch
+        description: Airbus OneAtlas Update Basket Parameters
+        call: oneatlas-radar-sar-baskets.patch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: put
+        description: Airbus OneAtlas Replace Basket Parameters
+        call: oneatlas-radar-sar-baskets.put
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Airbus OneAtlas Delete Basket
+        call: oneatlas-radar-sar-baskets.delete
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sar/baskets/{basketid}/additems
+      name: sar-baskets-basketid-additems
+      description: REST surface for sar-baskets-basketId-addItems.
+      operations:
+      - method: POST
+        name: post
+        description: Airbus OneAtlas Add Items to Basket
+        call: oneatlas-radar-sar-baskets.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sar/baskets/{basketid}/removeitems
+      name: sar-baskets-basketid-removeitems
+      description: REST surface for sar-baskets-basketId-removeItems.
+      operations:
+      - method: POST
+        name: post
+        description: Airbus OneAtlas Remove Items from Basket
+        call: oneatlas-radar-sar-baskets.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sar/baskets/{basketid}/submit
+      name: sar-baskets-basketid-submit
+      description: REST surface for sar-baskets-basketId-submit.
+      operations:
+      - method: POST
+        name: post
+        description: Airbus OneAtlas Submit Basket
+        call: oneatlas-radar-sar-baskets.post
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: oneatlas-radar-sar-baskets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Airbus OneAtlas OneAtlas Radar API — Sar/Baskets. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: airbus-oneatlas-get-all-baskets
+      description: Airbus OneAtlas Get All Baskets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oneatlas-radar-sar-baskets.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-create-basket
+      description: Airbus OneAtlas Create Basket
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: oneatlas-radar-sar-baskets.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-get-basket
+      description: Airbus OneAtlas Get Basket
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: oneatlas-radar-sar-baskets.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-update-basket-parameters
+      description: Airbus OneAtlas Update Basket Parameters
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: oneatlas-radar-sar-baskets.patch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-replace-basket-parameters
+      description: Airbus OneAtlas Replace Basket Parameters
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: oneatlas-radar-sar-baskets.put
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-delete-basket
+      description: Airbus OneAtlas Delete Basket
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: oneatlas-radar-sar-baskets.delete
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-add-items-basket
+      description: Airbus OneAtlas Add Items to Basket
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: oneatlas-radar-sar-baskets.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-remove-items-basket
+      description: Airbus OneAtlas Remove Items from Basket
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: oneatlas-radar-sar-baskets.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: airbus-oneatlas-submit-basket
+      description: Airbus OneAtlas Submit Basket
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: oneatlas-radar-sar-baskets.post
+      outputParameters:
+      - type: object
+        mapping: $.

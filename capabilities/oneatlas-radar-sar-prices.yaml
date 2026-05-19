@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Airbus OneAtlas OneAtlas Radar API — Sar/Prices
+  description: 'Airbus OneAtlas OneAtlas Radar API — Sar/Prices. 1 operations. Lead operation: Airbus OneAtlas Get Prices
+    for Items. Self-contained Naftiko capability covering one Airbus Oneatlas business surface.'
+  tags:
+  - Airbus Oneatlas
+  - Sar/Prices
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AIRBUS_ONEATLAS_API_KEY: AIRBUS_ONEATLAS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: oneatlas-radar-sar-prices
+    baseUri: https://sar.api.oneatlas.airbus.com/v1
+    description: Airbus OneAtlas OneAtlas Radar API — Sar/Prices business capability. Self-contained, no shared references.
+    resources:
+    - name: sar-prices
+      path: /sar/prices
+      operations:
+      - name: post
+        method: POST
+        description: Airbus OneAtlas Get Prices for Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.AIRBUS_ONEATLAS_USER}}'
+      password: '{{env.AIRBUS_ONEATLAS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: oneatlas-radar-sar-prices-rest
+    port: 8080
+    description: REST adapter for Airbus OneAtlas OneAtlas Radar API — Sar/Prices. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/sar/prices
+      name: sar-prices
+      description: REST surface for sar-prices.
+      operations:
+      - method: POST
+        name: post
+        description: Airbus OneAtlas Get Prices for Items
+        call: oneatlas-radar-sar-prices.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: oneatlas-radar-sar-prices-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Airbus OneAtlas OneAtlas Radar API — Sar/Prices. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: airbus-oneatlas-get-prices-items
+      description: Airbus OneAtlas Get Prices for Items
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: oneatlas-radar-sar-prices.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

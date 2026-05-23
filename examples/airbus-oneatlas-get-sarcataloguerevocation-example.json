@@ -1,0 +1,27 @@
+{
+  "operationId": "get-sarcataloguerevocation",
+  "method": "GET",
+  "path": "/sar/catalogue/revocation",
+  "summary": "Airbus OneAtlas Get Catalogue Revocations",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "_links": {
+          "next": "https://sarapi.intelligence-airbusds.com/v1/sar/catalogue/revocation?limit=100&token=P5uvZ0N2zAUsiScDJA",
+          "self": "https://sarapi.intelligence-airbusds.com/v1/sar/catalogue/revocation?limit=100"
+        },
+        "limit": 100,
+        "size": 1,
+        "data": [
+          {
+            "acquisitionId": "TDX-1_ST_S_spot_028R_45707_A14252474_413",
+            "issueTime": "2021-04-08T00:56:40Z"
+          }
+        ]
+      }
+    }
+  ]
+}

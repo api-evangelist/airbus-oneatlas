@@ -1,0 +1,75 @@
+{
+  "operationId": "get-sarcataloguereplication",
+  "method": "GET",
+  "path": "/sar/catalogue/replication",
+  "summary": "Airbus OneAtlas Replicate Catalogue",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "_links": {
+          "next": "https://sarapi.intelligence-airbusds.com/v1/sar/catalogue/replication?limit=100&token=P5uvZ0N2zAUsiScDJA",
+          "self": "https://sarapi.intelligence-airbusds.com/v1/sar/catalogue/replication?limit=100"
+        },
+        "limit": 100,
+        "size": 1,
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    13.420763,
+                    52.5176849
+                  ],
+                  [
+                    13.4126594,
+                    52.5434549
+                  ],
+                  [
+                    13.3163278,
+                    52.5317222
+                  ],
+                  [
+                    13.3250953,
+                    52.5060288
+                  ],
+                  [
+                    13.420763,
+                    52.5176849
+                  ]
+                ]
+              ]
+            },
+            "properties": {
+              "absoluteOrbit": 45707,
+              "acquisitionId": "TDX-1_ST_S_spot_028R_45707_A14252474_413",
+              "antennaMode": "SRA",
+              "beamId": "spot_028",
+              "catalogueTime": "2018-09-18T07:49:40.804Z",
+              "incidenceAngle": {
+                "minimum": 29.72,
+                "maximum": 30.46
+              },
+              "lookDirection": "R",
+              "mission": "TSX",
+              "outOfFullPerformance": false,
+              "pathDirection": "ascending",
+              "polarizationChannels": "VV",
+              "relativeOrbit": 146,
+              "satellite": "TDX-1",
+              "sensorMode": "SAR_ST_S",
+              "startTime": "2018-09-17T16:44:52.439Z",
+              "stopTime": "2018-09-17T16:44:52.852Z"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

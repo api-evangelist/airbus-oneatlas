@@ -1,0 +1,78 @@
+{
+  "operationId": "post-sarfeasibility",
+  "method": "POST",
+  "path": "/sar/feasibility",
+  "summary": "Airbus OneAtlas Search for Possible Acquisitions for Tasking",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "aoi": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                9.346,
+                47.788
+              ],
+              [
+                9.291,
+                47.644
+              ],
+              [
+                9.538,
+                47.592
+              ],
+              [
+                9.62,
+                47.75
+              ],
+              [
+                9.511,
+                47.802
+              ],
+              [
+                9.346,
+                47.788
+              ]
+            ]
+          ]
+        },
+        "tags": [
+          "Project 1"
+        ],
+        "time": {
+          "from": "2022-10-14T13:28:03.569Z",
+          "to": "2022-10-24T13:28:03.569Z"
+        },
+        "mission": [
+          "TSX",
+          "PAZ"
+        ],
+        "feasibilityLevel": "complete",
+        "sensorMode": "SAR_SM_S",
+        "polarizationChannels": "HH",
+        "incidenceAngle": {
+          "minimum": 30,
+          "maximum": 50
+        },
+        "pathDirection": [
+          "ascending",
+          "descending"
+        ],
+        "lookDirection": "R",
+        "outOfFullPerformance": false,
+        "orderTemplate": "default",
+        "productType": "EEC",
+        "resolutionVariant": "SE",
+        "acquisitionOnly": false,
+        "receivingStation": "NSG_POOL",
+        "orbitType": "NRT",
+        "geocodedIncidenceMask": false,
+        "mapProjection": "auto",
+        "gainAttenuation": 0
+      }
+    }
+  ],
+  "responseExamples": []
+}

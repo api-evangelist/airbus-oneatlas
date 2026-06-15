@@ -1,0 +1,287 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "user",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Return Account Information of the Current User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/user/whoami"
+          },
+          "docs": "Return Account Information of the Current User"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "accounting/balance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/accounting/balance"
+          },
+          "docs": "Get the Balance"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "accounting/transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Transactions of the Current User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/accounting/transactions"
+          },
+          "docs": "Get Transactions of the Current User"
+        },
+        {
+          "info": {
+            "name": "Get Specific Transaction of the Current User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/accounting/transactions/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "UUID of requested transaction"
+              }
+            ]
+          },
+          "docs": "Get Specific Transaction of the Current User"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "elevation/price",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the Price of Elevation Item/download Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/elevation/price",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the Price of Elevation Item/download Request"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "elevation/orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Orders as References",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/elevation/orders"
+          },
+          "docs": "Get All Orders as References"
+        },
+        {
+          "info": {
+            "name": "Create New Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/elevation/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create New Order"
+        },
+        {
+          "info": {
+            "name": "Get All Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/elevation/orders/full"
+          },
+          "docs": "Get All Orders"
+        },
+        {
+          "info": {
+            "name": "Get Order Information by the Id with References to the Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/elevation/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "requested order id"
+              }
+            ]
+          },
+          "docs": "Get Order Information by the Id with References to the Items"
+        },
+        {
+          "info": {
+            "name": "Get Order Information by the Id with Full Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/elevation/orders/:orderId/full",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "requested order id"
+              }
+            ]
+          },
+          "docs": "Get Order Information by the Id with Full Items"
+        },
+        {
+          "info": {
+            "name": "Get Reference of Items of the Specified Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/elevation/orders/:orderId/items",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "requested order id"
+              }
+            ]
+          },
+          "docs": "Get Reference of Items of the Specified Order"
+        },
+        {
+          "info": {
+            "name": "Get Full Items of the Specified Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/elevation/orders/:orderId/items/full",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "requested order id"
+              }
+            ]
+          },
+          "docs": "Get Full Items of the Specified Order"
+        },
+        {
+          "info": {
+            "name": "Get Metadata of the Specified Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/elevation/orders/:orderId/items/:itemId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "requested order id"
+              },
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "requested item id"
+              }
+            ]
+          },
+          "docs": "Get Metadata of the Specified Item"
+        },
+        {
+          "info": {
+            "name": "Download the Specified Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/elevation/orders/:orderId/items/:itemId/download",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "requested order id"
+              },
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "requested item id"
+              }
+            ]
+          },
+          "docs": "Download the Specified Item"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

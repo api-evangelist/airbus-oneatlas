@@ -1,0 +1,669 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Airbus OneAtlas OneAtlas Radar API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Return Account Information of the Current User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/user/whoami"
+          },
+          "docs": "Airbus OneAtlas Return Account Information of the Current User"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sar/Config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Retrieve Entire Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/config"
+          },
+          "docs": "Airbus OneAtlas Retrieve Entire Configuration"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Retrieve List of Order Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/config/orderTemplates"
+          },
+          "docs": "Airbus OneAtlas Retrieve List of Order Templates"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get User Permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/config/permissions"
+          },
+          "docs": "Airbus OneAtlas Get User Permissions"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Allowed Receiving Stations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/config/receivingStations"
+          },
+          "docs": "Airbus OneAtlas Get Allowed Receiving Stations"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sar/Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Search for Possible Acquisitions for Tasking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/feasibility",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Search for Possible Acquisitions for Tasking"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Search for Possible Acquisitions in Catalogue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/catalogue",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Search for Possible Acquisitions in Catalogue"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Retrieve Ordered Items from Catalogue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/catalogue/retrieve",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Retrieve Ordered Items from Catalogue"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Create Stacks from Template Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/stacks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Create Stacks from Template Items"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sar/Replication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Replicate Catalogue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/catalogue/replication",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of datatakes to be returned per request. The actual number returned can be less depending on the workload of the server."
+              },
+              {
+                "name": "since",
+                "value": "2022-10-31 07:28:00",
+                "type": "query",
+                "description": "Return datatakes that were added to the catalogue since the given date."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token used to retrieve the next set of datatakes. Tokens do not expire and can be used for incremental updates on a weekly, daily, or even on a hourly schedule."
+              }
+            ]
+          },
+          "docs": "Replicate the catalogue and retrieve latest datatakes."
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Download Complete Catalogue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/catalogue/download"
+          },
+          "docs": "Download the complete catalogue as vector dataset suitable for GIS analysis."
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Catalogue Revocations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/catalogue/revocation",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of revocations to be returned per request. The actual number returned can be less depending on the workload of the server."
+              },
+              {
+                "name": "since",
+                "value": "2022-10-31 07:28:00",
+                "type": "query",
+                "description": "Return revocations issued since the given date."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token used to retrieve the next set of revocations. Tokens do not expire and can be used for incremental updates on a weekly, daily, or even on a hourly schedule."
+              }
+            ]
+          },
+          "docs": "Retrieve catalogue revocations, i.e. catalogue datatakes that cannot be ordered anymore."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sar/Prices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Prices for Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/prices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Get Prices for Items"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sar/Editing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Swath Editing Information for Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/swathedit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Get Swath Editing Information for Items"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Update Swath Editing Information for Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/swathedit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Update Swath Editing Information for Items"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Update Order Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/orderOptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Update Order Options"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sar/Baskets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get All Baskets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets"
+          },
+          "docs": "Airbus OneAtlas Get All Baskets"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Create Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Create Basket"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Airbus OneAtlas Get Basket"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Replace Basket Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Replace Basket Parameters"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Update Basket Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Update Basket Parameters"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Delete Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Airbus OneAtlas Delete Basket"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Add Items to Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId/addItems",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Add Items to Basket"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Remove Items from Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId/removeItems",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Remove Items from Basket"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Submit Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId/submit",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Airbus OneAtlas Submit Basket"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sar/Shopcart",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Shopcart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart"
+          },
+          "docs": "Airbus OneAtlas Get Shopcart"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Update Shopcart Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Update Shopcart Parameters"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Add Items to Shopcart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart/addItems",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Add Items to Shopcart"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Remove Items from Shopcart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart/removeItems",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Remove Items from Shopcart"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Update Item Parameters.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart/items",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Update Item Parameters."
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Update Item Parameters.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart/items/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "item to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Update Item Parameters."
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Submit Shopcart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart/submit"
+          },
+          "docs": "Airbus OneAtlas Submit Shopcart"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sar/Monitoring",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get List of Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/orders"
+          },
+          "docs": "Airbus OneAtlas Get List of Orders"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Order Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/orders/:orderIdOrBasketId",
+            "params": [
+              {
+                "name": "orderIdOrBasketId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Airbus OneAtlas Get Order Details"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Status of Items with Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/orders/*/items/status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Get Status of Items with Filter"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Items Only with OrderItemId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/orders/*/items",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Get Items Only with OrderItemId"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

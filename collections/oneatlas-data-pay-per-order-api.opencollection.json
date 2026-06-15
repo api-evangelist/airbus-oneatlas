@@ -1,0 +1,1408 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas Data Pay-Per-Order API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Monitor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/activities/search",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "creationDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "itemsPerPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "payload",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "progress",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search activities depending on given parameters."
+        },
+        {
+          "info": {
+            "name": "Search Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/activities/search",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search activities depending on given parameters."
+        },
+        {
+          "info": {
+            "name": "Get Activity Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/activities/:activityId",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "activityId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+              }
+            ]
+          },
+          "docs": "Get the detail of an activity.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or create process response."
+        },
+        {
+          "info": {
+            "name": "Cancel Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/activities/:activityId/cancel",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "activityId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel an activity.\n\nIf the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity."
+        },
+        {
+          "info": {
+            "name": "Run Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/activities/:activityId/rerun",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "activityId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set activity status to `RUNNING` only for manual activities such as physical delivering.\n\nIf the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.\n"
+        },
+        {
+          "info": {
+            "name": "Get Activity Stages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/activities/:activityId/stages",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "activityId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+              }
+            ]
+          },
+          "docs": "Get the stages of an activity. This url is not forged but directly retrieved using the monitoring key in the ingestion/process/format order response.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or create process response."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Deliver",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fail Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/activities/:activityId/fail",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "activityId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set activity status to `FAILED` only for manual activities such as physical delivering.\n\nIf the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.\n"
+        },
+        {
+          "info": {
+            "name": "Succeed Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/activities/:activityId/succeed",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "activityId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set activity status to `SUCCESSED` only for manual activities such as physical delivering.\n\nIf the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Control",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Hold Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/activities/:activityId/hold",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "activityId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Hold activity and set activity status to `ON_HOLD` only for manual activities such as control or physical delivering.\n\nIf the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catalog search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Catalog Items with Opensearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v2/opensearch",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "bbox",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "geometry",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "acquisitionDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "acquisitionStation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "archiveAnonymousIdentifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "archivingCenter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "archiveIdentifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "azimuthAngle",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "class",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "center",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cloudCover",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "comment",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commercialReference",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "constellation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "correlationId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "downloadingRequested",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expirationDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "featureCount",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "icr",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "illuminationAngleSeparation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "illuminationAzimuthAngle",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "illuminationElevationAngle",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "incidenceAngle",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "incidenceAngleAcrossTrack",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "incidenceAngleAlongTrack",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "meanDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orbit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "organisationName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "parentIdenfifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "processingCenter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "processingDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "processingLevel",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "processorName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "productCategory",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "productionStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "productType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "publicationDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "relation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "resolution",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "resourceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "satellite",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sensorType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "snowCover",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sourceIdentifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "spectralRange",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "station",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "stereoMethod",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "viewingAngleSeparation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "itemsPerPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search catalog items. Search is case sensitive. Results match all\nparameters.\n"
+        },
+        {
+          "info": {
+            "name": "Search Catalog Items with Opensearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v2/opensearch",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search catalog items. Search is case sensitive. Results match all\nparameters.\n"
+        },
+        {
+          "info": {
+            "name": "Get Domain for a Given Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v2/opensearch/domains/:propertyName",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "propertyName",
+                "value": "processingLevel",
+                "type": "path",
+                "description": "The name of a queryable item property"
+              }
+            ]
+          },
+          "docs": "Given a property name, it returns the eligible existing values for querying items looking for this particular property\n"
+        },
+        {
+          "info": {
+            "name": "Search Deleted Catalog Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/deleted/search",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search deleted catalog items by deleted date.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Contract related Information",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "User Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/me"
+          },
+          "docs": "Allow to retrieve the list of contracts on which you have been authorized to place orders"
+        },
+        {
+          "info": {
+            "name": "Get Contracts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/contracts"
+          },
+          "docs": "Get all contracts"
+        },
+        {
+          "info": {
+            "name": "Get Product Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/contracts/:CisContractId/productTypes"
+          },
+          "docs": "This request displays the possible ordered product types associated to a contract."
+        },
+        {
+          "info": {
+            "name": "Get Markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/:cisContractId/properties"
+          },
+          "docs": "Allow to retrieve the list of markets (ex - AGRI). Market is a mandatory information."
+        },
+        {
+          "info": {
+            "name": "Get Delivery Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/:cisContractId/deliveryTypes"
+          },
+          "docs": "Get the list of available delivery types."
+        },
+        {
+          "info": {
+            "name": "Get Production Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/contracts/:cisContractId/productTypes/:productTypeId/options",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Allow to retrieve the production options available on your contract for one given product type"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Default",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v1/opensearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/opensearch"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SPOT and Pleiades ordering",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/orders",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number, defaults to '1'"
+              },
+              {
+                "name": "itemsPerPage",
+                "value": "",
+                "type": "query",
+                "description": "Amount of items per page, defaults to '10'"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders by status"
+              },
+              {
+                "name": "kind",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders by kind"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders by tags, comma-separated values"
+              }
+            ]
+          },
+          "docs": "Get all orders"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an order"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Ordering",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check Feasibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/feasibility",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check Feasibility"
+        },
+        {
+          "info": {
+            "name": "Retrieve Attempts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/attempts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get tasking attempts"
+        },
+        {
+          "info": {
+            "name": "Calculate a Price",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/prices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<h3>Archive and Tasking ordering</h3>\n"
+        },
+        {
+          "info": {
+            "name": "Request a Quotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/quotations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request a quotation"
+        },
+        {
+          "info": {
+            "name": "Place an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com /api/v1/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Place an Order"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "APIkey management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns the List of Authenticated or Impersonated User's Apikeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/apikeys"
+          },
+          "docs": "Returns the list of authenticated or impersonated user's apikeys"
+        },
+        {
+          "info": {
+            "name": "Create a New API Key Attached to the Authenticated or Impersonated User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/apikeys"
+          },
+          "docs": "Create a new API Key attached to the authenticated or impersonated user"
+        },
+        {
+          "info": {
+            "name": "Delete a User's API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://order.api.oneatlas.airbus.com/apikeys/:apikey_id",
+            "params": [
+              {
+                "name": "apikey_id",
+                "value": "",
+                "type": "path",
+                "description": "id of the API Key to delete"
+              }
+            ]
+          },
+          "docs": "Delete a User's API Key"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Token retrieval",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authenticate Using an API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/auth/realms/IDP/protocol/openid-connect/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "apikey",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "grant_type",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Authenticate Using an API Key"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PleiadesNeo specific",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Track Your Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v2/orders/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to see all your orders"
+        },
+        {
+          "info": {
+            "name": "Retrieve Acquisitions on an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/coverages/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can retrieve coverage items using this endpoint"
+        },
+        {
+          "info": {
+            "name": "Accept an Acquisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.comapi/v1/coverages/:coverageItemId/accept"
+          },
+          "docs": "You can accept an acquisition using this endpoint"
+        },
+        {
+          "info": {
+            "name": "Refuse an Acquisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.comapi/v1/coverages/:coverageItemId/refuse"
+          },
+          "docs": "You can refuse an acquisition using this endpoint"
+        },
+        {
+          "info": {
+            "name": "Stop a Tasking Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.comapi/v1/orders/:orderItemId/stop"
+          },
+          "docs": "To stop a tasking order, use the following endpoint"
+        },
+        {
+          "info": {
+            "name": "Track Your Quotations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.comapi/v2/orders/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can track your quotations using this endpoint"
+        },
+        {
+          "info": {
+            "name": "Get a PDF Quotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/quotations/:quotationId/export"
+          },
+          "docs": "To generate a PDF of a specific quotation, use the following endpoint"
+        },
+        {
+          "info": {
+            "name": "Accept a Quotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/quotations/:quotationId/export"
+          },
+          "docs": "You can accept a quotation using this endpoint"
+        },
+        {
+          "info": {
+            "name": "Refuse a Quotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/contracts/:CisContractId/quotations/:quotationId/refuse"
+          },
+          "docs": "You can refuse a quotation using this endpoint"
+        },
+        {
+          "info": {
+            "name": "Cancel a Tasking Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.comapi/v1/orders/:orderItemId/cancel"
+          },
+          "docs": "To Cancel a tasking order, use the following endpoint"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tasking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Taskings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/contracts/:contractId/taskings",
+            "params": [
+              {
+                "name": "contractId",
+                "value": "",
+                "type": "path",
+                "description": "It corresponds to an internal id for the customer contract - you will be provided the contractId"
+              },
+              {
+                "name": "taskingIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "customerRef",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "program",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mission",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "progTypeNames",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "acquisitionDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "icrEndOfPeriodDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasProposedSegments",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortKeys",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "get taskings"
+        },
+        {
+          "info": {
+            "name": "Get Tasking by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/contracts/:contractId/taskings/:taskingId",
+            "params": [
+              {
+                "name": "contractId",
+                "value": "",
+                "type": "path",
+                "description": "It corresponds to an internal id for the customer contract - you will be provided the contractId"
+              },
+              {
+                "name": "taskingId",
+                "value": "",
+                "type": "path",
+                "description": "The tasking id"
+              }
+            ]
+          },
+          "docs": "Get tasking by tasking id"
+        },
+        {
+          "info": {
+            "name": "Cancel Tasking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.com/api/v1/contracts/:contractId/taskings/:taskingId/cancel",
+            "params": [
+              {
+                "name": "contractId",
+                "value": "",
+                "type": "path",
+                "description": "It corresponds to an internal id for the customer contract - you will be provided the contractId"
+              },
+              {
+                "name": "taskingId",
+                "value": "",
+                "type": "path",
+                "description": "The tasking id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel tasking"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SPOT and Pleiades specific",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Track Your Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.comapi/v1/contracts/:cisContractId/taskings"
+          },
+          "docs": "You can see all your tasking orders."
+        },
+        {
+          "info": {
+            "name": "Track an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.comapi/v1/contracts/:cisContractId/taskings/:taskingId"
+          },
+          "docs": "To see the status of a dedicated tasking, you can use the following endpoint after having retrieved the <taskingId>, available in the email notification under ICR_ID."
+        },
+        {
+          "info": {
+            "name": "Track Orders with Customerref",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.comapi/v1/contracts/:cisContractId/taskings?customerRef=yourCustomerReference",
+            "params": [
+              {
+                "name": "CustomerReference",
+                "value": "",
+                "type": "path",
+                "description": "The Customer Reference"
+              }
+            ]
+          },
+          "docs": "Track orders attached to a customer reference."
+        },
+        {
+          "info": {
+            "name": "Retrieve Acquisitions on an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://order.api.oneatlas.airbus.comapi/v1/contracts/:CisContractId/taskings/:taskingId/segments"
+          },
+          "docs": "Retrieve Acquisitions on an Order"
+        },
+        {
+          "info": {
+            "name": "Accept Acquisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.comapi/v1/contracts/:CisContractId/taskings/:tasking_Id/segments/:segmentId/accept"
+          },
+          "docs": "To accept an acquisition, use the following endpoint"
+        },
+        {
+          "info": {
+            "name": "Refuse Acquisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://order.api.oneatlas.airbus.comapi/v1/contracts/:CisContractId/taskings/:tasking_Id/segments/:segmentId/refuse"
+          },
+          "docs": "To refuse an acquisition, use the following endpoint"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

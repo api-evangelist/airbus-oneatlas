@@ -595,165 +595,165 @@ common:
     url: json-structure/oneatlas-workspace-search-response-structure.json
   - type: JSONStructure
     url: json-structure/oneatlas-workspace-structure.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-acquisition-date-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-activity-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-activity-search-options-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-activity-search-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-activity-small-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-activity-stage-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-activity-stages-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-api-key-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-api-key-page-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-associated-data-link-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-band-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-bbox-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-buffer-description-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-catalog-delete-expired-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-catalog-item-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-control-job-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-delete-operation-result-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-deleted-item-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-delivery-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-delivery-pneo-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-dem-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-describe-process-input-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-describe-process-links-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-describe-process-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-dimap-v2-packaging-parameters-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-email-notification-parameters-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-feasibility-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-features-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-footprint-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-format-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-geo-json-linestring-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-geo-json-multilinestring-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-geo-json-multipoint-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-geo-json-multipolygon-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-geo-json-point-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-geo-json-polygon-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-geojson-geometry-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-geometry-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-get-domain-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-histogram-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-human-readable-operation-summary-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-image-size-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-ingestion-job-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-link-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-md5-checksum-parameters-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-messagequeue-notification-parameters-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-metadata-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-notification-search-options-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-notification-search-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-notification-subscription-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-optical-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-pixel-coding-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-point-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-privilege-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-privilege-search-options-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-privilege-search-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-process-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-process-hal-catalog-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-process-hal-link-catalog-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-process-hal-link-common-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-process-hal-link-describe-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-processes-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-response-buffer-information-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-search-deleted-options-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-search-deleted-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-search-options-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-search-options-v2-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-search-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-segment-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-srs-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-srs-expression-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-step-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-target-workspace-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-tasking-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-update-options-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-update-response-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-webhook-notification-parameters-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-workspace-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-workspace-search-options-example.json
-  - type: Example
+  - type: Examples
     url: examples/oneatlas-workspace-search-response-example.json
 created: '2025-02-06'
 modified: '2026-05-19'

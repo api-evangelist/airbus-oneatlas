@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/airbus-oneatlas-worlddem-api-openapi.yml, openapi/oneatlas-basemap-api-openapi.yml,
+  openapi/oneatlas-radar-api-openapi.yml, openapi/oneatlas-worlddem-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/airbus-oneatlas-worlddem-api-openapi.yml
+  - openapi/oneatlas-radar-api-openapi.yml
+  - openapi/oneatlas-worlddem-api-openapi.yml
+- name: Bearer
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'Enter the token with the `Bearer: ` prefix, e.g. "Bearer abcde12345".'
+  sources:
+  - openapi/oneatlas-basemap-api-openapi.yml

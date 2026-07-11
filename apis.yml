@@ -239,6 +239,12 @@ type: Index
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+  - type: VulnerabilityDisclosure
+    url: security/airbus-oneatlas-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/airbus-oneatlas-domain-security.yml
+  - type: Authentication
+    url: authentication/airbus-oneatlas-authentication.yml
   - url: https://api.oneatlas.airbus.com/getting-started/
     name: Getting started
     type: GettingStarted

@@ -20,6 +20,6 @@ schemes:
   type: apiKey
   in: header
   parameter: Authorization
-  description: 'Enter the token with the `Bearer: ` prefix, e.g. "Bearer abcde12345".'
+  description: 'Enter the token with the `Bearer: ` prefix, e.g. "Bearer [example key]".'
   sources:
   - openapi/oneatlas-basemap-api-openapi.yml

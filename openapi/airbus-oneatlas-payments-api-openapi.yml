@@ -1,0 +1,84 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access payments API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: payments
+paths:
+  /api/v1/payments/{paymentId}/refunds:
+    parameters:
+    - $ref: '#/components/parameters/paymentId'
+    - $ref: '#/components/parameters/page'
+    - $ref: '#/components/parameters/itemsPerPage'
+    get:
+      description: Get refunded payments by payment id
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $schema: http://json-schema.org/draft-06/schema#
+                additionalProperties: true
+                id: http://local/schemas/private/payments.json#
+                properties:
+                  contractId:
+                    type: string
+                  createdAt:
+                    type: string
+                  creditAmount:
+                    type: integer
+                  description:
+                    type: string
+                  id:
+                    type: string
+                  orderId:
+                    type: string
+                  subscriptionId:
+                    type: string
+                  type:
+                    enum:
+                    - payment
+                    - refund
+                    - credit
+                    type: string
+                title: Payment schema
+                type: object
+          description: payment
+      summary: Get Refunded Payments
+      tags:
+      - payments
+components:
+  parameters:
+    itemsPerPage:
+      description: Amount of items per page, defaults to '10'
+      in: query
+      name: itemsPerPage
+      schema:
+        minimum: 1
+        type: number
+    paymentId:
+      description: The payment id
+      in: path
+      name: paymentId
+      required: true
+      schema:
+        type: string
+    page:
+      description: Page number, defaults to '1'
+      in: query
+      name: page
+      schema:
+        minimum: 1
+        type: number
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

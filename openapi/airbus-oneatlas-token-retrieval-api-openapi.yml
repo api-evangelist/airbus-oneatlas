@@ -1,0 +1,133 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Token retrieval API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Token retrieval
+paths:
+  /auth/realms/IDP/protocol/openid-connect/token:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                apikey:
+                  description: The OneAtlas API key associated with the service account to authenticate.
+                  example: SDKI5Fkx_LpILj_4kZjTJsoVgjJHvzj8khr4kwljpEjkjptuFYkSiALHYTuHlRblrizOYHbCX12Z2jRq-jHoUZD==
+                  type: string
+                client_id:
+                  description: The API service group accessed. This service group can be retrieved by consulting the service documentation or calling the unprotected _/well_known/serviceGroup_ URI on the service itself.
+                  enum:
+                  - IDP
+                  type: string
+                grant_type:
+                  description: OneAtlas Grant type. Must be the value _api_key_ for API key authentication.
+                  enum:
+                  - api_key
+                  type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  access_token:
+                    description: The access token to use when calling protected APIs for the requested service group.
+                    type: string
+                  expires_in:
+                    description: The number of secondes before this token is considered invalid (expiration).
+                    format: integer
+                    type: number
+                  not-before-policy:
+                    format: integer
+                    type: number
+                  refresh_expires_in:
+                    format: integer
+                    type: number
+                  session_state:
+                    $ref: '#/components/schemas/Id'
+                  token_type:
+                    description: The type of the returned token. Currently only bearer is supported.
+                    enum:
+                    - bearer
+                    type: string
+                type: object
+              example:
+                access_token: HEADER.PAYLOAD.SIGNATURE
+                expires_in: 3600
+                refresh_expires_in: 0
+                token_type: Bearer
+                not-before-policy: 0
+                session_state: 0fc9b229-6b13-4ff6-812c-a4b1519704eb
+                scope: ''
+          description: Authentication successful
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Authenticate Using an API Key
+      tags:
+      - Token retrieval
+      servers:
+      - description: Prod authenticate server
+        url: https://authenticate.foundation.api.oneatlas.airbus.com
+components:
+  schemas:
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+  responses:
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

@@ -1,0 +1,252 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Tasking API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Tasking
+paths:
+  /api/v1/contracts/{contractId}/taskings:
+    parameters:
+    - $ref: '#/components/parameters/contractId'
+    - in: query
+      name: taskingIds
+      schema:
+        $ref: '#/components/schemas/tasking/properties/taskingIds'
+    - in: query
+      name: customerRef
+      schema:
+        $ref: '#/components/schemas/tasking/properties/customerRef'
+    - in: query
+      name: program
+      schema:
+        $ref: '#/components/schemas/tasking/properties/program'
+    - in: query
+      name: status
+      schema:
+        $ref: '#/components/schemas/tasking/properties/status'
+    - in: query
+      name: mission
+      schema:
+        $ref: '#/components/schemas/tasking/properties/mission'
+    - in: query
+      name: progTypeNames
+      schema:
+        $ref: '#/components/schemas/tasking/properties/progTypeNames'
+    - in: query
+      name: acquisitionDate
+      schema:
+        $ref: '#/components/schemas/tasking/properties/acquisitionDate'
+    - in: query
+      name: icrEndOfPeriodDate
+      schema:
+        $ref: '#/components/schemas/tasking/properties/icrEndOfPeriodDate'
+    - in: query
+      name: hasProposedSegments
+      schema:
+        $ref: '#/components/schemas/tasking/properties/hasProposedSegments'
+    - in: query
+      name: count
+      schema:
+        $ref: '#/components/schemas/tasking/properties/count'
+    - in: query
+      name: startPage
+      schema:
+        $ref: '#/components/schemas/tasking/properties/startPage'
+    - in: query
+      name: sortKeys
+      schema:
+        $ref: '#/components/schemas/tasking/properties/sortKeys'
+    get:
+      summary: Get Taskings
+      description: get taskings
+      responses:
+        '200':
+          description: List of taskings
+          content:
+            application/json:
+              schema: null
+      tags:
+      - Tasking
+      servers:
+      - description: Tasking API server
+        url: https://task.api.oneatlas.airbus.com/
+  /api/v1/contracts/{contractId}/taskings/{taskingId}:
+    parameters:
+    - $ref: '#/components/parameters/contractId'
+    - $ref: '#/components/parameters/taskingId'
+    get:
+      summary: Get Tasking by Id
+      description: Get tasking by tasking id
+      responses:
+        '200':
+          description: List of tasking
+          content:
+            application/json:
+              schema: null
+      tags:
+      - Tasking
+      servers:
+      - description: Tasking API server
+        url: https://task.api.oneatlas.airbus.com/
+  /api/v1/contracts/{contractId}/taskings/{taskingId}/cancel:
+    parameters:
+    - $ref: '#/components/parameters/contractId'
+    - $ref: '#/components/parameters/taskingId'
+    post:
+      summary: Cancel Tasking
+      description: Cancel tasking
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Tasking
+      servers:
+      - description: Tasking API server
+        url: https://task.api.oneatlas.airbus.com/
+components:
+  parameters:
+    contractId:
+      description: It corresponds to an internal id for the customer contract - you will be provided the contractId
+      in: path
+      name: contractId
+      required: true
+      schema:
+        type: string
+    taskingId:
+      description: The tasking id
+      in: path
+      name: taskingId
+      required: true
+      schema:
+        type: string
+  schemas:
+    tasking:
+      properties:
+        customerRef:
+          name: customerRef
+          in: query
+          description: Customer reference
+          type: string
+          schema:
+            type: string
+        icrEndOfPeriodDate:
+          name: icrEndOfPeriodDate
+          in: query
+          description: 'A date or date interval that must match the icr end of period date. Only taskings in this range are returned in the response. Example: [2017-01-01,2017-02-01[ to select all taskings done in January 2017.'
+          type: string
+          schema:
+            type: string
+            format: Interval of dates in ISO 8601
+        sortKeys:
+          name: sortKeys
+          in: query
+          description: 'A sorting request to the server conforming the OpenSearch SRU specification. Example: sortKeys=acquisitionDate,,0 meaning a request to sort by newest acquired image first or sortKeys=cloudCover,,1 to sort by the smallest cloud coverage percentage. Available values are: status, startDate, endDate, taskingProgress'
+          type: string
+          schema:
+            type: string
+            format: OpenSearch SRU
+        count:
+          name: count
+          in: query
+          description: Number of items per page
+          type: integer
+          schema:
+            type: integer
+            default: 10
+        status:
+          name: status
+          in: query
+          description: ICR Status
+          type: array
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+              - Feasibility study in progress
+              - In Progress
+              - Paused
+              - Canceled
+              - Completed
+        taskingIds:
+          name: taskingIds
+          in: query
+          description: ICR's list
+          type: array
+          schema:
+            type: array
+            items:
+              type: string
+        startPage:
+          name: startPage
+          in: query
+          description: The desired page, starting from 1 for the first page.
+          type: integer
+          schema:
+            type: integer
+            default: 1
+        mission:
+          name: mission
+          in: query
+          description: mission name
+          type: string
+          schema:
+            type: string
+            enum:
+            - SPOT
+            - PLEIADES
+        program:
+          name: program
+          in: query
+          description: Program name
+          type: string
+          schema:
+            type: string
+        hasProposedSegments:
+          name: hasProposedSegments
+          in: query
+          description: Indicates whether the search should filter on proposed segments. If set to true, only ICR with proposed segments should be returned. If set to false, only ICR with no proposed segments. If not set, returns all ICR ignoring presence/absence of proposed segments
+          type: boolean
+          schema:
+            type: boolean
+        acquisitionDate:
+          name: acquisitionDate
+          in: query
+          description: 'A date or date interval that must match the product acquisition date. Only taskings in this range are returned in the response. Example: [2017-01-01,2017-02-01[ to select all taskings done in January 2017.'
+          type: string
+          schema:
+            type: string
+            format: Interval of dates in ISO 8601
+        progTypeNames:
+          name: progTypeNames
+          in: query
+          description: Refer to one-tasking online documentation at http://www.intelligence-airbusds.com/ for more information
+          type: string
+          schema:
+            type: string
+            enum:
+            - ONEDAY
+            - ONENOW
+            - ONEPLAN
+            - ONESERIES
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

@@ -1,0 +1,135 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access SPOT and Pleiades specific API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: SPOT and Pleiades specific
+paths:
+  api/v1/contracts/{cisContractId}/taskings:
+    get:
+      summary: Track Your Orders
+      tags:
+      - SPOT and Pleiades specific
+      description: You can see all your tasking orders.
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com
+  api/v1/contracts/{cisContractId}/taskings/{taskingId}:
+    get:
+      summary: Track an Order
+      tags:
+      - SPOT and Pleiades specific
+      description: To see the status of a dedicated tasking, you can use the following endpoint after having retrieved the <taskingId>, available in the email notification under ICR_ID.
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com
+  api/v1/contracts/{cisContractId}/taskings?customerRef=yourCustomerReference:
+    get:
+      summary: Track Orders with Customerref
+      tags:
+      - SPOT and Pleiades specific
+      description: Track orders attached to a customer reference.
+      parameters:
+      - $ref: '#/components/parameters/CustomerReference'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                taskings:
+                - sal: SALXXXXXX
+                  so: SOXXXXX
+                  icr:
+                    id: ICR_FC_XXXXX
+                    aoi:
+                      type: Polygon
+                      coordinates:
+                      - - - 122.680848001114
+                          - -24.4983000806924
+                        - - 122.837192701615
+                          - -24.494335091697
+                        - - 122.834119286537
+                          - -24.3386542248409
+                        - - 122.6804797677
+                          - -24.3373016179506
+                        - - 122.680848001114
+                          - -24.4983000806924
+                    progTypeName: OneDay
+                    status: Completed
+                    nbProposedSegments: 0
+                    nbTotalSegments: 0
+                    period:
+                      startDate: '2021-03-03T01:54:44Z'
+                      endDate: '2021-03-03T02:24:47Z'
+                    seriesInformation: null
+                    customerRef: customer ref
+                    taskingProgress:
+                      orderedArea: 275718686.400068
+                      validatedArea: 0
+                    attempts: 2021-03-03T02:09:44.999Z 2021-03-03T02:09:47.001Z
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com
+  api/v1/contracts/{CisContractId}/taskings/{taskingId}/segments:
+    get:
+      summary: Retrieve Acquisitions on an Order
+      tags:
+      - SPOT and Pleiades specific
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                segments:
+                - id: AS_FC_XXXX_1_2
+                  status: Proposed
+                  asDetail1:
+                    catalogId: DS_PHR1B_XXXXXX
+                    footprint:
+                      type: Polygon
+                      coordinates: coordinates
+                    incidenceAngle: 15.1072
+                    clearSkyRate: 88.8973
+                    acquisitionDate: '2021-04-18T10:53:38Z'
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com
+  api/v1/contracts/{CisContractId}/taskings/{tasking_Id}/segments/{segmentId}/accept:
+    post:
+      summary: Accept Acquisition
+      description: To accept an acquisition, use the following endpoint
+      tags:
+      - SPOT and Pleiades specific
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com/
+  api/v1/contracts/{CisContractId}/taskings/{tasking_Id}/segments/{segmentId}/refuse:
+    post:
+      summary: Refuse Acquisition
+      description: To refuse an acquisition, use the following endpoint
+      tags:
+      - SPOT and Pleiades specific
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com/
+components:
+  parameters:
+    CustomerReference:
+      description: The Customer Reference
+      in: path
+      name: CustomerReference
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

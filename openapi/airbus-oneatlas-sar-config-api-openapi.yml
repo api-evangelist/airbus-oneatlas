@@ -1,0 +1,554 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Sar/Config API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Sar/Config
+  description: 'Endpoint for SAR specific user configuration.
+
+    '
+paths:
+  /sar/config:
+    get:
+      summary: Airbus OneAtlas Retrieve Entire Configuration
+      tags:
+      - Sar/Config
+      responses:
+        '200':
+          description: omnibus configuration
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  permissions:
+                    type: object
+                    properties:
+                      acquisitionOnly:
+                        type: boolean
+                      leftLooking:
+                        type: boolean
+                      outOfFullPerformance:
+                        type: boolean
+                      PAZ:
+                        type: boolean
+                    required:
+                    - acquisitionOnly
+                    - leftLooking
+                    - outOfFullPerformance
+                    - PAZ
+                  receivingStations:
+                    type: array
+                    items:
+                      description: Downlink station to use for direct-access customers
+                      type: string
+                      default: NSG_POOL
+                      example: NSG_POOL
+                  orderTemplates:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        default:
+                          type: boolean
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+  /sar/config/orderTemplates:
+    get:
+      summary: Airbus OneAtlas Retrieve List of Order Templates
+      tags:
+      - Sar/Config
+      responses:
+        '200':
+          description: list of order templates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    default:
+                      type: boolean
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+  /sar/config/permissions:
+    get:
+      summary: Airbus OneAtlas Get User Permissions
+      tags:
+      - Sar/Config
+      responses:
+        '200':
+          description: user permissions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  acquisitionOnly:
+                    type: boolean
+                  leftLooking:
+                    type: boolean
+                  outOfFullPerformance:
+                    type: boolean
+                  PAZ:
+                    type: boolean
+                required:
+                - acquisitionOnly
+                - leftLooking
+                - outOfFullPerformance
+                - PAZ
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+  /sar/config/receivingStations:
+    get:
+      summary: Airbus OneAtlas Get Allowed Receiving Stations
+      tags:
+      - Sar/Config
+      responses:
+        '200':
+          description: list of receiving stations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  description: Downlink station to use for direct-access customers
+                  type: string
+                  default: NSG_POOL
+                  example: NSG_POOL
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

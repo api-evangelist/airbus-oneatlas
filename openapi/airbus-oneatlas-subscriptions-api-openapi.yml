@@ -1,0 +1,1244 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Subscriptions API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Subscriptions
+paths:
+  /api/v1/contracts/{contractId}:
+    parameters:
+    - $ref: '#/components/parameters/contractId'
+    get:
+      description: Get contract by id
+      summary: Get Contract by Id
+      tags:
+      - Subscriptions
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $schema: http://json-schema.org/draft-06/schema#
+                description: Contracts api
+                id: http://local/schemas/private/contracts.json
+                oneOf:
+                - properties:
+                    credits:
+                      minimum: 0
+                      type: number
+                    geofence:
+                      $schema: http://json-schema.org/draft-06/schema#
+                      definitions:
+                        multiPolygonAoi:
+                          properties:
+                            coordinates:
+                              items:
+                                items:
+                                  items:
+                                    items:
+                                      type: number
+                                    maxItems: 2
+                                    minItems: 2
+                                    type: array
+                                  minItems: 4
+                                  type: array
+                                minItems: 1
+                                type: array
+                              minItems: 1
+                              type: array
+                            type:
+                              enum:
+                              - MultiPolygon
+                          type: object
+                        polygonAoi:
+                          properties:
+                            coordinates:
+                              items:
+                                items:
+                                  items:
+                                    type: number
+                                  maxItems: 2
+                                  minItems: 2
+                                  type: array
+                                minItems: 4
+                                type: array
+                              minItems: 1
+                              type: array
+                            type:
+                              enum:
+                              - Polygon
+                          type: object
+                      description: aoi definition
+                      id: http://local/schemas/public/aoi.json#
+                      oneOf:
+                      - properties:
+                          coordinates:
+                            items:
+                              items:
+                                items:
+                                  type: number
+                                maxItems: 2
+                                minItems: 2
+                                type: array
+                              minItems: 4
+                              type: array
+                            minItems: 1
+                            type: array
+                          type:
+                            enum:
+                            - Polygon
+                        type: object
+                      - properties:
+                          coordinates:
+                            items:
+                              items:
+                                items:
+                                  items:
+                                    type: number
+                                  maxItems: 2
+                                  minItems: 2
+                                  type: array
+                                minItems: 4
+                                type: array
+                              minItems: 1
+                              type: array
+                            minItems: 1
+                            type: array
+                          type:
+                            enum:
+                            - MultiPolygon
+                        type: object
+                      title: aoi
+                      type: object
+                    kind:
+                      pattern: ^contract.change-detection$
+                    name:
+                      type: string
+                    oneliveZoomLimit:
+                      default: 14
+                      type:
+                      - integer
+                      - 'null'
+                  required:
+                  - name
+                  - credits
+                  - kind
+                  type: object
+                - properties:
+                    credits:
+                      minimum: 0
+                      type: number
+                    geofence:
+                      $schema: http://json-schema.org/draft-06/schema#
+                      definitions:
+                        multiPolygonAoi:
+                          properties:
+                            coordinates:
+                              items:
+                                items:
+                                  items:
+                                    items:
+                                      type: number
+                                    maxItems: 2
+                                    minItems: 2
+                                    type: array
+                                  minItems: 4
+                                  type: array
+                                minItems: 1
+                                type: array
+                              minItems: 1
+                              type: array
+                            type:
+                              enum:
+                              - MultiPolygon
+                          type: object
+                        polygonAoi:
+                          properties:
+                            coordinates:
+                              items:
+                                items:
+                                  items:
+                                    type: number
+                                  maxItems: 2
+                                  minItems: 2
+                                  type: array
+                                minItems: 4
+                                type: array
+                              minItems: 1
+                              type: array
+                            type:
+                              enum:
+                              - Polygon
+                          type: object
+                      description: aoi definition
+                      id: http://local/schemas/public/aoi.json#
+                      oneOf:
+                      - properties:
+                          coordinates:
+                            items:
+                              items:
+                                items:
+                                  type: number
+                                maxItems: 2
+                                minItems: 2
+                                type: array
+                              minItems: 4
+                              type: array
+                            minItems: 1
+                            type: array
+                          type:
+                            enum:
+                            - Polygon
+                        type: object
+                      - properties:
+                          coordinates:
+                            items:
+                              items:
+                                items:
+                                  items:
+                                    type: number
+                                  maxItems: 2
+                                  minItems: 2
+                                  type: array
+                                minItems: 4
+                                type: array
+                              minItems: 1
+                              type: array
+                            minItems: 1
+                            type: array
+                          type:
+                            enum:
+                            - MultiPolygon
+                        type: object
+                      title: aoi
+                      type: object
+                    kind:
+                      pattern: ^contract.oneatlasdata.early-adopter$
+                    name:
+                      type: string
+                    oneliveZoomLimit:
+                      default: 14
+                      type:
+                      - integer
+                      - 'null'
+                  required:
+                  - name
+                  - credits
+                  - kind
+                  type: object
+                - properties:
+                    credits:
+                      minimum: 0
+                      type: number
+                    geofence:
+                      $schema: http://json-schema.org/draft-06/schema#
+                      definitions:
+                        multiPolygonAoi:
+                          properties:
+                            coordinates:
+                              items:
+                                items:
+                                  items:
+                                    items:
+                                      type: number
+                                    maxItems: 2
+                                    minItems: 2
+                                    type: array
+                                  minItems: 4
+                                  type: array
+                                minItems: 1
+                                type: array
+                              minItems: 1
+                              type: array
+                            type:
+                              enum:
+                              - MultiPolygon
+                          type: object
+                        polygonAoi:
+                          properties:
+                            coordinates:
+                              items:
+                                items:
+                                  items:
+                                    type: number
+                                  maxItems: 2
+                                  minItems: 2
+                                  type: array
+                                minItems: 4
+                                type: array
+                              minItems: 1
+                              type: array
+                            type:
+                              enum:
+                              - Polygon
+                          type: object
+                      description: aoi definition
+                      id: http://local/schemas/public/aoi.json#
+                      oneOf:
+                      - properties:
+                          coordinates:
+                            items:
+                              items:
+                                items:
+                                  type: number
+                                maxItems: 2
+                                minItems: 2
+                                type: array
+                              minItems: 4
+                              type: array
+                            minItems: 1
+                            type: array
+                          type:
+                            enum:
+                            - Polygon
+                        type: object
+                      - properties:
+                          coordinates:
+                            items:
+                              items:
+                                items:
+                                  items:
+                                    type: number
+                                  maxItems: 2
+                                  minItems: 2
+                                  type: array
+                                minItems: 4
+                                type: array
+                              minItems: 1
+                              type: array
+                            minItems: 1
+                            type: array
+                          type:
+                            enum:
+                            - MultiPolygon
+                        type: object
+                      title: aoi
+                      type: object
+                    kind:
+                      pattern: ^contract.oneatlasdata.premium$
+                    name:
+                      type: string
+                    oneliveZoomLimit:
+                      default: 14
+                      type:
+                      - integer
+                      - 'null'
+                  required:
+                  - name
+                  - credits
+                  - kind
+                  type: object
+                - properties:
+                    content:
+                      properties:
+                        datasets:
+                          items:
+                            enum:
+                            - barcelonaHarbor
+                            - bostonConventionCenter
+                            - budapest
+                            - capetownHarbor
+                            - casablancaHarbor
+                            - dubai
+                            - istanbul
+                            - mexicoAirport
+                            - rio
+                            - sanFranciscoAirport
+                            - shanghai
+                            - sydneyOpera
+                            type: string
+                          maxItems: 3
+                          minItems: 1
+                          type: array
+                          uniqueItems: true
+                      required:
+                      - datasets
+                      type: object
+                    kind:
+                      pattern: ^contract.oneatlasdata.freemium$
+                    name:
+                      type: string
+                  required:
+                  - content
+                  - kind
+                  type: object
+                title: Contracts
+          description: contract
+  /api/v1/contracts/{contractId}/payments:
+    parameters:
+    - $ref: '#/components/parameters/contractId'
+    get:
+      description: Get all payments for the user contract
+      summary: Get All Contract Payments
+      tags:
+      - Subscriptions
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/itemsPerPage'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $schema: http://json-schema.org/draft-06/schema#
+                  additionalProperties: true
+                  id: http://local/schemas/private/payments.json#
+                  properties:
+                    contractId:
+                      type: string
+                    createdAt:
+                      type: string
+                    creditAmount:
+                      type: integer
+                    description:
+                      type: string
+                    id:
+                      type: string
+                    orderId:
+                      type: string
+                    subscriptionId:
+                      type: string
+                    type:
+                      enum:
+                      - payment
+                      - refund
+                      - credit
+                      type: string
+                  title: Payment schema
+                  type: object
+                type: array
+          description: payment list
+  /api/v1/contracts/{contractId}/subscriptions:
+    parameters:
+    - $ref: '#/components/parameters/contractId'
+    get:
+      description: Get all subscriptions by contract id
+      summary: Get All Subscriptions by Contract Id
+      tags:
+      - Subscriptions
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/itemsPerPage'
+      - description: Filter subscriptions by type
+        in: query
+        name: type
+        schema:
+          enum:
+          - view
+          - change-detection
+          type: string
+      - description: Filter subscriptions by status
+        in: query
+        name: status
+        schema:
+          enum:
+          - pending
+          - active
+          - suspended
+          - revoked
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $schema: http://json-schema.org/draft-06/schema#
+                  description: Subscriptions
+                  id: http://local/schemas/public/subscriptions.json
+                  oneOf:
+                  - additionalProperties: false
+                    properties:
+                      duration:
+                        minimum: 1
+                        type: integer
+                      geofence:
+                        $schema: http://json-schema.org/draft-06/schema#
+                        definitions:
+                          multiPolygonAoi:
+                            properties:
+                              coordinates:
+                                items:
+                                  items:
+                                    items:
+                                      items:
+                                        type: number
+                                      maxItems: 2
+                                      minItems: 2
+                                      type: array
+                                    minItems: 4
+                                    type: array
+                                  minItems: 1
+                                  type: array
+                                minItems: 1
+                                type: array
+                              type:
+                                enum:
+                                - MultiPolygon
+                            type: object
+                          polygonAoi:
+                            properties:
+                              coordinates:
+                                items:
+                                  items:
+                                    items:
+                                      type: number
+                                    maxItems: 2
+                                    minItems: 2
+                                    type: array
+                                  minItems: 4
+                                  type: array
+                                minItems: 1
+                                type: array
+                              type:
+                                enum:
+                                - Polygon
+                            type: object
+                        description: aoi definition
+                        id: http://local/schemas/public/aoi.json#
+                        oneOf:
+                        - properties:
+                            coordinates:
+                              items:
+                                items:
+                                  items:
+                                    type: number
+                                  maxItems: 2
+                                  minItems: 2
+                                  type: array
+                                minItems: 4
+                                type: array
+                              minItems: 1
+                              type: array
+                            type:
+                              enum:
+                              - Polygon
+                          type: object
+                        - properties:
+                            coordinates:
+                              items:
+                                items:
+                                  items:
+                                    items:
+                                      type: number
+                                    maxItems: 2
+                                    minItems: 2
+                                    type: array
+                                  minItems: 4
+                                  type: array
+                                minItems: 1
+                                type: array
+                              minItems: 1
+                              type: array
+                            type:
+                              enum:
+                              - MultiPolygon
+                          type: object
+                        title: aoi
+                        type: object
+                      monthlyPrice:
+                        type: number
+                      paymentModality:
+                        enum:
+                        - monthly
+                        - full
+                      startedAt:
+                        description: ISO 8061 Notation
+                        pattern: \s*[0-9]{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])\s*
+                        type: string
+                      streamingPlan:
+                        pattern: ^custom$
+                      tileAmount:
+                        type: integer
+                      title:
+                        type: string
+                      type:
+                        pattern: ^view$
+                    required:
+                    - type
+                    - duration
+                    - paymentModality
+                    - tileAmount
+                    - monthlyPrice
+                    - streamingPlan
+                    type: object
+                  - additionalProperties: false
+                    properties:
+                      aoi:
+                        properties:
+                          coordinates:
+                            items:
+                              items:
+                                items:
+                                  type: number
+                                maxItems: 2
+                                minItems: 2
+                                type: array
+                              minItems: 4
+                              type: array
+                            minItems: 1
+                            type: array
+                          type:
+                            enum:
+                            - Polygon
+                        type: object
+                      duration:
+                        enum:
+                        - 3
+                        - 6
+                        - 12
+                      frequency:
+                        enum:
+                        - monthly
+                      resolution:
+                        enum:
+                        - 0.5
+                        - 1.5
+                      startedAt:
+                        description: ISO 8061 Notation
+                        pattern: \s*[0-9]{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])\s*
+                        type: string
+                      title:
+                        type: string
+                      type:
+                        pattern: ^change-detection$
+                    required:
+                    - aoi
+                    - type
+                    - resolution
+                    - duration
+                    type: object
+                  title: Subscriptions
+                type: array
+          description: subscription list
+  /api/v1/me:
+    get:
+      description: Get user informations about contract
+      responses:
+        '200':
+          description: user information
+      summary: User Information
+      tags:
+      - Subscriptions
+  /api/v1/me/services:
+    get:
+      description: Returns the different services the current user can access based on his contract
+      responses:
+        '200':
+          description: services information
+      summary: Services the Current User Can Access
+      tags:
+      - Subscriptions
+  /api/v1/orders/{orderId}/payments:
+    parameters:
+    - $ref: '#/components/parameters/orderId'
+    get:
+      description: Get payment for the user contract and order id
+      summary: Get Payment by Order Id
+      tags:
+      - Subscriptions
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $schema: http://json-schema.org/draft-06/schema#
+                  additionalProperties: true
+                  id: http://local/schemas/private/payments.json#
+                  properties:
+                    contractId:
+                      type: string
+                    createdAt:
+                      type: string
+                    creditAmount:
+                      type: integer
+                    description:
+                      type: string
+                    id:
+                      type: string
+                    orderId:
+                      type: string
+                    subscriptionId:
+                      type: string
+                    type:
+                      enum:
+                      - payment
+                      - refund
+                      - credit
+                      type: string
+                  title: Payment schema
+                  type: object
+                type: array
+          description: payment
+  /api/v1/payments:
+    get:
+      description: Get all payments for the current user contract
+      summary: Get All Payments for the Current User Contract
+      tags:
+      - Subscriptions
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/itemsPerPage'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $schema: http://json-schema.org/draft-06/schema#
+                  additionalProperties: true
+                  id: http://local/schemas/private/payments.json#
+                  properties:
+                    contractId:
+                      type: string
+                    createdAt:
+                      type: string
+                    creditAmount:
+                      type: integer
+                    description:
+                      type: string
+                    id:
+                      type: string
+                    orderId:
+                      type: string
+                    subscriptionId:
+                      type: string
+                    type:
+                      enum:
+                      - payment
+                      - refund
+                      - credit
+                      type: string
+                  title: Payment schema
+                  type: object
+                type: array
+          description: payment list
+  /api/v1/payments/{paymentId}:
+    parameters:
+    - $ref: '#/components/parameters/paymentId'
+    get:
+      description: Get payment for the user contract and payment id
+      summary: Get Payment by Payment Id
+      tags:
+      - Subscriptions
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $schema: http://json-schema.org/draft-06/schema#
+                additionalProperties: true
+                id: http://local/schemas/private/payments.json#
+                properties:
+                  contractId:
+                    type: string
+                  createdAt:
+                    type: string
+                  creditAmount:
+                    type: integer
+                  description:
+                    type: string
+                  id:
+                    type: string
+                  orderId:
+                    type: string
+                  subscriptionId:
+                    type: string
+                  type:
+                    enum:
+                    - payment
+                    - refund
+                    - credit
+                    type: string
+                title: Payment schema
+                type: object
+          description: payment
+  /api/v1/subscriptions:
+    get:
+      description: Get all subscriptions for the current user
+      summary: Get All Subscriptions for the Current User
+      tags:
+      - Subscriptions
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/itemsPerPage'
+      - description: Filter subscriptions by type
+        in: query
+        name: type
+        schema:
+          enum:
+          - view
+          - change-detection
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $schema: http://json-schema.org/draft-06/schema#
+                  description: Subscriptions
+                  id: http://local/schemas/public/subscriptions.json
+                  oneOf:
+                  - additionalProperties: false
+                    properties:
+                      duration:
+                        minimum: 1
+                        type: integer
+                      geofence:
+                        $schema: http://json-schema.org/draft-06/schema#
+                        definitions:
+                          multiPolygonAoi:
+                            properties:
+                              coordinates:
+                                items:
+                                  items:
+                                    items:
+                                      items:
+                                        type: number
+                                      maxItems: 2
+                                      minItems: 2
+                                      type: array
+                                    minItems: 4
+                                    type: array
+                                  minItems: 1
+                                  type: array
+                                minItems: 1
+                                type: array
+                              type:
+                                enum:
+                                - MultiPolygon
+                            type: object
+                          polygonAoi:
+                            properties:
+                              coordinates:
+                                items:
+                                  items:
+                                    items:
+                                      type: number
+                                    maxItems: 2
+                                    minItems: 2
+                                    type: array
+                                  minItems: 4
+                                  type: array
+                                minItems: 1
+                                type: array
+                              type:
+                                enum:
+                                - Polygon
+                            type: object
+                        description: aoi definition
+                        id: http://local/schemas/public/aoi.json#
+                        oneOf:
+                        - properties:
+                            coordinates:
+                              items:
+                                items:
+                                  items:
+                                    type: number
+                                  maxItems: 2
+                                  minItems: 2
+                                  type: array
+                                minItems: 4
+                                type: array
+                              minItems: 1
+                              type: array
+                            type:
+                              enum:
+                              - Polygon
+                          type: object
+                        - properties:
+                            coordinates:
+                              items:
+                                items:
+                                  items:
+                                    items:
+                                      type: number
+                                    maxItems: 2
+                                    minItems: 2
+                                    type: array
+                                  minItems: 4
+                                  type: array
+                                minItems: 1
+                                type: array
+                              minItems: 1
+                              type: array
+                            type:
+                              enum:
+                              - MultiPolygon
+                          type: object
+                        title: aoi
+                        type: object
+                      monthlyPrice:
+                        type: number
+                      paymentModality:
+                        enum:
+                        - monthly
+                        - full
+                      startedAt:
+                        description: ISO 8061 Notation
+                        pattern: \s*[0-9]{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])\s*
+                        type: string
+                      streamingPlan:
+                        pattern: ^custom$
+                      tileAmount:
+                        type: integer
+                      title:
+                        type: string
+                      type:
+                        pattern: ^view$
+                    required:
+                    - type
+                    - duration
+                    - paymentModality
+                    - tileAmount
+                    - monthlyPrice
+                    - streamingPlan
+                    type: object
+                  - additionalProperties: false
+                    properties:
+                      aoi:
+                        properties:
+                          coordinates:
+                            items:
+                              items:
+                                items:
+                                  type: number
+                                maxItems: 2
+                                minItems: 2
+                                type: array
+                              minItems: 4
+                              type: array
+                            minItems: 1
+                            type: array
+                          type:
+                            enum:
+                            - Polygon
+                        type: object
+                      duration:
+                        enum:
+                        - 3
+                        - 6
+                        - 12
+                      frequency:
+                        enum:
+                        - monthly
+                      resolution:
+                        enum:
+                        - 0.5
+                        - 1.5
+                      startedAt:
+                        description: ISO 8061 Notation
+                        pattern: \s*[0-9]{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])\s*
+                        type: string
+                      title:
+                        type: string
+                      type:
+                        pattern: ^change-detection$
+                    required:
+                    - aoi
+                    - type
+                    - resolution
+                    - duration
+                    type: object
+                  title: Subscriptions
+                type: array
+          description: subscription list
+  /api/v1/subscriptions/{subscriptionId}:
+    parameters:
+    - $ref: '#/components/parameters/subscriptionId'
+    get:
+      description: Get subscription by id
+      summary: Get Subscription by Id
+      tags:
+      - Subscriptions
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $schema: http://json-schema.org/draft-06/schema#
+                description: Subscriptions
+                id: http://local/schemas/public/subscriptions.json
+                oneOf:
+                - additionalProperties: false
+                  properties:
+                    duration:
+                      minimum: 1
+                      type: integer
+                    geofence:
+                      $schema: http://json-schema.org/draft-06/schema#
+                      definitions:
+                        multiPolygonAoi:
+                          properties:
+                            coordinates:
+                              items:
+                                items:
+                                  items:
+                                    items:
+                                      type: number
+                                    maxItems: 2
+                                    minItems: 2
+                                    type: array
+                                  minItems: 4
+                                  type: array
+                                minItems: 1
+                                type: array
+                              minItems: 1
+                              type: array
+                            type:
+                              enum:
+                              - MultiPolygon
+                          type: object
+                        polygonAoi:
+                          properties:
+                            coordinates:
+                              items:
+                                items:
+                                  items:
+                                    type: number
+                                  maxItems: 2
+                                  minItems: 2
+                                  type: array
+                                minItems: 4
+                                type: array
+                              minItems: 1
+                              type: array
+                            type:
+                              enum:
+                              - Polygon
+                          type: object
+                      description: aoi definition
+                      id: http://local/schemas/public/aoi.json#
+                      oneOf:
+                      - properties:
+                          coordinates:
+                            items:
+                              items:
+                                items:
+                                  type: number
+                                maxItems: 2
+                                minItems: 2
+                                type: array
+                              minItems: 4
+                              type: array
+                            minItems: 1
+                            type: array
+                          type:
+                            enum:
+                            - Polygon
+                        type: object
+                      - properties:
+                          coordinates:
+                            items:
+                              items:
+                                items:
+                                  items:
+                                    type: number
+                                  maxItems: 2
+                                  minItems: 2
+                                  type: array
+                                minItems: 4
+                                type: array
+                              minItems: 1
+                              type: array
+                            minItems: 1
+                            type: array
+                          type:
+                            enum:
+                            - MultiPolygon
+                        type: object
+                      title: aoi
+                      type: object
+                    monthlyPrice:
+                      type: number
+                    paymentModality:
+                      enum:
+                      - monthly
+                      - full
+                    startedAt:
+                      description: ISO 8061 Notation
+                      pattern: \s*[0-9]{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])\s*
+                      type: string
+                    streamingPlan:
+                      pattern: ^custom$
+                    tileAmount:
+                      type: integer
+                    title:
+                      type: string
+                    type:
+                      pattern: ^view$
+                  required:
+                  - type
+                  - duration
+                  - paymentModality
+                  - tileAmount
+                  - monthlyPrice
+                  - streamingPlan
+                  type: object
+                - additionalProperties: false
+                  properties:
+                    aoi:
+                      properties:
+                        coordinates:
+                          items:
+                            items:
+                              items:
+                                type: number
+                              maxItems: 2
+                              minItems: 2
+                              type: array
+                            minItems: 4
+                            type: array
+                          minItems: 1
+                          type: array
+                        type:
+                          enum:
+                          - Polygon
+                      type: object
+                    duration:
+                      enum:
+                      - 3
+                      - 6
+                      - 12
+                    frequency:
+                      enum:
+                      - monthly
+                    resolution:
+                      enum:
+                      - 0.5
+                      - 1.5
+                    startedAt:
+                      description: ISO 8061 Notation
+                      pattern: \s*[0-9]{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])\s*
+                      type: string
+                    title:
+                      type: string
+                    type:
+                      pattern: ^change-detection$
+                  required:
+                  - aoi
+                  - type
+                  - resolution
+                  - duration
+                  type: object
+                title: Subscriptions
+          description: subscription
+  /api/v1/subscriptions/{subscriptionId}/payments:
+    parameters:
+    - $ref: '#/components/parameters/subscriptionId'
+    get:
+      description: Get all payments for the user contract and subscription id
+      summary: Get All Payments by Subscription Id
+      tags:
+      - Subscriptions
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/itemsPerPage'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $schema: http://json-schema.org/draft-06/schema#
+                  additionalProperties: true
+                  id: http://local/schemas/private/payments.json#
+                  properties:
+                    contractId:
+                      type: string
+                    createdAt:
+                      type: string
+                    creditAmount:
+                      type: integer
+                    description:
+                      type: string
+                    id:
+                      type: string
+                    orderId:
+                      type: string
+                    subscriptionId:
+                      type: string
+                    type:
+                      enum:
+                      - payment
+                      - refund
+                      - credit
+                      type: string
+                  title: Payment schema
+                  type: object
+                type: array
+          description: payment list
+  /api/v1/subscriptions/{subscriptionId}/revoke:
+    parameters:
+    - $ref: '#/components/parameters/subscriptionId'
+    put:
+      description: Revoke a subscription by contract and subscription id
+      summary: Revoke a Subscription
+      tags:
+      - Subscriptions
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Message related to the revokation
+components:
+  parameters:
+    subscriptionId:
+      description: The subscription id
+      in: path
+      name: subscriptionId
+      required: true
+      schema:
+        type: string
+    contractId:
+      description: It corresponds to an internal id for the customer contract - you will be provided the contractId
+      in: path
+      name: contractId
+      required: true
+      schema:
+        type: string
+    orderId:
+      description: The order id
+      in: path
+      name: orderId
+      required: true
+      schema:
+        type: string
+    itemsPerPage:
+      description: Amount of items per page, defaults to '10'
+      in: query
+      name: itemsPerPage
+      schema:
+        minimum: 1
+        type: number
+    paymentId:
+      description: The payment id
+      in: path
+      name: paymentId
+      required: true
+      schema:
+        type: string
+    page:
+      description: Page number, defaults to '1'
+      in: query
+      name: page
+      schema:
+        minimum: 1
+        type: number
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

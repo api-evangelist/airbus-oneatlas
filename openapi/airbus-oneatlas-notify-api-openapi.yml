@@ -1,0 +1,530 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Notify API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Notify
+paths:
+  /api/v1/notifications/search:
+    post:
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationSearchOptions'
+        description: The search options
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationSearchResponse'
+          description: Success
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Search the Notifications
+      tags:
+      - Notify
+  /api/v1/notifications/{notificationId}:
+    delete:
+      description: Delete a subscription.
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/NotificationId'
+      responses:
+        '200':
+          description: Success
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Delete a Notification Subscription
+      tags:
+      - Notify
+components:
+  schemas:
+    NotificationSearchResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/NotificationSubscription'
+          type: array
+          uniqueItems: true
+      type: object
+    WebhookNotificationParameters:
+      properties:
+        url:
+          description: 'URL form is verified. To be done: Endpoint need to be validated.'
+          format: url
+          type: string
+      required:
+      - url
+      type: object
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
+    NotificationSubscription:
+      properties:
+        channels:
+          items:
+            properties:
+              parameters:
+                description: Key/value options of the notification channel. Properties depend on the type of notification channel.
+                discriminator:
+                  mapping:
+                    email: '#/components/schemas/EmailNotificationParameters'
+                    messagequeue: '#/components/schemas/MessagequeueNotificationParameters'
+                    webhook: '#/components/schemas/WebhookNotificationParameters'
+                  propertyName: type
+                example:
+                  addresses:
+                  - toto@gmail.com
+                  - titi@gmail.com
+                oneOf:
+                - $ref: '#/components/schemas/EmailNotificationParameters'
+                - $ref: '#/components/schemas/WebhookNotificationParameters'
+                - $ref: '#/components/schemas/MessagequeueNotificationParameters'
+              type:
+                description: Type of chanel
+                enum:
+                - email
+                - messagequeue
+                - webhook
+                example: email
+                type: string
+            required:
+            - type
+            type: object
+          minItems: 1
+          type: array
+        filter:
+          description: Object used to filter notifications.
+          discriminator:
+            mapping:
+              activity: '#/components/schemas/ActivitySearchOptions'
+              catalogitem: '#/components/schemas/SearchOptions'
+            propertyName: type
+          oneOf:
+          - $ref: '#/components/schemas/ActivitySearchOptions'
+          - $ref: '#/components/schemas/SearchOptions'
+        id:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: Type of notification
+          enum:
+          - activity
+          - catalogitem
+          type: string
+        userId:
+          allOf:
+          - $ref: '#/components/schemas/Id'
+          - description: The id of the user that is the origin of the notification (extracted from the X-Forwarded-User request header)
+      required:
+      - channels
+      - type
+      type: object
+    ActivitySearchOptions:
+      properties:
+        creationDate:
+          description: The creation date or creation date range of the activity
+          oneOf:
+          - description: The creation date of the activity.
+            example: '2017-08-29T00:00:00Z'
+            format: date-time
+            type: string
+          - description: "The creation dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
+            example: '[2017-08-29T00:00:00Z'
+            format: date-time-range
+            type: string
+        endDate:
+          description: The end date pf the activity (copy of the date associated to the SUCCEEDED or FAILED stage)
+          format: datetime
+          oneOf:
+          - description: The end date of the activity.
+            example: '2017-08-29T00:00:00Z'
+            format: date-time
+            type: string
+          - description: "The end dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
+            example: '[2017-08-29T00:00:00Z'
+            format: date-time-range
+            type: string
+          type: string
+        itemsPerPage:
+          description: Number of requested items per page
+          example: 50
+          format: integer
+          minimum: 1
+          type: number
+        payload:
+          description: The copy of the origin user request. It could be the whole object or only some elements.
+          oneOf:
+          - description: The json object.
+            example:
+            - workspace: public
+            type: object
+          - description: String representation of the json object.
+            example: '{"workspace":"public"}'
+            type: string
+        progress:
+          description: A progress indicator between 0 and 100
+          format: integer
+          maximum: 100
+          minimum: 0
+          type: number
+        sortBy:
+          description: Unbounded list or parameters to sort by. The '+' indicates ascendant ordering, the '-' indicates descendant ordering. If not precised, default to '+'
+          example: +startDate,-endDate
+          type: string
+        startDate:
+          description: The start date of the activity (date of the first stage that is not QUEUED)
+          format: datetime
+          oneOf:
+          - description: The start date of the activity.
+            example: '2017-08-29T00:00:00Z'
+            format: date-time
+            type: string
+          - description: "The start dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
+            example: '[2017-08-29T00:00:00Z'
+            format: date-time-range
+            type: string
+          type: string
+        startIndex:
+          description: The index of the first item present in the response
+          example: 1
+          format: integer
+          minimum: 0
+          type: number
+        status:
+          description: The status or status list (comma separated list) of the activity.
+          enum:
+          - QUEUED
+          - RUNNING
+          - ON_HOLD
+          - CANCELED
+          - WAITING_CANCEL
+          - SUCCEEDED
+          - FAILED
+          - ARCHIVED
+          type: string
+        type:
+          description: Type of activity
+          enum:
+          - ingestion
+          - processing
+          - formatting
+          - delivering
+          type: string
+        userId:
+          $ref: '#/components/schemas/Id'
+      type: object
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    MessagequeueNotificationParameters:
+      properties:
+        message:
+          description: ''
+          properties:
+            header:
+              description: Message headers transmitted in message queue request.
+              example:
+                routing-key: magic-key
+              type: object
+            properties:
+              description: Message properties transmitted in message queue request.
+              example:
+                correlation-id: magic-id
+              type: object
+          type: object
+        target:
+          description: Name of the target in message queue service.
+          example: magic-queue
+          type: string
+        url:
+          description: 'URL form is verified. To be done: Endpoint need to be validated.'
+          example: amqp://user:password@hostname:port/virtualHost
+          format: url
+          type: string
+      required:
+      - url
+      type: object
+    SearchOptions:
+      properties:
+        acquisitionDate:
+          description: The acquisition date or the acquisition date range.
+          oneOf:
+          - description: The acquisition date.
+            example: '2017-08-29T00:00:00Z'
+            format: date-time
+            type: string
+          - description: "The acquisition dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
+            example: '[2017-08-29T00:00:00Z'
+            format: date-time-range
+            type: string
+        bbox:
+          description: The geographic search area expressed as a bbox string (decimal degrees values  separated by a comma). Values are min lon,min lat, max lon, max lat.
+          example: 1.8292,48.5821,2.9718,49.0811
+          type: string
+        cloudCover:
+          description: The cloud cover percentage or the cloud cover percentage range.
+          oneOf:
+          - description: The cloud cover percentage from 0 to 100.
+            example: '5'
+            format: float
+            type: number
+          - description: "The cloud cover percentages range\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
+            example: 5[
+            format: float-range
+            type: string
+        commercialReference:
+          description: The commercial reference.
+          example: SO17011862-6
+          type: string
+        constellation:
+          description: The constellation or constellation list (comma separated list). Possible values will be described in a future endpoint (*/api/v1/opensearch/domains/constellation*).
+          example: PHR,Sentinel
+          type: string
+        correlationId:
+          allOf:
+          - $ref: '#/components/schemas/Id'
+          - description: The correlation id or correlation id list (comma separated list). The correlation id is used to trace features sharing the same `X-Ads-Correlation-Id` header when ingested or processed.
+        expirationDate:
+          oneOf:
+          - description: Date of deletion of the data in the platform and deletion of the metadata item if no other prodution status is defined.
+            example: '2017-08-29T00:00:00Z'
+            format: date-time
+            type: string
+          - description: "Dates range of deletion of the data in the platform and deletion of the metadata item if no other prodution status is defined.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
+            example: '[2017-08-29T00:00:00Z'
+            format: date-time-range
+            type: string
+        geometry:
+          description: The geographic search area.
+          example: POLYGON((1 1,5 1,5 5,1 5,1 1))
+          oneOf:
+          - example: POLYGON((1 1,5 1,5 5,1 5,1 1))
+            format: WKT
+            type: string
+          - example: '{type: "Polygon", coordinates: [[1, 1], [5, 1], [5, 5], [1, 5], [1, 1]]}'
+            format: geojson
+            type: string
+          - $ref: '#/components/schemas/GeojsonGeometry'
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Id'
+          - description: The item id or item id list (comma separated list).
+        incidenceAngle:
+          description: The incident angle or the incident angle range in degree.
+          oneOf:
+          - description: The incident angle in degree.
+            example: '5.1542'
+            format: float
+            type: number
+          - description: "The incident angle range in degree.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
+            example: '[80,100]'
+            format: float-range
+            type: string
+        itemsPerPage:
+          default: 50
+          description: The maximum number of items that the response can contain.
+          example: 100
+          format: int32
+          maximum: 500
+          type: integer
+        page:
+          default: 1
+          description: The requested page
+          example: 1
+          format: int32
+          type: integer
+        parentIdentifier:
+          description: The parent identifier (identified as sourceId in other catalogs)
+          example: DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709
+          type: string
+        platform:
+          description: The platform or platform list (comma separated list). Possible values will be described in a future endpoint (*/api/v1/opensearch/domains/platform*).
+          example: PHR1A
+          type: string
+        productType:
+          description: The product type or product type list (comma separated list). Possible values will be described in a future endpoint (*/api/v1/opensearch/domains/productType*).
+          example: changeDetectionReport,mono
+          type: string
+        productionStatus:
+          description: The production status or production status list (comma separated list).
+          enum:
+          - IN_CLOUD
+          - ARCHIVED
+          example: IN_CLOUD
+          type: string
+        publicationDate:
+          description: The publication date or the publication date range.
+          oneOf:
+          - description: The publication date.
+            example: '2017-08-29T00:00:00Z'
+            format: date-time
+            type: string
+          - description: "The publication dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
+            example: '[2017-08-29T00:00:00Z'
+            format: date-time-range
+            type: string
+        q:
+          description: A generic query parameter, will search in productType and title. Search is in "contains" mode.
+          example: PHR
+          type: string
+        resolution:
+          description: The resolution or the resolution range in meters.
+          oneOf:
+          - description: The resolution in meters.
+            example: '10'
+            format: float
+            type: number
+          - description: "The resolution range in meters.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
+            example: 10]
+            format: float-range
+            type: number
+        snowCover:
+          description: The snow cover percentage or the snow cover percentage range.
+          oneOf:
+          - description: The snow cover percentage from 0 to 100.
+            example: '5'
+            format: float
+            type: number
+          - description: "The snow cover percentage range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
+            example: 5[
+            format: float-range
+            type: string
+        sortBy:
+          default: -acquisitionDate,cloudCover
+          description: 'The order strategy for the items.
+
+
+            Accepted values are all opensearch attributes separated by a comma. Minus sign can be used to sort descending on the attribute. Otherwise the sort is ascending.'
+          example: -acquisitionDate,cloudCover
+          type: string
+        sourceIdentifier:
+          description: The product identifier inside original referential
+          example: DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709
+          type: string
+        workspace:
+          description: The workspace id/name or workspace id/name list (comma separated list)
+          example: dc143057-3457-47b3-af19-4ef8d26d2064
+          type: string
+      type: object
+    NotificationSearchOptions:
+      properties:
+        userId:
+          $ref: '#/components/schemas/Id'
+      required:
+      - userId
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    EmailNotificationParameters:
+      properties:
+        addresses:
+          items:
+            description: 'To be done: Email need to be validated.'
+            format: email
+            type: string
+          minItems: 1
+          type: array
+      required:
+      - addresses
+      type: object
+  parameters:
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
+    NotificationId:
+      description: the identifier of the notification subscription
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: path
+      name: notificationId
+      required: true
+      schema:
+        $ref: '#/components/schemas/Id'
+  responses:
+    '404':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Item not found in catalog or resource not found in item
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

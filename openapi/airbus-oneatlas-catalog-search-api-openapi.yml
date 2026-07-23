@@ -1,0 +1,1846 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Catalog search API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Catalog search
+paths:
+  /api/v2/opensearch/description.xml:
+    get:
+      summary: Opensearch Description Xml
+      description: Get opensearch description document
+      tags:
+      - Catalog search
+      servers:
+      - description: Prod search server
+        url: https://search.foundation.api.oneatlas.airbus.com
+      x-roles:
+      - admin
+      - user
+      - signedUrl
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/xml: {}
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+  /api/v2/opensearch:
+    get:
+      summary: Search Catalog Items with Opensearch
+      description: 'Search catalog items. Search is case sensitive. Results match all
+
+        parameters.
+
+        '
+      tags:
+      - Catalog search
+      servers:
+      - description: Prod search server
+        url: https://search.foundation.api.oneatlas.airbus.com
+      x-roles:
+      - admin
+      - user
+      - signedUrl
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - name: bbox
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/bbox'
+      - name: geometry
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/geometry'
+      - name: q
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/q'
+      - name: acquisitionDate
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/acquisitionDate'
+      - name: acquisitionStation
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/acquisitionStation'
+      - name: archiveAnonymousIdentifier
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options-v2/allOf/1/properties/archiveAnonymousIdentifier'
+      - name: archivingCenter
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/archivingCenter'
+      - name: archiveIdentifier
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options-v2/allOf/1/properties/archiveIdentifier'
+      - name: azimuthAngle
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/azimuthAngle'
+      - name: class
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/class'
+      - name: center
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/center'
+      - name: cloudCover
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/cloudCover'
+      - name: comment
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/comment'
+      - name: commercialReference
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/commercialReference'
+      - name: constellation
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/constellation'
+      - name: correlationId
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/correlationId'
+      - name: downloadingRequested
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/downloadingRequested'
+      - name: expirationDate
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/expirationDate'
+      - name: featureCount
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/featureCount'
+      - name: format
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/format'
+      - name: icr
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/icr'
+      - name: id
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/id'
+      - name: illuminationAngleSeparation
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/illuminationAngleSeparation'
+      - name: illuminationAzimuthAngle
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/illuminationAzimuthAngle'
+      - name: illuminationElevationAngle
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/illuminationElevationAngle'
+      - name: incidenceAngle
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/incidenceAngle'
+      - name: incidenceAngleAcrossTrack
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/incidenceAngleAcrossTrack'
+      - name: incidenceAngleAlongTrack
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/incidenceAngleAlongTrack'
+      - name: index
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/index'
+      - name: meanDate
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/meanDate'
+      - name: orbit
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/orbit'
+      - name: organisationName
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/organisationName'
+      - name: parentIdenfifier
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/parentIdenfifier'
+      - name: platform
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/platform'
+      - name: processingCenter
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/processingCenter'
+      - name: processingDate
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/processingDate'
+      - name: processingLevel
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/processingLevel'
+      - name: processorName
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/processorName'
+      - name: productCategory
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/productCategory'
+      - name: productionStatus
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/productionStatus'
+      - name: productType
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/productType'
+      - name: publicationDate
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/publicationDate'
+      - name: relation
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/relation'
+      - name: resolution
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/resolution'
+      - name: resourceId
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/resourceId'
+      - name: satellite
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/satellite'
+      - name: sensorType
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/sensorType'
+      - name: snowCover
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/snowCover'
+      - name: sourceIdentifier
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/sourceIdentifier'
+      - name: spectralRange
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/spectralRange'
+      - name: startDate
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/startDate'
+      - name: station
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/station'
+      - name: stereoMethod
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/stereoMethod'
+      - name: tags
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/tags'
+      - name: title
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/title'
+      - name: viewingAngleSeparation
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/viewingAngleSeparation'
+      - name: workspace
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/workspace'
+      - name: itemsPerPage
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/itemsPerPage'
+      - name: startPage
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/startPage'
+      - name: sortBy
+        in: query
+        schema:
+          $ref: '#/components/schemas/search-options/properties/sortBy'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+    post:
+      summary: Search Catalog Items with Opensearch
+      description: 'Search catalog items. Search is case sensitive. Results match all
+
+        parameters.
+
+        '
+      tags:
+      - Catalog search
+      servers:
+      - description: Prod search server
+        url: https://search.foundation.api.oneatlas.airbus.com
+      x-roles:
+      - admin
+      - user
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      requestBody:
+        description: The search parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                itemsPerPage:
+                  format: integer
+                  type: number
+                constellation:
+                  type: string
+                  enum:
+                  - PNEO
+                customerReference:
+                  $ref: '#/components/schemas/CustomerReference'
+                internalReference:
+                  type: string
+                  description: The sales order id
+                workspace:
+                  $ref: '#/components/schemas/workspace'
+                startPage:
+                  format: integer
+                  type: number
+                acquisitionDate:
+                  $ref: '#/components/schemas/AcquisitionDate'
+                cloudCover:
+                  format: float
+                  type: number
+                  minimum: 0
+                  maximum: 80
+                incidenceAngle:
+                  format: float
+                  type: number
+                  minimum: 0
+                  maximum: 40
+                sortBy:
+                  type: string
+                processingLevel:
+                  type: string
+                relation:
+                  type: string
+                geometry:
+                  $ref: '#/components/schemas/geometry'
+              example:
+                itemsPerPage: 12
+                startPage: 1
+                acquisitionDate: '[2022-01-08T00:00:000Z,2022-01-25T23:59:59.999Z]'
+                cloudCover: '[0,80]'
+                incidenceAngle: '[0,40]'
+                constellation: PNEO
+                sortBy: cloudCover,-acquisitionDate
+                workspace: public-pneo
+                processingLevel: SENSOR,ALBUM
+                relation: intersects
+                geometry:
+                  type: Polygon
+                  coordinates:
+                  - - - -0.8847217475974262
+                      - 48.627903919147286
+                    - - -0.7528858100974261
+                      - 48.627903919147286
+                    - - -0.7528858100974261
+                      - 48.711340646239705
+                    - - -0.8847217475974262
+                      - 48.711340646239705
+                    - - -0.8847217475974262
+                      - 48.627903919147286
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+              example:
+                error: false
+                itemsPerPage: 12
+                startIndex: 0
+                totalResults: 6
+                type: FeatureCollection
+                features:
+                - _links:
+                    delete:
+                      href: https://search.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d
+                      name: Delete
+                      type: HTTP
+                    imagesGetBuffer:
+                      href: https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/images/fff8faf9-5d77-45dd-acd3-89143d1b481f/buffer
+                      name: getBuffer
+                      resourceId: fff8faf9-5d77-45dd-acd3-89143d1b481f
+                    imagesMetadata:
+                      href: https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/images/fff8faf9-5d77-45dd-acd3-89143d1b481f/metadata
+                      type: application/geo+json
+                      resourceId: fff8faf9-5d77-45dd-acd3-89143d1b481f
+                    imagesWcs:
+                      href: https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/images/fff8faf9-5d77-45dd-acd3-89143d1b481f/wcs
+                      type: WCS
+                      resourceId: fff8faf9-5d77-45dd-acd3-89143d1b481f
+                    imagesWms:
+                      href: https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/images/fff8faf9-5d77-45dd-acd3-89143d1b481f/wms
+                      type: WMS
+                      resourceId: fff8faf9-5d77-45dd-acd3-89143d1b481f
+                    imagesWmts:
+                      href: https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/images/fff8faf9-5d77-45dd-acd3-89143d1b481f/wmts
+                      type: WMTS
+                      resourceId: fff8faf9-5d77-45dd-acd3-89143d1b481f
+                    quicklook:
+                      href: https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/quicklook
+                      name: QuickLook
+                      type: HTTP
+                    self:
+                      href: https://search.foundation.api.oneatlas.airbus.com/api/v1/opensearch?id=a1ba2510-49e5-46a6-8e3f-0c1d0603217d
+                      method: GET
+                      name: self
+                      resourceId: a1ba2510-49e5-46a6-8e3f-0c1d0603217d
+                    thumbnail:
+                      href: https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/thumbnail
+                      name: Thumbnail
+                      type: HTTP
+                    wms:
+                      href: https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/wms
+                      name: WMS
+                      type: WMS
+                    wmts:
+                      href: https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/wmts
+                      name: WMTS
+                      type: WMTS
+                  dataAccess:
+                    metadata: http://datastore-vaas/api/v1/genericProduct/packs/513817e5-be0a-4a69-b36f-e6fc8b046449
+                    packImages:
+                    - href: http://datastore-vaas/api/v1/packs/513817e5-be0a-4a69-b36f-e6fc8b046449/images/fff8faf9-5d77-45dd-acd3-89143d1b481f
+                      resourceId: fff8faf9-5d77-45dd-acd3-89143d1b481f
+                    resourceId: 513817e5-be0a-4a69-b36f-e6fc8b046449
+                  geometry:
+                    type: Polygon
+                    coordinates:
+                    - - - 2.025436887670608
+                        - 41.40851104009538
+                      - - 2.025555377420286
+                        - 41.27623680002298
+                      - - 2.02556116053385
+                        - 41.275418756377334
+                      - - 2.025681391470222
+                        - 41.24999195896341
+                      - - 2.21033395944357
+                        - 41.25448242372612
+                      - - 2.210375350974231
+                        - 41.279805555666066
+                      - - 2.210375686628162
+                        - 41.28062047981729
+                      - - 2.210986871245927
+                        - 41.41232255845239
+                      - - 2.025436887670608
+                        - 41.40851104009538
+                  properties:
+                    acquisitionDate: '2021-11-18T10:41:03.696Z'
+                    acquisitionIdentifier: ACQ_PNEO3_00832700845861
+                    acquisitionStation: FR1
+                    activityId: 72b2883b-127f-473a-a157-d37efaf40f84
+                    archiveAnonymousIdentifier: '300052126'
+                    archiveIdentifier: DS_PNEO3_202111181041037_FR1_FR1_FR1_E002N41_003840
+                    archivingCenter: FR1
+                    azimuthAngle: 180.09135799114546
+                    cloudCover: 0.2
+                    constellation: PNEO
+                    correlationId: mmcat_53262aff6076219585493ed03598ef96
+                    expirationDate: '2031-11-16T13:02:26.868210663Z'
+                    id: a1ba2510-49e5-46a6-8e3f-0c1d0603217d
+                    illuminationAzimuthAngle: 165.02055829218722
+                    illuminationElevationAngle: 28.596944896000977
+                    incidenceAngle: 18.64756541854424
+                    incidenceAngleAcrossTrack: 17.97878935952823
+                    incidenceAngleAlongTrack: -5.860919226891595
+                    lastUpdateDate: '2021-11-19T07:50:32.93579542Z'
+                    organisationName: AIRBUS DS GEO
+                    parentIdentifier: DS_PNEO3_202111181041037_FR1_FR1_FR1_E002N41_003840
+                    platform: PNEO3
+                    processingCenter: MOC
+                    processingDate: '2021-11-18T12:16:05.039Z'
+                    processingLevel: ALBUM
+                    processorName: MMCAT
+                    productCategory: image
+                    productType: mono
+                    productionStatus: ARCHIVED
+                    publicationDate: '2021-11-19T07:50:32.93579542Z'
+                    qualified: false
+                    resolution: 0.3
+                    sensorType: OPTICAL
+                    snowCover: 0
+                    sourceIdentifier: DS_PNEO3_202111181041037_FR1_FR1_FR1_E002N41_003840
+                    spectralRange: VISIBLE
+                    workspaceId: 3e88441b-adc9-4be6-bd80-59d4fb69d5a7
+                    workspaceName: public-pneo
+                    workspaceTitle: Workspace temporaire pour la data pneo
+                  rights:
+                    associatedData:
+                      privileges:
+                      - id: 81cba660-0769-4867-8388-25c70e9b6c24
+                        filter:
+                          workspaceId: 3e88441b-adc9-4be6-bd80-59d4fb69d5a7
+                    browse:
+                      privileges:
+                      - id: 487cb9fe-8164-4d8b-9f86-0e350a450ecc
+                        subscriptionId: f3e2cb98-f68a-45b1-b97b-56ad17a79ca7
+                        filter:
+                          workspaceId: 3e88441b-adc9-4be6-bd80-59d4fb69d5a7
+                    create:
+                      privileges:
+                      - id: 88ce066a-62a7-4102-a36b-d6ca820e92e4
+                        filter:
+                          workspaceId: 3e88441b-adc9-4be6-bd80-59d4fb69d5a7
+                    wmts:
+                      privileges:
+                      - id: 690fd94f-fa70-4c90-9a7c-9acb886697a5
+                        filter:
+                          workspaceId: 3e88441b-adc9-4be6-bd80-59d4fb69d5a7
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  /api/v2/opensearch/domains/{propertyName}:
+    get:
+      summary: Get Domain for a Given Property
+      description: 'Given a property name, it returns the eligible existing values for querying items looking for this particular property
+
+        '
+      tags:
+      - Catalog search
+      servers:
+      - description: Prod search server
+        url: https://search.foundation.api.oneatlas.airbus.com
+      x-roles:
+      - admin
+      - user
+      - signedUrl
+      x-privileges:
+      - browse
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/property-name'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get-domain-response'
+        '400':
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  /api/v1/deleted/search:
+    post:
+      summary: Search Deleted Catalog Items
+      description: 'Search deleted catalog items by deleted date.
+
+        '
+      tags:
+      - Catalog search
+      servers:
+      - description: Prod search server
+        url: https://search.foundation.api.oneatlas.airbus.com
+      x-roles:
+      - admin
+      - user
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      requestBody:
+        description: The search parameters
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/search-deleted-options'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/search-deleted-response'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+components:
+  schemas:
+    search-options:
+      properties:
+        expirationDate:
+          oneOf:
+          - type: string
+            format: date-time
+            description: 'Date of deletion of the data in the platform and deletion of the
+
+              metadata item if no other production status is defined.
+
+              '
+            example: '2017-08-29T00:00:00Z'
+          - type: string
+            format: date-time-range
+            description: "Dates range of deletion of the data in the platform and deletion\nof the metadata item if no other prodution status is defined.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[2017-08-29T00:00:00Z'
+        archivingCenter:
+          type: string
+          description: The archiving center
+          example: FR1
+        station:
+          type: string
+          description: The downloading station. Applicable only for product type `icr`. Value can be `NC` if not available.
+          example: NC
+        incidenceAngleAlongTrack:
+          description: The incident angle or the incident angle range along track in degree.
+          oneOf:
+          - type: number
+            format: float
+            description: The incident angle along track in degree.
+            example: '5.1542'
+          - type: string
+            format: float-range
+            description: "The incident angle along track range in degree.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[80,100]'
+        platform:
+          type: string
+          description: 'The platform or platform list (comma separated list).
+
+            See [Get
+
+            domains](#/paths/~1api~1v1~1opensearch~1domains~1{propertyName}/get).
+
+            '
+          example: PHR1A
+        parentIdenfifier:
+          type: string
+          description: The parent identifier (identified as sourceId in other catalogs)
+          example: DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709
+        sortBy:
+          type: string
+          description: 'The order strategy for the items.
+
+
+            Accepted values are all opensearch attributes separated by a comma.
+
+            Minus sign can be used to sort descending on the attribute.
+
+            Otherwise the sort is ascending.
+
+            '
+          default: -acquisitionDate,cloudCover
+          example: -acquisitionDate,cloudCover
+        acquisitionDate:
+          description: The acquisition date or the acquisition date range.
+          oneOf:
+          - type: string
+            format: date-time
+            description: The acquisition date.
+            example: '2017-08-29T00:00:00Z'
+          - type: string
+            format: date-time-range
+            description: "The acquisition dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[2017-08-29T00:00:00Z'
+        stereoMethod:
+          type: string
+          description: The stereo method. Applicable only for product type `icr`.
+          example: NONE
+        illuminationAngleSeparation:
+          description: The illumination angle separation or the illumination angle separation range in degree.
+          oneOf:
+          - type: number
+            format: float
+            description: The illumination angle separation in degree.
+            example: '5.1542'
+          - type: string
+            format: float-range
+            description: "The illumination angle separation range in degree.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[80,100]'
+        viewingAngleSeparation:
+          description: The viewing angle separation or the viewing angle separation range in degree.
+          oneOf:
+          - type: number
+            format: float
+            description: The viewing angle separation in degree.
+            example: '5.1542'
+          - type: string
+            format: float-range
+            description: "The viewing angle separation range in degree.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[80,100]'
+        cloudCover:
+          description: The cloud cover percentage or the cloud cover percentage range.
+          oneOf:
+          - type: number
+            format: float
+            description: The cloud cover percentage from 0 to 100.
+            example: '5'
+          - type: string
+            format: float-range
+            description: "The cloud cover percentages range\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: 5[
+        satellite:
+          type: string
+          description: 'The satellite or satellite list (comma separated list).
+
+            See [Get
+
+            domains](#/paths/~1api~1v1~1opensearch~1domains~1{propertyName}/get).
+
+            '
+          example: PHR1A
+        featureCount:
+          type: number
+          format: integer
+          description: The number of features in the product. Applicable only for product category `vector`, except product type `icr` and `orbit`.
+          minimum: 0
+          example: 42
+        format:
+          type: string
+          description: The format of the report. Applicable only for product type `analyticsReport`.
+          example: application/vnd.geo+json
+        processingDate:
+          description: The processing date or the processing date range.
+          oneOf:
+          - type: string
+            format: date-time
+            description: The processing date.
+            example: '2017-08-29T00:00:00Z'
+          - type: string
+            format: date-time-range
+            description: "The processing dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[2017-08-29T00:00:00Z'
+        processingCenter:
+          type: string
+          description: 'The processing center or processing center list (comma separated list).
+
+            See [Get
+
+            domains](#/paths/~1api~1v1~1opensearch~1domains~1{propertyName}/get).
+
+            '
+          example: MOC
+        downloadingRequested:
+          type: string
+          description: The downloading station requested. Applicable only for product type `icr`. Value can be `NC` if not available.
+          example: JS1
+        resourceId:
+          type: string
+          description: Internal data resource id.
+          example: dc143057-3457-47b3-af19-4ef8d26d2064
+        resolution:
+          description: The resolution or the resolution range in meters.
+          oneOf:
+          - type: number
+            format: float
+            description: The resolution in meters.
+            example: '10'
+          - type: number
+            format: float-range
+            description: "The resolution range in meters.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: 10]
+        constellation:
+          type: string
+          description: 'The constellation or constellation list (comma separated list).
+
+            See [Get
+
+            domains](#/paths/~1api~1v1~1opensearch~1domains~1{propertyName}/get).
+
+            '
+          example: PHR,Sentinel
+        sensorType:
+          type: string
+          description: 'The sensor type or sensor type list (comma separated list).
+
+            See [Get
+
+            domains](#/paths/~1api~1v1~1opensearch~1domains~1{propertyName}/get).
+
+            '
+          example: OPTICAL
+        id:
+          allOf:
+          - $ref: '#/components/schemas/Id'
+          - description: The item id or item id list (comma separated list).
+        illuminationAzimuthAngle:
+          description: The illumination azimuth angle or the illumination azimuth angle range in degree.
+          oneOf:
+          - type: number
+            format: float
+            description: The illumination azimuth angle in degree.
+            example: '5.1542'
+          - type: string
+            format: float-range
+            description: "The illumination azimuth angle range in degree.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[80,100]'
+        index:
+          type: string
+          description: 'The elastic search index (for debug purpose only, users must not use
+
+            this parameter). Value ''*'' means ''all indexes, including archive ones''.
+
+            '
+          example: satellite_imagery
+        productType:
+          type: string
+          description: 'The product type or product type list (comma separated list).
+
+            See [Get
+
+            domains](#/paths/~1api~1v1~1opensearch~1domains~1{propertyName}/get).
+
+            '
+          example: changeDetectionReport,mono
+        incidenceAngle:
+          description: The incident angle or the incident angle range in degree.
+          oneOf:
+          - type: number
+            format: float
+            description: The incident angle in degree.
+            example: '5.1542'
+          - type: string
+            format: float-range
+            description: "The incident angle range in degree.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[80,100]'
+        startPage:
+          type: integer
+          format: int32
+          description: The requested page
+          default: 1
+          example: 1
+        workspace:
+          $ref: '#/components/schemas/WorkspaceIdentifier'
+        icr:
+          type: string
+          description: The image customer request reference. Applicable only for product type `icr`.
+          example: '52487'
+        correlationId:
+          allOf:
+          - $ref: '#/components/schemas/Id'
+          - description: 'The correlation id or correlation id list (comma separated
+
+              list). The correlation id is used to trace features sharing the
+
+              same `X-Correlation-Id` header when ingested or processed.
+
+              '
+        geometry:
+          description: The geographic search area.
+          example: POLYGON((1 1,5 1,5 5,1 5,1 1))
+          anyOf:
+          - type: string
+            title: WKT
+            description: Allowed types -> Point, LineString, Polygon, MultiLineString, MultiPolygon
+            example: POLYGON((1 1,5 1,5 5,1 5,1 1))
+          - type: object
+            title: GeoJSON
+            example: '{type: "Polygon", coordinates: [[1, 1], [5, 1], [5, 5], [1, 5], [1, 1]]}
+
+              '
+            oneOf:
+            - $ref: '#/components/schemas/geo-json-point'
+            - $ref: '#/components/schemas/geo-json-linestring'
+            - $ref: '#/components/schemas/geo-json-polygon'
+            - $ref: '#/components/schemas/geo-json-multilinestring'
+            - $ref: '#/components/schemas/geo-json-multipolygon'
+        bbox:
+          type: string
+          description: 'The geographic search area expressed as a bbox string (decimal
+
+            degrees values  separated by a comma). Values are min lon,min lat,
+
+            max lon, max lat.
+
+            '
+          example: 1.8292,48.5821,2.9718,49.0811
+        sourceIdentifier:
+          type: string
+          description: The product identifier inside original referential
+          example: DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709
+        azimuthAngle:
+          description: The azimuth angle or the azimuth angle range in degree.
+          oneOf:
+          - type: number
+            format: float
+            description: The azimuth angle in degree.
+            example: '5.1542'
+          - type: string
+            format: float-range
+            description: "The azimuth angle range in degree.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[80,100]'
+        processingLevel:
+          type: string
+          description: 'The processing level or processing level list (comma separated list).
+
+            See [Get
+
+            domains](#/paths/~1api~1v1~1opensearch~1domains~1{propertyName}/get).
+
+            '
+          example: SENSOR
+        organisationName:
+          type: string
+          description: Name of the organisation which produces the data.
+          example: AIRBUS DS
+        spectralRange:
+          type: string
+          description: 'The spectral range or spectral range list (comma separated list).
+
+            See [Get
+
+            domains](#/paths/~1api~1v1~1opensearch~1domains~1{propertyName}/get).
+
+            '
+          example: VISIBLE,MULTISPECTRAL
+        acquisitionStation:
+          type: string
+          description: The acquisition station
+          example: SV1
+        center:
+          type: string
+          description: The downloading center. Applicable only for product type `icr`. Value can be `NC` if not available.
+          example: NC
+        publicationDate:
+          description: The publication date or the publication date range.
+          oneOf:
+          - type: string
+            format: date-time
+            description: The publication date.
+            example: '2017-08-29T00:00:00Z'
+          - type: string
+            format: date-time-range
+            description: "The publication dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[2017-08-29T00:00:00Z'
+        incidenceAngleAcrossTrack:
+          description: The incident angle or the incident angle range across track in degree.
+          oneOf:
+          - type: number
+            format: float
+            description: The incident angle across track in degree.
+            example: '5.1542'
+          - type: string
+            format: float-range
+            description: "The incident angle across track range in degree.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[80,100]'
+        q:
+          type: string
+          description: 'A generic query parameter which will be searched in full text of the items.
+
+            It may contains `AND` and `OR` operators to specify multiple queries.
+
+            '
+          example: PHR AND OPTICAL
+        class:
+          type: string
+          description: Class of the report. Applicable only for product type `analyticsReport`.
+          example: changesDetection
+        meanDate:
+          description: The acquisition mean date. Applicable only for product type `icr`.
+          oneOf:
+          - type: string
+            format: date-time
+            description: The acquisition mean date. Applicable only for product type `icr`.
+            example: '2017-08-29T00:00:00Z'
+          - type: string
+            format: date-time-range
+            description: "The acquisition mean date range. Applicable only for product type `icr`.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[2017-08-29T00:00:00Z'
+        snowCover:
+          description: The snow cover percentage or the snow cover percentage range.
+          oneOf:
+          - type: number
+            format: float
+            description: The snow cover percentage from 0 to 100.
+            example: '5'
+          - type: string
+            format: float-range
+            description: "The snow cover percentage range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: 5[
+        itemsPerPage:
+          type: integer
+          format: int32
+          description: The maximum number of items that the response can contain.
+          default: 50
+          maximum: 500
+          example: 100
+        orbit:
+          type: string
+          description: 'The acquisition orbit reference or the downloading orbit reference. Applicable only for product type `icr`. Value can be `NC` if not available.
+
+
+            Or the orbit reference. Applicable only for product type `orbit`.
+
+            '
+          example: '54'
+        commercialReference:
+          type: string
+          description: The commercial reference.
+          example: SO17011862-6
+        title:
+          type: string
+          description: The title
+          example: My title
+        processorName:
+          type: string
+          description: 'The processor name or processor name list (comma separated list).
+
+            See [Get
+
+            domains](#/paths/~1api~1v1~1opensearch~1domains~1{propertyName}/get).
+
+            '
+          example: DRS-MM V2.7.1vV2.7.1
+        relation:
+          description: The geometry relation with the item
+          type: string
+          enum:
+          - intersects
+          - disjoint
+          - within
+          - contains
+          default: intersects
+          example: intersects
+        tags:
+          type: string
+          description: Tags associated to the product. Applicable only for product type `analyticsReport`.
+          example: ''
+        comment:
+          type: string
+          example: a comment on my item
+        illuminationElevationAngle:
+          description: The illumination elevation angle or the illumination elevation angle range in degree.
+          oneOf:
+          - type: number
+            format: float
+            description: The illumination elevation angle in degree.
+            example: '5.1542'
+          - type: string
+            format: float-range
+            description: "The illumination elevation angle range in degree.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[80,100]'
+        startDate:
+          description: The downloading start date or the downloading start date range. product type icr orbit
+          oneOf:
+          - type: string
+            format: date-time
+            description: The downloading start date.
+            example: '2017-08-29T00:00:00Z'
+          - type: string
+            format: date-time-range
+            description: "The downloading start dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[2017-08-29T00:00:00Z'
+        productCategory:
+          type: string
+          description: 'The product category or product category list (comma separated list).
+
+            '
+          example: image
+          enum:
+          - image
+          - vector
+        productionStatus:
+          type: string
+          description: 'The production status or production status list (comma separated
+
+            list).
+
+            '
+          example: IN_CLOUD
+          enum:
+          - IN_CLOUD
+          - ARCHIVED
+    search-deleted-response:
+      type: object
+      properties:
+        itemsPerPage:
+          type: integer
+          description: Number of requested items per page
+          example: 100
+          minimum: 1
+        startIndex:
+          type: integer
+          description: The index of the first item present in the response
+          example: 0
+          minimum: 0
+        totalResults:
+          type: integer
+          description: The total number of items present in the catalog
+          example: 956126
+          minimum: 0
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/deleted-item'
+    WorkspaceIdentifier:
+      oneOf:
+      - $ref: '#/components/schemas/Id'
+      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
+        example: MySuperWorkspace
+        type: string
+    Privilege:
+      example:
+        filter:
+          workspace: public
+        rights:
+          browse: {}
+          wmts: {}
+        userId: de2d5963-a8a5-41b5-9f2a-ed6d478eb3af
+      properties:
+        createdAt:
+          description: The creation time of the created Privilege. This is returned when the Privilege is properly created.
+          format: datetime
+          readOnly: true
+          type: string
+        filter:
+          description: Filters the scope of the privilege (e.g. by workspace, id)
+          properties:
+            id:
+              $ref: '#/components/schemas/Id'
+            workspace:
+              $ref: '#/components/schemas/WorkspaceIdentifier'
+          required:
+          - workspace
+          type: object
+        id:
+          $ref: '#/components/schemas/Id'
+        priority:
+          description: The priority of the privilege
+          example: 10
+          format: int64
+          type: integer
+        rights:
+          description: List of rights granted to a user. For now, only "browse" is supported. Therefore, it will give all the rights for now.
+          properties:
+            browse:
+              description: Indicates that the user is granted the right to browse the target of the privilege
+              type: object
+            buffer:
+              description: Indicates that the user is granted the right to request buffer dissemination
+              type: object
+            download:
+              description: Indicates that the user is granted the right to request download dissemination
+              type: object
+            wms:
+              description: Indicates that the user is granted the right to request WMS disseminatione
+              type: object
+            wmts:
+              description: Indicates that the user is granted the right to request WMTS dissemination
+              type: object
+          type: object
+        subscriptionId:
+          $ref: '#/components/schemas/Id'
+        userId:
+          $ref: '#/components/schemas/Id'
+      required:
+      - userId
+      - filter
+      - rights
+      type: object
+    geo-json-point:
+      title: GeoJSON Point
+      type: object
+      required:
+      - type
+      - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+          - Point
+        coordinates:
+          type: array
+          minItems: 2
+          items:
+            type: number
+        bbox:
+          type: array
+          minItems: 4
+          items:
+            type: number
+    search-options-v2:
+      allOf:
+        '1':
+          properties:
+            archiveAnonymousIdentifier:
+              type: string
+              description: The archive anonymous identifier
+              example: '31476131'
+            archiveIdentifier:
+              type: string
+              description: The archive identifier
+              example: DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709
+    geo-json-multilinestring:
+      title: GeoJSON MultiLineString
+      type: object
+      required:
+      - type
+      - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+          - MultiLineString
+        coordinates:
+          type: array
+          items:
+            type: array
+            minItems: 2
+            items:
+              type: array
+              minItems: 2
+              items:
+                type: number
+        bbox:
+          type: array
+          minItems: 4
+          items:
+            type: number
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
+    geo-json-linestring:
+      title: GeoJSON LineString
+      type: object
+      required:
+      - type
+      - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+          - LineString
+        coordinates:
+          type: array
+          minItems: 2
+          items:
+            type: array
+            minItems: 2
+            items:
+              type: number
+        bbox:
+          type: array
+          minItems: 4
+          items:
+            type: number
+    AcquisitionDate:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
+        endDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition end date
+    geo-json-polygon:
+      title: GeoJSON Polygon
+      type: object
+      required:
+      - type
+      - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+          - Polygon
+        coordinates:
+          type: array
+          items:
+            type: array
+            minItems: 4
+            items:
+              type: array
+              minItems: 2
+              items:
+                type: number
+        bbox:
+          type: array
+          minItems: 4
+          items:
+            type: number
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    workspace:
+      type: string
+      description: Workspace value will be provided to you. It depends on the set-up on your contract.
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    geometry:
+      type: object
+      properties:
+        type:
+          enum:
+          - Polygon
+          type: string
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: array
+              items:
+                format: float
+                type: number
+              maxItems: 2
+    CustomerReference:
+      type: string
+      description: The customerReference can be used throughout the ordering process to get the status of your order and find the images in your delivery workspace. It is as a consequence better to use 1 customerReference specific for each order. It is also the reference that will appear on your bill (for pay-per-order customers)
+    deleted-item:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        deletedDate:
+          type: string
+          format: date-time
+          description: 'Date of deletion of the data in the platform and deletion of the metadata item if no other production status is defined.
+
+            '
+          example: '2017-08-29T00:00:00Z'
+    search-deleted-options:
+      type: object
+      properties:
+        deletedDate:
+          description: The date of items deletions
+          oneOf:
+          - type: string
+            format: date-time
+            description: The downloading start date.
+            example: '2017-08-29T00:00:00Z'
+          - type: string
+            format: date-time-range
+            description: "The downloading start dates range.\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[2017-08-29T00:00:00Z'
+        itemsPerPage:
+          type: integer
+          format: int32
+          description: The maximum number of items that the response can contain.
+          default: 50
+          maximum: 500
+          example: 100
+        startIndex:
+          type: integer
+          format: int32
+          description: The number of skipped items
+          default: 0
+          example: 10
+    SearchResponse:
+      properties:
+        error:
+          example: false
+          type: boolean
+        features:
+          items:
+            $ref: '#/components/schemas/CatalogItem'
+          type: array
+        itemsPerPage:
+          description: Number of requested items per page
+          example: 100
+          minimum: 1
+          type: integer
+        startIndex:
+          description: The index of the first item present in the response
+          example: 0
+          minimum: 0
+          type: integer
+        totalResults:
+          description: The total number of items present in the catalog
+          example: 956126
+          maximum: 10000
+          minimum: 0
+          type: integer
+        type:
+          example: FeatureCollection
+          type: string
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    geo-json-multipolygon:
+      title: GeoJSON MultiPolygon
+      type: object
+      required:
+      - type
+      - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+          - MultiPolygon
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: array
+              minItems: 4
+              items:
+                type: array
+                minItems: 2
+                items:
+                  type: number
+        bbox:
+          type: array
+          minItems: 4
+          items:
+            type: number
+    get-domain-response:
+      type: object
+      properties:
+        warning:
+          description: Warning message when the result does not contain all possible values
+          type: string
+      additionalProperties:
+        description: Possible values for the queried property
+        type: array
+        items:
+          type: string
+      example:
+        warning: Result is not exhaustive
+        processingLevel:
+        - ORTHO
+        - SENSOR
+    CatalogItem:
+      properties:
+        _links:
+          properties:
+            buffer:
+              allOf:
+              - description: See [Get buffer](#/paths/~1api~1v1~1items~1{catalogItemId}~1images~1{imageId}~1buffer/post)
+              - $ref: '#/components/schemas/Link'
+            download:
+              description: 'See [Download formatted product](#/paths/~1api~1v1~1items~1{catalogItemId}~1download/get) and direct download links (gs, ftp)
+
+                '
+              items:
+                $ref: '#/components/schemas/Link'
+              minItems: 1
+              type: array
+            imagesMetadata:
+              description: See [Get catalog item image metadata](#/paths/~1api~1v1~1items~1{catalogItemId}~1images~1{imageId}~1metadata/get)
+              items:
+                $ref: '#/components/schemas/Link'
+              minItems: 1
+              type: array
+            quicklook:
+              allOf:
+              - description: See [QuickLook](#/paths/~1api~1v1~1items~1{catalogItemId}~1quicklook/get)
+              - $ref: '#/components/schemas/Link'
+            thumbnail:
+              allOf:
+              - description: See [Thumbnail](#/paths/~1api~1v1~1items~1{catalogItemId}~1thumbnail/get)
+              - $ref: '#/components/schemas/Link'
+            wms:
+              allOf:
+              - description: 'See [WMS OTF visualization](#/paths/~1api~1v1~1items~1{catalogItemId}~1wms/get) and [WMS visualization](#/paths/~1api~1v1~1items~1{catalogItemId}~1images~1{imageId}~1wms/get)
+
+                  '
+              - $ref: '#/components/schemas/Link'
+            wmts:
+              allOf:
+              - description: 'See [WMTS OTF visualization](#/paths/~1api~1v1~1items~1{catalogItemId}~1wmts/get) and [WMTS visualization](#/paths/~1api~1v1~1items~1{catalogItemId}~1images~1{imageId}~1wmts/get)
+
+                  '
+              - $ref: '#/components/schemas/Link'
+          readOnly: true
+          type: object
+        geometry:
+          $ref: '#/components/schemas/GeojsonGeometry'
+        properties:
+          properties:
+            acquisitionDate:
+              example: '2018-02-28T11:00:29.027Z'
+              format: date-time
+              type: string
+            acquisitionStation:
+              example: FR1
+              type: string
+            archivingCenter:
+              example: FR1
+              type: string
+            azimuthAngle:
+              example: 180.0016489732347
+              format: double
+              type: number
+            cloudCover:
+              example: 40.6133
+              format: float
+              type: number
+            constellation:
+              description: '*Enumeration is not restrictive*'
+              enum:
+              - SPOT
+              - PLEIADES
+              - SENTINEL-2
+              example: PHR
+              type: string
+            correlationId:
+              $ref: '#/components/schemas/Id'
+            format:
+              example: image/jp2
+              type: string
+            id:
+              $ref: '#/components/schemas/Id'
+            illuminationAzimuthAngle:
+              example: 153.1708281261751
+              format: double
+              type: number
+            illuminationElevationAngle:
+              example: 41.29941056994953
+              format: double
+              type: number
+            incidenceAngle:
+              example: 18.92724363373624
+              format: double
+              type: number
+            incidenceAngleAcrossTrack:
+              example: 13.90087672831772
+              format: double
+              type: number
+            incidenceAngleAlongTrack:
+              example: 13.35195258346335
+              format: double
+              type: number
+            organisationName:
+              example: AIRBUS DS GEO
+              type: string
+            parentIdentifier:
+              example: DS_PHR1A_201703101042018_FR1_PX_E002N41_0311_03240
+              type: string
+            platform:
+              description: '*Enumeration is not restrictive*'
+              enum:
+              - PHR1A
+              - SPOT6
+              - SPOT7
+              - SENTINEL2-A
+              type: string
+            processingCenter:
+              example: FCMUGC
+              type: string
+            processingDate:
+              example: '2017-11-22T10:54:33.987'
+              format: date-time
+              type: string
+            processingLevel:
+              example: SENSOR
+              type: string
+            processorName:
+              example: IPU V_05_03vV_05_03
+              type: string
+            productType:
+              description: '*Enumeration is not restrictive*'
+              enum:
+              - mono
+              - bundle
+              - panchromatic
+              - multispectral
+              - pansharpen
+              type: string
+            productionStatus:
+              oneOf:
+              - description: Internal item
+                properties:
+                  archive:
+                    description: Data is archived outside the platform.
+                    properties:
+                      expirationDate:
+                        description: Date of deletion of this metadata item if no other prodution status is defined.
+                        example: '2019-03-31T10:59:16.537577277Z'
+                        format: date-time
+                        type: string
+                    type: object
+                  nearline:
+                    description: Data is archived inside the platform.
+                    properties:
+                      expirationDate:
+                        description: Date of deletion of the data in the archive section of the platform and deletion of the metadata item if no other prodution status is defined.
+                        example: '2019-03-31T10:59:16.537577277Z'
+                        format: date-time
+                        type: string
+                    type: object
+                  online:
+                    description: Data is available on the platform.
+                    properties:
+                      expirationDate:
+                        description: Date of deletion of the data in the online section of the platform and deletion of the metadata item if no other prodution status is defined.
+                        example: '2019-03-31T10:59:16.537577277Z'
+                        format: date-time
+                        type: string
+                    type: object
+                type: object
+              - description: External item
+                properties:
+                  external:
+                    description: Data is available outside the platform.
+                    properties:
+                      expirationDate:
+                        description: Date of deletion of this metadata item
+                        example: '2019-03-31T10:59:16.537577277Z'
+                        format: date-time
+                        type: string
+                    type: object
+                type: object
+            publicationDate:
+              example: '2018-03-31T10:59:16.537577277Z'
+              format: date-time
+              type: string
+            qualified:
+              example: false
+              type: boolean
+            resolution:
+              description: In meters
+              example: 0.5
+              format: float
+              type: number
+            sensorType:
+              example: OPTICAL
+              type: string
+            snowCover:
+              example: 0
+              format: float
+              type: number
+            sourceIdentifier:
+              example: DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233
+              type: string
+            spectralRange:
+              example: VISIBLE
+              type: string
+            title:
+              example: DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233
+              type: string
+            workspaceId:
+              $ref: '#/components/schemas/Id'
+            workspaceName:
+              example: public
+              type: string
+            workspaceTitle:
+              example: Public
+              type: string
+          type: object
+        rights:
+          properties:
+            associatedData:
+              description: If present, indicates that the user who performed the request can use the associatedData links. Otherwise, a 403 status code will be returned.
+              properties:
+                privileges:
+                  items:
+                    $ref: '#/components/schemas/Privilege'
+                  type: array
+              type: object
+            browse:
+              description: If present, indicates that the user who performed the request can view the item in a catalog search response and can use the metadata and histogram links. Otherwise, a 403 status code will be returned.
+              properties:
+                privileges:
+                  items:
+                    $ref: '#/components/schemas/Privilege'
+                  type: array
+              type: object
+            buffer:
+              description: If present, indicates that the user who performed the request can use the buffer links. Otherwise, a 403 status code will be returned.
+              properties:
+                privileges:
+                  items:
+                    $ref: '#/components/schemas/Privilege'
+                  type: array
+              type: object
+            download:
+              description: If present, indicates that the user who performed the request can use the download link. Otherwise, a 403 status code will be returned.
+              properties:
+                privileges:
+                  items:
+                    $ref: '#/components/schemas/Privilege'
+                  type: array
+              type: object
+            wms:
+              description: If present, indicates that the user who performed the request can use the wms, panchroWms and multispectralWms links. Otherwise, a 403 status code will be returned.
+              properties:
+                privileges:
+                  items:
+                    $ref: '#/components/schemas/Privilege'
+                  type: array
+              type: object
+            wmts:
+              description: If present, indicates that the user who performed the request can use the wmts, panchroWmts and multispectralWmts links. Otherwise, a 403 status code will be returned.
+              properties:
+                privileges:
+                  items:
+                    $ref: '#/components/schemas/Privilege'
+                  type: array
+              type: object
+          readOnly: true
+          type: object
+        type:
+          example: Feature
+          readOnly: true
+          type: string
+      type: object
+  responses:
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
+    '503':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: The server is currently unavailable (because it is overloaded or down for maintenance). Generally, this is a temporary state.
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
+  parameters:
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
+    property-name:
+      in: path
+      name: propertyName
+      description: The name of a queryable item property
+      schema:
+        type: string
+      required: true
+      example: processingLevel
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

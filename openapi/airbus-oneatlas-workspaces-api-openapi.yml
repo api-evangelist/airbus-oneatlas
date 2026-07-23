@@ -1,0 +1,986 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Workspaces API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Workspaces
+paths:
+  /api/v1/privileges:
+    put:
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Privilege'
+        description: The privilege detail
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Privilege'
+          description: If a privilege has already been requested for the same payload.
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Privilege'
+          description: Creation of the privilege
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Give a User Read Access on a Workspace
+      tags:
+      - Workspaces
+  /api/v1/privileges/bulk:
+    post:
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Description of subscriptions and associations with users
+              example:
+                subscriptionUidsByUserUuids:
+                  d83f330d-e434-4b37-92b2-d141afd77ef0:
+                  - subscription1
+                  de2d5963-a8a5-41b5-9f2a-ed6d478eb3af:
+                  - subscription1
+                  - subscription2
+                subscriptions:
+                - _links:
+                    self:
+                      href: /api/v1/subscriptions/subscription1
+                  geo.idp.datastore:
+                    privileges:
+                    - filter:
+                        workspace: public
+                      rights:
+                        browse: {}
+                    - filter:
+                        workspace: public
+                      rights:
+                        wms: {}
+                        wmts: {}
+                  uid: subscription1
+                - _links:
+                    self:
+                      href: /api/v1/subscriptions/subscription2
+                  geo.idp.datastore:
+                    privileges:
+                    - filter:
+                        workspace: public
+                      rights:
+                        buffer: {}
+                  uid: subscription2
+                users:
+                - _links:
+                    groups:
+                      href: /api/v1/users/d83f330d-e434-4b37-92b2-d141afd77ef0/groups
+                    self:
+                      href: /api/v1/users/d83f330d-e434-4b37-92b2-d141afd77ef0
+                  activated: false
+                  uuid: d83f330d-e434-4b37-92b2-d141afd77ef0
+                - _links:
+                    groups:
+                      href: /api/v1/users/de2d5963-a8a5-41b5-9f2a-ed6d478eb3af/groups
+                    self:
+                      href: /api/v1/users/de2d5963-a8a5-41b5-9f2a-ed6d478eb3af
+                  activated: false
+                  uuid: de2d5963-a8a5-41b5-9f2a-ed6d478eb3af
+              properties:
+                subscriptionUidsByUserUuids:
+                  additionalProperties:
+                    items:
+                      allOf:
+                      - $ref: '#/components/schemas/Id'
+                      - description: Subscription id that must match the id of a subscription of the "subscriptions" block
+                    type: array
+                  description: Map of users (keys) and list of subscriptions ids (value)
+                subscriptions:
+                  additionalProperties:
+                    properties:
+                      geo.idp.datastore:
+                        properties:
+                          privileges:
+                            items:
+                              $ref: '#/components/schemas/Privilege'
+                            type: object
+                        type: object
+                      uid:
+                        $ref: '#/components/schemas/Id'
+                    required:
+                    - uid
+                    type: object
+                  description: Description of all the subscriptions
+              required:
+              - subscriptionUidsByUserUuids
+              - subscriptions
+              type: object
+      responses:
+        '204':
+          description: Success
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Add Privileges in Bulk Mode
+      tags:
+      - Workspaces
+  /api/v1/privileges/search:
+    post:
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrivilegeSearchOptions'
+        description: The search options
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivilegeSearchResponse'
+          description: Success
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Search the Privileges
+      tags:
+      - Workspaces
+  /api/v1/privileges/{privilegeId}:
+    delete:
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - description: The id of the privilege to delete
+        example: 74686081-d328-4de4-91bb-4fbb7dc992a5
+        in: path
+        name: privilegeId
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Delete an Existing User Privilege
+      tags:
+      - Workspaces
+  /api/v1/workspaces:
+    post:
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Workspace'
+        description: The workspace detail
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workspace'
+          description: If a workspace has already been requested for the same payload.
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workspace'
+          description: Creation of the workspace
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Create a User Workspace
+      tags:
+      - Workspaces
+  /api/v1/workspaces/search:
+    post:
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkspaceSearchOptions'
+        description: The search options
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceSearchResponse'
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Search for Workspaces
+      tags:
+      - Workspaces
+  /api/v1/workspaces/{workspace}:
+    delete:
+      description: It will delete all catalog items linked to this workspace.
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/WorkspaceIdentifier'
+      responses:
+        '204':
+          description: Deleted
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Delete a User Workspace.
+      tags:
+      - Workspaces
+    get:
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/WorkspaceIdentifier'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workspace'
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Get a User Workspace
+      tags:
+      - Workspaces
+    put:
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/WorkspaceIdentifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Workspace'
+        description: The workspace detail
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workspace'
+          description: Updated
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Update a User Workspace
+      tags:
+      - Workspaces
+  /api/v1/workspaces/{workspace}/items/{catalogItemId}:
+    delete:
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/WorkspaceIdentifier'
+      - $ref: '#/components/parameters/CatalogItemId'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogItem'
+          description: Success
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Remove an Item from a Workspace
+      tags:
+      - Workspaces
+  /api/v1/workspaces/{workspace}/items/{catalogItemId}/copy:
+    post:
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/WorkspaceIdentifier'
+      - $ref: '#/components/parameters/CatalogItemId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TargetWorkspace'
+        description: The target definition
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogItem'
+          description: Success
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Copy an Item from a Workspace to an Other
+      tags:
+      - Workspaces
+  /api/v1/workspaces/{workspace}/items/{catalogItemId}/move:
+    post:
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/WorkspaceIdentifier'
+      - $ref: '#/components/parameters/CatalogItemId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TargetWorkspace'
+        description: The target definition
+      responses:
+        '204':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteOperationResult'
+          description: Success
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Move an Item from a Workspace to an Other
+      tags:
+      - Workspaces
+components:
+  parameters:
+    CatalogItemId:
+      description: Identifier of an IDP catalog item (property `id` of a search result).
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: path
+      name: catalogItemId
+      required: true
+      schema:
+        $ref: '#/components/schemas/Id'
+    WorkspaceIdentifier:
+      description: The workspace's identifier, that can be either its name or its id
+      example: '"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8" or "MySuperWorkspace"'
+      in: path
+      name: workspace
+      required: true
+      schema:
+        $ref: '#/components/schemas/WorkspaceIdentifier'
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
+  schemas:
+    Privilege:
+      example:
+        filter:
+          workspace: public
+        rights:
+          browse: {}
+          wmts: {}
+        userId: de2d5963-a8a5-41b5-9f2a-ed6d478eb3af
+      properties:
+        createdAt:
+          description: The creation time of the created Privilege. This is returned when the Privilege is properly created.
+          format: datetime
+          readOnly: true
+          type: string
+        filter:
+          description: Filters the scope of the privilege (e.g. by workspace, id)
+          properties:
+            id:
+              $ref: '#/components/schemas/Id'
+            workspace:
+              $ref: '#/components/schemas/WorkspaceIdentifier'
+          required:
+          - workspace
+          type: object
+        id:
+          $ref: '#/components/schemas/Id'
+        priority:
+          description: The priority of the privilege
+          example: 10
+          format: int64
+          type: integer
+        rights:
+          description: List of rights granted to a user. For now, only "browse" is supported. Therefore, it will give all the rights for now.
+          properties:
+            browse:
+              description: Indicates that the user is granted the right to browse the target of the privilege
+              type: object
+            buffer:
+              description: Indicates that the user is granted the right to request buffer dissemination
+              type: object
+            download:
+              description: Indicates that the user is granted the right to request download dissemination
+              type: object
+            wms:
+              description: Indicates that the user is granted the right to request WMS disseminatione
+              type: object
+            wmts:
+              description: Indicates that the user is granted the right to request WMTS dissemination
+              type: object
+          type: object
+        subscriptionId:
+          $ref: '#/components/schemas/Id'
+        userId:
+          $ref: '#/components/schemas/Id'
+      required:
+      - userId
+      - filter
+      - rights
+      type: object
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    PrivilegeSearchOptions:
+      properties:
+        userId:
+          $ref: '#/components/schemas/Id'
+      required:
+      - userId
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    TargetWorkspace:
+      properties:
+        targetWorkspace:
+          $ref: '#/components/schemas/WorkspaceIdentifier'
+        ttl:
+          description: The ttl for the item, in seconds. If not set, the default will be the target workspace ttl.
+          example: 123456
+          format: int
+          minimum: 1
+          type: number
+      type: object
+    Workspace:
+      properties:
+        createdAt:
+          description: The creation date
+          example: '2017-10-12T08:55:52.651155Z'
+          format: datetime
+          readOnly: true
+          type: string
+        defaultItemTtl:
+          description: The default ttl for the workspaces items, in seconds. If not set, the default will be set by server configuration (currently 1 year)
+          example: 123456
+          format: int
+          type: number
+        id:
+          $ref: '#/components/schemas/Id'
+        labels:
+          description: A list of user defined labels or tags
+          example:
+          - p�che
+          - lac de biscarosse
+          - carpe
+          items:
+            type: string
+          type: array
+        name:
+          description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
+          example: flyinghippo
+          type: string
+        title:
+          description: Human readable workspace title for convenience
+          example: S2 items
+          type: string
+        userId:
+          description: The id of the user who own the workspace
+          example: aEr5695feGGn0ob
+          type: string
+      required:
+      - userId
+      type: object
+    WorkspaceSearchResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Workspace'
+          type: array
+          uniqueItems: true
+      type: object
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    CatalogItem:
+      properties:
+        _links:
+          properties:
+            buffer:
+              allOf:
+              - description: See [Get buffer](#/paths/~1api~1v1~1items~1{catalogItemId}~1images~1{imageId}~1buffer/post)
+              - $ref: '#/components/schemas/Link'
+            download:
+              description: 'See [Download formatted product](#/paths/~1api~1v1~1items~1{catalogItemId}~1download/get) and direct download links (gs, ftp)
+
+                '
+              items:
+                $ref: '#/components/schemas/Link'
+              minItems: 1
+              type: array
+            imagesMetadata:
+              description: See [Get catalog item image metadata](#/paths/~1api~1v1~1items~1{catalogItemId}~1images~1{imageId}~1metadata/get)
+              items:
+                $ref: '#/components/schemas/Link'
+              minItems: 1
+              type: array
+            quicklook:
+              allOf:
+              - description: See [QuickLook](#/paths/~1api~1v1~1items~1{catalogItemId}~1quicklook/get)
+              - $ref: '#/components/schemas/Link'
+            thumbnail:
+              allOf:
+              - description: See [Thumbnail](#/paths/~1api~1v1~1items~1{catalogItemId}~1thumbnail/get)
+              - $ref: '#/components/schemas/Link'
+            wms:
+              allOf:
+              - description: 'See [WMS OTF visualization](#/paths/~1api~1v1~1items~1{catalogItemId}~1wms/get) and [WMS visualization](#/paths/~1api~1v1~1items~1{catalogItemId}~1images~1{imageId}~1wms/get)
+
+                  '
+              - $ref: '#/components/schemas/Link'
+            wmts:
+              allOf:
+              - description: 'See [WMTS OTF visualization](#/paths/~1api~1v1~1items~1{catalogItemId}~1wmts/get) and [WMTS visualization](#/paths/~1api~1v1~1items~1{catalogItemId}~1images~1{imageId}~1wmts/get)
+
+                  '
+              - $ref: '#/components/schemas/Link'
+          readOnly: true
+          type: object
+        geometry:
+          $ref: '#/components/schemas/GeojsonGeometry'
+        properties:
+          properties:
+            acquisitionDate:
+              example: '2018-02-28T11:00:29.027Z'
+              format: date-time
+              type: string
+            acquisitionStation:
+              example: FR1
+              type: string
+            archivingCenter:
+              example: FR1
+              type: string
+            azimuthAngle:
+              example: 180.0016489732347
+              format: double
+              type: number
+            cloudCover:
+              example: 40.6133
+              format: float
+              type: number
+            constellation:
+              description: '*Enumeration is not restrictive*'
+              enum:
+              - SPOT
+              - PLEIADES
+              - SENTINEL-2
+              example: PHR
+              type: string
+            correlationId:
+              $ref: '#/components/schemas/Id'
+            format:
+              example: image/jp2
+              type: string
+            id:
+              $ref: '#/components/schemas/Id'
+            illuminationAzimuthAngle:
+              example: 153.1708281261751
+              format: double
+              type: number
+            illuminationElevationAngle:
+              example: 41.29941056994953
+              format: double
+              type: number
+            incidenceAngle:
+              example: 18.92724363373624
+              format: double
+              type: number
+            incidenceAngleAcrossTrack:
+              example: 13.90087672831772
+              format: double
+              type: number
+            incidenceAngleAlongTrack:
+              example: 13.35195258346335
+              format: double
+              type: number
+            organisationName:
+              example: AIRBUS DS GEO
+              type: string
+            parentIdentifier:
+              example: DS_PHR1A_201703101042018_FR1_PX_E002N41_0311_03240
+              type: string
+            platform:
+              description: '*Enumeration is not restrictive*'
+              enum:
+              - PHR1A
+              - SPOT6
+              - SPOT7
+              - SENTINEL2-A
+              type: string
+            processingCenter:
+              example: FCMUGC
+              type: string
+            processingDate:
+              example: '2017-11-22T10:54:33.987'
+              format: date-time
+              type: string
+            processingLevel:
+              example: SENSOR
+              type: string
+            processorName:
+              example: IPU V_05_03vV_05_03
+              type: string
+            productType:
+              description: '*Enumeration is not restrictive*'
+              enum:
+              - mono
+              - bundle
+              - panchromatic
+              - multispectral
+              - pansharpen
+              type: string
+            productionStatus:
+              oneOf:
+              - description: Internal item
+                properties:
+                  archive:
+                    description: Data is archived outside the platform.
+                    properties:
+                      expirationDate:
+                        description: Date of deletion of this metadata item if no other prodution status is defined.
+                        example: '2019-03-31T10:59:16.537577277Z'
+                        format: date-time
+                        type: string
+                    type: object
+                  nearline:
+                    description: Data is archived inside the platform.
+                    properties:
+                      expirationDate:
+                        description: Date of deletion of the data in the archive section of the platform and deletion of the metadata item if no other prodution status is defined.
+                        example: '2019-03-31T10:59:16.537577277Z'
+                        format: date-time
+                        type: string
+                    type: object
+                  online:
+                    description: Data is available on the platform.
+                    properties:
+                      expirationDate:
+                        description: Date of deletion of the data in the online section of the platform and deletion of the metadata item if no other prodution status is defined.
+                        example: '2019-03-31T10:59:16.537577277Z'
+                        format: date-time
+                        type: string
+                    type: object
+                type: object
+              - description: External item
+                properties:
+                  external:
+                    description: Data is available outside the platform.
+                    properties:
+                      expirationDate:
+                        description: Date of deletion of this metadata item
+                        example: '2019-03-31T10:59:16.537577277Z'
+                        format: date-time
+                        type: string
+                    type: object
+                type: object
+            publicationDate:
+              example: '2018-03-31T10:59:16.537577277Z'
+              format: date-time
+              type: string
+            qualified:
+              example: false
+              type: boolean
+            resolution:
+              description: In meters
+              example: 0.5
+              format: float
+              type: number
+            sensorType:
+              example: OPTICAL
+              type: string
+            snowCover:
+              example: 0
+              format: float
+              type: number
+            sourceIdentifier:
+              example: DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233
+              type: string
+            spectralRange:
+              example: VISIBLE
+              type: string
+            title:
+              example: DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233
+              type: string
+            workspaceId:
+              $ref: '#/components/schemas/Id'
+            workspaceName:
+              example: public
+              type: string
+            workspaceTitle:
+              example: Public
+              type: string
+          type: object
+        rights:
+          properties:
+            associatedData:
+              description: If present, indicates that the user who performed the request can use the associatedData links. Otherwise, a 403 status code will be returned.
+              properties:
+                privileges:
+                  items:
+                    $ref: '#/components/schemas/Privilege'
+                  type: array
+              type: object
+            browse:
+              description: If present, indicates that the user who performed the request can view the item in a catalog search response and can use the metadata and histogram links. Otherwise, a 403 status code will be returned.
+              properties:
+                privileges:
+                  items:
+                    $ref: '#/components/schemas/Privilege'
+                  type: array
+              type: object
+            buffer:
+              description: If present, indicates that the user who performed the request can use the buffer links. Otherwise, a 403 status code will be returned.
+              properties:
+                privileges:
+                  items:
+                    $ref: '#/components/schemas/Privilege'
+                  type: array
+              type: object
+            download:
+              description: If present, indicates that the user who performed the request can use the download link. Otherwise, a 403 status code will be returned.
+              properties:
+                privileges:
+                  items:
+                    $ref: '#/components/schemas/Privilege'
+                  type: array
+              type: object
+            wms:
+              description: If present, indicates that the user who performed the request can use the wms, panchroWms and multispectralWms links. Otherwise, a 403 status code will be returned.
+              properties:
+                privileges:
+                  items:
+                    $ref: '#/components/schemas/Privilege'
+                  type: array
+              type: object
+            wmts:
+              description: If present, indicates that the user who performed the request can use the wmts, panchroWmts and multispectralWmts links. Otherwise, a 403 status code will be returned.
+              properties:
+                privileges:
+                  items:
+                    $ref: '#/components/schemas/Privilege'
+                  type: array
+              type: object
+          readOnly: true
+          type: object
+        type:
+          example: Feature
+          readOnly: true
+          type: string
+      type: object
+    WorkspaceSearchOptions:
+      properties:
+        name:
+          description: The name of the workspace
+          example: workspace de Jean-Charles
+          type: string
+        userId:
+          $ref: '#/components/schemas/Id'
+      type: object
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
+    DeleteOperationResult:
+      properties:
+        deleted:
+          description: The number of deleted items
+          format: integer
+          type: number
+        failures:
+          description: The number of item deletion failures
+          format: integer
+          type: number
+        notFound:
+          description: The number of items not found
+          format: integer
+          type: number
+        total:
+          description: The number of processed items
+          format: integer
+          type: number
+      type: object
+    WorkspaceIdentifier:
+      oneOf:
+      - $ref: '#/components/schemas/Id'
+      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
+        example: MySuperWorkspace
+        type: string
+    PrivilegeSearchResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Privilege'
+          type: array
+      type: object
+  responses:
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '404':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Item not found in catalog or resource not found in item
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

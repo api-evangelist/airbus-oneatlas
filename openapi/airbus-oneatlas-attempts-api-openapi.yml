@@ -1,0 +1,268 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Attempts API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Attempts
+paths:
+  /api/v1/attempts:
+    post:
+      summary: Retrieve Attempts
+      tags:
+      - Attempts
+      description: "### Get tasking attempts\n-\tThis path is used for ONEDAY and ONENOWATTEMPTS requests\n-\tThis API allows to get the first possible attempts matching your criteria\n- Note that, as of today, the API responds in some cases with a 500 error\n-\tEven if the parameter is mandatory, maxCloudCover is NOT yet used for calculations.\n-\tStartDate can be set at any time. Note that if you try to set it in the past, the value will be replace by the current date\n"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Orders api
+              oneOf:
+              - properties:
+                  progTypeNames:
+                    enum:
+                    - ONEDAY
+                    - ONENOWATTEMPTS
+                    type: string
+                  mission:
+                    enum:
+                    - PLEIADESNEO
+                    type: string
+                  contractId:
+                    type: string
+                  acquisitionDate:
+                    $ref: '#/components/schemas/AcquisitionDate'
+                  optical:
+                    $ref: '#/components/schemas/Optical'
+                  aoi:
+                    properties:
+                      coordinates:
+                        items:
+                          items:
+                            items:
+                              type: number
+                            maxItems: 2
+                            minItems: 2
+                            type: array
+                          minItems: 4
+                          type: array
+                        minItems: 1
+                        type: array
+                      type:
+                        enum:
+                        - Polygon
+                    title: aoi
+                    type: object
+                    example:
+                      type: Polygon
+                      coordinates:
+                      - - - 23.69574504957747
+                          - 37.91905533651132
+                        - - 23.815564690690753
+                          - 37.91905533651132
+                        - - 23.815564690690753
+                          - 38.033261134969194
+                        - - 23.69574504957747
+                          - 38.033261134969194
+                        - - 23.69574504957747
+                          - 37.91905533651132
+                required:
+                - progTypeNames
+                - mission
+                - contractId
+                - acquisitionDate
+                - optical
+                - aoi
+                example:
+                  progTypeNames:
+                  - ONEDAY
+                  missions:
+                  - PLEIADESNEO
+                  acquisitionDate:
+                    startDate: 2023-03-26T00:00.000Z
+                    endDate: '2022-03-29T00:00:00.000Z'
+                    optical:
+                      maxCloudCover: 100
+                      maxIncidenceAngle: 20
+                    aoi:
+                      type: Polygon
+                      coordinates:
+                      - - - 23.69574504957747
+                          - 37.91905533651132
+                        - - 23.815564690690753
+                          - 37.91905533651132
+                        - - 23.815564690690753
+                          - 38.033261134969194
+                        - - 23.69574504957747
+                          - 38.033261134969194
+                        - - 23.69574504957747
+                          - 37.91905533651132
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskingAttempt'
+              example:
+                progCapacities:
+                  mission: PLEIADESNEO
+                  progTypes:
+                  - name: ONEDAY
+                    mission: PLEIADESNEO
+                    segments:
+                    - id: PNEO1
+                      footprint:
+                        geometry: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
+                        center: POINT(23.755357 37.97611)
+                      instrumentMode: THR
+                      orderDeadline: '2022-03-26T08:28:00.499Z'
+                      extendedAngle: false
+                      acquisitionStartDate: '2022-03-26T09:15:27.499Z'
+                      acquisitionEndDate: '2022-03-26T09:15:29.671Z'
+                      incidenceAngle: 26.72
+                      segmentKey: 895651bbc3f881c1e1245b224ac69c34668001bd8610e359dfdfbf9b7430ad69c1b92543b80d84a75ed9961c0dca088f38f278c4df90a686f327e2cfc3d0be73::[{"key":"orderDeadLine","value":"2022-03-26T08:28:00.499Z"},{"key":"acqPeriod","value":"2022-03-26T09:15:27.499Z 2022-03-26T09:15:29.671Z"},{"key":"maxIncidenceAngle","value":"30.0"},{"key":"geometryWkt","value":"POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))"}]
+                      acrossTrackIncidenceAngle: -7.874962709778218
+                      maxIncidenceAngle: 30
+                    - id: PNEO2
+                      footprint:
+                        geometry: POLYGON((23.644797 38.043069, 23.644964 37.90931, 23.866444 37.908808, 23.86659 38.043069, 23.644797 38.043069, 23.644797 38.043069))
+                        center: POINT(23.755768 37.97608)
+                      instrumentMode: THR
+                      orderDeadline: '2022-03-29T08:35:00.699Z'
+                      extendedAngle: false
+                      acquisitionStartDate: '2022-03-29T09:22:50.699Z'
+                      acquisitionEndDate: '2022-03-29T09:22:52.871Z'
+                      incidenceAngle: 26.98
+                      segmentKey: ef7be0cf8ff00529830ca020a8c9a6ac823f0e59b31c1b242f6a4e88ee5891eaf98605040452702b85dce33e4e9bc5a256a342126a18b2c10506c7cfdaa52682::[{"key":"orderDeadLine","value":"2022-03-29T08:35:00.699Z"},{"key":"acqPeriod","value":"2022-03-29T09:22:50.699Z 2022-03-29T09:22:52.871Z"},{"key":"maxIncidenceAngle","value":"30.0"},{"key":"geometryWkt","value":"POLYGON((23.644797 38.043069, 23.644964 37.90931, 23.866444 37.908808, 23.86659 38.043069, 23.644797 38.043069, 23.644797 38.043069))"}]
+                      acrossTrackIncidenceAngle: 8.063750464703226
+                      maxIncidenceAngle: 30
+                    available: true
+        '500':
+          description: No possible attempt
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NoSensorAvailable'
+      servers:
+      - description: Tasking API server
+        url: https://task.api.oneatlas.airbus.com/
+components:
+  schemas:
+    segment:
+      type: object
+      properties:
+        id:
+          type: string
+        footprint:
+          $ref: '#/components/schemas/footprint'
+        instrumentMode:
+          type: string
+        orderDeadline:
+          format: datetime
+          type: string
+        extendedAngle:
+          type: boolean
+        acquisitionStartDate:
+          format: datetime
+          type: string
+        acquisitionEndDate:
+          format: datetime
+          type: string
+        incidenceAngle:
+          format: float
+          type: number
+        segmentKey:
+          type: string
+        acrossTrackIncidenceAngle:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
+    footprint:
+      type: object
+      properties:
+        geometry:
+          type: string
+          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
+        center:
+          type: string
+          example: POINT(23.755357 37.97611)
+    TaskingAttempt:
+      type: array
+      items:
+        type: object
+        properties:
+          mission:
+            enum:
+            - PLEIADESNEO
+            type: string
+          progTypes:
+            type: array
+            items:
+              type: object
+              properties:
+                name:
+                  type: string
+                mission:
+                  enum:
+                  - PLEIADESNEO
+                  type: string
+                segments:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/segment'
+                available:
+                  type: boolean
+    AcquisitionDate:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
+        endDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition end date
+    Optical:
+      properties:
+        acquisitionMode:
+          enum:
+          - MONO
+          - STEREO
+          - TRISTEREO
+          type: string
+        maxCloudCover:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
+    NoSensorAvailable:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                example: ERR_NO_SENSOR_AVAILABLE
+                type: string
+              locator:
+                example: UNKNOWN
+                type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

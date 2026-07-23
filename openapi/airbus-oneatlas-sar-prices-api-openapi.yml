@@ -1,0 +1,268 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Sar/Prices API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Sar/Prices
+  description: 'Query the price of an SAR acquisition.
+
+    '
+paths:
+  /sar/prices:
+    post:
+      summary: Airbus OneAtlas Get Prices for Items
+      tags:
+      - Sar/Prices
+      requestBody:
+        description: items to get the price for
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                acquisitions:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: string
+                    example: TSX-1_ST_S_spot_049R_49677_D31767159_432
+                items:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: string
+                    format: uuid
+                orderTemplate:
+                  type: string
+              oneOf:
+              - required:
+                - acquisitions
+              - required:
+                - items
+      responses:
+        '200':
+          description: price objects
+          content:
+            application/json:
+              schema:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  additionalProperties: false
+                  required:
+                  - itemId
+                  - acquisitionId
+                  - price
+                  properties:
+                    itemId:
+                      type: string
+                      format: uuid
+                    acquisitionId:
+                      type: string
+                      example: TSX-1_ST_S_spot_049R_49677_D31767159_432
+                    price:
+                      type: object
+                      additionalProperties: false
+                      required:
+                      - final
+                      - total
+                      - currency
+                      properties:
+                        final:
+                          description: Not final, if parameters are missing to calculate all price elements (e.g. Fees). Final price might then be higher.
+                          type: boolean
+                          example: false
+                        missingParameters:
+                          description: parameters that need to be set to get final price
+                          type: array
+                          items:
+                            type: string
+                          example:
+                          - orbitType
+                        total:
+                          description: Price for item including known tax, discounts and fees
+                          type: number
+                          example: 834.32
+                        currency:
+                          type: string
+                          example: EUR
+                        unitPrice:
+                          description: Price for standard scene
+                          type: number
+                          example: 1000
+                        quantity:
+                          type: number
+                          description: Scene length
+                          example: 1.2
+                        discountRate:
+                          type: number
+                          description: Discount for this item in percent
+                          example: 20
+                        expiry:
+                          type: string
+                          format: date-time
+                        fees:
+                          type: array
+                          items:
+                            type: object
+                            additionalProperties: false
+                            required:
+                            - type
+                            - value
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                - NRT
+                                - Rapid tasking
+                                - Priority
+                                - Cancellation
+                              value:
+                                type: number
+                                description: Fee value
+                                example: '200'
+                              discountRate:
+                                type: number
+                                description: Discount rate applied on fee in percent
+                                example: '10'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

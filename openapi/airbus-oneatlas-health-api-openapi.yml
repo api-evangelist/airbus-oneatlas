@@ -1,0 +1,36 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Health API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Health
+paths:
+  /api/v1/health:
+    get:
+      description: Health check route
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    pattern: ok
+                type: object
+          description: API status
+      summary: Health Check
+      tags:
+      - Health
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

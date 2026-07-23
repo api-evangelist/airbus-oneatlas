@@ -1,0 +1,571 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Contract related Information API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Contract related Information
+paths:
+  /api/v1/me:
+    get:
+      description: Allow to retrieve the list of contracts on which you have been authorized to place orders
+      summary: User Information
+      tags:
+      - Contract related Information
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _links:
+                  self:
+                    href: https://data.api.oneatlas.airbus.com/api/v1/me
+                  licenses:
+                    href: https://data.api.oneatlas.airbus.com/api/v1/licenseAgreements
+                id: 5406642f-e3e8-4250-7c7f-7ac2be36021b
+                status: created
+                createdAt: '2022-08-19T12:19:43Z'
+                roles:
+                - changeDetectionUser
+                - contractViewer
+                - user
+                - admin
+                contract:
+                  _links:
+                    self:
+                      href: https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709
+                    orders:
+                      href: https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709/orders
+                    payments:
+                      href: https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709/payments
+                    subscriptions:
+                      href: https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709/subscriptions
+                    deliveries:
+                      href: https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709/deliveries
+                    reports:
+                      href: https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709/reports
+                    cisContracts:
+                      href: https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709/cisContracts
+                  id: d9307572-4f50-4dd5-b5de-94085beb6709
+                  status: created
+                  createdAt: '2021-07-07T08:01:07Z'
+                  offers:
+                  - order.analytics-toolbox.archive
+                  - order.high-precision.report
+                  - order.data.product
+                  - order.data.mosaic
+                  companyName: Airbus
+                  amountUnit: EUR
+                  balanceUnit: EUR
+                  kind: contract.oneatlas.internal
+                  name: INTERNAL.Standard-GEO
+                  balance: 33832
+                  workspaceId: 5b2a41d2-a876-43c5-867b-3aab98bd56b6
+                  workspaceName: mareclever
+                permissions:
+                - contractId: d2c1ef64-6fb7-4dfe-9c1e-3a97f1f56e8e
+                  kind: contract.viewer
+                  userId: 5406642f-e3e8-4250-7c7f-7ac2be36021b
+                - contractId: d9307572-4f50-4dd5-b5de-94085beb6709
+                  kind: contract.user
+                  userId: 5406642f-e3e8-4250-7c7f-7ac2be36021b
+  /api/v1/contracts:
+    get:
+      summary: Get Contracts
+      tags:
+      - Contract related Information
+      description: Get all contracts
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contracts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        contractId:
+                          type: string
+                        customerId:
+                          type: string
+                        name:
+                          type: string
+                        tradeAgreementUrl:
+                          type: string
+                        creditRemaining:
+                          type: string
+                        currency:
+                          type: string
+                        language:
+                          type: string
+                        contractType:
+                          type: string
+                        delivery:
+                          type: object
+                          properties:
+                            deliveryPlatformId:
+                              type: string
+                            deliveryWorkspace:
+                              type: string
+                        backendSource:
+                          type: string
+              examples:
+                spot_pleiades:
+                  value:
+                    contracts:
+                    - contractId: CisContractId
+                      customerId: customerId
+                      name: ContractName
+                      tradeAgreementUrl: https://www.intelligence-airbusds.com/cgf/
+                      creditRemaining: '150.0'
+                      currency: EUR
+                      language: en
+                      contractType: ONEATLASDATA
+                      backendSource: legacy
+                pneo:
+                  value:
+                    contracts:
+                    - contractId: Standard-GEO
+                      customerId: AC0000002
+                      name: Standard-GEO
+                      tradeAgreementUrl: ''
+                      creditRemaining: '150.0'
+                      currency: EUR
+                      language: fr
+                      delivery:
+                      - deliveryPlatformId: PublicMOC
+                        deliveryWorkspace: mareclever
+                      backendSource: legacy
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com
+  /api/v1/contracts/{CisContractId}/productTypes:
+    get:
+      summary: Get Product Types
+      tags:
+      - Contract related Information
+      description: This request displays the possible ordered product types associated to a contract.
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                productTypes:
+                - productTypeId: PleiadesTaskingOneDay
+                  technicalProduct:
+                    id: PleiadesTaskingOneDay
+                    label: Pleiades OneDay
+                    source:
+                      id: tasking
+                      label: One Tasking
+                    sensor:
+                      id: pleiades
+                      label: Pl�iades
+                    target:
+                      id: oneday
+                      label: One Day
+                    licences: null
+                  minimumOrderAreaApplied: 100
+                  descriptionUrl: https://www.intelligence-airbusds.com/one-tasking/
+                - productTypeId: SpotTaskingOneDay
+                  technicalProduct:
+                    id: SpotTaskingOneDay
+                    label: SPOT OneDay
+                    source:
+                      id: tasking
+                      label: One Tasking
+                    sensor:
+                      id: spot
+                      label: SPOT
+                    target:
+                      id: oneday
+                      label: One Day
+                    licences: null
+                  minimumOrderAreaApplied: 500
+                  descriptionUrl: https://www.intelligence-airbusds.com/one-tasking/
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com
+  /api/v1/{cisContractId}/properties:
+    get:
+      summary: Get Markets
+      tags:
+      - Contract related Information
+      description: Allow to retrieve the list of markets (ex - AGRI). Market is a mandatory information.
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                properties: []
+                markets:
+                - id: AGRI
+                  label: Agriculture
+                - id: GENIE
+                  label: Civil engineering
+                  secondaryMarket:
+                  - id: GENIE
+                    label: Civil engineering
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com
+  /api/v1/{cisContractId}/deliveryTypes:
+    get:
+      summary: Get Delivery Types
+      tags:
+      - Contract related Information
+      description: Get the list of available delivery types.
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                deliveryTypes:
+                - deliveryTypeId: network
+                  label: FTP + My Data
+                - deliveryTypeId: MEDIA
+                  label: MEDIA
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com
+  /api/v1/contracts/{cisContractId}/productTypes/{productTypeId}/options:
+    post:
+      summary: Get Production Options
+      description: Allow to retrieve the production options available on your contract for one given product type
+      tags:
+      - Contract related Information
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aoi:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      polygonId:
+                        format: integer
+                        type: number
+                      geometry:
+                        $ref: '#/components/schemas/GeojsonGeometry'
+              example:
+                aoi:
+                - polygonId: 1
+                  geometry:
+                    type: Polygon
+                    coordinates:
+                    - - - 1.4316558837890625
+                        - 43.568824930165476
+                      - - 1.4316558837890625
+                        - 43.601900054609445
+                      - - 1.4670181274414062
+                        - 43.601900054609445
+                      - - 1.4670181274414062
+                        - 43.568824930165476
+                      - - 1.4316558837890625
+                        - 43.568824930165476
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feasibility'
+              example:
+                availableOptions:
+                - category: production_option
+                  label: Processing Level
+                  name: processing_level
+                  mandatory: 'true'
+                  defaultValue: primary
+                  constraint: null
+                  values:
+                  - id: ortho
+                    label: Ortho
+                  - id: projected
+                    label: Projected
+                  - id: primary
+                    label: Primary
+                  type: list
+                  hidden: false
+                  property: true
+                - category: production_option
+                  label: Spectral Processing
+                  name: spectral_processing
+                  mandatory: 'true'
+                  defaultValue: full_bundle
+                  constraint: null
+                  values:
+                  - id: panchromatic
+                    label: Panchromatic 30cm
+                  - id: pansharpened
+                    label: Pansharpened 30cm 4-band
+                  - id: multispectral
+                    label: Multispectral 1.2m 4-band
+                  - id: bundle
+                    label: 'Bundle: Panchromatic 30cm + Multispectral 1.2m 4-band'
+                  - id: full_bundle
+                    label: 'Full Bundle: Panchromatic 30cm + Multispectral 1.2m 6-band'
+                  - id: full_pms
+                    label: Pansharpened 30cm 6-band
+                  - id: full_ms
+                    label: 'Full MS: Multispectral 1.2m 6-band'
+                  type: list
+                  hidden: false
+                  property: true
+                - category: production_option
+                  label: Image Format
+                  name: image_format
+                  mandatory: 'true'
+                  defaultValue: dimap_jpeg2000_regular
+                  constraint: null
+                  values:
+                  - id: dimap_jpeg2000_regular
+                    label: 'DIMAP - Regular JPEG 2000 '
+                  - id: dimap_geotiff
+                    label: DIMAP - GeoTIFF
+                  type: list
+                  hidden: false
+                  property: true
+                - category: production_option
+                  label: Pixel Coding
+                  name: pixel_coding
+                  mandatory: 'true'
+                  defaultValue: 12bits
+                  constraint: null
+                  values:
+                  - id: 8bits
+                    label: '8 bits (JPEG 2000 / GeoTIFF) '
+                    constraint:
+                      condition: radiometric_processing:(display)
+                  - id: 12bits
+                    label: 12 bits (JPEG 2000) / 16 bits (GeoTIFF)
+                    constraint:
+                      condition: radiometric_processing:(basic|reflectance)
+                  type: list
+                  hidden: false
+                  property: true
+                - category: production_option
+                  label: Radiometric Processing
+                  name: radiometric_processing
+                  mandatory: 'true'
+                  defaultValue: basic
+                  constraint: null
+                  values:
+                  - id: basic
+                    label: Basic
+                  - id: reflectance
+                    label: Reflectance
+                  - id: display
+                    label: Display
+                  type: list
+                  hidden: false
+                  property: true
+                - category: production_option
+                  label: Elevation
+                  name: elevation
+                  mandatory: 'false'
+                  constraint:
+                    condition: processing_level:(projected)
+                  range:
+                  - -100
+                  - 10000
+                  type: double
+                  hidden: false
+                  property: true
+                - category: production_option
+                  label: Area Computation Model
+                  name: area_compute_model
+                  mandatory: 'false'
+                  defaultValue: coverage
+                  constraint: null
+                  values:
+                  - id: coverage
+                    label: Coverage
+                  - id: temporal_serie
+                    label: TemporalSerie
+                  type: list
+                  hidden: false
+                  property: true
+                - category: production_option
+                  label: Priority
+                  name: priority
+                  mandatory: 'true'
+                  defaultValue: standard
+                  constraint: null
+                  values:
+                  - id: standard
+                    label: Standard
+                  - id: rush
+                    label: Rush (No Quality Checking)
+                  type: list
+                  hidden: false
+                  property: true
+                - category: production_option
+                  label: fullStrip
+                  name: fullStrip
+                  mandatory: 'false'
+                  defaultValue: 'false'
+                  constraint: null
+                  values:
+                  - id: 'true'
+                    label: 'true'
+                  - id: 'false'
+                    label: 'false'
+                  type: list
+                  hidden: false
+                  property: true
+                - category: production_option
+                  label: DeliveryMethod
+                  name: delivery_method
+                  mandatory: 'false'
+                  defaultValue: on_the_flow
+                  constraint: null
+                  values:
+                  - id: on_the_flow
+                    label: OntheFlow
+                  type: list
+                  hidden: false
+                  property: true
+                - category: production_option
+                  label: Licence
+                  name: licence
+                  mandatory: 'true'
+                  defaultValue: standard
+                  constraint: null
+                  values:
+                  - id: standard
+                    label: Standard Licence Agreement
+                  - id: background_layer
+                    label: Background Layer Licence Agreement
+                  - id: stand_background_layer
+                    label: Standard and Background Layer Licence Agreement
+                  type: list
+                  hidden: false
+                  property: true
+                - category: production_option
+                  label: Orthorectification DEM Reference
+                  name: dem_1
+                  mandatory: constraint
+                  defaultValue: best_available
+                  constraint:
+                    condition: processing_level:(ortho)
+                  values:
+                  - id: best_available
+                    label: Best Available
+                  - id: FLAT_DEM_WITH_WD4O_WAT
+                    label: FLAT_DEM_WITH_WD4O_WAT (100)
+                  - id: GTOPO30
+                    label: GTOPO30 (100)
+                  - id: PAS-DEM
+                    label: PAS-DEM (100)
+                  - id: REF3D-DEM
+                    label: REF3D-DEM (100)
+                  - id: SRTMV4
+                    label: SRTMV4 (100)
+                  - id: WorldDEM4Ortho
+                    label: WorldDEM4Ortho (100)
+                  type: list
+                  hidden: false
+                  property: true
+                - category: production_option
+                  label: Projection (GDLIB code)
+                  name: projection_1
+                  mandatory: constraint
+                  defaultValue: '32631'
+                  constraint:
+                    condition: processing_level:(ortho|projected)
+                  values:
+                  - id: '4171'
+                    label: 4171 RGF93 (FR.)
+                  - id: 4230_B
+                    label: 4230 ED50 (EUR. - AT. DK. FR. DE. DK. CH.)
+                  - id: '4326'
+                    label: 4326 WGS 1984
+                  - id: '4258'
+                    label: 4258 ETRS89 (EUR)
+                  - id: 4230_A
+                    label: 4230 ED50 (EUR.)
+                  - id: '3857'
+                    label: 3857 WGS84/Web Mercator (World - between 85S. and 85N.)
+                  - id: '32631'
+                    label: 32631 WGS84/UTM 31N (N. hemisphere - 0E to 6E)
+                  - id: '2154'
+                    label: 2154 RGF93/Lambert-93 (FR.)
+                  type: list
+                  hidden: false
+                  property: true
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com
+components:
+  schemas:
+    Feasibility:
+      type: object
+      properties:
+        progCapacities:
+          items:
+            properties:
+              mission:
+                enum:
+                - PLEIADESNEO
+                type: string
+              progTypes:
+                items:
+                  properties:
+                    name:
+                      type: string
+                    mission:
+                      enum:
+                      - PLEIADESNEO
+                      type: string
+                    feasibility:
+                      properties:
+                        automation:
+                          description: To be used when creating the order and/or requesting the quotation
+                          enum:
+                          - AUTOMATIC
+                          - MANUAL
+                          type: string
+                        classification:
+                          description: To be used when creating the order and/or requesting the quotation
+                          enum:
+                          - CHALLENGING
+                          - EASY
+                          type: string
+                      type: object
+                    available:
+                      type: boolean
+                    expirationDate:
+                      format: datetime
+                      type: string
+                  type: object
+                type: array
+            type: object
+          type: array
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

@@ -1,0 +1,72 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Contracts API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Contracts
+paths:
+  /api/v1/contracts/{contractId}/notifications:
+    parameters:
+    - $ref: '#/components/parameters/contractId'
+    get:
+      description: Get all contract notifications by contract id
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $schema: http://json-schema.org/draft-06/schema#
+                  additionalProperties: true
+                  id: http://local/schemas/private/notifications.json#
+                  properties:
+                    createdAt:
+                      type: string
+                    data:
+                      properties:
+                        message:
+                          type: string
+                      type: object
+                    id:
+                      type: string
+                    type:
+                      type: integer
+                  title: Notification schema
+                  type: object
+                type: array
+          description: notifications list
+      tags:
+      - Contracts
+  /api/v1/contracts:
+    get:
+      summary: Get Contracts
+      tags:
+      - Contracts
+      description: Get all contracts
+      responses:
+        '200':
+          description: List of all contracts
+      servers:
+      - description: Tasking API server
+        url: https://task.api.oneatlas.airbus.com
+components:
+  parameters:
+    contractId:
+      description: It corresponds to an internal id for the customer contract - you will be provided the contractId
+      in: path
+      name: contractId
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

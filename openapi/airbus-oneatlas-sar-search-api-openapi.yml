@@ -1,0 +1,2872 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Sar/Search API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Sar/Search
+  description: 'Endpoint to search for possible SAR acquisitions.
+
+    '
+paths:
+  /sar/feasibility:
+    post:
+      summary: Airbus OneAtlas Search for Possible Acquisitions for Tasking
+      tags:
+      - Sar/Search
+      requestBody:
+        description: Search parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required:
+              - aoi
+              - time
+              - feasibilityLevel
+              - sensorMode
+              properties:
+                aoi:
+                  oneOf:
+                  - allOf:
+                    - description: Polygon for feasibility search
+                    - type: object
+                      additionalProperties: false
+                      required:
+                      - type
+                      - coordinates
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - Polygon
+                        coordinates:
+                          type: array
+                          minLength: 1
+                          items:
+                            type: array
+                            minLength: 3
+                            items:
+                              type: array
+                              minLength: 2
+                              maxLength: 2
+                              items:
+                                type: number
+                      example:
+                        type: Polygon
+                        coordinates:
+                        - - - 9.346
+                            - 47.788
+                          - - 9.291
+                            - 47.644
+                          - - 9.538
+                            - 47.592
+                          - - 9.62
+                            - 47.75
+                          - - 9.511
+                            - 47.802
+                          - - 9.346
+                            - 47.788
+                  - allOf:
+                    - description: MultiPolygon for feasibility search
+                    - type: object
+                      additionalProperties: false
+                      required:
+                      - type
+                      - coordinates
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - MultiPolygon
+                        coordinates:
+                          type: array
+                          minLength: 1
+                          items:
+                            type: array
+                            minLength: 1
+                            items:
+                              type: array
+                              minLength: 3
+                              items:
+                                type: array
+                                minLength: 2
+                                maxLength: 2
+                                items:
+                                  type: number
+                      example:
+                        type: MultiPolygon
+                        coordinates:
+                        - - - - 8.346
+                              - 47.788
+                            - - 8.291
+                              - 47.644
+                            - - 8.538
+                              - 47.592
+                            - - 8.62
+                              - 47.75
+                            - - 8.511
+                              - 47.802
+                            - - 8.346
+                              - 47.788
+                          - - - 9.346
+                              - 47.788
+                            - - 9.291
+                              - 47.644
+                            - - 9.538
+                              - 47.592
+                            - - 9.62
+                              - 47.75
+                            - - 9.511
+                              - 47.802
+                            - - 9.346
+                              - 47.788
+                  - allOf:
+                    - description: Point for feasibility search
+                    - type: object
+                      additionalProperties: false
+                      required:
+                      - type
+                      - coordinates
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - Point
+                        coordinates:
+                          type: array
+                          minLength: 2
+                          maxLength: 2
+                          items:
+                            type: number
+                      example:
+                        type: Point
+                        coordinates:
+                        - 9.346
+                        - 47.788
+                time:
+                  allOf:
+                  - description: Time range for feasibility search
+                  - type: object
+                    additionalProperties: false
+                    properties:
+                      from:
+                        type: string
+                        format: date-time
+                        example: '2021-10-14T13:28:03.569Z'
+                      to:
+                        type: string
+                        format: date-time
+                        example: '2021-10-24T13:28:03.569Z'
+                mission:
+                  oneOf:
+                  - description: Array of Satellite missions
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - TSX
+                      - PAZ
+                    default:
+                    - TSX
+                    - PAZ
+                    example:
+                    - TSX
+                    - PAZ
+                  - description: Satellite mission
+                    type: string
+                    default: all
+                    enum:
+                    - TSX
+                    - PAZ
+                    - all
+                priority:
+                  description: Higher priority orders have a better chance of success but incur an additional fee
+                  type: string
+                  enum:
+                  - standard
+                  - priority
+                  - exclusive
+                  example: standard
+                feasibilityLevel:
+                  description: Level of feasibility for the search
+                  type: string
+                  enum:
+                  - simple
+                  - complete
+                periodicity:
+                  description: If set a datastack search will be performed. There will be up to 3 footprints with datastacks (grouped by groupId) taking periodicity and occerrences into account.
+                  type: integer
+                  enum:
+                  - 11
+                  - 22
+                  - 33
+                  - 44
+                  - 55
+                  - 66
+                  - 77
+                  - 88
+                  - 99
+                occurrences:
+                  description: 'If set: Number of times a scene should be acquired. This parameter will only be used if periodicity is set and can be used for the acquisition of datastacks.'
+                  type: integer
+                  minimum: 2
+                  maximum: 50
+                sensorMode:
+                  description: The imaging/instrument/sensor mode to use for the acquisition
+                  type: string
+                  enum:
+                  - SAR_ST_S
+                  - SAR_HS_S
+                  - SAR_HS_S_300
+                  - SAR_HS_S_150
+                  - SAR_HS_D
+                  - SAR_HS_D_300
+                  - SAR_HS_D_150
+                  - SAR_SL_S
+                  - SAR_SL_D
+                  - SAR_SM_S
+                  - SAR_SM_D
+                  - SAR_SC_S
+                  - SAR_WS_S
+                  example: SAR_SM_S
+                polarizationChannels:
+                  description: The dual-polarization modes (HHVV, HHHV, VVVH) are not available for staring spotlight or (wide) ScanSAR modes. The polarization modes HV and VH are only available for Wide ScanSAR acquisitions.
+                  type: string
+                  enum:
+                  - HH
+                  - VV
+                  - HV
+                  - VH
+                  - HHVV
+                  - HHHV
+                  - VVVH
+                  example: HH
+                incidenceAngle:
+                  description: Incidence angle range in degrees. Only acquisitions with an average incidence angle in this range will be considered.
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    minimum:
+                      type: number
+                      minimum: 10
+                      maximum: 70
+                      example: 30
+                    maximum:
+                      type: number
+                      minimum: 10
+                      maximum: 70
+                      example: 50
+                pathDirection:
+                  default:
+                  - ascending
+                  - descending
+                  oneOf:
+                  - description: Path or orbit direction
+                    type: string
+                    default: both
+                    example: ascending
+                    enum:
+                    - ascending
+                    - descending
+                    - both
+                  - description: Path or orbit direction
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - ascending
+                      - descending
+                lookDirection:
+                  description: Look Direction. Left-looking acquisitions require special authorization.
+                  type: string
+                  enum:
+                  - R
+                  - L
+                outOfFullPerformance:
+                  description: If set to true and the account is authorized, out of full performance scenes will be included in the response.
+                  type: boolean
+                  default: false
+                orderTemplate:
+                  type: string
+                productType:
+                  description: Product type for the processing of the acuqisition. Mandatory on placing the order, but not for feasibility.
+                  type: string
+                  enum:
+                  - SSC
+                  - MGD
+                  - GEC
+                  - EEC
+                  example: EEC
+                resolutionVariant:
+                  description: Radiometric or spatial enhancement. Mandatory on placing the order, but not for feasibility.
+                  type: string
+                  enum:
+                  - SE
+                  - RE
+                acquisitionOnly:
+                  description: Acquisition is done and archived, but product will not be processed and deliverd. Requires special authorization.
+                  type: boolean
+                  default: false
+                receivingStation:
+                  description: Downlink station to use for direct-access customers
+                  type: string
+                  default: NSG_POOL
+                  example: NSG_POOL
+                orbitType:
+                  description: Near Realtime acquisitions will incur an additional fee. Science processing is most accurate but takes approx 5 days to complete. Mandatory on placing the order, but not for feasibility.
+                  type: string
+                  enum:
+                  - NRT
+                  - rapid
+                  - science
+                geocodedIncidenceMask:
+                  description: Include GIM in delivered product. Only applicable for EEC products.
+                  type: boolean
+                  default: false
+                mapProjection:
+                  description: Projection of the delivered product. Mandatory on placing the order, but not for feasibility.
+                  type: string
+                  default: auto
+                  enum:
+                  - auto
+                  - UTM
+                  - UPS
+                gainAttenuation:
+                  description: Processor gain Attenuation. Mandatory on placing the order, but not for feasibility.
+                  type: integer
+                  default: 0
+                  enum:
+                  - 0
+                  - 10
+                  - 20
+            example:
+              aoi:
+                type: Polygon
+                coordinates:
+                - - - 9.346
+                    - 47.788
+                  - - 9.291
+                    - 47.644
+                  - - 9.538
+                    - 47.592
+                  - - 9.62
+                    - 47.75
+                  - - 9.511
+                    - 47.802
+                  - - 9.346
+                    - 47.788
+              tags:
+              - Project 1
+              time:
+                from: '2022-10-14T13:28:03.569Z'
+                to: '2022-10-24T13:28:03.569Z'
+              mission:
+              - TSX
+              - PAZ
+              feasibilityLevel: complete
+              sensorMode: SAR_SM_S
+              polarizationChannels: HH
+              incidenceAngle:
+                minimum: 30
+                maximum: 50
+              pathDirection:
+              - ascending
+              - descending
+              lookDirection: R
+              outOfFullPerformance: false
+              orderTemplate: default
+              productType: EEC
+              resolutionVariant: SE
+              acquisitionOnly: false
+              receivingStation: NSG_POOL
+              orbitType: NRT
+              geocodedIncidenceMask: false
+              mapProjection: auto
+              gainAttenuation: 0
+      responses:
+        '200':
+          description: Possible acquisitions
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required:
+                - type
+                - features
+                properties:
+                  type:
+                    type: string
+                    enum:
+                    - FeatureCollection
+                  features:
+                    type: array
+                    items:
+                      allOf:
+                      - type: object
+                        required:
+                        - type
+                        - geometry
+                        - properties
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                            - Feature
+                          geometry:
+                            type: object
+                            additionalProperties: false
+                            required:
+                            - type
+                            - coordinates
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                - Polygon
+                              coordinates:
+                                type: array
+                                minLength: 1
+                                items:
+                                  type: array
+                                  minLength: 3
+                                  items:
+                                    type: array
+                                    minLength: 2
+                                    maxLength: 2
+                                    items:
+                                      type: number
+                            example:
+                              type: Polygon
+                              coordinates:
+                              - - - 9.346
+                                  - 47.788
+                                - - 9.291
+                                  - 47.644
+                                - - 9.538
+                                  - 47.592
+                                - - 9.62
+                                  - 47.75
+                                - - 9.511
+                                  - 47.802
+                                - - 9.346
+                                  - 47.788
+                          properties:
+                            type: object
+                            required:
+                            - itemId
+                            - mission
+                            - acquisitionId
+                            - startTime
+                            - stopTime
+                            - sensorMode
+                            - polarizationChannels
+                            - beamId
+                            - pathDirection
+                            - lookDirection
+                            - incidenceAngle
+                            - lastUpdateTime
+                            - status
+                            - outOfFullPerformance
+                            properties:
+                              itemId:
+                                type: string
+                                format: uuid
+                              mission:
+                                description: Satellite mission
+                                type: string
+                                enum:
+                                - TSX
+                                - PAZ
+                              satellite:
+                                description: Satellite
+                                type: string
+                                enum:
+                                - TSX-1
+                                - PAZ-1
+                                - TDX-1
+                              acquisitionId:
+                                type: string
+                                example: TSX-1_ST_S_spot_049R_49677_D31767159_432
+                              groupId:
+                                type: integer
+                              startTime:
+                                type: string
+                                format: date-time
+                              stopTime:
+                                type: string
+                                format: date-time
+                              sensorMode:
+                                description: The imaging/instrument/sensor mode to use for the acquisition
+                                type: string
+                                enum:
+                                - SAR_ST_S
+                                - SAR_HS_S
+                                - SAR_HS_S_300
+                                - SAR_HS_S_150
+                                - SAR_HS_D
+                                - SAR_HS_D_300
+                                - SAR_HS_D_150
+                                - SAR_SL_S
+                                - SAR_SL_D
+                                - SAR_SM_S
+                                - SAR_SM_D
+                                - SAR_SC_S
+                                - SAR_WS_S
+                                example: SAR_SM_S
+                              polarizationChannels:
+                                description: The dual-polarization modes (HHVV, HHHV, VVVH) are not available for staring spotlight or (wide) ScanSAR modes. The polarization modes HV and VH are only available for Wide ScanSAR acquisitions.
+                                type: string
+                                enum:
+                                - HH
+                                - VV
+                                - HV
+                                - VH
+                                - HHVV
+                                - HHHV
+                                - VVVH
+                                example: HH
+                              beamId:
+                                type: string
+                                example: strip_010
+                              pathDirection:
+                                description: Path or orbit direction
+                                type: string
+                                example: ascending
+                                enum:
+                                - ascending
+                                - descending
+                              lookDirection:
+                                description: Look Direction. Left-looking acquisitions require special authorization.
+                                type: string
+                                enum:
+                                - R
+                                - L
+                              incidenceAngle:
+                                description: Incidence angle range in degrees. Only acquisitions with an average incidence angle in this range will be considered.
+                                type: object
+                                additionalProperties: false
+                                properties:
+                                  minimum:
+                                    type: number
+                                    minimum: 10
+                                    maximum: 70
+                                    example: 30
+                                  maximum:
+                                    type: number
+                                    minimum: 10
+                                    maximum: 70
+                                    example: 50
+                              productType:
+                                description: Product type for the processing of the acuqisition. Mandatory on placing the order, but not for feasibility.
+                                type: string
+                                enum:
+                                - SSC
+                                - MGD
+                                - GEC
+                                - EEC
+                                example: EEC
+                              resolutionVariant:
+                                description: Radiometric or spatial enhancement. Mandatory on placing the order, but not for feasibility.
+                                type: string
+                                enum:
+                                - SE
+                                - RE
+                              orbitType:
+                                description: Near Realtime acquisitions will incur an additional fee. Science processing is most accurate but takes approx 5 days to complete. Mandatory on placing the order, but not for feasibility.
+                                type: string
+                                enum:
+                                - NRT
+                                - rapid
+                                - science
+                              geocodedIncidenceMask:
+                                description: Include GIM in delivered product. Only applicable for EEC products.
+                                type: boolean
+                                default: false
+                              mapProjection:
+                                description: Projection of the delivered product. Mandatory on placing the order, but not for feasibility.
+                                type: string
+                                default: auto
+                                enum:
+                                - auto
+                                - UTM
+                                - UPS
+                              gainAttenuation:
+                                description: Processor gain Attenuation. Mandatory on placing the order, but not for feasibility.
+                                type: integer
+                                default: 0
+                                enum:
+                                - 0
+                                - 10
+                                - 20
+                              relativeOrbit:
+                                type: integer
+                              absoluteOrbit:
+                                type: integer
+                              orderTemplate:
+                                type: string
+                              lastUpdateTime:
+                                type: string
+                                format: date-time
+                              status:
+                                description: Status of item
+                                type: string
+                                enum:
+                                - feasible
+                                - availableInArchive
+                                - unavailable
+                                - submitted
+                                - waitingForAcquisitionApproval
+                                - accepted
+                                - planned
+                                - acquistion
+                                - transition
+                                - downlink
+                                - waitingForOrbit
+                                - processing
+                                - waitingForDeliveryApproval
+                                - delivery
+                                - completed
+                                - failed
+                                - cancelled
+                                - approvalRejected
+                              sensitivity:
+                                type: object
+                                additionalProperties: false
+                                required:
+                                - status
+                                properties:
+                                  status:
+                                    type: string
+                                    enum:
+                                    - notSensitive
+                                    - potential
+                                    - sensitive
+                                  missingParameters:
+                                    description: parameters that need to be set to get definite sensitivity status
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                      - productType
+                                      - resolutionVariant
+                                    example:
+                                    - productType
+                                    - resolutionVariant
+                                  type:
+                                    type: string
+                                    enum:
+                                    - blacklist
+                                    - resolution
+                                  sensitivityInformation:
+                                    type: string
+                              itemType:
+                                type: string
+                                enum:
+                                - catalogue
+                                - future
+                              outOfFullPerformance:
+                                description: If set to true and the account is authorized, out of full performance scenes will be included in the response.
+                                type: boolean
+                                default: false
+                              scienceOrbitAvailability:
+                                type: boolean
+                      - type: object
+                        properties:
+                          properties:
+                            type: object
+                            properties:
+                              submissionDeadline:
+                                type: string
+                                format: date-time
+                              acquisitionOnly:
+                                description: Acquisition is done and archived, but product will not be processed and deliverd. Requires special authorization.
+                                type: boolean
+                                default: false
+                              priority:
+                                description: Higher priority orders have a better chance of success but incur an additional fee
+                                type: string
+                                enum:
+                                - standard
+                                - priority
+                                - exclusive
+                                example: standard
+                              conflicts:
+                                type: object
+                                properties:
+                                  status:
+                                    type: string
+                                    enum:
+                                    - none
+                                    - potential
+                                    - expected
+                                  external:
+                                    type: object
+                                    additionalProperties:
+                                      type: object
+                                      properties:
+                                        status:
+                                          type: string
+                                          enum:
+                                          - none
+                                          - potential
+                                          - expected
+                                        startTime:
+                                          type: string
+                                          format: date-time
+                                        stopTime:
+                                          type: string
+                                          format: date-time
+                                      minLength: 1
+                                  baskets:
+                                    type: object
+                                    additionalProperties:
+                                      type: object
+                                      additionalProperties:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                            enum:
+                                            - none
+                                            - potential
+                                            - expected
+                                          startTime:
+                                            type: string
+                                            format: date-time
+                                          stopTime:
+                                            type: string
+                                            format: date-time
+                                        minLength: 1
+                                    minLength: 1
+                                  shopcart:
+                                    type: object
+                                    additionalProperties:
+                                      type: object
+                                      properties:
+                                        status:
+                                          type: string
+                                          enum:
+                                          - none
+                                          - potential
+                                          - expected
+                                        startTime:
+                                          type: string
+                                          format: date-time
+                                        stopTime:
+                                          type: string
+                                          format: date-time
+                                      minLength: 1
+                                  feasibility:
+                                    type: object
+                                    additionalProperties:
+                                      type: object
+                                      properties:
+                                        status:
+                                          type: string
+                                          enum:
+                                          - none
+                                          - potential
+                                          - expected
+                                        startTime:
+                                          type: string
+                                          format: date-time
+                                        stopTime:
+                                          type: string
+                                          format: date-time
+                                      minLength: 1
+                                required:
+                                - status
+                              estimatedDownloadAvailability:
+                                type: string
+                                format: date-time
+                              receivingStation:
+                                description: Downlink station to use for direct-access customers
+                                type: string
+                                default: NSG_POOL
+                                example: NSG_POOL
+                      - type: object
+                        properties:
+                          properties:
+                            type: object
+                            properties:
+                              expiry:
+                                type: string
+                                format: date-time
+                  bbox:
+                    type: array
+                    items:
+                      type: number
+                    minItems: 4
+                    maxItems: 4
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+  /sar/catalogue:
+    post:
+      summary: Airbus OneAtlas Search for Possible Acquisitions in Catalogue
+      tags:
+      - Sar/Search
+      requestBody:
+        description: Search parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                limit:
+                  type: integer
+                  minimum: 1
+                  default: 200
+                aoi:
+                  oneOf:
+                  - allOf:
+                    - description: Polygon for feasibility search
+                    - type: object
+                      additionalProperties: false
+                      required:
+                      - type
+                      - coordinates
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - Polygon
+                        coordinates:
+                          type: array
+                          minLength: 1
+                          items:
+                            type: array
+                            minLength: 3
+                            items:
+                              type: array
+                              minLength: 2
+                              maxLength: 2
+                              items:
+                                type: number
+                      example:
+                        type: Polygon
+                        coordinates:
+                        - - - 9.346
+                            - 47.788
+                          - - 9.291
+                            - 47.644
+                          - - 9.538
+                            - 47.592
+                          - - 9.62
+                            - 47.75
+                          - - 9.511
+                            - 47.802
+                          - - 9.346
+                            - 47.788
+                  - allOf:
+                    - description: MultiPolygon for feasibility search
+                    - type: object
+                      additionalProperties: false
+                      required:
+                      - type
+                      - coordinates
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - MultiPolygon
+                        coordinates:
+                          type: array
+                          minLength: 1
+                          items:
+                            type: array
+                            minLength: 1
+                            items:
+                              type: array
+                              minLength: 3
+                              items:
+                                type: array
+                                minLength: 2
+                                maxLength: 2
+                                items:
+                                  type: number
+                      example:
+                        type: MultiPolygon
+                        coordinates:
+                        - - - - 8.346
+                              - 47.788
+                            - - 8.291
+                              - 47.644
+                            - - 8.538
+                              - 47.592
+                            - - 8.62
+                              - 47.75
+                            - - 8.511
+                              - 47.802
+                            - - 8.346
+                              - 47.788
+                          - - - 9.346
+                              - 47.788
+                            - - 9.291
+                              - 47.644
+                            - - 9.538
+                              - 47.592
+                            - - 9.62
+                              - 47.75
+                            - - 9.511
+                              - 47.802
+                            - - 9.346
+                              - 47.788
+                  - allOf:
+                    - description: Point for feasibility search
+                    - type: object
+                      additionalProperties: false
+                      required:
+                      - type
+                      - coordinates
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - Point
+                        coordinates:
+                          type: array
+                          minLength: 2
+                          maxLength: 2
+                          items:
+                            type: number
+                      example:
+                        type: Point
+                        coordinates:
+                        - 9.346
+                        - 47.788
+                catalogueTime:
+                  allOf:
+                  - description: Time range of time an acquisition has been added to the catalogue.
+                  - type: object
+                    additionalProperties: false
+                    properties:
+                      from:
+                        type: string
+                        format: date-time
+                        example: '2021-10-14T13:28:03.569Z'
+                      to:
+                        type: string
+                        format: date-time
+                        example: '2021-10-24T13:28:03.569Z'
+                time:
+                  allOf:
+                  - description: Time range of acquisition
+                  - type: object
+                    additionalProperties: false
+                    properties:
+                      from:
+                        type: string
+                        format: date-time
+                        example: '2021-10-14T13:28:03.569Z'
+                      to:
+                        type: string
+                        format: date-time
+                        example: '2021-10-24T13:28:03.569Z'
+                mission:
+                  oneOf:
+                  - description: Array of Satellite missions
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - TSX
+                      - PAZ
+                    default:
+                    - TSX
+                    - PAZ
+                    example:
+                    - TSX
+                    - PAZ
+                  - description: Satellite mission
+                    type: string
+                    default: all
+                    enum:
+                    - TSX
+                    - PAZ
+                    - all
+                satellite:
+                  default: all
+                  description: Satellite
+                  oneOf:
+                  - type: string
+                    enum:
+                    - TSX-1
+                    - PAZ-1
+                    - TDX-1
+                    - all
+                  - type: array
+                    items:
+                      type: string
+                      enum:
+                      - TSX-1
+                      - PAZ-1
+                      - TDX-1
+                occurrences:
+                  description: 'If set: minimum size of datastacks.'
+                  type: integer
+                  minimum: 2
+                sensorMode:
+                  default: all
+                  oneOf:
+                  - description: The imaging/instrument/sensor mode of the acquisition
+                    type: string
+                    enum:
+                    - SAR_ST_S
+                    - SAR_HS_S
+                    - SAR_HS_S_300
+                    - SAR_HS_S_150
+                    - SAR_HS_D
+                    - SAR_HS_D_300
+                    - SAR_HS_D_150
+                    - SAR_SL_S
+                    - SAR_SL_D
+                    - SAR_SM_S
+                    - SAR_SM_D
+                    - SAR_SC_S
+                    - SAR_WS_S
+                    - all
+                    example: SAR_SM_S
+                  - description: The imaging/instrument/sensor mode of the acquisition
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - SAR_ST_S
+                      - SAR_HS_S
+                      - SAR_HS_S_300
+                      - SAR_HS_S_150
+                      - SAR_HS_D
+                      - SAR_HS_D_300
+                      - SAR_HS_D_150
+                      - SAR_SL_S
+                      - SAR_SL_D
+                      - SAR_SM_S
+                      - SAR_SM_D
+                      - SAR_SC_S
+                      - SAR_WS_S
+                polarizationChannels:
+                  default: all
+                  oneOf:
+                  - description: The dual-polarization modes (HHVV, HHHV, VVVH) are not available for staring spotlight or (wide) ScanSAR modes. The polarization modes HV and VH are only available for Wide ScanSAR acquisitions.
+                    type: string
+                    enum:
+                    - HH
+                    - VV
+                    - HV
+                    - VH
+                    - HHVV
+                    - HHHV
+                    - VVVH
+                    - all
+                  - description: The dual-polarization modes (HHVV, HHHV, VVVH) are not available for staring spotlight or (wide) ScanSAR modes. The polarization modes HV and VH are only available for Wide ScanSAR acquisitions.
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - HH
+                      - VV
+                      - HV
+                      - VH
+                      - HHVV
+                      - HHHV
+                      - VVVH
+                incidenceAngle:
+                  description: Incidence angle range in degrees. Only acquisitions with an average incidence angle in this range will be considered.
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    minimum:
+                      type: number
+                      minimum: 10
+                      maximum: 70
+                      example: 30
+                    maximum:
+                      type: number
+                      minimum: 10
+                      maximum: 70
+                      example: 50
+                pathDirection:
+                  default:
+                  - ascending
+                  - descending
+                  oneOf:
+                  - description: Path or orbit direction
+                    type: string
+                    default: both
+                    example: ascending
+                    enum:
+                    - ascending
+                    - descending
+                    - both
+                  - description: Path or orbit direction
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - ascending
+                      - descending
+                lookDirection:
+                  default:
+                  - R
+                  - L
+                  oneOf:
+                  - description: Look Direction. Left-looking acquisitions require special authorization.
+                    type: string
+                    enum:
+                    - R
+                    - L
+                    - both
+                  - description: Look Direction. Left-looking acquisitions require special authorization.
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - R
+                      - L
+                beamId:
+                  description: Either a valid beam id or array of beam ids or 'all'
+                  default: all
+                  oneOf:
+                  - type: string
+                  - type: array
+                    items:
+                      type: string
+                relativeOrbit:
+                  default: all
+                  oneOf:
+                  - type: string
+                    enum:
+                    - all
+                  - type: integer
+                    minimum: 1
+                    maximum: 167
+                  - type: array
+                    items:
+                      type: integer
+                      minimum: 1
+                      maximum: 167
+                outOfFullPerformance:
+                  description: If set to true and the account is authorized, out of full performance scenes will be included in the response.
+                  type: boolean
+                  default: false
+                orderTemplate:
+                  type: string
+                productType:
+                  description: Product type for the processing of the acuqisition. Mandatory on placing the order, but not for feasibility.
+                  type: string
+                  enum:
+                  - SSC
+                  - MGD
+                  - GEC
+                  - EEC
+                  example: EEC
+                resolutionVariant:
+                  description: Radiometric or spatial enhancement. Mandatory on placing the order, but not for feasibility.
+                  type: string
+                  enum:
+                  - SE
+                  - RE
+                orbitType:
+                  description: Near Realtime acquisitions will incur an additional fee. Science processing is most accurate but takes approx 5 days to complete.
+                  type: string
+                  default: science
+                  enum:
+                  - rapid
+                  - science
+                geocodedIncidenceMask:
+                  description: Include GIM in delivered product. Only applicable for EEC products.
+                  type: boolean
+                  default: false
+                mapProjection:
+                  description: Projection of the delivered product. Mandatory on placing the order, but not for feasibility.
+                  type: string
+                  default: auto
+                  enum:
+                  - auto
+                  - UTM
+                  - UPS
+                gainAttenuation:
+                  description: Processor gain Attenuation. Mandatory on placing the order, but not for feasibility.
+                  type: integer
+                  default: 0
+                  enum:
+                  - 0
+                  - 10
+                  - 20
+      responses:
+        '200':
+          description: acquisitions in catalogue
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required:
+                - type
+                - features
+                properties:
+                  type:
+                    type: string
+                    enum:
+                    - FeatureCollection
+                  limit:
+                    type: integer
+                    minimum: 1
+                    default: 200
+                  total:
+                    type: integer
+                  features:
+                    type: array
+                    items:
+                      allOf:
+                      - type: object
+                        required:
+                        - type
+                        - geometry
+                        - properties
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                            - Feature
+                          geometry:
+                            type: object
+                            additionalProperties: false
+                            required:
+                            - type
+                            - coordinates
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                - Polygon
+                              coordinates:
+                                type: array
+                                minLength: 1
+                                items:
+                                  type: array
+                                  minLength: 3
+                                  items:
+                                    type: array
+                                    minLength: 2
+                                    maxLength: 2
+                                    items:
+                                      type: number
+                            example:
+                              type: Polygon
+                              coordinates:
+                              - - - 9.346
+                                  - 47.788
+                                - - 9.291
+                                  - 47.644
+                                - - 9.538
+                                  - 47.592
+                                - - 9.62
+                                  - 47.75
+                                - - 9.511
+                                  - 47.802
+                                - - 9.346
+                                  - 47.788
+                          properties:
+                            type: object
+                            required:
+                            - itemId
+                            - mission
+                            - acquisitionId
+                            - startTime
+                            - stopTime
+                            - sensorMode
+                            - polarizationChannels
+                            - beamId
+                            - pathDirection
+                            - lookDirection
+                            - incidenceAngle
+                            - lastUpdateTime
+                            - status
+                            - outOfFullPerformance
+                            properties:
+                              itemId:
+                                type: string
+                                format: uuid
+                              mission:
+                                description: Satellite mission
+                                type: string
+                                enum:
+                                - TSX
+                                - PAZ
+                              satellite:
+                                description: Satellite
+                                type: string
+                                enum:
+                                - TSX-1
+                                - PAZ-1
+                                - TDX-1
+                              acquisitionId:
+                                type: string
+                                example: TSX-1_ST_S_spot_049R_49677_D31767159_432
+                              groupId:
+                                type: integer
+                              startTime:
+                                type: string
+                                format: date-time
+                              stopTime:
+                                type: string
+                                format: date-time
+                              sensorMode:
+                                description: The imaging/instrument/sensor mode to use for the acquisition
+                                type: string
+                                enum:
+                                - SAR_ST_S
+                                - SAR_HS_S
+                                - SAR_HS_S_300
+                                - SAR_HS_S_150
+                                - SAR_HS_D
+                                - SAR_HS_D_300
+                                - SAR_HS_D_150
+                                - SAR_SL_S
+                                - SAR_SL_D
+                                - SAR_SM_S
+                                - SAR_SM_D
+                                - SAR_SC_S
+                                - SAR_WS_S
+                                example: SAR_SM_S
+                              polarizationChannels:
+                                description: The dual-polarization modes (HHVV, HHHV, VVVH) are not available for staring spotlight or (wide) ScanSAR modes. The polarization modes HV and VH are only available for Wide ScanSAR acquisitions.
+                                type: string
+                                enum:
+                                - HH
+                                - VV
+                                - HV
+                                - VH
+                                - HHVV
+                                - HHHV
+                                - VVVH
+                                example: HH
+                              beamId:
+                                type: string
+                                example: strip_010
+                              pathDirection:
+                                description: Path or orbit direction
+                                type: string
+                                example: ascending
+                                enum:
+                                - ascending
+                                - descending
+                              lookDirection:
+                                description: Look Direction. Left-looking acquisitions require special authorization.
+                                type: string
+                                enum:
+                                - R
+                                - L
+                              incidenceAngle:
+                                description: Incidence angle range in degrees. Only acquisitions with an average incidence angle in this range will be considered.
+                                type: object
+                                additionalProperties: false
+                                properties:
+                                  minimum:
+                                    type: number
+                                    minimum: 10
+                                    maximum: 70
+                                    example: 30
+                                  maximum:
+                                    type: number
+                                    minimum: 10
+                                    maximum: 70
+                                    example: 50
+                              productType:
+                                description: Product type for the processing of the acuqisition. Mandatory on placing the order, but not for feasibility.
+                                type: string
+                                enum:
+                                - SSC
+                                - MGD
+                                - GEC
+                                - EEC
+                                example: EEC
+                              resolutionVariant:
+                                description: Radiometric or spatial enhancement. Mandatory on placing the order, but not for feasibility.
+                                type: string
+                                enum:
+                                - SE
+                                - RE
+                              orbitType:
+                                description: Near Realtime acquisitions will incur an additional fee. Science processing is most accurate but takes approx 5 days to complete. Mandatory on placing the order, but not for feasibility.
+                                type: string
+                                enum:
+                                - NRT
+                                - rapid
+                                - science
+                              geocodedIncidenceMask:
+                                description: Include GIM in delivered product. Only applicable for EEC products.
+                                type: boolean
+                                default: false
+                              mapProjection:
+                                description: Projection of the delivered product. Mandatory on placing the order, but not for feasibility.
+                                type: string
+                                default: auto
+                                enum:
+                                - auto
+                                - UTM
+                                - UPS
+                              gainAttenuation:
+                                description: Processor gain Attenuation. Mandatory on placing the order, but not for feasibility.
+                                type: integer
+                                default: 0
+                                enum:
+                                - 0
+                                - 10
+                                - 20
+                              relativeOrbit:
+                                type: integer
+                              absoluteOrbit:
+                                type: integer
+                              orderTemplate:
+                                type: string
+                              lastUpdateTime:
+                                type: string
+                                format: date-time
+                              status:
+                                description: Status of item
+                                type: string
+                                enum:
+                                - feasible
+                                - availableInArchive
+                                - unavailable
+                                - submitted
+                                - waitingForAcquisitionApproval
+                                - accepted
+                                - planned
+                                - acquistion
+                                - transition
+                                - downlink
+                                - waitingForOrbit
+                                - processing
+                                - waitingForDeliveryApproval
+                                - delivery
+                                - completed
+                                - failed
+                                - cancelled
+                                - approvalRejected
+                              sensitivity:
+                                type: object
+                                additionalProperties: false
+                                required:
+                                - status
+                                properties:
+                                  status:
+                                    type: string
+                                    enum:
+                                    - notSensitive
+                                    - potential
+                                    - sensitive
+                                  missingParameters:
+                                    description: parameters that need to be set to get definite sensitivity status
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                      - productType
+                                      - resolutionVariant
+                                    example:
+                                    - productType
+                                    - resolutionVariant
+                                  type:
+                                    type: string
+                                    enum:
+                                    - blacklist
+                                    - resolution
+                                  sensitivityInformation:
+                                    type: string
+                              itemType:
+                                type: string
+                                enum:
+                                - catalogue
+                                - future
+                              outOfFullPerformance:
+                                description: If set to true and the account is authorized, out of full performance scenes will be included in the response.
+                                type: boolean
+                                default: false
+                              scienceOrbitAvailability:
+                                type: boolean
+                      - type: object
+                        properties:
+                          properties:
+                            type: object
+                            properties:
+                              quality:
+                                type: string
+                                enum:
+                                - OPERATOR_APPROVED
+                                - LIMITED_APPROVAL
+                                - AUTO_APPROVED
+                                - QA_ATTENTION
+                                example: AUTO_APPROVED
+                              catalogueTime:
+                                type: string
+                                format: date-time
+                              antennaMode:
+                                type: string
+                                enum:
+                                - SRA
+                                - DRA
+                              datastackCount:
+                                type: integer
+                              resolution:
+                                description: Resolution range of the image. Exact values depend on incidence angle and processing parameters.
+                                type: object
+                                additionalProperties: false
+                                properties:
+                                  minimum:
+                                    type: number
+                                    minimum: 0
+                                    maximum: 50
+                                    example: 3.3
+                                  maximum:
+                                    type: number
+                                    minimum: 0
+                                    maximum: 50
+                                    example: 3.9
+                  bbox:
+                    type: array
+                    items:
+                      type: number
+                    minItems: 4
+                    maxItems: 4
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+  /sar/catalogue/retrieve:
+    post:
+      summary: Airbus OneAtlas Retrieve Ordered Items from Catalogue
+      tags:
+      - Sar/Search
+      requestBody:
+        description: items to be retrieved from the catalogue
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                acquisitions:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: string
+                    example: TSX-1_ST_S_spot_049R_49677_D31767159_432
+                items:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: string
+                    format: uuid
+                orderTemplate:
+                  type: string
+                orderOptions:
+                  type: object
+                  properties:
+                    orbitType:
+                      description: Near Realtime acquisitions will incur an additional fee. Science processing is most accurate but takes approx 5 days to complete. Mandatory on placing the order, but not for feasibility.
+                      type: string
+                      enum:
+                      - NRT
+                      - rapid
+                      - science
+                    productType:
+                      description: Product type for the processing of the acuqisition. Mandatory on placing the order, but not for feasibility.
+                      type: string
+                      enum:
+                      - SSC
+                      - MGD
+                      - GEC
+                      - EEC
+                      example: EEC
+                    resolutionVariant:
+                      description: Radiometric or spatial enhancement. Mandatory on placing the order, but not for feasibility.
+                      type: string
+                      enum:
+                      - SE
+                      - RE
+                    mapProjection:
+                      description: Projection of the delivered product. Mandatory on placing the order, but not for feasibility.
+                      type: string
+                      default: auto
+                      enum:
+                      - auto
+                      - UTM
+                      - UPS
+                    geocodedIncidenceMask:
+                      description: Include GIM in delivered product. Only applicable for EEC products.
+                      type: boolean
+                      default: false
+                    gainAttenuation:
+                      description: Processor gain Attenuation. Mandatory on placing the order, but not for feasibility.
+                      type: integer
+                      default: 0
+                      enum:
+                      - 0
+                      - 10
+                      - 20
+              oneOf:
+              - required:
+                - acquisitions
+              - required:
+                - items
+      responses:
+        '200':
+          description: catalogue items
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required:
+                - type
+                - features
+                properties:
+                  type:
+                    type: string
+                    enum:
+                    - FeatureCollection
+                  features:
+                    type: array
+                    items:
+                      allOf:
+                      - allOf:
+                        - type: object
+                          required:
+                          - type
+                          - geometry
+                          - properties
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                              - Feature
+                            geometry:
+                              type: object
+                              additionalProperties: false
+                              required:
+                              - type
+                              - coordinates
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                  - Polygon
+                                coordinates:
+                                  type: array
+                                  minLength: 1
+                                  items:
+                                    type: array
+                                    minLength: 3
+                                    items:
+                                      type: array
+                                      minLength: 2
+                                      maxLength: 2
+                                      items:
+                                        type: number
+                              example:
+                                type: Polygon
+                                coordinates:
+                                - - - 9.346
+                                    - 47.788
+                                  - - 9.291
+                                    - 47.644
+                                  - - 9.538
+                                    - 47.592
+                                  - - 9.62
+                                    - 47.75
+                                  - - 9.511
+                                    - 47.802
+                                  - - 9.346
+                                    - 47.788
+                            properties:
+                              type: object
+                              required:
+                              - itemId
+                              - mission
+                              - acquisitionId
+                              - startTime
+                              - stopTime
+                              - sensorMode
+                              - polarizationChannels
+                              - beamId
+                              - pathDirection
+                              - lookDirection
+                              - incidenceAngle
+                              - lastUpdateTime
+                              - status
+                              - outOfFullPerformance
+                              properties:
+                                itemId:
+                                  type: string
+                                  format: uuid
+                                mission:
+                                  description: Satellite mission
+                                  type: string
+                                  enum:
+                                  - TSX
+                                  - PAZ
+                                satellite:
+                                  description: Satellite
+                                  type: string
+                                  enum:
+                                  - TSX-1
+                                  - PAZ-1
+                                  - TDX-1
+                                acquisitionId:
+                                  type: string
+                                  example: TSX-1_ST_S_spot_049R_49677_D31767159_432
+                                groupId:
+                                  type: integer
+                                startTime:
+                                  type: string
+                                  format: date-time
+                                stopTime:
+                                  type: string
+                                  format: date-time
+                                sensorMode:
+                                  description: The imaging/instrument/sensor mode to use for the acquisition
+                                  type: string
+                                  enum:
+                                  - SAR_ST_S
+                                  - SAR_HS_S
+                                  - SAR_HS_S_300
+                                  - SAR_HS_S_150
+                                  - SAR_HS_D
+                                  - SAR_HS_D_300
+                                  - SAR_HS_D_150
+                                  - SAR_SL_S
+                                  - SAR_SL_D
+                                  - SAR_SM_S
+                                  - SAR_SM_D
+                                  - SAR_SC_S
+                                  - SAR_WS_S
+                                  example: SAR_SM_S
+                                polarizationChannels:
+                                  description: The dual-polarization modes (HHVV, HHHV, VVVH) are not available for staring spotlight or (wide) ScanSAR modes. The polarization modes HV and VH are only available for Wide ScanSAR acquisitions.
+                                  type: string
+                                  enum:
+                                  - HH
+                                  - VV
+                                  - HV
+                                  - VH
+                                  - HHVV
+                                  - HHHV
+                                  - VVVH
+                                  example: HH
+                                beamId:
+                                  type: string
+                                  example: strip_010
+                                pathDirection:
+                                  description: Path or orbit direction
+                                  type: string
+                                  example: ascending
+                                  enum:
+                                  - ascending
+                                  - descending
+                                lookDirection:
+                                  description: Look Direction. Left-looking acquisitions require special authorization.
+                                  type: string
+                                  enum:
+                                  - R
+                                  - L
+                                incidenceAngle:
+                                  description: Incidence angle range in degrees. Only acquisitions with an average incidence angle in this range will be considered.
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    minimum:
+                                      type: number
+                                      minimum: 10
+                                      maximum: 70
+                                      example: 30
+                                    maximum:
+                                      type: number
+                                      minimum: 10
+                                      maximum: 70
+                                      example: 50
+                                productType:
+                                  description: Product type for the processing of the acuqisition. Mandatory on placing the order, but not for feasibility.
+                                  type: string
+                                  enum:
+                                  - SSC
+                                  - MGD
+                                  - GEC
+                                  - EEC
+                                  example: EEC
+                                resolutionVariant:
+                                  description: Radiometric or spatial enhancement. Mandatory on placing the order, but not for feasibility.
+                                  type: string
+                                  enum:
+                                  - SE
+                                  - RE
+                                orbitType:
+                                  description: Near Realtime acquisitions will incur an additional fee. Science processing is most accurate but takes approx 5 days to complete. Mandatory on placing the order, but not for feasibility.
+                                  type: string
+                                  enum:
+                                  - NRT
+                                  - rapid
+                                  - science
+                                geocodedIncidenceMask:
+                                  description: Include GIM in delivered product. Only applicable for EEC products.
+                                  type: boolean
+                                  default: false
+                                mapProjection:
+                                  description: Projection of the delivered product. Mandatory on placing the order, but not for feasibility.
+                                  type: string
+                                  default: auto
+                                  enum:
+                                  - auto
+                                  - UTM
+                                  - UPS
+                                gainAttenuation:
+                                  description: Processor gain Attenuation. Mandatory on placing the order, but not for feasibility.
+                                  type: integer
+                                  default: 0
+                                  enum:
+                                  - 0
+                                  - 10
+                                  - 20
+                                relativeOrbit:
+                                  type: integer
+                                absoluteOrbit:
+                                  type: integer
+                                orderTemplate:
+                                  type: string
+                                lastUpdateTime:
+                                  type: string
+                                  format: date-time
+                                status:
+                                  description: Status of item
+                                  type: string
+                                  enum:
+                                  - feasible
+                                  - availableInArchive
+                                  - unavailable
+                                  - submitted
+                                  - waitingForAcquisitionApproval
+                                  - accepted
+                                  - planned
+                                  - acquistion
+                                  - transition
+                                  - downlink
+                                  - waitingForOrbit
+                                  - processing
+                                  - waitingForDeliveryApproval
+                                  - delivery
+                                  - completed
+                                  - failed
+                                  - cancelled
+                                  - approvalRejected
+                                sensitivity:
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - status
+                                  properties:
+                                    status:
+                                      type: string
+                                      enum:
+                                      - notSensitive
+                                      - potential
+                                      - sensitive
+                                    missingParameters:
+                                      description: parameters that need to be set to get definite sensitivity status
+                                      type: array
+                                      items:
+                                        type: string
+                                        enum:
+                                        - productType
+                                        - resolutionVariant
+                                      example:
+                                      - productType
+                                      - resolutionVariant
+                                    type:
+                                      type: string
+                                      enum:
+                                      - blacklist
+                                      - resolution
+                                    sensitivityInformation:
+                                      type: string
+                                itemType:
+                                  type: string
+                                  enum:
+                                  - catalogue
+                                  - future
+                                outOfFullPerformance:
+                                  description: If set to true and the account is authorized, out of full performance scenes will be included in the response.
+                                  type: boolean
+                                  default: false
+                                scienceOrbitAvailability:
+                                  type: boolean
+                        - type: object
+                          properties:
+                            properties:
+                              type: object
+                              properties:
+                                quality:
+                                  type: string
+                                  enum:
+                                  - OPERATOR_APPROVED
+                                  - LIMITED_APPROVAL
+                                  - AUTO_APPROVED
+                                  - QA_ATTENTION
+                                  example: AUTO_APPROVED
+                                catalogueTime:
+                                  type: string
+                                  format: date-time
+                                antennaMode:
+                                  type: string
+                                  enum:
+                                  - SRA
+                                  - DRA
+                                datastackCount:
+                                  type: integer
+                                resolution:
+                                  description: Resolution range of the image. Exact values depend on incidence angle and processing parameters.
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    minimum:
+                                      type: number
+                                      minimum: 0
+                                      maximum: 50
+                                      example: 3.3
+                                    maximum:
+                                      type: number
+                                      minimum: 0
+                                      maximum: 50
+                                      example: 3.9
+                      - type: object
+                        properties:
+                          properties:
+                            type: object
+                            properties:
+                              parentItemId:
+                                type: string
+                                format: uuid
+                  bbox:
+                    type: array
+                    items:
+                      type: number
+                    minItems: 4
+                    maxItems: 4
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+  /sar/stacks:
+    post:
+      summary: Airbus OneAtlas Create Stacks from Template Items
+      tags:
+      - Sar/Search
+      requestBody:
+        description: template items for new stacks
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                acquisitions:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: string
+                    example: TSX-1_ST_S_spot_049R_49677_D31767159_432
+                items:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: string
+                    format: uuid
+                orderTemplate:
+                  type: string
+                periodicity:
+                  type: integer
+                  enum:
+                  - 11
+                  - 22
+                  - 33
+                  - 44
+                  - 55
+                  - 66
+                  - 77
+                  - 88
+                  - 99
+                occurrences:
+                  type: integer
+                  minimum: 1
+                startTime:
+                  type: string
+                  format: date-time
+                stopTime:
+                  type: string
+                  format: date-time
+              oneOf:
+              - required:
+                - acquisitions
+                - periodicity
+                - occurrences
+                - startTime
+                - stopTime
+              - required:
+                - items
+                - periodicity
+                - occurrences
+                - startTime
+                - stopTime
+      responses:
+        '200':
+          description: items of newly created stacks (not including template items)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum:
+                    - FeatureCollection
+                  features:
+                    type: array
+                    items:
+                      allOf:
+                      - allOf:
+                        - type: object
+                          required:
+                          - type
+                          - geometry
+                          - properties
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                              - Feature
+                            geometry:
+                              type: object
+                              additionalProperties: false
+                              required:
+                              - type
+                              - coordinates
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                  - Polygon
+                                coordinates:
+                                  type: array
+                                  minLength: 1
+                                  items:
+                                    type: array
+                                    minLength: 3
+                                    items:
+                                      type: array
+                                      minLength: 2
+                                      maxLength: 2
+                                      items:
+                                        type: number
+                              example:
+                                type: Polygon
+                                coordinates:
+                                - - - 9.346
+                                    - 47.788
+                                  - - 9.291
+                                    - 47.644
+                                  - - 9.538
+                                    - 47.592
+                                  - - 9.62
+                                    - 47.75
+                                  - - 9.511
+                                    - 47.802
+                                  - - 9.346
+                                    - 47.788
+                            properties:
+                              type: object
+                              required:
+                              - itemId
+                              - mission
+                              - acquisitionId
+                              - startTime
+                              - stopTime
+                              - sensorMode
+                              - polarizationChannels
+                              - beamId
+                              - pathDirection
+                              - lookDirection
+                              - incidenceAngle
+                              - lastUpdateTime
+                              - status
+                              - outOfFullPerformance
+                              properties:
+                                itemId:
+                                  type: string
+                                  format: uuid
+                                mission:
+                                  description: Satellite mission
+                                  type: string
+                                  enum:
+                                  - TSX
+                                  - PAZ
+                                satellite:
+                                  description: Satellite
+                                  type: string
+                                  enum:
+                                  - TSX-1
+                                  - PAZ-1
+                                  - TDX-1
+                                acquisitionId:
+                                  type: string
+                                  example: TSX-1_ST_S_spot_049R_49677_D31767159_432
+                                groupId:
+                                  type: integer
+                                startTime:
+                                  type: string
+                                  format: date-time
+                                stopTime:
+                                  type: string
+                                  format: date-time
+                                sensorMode:
+                                  description: The imaging/instrument/sensor mode to use for the acquisition
+                                  type: string
+                                  enum:
+                                  - SAR_ST_S
+                                  - SAR_HS_S
+                                  - SAR_HS_S_300
+                                  - SAR_HS_S_150
+                                  - SAR_HS_D
+                                  - SAR_HS_D_300
+                                  - SAR_HS_D_150
+                                  - SAR_SL_S
+                                  - SAR_SL_D
+                                  - SAR_SM_S
+                                  - SAR_SM_D
+                                  - SAR_SC_S
+                                  - SAR_WS_S
+                                  example: SAR_SM_S
+                                polarizationChannels:
+                                  description: The dual-polarization modes (HHVV, HHHV, VVVH) are not available for staring spotlight or (wide) ScanSAR modes. The polarization modes HV and VH are only available for Wide ScanSAR acquisitions.
+                                  type: string
+                                  enum:
+                                  - HH
+                                  - VV
+                                  - HV
+                                  - VH
+                                  - HHVV
+                                  - HHHV
+                                  - VVVH
+                                  example: HH
+                                beamId:
+                                  type: string
+                                  example: strip_010
+                                pathDirection:
+                                  description: Path or orbit direction
+                                  type: string
+                                  example: ascending
+                                  enum:
+                                  - ascending
+                                  - descending
+                                lookDirection:
+                                  description: Look Direction. Left-looking acquisitions require special authorization.
+                                  type: string
+                                  enum:
+                                  - R
+                                  - L
+                                incidenceAngle:
+                                  description: Incidence angle range in degrees. Only acquisitions with an average incidence angle in this range will be considered.
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    minimum:
+                                      type: number
+                                      minimum: 10
+                                      maximum: 70
+                                      example: 30
+                                    maximum:
+                                      type: number
+                                      minimum: 10
+                                      maximum: 70
+                                      example: 50
+                                productType:
+                                  description: Product type for the processing of the acuqisition. Mandatory on placing the order, but not for feasibility.
+                                  type: string
+                                  enum:
+                                  - SSC
+                                  - MGD
+                                  - GEC
+                                  - EEC
+                                  example: EEC
+                                resolutionVariant:
+                                  description: Radiometric or spatial enhancement. Mandatory on placing the order, but not for feasibility.
+                                  type: string
+                                  enum:
+                                  - SE
+                                  - RE
+                                orbitType:
+                                  description: Near Realtime acquisitions will incur an additional fee. Science processing is most accurate but takes approx 5 days to complete. Mandatory on placing the order, but not for feasibility.
+                                  type: string
+                                  enum:
+                                  - NRT
+                                  - rapid
+                                  - science
+                                geocodedIncidenceMask:
+                                  description: Include GIM in delivered product. Only applicable for EEC products.
+                                  type: boolean
+                                  default: false
+                                mapProjection:
+                                  description: Projection of the delivered product. Mandatory on placing the order, but not for feasibility.
+                                  type: string
+                                  default: auto
+                                  enum:
+                                  - auto
+                                  - UTM
+                                  - UPS
+                                gainAttenuation:
+                                  description: Processor gain Attenuation. Mandatory on placing the order, but not for feasibility.
+                                  type: integer
+                                  default: 0
+                                  enum:
+                                  - 0
+                                  - 10
+                                  - 20
+                                relativeOrbit:
+                                  type: integer
+                                absoluteOrbit:
+                                  type: integer
+                                orderTemplate:
+                                  type: string
+                                lastUpdateTime:
+                                  type: string
+                                  format: date-time
+                                status:
+                                  description: Status of item
+                                  type: string
+                                  enum:
+                                  - feasible
+                                  - availableInArchive
+                                  - unavailable
+                                  - submitted
+                                  - waitingForAcquisitionApproval
+                                  - accepted
+                                  - planned
+                                  - acquistion
+                                  - transition
+                                  - downlink
+                                  - waitingForOrbit
+                                  - processing
+                                  - waitingForDeliveryApproval
+                                  - delivery
+                                  - completed
+                                  - failed
+                                  - cancelled
+                                  - approvalRejected
+                                sensitivity:
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - status
+                                  properties:
+                                    status:
+                                      type: string
+                                      enum:
+                                      - notSensitive
+                                      - potential
+                                      - sensitive
+                                    missingParameters:
+                                      description: parameters that need to be set to get definite sensitivity status
+                                      type: array
+                                      items:
+                                        type: string
+                                        enum:
+                                        - productType
+                                        - resolutionVariant
+                                      example:
+                                      - productType
+                                      - resolutionVariant
+                                    type:
+                                      type: string
+                                      enum:
+                                      - blacklist
+                                      - resolution
+                                    sensitivityInformation:
+                                      type: string
+                                itemType:
+                                  type: string
+                                  enum:
+                                  - catalogue
+                                  - future
+                                outOfFullPerformance:
+                                  description: If set to true and the account is authorized, out of full performance scenes will be included in the response.
+                                  type: boolean
+                                  default: false
+                                scienceOrbitAvailability:
+                                  type: boolean
+                        - type: object
+                          properties:
+                            properties:
+                              type: object
+                              properties:
+                                submissionDeadline:
+                                  type: string
+                                  format: date-time
+                                acquisitionOnly:
+                                  description: Acquisition is done and archived, but product will not be processed and deliverd. Requires special authorization.
+                                  type: boolean
+                                  default: false
+                                priority:
+                                  description: Higher priority orders have a better chance of success but incur an additional fee
+                                  type: string
+                                  enum:
+                                  - standard
+                                  - priority
+                                  - exclusive
+                                  example: standard
+                                conflicts:
+                                  type: object
+                                  properties:
+                                    status:
+                                      type: string
+                                      enum:
+                                      - none
+                                      - potential
+                                      - expected
+                                    external:
+                                      type: object
+                                      additionalProperties:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                            enum:
+                                            - none
+                                            - potential
+                                            - expected
+                                          startTime:
+                                            type: string
+                                            format: date-time
+                                          stopTime:
+                                            type: string
+                                            format: date-time
+                                        minLength: 1
+                                    baskets:
+                                      type: object
+                                      additionalProperties:
+                                        type: object
+                                        additionalProperties:
+                                          type: object
+                                          properties:
+                                            status:
+                                              type: string
+                                              enum:
+                                              - none
+                                              - potential
+                                              - expected
+                                            startTime:
+                                              type: string
+                                              format: date-time
+                                            stopTime:
+                                              type: string
+                                              format: date-time
+                                          minLength: 1
+                                      minLength: 1
+                                    shopcart:
+                                      type: object
+                                      additionalProperties:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                            enum:
+                                            - none
+                                            - potential
+                                            - expected
+                                          startTime:
+                                            type: string
+                                            format: date-time
+                                          stopTime:
+                                            type: string
+                                            format: date-time
+                                        minLength: 1
+                                    feasibility:
+                                      type: object
+                                      additionalProperties:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                            enum:
+                                            - none
+                                            - potential
+                                            - expected
+                                          startTime:
+                                            type: string
+                                            format: date-time
+                                          stopTime:
+                                            type: string
+                                            format: date-time
+                                        minLength: 1
+                                  required:
+                                  - status
+                                estimatedDownloadAvailability:
+                                  type: string
+                                  format: date-time
+                                receivingStation:
+                                  description: Downlink station to use for direct-access customers
+                                  type: string
+                                  default: NSG_POOL
+                                  example: NSG_POOL
+                        - type: object
+                          properties:
+                            properties:
+                              type: object
+                              properties:
+                                expiry:
+                                  type: string
+                                  format: date-time
+                      - type: object
+                        properties:
+                          properties:
+                            type: object
+                            properties:
+                              parentItemId:
+                                type: string
+                                format: uuid
+                  bbox:
+                    type: array
+                    items:
+                      type: number
+                    minItems: 4
+                    maxItems: 4
+                required:
+                - type
+                - features
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

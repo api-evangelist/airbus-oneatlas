@@ -1,0 +1,137 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Convert API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Convert
+paths:
+  /api/v1/convert:
+    post:
+      description: Convert input file in geojson format.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/json'
+          application/vnd.geo+json:
+            schema:
+              $ref: '#/components/schemas/GeojsonGeometry'
+          application/vnd.google-earth.kml+xml:
+            schema:
+              $ref: '#/components/schemas/kml'
+          application/vnd.google-earth.kmz:
+            schema:
+              $ref: '#/components/schemas/kmz'
+          application/zip:
+            schema:
+              $ref: '#/components/schemas/geoshape'
+        description: Request to convert geometries to geojson format
+      responses:
+        '200':
+          content:
+            application/vnd.geo+json:
+              schema:
+                $ref: '#/components/schemas/GeojsonGeometry'
+            multipart/related:
+              schema:
+                $ref: '#/components/schemas/multipart'
+          description: Success
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: To Geojson
+      tags:
+      - Convert
+components:
+  schemas:
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    multipart:
+      description: 'First part: the equivalent vector file in geojson format.
+
+
+        Second part: metadata about the vector file.
+
+        '
+      format: multipart/related
+    json:
+      description: A json representing a file in a Google Cloud Storage bucket. The appropriate content type must be set in Google Cloud Storage
+      example:
+        gcsUri: gs://bucket-name/path/to/file.kmz
+      format: json
+    kmz:
+      description: A geometry in kmz format. Is a zip containing kml file and associated files.
+      format: binary
+    geoshape:
+      description: A geometry in shape format. Is a zip containing a .shp files and associated files.
+      format: binary
+    kml:
+      description: A geometry in kml format
+      format: binary
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+  responses:
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

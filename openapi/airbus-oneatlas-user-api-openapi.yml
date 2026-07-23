@@ -1,0 +1,211 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access user API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: user
+  description: 'Endpoint for generic user information.
+
+    '
+paths:
+  /user/whoami:
+    get:
+      summary: Return Account Information of the Current User
+      tags:
+      - user
+      responses:
+        '200':
+          description: Basic account information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                    description: Unique account name
+                    example: john.doe@company.com
+                  contract_type:
+                    type: string
+                  pw_change_needed:
+                    type: boolean
+                    description: This flag is set if the password has been (re)set by the system or flagged for some other reason (e.g. if security standards have changed). It is unrelated to the password expiration date.
+                  pw_expiration_date:
+                    type: string
+                    format: date
+                    description: If the password of this account is set to expire, this is the end date (included) until which the password can be used to log in without being changed
+                  expiration_date:
+                    type: string
+                    format: date
+                    nullable: true
+                    description: End date (included) until which the user is able to log in
+                  services:
+                    type: array
+                    items:
+                      type: string
+                      example: radar
+                      enum:
+                      - radar
+                      - worlddem
+                      - mgmt
+                      description: The service identifier
+                    example:
+                    - radar
+                    - worlddem
+                  registration_status:
+                    type: string
+                    enum:
+                    - pending
+                    - in_progress
+                    - completed
+                    description: This flag is only set if the account isn't fully registered
+                  oneatlas_username:
+                    type: string
+                    description: Account username in OneAtlas
+                    example: john.doe@company.com
+                    nullable: true
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                description: RFC-7807 Problem Details
+                type: object
+                properties:
+                  type:
+                    type: string
+                    description: URI reference that identifies the problem type.
+                    example: /problems/example-problem
+                  title:
+                    type: string
+                    description: Human-readable summary of the problem type. Should not change from occurrence to occurrence of the problem.
+                    example: Some error occurred
+                  status:
+                    type: integer
+                    description: HTTP status code associated with the problem type.
+                    example: 418
+                  detail:
+                    type: string
+                    description: Human-readable explanation specific to this occurrence of the problem.
+                    example: A specific problem occurred during this example
+                  instance:
+                    type: string
+                    description: URI reference that identifies the specific occurrence of the problem.
+                    example: /resource/12345/msgs/abc
+                additionalProperties:
+                  description: Extension Key/Value-Pairs
+                required:
+                - type
+                - title
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                description: RFC-7807 Problem Details
+                type: object
+                properties:
+                  type:
+                    type: string
+                    description: URI reference that identifies the problem type.
+                    example: /problems/example-problem
+                  title:
+                    type: string
+                    description: Human-readable summary of the problem type. Should not change from occurrence to occurrence of the problem.
+                    example: Some error occurred
+                  status:
+                    type: integer
+                    description: HTTP status code associated with the problem type.
+                    example: 418
+                  detail:
+                    type: string
+                    description: Human-readable explanation specific to this occurrence of the problem.
+                    example: A specific problem occurred during this example
+                  instance:
+                    type: string
+                    description: URI reference that identifies the specific occurrence of the problem.
+                    example: /resource/12345/msgs/abc
+                additionalProperties:
+                  description: Extension Key/Value-Pairs
+                required:
+                - type
+                - title
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                description: RFC-7807 Problem Details
+                type: object
+                properties:
+                  type:
+                    type: string
+                    description: URI reference that identifies the problem type.
+                    example: /problems/example-problem
+                  title:
+                    type: string
+                    description: Human-readable summary of the problem type. Should not change from occurrence to occurrence of the problem.
+                    example: Some error occurred
+                  status:
+                    type: integer
+                    description: HTTP status code associated with the problem type.
+                    example: 418
+                  detail:
+                    type: string
+                    description: Human-readable explanation specific to this occurrence of the problem.
+                    example: A specific problem occurred during this example
+                  instance:
+                    type: string
+                    description: URI reference that identifies the specific occurrence of the problem.
+                    example: /resource/12345/msgs/abc
+                additionalProperties:
+                  description: Extension Key/Value-Pairs
+                required:
+                - type
+                - title
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                description: RFC-7807 Problem Details
+                type: object
+                properties:
+                  type:
+                    type: string
+                    description: URI reference that identifies the problem type.
+                    example: /problems/example-problem
+                  title:
+                    type: string
+                    description: Human-readable summary of the problem type. Should not change from occurrence to occurrence of the problem.
+                    example: Some error occurred
+                  status:
+                    type: integer
+                    description: HTTP status code associated with the problem type.
+                    example: 418
+                  detail:
+                    type: string
+                    description: Human-readable explanation specific to this occurrence of the problem.
+                    example: A specific problem occurred during this example
+                  instance:
+                    type: string
+                    description: URI reference that identifies the specific occurrence of the problem.
+                    example: /resource/12345/msgs/abc
+                additionalProperties:
+                  description: Extension Key/Value-Pairs
+                required:
+                - type
+                - title
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

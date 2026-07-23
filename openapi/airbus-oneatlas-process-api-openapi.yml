@@ -1,0 +1,592 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Process API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Process
+paths:
+  /api/v1/processes:
+    get:
+      description: 'Returns the available processes.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/acceptLanguageParameterHeader'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessesResponse'
+          description: Status OK. All went fine.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: List Processes
+      tags:
+      - Process
+  /api/v1/processes/{processID}:
+    get:
+      description: 'Returns the description of the given {processID} process.
+
+
+        This endpoint **should not be forged** but retrieved from the `_links` map in list processes response.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/acceptLanguageParameterHeader'
+      - $ref: '#/components/parameters/ProcessID'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeProcessResponse'
+          description: Status OK. All went fine.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Describe Process
+      tags:
+      - Process
+  /api/v1/processes/{processID}/jobs:
+    post:
+      description: 'Creates a new instance of the process with specified id {processID} and executes it ASYNCHRONOUSLY.
+
+
+        This endpoint **should not be forged** but retrieved from the `_links` map in list processes response or describe process response.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/ProcessID'
+      - $ref: '#/components/parameters/Priority'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                catalogId: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+                demName: MIXEDDEM
+                outputSrs:
+                  type: urn
+                  value: urn:ogc:def:crs:EPSG::4326
+                outputWorkspace: public
+              type: object
+        description: JSON parameters according to JSON schema obtained on describe process endpoint
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivitySmall'
+          description: If a process has already been requested for the same payload. In this case X-Ads-CorrelationId header is ignored.
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivitySmall'
+          description: Creation of the process activity
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Create Processing Job
+      tags:
+      - Process
+components:
+  schemas:
+    ProcessesResponse:
+      description: response to a get processes call.
+      properties:
+        _embedded:
+          properties:
+            processes:
+              items:
+                $ref: '#/components/schemas/processHALCatalog'
+              type: array
+          type: object
+        _links:
+          properties:
+            self:
+              $ref: '#/components/schemas/Link'
+          type: object
+      required:
+      - _links
+      - _embedded
+      type: object
+    DescribeProcessResponse:
+      description: a JSON Object that conforms to the Describe Process Specification v1.0
+      example:
+        _links:
+          execution:
+            href: http://processes/com.airbus.massive.ortho/jobs
+          self:
+            href: http://processes/com.airbus.massive.ortho
+        family: ORTHO
+        id: com.airbus.massive.ortho
+        input:
+          if:
+            properties:
+              pansharpened:
+                enum:
+                - true
+          properties:
+            aoi:
+              default: Whole image
+              description: Area to be processed
+              format: geojson
+              properties:
+                geometry:
+                  properties:
+                    coordinates:
+                      items:
+                        items:
+                          items:
+                            type: number
+                          maxItems: 2
+                          minItems: 2
+                          type: array
+                          uniqueItems: false
+                        maxItems: 999
+                        minItems: 3
+                        type: array
+                        uniqueItems: false
+                      maxItems: 1
+                      minItems: 1
+                      type: array
+                    type:
+                      default: Polygon
+                      enum:
+                      - Polygon
+                      readOnly: true
+                      type: string
+                  required:
+                  - type
+                  - coordinates
+                  type: object
+                properties:
+                  type: object
+                type:
+                  default: Feature
+                  enum:
+                  - Feature
+                  readOnly: true
+                  type: string
+              required:
+              - type
+              - geometry
+              - properties
+              title: Area of Interest
+              type: object
+              x-ads-type: application/vnd.geo+json
+            catalogId:
+              description: the unique identifier of the primary image
+              title: Catalog primary image Identifier
+              type: string
+              x-ads-resource:
+                matches:
+                  $.properties.platform:
+                  - SPOT6
+                  - SPOT7
+                  - PHR1A
+                  - PHR1B
+                  $.properties.processingLevel: SENSOR
+                  $.properties.productType: bundle
+                  $.properties.radiometricProcesing: reflectance
+                service: Catalogue
+                type: item
+            comment:
+              description: ''
+              title: Comment
+              type: string
+            commercialReference:
+              description: ''
+              title: Commercial Reference
+              type: string
+            customerReference:
+              description: ''
+              title: Customer Reference
+              type: string
+            demName:
+              description: Name of the DEM layer to be used for orthorectification.
+              title: Dem layer
+              type: string
+              x-ads-resource:
+                matches:
+                  $.dataType: DEM
+                  $.name:
+                  - MIXEDDEM
+                route: /layers/{layerName}
+                service: RDS-Gateway-Service
+                type: layer
+            footPrintMargin:
+              default: 0
+              description: DEM margin used for each processing tiles.
+              title: The Footprintmargin
+              type: integer
+              x-ads-isExpert: true
+            greyweights:
+              description: Weights to be used for each band during the pansharpening process.
+              items:
+                type: number
+              type: array
+              uniqueItems: true
+              x-ads-isExpert: true
+            internalReference:
+              description: ''
+              title: Commercial Reference
+              type: string
+            lengthSegmentMax:
+              description: Length in degree to use for discretization of the AOI
+              title: Maximum Segment Length
+              type: number
+              x-ads-isExpert: true
+            outputSrs:
+              description: The spatial reference system of the output image.
+              properties:
+                type:
+                  enum:
+                  - urn
+                  - epsg
+                  - proj4
+                  type: string
+                value:
+                  example: urn:ogc:def:crs:EPSG::4326
+                  type: string
+              required:
+              - type
+              - value
+              title: The output srs
+              type: object
+            outputStep:
+              default: Image resolution
+              description: Step of the output image, to be expressed in degree.
+              properties:
+                x:
+                  type: number
+                y:
+                  type: number
+              required:
+              - x
+              - y
+              title: Output step
+              type: object
+            outputWorkspace:
+              default: public
+              oneOf:
+              - description: The id of the output workspace. Must be a valid UUID (v4).
+                example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+                format: uuid
+                type: string
+                x-ads-resource:
+                  matches: {}
+                  service: WorkspaceManager
+                  type: workspace
+              - description: The name of the output workspace.
+                example: MySuperWorkspace
+                type: string
+                x-ads-resource:
+                  matches: {}
+                  service: WorkspaceManager
+                  type: workspace
+            pansharpened:
+              default: false
+              description: Combine color and panchromatic images to improve color image resolution.
+              title: Pansharpen product
+              type: boolean
+            radiometricProcesing:
+              default: REFLECTANCE
+              description: 'Reflectance: image radiometry is corrected from atmospheric effects.
+
+                Display: image radiometry is optimized for visual rendering.'
+              enum:
+              - DISPLAY
+              - REFLECTANCE
+              title: Radiometric Processing
+              type: string
+            tilingSize:
+              default: 5000
+              description: Size in pixel of the tiles used for processing.
+              title: The size of tiling
+              type: integer
+              x-ads-isExpert: true
+          required:
+          - catalogId
+          - demName
+          - outputSrs
+          then:
+            required:
+            - greyweights
+          type: object
+        label: Massive Ortho
+        version: '1.0'
+      properties:
+        _links:
+          $ref: '#/components/schemas/DescribeProcessLinks'
+        description:
+          type: string
+        family:
+          type: string
+        id:
+          type: string
+        input:
+          $ref: '#/components/schemas/DescribeProcessInput'
+        label:
+          type: string
+        version:
+          type: string
+      required:
+      - id
+      - label
+      - family
+      - version
+      - input
+      - links
+      type: object
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    processHALCatalog:
+      allOf:
+      - $ref: '#/components/schemas/process'
+      - properties:
+          _links:
+            $ref: '#/components/schemas/processHALLinkCatalog'
+        type: object
+    ActivitySmall:
+      properties:
+        _links:
+          properties:
+            history:
+              allOf:
+              - description: See [Get activity stages](#/paths/~1api~1v1~1activities~1{correlationId}~1stages/get)
+              - $ref: '#/components/schemas/Link'
+            monitoring:
+              allOf:
+              - description: See [Get activity](#/paths/~1api~1v1~1activities~1{correlationId}/get)
+              - $ref: '#/components/schemas/Link'
+          readOnly: true
+          type: object
+        message:
+          description: A free text (copy of the last stage message)
+          readOnly: true
+          type: string
+      type: object
+    DescribeProcessInput:
+      description: A JSON Object that conforms to the InputObject as specified in the Describe Process Specification v1.0. It describes the input schema needed in the job creation payload.
+      properties:
+        definitions:
+          type: object
+        properties:
+          type: object
+        required:
+          items:
+            type: string
+          type: array
+      required:
+      - properties
+      type: object
+    processHALLinkCatalog:
+      allOf:
+      - properties:
+          description:
+            allOf:
+            - description: See [Describe process](#/paths/~1api~1v1~1processes~1{processId}/post)
+            - $ref: '#/components/schemas/Link'
+        type: object
+      - $ref: '#/components/schemas/processHALLinkCommon'
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    processHALLinkCommon:
+      description: the HAL target uri for a process
+      properties:
+        documentation:
+          allOf:
+          - $ref: '#/components/schemas/Link'
+          - description: The target resource to retrieve the documentation of this process
+        icon:
+          allOf:
+          - $ref: '#/components/schemas/Link'
+          - description: The target resource to retrieve the icon of this process
+        license:
+          allOf:
+          - $ref: '#/components/schemas/Link'
+          - description: The target resource to retrieve the license of this process
+      type: object
+    process:
+      description: a JSON Object that conforms to the InfoObject as specified in the Describe Process Specification v1.0
+      properties:
+        description:
+          example: process ortho rectification of a pack
+          type: string
+        family:
+          example: Ortho
+          type: string
+        id:
+          example: com.airbus.massive.ortho
+          type: string
+        label:
+          example: MassiveOrtho
+          type: string
+        version:
+          example: 1
+          type: string
+      type: object
+    DescribeProcessLinks:
+      allOf:
+      - $ref: '#/components/schemas/processHALLinkCommon'
+      - properties:
+          self:
+            allOf:
+            - $ref: '#/components/schemas/Link'
+            - description: The resource that return this process description
+        type: object
+      - properties:
+          execution:
+            allOf:
+            - description: See [Describe process](#/paths/~1api~1v1~1processes~1{processId}/post)
+            - $ref: '#/components/schemas/Link'
+        type: object
+  responses:
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '404':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Item not found in catalog or resource not found in item
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
+  parameters:
+    acceptLanguageParameterHeader:
+      description: the natural language that is preferred as a response to the request
+      in: header
+      name: Accept-Language
+      required: false
+      schema:
+        type: string
+        x-example: en-US
+    ProcessID:
+      description: The identifier of the process
+      example: com.airbus.massive.ortho
+      in: path
+      name: processID
+      required: true
+      schema:
+        type: string
+    Priority:
+      description: Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Priority
+      schema:
+        $ref: '#/components/schemas/Id'
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

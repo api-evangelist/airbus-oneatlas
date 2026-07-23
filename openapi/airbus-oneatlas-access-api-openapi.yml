@@ -1,0 +1,1120 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Access
+paths:
+  /api/v1/items/{catalogItemId}/download:
+    get:
+      description: 'Returns the product of the catalog item. For image product, this endpoint give access to the formatted product. For vector product, this endpoint give access directly to the product.
+
+
+        This endpoint **should not be forged** but retrieved from the `_links` map in each catalog response.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      - in: query
+        name: type
+        schema:
+          description: Applicable only for vector data
+          enum:
+          - geojson
+          type: string
+      responses:
+        '200':
+          description: The catalog item data
+          headers:
+            X-Ads-Checksum-Method:
+              schema:
+                description: The method used to generate the checksum
+                enum:
+                - md5
+                example: md5
+                type: string
+            X-Ads-Checksum-Value:
+              schema:
+                description: The value of the computed checksum
+                example: 595f44fec1e92a71d3e9e77456ba80d1
+                type: string
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Download Product
+      tags:
+      - Access
+  /api/v1/items/{catalogItemId}/images/{imageId}/associatedData/{associatedDataType}/data:
+    get:
+      description: '**WORK IN PROGRESS**
+
+
+        Returns associated data of the given image of the catalog item. This endpoint **should not be forged** but retrieved from the `_links` map in each catalog response.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      - $ref: '#/components/parameters/ImageId'
+      - $ref: '#/components/parameters/AssociatedDataType'
+      responses:
+        '200':
+          content:
+            application/x-protobuf: {}
+            text/xml: {}
+          description: Success
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Get Image Associated Data
+      tags:
+      - Access
+  /api/v1/items/{catalogItemId}/images/{imageId}/buffer:
+    post:
+      description: 'Returns a buffer of the given image of the catalog item. This endpoint **should not be forged** but retrieved from the `_links` map in each catalog response.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      - $ref: '#/components/parameters/ImageId'
+      - $ref: '#/components/parameters/ResponseBufferFormatParameterHeader'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bufferDescription'
+        description: The buffer description
+      responses:
+        '200':
+          content:
+            multipart/mixed:
+              schema:
+                properties:
+                  Data:
+                    format: binary
+                    type: string
+                  Info:
+                    $ref: '#/components/schemas/responseBufferInformation'
+                type: object
+          description: OK (Multipart response)
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Get Image Buffer
+      tags:
+      - Access
+  /api/v1/items/{catalogItemId}/images/{imageId}/histogram:
+    get:
+      description: 'Returns the histogram of the given image of the catalog item. This endpoint **should not be forged** but retrieved from the `_links` map in each catalog response.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      - $ref: '#/components/parameters/ImageId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistogramResponse'
+          description: OK
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Get Image Histogram
+      tags:
+      - Access
+  /api/v1/items/{catalogItemId}/images/{imageId}/metadata:
+    get:
+      description: 'Returns metadata of the given image of the catalog item. This endpoint **should not be forged** but retrieved from the `_links` map in each catalog response.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      - $ref: '#/components/parameters/ImageId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Metadata'
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Get Image Metadata
+      tags:
+      - Access
+  /api/v1/items/{catalogItemId}/images/{imageId}/wcs:
+    get:
+      description: 'WCS visualization endpoint for a given image of a catalog item. This endpoint **should not be forged** but retrieved from the `_links` map in each catalog response.
+
+
+        WCS protocol shall be used to request this endpoint. Please refer to the WCS documentation. Currently supported versions are `1.0.0`, `1.1` and `2.0`.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      - $ref: '#/components/parameters/ImageId'
+      responses:
+        '200':
+          description: Standard WMS service
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: WCS Visualization
+      tags:
+      - Access
+  /api/v1/items/{catalogItemId}/images/{imageId}/wms:
+    get:
+      description: 'WMS visualization endpoint for a given image of a catalog item. This endpoint **should not be forged** but retrieved from the `_links` map in each catalog response.
+
+
+        WMS protocol shall be used to request this endpoint. Please refer to the WMS documentation. Currently supported versions are `1.0.0`, `1.1.0` and `1.3.0`.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      - $ref: '#/components/parameters/ImageId'
+      responses:
+        '200':
+          description: Standard WMS service
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: WMS Visualization
+      tags:
+      - Access
+  /api/v1/items/{catalogItemId}/images/{imageId}/wmts:
+    get:
+      description: 'WMTS visualization endpoint for a given image of a catalog item. This endpoint **should not be forged** but retrieved from the `_links` map in each catalog response.
+
+
+        WMTS protocol shall be used to request this endpoint. Please refer to the WMTS documentation. Currently supported versions are `1.0.0`.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      - $ref: '#/components/parameters/ImageId'
+      responses:
+        '200':
+          description: Standard WMTS service
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: WMTS Visualization
+      tags:
+      - Access
+  /api/v1/items/{catalogItemId}/metadata:
+    get:
+      description: 'Returns metadata of the given catalog item.
+
+
+        This endpoint **should not be forged** but retrieved from the `_links` map in each catalog response.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      - $ref: '#/components/parameters/ImageId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Metadata'
+          description: OK
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Get Catalog Item Metadata
+      tags:
+      - Access
+  /api/v1/items/{catalogItemId}/quicklook:
+    get:
+      description: "Display the quicklook of the catalog item. This endpoint **should not be forged** but retrieved from the `_links` map in each catalog response.\n\nThe visualization is different according to processing level and product type:\n  - SENSOR / bundle: multispectral image\n  - ORTHO / bundle: panchromatic image\n  - others: first image\n"
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      responses:
+        '200':
+          content:
+            image/jpeg:
+              schema:
+                format: binary
+                type: string
+          description: The quicklook in jpeg
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Quicklook
+      tags:
+      - Access
+  /api/v1/items/{catalogItemId}/thumbnail:
+    get:
+      description: "Display the thumbnail of the catalog item. This endpoint **should not be forged** but retrieved from the `_links` map in each catalog response.\n\nThe visualization is different according to processing level and product type:\n  - SENSOR / bundle: multispectral image\n  - ORTHO / bundle: panchromatic image\n  - others: first image\n"
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      - description: The width in pixel of the thumbnail
+        in: query
+        name: width
+        schema:
+          default: 128
+          format: integer
+          maximum: 1024
+          minimum: 128
+          type: number
+      responses:
+        '200':
+          content:
+            image/jpeg:
+              schema:
+                format: binary
+                type: string
+          description: The thumbnail in jpeg
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Thumbnail
+      tags:
+      - Access
+  /api/v1/items/{catalogItemId}/wms:
+    get:
+      description: "WMS visualization endpoint for a given catalog item. This endpoint **should not be forged** but retrieved from the `_links` map in each catalog response.\n\nWMS protocol shall be used to request this endpoint. Please refer to the WMS documentation. Currently supported versions are `1.0.0`, `1.1.0` and `1.3.0`.\n\nThe visualization is different according to processing level and product type:\n  - SENSOR / bundle: on the fly orthorectification with panchromatic and multispectral images\n  - ORTHO / bundle: panchromatic image"
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      responses:
+        '200':
+          description: Standard WMS service
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: WMS Visualization
+      tags:
+      - Access
+  /api/v1/items/{catalogItemId}/wmts:
+    get:
+      description: "WMTS visualization endpoint for a given catalog item. This endpoint **should not be forged** but retrieved from the `_links` map in each catalog response.\n\nWMTS protocol shall be used to request this endpoint. Please refer to the WMTS documentation. Currently supported versions are `1.0.0`.\n\nThe visualization is different according to processing level and product type:\n  - SENSOR / bundle: on the fly orthorectification with panchromatic and multispectral images\n  - ORTHO / bundle: panchromatic image\n"
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      responses:
+        '200':
+          description: Standard WMTS service
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: WMTS Visualization
+      tags:
+      - Access
+components:
+  parameters:
+    CatalogItemId:
+      description: Identifier of an IDP catalog item (property `id` of a search result).
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: path
+      name: catalogItemId
+      required: true
+      schema:
+        $ref: '#/components/schemas/Id'
+    AssociatedDataType:
+      description: The type of the associated data
+      example: imageDimap
+      in: path
+      name: associatedDataType
+      required: true
+      schema:
+        enum:
+        - imageDimap
+        - LUT
+        type: string
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
+    ResponseBufferFormatParameterHeader:
+      description: "The encoding of the output image buffer.\n\nAccepted values are:\n - 'image/jp2' for jpeg2000\n - 'image/jpeg' for jpeg\n - 'image/png' for png\n - 'application/octet-stream' for raw\n"
+      in: header
+      name: accept
+      required: false
+      schema:
+        default: application/octet-stream
+        enum:
+        - image/jp2
+        - image/jpeg
+        - image/png
+        - application/octet-stream
+        example: image/jpeg
+        type: string
+    ImageId:
+      description: The identifier of the requested image
+      example: 543246d8-2a72-11e8-b045-e7011a379452
+      in: path
+      name: imageId
+      required: true
+      schema:
+        $ref: '#/components/schemas/Id'
+  schemas:
+    AssociatedDataLink:
+      properties:
+        content:
+          example: GML MASK
+          type: string
+        mimeType:
+          example: application/gml+xml
+          type: string
+        path:
+          example: MASKS/ROI_SPOT6_P_201602011017034_SEN_2551123101_MSK.GML
+          type: string
+        title:
+          example: LUT Mask
+          type: string
+        url:
+          description: See [Get associated data](#/paths/~1api~1v1~1items~1{catalogItemId}~1images~1{imageId}~1associatedData~1{associatedDataType}~1data/get)
+          example: https://view.foundation.api.oneatlas.com/api/v1/items/f494e323-e132-4aac-aad2-5123176a6800/images/5a277ab0-5315-4042-a676-267152d71e17/associatedData/LUT/data
+          format: url
+          type: string
+      type: object
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    bufferDescription:
+      properties:
+        bands:
+          default: all bands
+          description: Ordered list of requested bands. Bands can be retrieve with `metadata` link given in `_links` property of a feature.
+          items:
+            example: R
+            type: string
+          type: array
+        bbox:
+          $ref: '#/components/schemas/bbox'
+        step:
+          $ref: '#/components/schemas/step'
+        target-model:
+          description: specification of the output buffer
+          properties:
+            crs:
+              default: Bbox srs
+              description: Output crs.
+              example: epsg:4326
+              type: string
+            size:
+              $ref: '#/components/schemas/imageSize'
+          type: object
+      required:
+      - bbox
+      - step
+      - target-model
+      type: object
+    Metadata:
+      description: Metadata of a product.
+      properties:
+        geometry:
+          $ref: '#/components/schemas/GeojsonGeometry'
+        id:
+          $ref: '#/components/schemas/Id'
+        properties:
+          description: Metadata properties
+          properties:
+            _links:
+              properties:
+                getBuffer:
+                  $ref: '#/components/schemas/Link'
+                getHistogram:
+                  $ref: '#/components/schemas/Link'
+                sourcesMetadata:
+                  items:
+                    $ref: '#/components/schemas/Link'
+                  type: array
+                  uniqueItems: true
+              type: object
+            acquisitionDate:
+              example: '2016-02-01T10:17:03.374353Z'
+              format: datetime
+              type: string
+            acquisitionStation:
+              example: SE1
+              type: string
+            actualBitDepth:
+              example: 16
+              format: integer
+              type: number
+            aoiFactor:
+              example: 1.6996806689687964e-05
+              format: float
+              type: number
+            archivingCenter:
+              example: FR1
+              type: string
+            associatedData:
+              properties:
+                LUT:
+                  $ref: '#/components/schemas/AssociatedDataLink'
+                imageDimap:
+                  $ref: '#/components/schemas/AssociatedDataLink'
+              type: object
+            azimuthAngle:
+              example: 149.994171293
+              format: float
+              type: number
+            bands:
+              items:
+                $ref: '#/components/schemas/band'
+              type: array
+              uniqueItems: true
+            cloudCover:
+              example: 0
+              format: integer
+              type: number
+            comment:
+              example: 14-1088-160/GEOSTORE VRS - DRS Meeting
+              type: string
+            commercialReference:
+              example: SO17023156
+              type: string
+            constellation:
+              example: SPOT
+              type: string
+            crsCode:
+              example: urn:ogc:def:crs:EPSG::4326
+              type: string
+            customerReference:
+              example: C301000
+              type: string
+            endDate:
+              example: '2016-02-01T10:17:10.499353Z'
+              format: datetime
+              type: string
+            format:
+              example: image/jp2
+              type: string
+            gsdAcrossTrack:
+              example: 2.15466485152
+              format: float
+              type: number
+            gsdAlongTrack:
+              example: 2.28641421848
+              format: float
+              type: number
+            height:
+              example: 27021
+              format: integer
+              minimum: 1
+              type: number
+            illuminationAzimuthAngle:
+              example: 151.455124155
+              format: float
+              type: number
+            illuminationElevationAngle:
+              example: 26.166189855
+              format: float
+              type: number
+            imageId:
+              example: 5a277ab0-5315-4042-a676-267152d71e17
+              type: string
+            incidenceAngle:
+              example: 11.4367984691
+              format: float
+              type: number
+            incidenceAngleAcrossTrack:
+              example: 6.07491942255
+              format: float
+              type: number
+            incidenceAngleAlongTrack:
+              example: 9.68737383231
+              format: float
+              type: number
+            jobIdentifier:
+              example: '2551123101'
+              type: string
+            license:
+              example: NA
+              type: string
+            nBands:
+              example: 1
+              format: integer
+              type: number
+            noDataValue:
+              example: 0
+              format: integer
+              type: number
+            optimalZoomLevel:
+              example: 16
+              format: integer
+              type: number
+            organisationName:
+              example: AIRBUS DS
+              type: string
+            parentIdentifier:
+              example: DS_SPOT6_201602011017034_FR1_FR1_SE1_SE1_E002N41_01384
+              type: string
+            pixelType:
+              example: UInt16
+              type: string
+            platform:
+              example: SPOT6
+              type: string
+            processingCenter:
+              example: AOC
+              type: string
+            processingDate:
+              example: '2017-11-22T10:28:23.00Z'
+              format: datetime
+              type: string
+            processingLevel:
+              example: SENSOR
+              type: string
+            processorName:
+              example: IMFv6
+              type: string
+            productCategory:
+              example: IMAGERY
+              type: string
+            productId:
+              example: f494e323-e132-4aac-aad2-5123176a6800
+              type: string
+            radiometricProcessing:
+              example: reflectance
+              type: string
+            resolution:
+              example: 1.57016
+              format: float
+              type: number
+            sensorType:
+              example: OPTICAL
+              type: string
+            snowCover:
+              example: 0
+              format: integer
+              type: number
+            sourceIdentifier:
+              example: SEN_SPOT6_20160201_101703500_000
+              type: string
+            spectralProcessing:
+              example: P
+              type: string
+            spectralRange:
+              example: VISIBLE
+              type: string
+            srsExpression:
+              $ref: '#/components/schemas/srsExpression'
+            startDate:
+              example: '2016-02-01T10:17:03.374353Z'
+              format: datetime
+              type: string
+            viewingAngleAcrossTrack:
+              example: -7.01806835205
+              format: float
+              type: number
+            viewingAngleAlongTrack:
+              example: -7.07707767894
+              format: float
+              type: number
+            width:
+              example: 38609
+              format: integer
+              minimum: 1
+              type: number
+          type: object
+        type:
+          description: The type of the object
+          enum:
+          - Feature
+          example: Feature
+          type: string
+      type: object
+    band:
+      properties:
+        actualBitDepth:
+          description: cf ABPP de NITF
+          example: 8
+          format: integer
+          minimum: 0
+          type: number
+        colorInterpretation:
+          description: possible values one of `RED`, `GREEN`, `BLUE`, `GRAY`, `ALPHA` or a custom string (ex `NIR`)
+          example: GRAY
+          type: string
+        compression:
+          description: TO BE DISCUSSED (raw, deflate,...)
+          example: raw
+          type: string
+        description:
+          example: band panchromatic
+          type: string
+        isMask:
+          example: false
+          type: boolean
+        name:
+          description: "The name of the **mask bands** are normalized as:\n  - `CLD` for Cloud Cotation\n  - `COR` for Correlation\n  - `DET` for Detector Quality\n  - `EXO` for Exogenous mask\n  - `MER` for Dem merging mask\n  - `QTE` for Technical Index\n  - `REG` for Regulation mask\n  - `ROI` for Area of interest\n  - `SLT` for Saturation Cotation\n  - `SNW` for Snow Cotation\n  - `VAL` for Validated area mask\n  - `VIS` for Visibility / occlusion\n  - `VQA` for Visual control\n  - `WAT` for Water mask\n\n\nMask is a binary data always encoded in 8 bits with only 2 values:\n  - 0 value means exclusion\n  - 1 value means inclusion\n\n\nThere is no **spectral band** name convention, it depends of the sensor. By example:\n  - `B2`, `B1`, `B0`, `B3`, `P` for SPOT and PLEIADES\n  - `B03`, `B01`, `B02`, `B04`, `B05`, `B06`, `B07`, `B08`, `B8A`, `B09`, `B10`, `B11`, `B12` for Sentinel2\n  - `P` for Ref3D Ortho\n"
+          example: PAN
+          type: string
+        noDataValue:
+          description: the value of a pixel that does not correspond to a real data
+          example: 0
+          format: float
+          type: number
+        offset:
+          description: offset used in the buffer for this band
+          example: 0
+          format: integer
+          minimum: 0
+          type: number
+        pixelType:
+          description: the type of pixel of the buffer
+          enum:
+          - Byte
+          - UInt16
+          - Int16
+          - UInt32
+          - Int32
+          - Float32
+          - Float64
+          type: string
+        size:
+          description: size of this band in the buffer
+          example: 25
+          format: integer
+          minimum: 0
+          type: number
+      type: object
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    bbox:
+      properties:
+        lr:
+          $ref: '#/components/schemas/point'
+        srs:
+          allOf:
+          - $ref: '#/components/schemas/srs'
+          - description: Referential for the points of this bbox.
+            properties:
+              type:
+                enum:
+                - urn
+                - epsg
+                - image
+            type: object
+        ul:
+          $ref: '#/components/schemas/point'
+      required:
+      - srs
+      - ul
+      - lr
+      type: object
+    srs:
+      description: Referential
+      properties:
+        type:
+          enum:
+          - urn
+          - epsg
+          - proj4
+          type: string
+        value:
+          example: urn:ogc:def:crs:EPSG::4326
+          type: string
+      required:
+      - type
+      - value
+      type: object
+    srsExpression:
+      properties:
+        axes:
+          example:
+          - abbreviation: Lat
+            direction: north
+          - abbreviation: Lon
+            direction: east
+          items:
+            properties:
+              abbreviation:
+                type: string
+              direction:
+                type: string
+            type: object
+          type: array
+          uniqueItems: true
+        names:
+          items:
+            $ref: '#/components/schemas/srs'
+          type: array
+          uniqueItems: true
+      type: object
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
+    responseBufferInformation:
+      description: GeoJSon feature describing a buffer
+      properties:
+        geometry:
+          $ref: '#/components/schemas/GeojsonGeometry'
+        properties:
+          properties:
+            aoi:
+              $ref: '#/components/schemas/bbox'
+            bands:
+              items:
+                $ref: '#/components/schemas/band'
+              minItems: 1
+              type: array
+            format:
+              description: the MIME type of the buffer
+              enum:
+              - image/jp2
+              - image/jpeg
+              - image/png
+              - application/octet-stream
+              type: string
+            height:
+              description: height of the buffer
+              example: 500
+              format: integer
+              maximum: 5000
+              minimum: 1
+              type: number
+            imageID:
+              $ref: '#/components/schemas/Id'
+            interleave:
+              description: the interleave type of the buffer
+              enum:
+              - band
+              - line
+              - pixel
+              type: string
+            nbBands:
+              description: the number of bands of the buffer
+              example: 1
+              format: integer
+              minimum: 1
+              type: number
+            noDataValue:
+              description: the value of a pixel that does not correspond to a real data
+              format: integer
+              minimum: 0
+              type: number
+            pixelType:
+              description: the type of pixel of the buffer
+              example: UInt16
+              type: string
+            processingLevel:
+              example: processingLevel
+              type: string
+            radiometricProcessing:
+              example: reflectance
+              type: string
+            roi:
+              $ref: '#/components/schemas/bbox'
+            spectralProcessing:
+              example: P
+              type: string
+            step:
+              $ref: '#/components/schemas/step'
+            width:
+              description: width of the buffer
+              example: 500
+              format: integer
+              maximum: 5000
+              minimum: 1
+              type: number
+          type: object
+        type:
+          description: the type of the GeoJSon object
+          enum:
+          - Feature
+          type: string
+      type: object
+    point:
+      description: A geo point.
+      properties:
+        x:
+          description: x coordinate
+          type: number
+        y:
+          description: y coordinate
+          type: number
+      required:
+      - x
+      - y
+      type: object
+    step:
+      description: Resolution (step) of the image in the output referential. Unit must respect the srs definition.
+      properties:
+        unit:
+          description: Unit of the step
+          enum:
+          - degree
+          type: string
+        x:
+          type: number
+        y:
+          type: number
+      required:
+      - x
+      - y
+      type: object
+    imageSize:
+      description: size (in pixels) of the result
+      properties:
+        columns:
+          description: number of columns of the output buffer
+          example: 500
+          format: integer
+          maximum: 5000
+          minimum: 1
+          type: number
+        lines:
+          description: number of lines of the output buffer
+          example: 500
+          format: integer
+          maximum: 5000
+          minimum: 1
+          type: number
+      required:
+      - columns
+      - lines
+      type: object
+    HistogramResponse:
+      properties:
+        histograms:
+          items:
+            properties:
+              band:
+                example: B0
+                type: string
+              max:
+                example: 9613
+                format: integer
+                minimum: 1
+                type: number
+              mean:
+                example: 785.7152806485769
+                format: float
+                minimum: 1
+                type: number
+              min:
+                example: 1
+                format: integer
+                minimum: 1
+                type: number
+              stdev:
+                example: 364.8379459959255
+                format: float
+                minimum: 1
+                type: number
+              step:
+                example: 1
+                format: integer
+                minimum: 1
+                type: number
+              values:
+                example:
+                - 3
+                - 0
+                - 0
+                - 6
+                items:
+                  format: integer
+                  minimum: 0
+                  type: number
+                minItems: 1
+                type: array
+            type: object
+          minItems: 1
+          type: array
+      type: object
+  responses:
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '404':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Item not found in catalog or resource not found in item
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

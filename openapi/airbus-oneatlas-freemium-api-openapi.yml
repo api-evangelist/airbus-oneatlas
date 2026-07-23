@@ -1,0 +1,108 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access freemium API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: freemium
+paths:
+  /api/v1/register:
+    post:
+      description: Create freemium contract and user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-06/schema#
+              definitions:
+                contractsFreemium:
+                  properties:
+                    content:
+                      properties:
+                        datasets:
+                          items:
+                            enum:
+                            - barcelonaHarbor
+                            - bostonConventionCenter
+                            - budapest
+                            - capetownHarbor
+                            - casablancaHarbor
+                            - dubai
+                            - istanbul
+                            - mexicoAirport
+                            - rio
+                            - sanFranciscoAirport
+                            - shanghai
+                            - sydneyOpera
+                            type: string
+                          maxItems: 3
+                          minItems: 1
+                          type: array
+                          uniqueItems: true
+                      required:
+                      - datasets
+                      type: object
+                    kind:
+                      pattern: ^contract.oneatlasdata.freemium$
+                    name:
+                      type: string
+                  required:
+                  - content
+                  - kind
+                  type: object
+              description: Freemium contract api
+              id: http://local/schemas/public/contract.freemium.json#
+              oneOf:
+              - properties:
+                  content:
+                    properties:
+                      datasets:
+                        items:
+                          enum:
+                          - barcelonaHarbor
+                          - bostonConventionCenter
+                          - budapest
+                          - capetownHarbor
+                          - casablancaHarbor
+                          - dubai
+                          - istanbul
+                          - mexicoAirport
+                          - rio
+                          - sanFranciscoAirport
+                          - shanghai
+                          - sydneyOpera
+                          type: string
+                        maxItems: 3
+                        minItems: 1
+                        type: array
+                        uniqueItems: true
+                    required:
+                    - datasets
+                    type: object
+                  kind:
+                    pattern: ^contract.oneatlasdata.freemium$
+                  name:
+                    type: string
+                required:
+                - content
+                - kind
+                type: object
+              title: Freemium contract
+      responses:
+        '200':
+          description: message for freemium acces
+      summary: Create Freemium Acces
+      tags:
+      - freemium
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

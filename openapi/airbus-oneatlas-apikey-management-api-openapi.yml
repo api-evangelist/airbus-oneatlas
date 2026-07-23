@@ -1,0 +1,126 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access APIkey management API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: APIkey management
+paths:
+  /apikeys:
+    servers:
+    - description: Prod authenticate server
+      url: https://authenticate.foundation.api.oneatlas.airbus.com/api/v1
+    get:
+      description: Returns the list of authenticated or impersonated user's apikeys
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKeyPage'
+          description: A page containing the api keys information
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+      summary: Returns the List of Authenticated or Impersonated User's Apikeys
+      tags:
+      - APIkey management
+    post:
+      description: Create a new API Key attached to the authenticated or impersonated user
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKey'
+          description: A JSON payload describing the created API Key. The 'secret' field should be populated in the response.
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+      summary: Create a New API Key Attached to the Authenticated or Impersonated User
+      tags:
+      - APIkey management
+  /apikeys/{apikey_id}:
+    delete:
+      description: Delete a User's API Key
+      parameters:
+      - description: id of the API Key to delete
+        in: path
+        name: apikey_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HumanReadableOperationSummary'
+          description: A summary of the operation
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+      summary: Delete a User's API Key
+      tags:
+      - APIkey management
+      servers:
+      - description: Prod authenticate server
+        url: https://authenticate.foundation.api.oneatlas.airbus.com/api/v1
+components:
+  schemas:
+    ApiKeyPage:
+      properties:
+        items:
+          description: API Keys
+          items:
+            $ref: '#/components/schemas/ApiKey'
+          type: array
+      type: object
+    ApiKey:
+      properties:
+        date:
+          description: API key creation date in ISO 8601 format
+          type: string
+        description:
+          description: A free-text human readable description of this API key
+          type: string
+        expirationDate:
+          description: API key expiration date in ISO 8601 format
+          type: string
+        id:
+          description: API Key identifier
+          type: string
+        secret:
+          description: The API Key secret to be used to retrieve acces tokens. This field is only provided once, then the client should store this information in a secure place.
+          type: string
+      required:
+      - id
+      - description
+      - date
+      - expirationDate
+      type: object
+    HumanReadableOperationSummary:
+      properties:
+        message:
+          description: Human readable summary of the operation execution
+          type: string
+      type: object
+  responses:
+    UnauthorizedError:
+      content:
+        application/json:
+          schema:
+            type: string
+      description: API key is missing or invalid
+      headers:
+        WWW-Authenticate:
+          schema:
+            type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

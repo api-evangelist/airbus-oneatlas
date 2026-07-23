@@ -1,0 +1,3302 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Sar/Monitoring API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Sar/Monitoring
+  description: 'Monitor your ordered SAR acquisitions.
+
+    '
+paths:
+  /sar/orders:
+    get:
+      summary: Airbus OneAtlas Get List of Orders
+      tags:
+      - Sar/Monitoring
+      responses:
+        '200':
+          description: orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: false
+                  required:
+                  - orderId
+                  - purpose
+                  - submissionTime
+                  properties:
+                    basketId:
+                      type: string
+                      format: uuid
+                    customerReference:
+                      type: string
+                      example: O29343
+                    orderId:
+                      type: string
+                      pattern: ^\d{1,9}
+                      example: '12345'
+                    purpose:
+                      type: string
+                      description: Order purpose. Mandatory on submitting the shopcart, but not on crate.
+                      enum:
+                      - Aerospace Industry Company
+                      - Agro Company
+                      - Agro Service Company
+                      - Bank
+                      - Consulting Company
+                      - Consumer
+                      - Cooperative Company
+                      - Defence Company
+                      - DEM
+                      - Edition & Communication Company
+                      - Education / Research
+                      - Electronic System company
+                      - Emergency Response & Crisis Management
+                      - Energy Company
+                      - Energy Service Company
+                      - Engineering Company
+                      - Engineering Service Company
+                      - Environment
+                      - Forest Company
+                      - Forest Service Company
+                      - Funding Agency
+                      - Ground Control Points (GCP)
+                      - Hydrology
+                      - Infrastructure (Including Construction)
+                      - Insurance
+                      - International Civil Organization
+                      - International Military Organization
+                      - IT Service Company
+                      - LBS Company
+                      - Local Government
+                      - Maritime Services
+                      - Maritime and Coastal company
+                      - Maritime and Coastal Services company
+                      - Geology
+                      - Mining Company
+                      - Mining Service Company
+                      - Land Administration
+                      - National Civil Government
+                      - National Mapping
+                      - National Military Government
+                      - NGO / NPO / Association
+                      - Oil & Gas Company
+                      - Oil & Gas Service Company
+                      - Other Industry Company
+                      - Other
+                      - Property & Urban Planning
+                      - Public Company
+                      - Real Estate / Architect
+                      - Space Agency
+                      - Surface Movement Monitoring
+                      - Telecom Company
+                      - Transport Service Company
+                      - Utilities, Transport and Engineering
+                      - Value-Added Geo-Information Company
+                    submissionTime:
+                      type: string
+                      format: date-time
+                    title:
+                      type: string
+                      example: Lake Constance Test 1
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+  /sar/orders/{orderIdOrBasketId}:
+    parameters:
+    - name: orderIdOrBasketId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Airbus OneAtlas Get Order Details
+      tags:
+      - Sar/Monitoring
+      responses:
+        '200':
+          description: order
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required:
+                - features
+                - orderId
+                - purpose
+                - submissionTime
+                - type
+                properties:
+                  customerReference:
+                    type: string
+                    example: O29343
+                  features:
+                    type: array
+                    items:
+                      allOf:
+                      - allOf:
+                        - type: object
+                          properties:
+                            properties:
+                              type: object
+                              properties:
+                                price:
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - final
+                                  - total
+                                  - currency
+                                  properties:
+                                    final:
+                                      description: Not final, if parameters are missing to calculate all price elements (e.g. Fees). Final price might then be higher.
+                                      type: boolean
+                                      example: false
+                                    missingParameters:
+                                      description: parameters that need to be set to get final price
+                                      type: array
+                                      items:
+                                        type: string
+                                      example:
+                                      - orbitType
+                                    total:
+                                      description: Price for item including known tax, discounts and fees
+                                      type: number
+                                      example: 834.32
+                                    currency:
+                                      type: string
+                                      example: EUR
+                                    unitPrice:
+                                      description: Price for standard scene
+                                      type: number
+                                      example: 1000
+                                    quantity:
+                                      type: number
+                                      description: Scene length
+                                      example: 1.2
+                                    discountRate:
+                                      type: number
+                                      description: Discount for this item in percent
+                                      example: 20
+                                    expiry:
+                                      type: string
+                                      format: date-time
+                                    fees:
+                                      type: array
+                                      items:
+                                        type: object
+                                        additionalProperties: false
+                                        required:
+                                        - type
+                                        - value
+                                        properties:
+                                          type:
+                                            type: string
+                                            enum:
+                                            - NRT
+                                            - Rapid tasking
+                                            - Priority
+                                            - Cancellation
+                                          value:
+                                            type: number
+                                            description: Fee value
+                                            example: '200'
+                                          discountRate:
+                                            type: number
+                                            description: Discount rate applied on fee in percent
+                                            example: '10'
+                        - type: object
+                          required:
+                          - type
+                          - geometry
+                          - properties
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                              - Feature
+                            geometry:
+                              type: object
+                              additionalProperties: false
+                              required:
+                              - type
+                              - coordinates
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                  - Polygon
+                                coordinates:
+                                  type: array
+                                  minLength: 1
+                                  items:
+                                    type: array
+                                    minLength: 3
+                                    items:
+                                      type: array
+                                      minLength: 2
+                                      maxLength: 2
+                                      items:
+                                        type: number
+                              example:
+                                type: Polygon
+                                coordinates:
+                                - - - 9.346
+                                    - 47.788
+                                  - - 9.291
+                                    - 47.644
+                                  - - 9.538
+                                    - 47.592
+                                  - - 9.62
+                                    - 47.75
+                                  - - 9.511
+                                    - 47.802
+                                  - - 9.346
+                                    - 47.788
+                            properties:
+                              type: object
+                              required:
+                              - itemId
+                              - mission
+                              - acquisitionId
+                              - startTime
+                              - stopTime
+                              - sensorMode
+                              - polarizationChannels
+                              - beamId
+                              - pathDirection
+                              - lookDirection
+                              - incidenceAngle
+                              - lastUpdateTime
+                              - status
+                              - outOfFullPerformance
+                              properties:
+                                itemId:
+                                  type: string
+                                  format: uuid
+                                mission:
+                                  description: Satellite mission
+                                  type: string
+                                  enum:
+                                  - TSX
+                                  - PAZ
+                                satellite:
+                                  description: Satellite
+                                  type: string
+                                  enum:
+                                  - TSX-1
+                                  - PAZ-1
+                                  - TDX-1
+                                acquisitionId:
+                                  type: string
+                                  example: TSX-1_ST_S_spot_049R_49677_D31767159_432
+                                groupId:
+                                  type: integer
+                                startTime:
+                                  type: string
+                                  format: date-time
+                                stopTime:
+                                  type: string
+                                  format: date-time
+                                sensorMode:
+                                  description: The imaging/instrument/sensor mode to use for the acquisition
+                                  type: string
+                                  enum:
+                                  - SAR_ST_S
+                                  - SAR_HS_S
+                                  - SAR_HS_S_300
+                                  - SAR_HS_S_150
+                                  - SAR_HS_D
+                                  - SAR_HS_D_300
+                                  - SAR_HS_D_150
+                                  - SAR_SL_S
+                                  - SAR_SL_D
+                                  - SAR_SM_S
+                                  - SAR_SM_D
+                                  - SAR_SC_S
+                                  - SAR_WS_S
+                                  example: SAR_SM_S
+                                polarizationChannels:
+                                  description: The dual-polarization modes (HHVV, HHHV, VVVH) are not available for staring spotlight or (wide) ScanSAR modes. The polarization modes HV and VH are only available for Wide ScanSAR acquisitions.
+                                  type: string
+                                  enum:
+                                  - HH
+                                  - VV
+                                  - HV
+                                  - VH
+                                  - HHVV
+                                  - HHHV
+                                  - VVVH
+                                  example: HH
+                                beamId:
+                                  type: string
+                                  example: strip_010
+                                pathDirection:
+                                  description: Path or orbit direction
+                                  type: string
+                                  example: ascending
+                                  enum:
+                                  - ascending
+                                  - descending
+                                lookDirection:
+                                  description: Look Direction. Left-looking acquisitions require special authorization.
+                                  type: string
+                                  enum:
+                                  - R
+                                  - L
+                                incidenceAngle:
+                                  description: Incidence angle range in degrees. Only acquisitions with an average incidence angle in this range will be considered.
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    minimum:
+                                      type: number
+                                      minimum: 10
+                                      maximum: 70
+                                      example: 30
+                                    maximum:
+                                      type: number
+                                      minimum: 10
+                                      maximum: 70
+                                      example: 50
+                                productType:
+                                  description: Product type for the processing of the acuqisition. Mandatory on placing the order, but not for feasibility.
+                                  type: string
+                                  enum:
+                                  - SSC
+                                  - MGD
+                                  - GEC
+                                  - EEC
+                                  example: EEC
+                                resolutionVariant:
+                                  description: Radiometric or spatial enhancement. Mandatory on placing the order, but not for feasibility.
+                                  type: string
+                                  enum:
+                                  - SE
+                                  - RE
+                                orbitType:
+                                  description: Near Realtime acquisitions will incur an additional fee. Science processing is most accurate but takes approx 5 days to complete. Mandatory on placing the order, but not for feasibility.
+                                  type: string
+                                  enum:
+                                  - NRT
+                                  - rapid
+                                  - science
+                                geocodedIncidenceMask:
+                                  description: Include GIM in delivered product. Only applicable for EEC products.
+                                  type: boolean
+                                  default: false
+                                mapProjection:
+                                  description: Projection of the delivered product. Mandatory on placing the order, but not for feasibility.
+                                  type: string
+                                  default: auto
+                                  enum:
+                                  - auto
+                                  - UTM
+                                  - UPS
+                                gainAttenuation:
+                                  description: Processor gain Attenuation. Mandatory on placing the order, but not for feasibility.
+                                  type: integer
+                                  default: 0
+                                  enum:
+                                  - 0
+                                  - 10
+                                  - 20
+                                relativeOrbit:
+                                  type: integer
+                                absoluteOrbit:
+                                  type: integer
+                                orderTemplate:
+                                  type: string
+                                lastUpdateTime:
+                                  type: string
+                                  format: date-time
+                                status:
+                                  description: Status of item
+                                  type: string
+                                  enum:
+                                  - feasible
+                                  - availableInArchive
+                                  - unavailable
+                                  - submitted
+                                  - waitingForAcquisitionApproval
+                                  - accepted
+                                  - planned
+                                  - acquistion
+                                  - transition
+                                  - downlink
+                                  - waitingForOrbit
+                                  - processing
+                                  - waitingForDeliveryApproval
+                                  - delivery
+                                  - completed
+                                  - failed
+                                  - cancelled
+                                  - approvalRejected
+                                sensitivity:
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - status
+                                  properties:
+                                    status:
+                                      type: string
+                                      enum:
+                                      - notSensitive
+                                      - potential
+                                      - sensitive
+                                    missingParameters:
+                                      description: parameters that need to be set to get definite sensitivity status
+                                      type: array
+                                      items:
+                                        type: string
+                                        enum:
+                                        - productType
+                                        - resolutionVariant
+                                      example:
+                                      - productType
+                                      - resolutionVariant
+                                    type:
+                                      type: string
+                                      enum:
+                                      - blacklist
+                                      - resolution
+                                    sensitivityInformation:
+                                      type: string
+                                itemType:
+                                  type: string
+                                  enum:
+                                  - catalogue
+                                  - future
+                                outOfFullPerformance:
+                                  description: If set to true and the account is authorized, out of full performance scenes will be included in the response.
+                                  type: boolean
+                                  default: false
+                                scienceOrbitAvailability:
+                                  type: boolean
+                        - type: object
+                          properties:
+                            properties:
+                              type: object
+                              properties:
+                                submissionDeadline:
+                                  type: string
+                                  format: date-time
+                                acquisitionOnly:
+                                  description: Acquisition is done and archived, but product will not be processed and deliverd. Requires special authorization.
+                                  type: boolean
+                                  default: false
+                                priority:
+                                  description: Higher priority orders have a better chance of success but incur an additional fee
+                                  type: string
+                                  enum:
+                                  - standard
+                                  - priority
+                                  - exclusive
+                                  example: standard
+                                conflicts:
+                                  type: object
+                                  properties:
+                                    status:
+                                      type: string
+                                      enum:
+                                      - none
+                                      - potential
+                                      - expected
+                                    external:
+                                      type: object
+                                      additionalProperties:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                            enum:
+                                            - none
+                                            - potential
+                                            - expected
+                                          startTime:
+                                            type: string
+                                            format: date-time
+                                          stopTime:
+                                            type: string
+                                            format: date-time
+                                        minLength: 1
+                                    baskets:
+                                      type: object
+                                      additionalProperties:
+                                        type: object
+                                        additionalProperties:
+                                          type: object
+                                          properties:
+                                            status:
+                                              type: string
+                                              enum:
+                                              - none
+                                              - potential
+                                              - expected
+                                            startTime:
+                                              type: string
+                                              format: date-time
+                                            stopTime:
+                                              type: string
+                                              format: date-time
+                                          minLength: 1
+                                      minLength: 1
+                                    shopcart:
+                                      type: object
+                                      additionalProperties:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                            enum:
+                                            - none
+                                            - potential
+                                            - expected
+                                          startTime:
+                                            type: string
+                                            format: date-time
+                                          stopTime:
+                                            type: string
+                                            format: date-time
+                                        minLength: 1
+                                    feasibility:
+                                      type: object
+                                      additionalProperties:
+                                        type: object
+                                        properties:
+                                          status:
+                                            type: string
+                                            enum:
+                                            - none
+                                            - potential
+                                            - expected
+                                          startTime:
+                                            type: string
+                                            format: date-time
+                                          stopTime:
+                                            type: string
+                                            format: date-time
+                                        minLength: 1
+                                  required:
+                                  - status
+                                estimatedDownloadAvailability:
+                                  type: string
+                                  format: date-time
+                                receivingStation:
+                                  description: Downlink station to use for direct-access customers
+                                  type: string
+                                  default: NSG_POOL
+                                  example: NSG_POOL
+                      - type: object
+                        properties:
+                          properties:
+                            type: object
+                            properties:
+                              downlinkTime:
+                                type: string
+                                format: date-time
+                              orderId:
+                                type: string
+                                pattern: ^\d{1,9}
+                                example: '12345'
+                              orderItemId:
+                                type: string
+                                pattern: ^\d{9}_\d{4}$
+                                example: '000012345_0001'
+                  items:
+                    type: object
+                    required:
+                    - type
+                    - features
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                        - FeatureCollection
+                      features:
+                        type: array
+                        items:
+                          allOf:
+                          - allOf:
+                            - type: object
+                              properties:
+                                properties:
+                                  type: object
+                                  properties:
+                                    price:
+                                      type: object
+                                      additionalProperties: false
+                                      required:
+                                      - final
+                                      - total
+                                      - currency
+                                      properties:
+                                        final:
+                                          description: Not final, if parameters are missing to calculate all price elements (e.g. Fees). Final price might then be higher.
+                                          type: boolean
+                                          example: false
+                                        missingParameters:
+                                          description: parameters that need to be set to get final price
+                                          type: array
+                                          items:
+                                            type: string
+                                          example:
+                                          - orbitType
+                                        total:
+                                          description: Price for item including known tax, discounts and fees
+                                          type: number
+                                          example: 834.32
+                                        currency:
+                                          type: string
+                                          example: EUR
+                                        unitPrice:
+                                          description: Price for standard scene
+                                          type: number
+                                          example: 1000
+                                        quantity:
+                                          type: number
+                                          description: Scene length
+                                          example: 1.2
+                                        discountRate:
+                                          type: number
+                                          description: Discount for this item in percent
+                                          example: 20
+                                        expiry:
+                                          type: string
+                                          format: date-time
+                                        fees:
+                                          type: array
+                                          items:
+                                            type: object
+                                            additionalProperties: false
+                                            required:
+                                            - type
+                                            - value
+                                            properties:
+                                              type:
+                                                type: string
+                                                enum:
+                                                - NRT
+                                                - Rapid tasking
+                                                - Priority
+                                                - Cancellation
+                                              value:
+                                                type: number
+                                                description: Fee value
+                                                example: '200'
+                                              discountRate:
+                                                type: number
+                                                description: Discount rate applied on fee in percent
+                                                example: '10'
+                            - type: object
+                              required:
+                              - type
+                              - geometry
+                              - properties
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                  - Feature
+                                geometry:
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - type
+                                  - coordinates
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                      - Polygon
+                                    coordinates:
+                                      type: array
+                                      minLength: 1
+                                      items:
+                                        type: array
+                                        minLength: 3
+                                        items:
+                                          type: array
+                                          minLength: 2
+                                          maxLength: 2
+                                          items:
+                                            type: number
+                                  example:
+                                    type: Polygon
+                                    coordinates:
+                                    - - - 9.346
+                                        - 47.788
+                                      - - 9.291
+                                        - 47.644
+                                      - - 9.538
+                                        - 47.592
+                                      - - 9.62
+                                        - 47.75
+                                      - - 9.511
+                                        - 47.802
+                                      - - 9.346
+                                        - 47.788
+                                properties:
+                                  type: object
+                                  required:
+                                  - itemId
+                                  - mission
+                                  - acquisitionId
+                                  - startTime
+                                  - stopTime
+                                  - sensorMode
+                                  - polarizationChannels
+                                  - beamId
+                                  - pathDirection
+                                  - lookDirection
+                                  - incidenceAngle
+                                  - lastUpdateTime
+                                  - status
+                                  - outOfFullPerformance
+                                  properties:
+                                    itemId:
+                                      type: string
+                                      format: uuid
+                                    mission:
+                                      description: Satellite mission
+                                      type: string
+                                      enum:
+                                      - TSX
+                                      - PAZ
+                                    satellite:
+                                      description: Satellite
+                                      type: string
+                                      enum:
+                                      - TSX-1
+                                      - PAZ-1
+                                      - TDX-1
+                                    acquisitionId:
+                                      type: string
+                                      example: TSX-1_ST_S_spot_049R_49677_D31767159_432
+                                    groupId:
+                                      type: integer
+                                    startTime:
+                                      type: string
+                                      format: date-time
+                                    stopTime:
+                                      type: string
+                                      format: date-time
+                                    sensorMode:
+                                      description: The imaging/instrument/sensor mode to use for the acquisition
+                                      type: string
+                                      enum:
+                                      - SAR_ST_S
+                                      - SAR_HS_S
+                                      - SAR_HS_S_300
+                                      - SAR_HS_S_150
+                                      - SAR_HS_D
+                                      - SAR_HS_D_300
+                                      - SAR_HS_D_150
+                                      - SAR_SL_S
+                                      - SAR_SL_D
+                                      - SAR_SM_S
+                                      - SAR_SM_D
+                                      - SAR_SC_S
+                                      - SAR_WS_S
+                                      example: SAR_SM_S
+                                    polarizationChannels:
+                                      description: The dual-polarization modes (HHVV, HHHV, VVVH) are not available for staring spotlight or (wide) ScanSAR modes. The polarization modes HV and VH are only available for Wide ScanSAR acquisitions.
+                                      type: string
+                                      enum:
+                                      - HH
+                                      - VV
+                                      - HV
+                                      - VH
+                                      - HHVV
+                                      - HHHV
+                                      - VVVH
+                                      example: HH
+                                    beamId:
+                                      type: string
+                                      example: strip_010
+                                    pathDirection:
+                                      description: Path or orbit direction
+                                      type: string
+                                      example: ascending
+                                      enum:
+                                      - ascending
+                                      - descending
+                                    lookDirection:
+                                      description: Look Direction. Left-looking acquisitions require special authorization.
+                                      type: string
+                                      enum:
+                                      - R
+                                      - L
+                                    incidenceAngle:
+                                      description: Incidence angle range in degrees. Only acquisitions with an average incidence angle in this range will be considered.
+                                      type: object
+                                      additionalProperties: false
+                                      properties:
+                                        minimum:
+                                          type: number
+                                          minimum: 10
+                                          maximum: 70
+                                          example: 30
+                                        maximum:
+                                          type: number
+                                          minimum: 10
+                                          maximum: 70
+                                          example: 50
+                                    productType:
+                                      description: Product type for the processing of the acuqisition. Mandatory on placing the order, but not for feasibility.
+                                      type: string
+                                      enum:
+                                      - SSC
+                                      - MGD
+                                      - GEC
+                                      - EEC
+                                      example: EEC
+                                    resolutionVariant:
+                                      description: Radiometric or spatial enhancement. Mandatory on placing the order, but not for feasibility.
+                                      type: string
+                                      enum:
+                                      - SE
+                                      - RE
+                                    orbitType:
+                                      description: Near Realtime acquisitions will incur an additional fee. Science processing is most accurate but takes approx 5 days to complete. Mandatory on placing the order, but not for feasibility.
+                                      type: string
+                                      enum:
+                                      - NRT
+                                      - rapid
+                                      - science
+                                    geocodedIncidenceMask:
+                                      description: Include GIM in delivered product. Only applicable for EEC products.
+                                      type: boolean
+                                      default: false
+                                    mapProjection:
+                                      description: Projection of the delivered product. Mandatory on placing the order, but not for feasibility.
+                                      type: string
+                                      default: auto
+                                      enum:
+                                      - auto
+                                      - UTM
+                                      - UPS
+                                    gainAttenuation:
+                                      description: Processor gain Attenuation. Mandatory on placing the order, but not for feasibility.
+                                      type: integer
+                                      default: 0
+                                      enum:
+                                      - 0
+                                      - 10
+                                      - 20
+                                    relativeOrbit:
+                                      type: integer
+                                    absoluteOrbit:
+                                      type: integer
+                                    orderTemplate:
+                                      type: string
+                                    lastUpdateTime:
+                                      type: string
+                                      format: date-time
+                                    status:
+                                      description: Status of item
+                                      type: string
+                                      enum:
+                                      - feasible
+                                      - availableInArchive
+                                      - unavailable
+                                      - submitted
+                                      - waitingForAcquisitionApproval
+                                      - accepted
+                                      - planned
+                                      - acquistion
+                                      - transition
+                                      - downlink
+                                      - waitingForOrbit
+                                      - processing
+                                      - waitingForDeliveryApproval
+                                      - delivery
+                                      - completed
+                                      - failed
+                                      - cancelled
+                                      - approvalRejected
+                                    sensitivity:
+                                      type: object
+                                      additionalProperties: false
+                                      required:
+                                      - status
+                                      properties:
+                                        status:
+                                          type: string
+                                          enum:
+                                          - notSensitive
+                                          - potential
+                                          - sensitive
+                                        missingParameters:
+                                          description: parameters that need to be set to get definite sensitivity status
+                                          type: array
+                                          items:
+                                            type: string
+                                            enum:
+                                            - productType
+                                            - resolutionVariant
+                                          example:
+                                          - productType
+                                          - resolutionVariant
+                                        type:
+                                          type: string
+                                          enum:
+                                          - blacklist
+                                          - resolution
+                                        sensitivityInformation:
+                                          type: string
+                                    itemType:
+                                      type: string
+                                      enum:
+                                      - catalogue
+                                      - future
+                                    outOfFullPerformance:
+                                      description: If set to true and the account is authorized, out of full performance scenes will be included in the response.
+                                      type: boolean
+                                      default: false
+                                    scienceOrbitAvailability:
+                                      type: boolean
+                            - type: object
+                              properties:
+                                properties:
+                                  type: object
+                                  properties:
+                                    submissionDeadline:
+                                      type: string
+                                      format: date-time
+                                    acquisitionOnly:
+                                      description: Acquisition is done and archived, but product will not be processed and deliverd. Requires special authorization.
+                                      type: boolean
+                                      default: false
+                                    priority:
+                                      description: Higher priority orders have a better chance of success but incur an additional fee
+                                      type: string
+                                      enum:
+                                      - standard
+                                      - priority
+                                      - exclusive
+                                      example: standard
+                                    conflicts:
+                                      type: object
+                                      properties:
+                                        status:
+                                          type: string
+                                          enum:
+                                          - none
+                                          - potential
+                                          - expected
+                                        external:
+                                          type: object
+                                          additionalProperties:
+                                            type: object
+                                            properties:
+                                              status:
+                                                type: string
+                                                enum:
+                                                - none
+                                                - potential
+                                                - expected
+                                              startTime:
+                                                type: string
+                                                format: date-time
+                                              stopTime:
+                                                type: string
+                                                format: date-time
+                                            minLength: 1
+                                        baskets:
+                                          type: object
+                                          additionalProperties:
+                                            type: object
+                                            additionalProperties:
+                                              type: object
+                                              properties:
+                                                status:
+                                                  type: string
+                                                  enum:
+                                                  - none
+                                                  - potential
+                                                  - expected
+                                                startTime:
+                                                  type: string
+                                                  format: date-time
+                                                stopTime:
+                                                  type: string
+                                                  format: date-time
+                                              minLength: 1
+                                          minLength: 1
+                                        shopcart:
+                                          type: object
+                                          additionalProperties:
+                                            type: object
+                                            properties:
+                                              status:
+                                                type: string
+                                                enum:
+                                                - none
+                                                - potential
+                                                - expected
+                                              startTime:
+                                                type: string
+                                                format: date-time
+                                              stopTime:
+                                                type: string
+                                                format: date-time
+                                            minLength: 1
+                                        feasibility:
+                                          type: object
+                                          additionalProperties:
+                                            type: object
+                                            properties:
+                                              status:
+                                                type: string
+                                                enum:
+                                                - none
+                                                - potential
+                                                - expected
+                                              startTime:
+                                                type: string
+                                                format: date-time
+                                              stopTime:
+                                                type: string
+                                                format: date-time
+                                            minLength: 1
+                                      required:
+                                      - status
+                                    estimatedDownloadAvailability:
+                                      type: string
+                                      format: date-time
+                                    receivingStation:
+                                      description: Downlink station to use for direct-access customers
+                                      type: string
+                                      default: NSG_POOL
+                                      example: NSG_POOL
+                          - type: object
+                            properties:
+                              properties:
+                                type: object
+                                properties:
+                                  downlinkTime:
+                                    type: string
+                                    format: date-time
+                                  orderId:
+                                    type: string
+                                    pattern: ^\d{1,9}
+                                    example: '12345'
+                                  orderItemId:
+                                    type: string
+                                    pattern: ^\d{9}_\d{4}$
+                                    example: '000012345_0001'
+                      bbox:
+                        type: array
+                        items:
+                          type: number
+                        minItems: 4
+                        maxItems: 4
+                    deprecated: true
+                  orderId:
+                    type: string
+                    pattern: ^\d{1,9}
+                    example: '12345'
+                  purpose:
+                    type: string
+                    description: Order purpose. Mandatory on submitting the shopcart, but not on crate.
+                    enum:
+                    - Aerospace Industry Company
+                    - Agro Company
+                    - Agro Service Company
+                    - Bank
+                    - Consulting Company
+                    - Consumer
+                    - Cooperative Company
+                    - Defence Company
+                    - DEM
+                    - Edition & Communication Company
+                    - Education / Research
+                    - Electronic System company
+                    - Emergency Response & Crisis Management
+                    - Energy Company
+                    - Energy Service Company
+                    - Engineering Company
+                    - Engineering Service Company
+                    - Environment
+                    - Forest Company
+                    - Forest Service Company
+                    - Funding Agency
+                    - Ground Control Points (GCP)
+                    - Hydrology
+                    - Infrastructure (Including Construction)
+                    - Insurance
+                    - International Civil Organization
+                    - International Military Organization
+                    - IT Service Company
+                    - LBS Company
+                    - Local Government
+                    - Maritime Services
+                    - Maritime and Coastal company
+                    - Maritime and Coastal Services company
+                    - Geology
+                    - Mining Company
+                    - Mining Service Company
+                    - Land Administration
+                    - National Civil Government
+                    - National Mapping
+                    - National Military Government
+                    - NGO / NPO / Association
+                    - Oil & Gas Company
+                    - Oil & Gas Service Company
+                    - Other Industry Company
+                    - Other
+                    - Property & Urban Planning
+                    - Public Company
+                    - Real Estate / Architect
+                    - Space Agency
+                    - Surface Movement Monitoring
+                    - Telecom Company
+                    - Transport Service Company
+                    - Utilities, Transport and Engineering
+                    - Value-Added Geo-Information Company
+                  submissionTime:
+                    type: string
+                    format: date-time
+                  title:
+                    type: string
+                    example: Lake Constance Test 1
+                  type:
+                    type: string
+                    enum:
+                    - FeatureCollection
+                  bbox:
+                    type: array
+                    items:
+                      type: number
+                    minItems: 4
+                    maxItems: 4
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '404':
+          description: Order doesn't exist
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+  /sar/orders/*/items/status:
+    post:
+      summary: Airbus OneAtlas Get Status of Items with Filter
+      tags:
+      - Sar/Monitoring
+      requestBody:
+        description: filter for items to get the status for
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                limit:
+                  type: integer
+                  minimum: 1
+                  default: 200
+                filter:
+                  anyOf:
+                  - type: object
+                    properties:
+                      or:
+                        type: array
+                        items:
+                          anyOf:
+                          - type: object
+                            properties:
+                              status:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      description: Status of item
+                                      type: string
+                                      enum:
+                                      - feasible
+                                      - availableInArchive
+                                      - unavailable
+                                      - submitted
+                                      - waitingForAcquisitionApproval
+                                      - accepted
+                                      - planned
+                                      - acquistion
+                                      - transition
+                                      - downlink
+                                      - waitingForOrbit
+                                      - processing
+                                      - waitingForDeliveryApproval
+                                      - delivery
+                                      - completed
+                                      - failed
+                                      - cancelled
+                                      - approvalRejected
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        description: Status of item
+                                        type: string
+                                        enum:
+                                        - feasible
+                                        - availableInArchive
+                                        - unavailable
+                                        - submitted
+                                        - waitingForAcquisitionApproval
+                                        - accepted
+                                        - planned
+                                        - acquistion
+                                        - transition
+                                        - downlink
+                                        - waitingForOrbit
+                                        - processing
+                                        - waitingForDeliveryApproval
+                                        - delivery
+                                        - completed
+                                        - failed
+                                        - cancelled
+                                        - approvalRejected
+                          - type: object
+                            properties:
+                              startTime:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: date-time
+                                - type: object
+                                  properties:
+                                    lt:
+                                      type: string
+                                      format: date-time
+                                    gt:
+                                      type: string
+                                      format: date-time
+                          - type: object
+                            properties:
+                              lastUpdate:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: date-time
+                                - type: object
+                                  properties:
+                                    lt:
+                                      type: string
+                                      format: date-time
+                                    gt:
+                                      type: string
+                                      format: date-time
+                          - type: object
+                            properties:
+                              orderId:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      pattern: ^\d{1,9}
+                                      example: '12345'
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        type: string
+                                        pattern: ^\d{1,9}
+                                        example: '12345'
+                          - type: object
+                            properties:
+                              orderItemId:
+                                type: object
+                                properties:
+                                  in:
+                                    type: array
+                                    items:
+                                      type: string
+                                      pattern: ^\d{9}_\d{4}$
+                                      example: '000012345_0001'
+                          - type: object
+                            properties:
+                              customerReference:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      example: O29343
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        oneOf:
+                                        - type: string
+                                          example: O29343
+                                        - type: string
+                                          enum:
+                                          - '*'
+                          - type: object
+                            properties:
+                              itemId:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: uuid
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        type: string
+                                        format: uuid
+                          - type: object
+                            properties:
+                              basketId:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: uuid
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        type: string
+                                        format: uuid
+                  - type: object
+                    properties:
+                      not:
+                        type: array
+                        items:
+                          anyOf:
+                          - type: object
+                            properties:
+                              status:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      description: Status of item
+                                      type: string
+                                      enum:
+                                      - feasible
+                                      - availableInArchive
+                                      - unavailable
+                                      - submitted
+                                      - waitingForAcquisitionApproval
+                                      - accepted
+                                      - planned
+                                      - acquistion
+                                      - transition
+                                      - downlink
+                                      - waitingForOrbit
+                                      - processing
+                                      - waitingForDeliveryApproval
+                                      - delivery
+                                      - completed
+                                      - failed
+                                      - cancelled
+                                      - approvalRejected
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        description: Status of item
+                                        type: string
+                                        enum:
+                                        - feasible
+                                        - availableInArchive
+                                        - unavailable
+                                        - submitted
+                                        - waitingForAcquisitionApproval
+                                        - accepted
+                                        - planned
+                                        - acquistion
+                                        - transition
+                                        - downlink
+                                        - waitingForOrbit
+                                        - processing
+                                        - waitingForDeliveryApproval
+                                        - delivery
+                                        - completed
+                                        - failed
+                                        - cancelled
+                                        - approvalRejected
+                          - type: object
+                            properties:
+                              startTime:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: date-time
+                                - type: object
+                                  properties:
+                                    lt:
+                                      type: string
+                                      format: date-time
+                                    gt:
+                                      type: string
+                                      format: date-time
+                          - type: object
+                            properties:
+                              lastUpdate:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: date-time
+                                - type: object
+                                  properties:
+                                    lt:
+                                      type: string
+                                      format: date-time
+                                    gt:
+                                      type: string
+                                      format: date-time
+                          - type: object
+                            properties:
+                              orderId:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      pattern: ^\d{1,9}
+                                      example: '12345'
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        type: string
+                                        pattern: ^\d{1,9}
+                                        example: '12345'
+                          - type: object
+                            properties:
+                              orderItemId:
+                                type: object
+                                properties:
+                                  in:
+                                    type: array
+                                    items:
+                                      type: string
+                                      pattern: ^\d{9}_\d{4}$
+                                      example: '000012345_0001'
+                          - type: object
+                            properties:
+                              customerReference:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      example: O29343
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        oneOf:
+                                        - type: string
+                                          example: O29343
+                                        - type: string
+                                          enum:
+                                          - '*'
+                          - type: object
+                            properties:
+                              itemId:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: uuid
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        type: string
+                                        format: uuid
+                          - type: object
+                            properties:
+                              basketId:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: uuid
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        type: string
+                                        format: uuid
+                  - type: object
+                    properties:
+                      status:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              description: Status of item
+                              type: string
+                              enum:
+                              - feasible
+                              - availableInArchive
+                              - unavailable
+                              - submitted
+                              - waitingForAcquisitionApproval
+                              - accepted
+                              - planned
+                              - acquistion
+                              - transition
+                              - downlink
+                              - waitingForOrbit
+                              - processing
+                              - waitingForDeliveryApproval
+                              - delivery
+                              - completed
+                              - failed
+                              - cancelled
+                              - approvalRejected
+                        - type: object
+                          properties:
+                            in:
+                              type: array
+                              items:
+                                description: Status of item
+                                type: string
+                                enum:
+                                - feasible
+                                - availableInArchive
+                                - unavailable
+                                - submitted
+                                - waitingForAcquisitionApproval
+                                - accepted
+                                - planned
+                                - acquistion
+                                - transition
+                                - downlink
+                                - waitingForOrbit
+                                - processing
+                                - waitingForDeliveryApproval
+                                - delivery
+                                - completed
+                                - failed
+                                - cancelled
+                                - approvalRejected
+                      startTime:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              type: string
+                              format: date-time
+                        - type: object
+                          properties:
+                            lt:
+                              type: string
+                              format: date-time
+                            gt:
+                              type: string
+                              format: date-time
+                      lastUpdate:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              type: string
+                              format: date-time
+                        - type: object
+                          properties:
+                            lt:
+                              type: string
+                              format: date-time
+                            gt:
+                              type: string
+                              format: date-time
+                      orderId:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              type: string
+                              pattern: ^\d{1,9}
+                              example: '12345'
+                        - type: object
+                          properties:
+                            in:
+                              type: array
+                              items:
+                                type: string
+                                pattern: ^\d{1,9}
+                                example: '12345'
+                      orderItemId:
+                        type: object
+                        properties:
+                          in:
+                            type: array
+                            items:
+                              type: string
+                              pattern: ^\d{9}_\d{4}$
+                              example: '000012345_0001'
+                      customerReference:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              type: string
+                              example: O29343
+                        - type: object
+                          properties:
+                            in:
+                              type: array
+                              items:
+                                oneOf:
+                                - type: string
+                                  example: O29343
+                                - type: string
+                                  enum:
+                                  - '*'
+                      itemId:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              type: string
+                              format: uuid
+                        - type: object
+                          properties:
+                            in:
+                              type: array
+                              items:
+                                type: string
+                                format: uuid
+                      basketId:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              type: string
+                              format: uuid
+                        - type: object
+                          properties:
+                            in:
+                              type: array
+                              items:
+                                type: string
+                                format: uuid
+                  example:
+                    or:
+                    - lastUpdate:
+                        gt: '2020-12-03T12:00:00'
+                    - startTime:
+                        gt: '2020-12-05T12:00:00'
+                        lt: '2020-12-10T12:00:00'
+      responses:
+        '200':
+          description: price objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: false
+                  required:
+                  - orderItemId
+                  - lastUpdateTime
+                  - status
+                  properties:
+                    itemId:
+                      type: string
+                      format: uuid
+                    orderItemId:
+                      type: string
+                      pattern: ^\d{9}_\d{4}$
+                      example: '000012345_0001'
+                    lastUpdateTime:
+                      type: string
+                      format: date-time
+                    status:
+                      description: Status of item
+                      type: string
+                      enum:
+                      - feasible
+                      - availableInArchive
+                      - unavailable
+                      - submitted
+                      - waitingForAcquisitionApproval
+                      - accepted
+                      - planned
+                      - acquistion
+                      - transition
+                      - downlink
+                      - waitingForOrbit
+                      - processing
+                      - waitingForDeliveryApproval
+                      - delivery
+                      - completed
+                      - failed
+                      - cancelled
+                      - approvalRejected
+                    estimatedDownloadAvailability:
+                      type: string
+                      format: date-time
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+  /sar/orders/*/items:
+    post:
+      summary: Airbus OneAtlas Get Items Only with OrderItemId
+      tags:
+      - Sar/Monitoring
+      requestBody:
+        description: array with orderItemIds
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                limit:
+                  type: integer
+                  minimum: 1
+                  default: 200
+                filter:
+                  anyOf:
+                  - type: object
+                    properties:
+                      or:
+                        type: array
+                        items:
+                          anyOf:
+                          - type: object
+                            properties:
+                              status:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      description: Status of item
+                                      type: string
+                                      enum:
+                                      - feasible
+                                      - availableInArchive
+                                      - unavailable
+                                      - submitted
+                                      - waitingForAcquisitionApproval
+                                      - accepted
+                                      - planned
+                                      - acquistion
+                                      - transition
+                                      - downlink
+                                      - waitingForOrbit
+                                      - processing
+                                      - waitingForDeliveryApproval
+                                      - delivery
+                                      - completed
+                                      - failed
+                                      - cancelled
+                                      - approvalRejected
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        description: Status of item
+                                        type: string
+                                        enum:
+                                        - feasible
+                                        - availableInArchive
+                                        - unavailable
+                                        - submitted
+                                        - waitingForAcquisitionApproval
+                                        - accepted
+                                        - planned
+                                        - acquistion
+                                        - transition
+                                        - downlink
+                                        - waitingForOrbit
+                                        - processing
+                                        - waitingForDeliveryApproval
+                                        - delivery
+                                        - completed
+                                        - failed
+                                        - cancelled
+                                        - approvalRejected
+                          - type: object
+                            properties:
+                              startTime:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: date-time
+                                - type: object
+                                  properties:
+                                    lt:
+                                      type: string
+                                      format: date-time
+                                    gt:
+                                      type: string
+                                      format: date-time
+                          - type: object
+                            properties:
+                              lastUpdate:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: date-time
+                                - type: object
+                                  properties:
+                                    lt:
+                                      type: string
+                                      format: date-time
+                                    gt:
+                                      type: string
+                                      format: date-time
+                          - type: object
+                            properties:
+                              orderId:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      pattern: ^\d{1,9}
+                                      example: '12345'
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        type: string
+                                        pattern: ^\d{1,9}
+                                        example: '12345'
+                          - type: object
+                            properties:
+                              orderItemId:
+                                type: object
+                                properties:
+                                  in:
+                                    type: array
+                                    items:
+                                      type: string
+                                      pattern: ^\d{9}_\d{4}$
+                                      example: '000012345_0001'
+                          - type: object
+                            properties:
+                              customerReference:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      example: O29343
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        oneOf:
+                                        - type: string
+                                          example: O29343
+                                        - type: string
+                                          enum:
+                                          - '*'
+                          - type: object
+                            properties:
+                              itemId:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: uuid
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        type: string
+                                        format: uuid
+                          - type: object
+                            properties:
+                              basketId:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: uuid
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        type: string
+                                        format: uuid
+                  - type: object
+                    properties:
+                      not:
+                        type: array
+                        items:
+                          anyOf:
+                          - type: object
+                            properties:
+                              status:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      description: Status of item
+                                      type: string
+                                      enum:
+                                      - feasible
+                                      - availableInArchive
+                                      - unavailable
+                                      - submitted
+                                      - waitingForAcquisitionApproval
+                                      - accepted
+                                      - planned
+                                      - acquistion
+                                      - transition
+                                      - downlink
+                                      - waitingForOrbit
+                                      - processing
+                                      - waitingForDeliveryApproval
+                                      - delivery
+                                      - completed
+                                      - failed
+                                      - cancelled
+                                      - approvalRejected
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        description: Status of item
+                                        type: string
+                                        enum:
+                                        - feasible
+                                        - availableInArchive
+                                        - unavailable
+                                        - submitted
+                                        - waitingForAcquisitionApproval
+                                        - accepted
+                                        - planned
+                                        - acquistion
+                                        - transition
+                                        - downlink
+                                        - waitingForOrbit
+                                        - processing
+                                        - waitingForDeliveryApproval
+                                        - delivery
+                                        - completed
+                                        - failed
+                                        - cancelled
+                                        - approvalRejected
+                          - type: object
+                            properties:
+                              startTime:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: date-time
+                                - type: object
+                                  properties:
+                                    lt:
+                                      type: string
+                                      format: date-time
+                                    gt:
+                                      type: string
+                                      format: date-time
+                          - type: object
+                            properties:
+                              lastUpdate:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: date-time
+                                - type: object
+                                  properties:
+                                    lt:
+                                      type: string
+                                      format: date-time
+                                    gt:
+                                      type: string
+                                      format: date-time
+                          - type: object
+                            properties:
+                              orderId:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      pattern: ^\d{1,9}
+                                      example: '12345'
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        type: string
+                                        pattern: ^\d{1,9}
+                                        example: '12345'
+                          - type: object
+                            properties:
+                              orderItemId:
+                                type: object
+                                properties:
+                                  in:
+                                    type: array
+                                    items:
+                                      type: string
+                                      pattern: ^\d{9}_\d{4}$
+                                      example: '000012345_0001'
+                          - type: object
+                            properties:
+                              customerReference:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      example: O29343
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        oneOf:
+                                        - type: string
+                                          example: O29343
+                                        - type: string
+                                          enum:
+                                          - '*'
+                          - type: object
+                            properties:
+                              itemId:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: uuid
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        type: string
+                                        format: uuid
+                          - type: object
+                            properties:
+                              basketId:
+                                oneOf:
+                                - type: object
+                                  properties:
+                                    eq:
+                                      type: string
+                                      format: uuid
+                                - type: object
+                                  properties:
+                                    in:
+                                      type: array
+                                      items:
+                                        type: string
+                                        format: uuid
+                  - type: object
+                    properties:
+                      status:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              description: Status of item
+                              type: string
+                              enum:
+                              - feasible
+                              - availableInArchive
+                              - unavailable
+                              - submitted
+                              - waitingForAcquisitionApproval
+                              - accepted
+                              - planned
+                              - acquistion
+                              - transition
+                              - downlink
+                              - waitingForOrbit
+                              - processing
+                              - waitingForDeliveryApproval
+                              - delivery
+                              - completed
+                              - failed
+                              - cancelled
+                              - approvalRejected
+                        - type: object
+                          properties:
+                            in:
+                              type: array
+                              items:
+                                description: Status of item
+                                type: string
+                                enum:
+                                - feasible
+                                - availableInArchive
+                                - unavailable
+                                - submitted
+                                - waitingForAcquisitionApproval
+                                - accepted
+                                - planned
+                                - acquistion
+                                - transition
+                                - downlink
+                                - waitingForOrbit
+                                - processing
+                                - waitingForDeliveryApproval
+                                - delivery
+                                - completed
+                                - failed
+                                - cancelled
+                                - approvalRejected
+                      startTime:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              type: string
+                              format: date-time
+                        - type: object
+                          properties:
+                            lt:
+                              type: string
+                              format: date-time
+                            gt:
+                              type: string
+                              format: date-time
+                      lastUpdate:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              type: string
+                              format: date-time
+                        - type: object
+                          properties:
+                            lt:
+                              type: string
+                              format: date-time
+                            gt:
+                              type: string
+                              format: date-time
+                      orderId:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              type: string
+                              pattern: ^\d{1,9}
+                              example: '12345'
+                        - type: object
+                          properties:
+                            in:
+                              type: array
+                              items:
+                                type: string
+                                pattern: ^\d{1,9}
+                                example: '12345'
+                      orderItemId:
+                        type: object
+                        properties:
+                          in:
+                            type: array
+                            items:
+                              type: string
+                              pattern: ^\d{9}_\d{4}$
+                              example: '000012345_0001'
+                      customerReference:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              type: string
+                              example: O29343
+                        - type: object
+                          properties:
+                            in:
+                              type: array
+                              items:
+                                oneOf:
+                                - type: string
+                                  example: O29343
+                                - type: string
+                                  enum:
+                                  - '*'
+                      itemId:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              type: string
+                              format: uuid
+                        - type: object
+                          properties:
+                            in:
+                              type: array
+                              items:
+                                type: string
+                                format: uuid
+                      basketId:
+                        oneOf:
+                        - type: object
+                          properties:
+                            eq:
+                              type: string
+                              format: uuid
+                        - type: object
+                          properties:
+                            in:
+                              type: array
+                              items:
+                                type: string
+                                format: uuid
+                  example:
+                    or:
+                    - lastUpdate:
+                        gt: '2020-12-03T12:00:00'
+                    - startTime:
+                        gt: '2020-12-05T12:00:00'
+                        lt: '2020-12-10T12:00:00'
+      responses:
+        '200':
+          description: order items as feature collection
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required:
+                - type
+                - features
+                properties:
+                  type:
+                    type: string
+                    enum:
+                    - FeatureCollection
+                  limit:
+                    type: integer
+                    minimum: 1
+                    default: 200
+                  total:
+                    type: integer
+                  features:
+                    type: array
+                    items:
+                      allOf:
+                      - allOf:
+                        - allOf:
+                          - type: object
+                            properties:
+                              properties:
+                                type: object
+                                properties:
+                                  price:
+                                    type: object
+                                    additionalProperties: false
+                                    required:
+                                    - final
+                                    - total
+                                    - currency
+                                    properties:
+                                      final:
+                                        description: Not final, if parameters are missing to calculate all price elements (e.g. Fees). Final price might then be higher.
+                                        type: boolean
+                                        example: false
+                                      missingParameters:
+                                        description: parameters that need to be set to get final price
+                                        type: array
+                                        items:
+                                          type: string
+                                        example:
+                                        - orbitType
+                                      total:
+                                        description: Price for item including known tax, discounts and fees
+                                        type: number
+                                        example: 834.32
+                                      currency:
+                                        type: string
+                                        example: EUR
+                                      unitPrice:
+                                        description: Price for standard scene
+                                        type: number
+                                        example: 1000
+                                      quantity:
+                                        type: number
+                                        description: Scene length
+                                        example: 1.2
+                                      discountRate:
+                                        type: number
+                                        description: Discount for this item in percent
+                                        example: 20
+                                      expiry:
+                                        type: string
+                                        format: date-time
+                                      fees:
+                                        type: array
+                                        items:
+                                          type: object
+                                          additionalProperties: false
+                                          required:
+                                          - type
+                                          - value
+                                          properties:
+                                            type:
+                                              type: string
+                                              enum:
+                                              - NRT
+                                              - Rapid tasking
+                                              - Priority
+                                              - Cancellation
+                                            value:
+                                              type: number
+                                              description: Fee value
+                                              example: '200'
+                                            discountRate:
+                                              type: number
+                                              description: Discount rate applied on fee in percent
+                                              example: '10'
+                          - type: object
+                            required:
+                            - type
+                            - geometry
+                            - properties
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                - Feature
+                              geometry:
+                                type: object
+                                additionalProperties: false
+                                required:
+                                - type
+                                - coordinates
+                                properties:
+                                  type:
+                                    type: string
+                                    enum:
+                                    - Polygon
+                                  coordinates:
+                                    type: array
+                                    minLength: 1
+                                    items:
+                                      type: array
+                                      minLength: 3
+                                      items:
+                                        type: array
+                                        minLength: 2
+                                        maxLength: 2
+                                        items:
+                                          type: number
+                                example:
+                                  type: Polygon
+                                  coordinates:
+                                  - - - 9.346
+                                      - 47.788
+                                    - - 9.291
+                                      - 47.644
+                                    - - 9.538
+                                      - 47.592
+                                    - - 9.62
+                                      - 47.75
+                                    - - 9.511
+                                      - 47.802
+                                    - - 9.346
+                                      - 47.788
+                              properties:
+                                type: object
+                                required:
+                                - itemId
+                                - mission
+                                - acquisitionId
+                                - startTime
+                                - stopTime
+                                - sensorMode
+                                - polarizationChannels
+                                - beamId
+                                - pathDirection
+                                - lookDirection
+                                - incidenceAngle
+                                - lastUpdateTime
+                                - status
+                                - outOfFullPerformance
+                                properties:
+                                  itemId:
+                                    type: string
+                                    format: uuid
+                                  mission:
+                                    description: Satellite mission
+                                    type: string
+                                    enum:
+                                    - TSX
+                                    - PAZ
+                                  satellite:
+                                    description: Satellite
+                                    type: string
+                                    enum:
+                                    - TSX-1
+                                    - PAZ-1
+                                    - TDX-1
+                                  acquisitionId:
+                                    type: string
+                                    example: TSX-1_ST_S_spot_049R_49677_D31767159_432
+                                  groupId:
+                                    type: integer
+                                  startTime:
+                                    type: string
+                                    format: date-time
+                                  stopTime:
+                                    type: string
+                                    format: date-time
+                                  sensorMode:
+                                    description: The imaging/instrument/sensor mode to use for the acquisition
+                                    type: string
+                                    enum:
+                                    - SAR_ST_S
+                                    - SAR_HS_S
+                                    - SAR_HS_S_300
+                                    - SAR_HS_S_150
+                                    - SAR_HS_D
+                                    - SAR_HS_D_300
+                                    - SAR_HS_D_150
+                                    - SAR_SL_S
+                                    - SAR_SL_D
+                                    - SAR_SM_S
+                                    - SAR_SM_D
+                                    - SAR_SC_S
+                                    - SAR_WS_S
+                                    example: SAR_SM_S
+                                  polarizationChannels:
+                                    description: The dual-polarization modes (HHVV, HHHV, VVVH) are not available for staring spotlight or (wide) ScanSAR modes. The polarization modes HV and VH are only available for Wide ScanSAR acquisitions.
+                                    type: string
+                                    enum:
+                                    - HH
+                                    - VV
+                                    - HV
+                                    - VH
+                                    - HHVV
+                                    - HHHV
+                                    - VVVH
+                                    example: HH
+                                  beamId:
+                                    type: string
+                                    example: strip_010
+                                  pathDirection:
+                                    description: Path or orbit direction
+                                    type: string
+                                    example: ascending
+                                    enum:
+                                    - ascending
+                                    - descending
+                                  lookDirection:
+                                    description: Look Direction. Left-looking acquisitions require special authorization.
+                                    type: string
+                                    enum:
+                                    - R
+                                    - L
+                                  incidenceAngle:
+                                    description: Incidence angle range in degrees. Only acquisitions with an average incidence angle in this range will be considered.
+                                    type: object
+                                    additionalProperties: false
+                                    properties:
+                                      minimum:
+                                        type: number
+                                        minimum: 10
+                                        maximum: 70
+                                        example: 30
+                                      maximum:
+                                        type: number
+                                        minimum: 10
+                                        maximum: 70
+                                        example: 50
+                                  productType:
+                                    description: Product type for the processing of the acuqisition. Mandatory on placing the order, but not for feasibility.
+                                    type: string
+                                    enum:
+                                    - SSC
+                                    - MGD
+                                    - GEC
+                                    - EEC
+                                    example: EEC
+                                  resolutionVariant:
+                                    description: Radiometric or spatial enhancement. Mandatory on placing the order, but not for feasibility.
+                                    type: string
+                                    enum:
+                                    - SE
+                                    - RE
+                                  orbitType:
+                                    description: Near Realtime acquisitions will incur an additional fee. Science processing is most accurate but takes approx 5 days to complete. Mandatory on placing the order, but not for feasibility.
+                                    type: string
+                                    enum:
+                                    - NRT
+                                    - rapid
+                                    - science
+                                  geocodedIncidenceMask:
+                                    description: Include GIM in delivered product. Only applicable for EEC products.
+                                    type: boolean
+                                    default: false
+                                  mapProjection:
+                                    description: Projection of the delivered product. Mandatory on placing the order, but not for feasibility.
+                                    type: string
+                                    default: auto
+                                    enum:
+                                    - auto
+                                    - UTM
+                                    - UPS
+                                  gainAttenuation:
+                                    description: Processor gain Attenuation. Mandatory on placing the order, but not for feasibility.
+                                    type: integer
+                                    default: 0
+                                    enum:
+                                    - 0
+                                    - 10
+                                    - 20
+                                  relativeOrbit:
+                                    type: integer
+                                  absoluteOrbit:
+                                    type: integer
+                                  orderTemplate:
+                                    type: string
+                                  lastUpdateTime:
+                                    type: string
+                                    format: date-time
+                                  status:
+                                    description: Status of item
+                                    type: string
+                                    enum:
+                                    - feasible
+                                    - availableInArchive
+                                    - unavailable
+                                    - submitted
+                                    - waitingForAcquisitionApproval
+                                    - accepted
+                                    - planned
+                                    - acquistion
+                                    - transition
+                                    - downlink
+                                    - waitingForOrbit
+                                    - processing
+                                    - waitingForDeliveryApproval
+                                    - delivery
+                                    - completed
+                                    - failed
+                                    - cancelled
+                                    - approvalRejected
+                                  sensitivity:
+                                    type: object
+                                    additionalProperties: false
+                                    required:
+                                    - status
+                                    properties:
+                                      status:
+                                        type: string
+                                        enum:
+                                        - notSensitive
+                                        - potential
+                                        - sensitive
+                                      missingParameters:
+                                        description: parameters that need to be set to get definite sensitivity status
+                                        type: array
+                                        items:
+                                          type: string
+                                          enum:
+                                          - productType
+                                          - resolutionVariant
+                                        example:
+                                        - productType
+                                        - resolutionVariant
+                                      type:
+                                        type: string
+                                        enum:
+                                        - blacklist
+                                        - resolution
+                                      sensitivityInformation:
+                                        type: string
+                                  itemType:
+                                    type: string
+                                    enum:
+                                    - catalogue
+                                    - future
+                                  outOfFullPerformance:
+                                    description: If set to true and the account is authorized, out of full performance scenes will be included in the response.
+                                    type: boolean
+                                    default: false
+                                  scienceOrbitAvailability:
+                                    type: boolean
+                          - type: object
+                            properties:
+                              properties:
+                                type: object
+                                properties:
+                                  submissionDeadline:
+                                    type: string
+                                    format: date-time
+                                  acquisitionOnly:
+                                    description: Acquisition is done and archived, but product will not be processed and deliverd. Requires special authorization.
+                                    type: boolean
+                                    default: false
+                                  priority:
+                                    description: Higher priority orders have a better chance of success but incur an additional fee
+                                    type: string
+                                    enum:
+                                    - standard
+                                    - priority
+                                    - exclusive
+                                    example: standard
+                                  conflicts:
+                                    type: object
+                                    properties:
+                                      status:
+                                        type: string
+                                        enum:
+                                        - none
+                                        - potential
+                                        - expected
+                                      external:
+                                        type: object
+                                        additionalProperties:
+                                          type: object
+                                          properties:
+                                            status:
+                                              type: string
+                                              enum:
+                                              - none
+                                              - potential
+                                              - expected
+                                            startTime:
+                                              type: string
+                                              format: date-time
+                                            stopTime:
+                                              type: string
+                                              format: date-time
+                                          minLength: 1
+                                      baskets:
+                                        type: object
+                                        additionalProperties:
+                                          type: object
+                                          additionalProperties:
+                                            type: object
+                                            properties:
+                                              status:
+                                                type: string
+                                                enum:
+                                                - none
+                                                - potential
+                                                - expected
+                                              startTime:
+                                                type: string
+                                                format: date-time
+                                              stopTime:
+                                                type: string
+                                                format: date-time
+                                            minLength: 1
+                                        minLength: 1
+                                      shopcart:
+                                        type: object
+                                        additionalProperties:
+                                          type: object
+                                          properties:
+                                            status:
+                                              type: string
+                                              enum:
+                                              - none
+                                              - potential
+                                              - expected
+                                            startTime:
+                                              type: string
+                                              format: date-time
+                                            stopTime:
+                                              type: string
+                                              format: date-time
+                                          minLength: 1
+                                      feasibility:
+                                        type: object
+                                        additionalProperties:
+                                          type: object
+                                          properties:
+                                            status:
+                                              type: string
+                                              enum:
+                                              - none
+                                              - potential
+                                              - expected
+                                            startTime:
+                                              type: string
+                                              format: date-time
+                                            stopTime:
+                                              type: string
+                                              format: date-time
+                                          minLength: 1
+                                    required:
+                                    - status
+                                  estimatedDownloadAvailability:
+                                    type: string
+                                    format: date-time
+                                  receivingStation:
+                                    description: Downlink station to use for direct-access customers
+                                    type: string
+                                    default: NSG_POOL
+                                    example: NSG_POOL
+                        - type: object
+                          properties:
+                            properties:
+                              type: object
+                              properties:
+                                downlinkTime:
+                                  type: string
+                                  format: date-time
+                                orderId:
+                                  type: string
+                                  pattern: ^\d{1,9}
+                                  example: '12345'
+                                orderItemId:
+                                  type: string
+                                  pattern: ^\d{9}_\d{4}$
+                                  example: '000012345_0001'
+                      - type: object
+                        properties:
+                          properties:
+                            type: object
+                            properties:
+                              basketId:
+                                type: string
+                                format: uuid
+                              customerReference:
+                                type: string
+                                example: O29343
+                              orderSubmissionTime:
+                                type: string
+                                format: date-time
+                  bbox:
+                    type: array
+                    items:
+                      type: number
+                    minItems: 4
+                    maxItems: 4
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

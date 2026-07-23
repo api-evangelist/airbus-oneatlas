@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access accounting/balance API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: accounting/balance
+  description: 'Allows users to query their current balance.
+
+    '
+paths:
+  /accounting/balance:
+    get:
+      summary: Get the Balance
+      tags:
+      - accounting/balance
+      responses:
+        '200':
+          description: balance object(s)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                  - description: Balance information
+                    type: object
+                    properties:
+                      units:
+                        description: the different available currencies
+                        type: string
+                        enum:
+                        - EUR
+                        - CREDITS
+                        - USD
+                      amount_max:
+                        type: number
+                        example: 10000
+                        description: sum of pay_ins
+                      amount_consumed:
+                        type: number
+                        example: -5729.42
+                        description: sum of all orders
+                      amount_available:
+                        type: number
+                        example: 4270.58
+                        description: The available limit of potential new orders
+                    required:
+                    - units
+                    - amount_max
+                    - amount_consumed
+                    - amount_available
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

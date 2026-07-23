@@ -1,0 +1,304 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Control API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Control
+paths:
+  /api/v1/activities/{activityId}/hold:
+    post:
+      description: 'Hold activity and set activity status to `ON_HOLD` only for manual activities such as control or physical delivering.
+
+
+        If the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.
+
+
+        This endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/ActivityId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityStage'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+          description: If last stage is an hold stage with the same payload. In this case X-Ads-CorrelationId header is ignored.
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+          description: The activity stage is created and the activity status is set to `ON_HOLD`.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: Hold Activity
+      tags:
+      - Control
+components:
+  schemas:
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    ActivityStage:
+      properties:
+        date:
+          default: now
+          description: Date of the stage
+          example: '2018-06-12T11:24:31.254Z'
+          format: datetime
+          type: string
+        message:
+          type: string
+        name:
+          description: Name of the completed stage
+          type: string
+        status:
+          description: Status of the activity
+          enum:
+          - QUEUED
+          - RUNNING
+          - ON_HOLD
+          - CANCELED
+          - WAITING_CANCEL
+          - SUCCEEDED
+          - FAILED
+          - ARCHIVED
+          type: string
+        userId:
+          allOf:
+          - readOnly: true
+          - $ref: '#/components/schemas/Id'
+          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
+      type: object
+    Activity:
+      properties:
+        _links:
+          properties:
+            cancel:
+              allOf:
+              - description: See [Cancel activity](#/paths/~1api~1v1~1activities~1{correlationId}~1cancel/post)
+              - $ref: '#/components/schemas/Link'
+            catalogItems:
+              description: 'Resource id property (`resourceId`) is a catalog item id (`catalogItemId`). It can be used in all endpoints that need a `catalogItemId`.
+
+
+                See [Search catalog items with opensearch](#/paths/~1api~1v1~1opensearch/get). See [Format catalog item](#/paths/~1api~1v1~1items~1{catalogItemId}~1format/post).'
+              items:
+                $ref: '#/components/schemas/Link'
+              type: array
+              uniqueItems: true
+            history:
+              allOf:
+              - description: See [Get activity stages](#/paths/~1api~1v1~1activities~1{correlationId}~1stages/get)
+              - $ref: '#/components/schemas/Link'
+            hold:
+              allOf:
+              - description: See [Hold activity](#/paths/~1api~1v1~1activities~1{correlationId}~1hold/post)
+              - $ref: '#/components/schemas/Link'
+            nexts:
+              description: Next endpoints applicable to the resource when the activity is finished.
+              items:
+                $ref: '#/components/schemas/Link'
+              type: array
+              uniqueItems: true
+            rerun:
+              allOf:
+              - description: See [Run activity](#/paths/~1api~1v1~1activities~1{correlationId}~1rerun/post)
+              - $ref: '#/components/schemas/Link'
+          readOnly: true
+          type: object
+        creationDate:
+          description: The time when the activity was created
+          format: datetime
+          readOnly: true
+          type: string
+        endDate:
+          description: The time when the activity was ended (copy of the date associated to the SUCCEEDED, CANCELED or FAILED stage)
+          format: datetime
+          readOnly: true
+          type: string
+        id:
+          $ref: '#/components/schemas/Id'
+        lastStageName:
+          description: Name of the last completed stage
+          type: string
+        message:
+          description: A free text (copy of the last stage message)
+          readOnly: true
+          type: string
+        payload:
+          description: The copy of the origin user request
+          type: object
+        priority:
+          default: 5
+          description: A priority indicator between 1 and 9. 1 is the highest.
+          format: int
+          maximum: 9
+          minimum: 1
+          type: number
+        progress:
+          default: 0
+          description: A progress indicator between 0 and 100
+          format: int
+          maximum: 100
+          minimum: 0
+          type: number
+        startDate:
+          description: The time when the activity was started (date of the first stage that is not QUEUED)
+          format: datetime
+          readOnly: true
+          type: string
+        status:
+          default: QUEUED
+          description: Status of the activity (copy of the last stage status)
+          enum:
+          - QUEUED
+          - RUNNING
+          - ON_HOLD
+          - CANCELED
+          - WAITING_CANCEL
+          - SUCCEEDED
+          - FAILED
+          - ARCHIVED
+          type: string
+        type:
+          description: Type of activity
+          enum:
+          - ingestion
+          - process
+          - format
+          - control
+          - deliver
+          type: string
+        userId:
+          allOf:
+          - $ref: '#/components/schemas/Id'
+          - description: The id of the user that is the origin of the activity (extracted from the X-Forwarded-User request header)
+      type: object
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+  parameters:
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
+    ActivityId:
+      description: The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: path
+      name: activityId
+      required: true
+      schema:
+        $ref: '#/components/schemas/Id'
+  responses:
+    '404':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Item not found in catalog or resource not found in item
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

@@ -1,0 +1,693 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Sar/Replication API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Sar/Replication
+paths:
+  /sar/catalogue/replication:
+    parameters:
+    - in: query
+      name: limit
+      schema:
+        type: integer
+      required: false
+      description: Number of datatakes to be returned per request. The actual number returned can be less depending on the workload of the server.
+    - in: query
+      name: since
+      schema:
+        type: string
+      required: false
+      example: '2022-10-31 07:28:00'
+      description: Return datatakes that were added to the catalogue since the given date.
+    - in: query
+      name: token
+      schema:
+        type: string
+      required: false
+      description: Continuation token used to retrieve the next set of datatakes. Tokens do not expire and can be used for incremental updates on a weekly, daily, or even on a hourly schedule.
+    get:
+      summary: Airbus OneAtlas Replicate Catalogue
+      description: Replicate the catalogue and retrieve latest datatakes.
+      tags:
+      - Sar/Replication
+      responses:
+        '200':
+          description: List of datatakes.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum:
+                    - FeatureCollection
+                  features:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - Feature
+                        geometry:
+                          type: object
+                          additionalProperties: false
+                          required:
+                          - type
+                          - coordinates
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                              - Polygon
+                            coordinates:
+                              type: array
+                              minLength: 1
+                              items:
+                                type: array
+                                minLength: 3
+                                items:
+                                  type: array
+                                  minLength: 2
+                                  maxLength: 2
+                                  items:
+                                    type: number
+                          example:
+                            type: Polygon
+                            coordinates:
+                            - - - 9.346
+                                - 47.788
+                              - - 9.291
+                                - 47.644
+                              - - 9.538
+                                - 47.592
+                              - - 9.62
+                                - 47.75
+                              - - 9.511
+                                - 47.802
+                              - - 9.346
+                                - 47.788
+                        properties:
+                          type: object
+                          properties:
+                            _links:
+                              type: object
+                              properties:
+                                metadata:
+                                  type: string
+                                  format: uri
+                                quicklook:
+                                  type: string
+                                  format: uri
+                            absoluteOrbit:
+                              type: integer
+                            acquisitionId:
+                              type: string
+                              example: TSX-1_ST_S_spot_049R_49677_D31767159_432
+                            antennaMode:
+                              type: string
+                              enum:
+                              - SRA
+                              - DRA
+                            beamId:
+                              type: string
+                            catalogueTime:
+                              type: string
+                              format: date-time
+                            incidenceAngle:
+                              description: Incidence angle range in degrees. Only acquisitions with an average incidence angle in this range will be considered.
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                minimum:
+                                  type: number
+                                  minimum: 10
+                                  maximum: 70
+                                  example: 30
+                                maximum:
+                                  type: number
+                                  minimum: 10
+                                  maximum: 70
+                                  example: 50
+                            lookDirection:
+                              description: Look Direction. Left-looking acquisitions require special authorization.
+                              type: string
+                              enum:
+                              - R
+                              - L
+                            mission:
+                              description: Satellite mission
+                              type: string
+                              enum:
+                              - TSX
+                              - PAZ
+                            outOfFullPerformance:
+                              description: If set to true and the account is authorized, out of full performance scenes will be included in the response.
+                              type: boolean
+                              default: false
+                            pathDirection:
+                              description: Path or orbit direction
+                              type: string
+                              example: ascending
+                              enum:
+                              - ascending
+                              - descending
+                            polarizationChannels:
+                              description: The dual-polarization modes (HHVV, HHHV, VVVH) are not available for staring spotlight or (wide) ScanSAR modes. The polarization modes HV and VH are only available for Wide ScanSAR acquisitions.
+                              type: string
+                              enum:
+                              - HH
+                              - VV
+                              - HV
+                              - VH
+                              - HHVV
+                              - HHHV
+                              - VVVH
+                              example: HH
+                            quality:
+                              type: string
+                            relativeOrbit:
+                              type: integer
+                            satellite:
+                              description: Satellite
+                              type: string
+                              enum:
+                              - TSX-1
+                              - PAZ-1
+                              - TDX-1
+                            sensorMode:
+                              description: The imaging/instrument/sensor mode to use for the acquisition
+                              type: string
+                              enum:
+                              - SAR_ST_S
+                              - SAR_HS_S
+                              - SAR_HS_S_300
+                              - SAR_HS_S_150
+                              - SAR_HS_D
+                              - SAR_HS_D_300
+                              - SAR_HS_D_150
+                              - SAR_SL_S
+                              - SAR_SL_D
+                              - SAR_SM_S
+                              - SAR_SM_D
+                              - SAR_SC_S
+                              - SAR_WS_S
+                              example: SAR_SM_S
+                            startTime:
+                              type: string
+                              format: date-time
+                            stopTime:
+                              type: string
+                              format: date-time
+                          required:
+                          - absoluteOrbit
+                          - acquisitionId
+                          - antennaMode
+                          - beamId
+                          - catalogueTime
+                          - incidenceAngle
+                          - lookDirection
+                          - mission
+                          - outOfFullPerformance
+                          - pathDirection
+                          - polarizationChannels
+                          - quality
+                          - relativeOrbit
+                          - satellite
+                          - sensorMode
+                          - startTime
+                          - stopTime
+                      required:
+                      - geometry
+                      - properties
+                      - type
+                  _links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        format: uri
+                      last:
+                        type: string
+                        format: uri
+                      next:
+                        type: string
+                        format: uri
+                      previous:
+                        type: string
+                        format: uri
+                      self:
+                        type: string
+                        format: uri
+                    required:
+                    - self
+                  limit:
+                    type: integer
+                  size:
+                    type: integer
+                  bbox:
+                    type: array
+                    items:
+                      type: number
+                    minItems: 4
+                    maxItems: 4
+                required:
+                - _links
+                - features
+                - limit
+                - size
+                - type
+              example:
+                _links:
+                  next: https://sarapi.intelligence-airbusds.com/v1/sar/catalogue/replication?limit=100&token=P5uvZ0N2zAUsiScDJA
+                  self: https://sarapi.intelligence-airbusds.com/v1/sar/catalogue/replication?limit=100
+                limit: 100
+                size: 1
+                type: FeatureCollection
+                features:
+                - type: Feature
+                  geometry:
+                    type: Polygon
+                    coordinates:
+                    - - - 13.420763
+                        - 52.5176849
+                      - - 13.4126594
+                        - 52.5434549
+                      - - 13.3163278
+                        - 52.5317222
+                      - - 13.3250953
+                        - 52.5060288
+                      - - 13.420763
+                        - 52.5176849
+                  properties:
+                    absoluteOrbit: 45707
+                    acquisitionId: TDX-1_ST_S_spot_028R_45707_A14252474_413
+                    antennaMode: SRA
+                    beamId: spot_028
+                    catalogueTime: '2018-09-18T07:49:40.804Z'
+                    incidenceAngle:
+                      minimum: 29.72
+                      maximum: 30.46
+                    lookDirection: R
+                    mission: TSX
+                    outOfFullPerformance: false
+                    pathDirection: ascending
+                    polarizationChannels: VV
+                    relativeOrbit: 146
+                    satellite: TDX-1
+                    sensorMode: SAR_ST_S
+                    startTime: '2018-09-17T16:44:52.439Z'
+                    stopTime: '2018-09-17T16:44:52.852Z'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Catalogue replication is temporarily not available.
+  /sar/catalogue/download:
+    get:
+      summary: Airbus OneAtlas Download Complete Catalogue
+      description: Download the complete catalogue as vector dataset suitable for GIS analysis.
+      tags:
+      - Sar/Replication
+      responses:
+        '200':
+          description: Vector dataset.
+          headers:
+            Digest:
+              schema:
+                type: string
+                example: sha-256=X48E9qOokqqrvdts8nOJRJN3OWDUoyWxBf7kbu9DBPE=
+              description: Checksum of the vector dataset.
+            Last-Modified:
+              schema:
+                type: string
+                example: Wed, 21 Oct 2015 07:28:00 GMT
+              description: Date the vector dataset has been last updated.
+          content:
+            application/geopackage+sqlite3:
+              schema:
+                type: string
+                format: binary
+            application/vnd.google-earth.kmz:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '406':
+          description: Requested vector dataset format is not supported by the server.
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Catalogue download is temporarily not available.
+  /sar/catalogue/revocation:
+    parameters:
+    - in: query
+      name: limit
+      schema:
+        type: integer
+      required: false
+      description: Number of revocations to be returned per request. The actual number returned can be less depending on the workload of the server.
+    - in: query
+      name: since
+      schema:
+        type: string
+      required: false
+      example: '2022-10-31 07:28:00'
+      description: Return revocations issued since the given date.
+    - in: query
+      name: token
+      schema:
+        type: string
+      required: false
+      description: Continuation token used to retrieve the next set of revocations. Tokens do not expire and can be used for incremental updates on a weekly, daily, or even on a hourly schedule.
+    get:
+      summary: Airbus OneAtlas Get Catalogue Revocations
+      description: Retrieve catalogue revocations, i.e. catalogue datatakes that cannot be ordered anymore.
+      tags:
+      - Sar/Replication
+      responses:
+        '200':
+          description: List of revocations.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        format: uri
+                      last:
+                        type: string
+                        format: uri
+                      next:
+                        type: string
+                        format: uri
+                      previous:
+                        type: string
+                        format: uri
+                      self:
+                        type: string
+                        format: uri
+                    required:
+                    - self
+                  limit:
+                    type: integer
+                  size:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        acquisitionId:
+                          type: string
+                          example: TSX-1_ST_S_spot_049R_49677_D31767159_432
+                        issueTime:
+                          type: string
+                          format: date-time
+                        reason:
+                          type: string
+                      required:
+                      - acquisitionId
+                      - issueTime
+                required:
+                - _links
+                - limit
+                - data
+                - size
+              example:
+                _links:
+                  next: https://sarapi.intelligence-airbusds.com/v1/sar/catalogue/revocation?limit=100&token=P5uvZ0N2zAUsiScDJA
+                  self: https://sarapi.intelligence-airbusds.com/v1/sar/catalogue/revocation?limit=100
+                limit: 100
+                size: 1
+                data:
+                - acquisitionId: TDX-1_ST_S_spot_028R_45707_A14252474_413
+                  issueTime: '2021-04-08T00:56:40Z'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - error
+                - message
+                properties:
+                  error:
+                    type: string
+                    pattern: ^[A-Za-z0-9]+[A-Z-a-z0-9_\-]*[A-Za-z0-9]$
+                  message:
+                    type: string
+                  location:
+                    type: string
+                  detail:
+                    type: string
+                  params:
+                    type: object
+        '503':
+          description: Catalogue revocations are temporarily not available.
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

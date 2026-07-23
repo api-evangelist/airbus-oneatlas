@@ -1,0 +1,294 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access accounting/transactions API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: accounting/transactions
+  description: 'Allows users to query their transactions.
+
+    '
+paths:
+  /accounting/transactions:
+    get:
+      summary: Get Transactions of the Current User
+      tags:
+      - accounting/transactions
+      responses:
+        '200':
+          description: transaction(s)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                  - description: Transaction information
+                    type: object
+                    properties:
+                      timestamp:
+                        type: string
+                        format: date-time
+                      item_id:
+                        type: string
+                        format: uuid
+                        pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+                      order_id:
+                        type: string
+                        format: uuid
+                        pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+                        description: UUID of the order the request belongs to
+                      transaction_type:
+                        description: The type of transaction
+                        type: string
+                        enum:
+                        - pay_in
+                        - pay_out
+                        - timeout
+                      request_path:
+                        type: string
+                        example: /elevation/orders
+                      balance:
+                        description: the different available currencies
+                        type: string
+                        enum:
+                        - EUR
+                        - CREDITS
+                        - USD
+                      dif_value:
+                        type: string
+                        example: '35.2'
+                      pending:
+                        type: boolean
+                      user_id:
+                        type: string
+                        format: uuid
+                        description: UUID of the user
+                        pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+                      timeout:
+                        type: string
+                        format: date-time
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+  /accounting/transactions/{itemId}:
+    parameters:
+    - in: path
+      name: itemId
+      schema:
+        type: string
+        example: e640f434-9761-4bd0-bf2d-2de2f31a13a9
+        format: uuid
+        pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+      description: UUID of requested transaction
+      required: true
+    get:
+      summary: Get Specific Transaction of the Current User
+      tags:
+      - accounting/transactions
+      responses:
+        '200':
+          description: transaction(s)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                  - description: Transaction information
+                    type: object
+                    properties:
+                      timestamp:
+                        type: string
+                        format: date-time
+                      item_id:
+                        type: string
+                        format: uuid
+                        pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+                      order_id:
+                        type: string
+                        format: uuid
+                        pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+                        description: UUID of the order the request belongs to
+                      transaction_type:
+                        description: The type of transaction
+                        type: string
+                        enum:
+                        - pay_in
+                        - pay_out
+                        - timeout
+                      request_path:
+                        type: string
+                        example: /elevation/orders
+                      balance:
+                        description: the different available currencies
+                        type: string
+                        enum:
+                        - EUR
+                        - CREDITS
+                        - USD
+                      dif_value:
+                        type: string
+                        example: '35.2'
+                      pending:
+                        type: boolean
+                      user_id:
+                        type: string
+                        format: uuid
+                        description: UUID of the user
+                        pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+                      timeout:
+                        type: string
+                        format: date-time
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+        '503':
+          description: Connection to internal service error
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - message
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

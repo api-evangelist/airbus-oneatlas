@@ -1,0 +1,505 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access PleiadesNeo specific API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: PleiadesNeo specific
+paths:
+  /api/v2/orders/search:
+    post:
+      tags:
+      - PleiadesNeo specific
+      summary: Track Your Orders
+      description: Use this endpoint to see all your orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - paging
+              - criteria
+              properties:
+                paging:
+                  type: object
+                  properties:
+                    itemsPerPage:
+                      description: Number of items per page
+                      format: integer
+                      type: number
+                    startIndex:
+                      description: item offset
+                      format: integer
+                      type: number
+                    pagingMode:
+                      type: string
+                criteria:
+                  type: object
+                  properties:
+                    q:
+                      description: sql request
+                      type: string
+            examples:
+              Archive:
+                value:
+                  paging:
+                    itemsPerPage: 25
+                    startIndex: 0
+                    pagingMode: item
+                  criteria:
+                    q: (quotationStatus:ACCEPTED) AND (cis.quotation:QUO22054973) AND (contractId:CTR21000411) AND (status:IN_PROGRESS) AND (technicalProduct.source.id:archive) AND (customerReference:*<customer_reference>*)
+              Tasking:
+                value:
+                  paging:
+                    itemsPerPage: 25
+                    startIndex: 0
+                    pagingMode: item
+                  criteria:
+                    q: (quotationStatus:ACCEPTED) AND (cis.quotation:QUO22054973) AND (contractId:CTR21000411) AND (status:IN_PROGRESS) AND (technicalProduct.source.id:tasking) AND (customerReference:*<customer_reference>*)
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contracts:
+                    type: string
+              examples:
+                Tasking:
+                  value:
+                    contracts:
+                    - contractId: <CisContractId>
+                      customerReference: <customer_reference>
+                      quotationId: QUO22006217
+                      salesOrderId: SAL22005724
+                      program: ''
+                      productType: PleiadesNeoTaskingOnePlan
+                      licence: standard
+                      aoi:
+                        name: Polygon 1
+                        geometry:
+                          type: Polygon
+                          coordinates:
+                          - - - -27.306937758050495
+                              - 38.72168083627531
+                            - - -27.1970744768005
+                              - 38.72168083627531
+                            - - -27.1970744768005
+                              - 38.81590473156177
+                            - - -27.306937758050495
+                              - 38.81590473156177
+                            - - -27.306937758050495
+                              - 38.72168083627531
+                      mission: pleiadesneo
+                      source: tasking
+                      target: oneplan
+                      status: CANCELLED
+                      comment: ''
+                      tasking:
+                        holdBack: 0
+                        maxIncidenceAngle: 50
+                        acquisitionMode: MONOSCOPIC
+                        cloudCoverageThresholdForProposition: 30
+                        period:
+                        - startDate: '2022-01-29T00:00:00Z'
+                          endDate: '2022-03-29T23:59:59Z'
+                        taskingRequest:
+                        - taskingRequestId: TWOI_000007805_1_N
+                        endOfInitialPeriod: '2022-03-29T23:59:59Z'
+                        validatedArea: 0
+                        validatedAreaPct: 0
+                        receivingStationType: vrs
+                        maxCloudCoverage: 10
+                        nbProposedCoverageItems: 0
+                        totalCoverageItems: 0
+                      processingLevel: primary
+                      spectralProcessing: full_bundle
+                      productFormat: dimap_jpeg2000_regular
+                      pixelCoding: 12bits
+                      radiometricProcessing: basic
+                      priority: standard
+                      deliveryMethod: on_the_flow
+                      deliveryAddress: 5 RUE DES SATELLITES   TOULOUSE CEDEX 4 31030 FR
+                      endUser:
+                        endUserCountryId: CN
+                      dumpingStation:
+                      - processingStation: FR1
+                        receivingStation: FR1
+                      - processingStation: FR1
+                        receivingStation: IN1
+                      - processingStation: FR1
+                        receivingStation: SE1
+                      quotationStatus: ACCEPTED
+                      quotationCreationDate: '2022-01-27T18:08:52Z'
+                      orderCreationDate: '2022-01-27T18:09:08Z'
+                      orderLineAmount: 0
+                      customerName: '[LE] Airbus DS Geo SA France'
+                      contact: john.doe@company.com
+                      orderLineAmountWithoutDiscount: 0
+                      currency: EUR
+                      orderLineAmountDiscountPct: 0
+                      orderLineAmountWithDiscount: 0
+                      priceCalculationArea: 100
+                      orderMinimumApplied: true
+                      feasibilityStudyResult:
+                        coverRate: 0
+                        commitment: true
+                      customerId: AC002902
+                      producedArea: 0
+                      deliveryType: network
+                      deliveryPlatformId: PublicMOC
+                      deliveryWorkspace: bbdaf4c9-37da-4480-9c52-c75cbfa17a22
+                      requestedArea: 99.7919052906175
+                      notifications: []
+                      projectionCode: '32626'
+                      quotationEndOfValidityDate: '2022-01-28T00:00:00Z'
+                      initialOrderLineAmountWithoutDiscount: 5000
+                      initialOrderLineAmountDiscountPct: 0
+                      initialOrderLineAmountWithDiscount: 5000
+                      initialPriceCalculationArea: 100
+                      cancelationDeadlineDate: '2022-01-28T00:00:00Z'
+                      producedAreaPct: 0
+                      productionRoute: GDSIP3
+                      quotationVersion: 1
+                      orderLineDescription: PleiadesNeo Tasking OnePlan 100 km2    basic
+                      onePlanPro: true
+                      orderItemId: WOI_000007805_1
+                      lastStatusChangeDate: '2022-01-27T20:21:21Z'
+                      orderCreator: '5247773080'
+                      orderLineId: 1
+                Archive:
+                  value:
+                    paging:
+                      itemsPerPage: 25
+                      startIndex: 0
+                      pagingMode: item
+                      totalResults: 30
+                    features:
+                    - contractId: <CisContractId>
+                      customerReference: <customer_reference>
+                      quotationId: QUO22006217
+                      salesOrderId: SAL22005724
+                      program: ''
+                      productType: PleiadesNeoTaskingOnePlan
+                      licence: standard
+                      aoi:
+                        name: Polygon 1
+                        geometry:
+                          type: Polygon
+                          coordinates:
+                          - - - -27.306937758050495
+                              - 38.72168083627531
+                            - - -27.1970744768005
+                              - 38.72168083627531
+                            - - -27.1970744768005
+                              - 38.81590473156177
+                            - - -27.306937758050495
+                              - 38.81590473156177
+                            - - -27.306937758050495
+                              - 38.72168083627531
+                      mission: pleiadesneo
+                      source: tasking
+                      target: oneplan
+                      status: CANCELLED
+                      comment: ''
+                      tasking:
+                        holdBack: 0
+                        maxIncidenceAngle: 50
+                        acquisitionMode: MONOSCOPIC
+                        cloudCoverageThresholdForProposition: 30
+                        period:
+                        - startDate: '2022-01-29T00:00:00Z'
+                          endDate: '2022-03-29T23:59:59Z'
+                        taskingRequest:
+                        - taskingRequestId: TWOI_000007805_1_N
+                        endOfInitialPeriod: '2022-03-29T23:59:59Z'
+                        validatedArea: 0
+                        validatedAreaPct: 0
+                        receivingStationType: vrs
+                        maxCloudCoverage: 10
+                        nbProposedCoverageItems: 0
+                        totalCoverageItems: 0
+                      processingLevel: primary
+                      spectralProcessing: full_bundle
+                      productFormat: dimap_jpeg2000_regular
+                      pixelCoding: 12bits
+                      radiometricProcessing: basic
+                      priority: standard
+                      deliveryMethod: on_the_flow
+                      deliveryAddress: 5 RUE DES SATELLITES   TOULOUSE CEDEX 4 31030 FR
+                      endUser:
+                        endUserCountryId: CN
+                      dumpingStation:
+                      - processingStation: FR1
+                        receivingStation: FR1
+                      - processingStation: FR1
+                        receivingStation: IN1
+                      - processingStation: FR1
+                        receivingStation: SE1
+                      quotationStatus: ACCEPTED
+                      quotationCreationDate: '2022-01-27T18:08:52Z'
+                      orderCreationDate: '2022-01-27T18:09:08Z'
+                      orderLineAmount: 0
+                      customerName: '[LE] Airbus DS Geo SA France'
+                      contact: john.doe@company.com
+                      orderLineAmountWithoutDiscount: 0
+                      currency: EUR
+                      orderLineAmountDiscountPct: 0
+                      orderLineAmountWithDiscount: 0
+                      priceCalculationArea: 100
+                      orderMinimumApplied: true
+                      feasibilityStudyResult:
+                        coverRate: 0
+                        commitment: true
+                      customerId: AC002902
+                      producedArea: 0
+                      deliveryType: network
+                      deliveryPlatformId: PublicMOC
+                      deliveryWorkspace: bbdaf4c9-37da-4480-9c52-c75cbfa17a22
+                      requestedArea: 99.7919052906175
+                      notifications: []
+                      projectionCode: '32626'
+                      quotationEndOfValidityDate: '2022-01-28T00:00:00Z'
+                      initialOrderLineAmountWithoutDiscount: 5000
+                      initialOrderLineAmountDiscountPct: 0
+                      initialOrderLineAmountWithDiscount: 5000
+                      initialPriceCalculationArea: 100
+                      cancelationDeadlineDate: '2022-01-28T00:00:00Z'
+                      producedAreaPct: 0
+                      productionRoute: GDSIP3
+                      quotationVersion: 1
+                      orderLineDescription: PleiadesNeo Tasking OnePlan 100 km2    basic
+                      onePlanPro: true
+                      orderItemId: WOI_000007805_1
+                      lastStatusChangeDate: '2022-01-27T20:21:21Z'
+                      orderCreator: '5247773080'
+                      orderLineId: 1
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com/
+  /api/v1/coverages/search:
+    post:
+      tags:
+      - PleiadesNeo specific
+      summary: Retrieve Acquisitions on an Order
+      description: You can retrieve coverage items using this endpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - paging
+              - criteria
+              properties:
+                paging:
+                  type: object
+                  properties:
+                    itemsPerPage:
+                      description: Number of items per page
+                      format: integer
+                      type: number
+                    startIndex:
+                      description: item offset
+                      format: integer
+                      type: number
+                criteria:
+                  type: object
+                  properties:
+                    q:
+                      description: sql request
+                      type: string
+            examples:
+              Tasking:
+                value:
+                  paging:
+                    itemsPerPage: 10000
+                    startIndex: 0
+                  criteria:
+                    q: (orderItemId:WOI_000016433_1 AND contractId:CTR21000438) AND (status:VALIDATED OR status:PROPOSED OR status:REFUSED OR status:PENDING OR status:REJECTED)
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contracts:
+                    type: string
+              examples:
+                Tasking:
+                  value:
+                    paging:
+                      itemsPerPage: 10000
+                      startIndex: 0
+                      totalResults: 16
+                    features:
+                    - contractId: CTR21000438
+                      coverageItemId: CIE_000016433_1_11_1
+                      orderItemId: WOI_000016433_1
+                      status: VALIDATED
+                      clearSkyRate: 99.4
+                      catalogPlatformId: MMCAT
+                      archiveId: ACQ_PNEO4_01329602026817
+                      satellite: PNEO4
+                      mission: pleiadesneo
+                      alongTrackIncidenceAngle: 39.27327464777751
+                      orthoTrackIncidenceAngle: 13.193668831466903
+                      orientation: 0
+                      incidenceAngle: 39.693666644420055
+                      sunAzimuth: 41.138672060176276
+                      sunElevation: 40.490731096057644
+                      psiX: -15.897489790827025
+                      psiY: -33.34556509252087
+                      psiXY: 35.64087046215445
+                      bh: 0
+                      customerId: AC002902
+                      quotationId: QUO22014076
+                      salesOrderId: SAL22013111
+                      footprint:
+                        type: Polygon
+                        coordinates:
+                        - - - 18.4256442
+                            - -34.09739311
+                          - - 18.37668271
+                            - -34.09290259
+                          - - 18.32775794
+                            - -34.08837245
+                          - - 18.27873561
+                            - -34.08379012
+                          - - 18.27852709
+                            - -33.87722682
+                          - - 18.42631714
+                            - -33.89147992
+                          - - 18.42617671
+                            - -33.94354314
+                          - - 18.42601553
+                            - -33.99427141
+                          - - 18.42601124
+                            - -33.9955442
+                          - - 18.42583424
+                            - -34.04593298
+                          - - 18.4256442
+                            - -34.09739311
+                      acquisitionDate: '2022-04-08T08:48:08.02Z'
+                    - {}
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com/
+  api/v1/coverages/{coverageItemId}/accept:
+    post:
+      tags:
+      - PleiadesNeo specific
+      summary: Accept an Acquisition
+      description: You can accept an acquisition using this endpoint
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com/
+  api/v1/coverages/{coverageItemId}/refuse:
+    post:
+      tags:
+      - PleiadesNeo specific
+      summary: Refuse an Acquisition
+      description: You can refuse an acquisition using this endpoint
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com/
+  api/v1/orders/{orderItemId}/stop:
+    post:
+      summary: Stop a Tasking Order
+      description: To stop a tasking order, use the following endpoint
+      tags:
+      - PleiadesNeo specific
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com/
+  api/v2/orders/search:
+    post:
+      tags:
+      - PleiadesNeo specific
+      summary: Track Your Quotations
+      description: You can track your quotations using this endpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - paging
+              - criteria
+              properties:
+                paging:
+                  type: object
+                  properties:
+                    itemsPerPage:
+                      description: Number of items per page
+                      format: integer
+                      type: number
+                    startIndex:
+                      description: item offset
+                      format: integer
+                      type: number
+                    pagingMode:
+                      type: string
+                criteria:
+                  type: object
+                  properties:
+                    q:
+                      description: sql request
+                      type: string
+            examples:
+              Tasking:
+                value:
+                  paging:
+                    itemsPerPage: 25
+                    startIndex: 0
+                    pagingMode: item
+                  criteria:
+                    q: (customerReference:*<customer_reference>*) AND (quotationStatus:SENT) AND (contractId:<CisContractId>)
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com/
+  /api/v1/quotations/{quotationId}/export:
+    /api/v1/contracts/{CisContractId}/quotations/{quotationId}/accept: null
+    get:
+      summary: Get a PDF Quotation
+      description: To generate a PDF of a specific quotation, use the following endpoint
+      tags:
+      - PleiadesNeo specific
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com/
+    put:
+      tags:
+      - PleiadesNeo specific
+      summary: Accept a Quotation
+      description: You can accept a quotation using this endpoint
+  /api/v1/contracts/{CisContractId}/quotations/{quotationId}/refuse:
+    put:
+      tags:
+      - PleiadesNeo specific
+      summary: Refuse a Quotation
+      description: You can refuse a quotation using this endpoint
+  api/v1/orders/{orderItemId}/cancel:
+    post:
+      summary: Cancel a Tasking Order
+      description: To Cancel a tasking order, use the following endpoint
+      tags:
+      - PleiadesNeo specific
+      servers:
+      - description: Tasking API server
+        url: https://order.api.oneatlas.airbus.com/
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

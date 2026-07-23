@@ -1,0 +1,198 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Feasibility API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Feasibility
+paths:
+  /api/v1/feasibility:
+    post:
+      summary: Get Feasibility
+      tags:
+      - Feasibility
+      description: "### Ask for a feasibility request\nAs of today, the API does not cover all cases properly meaning that it could answer that the request is feasible when it is not.</br>\nPlease take the following precautions :\n-\tONENOWATTEMPTS should be between 3 and 14 days\n-\tONEDAY should be on a time period where at least 1 acquisition is planned and maximum 1 day\n-\tIf you want to be sure, you can use the get attempts path (../api/v1/attempts)\n"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Feasibility request
+              oneOf:
+              - properties:
+                  progTypeNames:
+                    $ref: '#/components/schemas/progTypeNames'
+                  mission:
+                    enum:
+                    - PLEIADESNEO
+                    type: string
+                  contractId:
+                    type: string
+                  acquisitionDate:
+                    $ref: '#/components/schemas/AcquisitionDate'
+                  optical:
+                    $ref: '#/components/schemas/Optical'
+                  aoi:
+                    $schema: http://json-schema.org/draft-06/schema#
+                    id: http://local/schemas/public/aoi.json#
+                    properties:
+                      coordinates:
+                        items:
+                          items:
+                            items:
+                              type: number
+                            maxItems: 2
+                            minItems: 2
+                            type: array
+                          minItems: 4
+                          type: array
+                        minItems: 1
+                        type: array
+                      type:
+                        enum:
+                        - Polygon
+                    title: aoi
+                    type: object
+                required:
+                - progTypeNames
+                - mission
+                - contractId
+                - acquisitionDate
+                - optical
+                - aoi
+                type: object
+              example:
+                progTypeNames:
+                - ONEPLAN
+                mission: PLEIADESNEO
+                contractId: CTR2100XXXX
+                acquisitionDate:
+                  startDate: '2021-08-31T19:22:11.250Z'
+                  endDate: '2021-09-30T23:59:59.999Z'
+                optical:
+                  acquisitionMode: MONO
+                  maxCloudCover: 20
+                  maxIncidenceAngle: 30
+                aoi:
+                - - - -3.71612548828124
+                    - 40.35910267579197
+                  - - -3.6090087890624893
+                    - 40.35910267579197
+                  - - -3.6090087890624893
+                    - 40.45739708775443
+                  - - -3.71612548828124
+                    - 40.45739708775443
+                  - - -3.71612548828124
+                    - 40.35910267579197
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feasibility'
+              example:
+                progCapacities:
+                  mission: PLEIADESNEO
+                  progTypes:
+                  - name: ONEPLAN
+                    mission: PLEIADESNEO
+                    feasibility:
+                      automation: AUTOMATIC
+                      classification: CHALLENGING
+                    available: true
+                    expirationDate: '2021-08-31T16:22:11.250Z'
+      servers:
+      - description: Tasking API server
+        url: https://task.api.oneatlas.airbus.com
+components:
+  schemas:
+    Feasibility:
+      type: object
+      properties:
+        progCapacities:
+          items:
+            properties:
+              mission:
+                enum:
+                - PLEIADESNEO
+                type: string
+              progTypes:
+                items:
+                  properties:
+                    name:
+                      type: string
+                    mission:
+                      enum:
+                      - PLEIADESNEO
+                      type: string
+                    feasibility:
+                      properties:
+                        automation:
+                          description: To be used when creating the order and/or requesting the quotation
+                          enum:
+                          - AUTOMATIC
+                          - MANUAL
+                          type: string
+                        classification:
+                          description: To be used when creating the order and/or requesting the quotation
+                          enum:
+                          - CHALLENGING
+                          - EASY
+                          type: string
+                      type: object
+                    available:
+                      type: boolean
+                    expirationDate:
+                      format: datetime
+                      type: string
+                  type: object
+                type: array
+            type: object
+          type: array
+    AcquisitionDate:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
+        endDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition end date
+    Optical:
+      properties:
+        acquisitionMode:
+          enum:
+          - MONO
+          - STEREO
+          - TRISTEREO
+          type: string
+        maxCloudCover:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
+    progTypeNames:
+      items:
+        enum:
+        - ONEDAY
+        - ONEPLAN
+        - ONENOWATTEMPTS
+        - ONENOWWEATHER
+        default: ONEPLAN
+        type: string
+      type: array
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

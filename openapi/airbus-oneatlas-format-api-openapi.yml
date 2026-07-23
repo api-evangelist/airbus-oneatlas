@@ -1,0 +1,175 @@
+openapi: 3.0.3
+info:
+  title: OneAtlas WorldDEM Access Format API
+  version: 1.0.1
+  contact:
+    email: dl-geo-webservices@airbus.com
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+servers:
+- url: https://sar.api.oneatlas.airbus.com/v1
+  description: OneAtlas - Elevation
+security:
+- basicAuth: []
+tags:
+- name: Format
+paths:
+  /api/v1/items/{catalogItemId}/format:
+    post:
+      description: Defines the format for the given catalog item id
+      parameters:
+      - $ref: '#/components/parameters/CorrelationID'
+      - $ref: '#/components/parameters/CatalogItemId'
+      - $ref: '#/components/parameters/Priority'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Format'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivitySmall'
+          description: If last format (if exists) has the same payload. In this case X-Ads-CorrelationId header is ignored.
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivitySmall'
+          description: Creation of the format activity
+      summary: Format Product
+      tags:
+      - Format
+components:
+  schemas:
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    ActivitySmall:
+      properties:
+        _links:
+          properties:
+            history:
+              allOf:
+              - description: See [Get activity stages](#/paths/~1api~1v1~1activities~1{correlationId}~1stages/get)
+              - $ref: '#/components/schemas/Link'
+            monitoring:
+              allOf:
+              - description: See [Get activity](#/paths/~1api~1v1~1activities~1{correlationId}/get)
+              - $ref: '#/components/schemas/Link'
+          readOnly: true
+          type: object
+        message:
+          description: A free text (copy of the last stage message)
+          readOnly: true
+          type: string
+      type: object
+    Md5ChecksumParameters:
+      properties:
+        crcCode:
+          type: string
+      type: object
+    Format:
+      properties:
+        checksum:
+          properties:
+            parameters:
+              example:
+                crcCode: dhdf54
+              oneOf:
+              - $ref: '#/components/schemas/Md5ChecksumParameters'
+            type:
+              enum:
+              - md5
+              - none
+              type: string
+          type: object
+        compression:
+          enum:
+          - zip
+          type: string
+        packaging:
+          properties:
+            parameters:
+              description: Key/value options of the packaging. Properties depend on the type of packaging
+              example:
+                imageFormat: image/jp2
+              oneOf:
+              - $ref: '#/components/schemas/DimapV2PackagingParameters'
+            type:
+              enum:
+              - dimapV2
+              type: string
+          type: object
+      type: object
+    DimapV2PackagingParameters:
+      properties:
+        imageFormat:
+          enum:
+          - image/jp2
+          - image/geotiff
+          example: image/jp2
+          type: string
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+  parameters:
+    Priority:
+      description: Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Priority
+      schema:
+        $ref: '#/components/schemas/Id'
+    CatalogItemId:
+      description: Identifier of an IDP catalog item (property `id` of a search result).
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: path
+      name: catalogItemId
+      required: true
+      schema:
+        $ref: '#/components/schemas/Id'
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

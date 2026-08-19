@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access SPOT and Pleiades specific API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SPOT and Pleiades specific",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Track Your Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1api/v1/contracts/:cisContractId/taskings"
+          },
+          "docs": "You can see all your tasking orders."
+        },
+        {
+          "info": {
+            "name": "Track an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1api/v1/contracts/:cisContractId/taskings/:taskingId"
+          },
+          "docs": "To see the status of a dedicated tasking, you can use the following endpoint after having retrieved the <taskingId>, available in the email notification under ICR_ID."
+        },
+        {
+          "info": {
+            "name": "Track Orders with Customerref",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1api/v1/contracts/:cisContractId/taskings?customerRef=yourCustomerReference",
+            "params": [
+              {
+                "name": "CustomerReference",
+                "value": "",
+                "type": "path",
+                "description": "The Customer Reference"
+              }
+            ]
+          },
+          "docs": "Track orders attached to a customer reference."
+        },
+        {
+          "info": {
+            "name": "Retrieve Acquisitions on an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1api/v1/contracts/:CisContractId/taskings/:taskingId/segments"
+          },
+          "docs": "Retrieve Acquisitions on an Order"
+        },
+        {
+          "info": {
+            "name": "Accept Acquisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1api/v1/contracts/:CisContractId/taskings/:tasking_Id/segments/:segmentId/accept"
+          },
+          "docs": "To accept an acquisition, use the following endpoint"
+        },
+        {
+          "info": {
+            "name": "Refuse Acquisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1api/v1/contracts/:CisContractId/taskings/:tasking_Id/segments/:segmentId/refuse"
+          },
+          "docs": "To refuse an acquisition, use the following endpoint"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

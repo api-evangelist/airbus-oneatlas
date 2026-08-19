@@ -1,0 +1,618 @@
+{
+  "item": [
+    {
+      "id": "81ad114c-43e2-409b-881e-ea0ea66ed244",
+      "name": "Contract related Information",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "63f59a8f-a5a8-4e51-a409-e25df88a4812",
+          "name": "User Information",
+          "request": {
+            "name": "User Information",
+            "description": {
+              "content": "Allow to retrieve the list of contracts on which you have been authorized to place orders",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "653fc9d0-f6b2-4213-bd18-87e2eb23a588",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://data.api.oneatlas.airbus.com/api/v1/me\"\n    },\n    \"licenses\": {\n      \"href\": \"https://data.api.oneatlas.airbus.com/api/v1/licenseAgreements\"\n    }\n  },\n  \"id\": \"5406642f-e3e8-4250-7c7f-7ac2be36021b\",\n  \"status\": \"created\",\n  \"createdAt\": \"2022-08-19T12:19:43Z\",\n  \"roles\": [\n    \"changeDetectionUser\",\n    \"contractViewer\",\n    \"user\",\n    \"admin\"\n  ],\n  \"contract\": {\n    \"_links\": {\n      \"self\": {\n        \"href\": \"https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709\"\n      },\n      \"orders\": {\n        \"href\": \"https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709/orders\"\n      },\n      \"payments\": {\n        \"href\": \"https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709/payments\"\n      },\n      \"subscriptions\": {\n        \"href\": \"https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709/subscriptions\"\n      },\n      \"deliveries\": {\n        \"href\": \"https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709/deliveries\"\n      },\n      \"reports\": {\n        \"href\": \"https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709/reports\"\n      },\n      \"cisContracts\": {\n        \"href\": \"https://data.api.oneatlas.airbus.com/api/v1/contracts/d9307572-4f50-4dd5-b5de-94085beb6709/cisContracts\"\n      }\n    },\n    \"id\": \"d9307572-4f50-4dd5-b5de-94085beb6709\",\n    \"status\": \"created\",\n    \"createdAt\": \"2021-07-07T08:01:07Z\",\n    \"offers\": [\n      \"order.analytics-toolbox.archive\",\n      \"order.high-precision.report\",\n      \"order.data.product\",\n      \"order.data.mosaic\"\n    ],\n    \"companyName\": \"Airbus\",\n    \"amountUnit\": \"EUR\",\n    \"balanceUnit\": \"EUR\",\n    \"kind\": \"contract.oneatlas.internal\",\n    \"name\": \"INTERNAL.Standard-GEO\",\n    \"balance\": 33832,\n    \"workspaceId\": \"5b2a41d2-a876-43c5-867b-3aab98bd56b6\",\n    \"workspaceName\": \"mareclever\"\n  },\n  \"permissions\": [\n    {\n      \"contractId\": \"d2c1ef64-6fb7-4dfe-9c1e-3a97f1f56e8e\",\n      \"kind\": \"contract.viewer\",\n      \"userId\": \"5406642f-e3e8-4250-7c7f-7ac2be36021b\"\n    },\n    {\n      \"contractId\": \"d9307572-4f50-4dd5-b5de-94085beb6709\",\n      \"kind\": \"contract.user\",\n      \"userId\": \"5406642f-e3e8-4250-7c7f-7ac2be36021b\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e0cf3c5-49ac-4e41-8683-78fe622c4da3",
+          "name": "Get Contracts",
+          "request": {
+            "name": "Get Contracts",
+            "description": {
+              "content": "Get all contracts",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "contracts"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a389db30-896c-45a3-83c6-9d050fd03a79",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "contracts"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contracts\": [\n    {\n      \"contractId\": \"CisContractId\",\n      \"customerId\": \"customerId\",\n      \"name\": \"ContractName\",\n      \"tradeAgreementUrl\": \"https://www.intelligence-airbusds.com/cgf/\",\n      \"creditRemaining\": \"150.0\",\n      \"currency\": \"EUR\",\n      \"language\": \"en\",\n      \"contractType\": \"ONEATLASDATA\",\n      \"backendSource\": \"legacy\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c055d68a-edee-4f7b-8b6f-9080354be4f1",
+          "name": "Get Product Types",
+          "request": {
+            "name": "Get Product Types",
+            "description": {
+              "content": "This request displays the possible ordered product types associated to a contract.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "contracts",
+                ":CisContractId",
+                "productTypes"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a658026-fb8e-4ed7-9d4c-f47cdc78d5d8",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "contracts",
+                    ":CisContractId",
+                    "productTypes"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"productTypes\": [\n    {\n      \"productTypeId\": \"PleiadesTaskingOneDay\",\n      \"technicalProduct\": {\n        \"id\": \"PleiadesTaskingOneDay\",\n        \"label\": \"Pleiades OneDay\",\n        \"source\": {\n          \"id\": \"tasking\",\n          \"label\": \"One Tasking\"\n        },\n        \"sensor\": {\n          \"id\": \"pleiades\",\n          \"label\": \"Pl�iades\"\n        },\n        \"target\": {\n          \"id\": \"oneday\",\n          \"label\": \"One Day\"\n        },\n        \"licences\": null\n      },\n      \"minimumOrderAreaApplied\": 100,\n      \"descriptionUrl\": \"https://www.intelligence-airbusds.com/one-tasking/\"\n    },\n    {\n      \"productTypeId\": \"SpotTaskingOneDay\",\n      \"technicalProduct\": {\n        \"id\": \"SpotTaskingOneDay\",\n        \"label\": \"SPOT OneDay\",\n        \"source\": {\n          \"id\": \"tasking\",\n          \"label\": \"One Tasking\"\n        },\n        \"sensor\": {\n          \"id\": \"spot\",\n          \"label\": \"SPOT\"\n        },\n        \"target\": {\n          \"id\": \"oneday\",\n          \"label\": \"One Day\"\n        },\n        \"licences\": null\n      },\n      \"minimumOrderAreaApplied\": 500,\n      \"descriptionUrl\": \"https://www.intelligence-airbusds.com/one-tasking/\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7417c08b-362f-451f-8f6e-caed54aa764b",
+          "name": "Get Markets",
+          "request": {
+            "name": "Get Markets",
+            "description": {
+              "content": "Allow to retrieve the list of markets (ex - AGRI). Market is a mandatory information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                ":cisContractId",
+                "properties"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f84c3ec-a092-40ec-b45f-a3c7e9fa783a",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    ":cisContractId",
+                    "properties"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": [],\n  \"markets\": [\n    {\n      \"id\": \"AGRI\",\n      \"label\": \"Agriculture\"\n    },\n    {\n      \"id\": \"GENIE\",\n      \"label\": \"Civil engineering\",\n      \"secondaryMarket\": [\n        {\n          \"id\": \"GENIE\",\n          \"label\": \"Civil engineering\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec0c5f9a-7a23-4ac2-82fc-732dad59eaa3",
+          "name": "Get Delivery Types",
+          "request": {
+            "name": "Get Delivery Types",
+            "description": {
+              "content": "Get the list of available delivery types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                ":cisContractId",
+                "deliveryTypes"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5c04911-5e10-42f8-b7ac-674f4ce47466",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    ":cisContractId",
+                    "deliveryTypes"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deliveryTypes\": [\n    {\n      \"deliveryTypeId\": \"network\",\n      \"label\": \"FTP + My Data\"\n    },\n    {\n      \"deliveryTypeId\": \"MEDIA\",\n      \"label\": \"MEDIA\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee1abbd1-a143-4a75-8196-7390a58ea6ed",
+          "name": "Get Production Options",
+          "request": {
+            "name": "Get Production Options",
+            "description": {
+              "content": "Allow to retrieve the production options available on your contract for one given product type",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "contracts",
+                ":cisContractId",
+                "productTypes",
+                ":productTypeId",
+                "options"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"aoi\": [\n    {\n      \"polygonId\": \"<integer>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"polygonId\": \"<integer>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b9b995f9-020d-43d2-b8fe-c620e3b9ce6f",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "contracts",
+                    ":cisContractId",
+                    "productTypes",
+                    ":productTypeId",
+                    "options"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"aoi\": [\n    {\n      \"polygonId\": \"<integer>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"polygonId\": \"<integer>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"availableOptions\": [\n    {\n      \"category\": \"production_option\",\n      \"label\": \"Processing Level\",\n      \"name\": \"processing_level\",\n      \"mandatory\": \"true\",\n      \"defaultValue\": \"primary\",\n      \"constraint\": null,\n      \"values\": [\n        {\n          \"id\": \"ortho\",\n          \"label\": \"Ortho\"\n        },\n        {\n          \"id\": \"projected\",\n          \"label\": \"Projected\"\n        },\n        {\n          \"id\": \"primary\",\n          \"label\": \"Primary\"\n        }\n      ],\n      \"type\": \"list\",\n      \"hidden\": false,\n      \"property\": true\n    },\n    {\n      \"category\": \"production_option\",\n      \"label\": \"Spectral Processing\",\n      \"name\": \"spectral_processing\",\n      \"mandatory\": \"true\",\n      \"defaultValue\": \"full_bundle\",\n      \"constraint\": null,\n      \"values\": [\n        {\n          \"id\": \"panchromatic\",\n          \"label\": \"Panchromatic 30cm\"\n        },\n        {\n          \"id\": \"pansharpened\",\n          \"label\": \"Pansharpened 30cm 4-band\"\n        },\n        {\n          \"id\": \"multispectral\",\n          \"label\": \"Multispectral 1.2m 4-band\"\n        },\n        {\n          \"id\": \"bundle\",\n          \"label\": \"Bundle: Panchromatic 30cm + Multispectral 1.2m 4-band\"\n        },\n        {\n          \"id\": \"full_bundle\",\n          \"label\": \"Full Bundle: Panchromatic 30cm + Multispectral 1.2m 6-band\"\n        },\n        {\n          \"id\": \"full_pms\",\n          \"label\": \"Pansharpened 30cm 6-band\"\n        },\n        {\n          \"id\": \"full_ms\",\n          \"label\": \"Full MS: Multispectral 1.2m 6-band\"\n        }\n      ],\n      \"type\": \"list\",\n      \"hidden\": false,\n      \"property\": true\n    },\n    {\n      \"category\": \"production_option\",\n      \"label\": \"Image Format\",\n      \"name\": \"image_format\",\n      \"mandatory\": \"true\",\n      \"defaultValue\": \"dimap_jpeg2000_regular\",\n      \"constraint\": null,\n      \"values\": [\n        {\n          \"id\": \"dimap_jpeg2000_regular\",\n          \"label\": \"DIMAP - Regular JPEG 2000 \"\n        },\n        {\n          \"id\": \"dimap_geotiff\",\n          \"label\": \"DIMAP - GeoTIFF\"\n        }\n      ],\n      \"type\": \"list\",\n      \"hidden\": false,\n      \"property\": true\n    },\n    {\n      \"category\": \"production_option\",\n      \"label\": \"Pixel Coding\",\n      \"name\": \"pixel_coding\",\n      \"mandatory\": \"true\",\n      \"defaultValue\": \"12bits\",\n      \"constraint\": null,\n      \"values\": [\n        {\n          \"id\": \"8bits\",\n          \"label\": \"8 bits (JPEG 2000 / GeoTIFF) \",\n          \"constraint\": {\n            \"condition\": \"radiometric_processing:(display)\"\n          }\n        },\n        {\n          \"id\": \"12bits\",\n          \"label\": \"12 bits (JPEG 2000) / 16 bits (GeoTIFF)\",\n          \"constraint\": {\n            \"condition\": \"radiometric_processing:(basic|reflectance)\"\n          }\n        }\n      ],\n      \"type\": \"list\",\n      \"hidden\": false,\n      \"property\": true\n    },\n    {\n      \"category\": \"production_option\",\n      \"label\": \"Radiometric Processing\",\n      \"name\": \"radiometric_processing\",\n      \"mandatory\": \"true\",\n      \"defaultValue\": \"basic\",\n      \"constraint\": null,\n      \"values\": [\n        {\n          \"id\": \"basic\",\n          \"label\": \"Basic\"\n        },\n        {\n          \"id\": \"reflectance\",\n          \"label\": \"Reflectance\"\n        },\n        {\n          \"id\": \"display\",\n          \"label\": \"Display\"\n        }\n      ],\n      \"type\": \"list\",\n      \"hidden\": false,\n      \"property\": true\n    },\n    {\n      \"category\": \"production_option\",\n      \"label\": \"Elevation\",\n      \"name\": \"elevation\",\n      \"mandatory\": \"false\",\n      \"constraint\": {\n        \"condition\": \"processing_level:(projected)\"\n      },\n      \"range\": [\n        -100,\n        10000\n      ],\n      \"type\": \"double\",\n      \"hidden\": false,\n      \"property\": true\n    },\n    {\n      \"category\": \"production_option\",\n      \"label\": \"Area Computation Model\",\n      \"name\": \"area_compute_model\",\n      \"mandatory\": \"false\",\n      \"defaultValue\": \"coverage\",\n      \"constraint\": null,\n      \"values\": [\n        {\n          \"id\": \"coverage\",\n          \"label\": \"Coverage\"\n        },\n        {\n          \"id\": \"temporal_serie\",\n          \"label\": \"TemporalSerie\"\n        }\n      ],\n      \"type\": \"list\",\n      \"hidden\": false,\n      \"property\": true\n    },\n    {\n      \"category\": \"production_option\",\n      \"label\": \"Priority\",\n      \"name\": \"priority\",\n      \"mandatory\": \"true\",\n      \"defaultValue\": \"standard\",\n      \"constraint\": null,\n      \"values\": [\n        {\n          \"id\": \"standard\",\n          \"label\": \"Standard\"\n        },\n        {\n          \"id\": \"rush\",\n          \"label\": \"Rush (No Quality Checking)\"\n        }\n      ],\n      \"type\": \"list\",\n      \"hidden\": false,\n      \"property\": true\n    },\n    {\n      \"category\": \"production_option\",\n      \"label\": \"fullStrip\",\n      \"name\": \"fullStrip\",\n      \"mandatory\": \"false\",\n      \"defaultValue\": \"false\",\n      \"constraint\": null,\n      \"values\": [\n        {\n          \"id\": \"true\",\n          \"label\": \"true\"\n        },\n        {\n          \"id\": \"false\",\n          \"label\": \"false\"\n        }\n      ],\n      \"type\": \"list\",\n      \"hidden\": false,\n      \"property\": true\n    },\n    {\n      \"category\": \"production_option\",\n      \"label\": \"DeliveryMethod\",\n      \"name\": \"delivery_method\",\n      \"mandatory\": \"false\",\n      \"defaultValue\": \"on_the_flow\",\n      \"constraint\": null,\n      \"values\": [\n        {\n          \"id\": \"on_the_flow\",\n          \"label\": \"OntheFlow\"\n        }\n      ],\n      \"type\": \"list\",\n      \"hidden\": false,\n      \"property\": true\n    },\n    {\n      \"category\": \"production_option\",\n      \"label\": \"Licence\",\n      \"name\": \"licence\",\n      \"mandatory\": \"true\",\n      \"defaultValue\": \"standard\",\n      \"constraint\": null,\n      \"values\": [\n        {\n          \"id\": \"standard\",\n          \"label\": \"Standard Licence Agreement\"\n        },\n        {\n          \"id\": \"background_layer\",\n          \"label\": \"Background Layer Licence Agreement\"\n        },\n        {\n          \"id\": \"stand_background_layer\",\n          \"label\": \"Standard and Background Layer Licence Agreement\"\n        }\n      ],\n      \"type\": \"list\",\n      \"hidden\": false,\n      \"property\": true\n    },\n    {\n      \"category\": \"production_option\",\n      \"label\": \"Orthorectification DEM Reference\",\n      \"name\": \"dem_1\",\n      \"mandatory\": \"constraint\",\n      \"defaultValue\": \"best_available\",\n      \"constraint\": {\n        \"condition\": \"processing_level:(ortho)\"\n      },\n      \"values\": [\n        {\n          \"id\": \"best_available\",\n          \"label\": \"Best Available\"\n        },\n        {\n          \"id\": \"FLAT_DEM_WITH_WD4O_WAT\",\n          \"label\": \"FLAT_DEM_WITH_WD4O_WAT (100)\"\n        },\n        {\n          \"id\": \"GTOPO30\",\n          \"label\": \"GTOPO30 (100)\"\n        },\n        {\n          \"id\": \"PAS-DEM\",\n          \"label\": \"PAS-DEM (100)\"\n        },\n        {\n          \"id\": \"REF3D-DEM\",\n          \"label\": \"REF3D-DEM (100)\"\n        },\n        {\n          \"id\": \"SRTMV4\",\n          \"label\": \"SRTMV4 (100)\"\n        },\n        {\n          \"id\": \"WorldDEM4Ortho\",\n          \"label\": \"WorldDEM4Ortho (100)\"\n        }\n      ],\n      \"type\": \"list\",\n      \"hidden\": false,\n      \"property\": true\n    },\n    {\n      \"category\": \"production_option\",\n      \"label\": \"Projection (GDLIB code)\",\n      \"name\": \"projection_1\",\n      \"mandatory\": \"constraint\",\n      \"defaultValue\": \"32631\",\n      \"constraint\": {\n        \"condition\": \"processing_level:(ortho|projected)\"\n      },\n      \"values\": [\n        {\n          \"id\": \"4171\",\n          \"label\": \"4171 RGF93 (FR.)\"\n        },\n        {\n          \"id\": \"4230_B\",\n          \"label\": \"4230 ED50 (EUR. - AT. DK. FR. DE. DK. CH.)\"\n        },\n        {\n          \"id\": \"4326\",\n          \"label\": \"4326 WGS 1984\"\n        },\n        {\n          \"id\": \"4258\",\n          \"label\": \"4258 ETRS89 (EUR)\"\n        },\n        {\n          \"id\": \"4230_A\",\n          \"label\": \"4230 ED50 (EUR.)\"\n        },\n        {\n          \"id\": \"3857\",\n          \"label\": \"3857 WGS84/Web Mercator (World - between 85S. and 85N.)\"\n        },\n        {\n          \"id\": \"32631\",\n          \"label\": \"32631 WGS84/UTM 31N (N. hemisphere - 0E to 6E)\"\n        },\n        {\n          \"id\": \"2154\",\n          \"label\": \"2154 RGF93/Lambert-93 (FR.)\"\n        }\n      ],\n      \"type\": \"list\",\n      \"hidden\": false,\n      \"property\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "33ef1cd2-c3c8-49cf-bddd-600e757dc351",
+    "name": "OneAtlas WorldDEM Access Contract related Information API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "item": [
+    {
+      "id": "e0f8a065-6f50-4ed0-a524-5b3d0f7ff51f",
+      "name": "Feasibility",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a50d622d-7fda-413a-b849-a9404a09ab85",
+          "name": "Get Feasibility",
+          "request": {
+            "name": "Get Feasibility",
+            "description": {
+              "content": "### Ask for a feasibility request\nAs of today, the API does not cover all cases properly meaning that it could answer that the request is feasible when it is not.</br>\nPlease take the following precautions :\n-\tONENOWATTEMPTS should be between 3 and 14 days\n-\tONEDAY should be on a time period where at least 1 acquisition is planned and maximum 1 day\n-\tIf you want to be sure, you can use the get attempts path (../api/v1/attempts)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "feasibility"
+              ],
+              "host": [
+                "task",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"progTypeNames\": [\n    \"ONEPLAN\",\n    \"ONEPLAN\"\n  ],\n  \"mission\": \"<string>\",\n  \"contractId\": \"<string>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"optical\": {\n    \"acquisitionMode\": \"<string>\",\n    \"maxCloudCover\": \"<float>\",\n    \"maxIncidenceAngle\": \"<float>\"\n  },\n  \"aoi\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4a69b785-c80f-4223-adfb-bd3d3aad2b97",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "feasibility"
+                  ],
+                  "host": [
+                    "task",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"progTypeNames\": [\n    \"ONEPLAN\",\n    \"ONEPLAN\"\n  ],\n  \"mission\": \"<string>\",\n  \"contractId\": \"<string>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"optical\": {\n    \"acquisitionMode\": \"<string>\",\n    \"maxCloudCover\": \"<float>\",\n    \"maxIncidenceAngle\": \"<float>\"\n  },\n  \"aoi\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"progCapacities\": {\n    \"mission\": \"PLEIADESNEO\",\n    \"progTypes\": [\n      {\n        \"name\": \"ONEPLAN\",\n        \"mission\": \"PLEIADESNEO\",\n        \"feasibility\": {\n          \"automation\": \"AUTOMATIC\",\n          \"classification\": \"CHALLENGING\"\n        },\n        \"available\": true,\n        \"expirationDate\": \"2021-08-31T16:22:11.250Z\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "271bd454-b04c-4871-b284-a0d00f3643cd",
+    "name": "OneAtlas WorldDEM Access Feasibility API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

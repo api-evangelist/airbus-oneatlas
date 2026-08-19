@@ -1,0 +1,585 @@
+{
+  "item": [
+    {
+      "id": "9845b762-739c-4827-9f5a-c7086e60b877",
+      "name": "PleiadesNeo specific",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2d848a78-8d95-49c7-aae7-ed1f8fbd097e",
+          "name": "Track Your Orders",
+          "request": {
+            "name": "Track Your Orders",
+            "description": {
+              "content": "Use this endpoint to see all your orders",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v2",
+                "orders",
+                "search"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"paging\": {\n    \"itemsPerPage\": \"<integer>\",\n    \"startIndex\": \"<integer>\",\n    \"pagingMode\": \"<string>\"\n  },\n  \"criteria\": {\n    \"q\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b8816f3-bcb8-4228-a327-97f652e6c8d0",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v2",
+                    "orders",
+                    "search"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paging\": {\n    \"itemsPerPage\": 25,\n    \"startIndex\": 0,\n    \"pagingMode\": \"item\"\n  },\n  \"criteria\": {\n    \"q\": \"(quotationStatus:ACCEPTED) AND (cis.quotation:QUO22054973) AND (contractId:CTR21000411) AND (status:IN_PROGRESS) AND (technicalProduct.source.id:archive) AND (customerReference:*<customer_reference>*)\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contracts\": [\n    {\n      \"contractId\": \"<CisContractId>\",\n      \"customerReference\": \"<customer_reference>\",\n      \"quotationId\": \"QUO22006217\",\n      \"salesOrderId\": \"SAL22005724\",\n      \"program\": \"\",\n      \"productType\": \"PleiadesNeoTaskingOnePlan\",\n      \"licence\": \"standard\",\n      \"aoi\": {\n        \"name\": \"Polygon 1\",\n        \"geometry\": {\n          \"type\": \"Polygon\",\n          \"coordinates\": [\n            [\n              [\n                -27.306937758050495,\n                38.72168083627531\n              ],\n              [\n                -27.1970744768005,\n                38.72168083627531\n              ],\n              [\n                -27.1970744768005,\n                38.81590473156177\n              ],\n              [\n                -27.306937758050495,\n                38.81590473156177\n              ],\n              [\n                -27.306937758050495,\n                38.72168083627531\n              ]\n            ]\n          ]\n        }\n      },\n      \"mission\": \"pleiadesneo\",\n      \"source\": \"tasking\",\n      \"target\": \"oneplan\",\n      \"status\": \"CANCELLED\",\n      \"comment\": \"\",\n      \"tasking\": {\n        \"holdBack\": 0,\n        \"maxIncidenceAngle\": 50,\n        \"acquisitionMode\": \"MONOSCOPIC\",\n        \"cloudCoverageThresholdForProposition\": 30,\n        \"period\": [\n          {\n            \"startDate\": \"2022-01-29T00:00:00Z\",\n            \"endDate\": \"2022-03-29T23:59:59Z\"\n          }\n        ],\n        \"taskingRequest\": [\n          {\n            \"taskingRequestId\": \"TWOI_000007805_1_N\"\n          }\n        ],\n        \"endOfInitialPeriod\": \"2022-03-29T23:59:59Z\",\n        \"validatedArea\": 0,\n        \"validatedAreaPct\": 0,\n        \"receivingStationType\": \"vrs\",\n        \"maxCloudCoverage\": 10,\n        \"nbProposedCoverageItems\": 0,\n        \"totalCoverageItems\": 0\n      },\n      \"processingLevel\": \"primary\",\n      \"spectralProcessing\": \"full_bundle\",\n      \"productFormat\": \"dimap_jpeg2000_regular\",\n      \"pixelCoding\": \"12bits\",\n      \"radiometricProcessing\": \"basic\",\n      \"priority\": \"standard\",\n      \"deliveryMethod\": \"on_the_flow\",\n      \"deliveryAddress\": \"5 RUE DES SATELLITES   TOULOUSE CEDEX 4 31030 FR\",\n      \"endUser\": {\n        \"endUserCountryId\": \"CN\"\n      },\n      \"dumpingStation\": [\n        {\n          \"processingStation\": \"FR1\",\n          \"receivingStation\": \"FR1\"\n        },\n        {\n          \"processingStation\": \"FR1\",\n          \"receivingStation\": \"IN1\"\n        },\n        {\n          \"processingStation\": \"FR1\",\n          \"receivingStation\": \"SE1\"\n        }\n      ],\n      \"quotationStatus\": \"ACCEPTED\",\n      \"quotationCreationDate\": \"2022-01-27T18:08:52Z\",\n      \"orderCreationDate\": \"2022-01-27T18:09:08Z\",\n      \"orderLineAmount\": 0,\n      \"customerName\": \"[LE] Airbus DS Geo SA France\",\n      \"contact\": \"john.doe@company.com\",\n      \"orderLineAmountWithoutDiscount\": 0,\n      \"currency\": \"EUR\",\n      \"orderLineAmountDiscountPct\": 0,\n      \"orderLineAmountWithDiscount\": 0,\n      \"priceCalculationArea\": 100,\n      \"orderMinimumApplied\": true,\n      \"feasibilityStudyResult\": {\n        \"coverRate\": 0,\n        \"commitment\": true\n      },\n      \"customerId\": \"AC002902\",\n      \"producedArea\": 0,\n      \"deliveryType\": \"network\",\n      \"deliveryPlatformId\": \"PublicMOC\",\n      \"deliveryWorkspace\": \"bbdaf4c9-37da-4480-9c52-c75cbfa17a22\",\n      \"requestedArea\": 99.7919052906175,\n      \"notifications\": [],\n      \"projectionCode\": \"32626\",\n      \"quotationEndOfValidityDate\": \"2022-01-28T00:00:00Z\",\n      \"initialOrderLineAmountWithoutDiscount\": 5000,\n      \"initialOrderLineAmountDiscountPct\": 0,\n      \"initialOrderLineAmountWithDiscount\": 5000,\n      \"initialPriceCalculationArea\": 100,\n      \"cancelationDeadlineDate\": \"2022-01-28T00:00:00Z\",\n      \"producedAreaPct\": 0,\n      \"productionRoute\": \"GDSIP3\",\n      \"quotationVersion\": 1,\n      \"orderLineDescription\": \"PleiadesNeo Tasking OnePlan 100 km2    basic\",\n      \"onePlanPro\": true,\n      \"orderItemId\": \"WOI_000007805_1\",\n      \"lastStatusChangeDate\": \"2022-01-27T20:21:21Z\",\n      \"orderCreator\": \"5247773080\",\n      \"orderLineId\": 1\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7f9d62f-b4e7-452b-bb84-a207bcc40086",
+          "name": "Retrieve Acquisitions on an Order",
+          "request": {
+            "name": "Retrieve Acquisitions on an Order",
+            "description": {
+              "content": "You can retrieve coverage items using this endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "coverages",
+                "search"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"paging\": {\n    \"itemsPerPage\": \"<integer>\",\n    \"startIndex\": \"<integer>\"\n  },\n  \"criteria\": {\n    \"q\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b4ab05f2-6587-4955-9edc-9410d643f1fe",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "coverages",
+                    "search"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paging\": {\n    \"itemsPerPage\": 10000,\n    \"startIndex\": 0\n  },\n  \"criteria\": {\n    \"q\": \"(orderItemId:WOI_000016433_1 AND contractId:CTR21000438) AND (status:VALIDATED OR status:PROPOSED OR status:REFUSED OR status:PENDING OR status:REJECTED)\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"paging\": {\n    \"itemsPerPage\": 10000,\n    \"startIndex\": 0,\n    \"totalResults\": 16\n  },\n  \"features\": [\n    {\n      \"contractId\": \"CTR21000438\",\n      \"coverageItemId\": \"CIE_000016433_1_11_1\",\n      \"orderItemId\": \"WOI_000016433_1\",\n      \"status\": \"VALIDATED\",\n      \"clearSkyRate\": 99.4,\n      \"catalogPlatformId\": \"MMCAT\",\n      \"archiveId\": \"ACQ_PNEO4_01329602026817\",\n      \"satellite\": \"PNEO4\",\n      \"mission\": \"pleiadesneo\",\n      \"alongTrackIncidenceAngle\": 39.27327464777751,\n      \"orthoTrackIncidenceAngle\": 13.193668831466903,\n      \"orientation\": 0,\n      \"incidenceAngle\": 39.693666644420055,\n      \"sunAzimuth\": 41.138672060176276,\n      \"sunElevation\": 40.490731096057644,\n      \"psiX\": -15.897489790827025,\n      \"psiY\": -33.34556509252087,\n      \"psiXY\": 35.64087046215445,\n      \"bh\": 0,\n      \"customerId\": \"AC002902\",\n      \"quotationId\": \"QUO22014076\",\n      \"salesOrderId\": \"SAL22013111\",\n      \"footprint\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n          [\n            [\n              18.4256442,\n              -34.09739311\n            ],\n            [\n              18.37668271,\n              -34.09290259\n            ],\n            [\n              18.32775794,\n              -34.08837245\n            ],\n            [\n              18.27873561,\n              -34.08379012\n            ],\n            [\n              18.27852709,\n              -33.87722682\n            ],\n            [\n              18.42631714,\n              -33.89147992\n            ],\n            [\n              18.42617671,\n              -33.94354314\n            ],\n            [\n              18.42601553,\n              -33.99427141\n            ],\n            [\n              18.42601124,\n              -33.9955442\n            ],\n            [\n              18.42583424,\n              -34.04593298\n            ],\n            [\n              18.4256442,\n              -34.09739311\n            ]\n          ]\n        ]\n      },\n      \"acquisitionDate\": \"2022-04-08T08:48:08.02Z\"\n    },\n    {}\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89aa94f3-cabd-43a5-b534-1a329536737d",
+          "name": "Accept an Acquisition",
+          "request": {
+            "name": "Accept an Acquisition",
+            "description": {
+              "content": "You can accept an acquisition using this endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "coverages",
+                ":coverageItemId",
+                "accept"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "443eed54-8efe-4abe-9865-663041bb6eec",
+          "name": "Refuse an Acquisition",
+          "request": {
+            "name": "Refuse an Acquisition",
+            "description": {
+              "content": "You can refuse an acquisition using this endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "coverages",
+                ":coverageItemId",
+                "refuse"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ea73ea2-5924-4363-83ba-718d582a5324",
+          "name": "Stop a Tasking Order",
+          "request": {
+            "name": "Stop a Tasking Order",
+            "description": {
+              "content": "To stop a tasking order, use the following endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "orders",
+                ":orderItemId",
+                "stop"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d167e4b7-dae9-4db1-88d8-e89fbdf63df5",
+          "name": "Track Your Quotations",
+          "request": {
+            "name": "Track Your Quotations",
+            "description": {
+              "content": "You can track your quotations using this endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v2",
+                "orders",
+                "search"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"paging\": {\n    \"itemsPerPage\": \"<integer>\",\n    \"startIndex\": \"<integer>\",\n    \"pagingMode\": \"<string>\"\n  },\n  \"criteria\": {\n    \"q\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b86b55b1-65a0-407f-a577-5eae8f8510f4",
+          "name": "Get a PDF Quotation",
+          "request": {
+            "name": "Get a PDF Quotation",
+            "description": {
+              "content": "To generate a PDF of a specific quotation, use the following endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "quotations",
+                ":quotationId",
+                "export"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4de7566a-0615-4fcc-b76b-b138760c48d0",
+          "name": "Accept a Quotation",
+          "request": {
+            "name": "Accept a Quotation",
+            "description": {
+              "content": "You can accept a quotation using this endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "quotations",
+                ":quotationId",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6420638-55ba-4efa-b50f-fdd956fb6206",
+          "name": "Refuse a Quotation",
+          "request": {
+            "name": "Refuse a Quotation",
+            "description": {
+              "content": "You can refuse a quotation using this endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "contracts",
+                ":CisContractId",
+                "quotations",
+                ":quotationId",
+                "refuse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf2409cb-a67f-4f0e-b0a0-68eab0032da2",
+          "name": "Cancel a Tasking Order",
+          "request": {
+            "name": "Cancel a Tasking Order",
+            "description": {
+              "content": "To Cancel a tasking order, use the following endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "orders",
+                ":orderItemId",
+                "cancel"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c87d29c1-271e-45ae-a385-3f042efee8a8",
+    "name": "OneAtlas WorldDEM Access PleiadesNeo specific API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

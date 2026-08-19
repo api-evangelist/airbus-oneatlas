@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Convert API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Convert",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "To Geojson",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/convert",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert input file in geojson format."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

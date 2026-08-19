@@ -1,0 +1,4578 @@
+{
+  "item": [
+    {
+      "id": "bc23d9c2-a51c-4c1d-9492-0d49b30c080a",
+      "name": "Workspaces",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "57ffb8ea-ce16-448b-8326-0c017b5c86a6",
+          "name": "Give a User Read Access on a Workspace",
+          "request": {
+            "name": "Give a User Read Access on a Workspace",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "privileges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<uuid>\",\n  \"filter\": {\n    \"workspace\": \"<uuid>\",\n    \"id\": \"<uuid>\"\n  },\n  \"rights\": {\n    \"browse\": \"<object>\",\n    \"buffer\": \"<object>\",\n    \"download\": \"<object>\",\n    \"wms\": \"<object>\",\n    \"wmts\": \"<object>\"\n  },\n  \"id\": \"<uuid>\",\n  \"priority\": \"<long>\",\n  \"subscriptionId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "74b90405-177f-4e79-a4e9-ea3c17a86009",
+              "name": "If a privilege has already been requested for the same payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"filter\": {\n    \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n    \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n  },\n  \"rights\": {\n    \"browse\": \"<object>\",\n    \"buffer\": \"<object>\",\n    \"download\": \"<object>\",\n    \"wms\": \"<object>\",\n    \"wmts\": \"<object>\"\n  },\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"priority\": 10,\n  \"subscriptionId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"filter\": {\n    \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n    \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n  },\n  \"rights\": {\n    \"browse\": \"<object>\",\n    \"buffer\": \"<object>\",\n    \"download\": \"<object>\",\n    \"wms\": \"<object>\",\n    \"wmts\": \"<object>\"\n  },\n  \"createdAt\": \"string\",\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"priority\": 10,\n  \"subscriptionId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f900002-9826-4307-a028-bcad1ae5a114",
+              "name": "Creation of the privilege",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"filter\": {\n    \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n    \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n  },\n  \"rights\": {\n    \"browse\": \"<object>\",\n    \"buffer\": \"<object>\",\n    \"download\": \"<object>\",\n    \"wms\": \"<object>\",\n    \"wmts\": \"<object>\"\n  },\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"priority\": 10,\n  \"subscriptionId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"filter\": {\n    \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n    \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n  },\n  \"rights\": {\n    \"browse\": \"<object>\",\n    \"buffer\": \"<object>\",\n    \"download\": \"<object>\",\n    \"wms\": \"<object>\",\n    \"wmts\": \"<object>\"\n  },\n  \"createdAt\": \"string\",\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"priority\": 10,\n  \"subscriptionId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a47529d-f97d-45cb-ba94-6255f53110c3",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"filter\": {\n    \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n    \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n  },\n  \"rights\": {\n    \"browse\": \"<object>\",\n    \"buffer\": \"<object>\",\n    \"download\": \"<object>\",\n    \"wms\": \"<object>\",\n    \"wmts\": \"<object>\"\n  },\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"priority\": 10,\n  \"subscriptionId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a4fe00e-55cb-4581-bf4c-f9dec1219a73",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"filter\": {\n    \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n    \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n  },\n  \"rights\": {\n    \"browse\": \"<object>\",\n    \"buffer\": \"<object>\",\n    \"download\": \"<object>\",\n    \"wms\": \"<object>\",\n    \"wmts\": \"<object>\"\n  },\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"priority\": 10,\n  \"subscriptionId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5b8edbe-5ee1-4765-a141-81a4085a01fa",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"filter\": {\n    \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n    \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n  },\n  \"rights\": {\n    \"browse\": \"<object>\",\n    \"buffer\": \"<object>\",\n    \"download\": \"<object>\",\n    \"wms\": \"<object>\",\n    \"wmts\": \"<object>\"\n  },\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"priority\": 10,\n  \"subscriptionId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "648ad484-7a23-40ca-a8d9-4304e8861cb8",
+          "name": "Add Privileges in Bulk Mode",
+          "request": {
+            "name": "Add Privileges in Bulk Mode",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "privileges",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriptionUidsByUserUuids\": {\n    \"key_0\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"key_1\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"key_2\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  },\n  \"subscriptions\": {\n    \"key_0\": {\n      \"uid\": \"<uuid>\",\n      \"geo.idp.datastore\": {\n        \"privileges\": \"<object>\"\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d0f73ce8-a820-4896-af99-7745698f384b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriptionUidsByUserUuids\": {\n    \"key_0\": [\n      \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"799246d8-4172-11e8-b045-e7011a379ec4\"\n    ]\n  },\n  \"subscriptions\": {\n    \"key_0\": {\n      \"uid\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"geo.idp.datastore\": {\n        \"privileges\": \"<object>\"\n      }\n    },\n    \"key_1\": {\n      \"uid\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"geo.idp.datastore\": {\n        \"privileges\": \"<object>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da758d90-ae86-4902-9684-8e2948f4a5f0",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriptionUidsByUserUuids\": {\n    \"key_0\": [\n      \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"799246d8-4172-11e8-b045-e7011a379ec4\"\n    ]\n  },\n  \"subscriptions\": {\n    \"key_0\": {\n      \"uid\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"geo.idp.datastore\": {\n        \"privileges\": \"<object>\"\n      }\n    },\n    \"key_1\": {\n      \"uid\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"geo.idp.datastore\": {\n        \"privileges\": \"<object>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad10e679-18ae-49f0-9efa-70a48c87af6d",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriptionUidsByUserUuids\": {\n    \"key_0\": [\n      \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"799246d8-4172-11e8-b045-e7011a379ec4\"\n    ]\n  },\n  \"subscriptions\": {\n    \"key_0\": {\n      \"uid\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"geo.idp.datastore\": {\n        \"privileges\": \"<object>\"\n      }\n    },\n    \"key_1\": {\n      \"uid\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"geo.idp.datastore\": {\n        \"privileges\": \"<object>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af721cb0-ec29-4b84-90c7-6145eb7f9adc",
+              "name": "User has not enough rights to consume the item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriptionUidsByUserUuids\": {\n    \"key_0\": [\n      \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"799246d8-4172-11e8-b045-e7011a379ec4\"\n    ]\n  },\n  \"subscriptions\": {\n    \"key_0\": {\n      \"uid\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"geo.idp.datastore\": {\n        \"privileges\": \"<object>\"\n      }\n    },\n    \"key_1\": {\n      \"uid\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"geo.idp.datastore\": {\n        \"privileges\": \"<object>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1872207f-5085-4a5d-b387-6a0d495dce7a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriptionUidsByUserUuids\": {\n    \"key_0\": [\n      \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"799246d8-4172-11e8-b045-e7011a379ec4\"\n    ]\n  },\n  \"subscriptions\": {\n    \"key_0\": {\n      \"uid\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"geo.idp.datastore\": {\n        \"privileges\": \"<object>\"\n      }\n    },\n    \"key_1\": {\n      \"uid\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"geo.idp.datastore\": {\n        \"privileges\": \"<object>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6cfacdd0-c601-4105-a16e-99ca115028d1",
+          "name": "Search the Privileges",
+          "request": {
+            "name": "Search the Privileges",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "privileges",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "39a7c01b-f98a-4184-875f-95a85d4ce25e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"filter\": {\n        \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n      },\n      \"rights\": {\n        \"browse\": \"<object>\",\n        \"buffer\": \"<object>\",\n        \"download\": \"<object>\",\n        \"wms\": \"<object>\",\n        \"wmts\": \"<object>\"\n      },\n      \"createdAt\": \"string\",\n      \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"priority\": 10,\n      \"subscriptionId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n    },\n    {\n      \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"filter\": {\n        \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n      },\n      \"rights\": {\n        \"browse\": \"<object>\",\n        \"buffer\": \"<object>\",\n        \"download\": \"<object>\",\n        \"wms\": \"<object>\",\n        \"wmts\": \"<object>\"\n      },\n      \"createdAt\": \"string\",\n      \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"priority\": 10,\n      \"subscriptionId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe62caaf-df4e-403c-944a-8b52fccd2a47",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef2ec9df-7247-4d9b-a57d-04f10e43e143",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efebd22e-e34f-4124-b4e4-6400e5961a8f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9a0592a-a635-41d6-a887-c4931da962cd",
+          "name": "Delete an Existing User Privilege",
+          "request": {
+            "name": "Delete an Existing User Privilege",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "privileges",
+                ":privilegeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "privilegeId",
+                  "description": "(Required) The id of the privilege to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d105ded-37b1-41da-84d4-ca72e2a1ddb6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    ":privilegeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "privilegeId",
+                      "description": "(Required) The id of the privilege to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72265e59-5b3a-4a7a-92ad-4ebf77ce1154",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    ":privilegeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "privilegeId",
+                      "description": "(Required) The id of the privilege to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d343f8e2-2252-4c40-9f59-08d45ed06179",
+              "name": "User has not enough rights to consume the item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    ":privilegeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "privilegeId",
+                      "description": "(Required) The id of the privilege to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0933ba7e-51a5-4d74-a755-3634882fe43b",
+              "name": "Item not found in catalog or resource not found in item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    ":privilegeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "privilegeId",
+                      "description": "(Required) The id of the privilege to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37e17d3d-c891-4eae-8c4a-83c4a134f70a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "privileges",
+                    ":privilegeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "privilegeId",
+                      "description": "(Required) The id of the privilege to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4776822-d459-4e17-bdf2-56ad4348d3d4",
+          "name": "Create a User Workspace",
+          "request": {
+            "name": "Create a User Workspace",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"defaultItemTtl\": \"<int>\",\n  \"id\": \"<uuid>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"title\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "59f3d388-a3bb-42e6-bf1a-29a34c04afb0",
+              "name": "If a workspace has already been requested for the same payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"createdAt\": \"2017-10-12T08:55:52.651155Z\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92a9760a-a354-4055-a818-855538f6bff5",
+              "name": "Creation of the workspace",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"createdAt\": \"2017-10-12T08:55:52.651155Z\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8c2af64-8596-489a-a5eb-736cfafa00ea",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ee2174d-cda0-426e-8a8e-0735d07bf7a7",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d8724bd-d81a-4f7f-8fa8-7ce0ffeb4d92",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9976301b-89ae-4d47-a724-70def5238d46",
+          "name": "Search for Workspaces",
+          "request": {
+            "name": "Search for Workspaces",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a6363e8e-94af-4b6b-b821-7e899278c1cc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"workspace de Jean-Charles\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"userId\": \"aEr5695feGGn0ob\",\n      \"createdAt\": \"2017-10-12T08:55:52.651155Z\",\n      \"defaultItemTtl\": 123456,\n      \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"labels\": [\n        \"p�che\",\n        \"lac de biscarosse\",\n        \"carpe\"\n      ],\n      \"name\": \"flyinghippo\",\n      \"title\": \"S2 items\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3289675-4f5d-4c3b-9d68-e60709b822fe",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"workspace de Jean-Charles\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36c13886-87b1-40ce-8302-0ed1c0da2384",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"workspace de Jean-Charles\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a598df0-14b0-48b2-a51e-03fe171aebe8",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"workspace de Jean-Charles\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1349743a-06f2-4056-bc93-3608b258db36",
+          "name": "Delete a User Workspace.",
+          "request": {
+            "name": "Delete a User Workspace.",
+            "description": {
+              "content": "It will delete all catalog items linked to this workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces",
+                ":workspace"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspace",
+                  "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "73a4eeb9-875e-4917-b7c1-b28cb4c8e360",
+              "name": "Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8962692c-c0c9-4f6d-8b84-b9e06924d0c7",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03e3077b-e33a-4eb4-a7d8-750ad154c019",
+              "name": "User has not enough rights to consume the item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6548f94e-d543-4746-806e-0880e91e4ae9",
+              "name": "Item not found in catalog or resource not found in item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7541de5d-6a3b-4639-b232-01e46f789ca3",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3b08791-c76d-4375-a9cf-d14d1d6f8138",
+          "name": "Get a User Workspace",
+          "request": {
+            "name": "Get a User Workspace",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces",
+                ":workspace"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspace",
+                  "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a578b198-c3fa-4eea-bf33-7ab2bf0b6822",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"createdAt\": \"2017-10-12T08:55:52.651155Z\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b4a7ac2-fca4-4666-83ca-1b88eb8d6126",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5cee23e-1a22-436e-ac23-971df31daa78",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2a69d2c-beb4-444b-85a1-a60d65bb3154",
+              "name": "User has not enough rights to consume the item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "638975e7-c5c4-4b4a-959c-fc2af9192268",
+              "name": "Item not found in catalog or resource not found in item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e67db30-f24c-4546-be49-1383ed7ff785",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e899a57-49ff-41f3-a253-b76f8c0f03fd",
+          "name": "Update a User Workspace",
+          "request": {
+            "name": "Update a User Workspace",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces",
+                ":workspace"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspace",
+                  "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"defaultItemTtl\": \"<int>\",\n  \"id\": \"<uuid>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"title\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61d0e1cd-27a7-4015-ad98-060aab403050",
+              "name": "Updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"createdAt\": \"2017-10-12T08:55:52.651155Z\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d1226aa-49b9-4b8c-a2fe-c6388e40f9ab",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb4c92ef-f40d-4716-b49d-28db07465ad1",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "531a5466-922b-4511-b10e-02f13f0efa9e",
+              "name": "User has not enough rights to consume the item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "515f0c33-bbc7-49c5-9ff9-48a4c3e673b3",
+              "name": "Item not found in catalog or resource not found in item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24ff2e24-4714-4682-96b8-9cc6c743ab20",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"aEr5695feGGn0ob\",\n  \"defaultItemTtl\": 123456,\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"labels\": [\n    \"p�che\",\n    \"lac de biscarosse\",\n    \"carpe\"\n  ],\n  \"name\": \"flyinghippo\",\n  \"title\": \"S2 items\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc1ee07e-447f-426e-a8b8-c1e51304fbb2",
+          "name": "Remove an Item from a Workspace",
+          "request": {
+            "name": "Remove an Item from a Workspace",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces",
+                ":workspace",
+                "items",
+                ":catalogItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspace",
+                  "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "catalogItemId",
+                  "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8dc9ecf-7d8e-4ff2-9e1e-476737d588bc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"buffer\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"download\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"imagesMetadata\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"quicklook\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"thumbnail\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"wms\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"wmts\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    }\n  },\n  \"geometry\": {\n    \"geometry\": {},\n    \"type\": \"string\"\n  },\n  \"properties\": {\n    \"acquisitionDate\": \"2018-02-28T11:00:29.027Z\",\n    \"acquisitionStation\": \"FR1\",\n    \"archivingCenter\": \"FR1\",\n    \"azimuthAngle\": 180.0016489732347,\n    \"cloudCover\": 40.6133,\n    \"constellation\": \"SPOT\",\n    \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n    \"format\": \"image/jp2\",\n    \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n    \"illuminationAzimuthAngle\": 153.1708281261751,\n    \"illuminationElevationAngle\": 41.29941056994953,\n    \"incidenceAngle\": 18.92724363373624,\n    \"incidenceAngleAcrossTrack\": 13.90087672831772,\n    \"incidenceAngleAlongTrack\": 13.35195258346335,\n    \"organisationName\": \"AIRBUS DS GEO\",\n    \"parentIdentifier\": \"DS_PHR1A_201703101042018_FR1_PX_E002N41_0311_03240\",\n    \"platform\": \"SPOT7\",\n    \"processingCenter\": \"FCMUGC\",\n    \"processingDate\": \"2017-11-22T10:54:33.987\",\n    \"processingLevel\": \"SENSOR\",\n    \"processorName\": \"IPU V_05_03vV_05_03\",\n    \"productType\": \"bundle\",\n    \"productionStatus\": {\n      \"archive\": {\n        \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n      },\n      \"nearline\": {\n        \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n      },\n      \"online\": {\n        \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n      }\n    },\n    \"publicationDate\": \"2018-03-31T10:59:16.537577277Z\",\n    \"qualified\": false,\n    \"resolution\": 0.5,\n    \"sensorType\": \"OPTICAL\",\n    \"snowCover\": 0,\n    \"sourceIdentifier\": \"DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233\",\n    \"spectralRange\": \"VISIBLE\",\n    \"title\": \"DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233\",\n    \"workspaceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n    \"workspaceName\": \"public\",\n    \"workspaceTitle\": \"Public\"\n  },\n  \"rights\": {\n    \"associatedData\": {\n      \"privileges\": [\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        },\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        }\n      ]\n    },\n    \"browse\": {\n      \"privileges\": [\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        },\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        }\n      ]\n    },\n    \"buffer\": {\n      \"privileges\": [\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        },\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        }\n      ]\n    },\n    \"download\": {\n      \"privileges\": [\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        },\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        }\n      ]\n    },\n    \"wms\": {\n      \"privileges\": [\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        },\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        }\n      ]\n    },\n    \"wmts\": {\n      \"privileges\": [\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        },\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        }\n      ]\n    }\n  },\n  \"type\": \"Feature\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05715cb2-1b14-4b5e-9344-41dfe473d3a9",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6e02ae2-a801-4244-bac7-183263416137",
+              "name": "User has not enough rights to consume the item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "067bda47-1f51-4b3e-a668-9c0187434134",
+              "name": "Item not found in catalog or resource not found in item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e73aee9e-87e2-441f-a1e0-025d1c3e685f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a64b387-3e2b-4514-b114-76d0b351e340",
+          "name": "Copy an Item from a Workspace to an Other",
+          "request": {
+            "name": "Copy an Item from a Workspace to an Other",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces",
+                ":workspace",
+                "items",
+                ":catalogItemId",
+                "copy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspace",
+                  "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "catalogItemId",
+                  "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"targetWorkspace\": \"<uuid>\",\n  \"ttl\": \"<int>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8ea9b0e2-1556-4ef4-a3d9-e5d8eefab76d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetWorkspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"ttl\": 123456\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"buffer\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"download\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"imagesMetadata\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"quicklook\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"thumbnail\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"wms\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"wmts\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    }\n  },\n  \"geometry\": {\n    \"geometry\": {},\n    \"type\": \"string\"\n  },\n  \"properties\": {\n    \"acquisitionDate\": \"2018-02-28T11:00:29.027Z\",\n    \"acquisitionStation\": \"FR1\",\n    \"archivingCenter\": \"FR1\",\n    \"azimuthAngle\": 180.0016489732347,\n    \"cloudCover\": 40.6133,\n    \"constellation\": \"SPOT\",\n    \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n    \"format\": \"image/jp2\",\n    \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n    \"illuminationAzimuthAngle\": 153.1708281261751,\n    \"illuminationElevationAngle\": 41.29941056994953,\n    \"incidenceAngle\": 18.92724363373624,\n    \"incidenceAngleAcrossTrack\": 13.90087672831772,\n    \"incidenceAngleAlongTrack\": 13.35195258346335,\n    \"organisationName\": \"AIRBUS DS GEO\",\n    \"parentIdentifier\": \"DS_PHR1A_201703101042018_FR1_PX_E002N41_0311_03240\",\n    \"platform\": \"PHR1A\",\n    \"processingCenter\": \"FCMUGC\",\n    \"processingDate\": \"2017-11-22T10:54:33.987\",\n    \"processingLevel\": \"SENSOR\",\n    \"processorName\": \"IPU V_05_03vV_05_03\",\n    \"productType\": \"multispectral\",\n    \"productionStatus\": {\n      \"archive\": {\n        \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n      },\n      \"nearline\": {\n        \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n      },\n      \"online\": {\n        \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n      }\n    },\n    \"publicationDate\": \"2018-03-31T10:59:16.537577277Z\",\n    \"qualified\": false,\n    \"resolution\": 0.5,\n    \"sensorType\": \"OPTICAL\",\n    \"snowCover\": 0,\n    \"sourceIdentifier\": \"DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233\",\n    \"spectralRange\": \"VISIBLE\",\n    \"title\": \"DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233\",\n    \"workspaceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n    \"workspaceName\": \"public\",\n    \"workspaceTitle\": \"Public\"\n  },\n  \"rights\": {\n    \"associatedData\": {\n      \"privileges\": [\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        },\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        }\n      ]\n    },\n    \"browse\": {\n      \"privileges\": [\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        },\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        }\n      ]\n    },\n    \"buffer\": {\n      \"privileges\": [\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        },\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        }\n      ]\n    },\n    \"download\": {\n      \"privileges\": [\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        },\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        }\n      ]\n    },\n    \"wms\": {\n      \"privileges\": [\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        },\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        }\n      ]\n    },\n    \"wmts\": {\n      \"privileges\": [\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        },\n        {\n          \"filter\": {\n            \"workspace\": \"public\"\n          },\n          \"rights\": {\n            \"browse\": {},\n            \"wmts\": {}\n          },\n          \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n        }\n      ]\n    }\n  },\n  \"type\": \"Feature\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c04aa774-fdfc-447d-a2f7-6399939a96a4",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetWorkspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"ttl\": 123456\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f21e13b7-bf9b-4a59-8bed-86e73937df71",
+              "name": "User has not enough rights to consume the item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetWorkspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"ttl\": 123456\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e8b0cae-37a1-410c-967e-736237ab0fa9",
+              "name": "Item not found in catalog or resource not found in item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetWorkspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"ttl\": 123456\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5f81aa6-d6c3-4b00-b19e-b36689a4a235",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetWorkspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"ttl\": 123456\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb54ff56-2346-41ce-861e-b65aaa9dcbda",
+          "name": "Move an Item from a Workspace to an Other",
+          "request": {
+            "name": "Move an Item from a Workspace to an Other",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "workspaces",
+                ":workspace",
+                "items",
+                ":catalogItemId",
+                "move"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspace",
+                  "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "catalogItemId",
+                  "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"targetWorkspace\": \"<uuid>\",\n  \"ttl\": \"<int>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "63258c3e-21d8-4c5e-9a4b-841a1db7ebe1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetWorkspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"ttl\": 123456\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deleted\": 1330.0859024568167,\n  \"failures\": 5131.901472957678,\n  \"notFound\": 5456.721628335176,\n  \"total\": 142.96738705606882\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d868adbd-bc67-4344-994e-c9d9f38b4a04",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetWorkspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"ttl\": 123456\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "edc9a56f-2fa7-46bb-bde8-fcaaf214a0ee",
+              "name": "User has not enough rights to consume the item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetWorkspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"ttl\": 123456\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0844fe71-42a0-48ef-97f2-d087f913df1f",
+              "name": "Item not found in catalog or resource not found in item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetWorkspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"ttl\": 123456\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "177f3bcf-d371-4a0c-9673-51c939613390",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "workspaces",
+                    ":workspace",
+                    "items",
+                    ":catalogItemId",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspace",
+                      "description": "(Required) The workspace's identifier, that can be either its name or its id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"targetWorkspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"ttl\": 123456\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fe77a5d3-08df-4187-a715-a19c703bacfd",
+    "name": "OneAtlas WorldDEM Access Workspaces API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

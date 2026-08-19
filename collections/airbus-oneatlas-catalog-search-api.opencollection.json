@@ -1,0 +1,428 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Catalog search API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalog search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Opensearch Description Xml",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v2/opensearch/description.xml",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ]
+          },
+          "docs": "Get opensearch description document"
+        },
+        {
+          "info": {
+            "name": "Search Catalog Items with Opensearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v2/opensearch",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "bbox",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "geometry",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "acquisitionDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "acquisitionStation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "archiveAnonymousIdentifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "archivingCenter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "archiveIdentifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "azimuthAngle",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "class",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "center",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cloudCover",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "comment",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commercialReference",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "constellation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "correlationId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "downloadingRequested",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "expirationDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "featureCount",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "icr",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "illuminationAngleSeparation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "illuminationAzimuthAngle",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "illuminationElevationAngle",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "incidenceAngle",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "incidenceAngleAcrossTrack",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "incidenceAngleAlongTrack",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "meanDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orbit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "organisationName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "parentIdenfifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "processingCenter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "processingDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "processingLevel",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "processorName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "productCategory",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "productionStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "productType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "publicationDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "relation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "resolution",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "resourceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "satellite",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sensorType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "snowCover",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sourceIdentifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "spectralRange",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "station",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "stereoMethod",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "viewingAngleSeparation",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "itemsPerPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search catalog items. Search is case sensitive. Results match all\nparameters.\n"
+        },
+        {
+          "info": {
+            "name": "Search Catalog Items with Opensearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v2/opensearch",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search catalog items. Search is case sensitive. Results match all\nparameters.\n"
+        },
+        {
+          "info": {
+            "name": "Get Domain for a Given Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v2/opensearch/domains/:propertyName",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "propertyName",
+                "value": "processingLevel",
+                "type": "path",
+                "description": "The name of a queryable item property"
+              }
+            ]
+          },
+          "docs": "Given a property name, it returns the eligible existing values for querying items looking for this particular property\n"
+        },
+        {
+          "info": {
+            "name": "Search Deleted Catalog Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/deleted/search",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search deleted catalog items by deleted date.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

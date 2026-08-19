@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access user API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "user",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Return Account Information of the Current User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/user/whoami"
+          },
+          "docs": "Return Account Information of the Current User"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

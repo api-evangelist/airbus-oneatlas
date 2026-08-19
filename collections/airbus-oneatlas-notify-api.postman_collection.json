@@ -1,0 +1,687 @@
+{
+  "item": [
+    {
+      "id": "7caeb471-f1b0-4efe-93ff-22814ebf1dbb",
+      "name": "Notify",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "349c131a-0555-463a-a371-99122adfb3cc",
+          "name": "Search the Notifications",
+          "request": {
+            "name": "Search the Notifications",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "notifications",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b1625979-5e13-456c-bc08-a5665a8a50c4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "notifications",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"channels\": [\n        {\n          \"type\": \"email\",\n          \"parameters\": {\n            \"addresses\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"type\": \"catalogitem\",\n      \"filter\": {\n        \"creationDate\": \"2017-08-29T00:00:00Z\",\n        \"endDate\": \"2017-08-29T00:00:00Z\",\n        \"itemsPerPage\": 50,\n        \"payload\": {},\n        \"progress\": 9.528478696042297,\n        \"sortBy\": \"+startDate,-endDate\",\n        \"startDate\": \"2017-08-29T00:00:00Z\",\n        \"startIndex\": 1,\n        \"status\": \"CANCELED\",\n        \"type\": \"ingestion\",\n        \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n      },\n      \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n    },\n    {\n      \"channels\": [\n        {\n          \"type\": \"email\",\n          \"parameters\": {\n            \"addresses\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"type\": \"activity\",\n      \"filter\": {\n        \"creationDate\": \"2017-08-29T00:00:00Z\",\n        \"endDate\": \"2017-08-29T00:00:00Z\",\n        \"itemsPerPage\": 50,\n        \"payload\": {},\n        \"progress\": 72.81988458879934,\n        \"sortBy\": \"+startDate,-endDate\",\n        \"startDate\": \"2017-08-29T00:00:00Z\",\n        \"startIndex\": 1,\n        \"status\": \"WAITING_CANCEL\",\n        \"type\": \"processing\",\n        \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n      },\n      \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "811545c0-21b1-4990-9096-33c563a7d1b6",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "notifications",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "581c5481-3d0e-4080-a2e9-d82b542b2247",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "notifications",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93d8799b-3eda-4420-8cdd-2725db0037fe",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "notifications",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfed5a8e-5d5b-48bd-9a5d-9378cd5f655b",
+          "name": "Delete a Notification Subscription",
+          "request": {
+            "name": "Delete a Notification Subscription",
+            "description": {
+              "content": "Delete a subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "notifications",
+                ":notificationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "notificationId",
+                  "description": "(Required) the identifier of the notification subscription"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0fa78977-e210-4a49-aaec-e017d842588e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "notifications",
+                    ":notificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "notificationId",
+                      "description": "(Required) the identifier of the notification subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82f71ea9-b580-44d9-8d05-9d8aad1682a6",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "notifications",
+                    ":notificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "notificationId",
+                      "description": "(Required) the identifier of the notification subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba094ae6-f79a-4cdb-bb19-3924ae422a44",
+              "name": "User has not enough rights to consume the item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "notifications",
+                    ":notificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "notificationId",
+                      "description": "(Required) the identifier of the notification subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7afa5bb8-5fb8-4f57-b25a-552350e2d974",
+              "name": "Item not found in catalog or resource not found in item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "notifications",
+                    ":notificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "notificationId",
+                      "description": "(Required) the identifier of the notification subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fd6fbe2-104c-4460-be88-616b0efe95de",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "notifications",
+                    ":notificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "notificationId",
+                      "description": "(Required) the identifier of the notification subscription"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "040b24d3-50bd-4989-9551-95a78c09f5e0",
+    "name": "OneAtlas WorldDEM Access Notify API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

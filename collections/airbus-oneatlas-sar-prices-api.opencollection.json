@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Sar/Prices API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sar/Prices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Prices for Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/prices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Get Prices for Items"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1305 @@
+{
+  "item": [
+    {
+      "id": "ad5dd102-080d-4c4b-ba4a-bd8d8aca5185",
+      "name": "Subscriptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b8dffc5f-8b67-474f-9ad9-aa414a427c29",
+          "name": "Get Contract by Id",
+          "request": {
+            "name": "Get Contract by Id",
+            "description": {
+              "content": "Get contract by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "contracts",
+                ":contractId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contractId",
+                  "description": "(Required) It corresponds to an internal id for the customer contract - you will be provided the contractId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1ef2ea1f-9f0d-4a81-afb6-f44903f8ca37",
+              "name": "contract",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "contracts",
+                    ":contractId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contractId",
+                      "description": "(Required) It corresponds to an internal id for the customer contract - you will be provided the contractId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"credits\": 1201.943649861489,\n  \"kind\": {},\n  \"geofence\": {\n    \"coordinates\": [\n      [\n        [\n          3910.2290158562846,\n          9523.365519560579\n        ],\n        [\n          8198.784945603375,\n          111.97799278737986\n        ],\n        [\n          6294.744703833359,\n          3708.8334883725715\n        ],\n        [\n          1777.8288728123791,\n          7149.515636842345\n        ]\n      ]\n    ],\n    \"type\": \"string\"\n  },\n  \"oneliveZoomLimit\": 14\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c69997da-474b-40dc-b87f-a662fcfc7eca",
+          "name": "Get All Contract Payments",
+          "request": {
+            "name": "Get All Contract Payments",
+            "description": {
+              "content": "Get all payments for the user contract",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "contracts",
+                ":contractId",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Page number, defaults to '1'"
+                },
+                {
+                  "disabled": false,
+                  "key": "itemsPerPage",
+                  "value": "<number>",
+                  "description": "Amount of items per page, defaults to '10'"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contractId",
+                  "description": "(Required) It corresponds to an internal id for the customer contract - you will be provided the contractId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef27ae06-bd0c-4b10-8b4d-96f589c8a21d",
+              "name": "payment list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "contracts",
+                    ":contractId",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "itemsPerPage",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contractId",
+                      "description": "(Required) It corresponds to an internal id for the customer contract - you will be provided the contractId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"contractId\": \"string\",\n    \"createdAt\": \"string\",\n    \"creditAmount\": 8493,\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"orderId\": \"string\",\n    \"subscriptionId\": \"string\",\n    \"type\": \"refund\"\n  },\n  {\n    \"contractId\": \"string\",\n    \"createdAt\": \"string\",\n    \"creditAmount\": 7112,\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"orderId\": \"string\",\n    \"subscriptionId\": \"string\",\n    \"type\": \"payment\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "207edfe1-6ca9-4784-aa95-998937a3e9bb",
+          "name": "Get All Subscriptions by Contract Id",
+          "request": {
+            "name": "Get All Subscriptions by Contract Id",
+            "description": {
+              "content": "Get all subscriptions by contract id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "contracts",
+                ":contractId",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Page number, defaults to '1'"
+                },
+                {
+                  "disabled": false,
+                  "key": "itemsPerPage",
+                  "value": "<number>",
+                  "description": "Amount of items per page, defaults to '10'"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter subscriptions by type"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter subscriptions by status"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contractId",
+                  "description": "(Required) It corresponds to an internal id for the customer contract - you will be provided the contractId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f86ba8c-6d02-4800-af7c-d2d8164d7ce3",
+              "name": "subscription list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "contracts",
+                    ":contractId",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "itemsPerPage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contractId",
+                      "description": "(Required) It corresponds to an internal id for the customer contract - you will be provided the contractId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": {},\n    \"duration\": 1876,\n    \"paymentModality\": \"string\",\n    \"tileAmount\": 6233,\n    \"monthlyPrice\": 814.4939287432773,\n    \"streamingPlan\": {},\n    \"geofence\": {\n      \"coordinates\": [\n        [\n          [\n            9340.002072447985,\n            2377.4211852035364\n          ],\n          [\n            4852.410840172933,\n            3024.590204455041\n          ],\n          [\n            2299.549452144213,\n            855.506173688857\n          ],\n          [\n            5338.895902566587,\n            2469.4653368378604\n          ]\n        ]\n      ],\n      \"type\": \"string\"\n    },\n    \"startedAt\": \"   \\f ᠎ 6729-11-18     ᠎ ᠎\",\n    \"title\": \"string\"\n  },\n  {\n    \"type\": {},\n    \"duration\": 1444,\n    \"paymentModality\": \"string\",\n    \"tileAmount\": 744,\n    \"monthlyPrice\": 2968.604283626851,\n    \"streamingPlan\": {},\n    \"geofence\": {\n      \"coordinates\": [\n        [\n          [\n            2538.2769085430477,\n            483.281933065175\n          ],\n          [\n            9400.592324089368,\n            7296.55660213016\n          ],\n          [\n            7650.270621152449,\n            3088.293243418638\n          ],\n          [\n            1974.5099514473252,\n            5979.177812067705\n          ]\n        ]\n      ],\n      \"type\": \"string\"\n    },\n    \"startedAt\": \"\\r ᠎      6192-5-14\",\n    \"title\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2194dcc8-09a7-476f-8a34-c292b4e914ae",
+          "name": "User Information",
+          "request": {
+            "name": "User Information",
+            "description": {
+              "content": "Get user informations about contract",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79a984a1-6cb6-465c-911b-977dc0a5123e",
+              "name": "user information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "179f9b5a-83fb-4c56-b998-72cb132a4ee3",
+          "name": "Services the Current User Can Access",
+          "request": {
+            "name": "Services the Current User Can Access",
+            "description": {
+              "content": "Returns the different services the current user can access based on his contract",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "me",
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6a7dcd2-981b-421b-a8d0-b43d891d4fb8",
+              "name": "services information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "me",
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ada6c87-100b-4f19-8205-0b41fe71af79",
+          "name": "Get Payment by Order Id",
+          "request": {
+            "name": "Get Payment by Order Id",
+            "description": {
+              "content": "Get payment for the user contract and order id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "orders",
+                ":orderId",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) The order id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9dc7a74d-cd1d-4a97-8b4a-5261b0a7bcb7",
+              "name": "payment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "orders",
+                    ":orderId",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"contractId\": \"string\",\n    \"createdAt\": \"string\",\n    \"creditAmount\": 8493,\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"orderId\": \"string\",\n    \"subscriptionId\": \"string\",\n    \"type\": \"refund\"\n  },\n  {\n    \"contractId\": \"string\",\n    \"createdAt\": \"string\",\n    \"creditAmount\": 7112,\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"orderId\": \"string\",\n    \"subscriptionId\": \"string\",\n    \"type\": \"payment\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e8ca5d7-246c-4649-9972-7d41a33f104e",
+          "name": "Get All Payments for the Current User Contract",
+          "request": {
+            "name": "Get All Payments for the Current User Contract",
+            "description": {
+              "content": "Get all payments for the current user contract",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Page number, defaults to '1'"
+                },
+                {
+                  "disabled": false,
+                  "key": "itemsPerPage",
+                  "value": "<number>",
+                  "description": "Amount of items per page, defaults to '10'"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0aaa1536-dc3b-4f14-b96b-8902332f788e",
+              "name": "payment list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "itemsPerPage",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"contractId\": \"string\",\n    \"createdAt\": \"string\",\n    \"creditAmount\": 8493,\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"orderId\": \"string\",\n    \"subscriptionId\": \"string\",\n    \"type\": \"refund\"\n  },\n  {\n    \"contractId\": \"string\",\n    \"createdAt\": \"string\",\n    \"creditAmount\": 7112,\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"orderId\": \"string\",\n    \"subscriptionId\": \"string\",\n    \"type\": \"payment\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7d684f4-6151-4538-b5ea-22239176367b",
+          "name": "Get Payment by Payment Id",
+          "request": {
+            "name": "Get Payment by Payment Id",
+            "description": {
+              "content": "Get payment for the user contract and payment id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "payments",
+                ":paymentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "paymentId",
+                  "description": "(Required) The payment id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "68250aab-4513-4d1a-803a-e1876e1d53b0",
+              "name": "payment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "payments",
+                    ":paymentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentId",
+                      "description": "(Required) The payment id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa6b8dc1-b668-4cdd-9bbf-c8399d70317d",
+          "name": "Get All Subscriptions for the Current User",
+          "request": {
+            "name": "Get All Subscriptions for the Current User",
+            "description": {
+              "content": "Get all subscriptions for the current user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Page number, defaults to '1'"
+                },
+                {
+                  "disabled": false,
+                  "key": "itemsPerPage",
+                  "value": "<number>",
+                  "description": "Amount of items per page, defaults to '10'"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter subscriptions by type"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38a71501-5173-46ff-ac1b-b2adda1dce33",
+              "name": "subscription list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "itemsPerPage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": {},\n    \"duration\": 1876,\n    \"paymentModality\": \"string\",\n    \"tileAmount\": 6233,\n    \"monthlyPrice\": 814.4939287432773,\n    \"streamingPlan\": {},\n    \"geofence\": {\n      \"coordinates\": [\n        [\n          [\n            9340.002072447985,\n            2377.4211852035364\n          ],\n          [\n            4852.410840172933,\n            3024.590204455041\n          ],\n          [\n            2299.549452144213,\n            855.506173688857\n          ],\n          [\n            5338.895902566587,\n            2469.4653368378604\n          ]\n        ]\n      ],\n      \"type\": \"string\"\n    },\n    \"startedAt\": \"   \\f ᠎ 6729-11-18     ᠎ ᠎\",\n    \"title\": \"string\"\n  },\n  {\n    \"type\": {},\n    \"duration\": 1444,\n    \"paymentModality\": \"string\",\n    \"tileAmount\": 744,\n    \"monthlyPrice\": 2968.604283626851,\n    \"streamingPlan\": {},\n    \"geofence\": {\n      \"coordinates\": [\n        [\n          [\n            2538.2769085430477,\n            483.281933065175\n          ],\n          [\n            9400.592324089368,\n            7296.55660213016\n          ],\n          [\n            7650.270621152449,\n            3088.293243418638\n          ],\n          [\n            1974.5099514473252,\n            5979.177812067705\n          ]\n        ]\n      ],\n      \"type\": \"string\"\n    },\n    \"startedAt\": \"\\r ᠎      6192-5-14\",\n    \"title\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5779cf95-16d3-4da8-a550-6b1f97d9e6d2",
+          "name": "Get Subscription by Id",
+          "request": {
+            "name": "Get Subscription by Id",
+            "description": {
+              "content": "Get subscription by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "subscriptions",
+                ":subscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The subscription id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "264a7d79-77f4-4563-be8c-49e2fcf71cbc",
+              "name": "subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The subscription id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": {},\n  \"duration\": 6273,\n  \"paymentModality\": \"string\",\n  \"tileAmount\": 8811,\n  \"monthlyPrice\": 4378.491896969845,\n  \"streamingPlan\": {},\n  \"geofence\": {\n    \"coordinates\": [\n      [\n        [\n          4801.480828654413,\n          9694.099851788715\n        ],\n        [\n          3353.289575696826,\n          171.6418040297807\n        ],\n        [\n          3367.418618543704,\n          4410.095245376578\n        ],\n        [\n          9537.478458969284,\n          34.52772878415167\n        ]\n      ]\n    ],\n    \"type\": \"string\"\n  },\n  \"startedAt\": \"   ﻿᠎  6611-12-30   \",\n  \"title\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83b73722-b0d3-4806-88ef-97b8f2a58eb8",
+          "name": "Get All Payments by Subscription Id",
+          "request": {
+            "name": "Get All Payments by Subscription Id",
+            "description": {
+              "content": "Get all payments for the user contract and subscription id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "subscriptions",
+                ":subscriptionId",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Page number, defaults to '1'"
+                },
+                {
+                  "disabled": false,
+                  "key": "itemsPerPage",
+                  "value": "<number>",
+                  "description": "Amount of items per page, defaults to '10'"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The subscription id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "584ff6d1-f266-4066-ab4b-199dea5071fd",
+              "name": "payment list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "itemsPerPage",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The subscription id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"contractId\": \"string\",\n    \"createdAt\": \"string\",\n    \"creditAmount\": 8493,\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"orderId\": \"string\",\n    \"subscriptionId\": \"string\",\n    \"type\": \"refund\"\n  },\n  {\n    \"contractId\": \"string\",\n    \"createdAt\": \"string\",\n    \"creditAmount\": 7112,\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"orderId\": \"string\",\n    \"subscriptionId\": \"string\",\n    \"type\": \"payment\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8fd77a4-e2b0-42bb-804e-be133a6547d8",
+          "name": "Revoke a Subscription",
+          "request": {
+            "name": "Revoke a Subscription",
+            "description": {
+              "content": "Revoke a subscription by contract and subscription id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "subscriptions",
+                ":subscriptionId",
+                "revoke"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The subscription id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a0118d6-7190-41c2-8966-8666b21faffc",
+              "name": "Message related to the revokation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "subscriptions",
+                    ":subscriptionId",
+                    "revoke"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The subscription id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cbd2ed82-c0d3-428b-a3a3-e83ea224390f",
+    "name": "OneAtlas WorldDEM Access Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

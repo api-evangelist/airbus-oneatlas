@@ -1,0 +1,1484 @@
+{
+  "item": [
+    {
+      "id": "e9901a3d-ee80-48c1-a8ee-acb462000b00",
+      "name": "Sar/Search",
+      "description": {
+        "content": "Endpoint to search for possible SAR acquisitions.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eef042c7-8220-4943-a263-26fa64b2645f",
+          "name": "Airbus OneAtlas Search for Possible Acquisitions for Tasking",
+          "request": {
+            "name": "Airbus OneAtlas Search for Possible Acquisitions for Tasking",
+            "description": {},
+            "url": {
+              "path": [
+                "sar",
+                "feasibility"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"aoi\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ],\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ]\n  },\n  \"time\": {\n    \"from\": \"<dateTime>\",\n    \"to\": \"<dateTime>\"\n  },\n  \"feasibilityLevel\": \"<string>\",\n  \"sensorMode\": \"<string>\",\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"priority\": \"<string>\",\n  \"periodicity\": \"<integer>\",\n  \"occurrences\": \"<integer>\",\n  \"polarizationChannels\": \"<string>\",\n  \"incidenceAngle\": {\n    \"minimum\": \"<number>\",\n    \"maximum\": \"<number>\"\n  },\n  \"pathDirection\": \"both\",\n  \"lookDirection\": \"<string>\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"<string>\",\n  \"productType\": \"<string>\",\n  \"resolutionVariant\": \"<string>\",\n  \"acquisitionOnly\": false,\n  \"receivingStation\": \"NSG_POOL\",\n  \"orbitType\": \"<string>\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4681d3f9-8df7-4e10-a911-4a48d8f6b2aa",
+              "name": "Possible acquisitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "feasibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"aoi\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          9.346,\n          47.788\n        ],\n        [\n          9.291,\n          47.644\n        ],\n        [\n          9.538,\n          47.592\n        ],\n        [\n          9.62,\n          47.75\n        ],\n        [\n          9.511,\n          47.802\n        ],\n        [\n          9.346,\n          47.788\n        ]\n      ]\n    ]\n  },\n  \"tags\": [\n    \"Project 1\"\n  ],\n  \"time\": {\n    \"from\": \"2022-10-14T13:28:03.569Z\",\n    \"to\": \"2022-10-24T13:28:03.569Z\"\n  },\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"feasibilityLevel\": \"complete\",\n  \"sensorMode\": \"SAR_SM_S\",\n  \"polarizationChannels\": \"HH\",\n  \"incidenceAngle\": {\n    \"minimum\": 30,\n    \"maximum\": 50\n  },\n  \"pathDirection\": [\n    \"ascending\",\n    \"descending\"\n  ],\n  \"lookDirection\": \"R\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"default\",\n  \"productType\": \"EEC\",\n  \"resolutionVariant\": \"SE\",\n  \"acquisitionOnly\": false,\n  \"receivingStation\": \"NSG_POOL\",\n  \"orbitType\": \"NRT\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n          [\n            [\n              5462.435061085661,\n              5413.111056089541\n            ],\n            [\n              9290.528893892026,\n              4539.988145396656\n            ]\n          ],\n          [\n            [\n              7161.848335987292,\n              6831.432835764417\n            ],\n            [\n              6873.593965394539,\n              9183.764496503616\n            ]\n          ]\n        ]\n      },\n      \"properties\": {\n        \"itemId\": \"d1fe0ea8-7fd5-c2eb-f649-e12c8a664f19\",\n        \"mission\": \"PAZ\",\n        \"acquisitionId\": \"TSX-1_ST_S_spot_049R_49677_D31767159_432\",\n        \"startTime\": \"1961-08-16T11:19:46.049Z\",\n        \"stopTime\": \"1976-04-12T21:54:27.845Z\",\n        \"sensorMode\": \"SAR_SM_S\",\n        \"polarizationChannels\": \"HH\",\n        \"beamId\": \"strip_010\",\n        \"pathDirection\": \"ascending\",\n        \"lookDirection\": \"L\",\n        \"incidenceAngle\": {\n          \"minimum\": 30,\n          \"maximum\": 50\n        },\n        \"lastUpdateTime\": \"2008-03-04T15:16:31.230Z\",\n        \"status\": \"downlink\",\n        \"outOfFullPerformance\": false,\n        \"satellite\": \"TSX-1\",\n        \"groupId\": 1110,\n        \"productType\": \"EEC\",\n        \"resolutionVariant\": \"RE\",\n        \"orbitType\": \"rapid\",\n        \"geocodedIncidenceMask\": false,\n        \"mapProjection\": \"auto\",\n        \"gainAttenuation\": 0,\n        \"relativeOrbit\": 2464,\n        \"absoluteOrbit\": 6077,\n        \"orderTemplate\": \"string\",\n        \"sensitivity\": {\n          \"status\": \"sensitive\",\n          \"missingParameters\": [\n            \"productType\",\n            \"resolutionVariant\"\n          ],\n          \"type\": \"resolution\",\n          \"sensitivityInformation\": \"string\"\n        },\n        \"itemType\": \"future\",\n        \"scienceOrbitAvailability\": false,\n        \"submissionDeadline\": \"1971-11-10T10:50:11.020Z\",\n        \"acquisitionOnly\": false,\n        \"priority\": \"standard\",\n        \"conflicts\": {\n          \"status\": \"expected\",\n          \"external\": {\n            \"key_0\": {\n              \"status\": \"potential\",\n              \"startTime\": \"1998-09-30T21:04:07.847Z\",\n              \"stopTime\": \"2008-10-15T08:18:18.317Z\"\n            }\n          },\n          \"baskets\": {\n            \"key_0\": {\n              \"key_0\": {\n                \"status\": \"none\",\n                \"startTime\": \"1955-11-08T21:34:15.289Z\",\n                \"stopTime\": \"2006-12-10T06:20:50.085Z\"\n              },\n              \"key_1\": {\n                \"status\": \"none\",\n                \"startTime\": \"1960-09-30T01:44:16.231Z\",\n                \"stopTime\": \"2008-09-24T19:40:22.245Z\"\n              },\n              \"key_2\": {\n                \"status\": \"potential\",\n                \"startTime\": \"1987-07-16T20:41:22.048Z\",\n                \"stopTime\": \"2017-05-06T01:56:34.058Z\"\n              }\n            }\n          },\n          \"shopcart\": {\n            \"key_0\": {\n              \"status\": \"expected\",\n              \"startTime\": \"2001-07-21T16:02:49.913Z\",\n              \"stopTime\": \"1975-03-28T23:16:29.272Z\"\n            },\n            \"key_1\": {\n              \"status\": \"expected\",\n              \"startTime\": \"1953-01-24T02:22:39.757Z\",\n              \"stopTime\": \"2022-06-21T09:37:35.802Z\"\n            }\n          },\n          \"feasibility\": {\n            \"key_0\": {\n              \"status\": \"potential\",\n              \"startTime\": \"2012-10-17T17:10:17.310Z\",\n              \"stopTime\": \"2024-02-20T12:48:48.679Z\"\n            },\n            \"key_1\": {\n              \"status\": \"expected\",\n              \"startTime\": \"2001-06-06T18:24:59.178Z\",\n              \"stopTime\": \"1961-12-09T12:49:59.247Z\"\n            }\n          }\n        },\n        \"estimatedDownloadAvailability\": \"1985-10-01T14:10:34.951Z\",\n        \"receivingStation\": \"NSG_POOL\",\n        \"expiry\": \"1989-09-25T17:44:04.366Z\"\n      }\n    },\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n          [\n            [\n              2354.8329850132855,\n              4481.777764368485\n            ],\n            [\n              7956.5244539444675,\n              192.53958562986062\n            ]\n          ],\n          [\n            [\n              3562.8425629564977,\n              7983.91291501824\n            ],\n            [\n              2130.0873604833723,\n              370.5023779124117\n            ]\n          ]\n        ]\n      },\n      \"properties\": {\n        \"itemId\": \"10000339-cac8-21e2-54d8-6eca710e59d9\",\n        \"mission\": \"TSX\",\n        \"acquisitionId\": \"TSX-1_ST_S_spot_049R_49677_D31767159_432\",\n        \"startTime\": \"1954-08-16T22:19:34.574Z\",\n        \"stopTime\": \"1961-03-31T21:30:39.146Z\",\n        \"sensorMode\": \"SAR_SM_S\",\n        \"polarizationChannels\": \"HH\",\n        \"beamId\": \"strip_010\",\n        \"pathDirection\": \"ascending\",\n        \"lookDirection\": \"L\",\n        \"incidenceAngle\": {\n          \"minimum\": 30,\n          \"maximum\": 50\n        },\n        \"lastUpdateTime\": \"2002-10-17T00:45:21.861Z\",\n        \"status\": \"waitingForDeliveryApproval\",\n        \"outOfFullPerformance\": false,\n        \"satellite\": \"TDX-1\",\n        \"groupId\": 2543,\n        \"productType\": \"EEC\",\n        \"resolutionVariant\": \"RE\",\n        \"orbitType\": \"rapid\",\n        \"geocodedIncidenceMask\": false,\n        \"mapProjection\": \"auto\",\n        \"gainAttenuation\": 0,\n        \"relativeOrbit\": 2382,\n        \"absoluteOrbit\": 1010,\n        \"orderTemplate\": \"string\",\n        \"sensitivity\": {\n          \"status\": \"potential\",\n          \"missingParameters\": [\n            \"productType\",\n            \"resolutionVariant\"\n          ],\n          \"type\": \"resolution\",\n          \"sensitivityInformation\": \"string\"\n        },\n        \"itemType\": \"catalogue\",\n        \"scienceOrbitAvailability\": true,\n        \"submissionDeadline\": \"1975-10-07T14:08:06.437Z\",\n        \"acquisitionOnly\": false,\n        \"priority\": \"standard\",\n        \"conflicts\": {\n          \"status\": \"none\",\n          \"external\": {\n            \"key_0\": {\n              \"status\": \"expected\",\n              \"startTime\": \"2026-03-18T01:01:20.379Z\",\n              \"stopTime\": \"2007-06-10T09:38:40.854Z\"\n            }\n          },\n          \"baskets\": {\n            \"key_0\": {\n              \"key_0\": {\n                \"status\": \"none\",\n                \"startTime\": \"1978-03-14T00:13:45.560Z\",\n                \"stopTime\": \"1989-11-25T03:40:55.035Z\"\n              },\n              \"key_1\": {\n                \"status\": \"none\",\n                \"startTime\": \"2026-04-25T04:31:01.225Z\",\n                \"stopTime\": \"2016-06-08T04:27:52.847Z\"\n              }\n            },\n            \"key_1\": {\n              \"key_0\": {\n                \"status\": \"none\",\n                \"startTime\": \"1984-12-31T18:19:41.316Z\",\n                \"stopTime\": \"1992-02-19T02:06:14.151Z\"\n              }\n            },\n            \"key_2\": {\n              \"key_0\": {\n                \"status\": \"none\",\n                \"startTime\": \"1959-01-26T22:04:04.939Z\",\n                \"stopTime\": \"1948-08-19T06:32:21.462Z\"\n              }\n            }\n          },\n          \"shopcart\": {\n            \"key_0\": {\n              \"status\": \"none\",\n              \"startTime\": \"1950-11-17T12:21:01.192Z\",\n              \"stopTime\": \"1966-07-25T04:43:40.823Z\"\n            },\n            \"key_1\": {\n              \"status\": \"expected\",\n              \"startTime\": \"2015-04-19T19:46:15.955Z\",\n              \"stopTime\": \"2015-09-04T15:37:40.201Z\"\n            }\n          },\n          \"feasibility\": {\n            \"key_0\": {\n              \"status\": \"potential\",\n              \"startTime\": \"1976-10-06T06:50:57.185Z\",\n              \"stopTime\": \"1988-06-09T15:42:31.933Z\"\n            }\n          }\n        },\n        \"estimatedDownloadAvailability\": \"1985-02-18T15:00:34.846Z\",\n        \"receivingStation\": \"NSG_POOL\",\n        \"expiry\": \"1955-09-23T01:56:58.167Z\"\n      }\n    }\n  ],\n  \"bbox\": [\n    6080.5838931508615,\n    4091.6673764222423,\n    2800.1768649130463,\n    7651.899785491699\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c51e2426-5755-476e-8658-90cf5094e1db",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "feasibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"aoi\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          9.346,\n          47.788\n        ],\n        [\n          9.291,\n          47.644\n        ],\n        [\n          9.538,\n          47.592\n        ],\n        [\n          9.62,\n          47.75\n        ],\n        [\n          9.511,\n          47.802\n        ],\n        [\n          9.346,\n          47.788\n        ]\n      ]\n    ]\n  },\n  \"tags\": [\n    \"Project 1\"\n  ],\n  \"time\": {\n    \"from\": \"2022-10-14T13:28:03.569Z\",\n    \"to\": \"2022-10-24T13:28:03.569Z\"\n  },\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"feasibilityLevel\": \"complete\",\n  \"sensorMode\": \"SAR_SM_S\",\n  \"polarizationChannels\": \"HH\",\n  \"incidenceAngle\": {\n    \"minimum\": 30,\n    \"maximum\": 50\n  },\n  \"pathDirection\": [\n    \"ascending\",\n    \"descending\"\n  ],\n  \"lookDirection\": \"R\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"default\",\n  \"productType\": \"EEC\",\n  \"resolutionVariant\": \"SE\",\n  \"acquisitionOnly\": false,\n  \"receivingStation\": \"NSG_POOL\",\n  \"orbitType\": \"NRT\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c990a71e-de94-4f33-a33d-5fa573867f36",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "feasibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"aoi\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          9.346,\n          47.788\n        ],\n        [\n          9.291,\n          47.644\n        ],\n        [\n          9.538,\n          47.592\n        ],\n        [\n          9.62,\n          47.75\n        ],\n        [\n          9.511,\n          47.802\n        ],\n        [\n          9.346,\n          47.788\n        ]\n      ]\n    ]\n  },\n  \"tags\": [\n    \"Project 1\"\n  ],\n  \"time\": {\n    \"from\": \"2022-10-14T13:28:03.569Z\",\n    \"to\": \"2022-10-24T13:28:03.569Z\"\n  },\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"feasibilityLevel\": \"complete\",\n  \"sensorMode\": \"SAR_SM_S\",\n  \"polarizationChannels\": \"HH\",\n  \"incidenceAngle\": {\n    \"minimum\": 30,\n    \"maximum\": 50\n  },\n  \"pathDirection\": [\n    \"ascending\",\n    \"descending\"\n  ],\n  \"lookDirection\": \"R\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"default\",\n  \"productType\": \"EEC\",\n  \"resolutionVariant\": \"SE\",\n  \"acquisitionOnly\": false,\n  \"receivingStation\": \"NSG_POOL\",\n  \"orbitType\": \"NRT\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4cd7b399-7fcc-43e8-acee-1c43faf57f95",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "feasibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"aoi\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          9.346,\n          47.788\n        ],\n        [\n          9.291,\n          47.644\n        ],\n        [\n          9.538,\n          47.592\n        ],\n        [\n          9.62,\n          47.75\n        ],\n        [\n          9.511,\n          47.802\n        ],\n        [\n          9.346,\n          47.788\n        ]\n      ]\n    ]\n  },\n  \"tags\": [\n    \"Project 1\"\n  ],\n  \"time\": {\n    \"from\": \"2022-10-14T13:28:03.569Z\",\n    \"to\": \"2022-10-24T13:28:03.569Z\"\n  },\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"feasibilityLevel\": \"complete\",\n  \"sensorMode\": \"SAR_SM_S\",\n  \"polarizationChannels\": \"HH\",\n  \"incidenceAngle\": {\n    \"minimum\": 30,\n    \"maximum\": 50\n  },\n  \"pathDirection\": [\n    \"ascending\",\n    \"descending\"\n  ],\n  \"lookDirection\": \"R\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"default\",\n  \"productType\": \"EEC\",\n  \"resolutionVariant\": \"SE\",\n  \"acquisitionOnly\": false,\n  \"receivingStation\": \"NSG_POOL\",\n  \"orbitType\": \"NRT\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aeef3a99-0dd4-4b8f-8fe6-e5fa352600ae",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "feasibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"aoi\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          9.346,\n          47.788\n        ],\n        [\n          9.291,\n          47.644\n        ],\n        [\n          9.538,\n          47.592\n        ],\n        [\n          9.62,\n          47.75\n        ],\n        [\n          9.511,\n          47.802\n        ],\n        [\n          9.346,\n          47.788\n        ]\n      ]\n    ]\n  },\n  \"tags\": [\n    \"Project 1\"\n  ],\n  \"time\": {\n    \"from\": \"2022-10-14T13:28:03.569Z\",\n    \"to\": \"2022-10-24T13:28:03.569Z\"\n  },\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"feasibilityLevel\": \"complete\",\n  \"sensorMode\": \"SAR_SM_S\",\n  \"polarizationChannels\": \"HH\",\n  \"incidenceAngle\": {\n    \"minimum\": 30,\n    \"maximum\": 50\n  },\n  \"pathDirection\": [\n    \"ascending\",\n    \"descending\"\n  ],\n  \"lookDirection\": \"R\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"default\",\n  \"productType\": \"EEC\",\n  \"resolutionVariant\": \"SE\",\n  \"acquisitionOnly\": false,\n  \"receivingStation\": \"NSG_POOL\",\n  \"orbitType\": \"NRT\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fb1392d-b609-443a-8c69-885ff37fb81f",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "feasibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"aoi\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          9.346,\n          47.788\n        ],\n        [\n          9.291,\n          47.644\n        ],\n        [\n          9.538,\n          47.592\n        ],\n        [\n          9.62,\n          47.75\n        ],\n        [\n          9.511,\n          47.802\n        ],\n        [\n          9.346,\n          47.788\n        ]\n      ]\n    ]\n  },\n  \"tags\": [\n    \"Project 1\"\n  ],\n  \"time\": {\n    \"from\": \"2022-10-14T13:28:03.569Z\",\n    \"to\": \"2022-10-24T13:28:03.569Z\"\n  },\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"feasibilityLevel\": \"complete\",\n  \"sensorMode\": \"SAR_SM_S\",\n  \"polarizationChannels\": \"HH\",\n  \"incidenceAngle\": {\n    \"minimum\": 30,\n    \"maximum\": 50\n  },\n  \"pathDirection\": [\n    \"ascending\",\n    \"descending\"\n  ],\n  \"lookDirection\": \"R\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"default\",\n  \"productType\": \"EEC\",\n  \"resolutionVariant\": \"SE\",\n  \"acquisitionOnly\": false,\n  \"receivingStation\": \"NSG_POOL\",\n  \"orbitType\": \"NRT\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cf477fb-e02c-450b-9d01-27b7fa49e8cc",
+          "name": "Airbus OneAtlas Search for Possible Acquisitions in Catalogue",
+          "request": {
+            "name": "Airbus OneAtlas Search for Possible Acquisitions in Catalogue",
+            "description": {},
+            "url": {
+              "path": [
+                "sar",
+                "catalogue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"limit\": 200,\n  \"aoi\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ],\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ]\n  },\n  \"catalogueTime\": {\n    \"from\": \"<dateTime>\",\n    \"to\": \"<dateTime>\"\n  },\n  \"time\": {\n    \"from\": \"<dateTime>\",\n    \"to\": \"<dateTime>\"\n  },\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"satellite\": \"<string>\",\n  \"occurrences\": \"<integer>\",\n  \"sensorMode\": \"<string>\",\n  \"polarizationChannels\": \"<string>\",\n  \"incidenceAngle\": {\n    \"minimum\": \"<number>\",\n    \"maximum\": \"<number>\"\n  },\n  \"pathDirection\": \"both\",\n  \"lookDirection\": \"<string>\",\n  \"beamId\": \"<string>\",\n  \"relativeOrbit\": \"<string>\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"<string>\",\n  \"productType\": \"<string>\",\n  \"resolutionVariant\": \"<string>\",\n  \"orbitType\": \"science\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "87447149-75dc-4ea0-a915-db2cba10b797",
+              "name": "acquisitions in catalogue",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "catalogue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": 200,\n  \"aoi\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ],\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ]\n  },\n  \"catalogueTime\": {\n    \"from\": \"2021-10-14T13:28:03.569Z\",\n    \"to\": \"2021-10-24T13:28:03.569Z\"\n  },\n  \"time\": {\n    \"from\": \"2021-10-14T13:28:03.569Z\",\n    \"to\": \"2021-10-24T13:28:03.569Z\"\n  },\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"satellite\": \"<string>\",\n  \"occurrences\": \"<integer>\",\n  \"sensorMode\": \"SAR_SM_S\",\n  \"polarizationChannels\": \"<string>\",\n  \"incidenceAngle\": {\n    \"minimum\": 30,\n    \"maximum\": 50\n  },\n  \"pathDirection\": \"ascending\",\n  \"lookDirection\": \"<string>\",\n  \"beamId\": \"<string>\",\n  \"relativeOrbit\": \"<string>\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"<string>\",\n  \"productType\": \"EEC\",\n  \"resolutionVariant\": \"<string>\",\n  \"orbitType\": \"science\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n          [\n            [\n              7332.9818884031965,\n              4424.298828299636\n            ],\n            [\n              6414.9366816065885,\n              3984.2593942774483\n            ]\n          ],\n          [\n            [\n              6530.865158065392,\n              8519.233889281444\n            ],\n            [\n              5210.706731131295,\n              2366.586805131625\n            ]\n          ]\n        ]\n      },\n      \"properties\": {\n        \"itemId\": \"31271ee1-8063-e7e5-caf3-3bc91d4d0f48\",\n        \"mission\": \"TSX\",\n        \"acquisitionId\": \"TSX-1_ST_S_spot_049R_49677_D31767159_432\",\n        \"startTime\": \"2009-10-20T19:41:42.233Z\",\n        \"stopTime\": \"1960-08-14T19:25:27.951Z\",\n        \"sensorMode\": \"SAR_SM_S\",\n        \"polarizationChannels\": \"HH\",\n        \"beamId\": \"strip_010\",\n        \"pathDirection\": \"ascending\",\n        \"lookDirection\": \"L\",\n        \"incidenceAngle\": {\n          \"minimum\": 30,\n          \"maximum\": 50\n        },\n        \"lastUpdateTime\": \"2003-06-04T09:01:26.786Z\",\n        \"status\": \"feasible\",\n        \"outOfFullPerformance\": false,\n        \"satellite\": \"PAZ-1\",\n        \"groupId\": 6666,\n        \"productType\": \"EEC\",\n        \"resolutionVariant\": \"RE\",\n        \"orbitType\": \"NRT\",\n        \"geocodedIncidenceMask\": false,\n        \"mapProjection\": \"auto\",\n        \"gainAttenuation\": 0,\n        \"relativeOrbit\": 4206,\n        \"absoluteOrbit\": 36,\n        \"orderTemplate\": \"string\",\n        \"sensitivity\": {\n          \"status\": \"sensitive\",\n          \"missingParameters\": [\n            \"productType\",\n            \"resolutionVariant\"\n          ],\n          \"type\": \"resolution\",\n          \"sensitivityInformation\": \"string\"\n        },\n        \"itemType\": \"future\",\n        \"scienceOrbitAvailability\": false,\n        \"quality\": \"AUTO_APPROVED\",\n        \"catalogueTime\": \"1987-07-23T05:28:59.772Z\",\n        \"antennaMode\": \"DRA\",\n        \"datastackCount\": 4806,\n        \"resolution\": {\n          \"minimum\": 3.3,\n          \"maximum\": 3.9\n        }\n      }\n    },\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n          [\n            [\n              6958.708506188017,\n              8577.528002562975\n            ],\n            [\n              3876.6164121713964,\n              3337.331134322001\n            ]\n          ],\n          [\n            [\n              5696.810818141661,\n              1214.2640252920255\n            ],\n            [\n              8367.940037640688,\n              385.80361652107763\n            ]\n          ]\n        ]\n      },\n      \"properties\": {\n        \"itemId\": \"0834b907-15d9-97fe-a0a0-5acc0f3ff0d1\",\n        \"mission\": \"PAZ\",\n        \"acquisitionId\": \"TSX-1_ST_S_spot_049R_49677_D31767159_432\",\n        \"startTime\": \"1980-09-01T21:47:13.824Z\",\n        \"stopTime\": \"1965-02-12T21:57:03.687Z\",\n        \"sensorMode\": \"SAR_SM_S\",\n        \"polarizationChannels\": \"HH\",\n        \"beamId\": \"strip_010\",\n        \"pathDirection\": \"ascending\",\n        \"lookDirection\": \"L\",\n        \"incidenceAngle\": {\n          \"minimum\": 30,\n          \"maximum\": 50\n        },\n        \"lastUpdateTime\": \"1960-07-18T01:48:56.072Z\",\n        \"status\": \"waitingForAcquisitionApproval\",\n        \"outOfFullPerformance\": false,\n        \"satellite\": \"PAZ-1\",\n        \"groupId\": 6126,\n        \"productType\": \"EEC\",\n        \"resolutionVariant\": \"SE\",\n        \"orbitType\": \"rapid\",\n        \"geocodedIncidenceMask\": false,\n        \"mapProjection\": \"auto\",\n        \"gainAttenuation\": 0,\n        \"relativeOrbit\": 4152,\n        \"absoluteOrbit\": 6842,\n        \"orderTemplate\": \"string\",\n        \"sensitivity\": {\n          \"status\": \"notSensitive\",\n          \"missingParameters\": [\n            \"productType\",\n            \"resolutionVariant\"\n          ],\n          \"type\": \"blacklist\",\n          \"sensitivityInformation\": \"string\"\n        },\n        \"itemType\": \"future\",\n        \"scienceOrbitAvailability\": false,\n        \"quality\": \"AUTO_APPROVED\",\n        \"catalogueTime\": \"1988-10-21T16:11:49.076Z\",\n        \"antennaMode\": \"SRA\",\n        \"datastackCount\": 9288,\n        \"resolution\": {\n          \"minimum\": 3.3,\n          \"maximum\": 3.9\n        }\n      }\n    }\n  ],\n  \"limit\": 200,\n  \"total\": 4221,\n  \"bbox\": [\n    5444.004438274199,\n    3113.7093456958364,\n    4207.226729282678,\n    752.967510578999\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b198e05-7065-4a0e-b3ba-f97626feb490",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "catalogue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": 200,\n  \"aoi\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ],\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ]\n  },\n  \"catalogueTime\": {\n    \"from\": \"2021-10-14T13:28:03.569Z\",\n    \"to\": \"2021-10-24T13:28:03.569Z\"\n  },\n  \"time\": {\n    \"from\": \"2021-10-14T13:28:03.569Z\",\n    \"to\": \"2021-10-24T13:28:03.569Z\"\n  },\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"satellite\": \"<string>\",\n  \"occurrences\": \"<integer>\",\n  \"sensorMode\": \"SAR_SM_S\",\n  \"polarizationChannels\": \"<string>\",\n  \"incidenceAngle\": {\n    \"minimum\": 30,\n    \"maximum\": 50\n  },\n  \"pathDirection\": \"ascending\",\n  \"lookDirection\": \"<string>\",\n  \"beamId\": \"<string>\",\n  \"relativeOrbit\": \"<string>\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"<string>\",\n  \"productType\": \"EEC\",\n  \"resolutionVariant\": \"<string>\",\n  \"orbitType\": \"science\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05ba2c76-fe67-4095-8a13-7c758f9d2404",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "catalogue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": 200,\n  \"aoi\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ],\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ]\n  },\n  \"catalogueTime\": {\n    \"from\": \"2021-10-14T13:28:03.569Z\",\n    \"to\": \"2021-10-24T13:28:03.569Z\"\n  },\n  \"time\": {\n    \"from\": \"2021-10-14T13:28:03.569Z\",\n    \"to\": \"2021-10-24T13:28:03.569Z\"\n  },\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"satellite\": \"<string>\",\n  \"occurrences\": \"<integer>\",\n  \"sensorMode\": \"SAR_SM_S\",\n  \"polarizationChannels\": \"<string>\",\n  \"incidenceAngle\": {\n    \"minimum\": 30,\n    \"maximum\": 50\n  },\n  \"pathDirection\": \"ascending\",\n  \"lookDirection\": \"<string>\",\n  \"beamId\": \"<string>\",\n  \"relativeOrbit\": \"<string>\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"<string>\",\n  \"productType\": \"EEC\",\n  \"resolutionVariant\": \"<string>\",\n  \"orbitType\": \"science\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cefe6385-9291-4841-88e1-9fa3641d9eb7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "catalogue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": 200,\n  \"aoi\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ],\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ]\n  },\n  \"catalogueTime\": {\n    \"from\": \"2021-10-14T13:28:03.569Z\",\n    \"to\": \"2021-10-24T13:28:03.569Z\"\n  },\n  \"time\": {\n    \"from\": \"2021-10-14T13:28:03.569Z\",\n    \"to\": \"2021-10-24T13:28:03.569Z\"\n  },\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"satellite\": \"<string>\",\n  \"occurrences\": \"<integer>\",\n  \"sensorMode\": \"SAR_SM_S\",\n  \"polarizationChannels\": \"<string>\",\n  \"incidenceAngle\": {\n    \"minimum\": 30,\n    \"maximum\": 50\n  },\n  \"pathDirection\": \"ascending\",\n  \"lookDirection\": \"<string>\",\n  \"beamId\": \"<string>\",\n  \"relativeOrbit\": \"<string>\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"<string>\",\n  \"productType\": \"EEC\",\n  \"resolutionVariant\": \"<string>\",\n  \"orbitType\": \"science\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a13f480-89bb-46ec-86f2-d38ff7f2cf7e",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "catalogue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": 200,\n  \"aoi\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ],\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ]\n  },\n  \"catalogueTime\": {\n    \"from\": \"2021-10-14T13:28:03.569Z\",\n    \"to\": \"2021-10-24T13:28:03.569Z\"\n  },\n  \"time\": {\n    \"from\": \"2021-10-14T13:28:03.569Z\",\n    \"to\": \"2021-10-24T13:28:03.569Z\"\n  },\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"satellite\": \"<string>\",\n  \"occurrences\": \"<integer>\",\n  \"sensorMode\": \"SAR_SM_S\",\n  \"polarizationChannels\": \"<string>\",\n  \"incidenceAngle\": {\n    \"minimum\": 30,\n    \"maximum\": 50\n  },\n  \"pathDirection\": \"ascending\",\n  \"lookDirection\": \"<string>\",\n  \"beamId\": \"<string>\",\n  \"relativeOrbit\": \"<string>\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"<string>\",\n  \"productType\": \"EEC\",\n  \"resolutionVariant\": \"<string>\",\n  \"orbitType\": \"science\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0d8eefa-c5a4-4867-bead-e7121478df61",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "catalogue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": 200,\n  \"aoi\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ],\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ]\n  },\n  \"catalogueTime\": {\n    \"from\": \"2021-10-14T13:28:03.569Z\",\n    \"to\": \"2021-10-24T13:28:03.569Z\"\n  },\n  \"time\": {\n    \"from\": \"2021-10-14T13:28:03.569Z\",\n    \"to\": \"2021-10-24T13:28:03.569Z\"\n  },\n  \"mission\": [\n    \"TSX\",\n    \"PAZ\"\n  ],\n  \"satellite\": \"<string>\",\n  \"occurrences\": \"<integer>\",\n  \"sensorMode\": \"SAR_SM_S\",\n  \"polarizationChannels\": \"<string>\",\n  \"incidenceAngle\": {\n    \"minimum\": 30,\n    \"maximum\": 50\n  },\n  \"pathDirection\": \"ascending\",\n  \"lookDirection\": \"<string>\",\n  \"beamId\": \"<string>\",\n  \"relativeOrbit\": \"<string>\",\n  \"outOfFullPerformance\": false,\n  \"orderTemplate\": \"<string>\",\n  \"productType\": \"EEC\",\n  \"resolutionVariant\": \"<string>\",\n  \"orbitType\": \"science\",\n  \"geocodedIncidenceMask\": false,\n  \"mapProjection\": \"auto\",\n  \"gainAttenuation\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0264f63-9761-41af-9018-cec0373468d4",
+          "name": "Airbus OneAtlas Retrieve Ordered Items from Catalogue",
+          "request": {
+            "name": "Airbus OneAtlas Retrieve Ordered Items from Catalogue",
+            "description": {},
+            "url": {
+              "path": [
+                "sar",
+                "catalogue",
+                "retrieve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9bd4e8bf-6130-4c85-bbbe-711840cac845",
+              "name": "catalogue items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "catalogue",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n          [\n            [\n              4333.443113498963,\n              4823.519932997118\n            ],\n            [\n              130.60535827632557,\n              6087.720941999937\n            ]\n          ],\n          [\n            [\n              1261.0053051950476,\n              9535.398187081519\n            ],\n            [\n              3632.592072878509,\n              3793.295396828692\n            ]\n          ]\n        ]\n      },\n      \"properties\": {\n        \"itemId\": \"f1b2317f-4cf1-1f2c-9b97-fab41341b52e\",\n        \"mission\": \"PAZ\",\n        \"acquisitionId\": \"TSX-1_ST_S_spot_049R_49677_D31767159_432\",\n        \"startTime\": \"1958-02-24T08:33:38.352Z\",\n        \"stopTime\": \"2026-04-13T19:43:21.855Z\",\n        \"sensorMode\": \"SAR_SM_S\",\n        \"polarizationChannels\": \"HH\",\n        \"beamId\": \"strip_010\",\n        \"pathDirection\": \"ascending\",\n        \"lookDirection\": \"R\",\n        \"incidenceAngle\": {\n          \"minimum\": 30,\n          \"maximum\": 50\n        },\n        \"lastUpdateTime\": \"2010-11-06T18:20:02.495Z\",\n        \"status\": \"availableInArchive\",\n        \"outOfFullPerformance\": false,\n        \"satellite\": \"TSX-1\",\n        \"groupId\": 3743,\n        \"productType\": \"EEC\",\n        \"resolutionVariant\": \"SE\",\n        \"orbitType\": \"rapid\",\n        \"geocodedIncidenceMask\": false,\n        \"mapProjection\": \"auto\",\n        \"gainAttenuation\": 0,\n        \"relativeOrbit\": 3160,\n        \"absoluteOrbit\": 9633,\n        \"orderTemplate\": \"string\",\n        \"sensitivity\": {\n          \"status\": \"potential\",\n          \"missingParameters\": [\n            \"productType\",\n            \"resolutionVariant\"\n          ],\n          \"type\": \"blacklist\",\n          \"sensitivityInformation\": \"string\"\n        },\n        \"itemType\": \"catalogue\",\n        \"scienceOrbitAvailability\": true,\n        \"quality\": \"AUTO_APPROVED\",\n        \"catalogueTime\": \"1956-12-30T21:21:48.321Z\",\n        \"antennaMode\": \"DRA\",\n        \"datastackCount\": 3053,\n        \"resolution\": {\n          \"minimum\": 3.3,\n          \"maximum\": 3.9\n        },\n        \"parentItemId\": \"0fad4fb5-d68c-9054-3be1-f93f7fdf180b\"\n      }\n    },\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n          [\n            [\n              7613.248426710374,\n              6698.430060666392\n            ],\n            [\n              548.4527583946997,\n              2135.5804283145676\n            ]\n          ],\n          [\n            [\n              7065.248504003513,\n              9707.615928402201\n            ],\n            [\n              2507.8869573875395,\n              8796.496191459853\n            ]\n          ]\n        ]\n      },\n      \"properties\": {\n        \"itemId\": \"1418f526-34d7-fe91-2680-f5fac9cc5c30\",\n        \"mission\": \"PAZ\",\n        \"acquisitionId\": \"TSX-1_ST_S_spot_049R_49677_D31767159_432\",\n        \"startTime\": \"1989-12-29T13:18:33.382Z\",\n        \"stopTime\": \"1971-03-20T10:42:51.616Z\",\n        \"sensorMode\": \"SAR_SM_S\",\n        \"polarizationChannels\": \"HH\",\n        \"beamId\": \"strip_010\",\n        \"pathDirection\": \"ascending\",\n        \"lookDirection\": \"R\",\n        \"incidenceAngle\": {\n          \"minimum\": 30,\n          \"maximum\": 50\n        },\n        \"lastUpdateTime\": \"1959-06-10T21:10:11.951Z\",\n        \"status\": \"feasible\",\n        \"outOfFullPerformance\": false,\n        \"satellite\": \"PAZ-1\",\n        \"groupId\": 8643,\n        \"productType\": \"EEC\",\n        \"resolutionVariant\": \"SE\",\n        \"orbitType\": \"rapid\",\n        \"geocodedIncidenceMask\": false,\n        \"mapProjection\": \"auto\",\n        \"gainAttenuation\": 0,\n        \"relativeOrbit\": 261,\n        \"absoluteOrbit\": 8340,\n        \"orderTemplate\": \"string\",\n        \"sensitivity\": {\n          \"status\": \"sensitive\",\n          \"missingParameters\": [\n            \"productType\",\n            \"resolutionVariant\"\n          ],\n          \"type\": \"blacklist\",\n          \"sensitivityInformation\": \"string\"\n        },\n        \"itemType\": \"catalogue\",\n        \"scienceOrbitAvailability\": false,\n        \"quality\": \"AUTO_APPROVED\",\n        \"catalogueTime\": \"2017-04-26T03:16:13.530Z\",\n        \"antennaMode\": \"SRA\",\n        \"datastackCount\": 3760,\n        \"resolution\": {\n          \"minimum\": 3.3,\n          \"maximum\": 3.9\n        },\n        \"parentItemId\": \"a66c5324-b17e-c657-c664-ed3f1d6df346\"\n      }\n    }\n  ],\n  \"bbox\": [\n    8163.60724168772,\n    8811.338258792472,\n    5261.674750392471,\n    4800.20739121178\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8d153d6-2a08-44bc-8c20-8c4ab5039119",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "catalogue",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f3dc517-3e7f-475b-a2af-921625b1c583",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "catalogue",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "601d0d60-efc4-45ec-9430-aec3ed8aa71e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "catalogue",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29f0ea93-da13-4ee5-87b1-8ececbc78fea",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "catalogue",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "074fd545-2837-4213-866e-c9726f230e88",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "catalogue",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b01d440f-7f54-46a8-8ae9-5d2a187ffde7",
+          "name": "Airbus OneAtlas Create Stacks from Template Items",
+          "request": {
+            "name": "Airbus OneAtlas Create Stacks from Template Items",
+            "description": {},
+            "url": {
+              "path": [
+                "sar",
+                "stacks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7193e458-cd04-40c8-8a8c-6d465c614f4c",
+              "name": "items of newly created stacks (not including template items)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "stacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n          [\n            [\n              3492.1153675889504,\n              9298.981356572513\n            ],\n            [\n              710.7081727029896,\n              4885.315800028458\n            ]\n          ],\n          [\n            [\n              2340.0757779175765,\n              3932.848806460538\n            ],\n            [\n              7485.090637502853,\n              3258.896570822828\n            ]\n          ]\n        ]\n      },\n      \"properties\": {\n        \"itemId\": \"5cd8fdd2-29d7-424c-9804-2fbe6502547a\",\n        \"mission\": \"TSX\",\n        \"acquisitionId\": \"TSX-1_ST_S_spot_049R_49677_D31767159_432\",\n        \"startTime\": \"1981-12-08T03:33:40.465Z\",\n        \"stopTime\": \"1953-06-18T17:29:06.728Z\",\n        \"sensorMode\": \"SAR_SM_S\",\n        \"polarizationChannels\": \"HH\",\n        \"beamId\": \"strip_010\",\n        \"pathDirection\": \"ascending\",\n        \"lookDirection\": \"L\",\n        \"incidenceAngle\": {\n          \"minimum\": 30,\n          \"maximum\": 50\n        },\n        \"lastUpdateTime\": \"2015-06-06T15:12:23.574Z\",\n        \"status\": \"planned\",\n        \"outOfFullPerformance\": false,\n        \"satellite\": \"PAZ-1\",\n        \"groupId\": 4130,\n        \"productType\": \"EEC\",\n        \"resolutionVariant\": \"RE\",\n        \"orbitType\": \"rapid\",\n        \"geocodedIncidenceMask\": false,\n        \"mapProjection\": \"auto\",\n        \"gainAttenuation\": 0,\n        \"relativeOrbit\": 5780,\n        \"absoluteOrbit\": 1569,\n        \"orderTemplate\": \"string\",\n        \"sensitivity\": {\n          \"status\": \"notSensitive\",\n          \"missingParameters\": [\n            \"productType\",\n            \"resolutionVariant\"\n          ],\n          \"type\": \"blacklist\",\n          \"sensitivityInformation\": \"string\"\n        },\n        \"itemType\": \"future\",\n        \"scienceOrbitAvailability\": true,\n        \"submissionDeadline\": \"1956-03-02T05:35:10.245Z\",\n        \"acquisitionOnly\": false,\n        \"priority\": \"standard\",\n        \"conflicts\": {\n          \"status\": \"potential\",\n          \"external\": {\n            \"key_0\": {\n              \"status\": \"none\",\n              \"startTime\": \"1990-09-17T23:38:11.004Z\",\n              \"stopTime\": \"1974-03-04T02:59:16.940Z\"\n            }\n          },\n          \"baskets\": {\n            \"key_0\": {\n              \"key_0\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"startTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"stopTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"key_1\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"startTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"stopTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            \"key_1\": {\n              \"key_0\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"startTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"stopTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          },\n          \"shopcart\": {\n            \"key_0\": {\n              \"status\": \"expected\",\n              \"startTime\": \"1996-07-01T05:12:41.955Z\",\n              \"stopTime\": \"1996-03-08T01:15:20.854Z\"\n            }\n          },\n          \"feasibility\": {\n            \"key_0\": {\n              \"status\": \"potential\",\n              \"startTime\": \"1983-02-11T01:04:29.492Z\",\n              \"stopTime\": \"2005-09-29T01:33:37.422Z\"\n            },\n            \"key_1\": {\n              \"status\": \"potential\",\n              \"startTime\": \"1994-02-21T13:13:31.697Z\",\n              \"stopTime\": \"1980-01-21T06:48:18.701Z\"\n            },\n            \"key_2\": {\n              \"status\": \"expected\",\n              \"startTime\": \"2021-02-24T23:50:43.811Z\",\n              \"stopTime\": \"1967-07-13T02:07:31.546Z\"\n            }\n          }\n        },\n        \"estimatedDownloadAvailability\": \"1994-03-23T16:20:47.654Z\",\n        \"receivingStation\": \"NSG_POOL\",\n        \"expiry\": \"1954-12-14T20:26:31.559Z\",\n        \"parentItemId\": \"6c02b709-d287-3677-517a-31e3b3414c14\"\n      }\n    },\n    {\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n          [\n            [\n              3958.2801568160608,\n              5423.222663096564\n            ],\n            [\n              9182.41748112609,\n              1817.540689130609\n            ]\n          ],\n          [\n            [\n              6811.8629872532065,\n              1711.931172373381\n            ],\n            [\n              1144.0050935008605,\n              2594.8917847344987\n            ]\n          ]\n        ]\n      },\n      \"properties\": {\n        \"itemId\": \"5dac5a1e-cb32-26f6-a585-40f1928dd397\",\n        \"mission\": \"TSX\",\n        \"acquisitionId\": \"TSX-1_ST_S_spot_049R_49677_D31767159_432\",\n        \"startTime\": \"1979-03-25T20:21:27.653Z\",\n        \"stopTime\": \"1969-01-26T01:42:28.741Z\",\n        \"sensorMode\": \"SAR_SM_S\",\n        \"polarizationChannels\": \"HH\",\n        \"beamId\": \"strip_010\",\n        \"pathDirection\": \"ascending\",\n        \"lookDirection\": \"R\",\n        \"incidenceAngle\": {\n          \"minimum\": 30,\n          \"maximum\": 50\n        },\n        \"lastUpdateTime\": \"1969-10-24T13:56:12.940Z\",\n        \"status\": \"downlink\",\n        \"outOfFullPerformance\": false,\n        \"satellite\": \"TDX-1\",\n        \"groupId\": 9350,\n        \"productType\": \"EEC\",\n        \"resolutionVariant\": \"RE\",\n        \"orbitType\": \"science\",\n        \"geocodedIncidenceMask\": false,\n        \"mapProjection\": \"auto\",\n        \"gainAttenuation\": 0,\n        \"relativeOrbit\": 8054,\n        \"absoluteOrbit\": 430,\n        \"orderTemplate\": \"string\",\n        \"sensitivity\": {\n          \"status\": \"potential\",\n          \"missingParameters\": [\n            \"productType\",\n            \"resolutionVariant\"\n          ],\n          \"type\": \"resolution\",\n          \"sensitivityInformation\": \"string\"\n        },\n        \"itemType\": \"catalogue\",\n        \"scienceOrbitAvailability\": false,\n        \"submissionDeadline\": \"1983-01-13T18:33:14.085Z\",\n        \"acquisitionOnly\": false,\n        \"priority\": \"standard\",\n        \"conflicts\": {\n          \"status\": \"expected\",\n          \"external\": {\n            \"key_0\": {\n              \"status\": \"potential\",\n              \"startTime\": \"1963-03-31T18:21:56.097Z\",\n              \"stopTime\": \"1995-08-13T07:36:11.563Z\"\n            },\n            \"key_1\": {\n              \"status\": \"potential\",\n              \"startTime\": \"1950-10-03T02:11:33.638Z\",\n              \"stopTime\": \"1954-01-22T19:28:39.329Z\"\n            }\n          },\n          \"baskets\": {\n            \"key_0\": {\n              \"key_0\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"startTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"stopTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"key_1\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"startTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"stopTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            \"key_1\": {\n              \"key_0\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"startTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"stopTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"key_1\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"startTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"stopTime\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          },\n          \"shopcart\": {\n            \"key_0\": {\n              \"status\": \"expected\",\n              \"startTime\": \"1985-04-06T22:27:14.640Z\",\n              \"stopTime\": \"2016-06-04T18:26:33.258Z\"\n            }\n          },\n          \"feasibility\": {\n            \"key_0\": {\n              \"status\": \"none\",\n              \"startTime\": \"2026-05-28T15:33:53.504Z\",\n              \"stopTime\": \"1986-06-21T17:16:18.496Z\"\n            }\n          }\n        },\n        \"estimatedDownloadAvailability\": \"1950-02-19T06:17:26.100Z\",\n        \"receivingStation\": \"NSG_POOL\",\n        \"expiry\": \"1950-01-28T08:24:56.683Z\",\n        \"parentItemId\": \"7e29ee17-ac8c-6385-6b89-470d5a0aec13\"\n      }\n    }\n  ],\n  \"bbox\": [\n    4119.752555019286,\n    9978.682540798496,\n    953.4292762850805,\n    9097.324963367137\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "535bbe35-f829-4648-ad61-c2d0495f4ddd",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "stacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d848ca67-d43b-4d13-a0be-3f8e05954c22",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "stacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "447b7777-a543-4e7f-a457-f0f9d04e8eec",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "stacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b42c137-8762-420f-963d-fd5e4a6a4018",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "stacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e16a8ac-cccf-4971-8068-de3ecd261aa2",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sar",
+                    "stacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"7Oh0\",\n  \"message\": \"string\",\n  \"location\": \"string\",\n  \"detail\": \"string\",\n  \"params\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "53de2c8e-4628-459a-aa61-0f0483b4f4c9",
+    "name": "OneAtlas WorldDEM Access Sar/Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

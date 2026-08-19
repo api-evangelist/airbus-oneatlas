@@ -1,0 +1,218 @@
+{
+  "item": [
+    {
+      "id": "9f19757c-e676-4db5-af4b-6fd19a8754fe",
+      "name": "Attempts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6c06636-6d15-4cf8-a316-8f19f1f6d1a8",
+          "name": "Retrieve Attempts",
+          "request": {
+            "name": "Retrieve Attempts",
+            "description": {
+              "content": "### Get tasking attempts\n-\tThis path is used for ONEDAY and ONENOWATTEMPTS requests\n-\tThis API allows to get the first possible attempts matching your criteria\n- Note that, as of today, the API responds in some cases with a 500 error\n-\tEven if the parameter is mandatory, maxCloudCover is NOT yet used for calculations.\n-\tStartDate can be set at any time. Note that if you try to set it in the past, the value will be replace by the current date\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "attempts"
+              ],
+              "host": [
+                "task",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"progTypeNames\": \"<string>\",\n  \"mission\": \"<string>\",\n  \"contractId\": \"<string>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"optical\": {\n    \"acquisitionMode\": \"<string>\",\n    \"maxCloudCover\": \"<float>\",\n    \"maxIncidenceAngle\": \"<float>\"\n  },\n  \"aoi\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f355cafa-b31a-4152-809b-3c3a4f0b94f3",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "attempts"
+                  ],
+                  "host": [
+                    "task",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"progTypeNames\": \"<string>\",\n  \"mission\": \"<string>\",\n  \"contractId\": \"<string>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"optical\": {\n    \"acquisitionMode\": \"<string>\",\n    \"maxCloudCover\": \"<float>\",\n    \"maxIncidenceAngle\": \"<float>\"\n  },\n  \"aoi\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"progCapacities\": {\n    \"mission\": \"PLEIADESNEO\",\n    \"progTypes\": [\n      {\n        \"name\": \"ONEDAY\",\n        \"mission\": \"PLEIADESNEO\",\n        \"segments\": [\n          {\n            \"id\": \"PNEO1\",\n            \"footprint\": {\n              \"geometry\": \"POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))\",\n              \"center\": \"POINT(23.755357 37.97611)\"\n            },\n            \"instrumentMode\": \"THR\",\n            \"orderDeadline\": \"2022-03-26T08:28:00.499Z\",\n            \"extendedAngle\": false,\n            \"acquisitionStartDate\": \"2022-03-26T09:15:27.499Z\",\n            \"acquisitionEndDate\": \"2022-03-26T09:15:29.671Z\",\n            \"incidenceAngle\": 26.72,\n            \"segmentKey\": \"895651bbc3f881c1e1245b224ac69c34668001bd8610e359dfdfbf9b7430ad69c1b92543b80d84a75ed9961c0dca088f38f278c4df90a686f327e2cfc3d0be73::[{\\\"key\\\":\\\"orderDeadLine\\\",\\\"value\\\":\\\"2022-03-26T08:28:00.499Z\\\"},{\\\"key\\\":\\\"acqPeriod\\\",\\\"value\\\":\\\"2022-03-26T09:15:27.499Z 2022-03-26T09:15:29.671Z\\\"},{\\\"key\\\":\\\"maxIncidenceAngle\\\",\\\"value\\\":\\\"30.0\\\"},{\\\"key\\\":\\\"geometryWkt\\\",\\\"value\\\":\\\"POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))\\\"}]\",\n            \"acrossTrackIncidenceAngle\": -7.874962709778218,\n            \"maxIncidenceAngle\": 30\n          },\n          {\n            \"id\": \"PNEO2\",\n            \"footprint\": {\n              \"geometry\": \"POLYGON((23.644797 38.043069, 23.644964 37.90931, 23.866444 37.908808, 23.86659 38.043069, 23.644797 38.043069, 23.644797 38.043069))\",\n              \"center\": \"POINT(23.755768 37.97608)\"\n            },\n            \"instrumentMode\": \"THR\",\n            \"orderDeadline\": \"2022-03-29T08:35:00.699Z\",\n            \"extendedAngle\": false,\n            \"acquisitionStartDate\": \"2022-03-29T09:22:50.699Z\",\n            \"acquisitionEndDate\": \"2022-03-29T09:22:52.871Z\",\n            \"incidenceAngle\": 26.98,\n            \"segmentKey\": \"ef7be0cf8ff00529830ca020a8c9a6ac823f0e59b31c1b242f6a4e88ee5891eaf98605040452702b85dce33e4e9bc5a256a342126a18b2c10506c7cfdaa52682::[{\\\"key\\\":\\\"orderDeadLine\\\",\\\"value\\\":\\\"2022-03-29T08:35:00.699Z\\\"},{\\\"key\\\":\\\"acqPeriod\\\",\\\"value\\\":\\\"2022-03-29T09:22:50.699Z 2022-03-29T09:22:52.871Z\\\"},{\\\"key\\\":\\\"maxIncidenceAngle\\\",\\\"value\\\":\\\"30.0\\\"},{\\\"key\\\":\\\"geometryWkt\\\",\\\"value\\\":\\\"POLYGON((23.644797 38.043069, 23.644964 37.90931, 23.866444 37.908808, 23.86659 38.043069, 23.644797 38.043069, 23.644797 38.043069))\\\"}]\",\n            \"acrossTrackIncidenceAngle\": 8.063750464703226,\n            \"maxIncidenceAngle\": 30\n          }\n        ],\n        \"available\": true\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4466679-df3e-48be-8764-8bcee60d8d66",
+              "name": "No possible attempt",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "attempts"
+                  ],
+                  "host": [
+                    "task",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"progTypeNames\": \"<string>\",\n  \"mission\": \"<string>\",\n  \"contractId\": \"<string>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"optical\": {\n    \"acquisitionMode\": \"<string>\",\n    \"maxCloudCover\": \"<float>\",\n    \"maxIncidenceAngle\": \"<float>\"\n  },\n  \"aoi\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"ERR_NO_SENSOR_AVAILABLE\",\n      \"locator\": \"UNKNOWN\"\n    },\n    {\n      \"code\": \"ERR_NO_SENSOR_AVAILABLE\",\n      \"locator\": \"UNKNOWN\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ce84c6ec-b14d-4ff1-8dc0-aff8db81efbc",
+    "name": "OneAtlas WorldDEM Access Attempts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

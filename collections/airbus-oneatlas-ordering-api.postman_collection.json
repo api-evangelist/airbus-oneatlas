@@ -1,0 +1,1383 @@
+{
+  "item": [
+    {
+      "id": "205631fe-4ccf-4fca-9562-31d184d5630e",
+      "name": "Ordering",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "797472e4-ee30-49eb-8781-56d2834602d4",
+          "name": "Check Feasibility",
+          "request": {
+            "name": "Check Feasibility",
+            "description": {},
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "feasibility"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"progTypeNames\": \"<string>\",\n  \"mission\": \"<string>\",\n  \"contractId\": \"<string>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"optical\": {\n    \"acquisitionMode\": \"<string>\",\n    \"maxCloudCover\": \"<float>\",\n    \"maxIncidenceAngle\": \"<float>\"\n  },\n  \"aoi\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d4775210-6ec9-4f03-85aa-e67c1fa0f51a",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "feasibility"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"progTypeNames\": \"<string>\",\n  \"mission\": \"<string>\",\n  \"contractId\": \"<string>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"optical\": {\n    \"acquisitionMode\": \"<string>\",\n    \"maxCloudCover\": \"<float>\",\n    \"maxIncidenceAngle\": \"<float>\"\n  },\n  \"aoi\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"progCapacities\": [\n    {\n      \"mission\": \"PLEIADES\",\n      \"progTypes\": [\n        {\n          \"name\": \"ONEPLAN\",\n          \"mission\": \"PLEIADES\",\n          \"feasibility\": {\n            \"classification\": \"CHALLENGING\",\n            \"automation\": \"AUTOMATIC\",\n            \"automationName\": \"AutomaticTasking30\"\n          },\n          \"available\": true\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46c59478-aeac-4dd0-90b0-adb52f4bb0c5",
+          "name": "Retrieve Attempts",
+          "request": {
+            "name": "Retrieve Attempts",
+            "description": {
+              "content": "Get tasking attempts",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "attempts"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"progTypeNames\": \"<string>\",\n  \"mission\": \"<string>\",\n  \"contractId\": \"<string>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"optical\": {\n    \"acquisitionMode\": \"<string>\",\n    \"maxCloudCover\": \"<float>\",\n    \"maxIncidenceAngle\": \"<float>\"\n  },\n  \"aoi\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a41287c1-0129-48af-b4d5-3c458127915a",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "attempts"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"progTypeNames\": \"<string>\",\n  \"mission\": \"<string>\",\n  \"contractId\": \"<string>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"optical\": {\n    \"acquisitionMode\": \"<string>\",\n    \"maxCloudCover\": \"<float>\",\n    \"maxIncidenceAngle\": \"<float>\"\n  },\n  \"aoi\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"progCapacities\": {\n    \"mission\": \"PLEIADES\",\n    \"progTypes\": [\n      {\n        \"name\": \"ONEDAY\",\n        \"mission\": \"PLEIADES\",\n        \"segments\": [\n          {\n            \"id\": \"PNEO1\",\n            \"footprint\": {\n              \"geometry\": \"POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))\",\n              \"center\": \"POINT(23.755357 37.97611)\"\n            },\n            \"instrumentMode\": \"THR\",\n            \"orderDeadline\": \"2022-03-26T08:28:00.499Z\",\n            \"extendedAngle\": false,\n            \"acquisitionStartDate\": \"2022-03-26T09:15:27.499Z\",\n            \"acquisitionEndDate\": \"2022-03-26T09:15:29.671Z\",\n            \"incidenceAngle\": 26.72,\n            \"segmentKey\": \"895651bbc3f881c1e1245b224ac69c34668001bd8610e359dfdfbf9b7430ad69c1b92543b80d84a75ed9961c0dca088f38f278c4df90a686f327e2cfc3d0be73::[{\\\"key\\\":\\\"orderDeadLine\\\",\\\"value\\\":\\\"2022-03-26T08:28:00.499Z\\\"},{\\\"key\\\":\\\"acqPeriod\\\",\\\"value\\\":\\\"2022-03-26T09:15:27.499Z 2022-03-26T09:15:29.671Z\\\"},{\\\"key\\\":\\\"maxIncidenceAngle\\\",\\\"value\\\":\\\"30.0\\\"},{\\\"key\\\":\\\"geometryWkt\\\",\\\"value\\\":\\\"POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))\\\"}]\",\n            \"acrossTrackIncidenceAngle\": -7.874962709778218,\n            \"maxIncidenceAngle\": 30\n          },\n          {\n            \"id\": \"PNEO2\",\n            \"footprint\": {\n              \"geometry\": \"POLYGON((23.644797 38.043069, 23.644964 37.90931, 23.866444 37.908808, 23.86659 38.043069, 23.644797 38.043069, 23.644797 38.043069))\",\n              \"center\": \"POINT(23.755768 37.97608)\"\n            },\n            \"instrumentMode\": \"THR\",\n            \"orderDeadline\": \"2022-03-29T08:35:00.699Z\",\n            \"extendedAngle\": false,\n            \"acquisitionStartDate\": \"2022-03-29T09:22:50.699Z\",\n            \"acquisitionEndDate\": \"2022-03-29T09:22:52.871Z\",\n            \"incidenceAngle\": 26.98,\n            \"segmentKey\": \"ef7be0cf8ff00529830ca020a8c9a6ac823f0e59b31c1b242f6a4e88ee5891eaf98605040452702b85dce33e4e9bc5a256a342126a18b2c10506c7cfdaa52682::[{\\\"key\\\":\\\"orderDeadLine\\\",\\\"value\\\":\\\"2022-03-29T08:35:00.699Z\\\"},{\\\"key\\\":\\\"acqPeriod\\\",\\\"value\\\":\\\"2022-03-29T09:22:50.699Z 2022-03-29T09:22:52.871Z\\\"},{\\\"key\\\":\\\"maxIncidenceAngle\\\",\\\"value\\\":\\\"30.0\\\"},{\\\"key\\\":\\\"geometryWkt\\\",\\\"value\\\":\\\"POLYGON((23.644797 38.043069, 23.644964 37.90931, 23.866444 37.908808, 23.86659 38.043069, 23.644797 38.043069, 23.644797 38.043069))\\\"}]\",\n            \"acrossTrackIncidenceAngle\": 8.063750464703226,\n            \"maxIncidenceAngle\": 30\n          }\n        ],\n        \"available\": true\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c90e29d-ec76-41e4-baf6-dbdb8f01bf61",
+              "name": "No possible attempt",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "attempts"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"progTypeNames\": \"<string>\",\n  \"mission\": \"<string>\",\n  \"contractId\": \"<string>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"optical\": {\n    \"acquisitionMode\": \"<string>\",\n    \"maxCloudCover\": \"<float>\",\n    \"maxIncidenceAngle\": \"<float>\"\n  },\n  \"aoi\": {\n    \"coordinates\": [\n      [\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ],\n        [\n          \"<number>\",\n          \"<number>\"\n        ]\n      ]\n    ],\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"ERR_NO_SENSOR_AVAILABLE\",\n      \"locator\": \"UNKNOWN\"\n    },\n    {\n      \"code\": \"ERR_NO_SENSOR_AVAILABLE\",\n      \"locator\": \"UNKNOWN\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edd3c42d-b7ce-4449-b908-3ea60032d9f2",
+          "name": "Calculate a Price",
+          "request": {
+            "name": "Calculate a Price",
+            "description": {
+              "content": "<h3>Archive and Tasking ordering</h3>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "prices"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"notificationEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"<string>\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "04ab1444-01d9-469c-b776-5bcdbd4298c5",
+              "name": "order created",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "prices"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"notificationEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contractId\": \"CisContractId\",\n  \"currency\": \"EUR\",\n  \"discountPercentage\": 0,\n  \"discountValue\": 0,\n  \"productTypes\": [\n    {\n      \"amount\": 7392,\n      \"areaKm2\": 132,\n      \"discountPercentage\": 0,\n      \"discountValue\": 0,\n      \"price\": 7392,\n      \"productTypeId\": \"PleiadesTaskingOneDay\",\n      \"items\": [\n        {\n          \"datastripIds\": []\n        }\n      ],\n      \"voucherCode\": null\n    }\n  ],\n  \"totalAmount\": 7392\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "774098f7-debc-4687-ab1a-4d1dea9fc15d",
+              "name": "BAD REQUEST",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "prices"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"notificationEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"E2203\",\n  \"message\": \"Unable to access workspace 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "187011a2-fedc-495a-a93b-eda020105d54",
+              "name": "TOKEN EXPIRED",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "prices"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"notificationEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication failed (cause: Token expired)\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d43c47d1-f0bf-4bab-8f05-391cd9562eec",
+              "name": "NOT FOUND",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "prices"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"notificationEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"E2203\",\n  \"message\": \"CIS contract 'contract_name' not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb64fe11-1e83-4e57-bb7b-889e7d7b3f88",
+              "name": "INTERNAL SERVER ERROR",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "prices"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"notificationEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNEXPECTED_SERVER_ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c39334cc-e557-4290-a797-6d90f6bb1e74",
+          "name": "Request a Quotation",
+          "request": {
+            "name": "Request a Quotation",
+            "description": {
+              "content": "Request a quotation",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "quotations"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"notifications\": [\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\"\n    },\n    {\n      \"notifications\": [\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"<string>\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  },\n  \"notifications\": [\n    {\n      \"channels\": [\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"filter\": {\n        \"events\": [\n          {\n            \"event\": \"<string>\"\n          },\n          {\n            \"event\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"channels\": [\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"filter\": {\n        \"events\": [\n          {\n            \"event\": \"<string>\"\n          },\n          {\n            \"event\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "870a0ee8-6ac1-4ff3-a085-def0604d670b",
+              "name": "QUOTATION SENT",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "quotations"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"notifications\": [\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\"\n    },\n    {\n      \"notifications\": [\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  },\n  \"notifications\": [\n    {\n      \"channels\": [\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"filter\": {\n        \"events\": [\n          {\n            \"event\": \"<string>\"\n          },\n          {\n            \"event\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"channels\": [\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"filter\": {\n        \"events\": [\n          {\n            \"event\": \"<string>\"\n          },\n          {\n            \"event\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quotationId\": \"QUO21000243\",\n  \"currency\": \"EUR\",\n  \"discountPercentage\": 0,\n  \"discountValue\": 0,\n  \"totalAmount\": 7600\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5592d987-de97-4564-a73d-030e4d2ba145",
+              "name": "BAD REQUEST",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "quotations"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"notifications\": [\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\"\n    },\n    {\n      \"notifications\": [\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  },\n  \"notifications\": [\n    {\n      \"channels\": [\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"filter\": {\n        \"events\": [\n          {\n            \"event\": \"<string>\"\n          },\n          {\n            \"event\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"channels\": [\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"filter\": {\n        \"events\": [\n          {\n            \"event\": \"<string>\"\n          },\n          {\n            \"event\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"E2203\",\n  \"message\": \"Unable to access workspace 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d23a545-3c29-40b4-a0c6-06019697b654",
+              "name": "TOKEN EXPIRED",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "quotations"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"notifications\": [\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\"\n    },\n    {\n      \"notifications\": [\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  },\n  \"notifications\": [\n    {\n      \"channels\": [\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"filter\": {\n        \"events\": [\n          {\n            \"event\": \"<string>\"\n          },\n          {\n            \"event\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"channels\": [\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"filter\": {\n        \"events\": [\n          {\n            \"event\": \"<string>\"\n          },\n          {\n            \"event\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication failed (cause: Token expired)\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73cc43ad-04de-4720-a226-d0fb4ebec3f2",
+              "name": "NOT FOUND",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "quotations"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"notifications\": [\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\"\n    },\n    {\n      \"notifications\": [\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  },\n  \"notifications\": [\n    {\n      \"channels\": [\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"filter\": {\n        \"events\": [\n          {\n            \"event\": \"<string>\"\n          },\n          {\n            \"event\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"channels\": [\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"filter\": {\n        \"events\": [\n          {\n            \"event\": \"<string>\"\n          },\n          {\n            \"event\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"E2203\",\n  \"message\": \"CIS contract 'contract_name' not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1fd4001-9290-49a2-8841-64bebb421597",
+              "name": "INTERNAL SERVER ERROR",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "quotations"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"notifications\": [\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\"\n    },\n    {\n      \"notifications\": [\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"channels\": [\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"<string>\",\n              \"addressee\": {\n                \"to\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"cc\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"filter\": [\n            {\n              \"event\": \"<string>\"\n            },\n            {\n              \"event\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"full_bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  },\n  \"notifications\": [\n    {\n      \"channels\": [\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"filter\": {\n        \"events\": [\n          {\n            \"event\": \"<string>\"\n          },\n          {\n            \"event\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"channels\": [\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"addressee\": {\n            \"to\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"cc\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"filter\": {\n        \"events\": [\n          {\n            \"event\": \"<string>\"\n          },\n          {\n            \"event\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNEXPECTED_SERVER_ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9177aef0-5626-42a2-8504-4665e2e99635",
+          "name": "Place an Order",
+          "request": {
+            "name": "Place an Order",
+            "description": {},
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                " ",
+                "api",
+                "v1",
+                "orders"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"notificationEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"<string>\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7f907f37-72dd-48e8-bb0a-2eca8a34c5a8",
+              "name": "order created",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    " ",
+                    "api",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"notificationEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"salesOrderId\": \"SAL21416909\",\n  \"currency\": \"EUR\",\n  \"discountPercentage\": 0,\n  \"discountValue\": 0,\n  \"totalAmount\": 7600\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55ecb7a6-339c-499e-ad42-0fcf733345cb",
+              "name": "BAD REQUEST",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    " ",
+                    "api",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"notificationEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"E2203\",\n  \"message\": \"Unable to access workspace 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d6c36f2-a4ec-4577-90d7-c1302f4bbbcf",
+              "name": "TOKEN EXPIRED",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    " ",
+                    "api",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"notificationEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Authentication failed (cause: Token expired)\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86b12c51-fe25-4e44-9ffe-50ae917faa53",
+              "name": "NOT FOUND",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    " ",
+                    "api",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"notificationEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"E2203\",\n  \"message\": \"CIS contract 'contract_name' not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e93d001-558a-4e08-bc2f-2800f0b1592b",
+              "name": "INTERNAL SERVER ERROR",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    " ",
+                    "api",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contractId\": \"<string>\",\n  \"aoi\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"geometry\": {\n        \"geometry\": \"<object>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"items\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"dataSourceIds\": [\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        },\n        {\n          \"catalogId\": \"<string>\",\n          \"catalogItemId\": \"<string>\"\n        }\n      ],\n      \"aoiId\": \"<integer>\",\n      \"properties\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"comments\": \"<string>\",\n      \"segmentKey\": \"<string>\"\n    }\n  ],\n  \"customerReference\": \"<string>\",\n  \"optionsPerProductType\": [\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    },\n    {\n      \"productTypeId\": \"<string>\",\n      \"options\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"bundle\"\n        }\n      ]\n    }\n  ],\n  \"endUsers\": [\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"endUserName\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"primaryMarket\": \"<string>\",\n  \"notificationEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"programReference\": \"<string>\",\n  \"orderGroup\": \"\",\n  \"delivery\": {\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"UNEXPECTED_SERVER_ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c4f2cc1d-baaf-4488-8ea4-991fb363af04",
+    "name": "OneAtlas WorldDEM Access Ordering API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

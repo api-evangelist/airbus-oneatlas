@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Feasibility API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Feasibility",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Feasibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/feasibility",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Ask for a feasibility request\nAs of today, the API does not cover all cases properly meaning that it could answer that the request is feasible when it is not.</br>\nPlease take the following precautions :\n-\tONENOWATTEMPTS should be between 3 and 14 days\n-\tONEDAY should be on a time period where at least 1 acquisition is planned and maximum 1 day\n-\tIf you want to be sure, you can use the get attempts path (../api/v1/attempts)\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

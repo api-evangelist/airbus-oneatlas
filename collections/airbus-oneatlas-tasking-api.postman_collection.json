@@ -1,0 +1,552 @@
+{
+  "item": [
+    {
+      "id": "2996e12a-f8d8-41be-b4f9-a6a7474e617a",
+      "name": "Tasking",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f9102194-dd8e-4f75-9f1c-4663a8f0cd55",
+          "name": "Get Taskings",
+          "request": {
+            "name": "Get Taskings",
+            "description": {
+              "content": "get taskings",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "contracts",
+                ":contractId",
+                "taskings"
+              ],
+              "host": [
+                "task",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "taskingIds",
+                  "value": "<array>"
+                },
+                {
+                  "disabled": false,
+                  "key": "customerRef",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "program",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<array>"
+                },
+                {
+                  "disabled": false,
+                  "key": "mission",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "progTypeNames",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "acquisitionDate",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "icrEndOfPeriodDate",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "hasProposedSegments",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "startPage",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortKeys",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contractId",
+                  "description": "(Required) It corresponds to an internal id for the customer contract - you will be provided the contractId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "56c909d5-5e41-4b4f-973a-a33e4c02ad15",
+              "name": "List of taskings",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "contracts",
+                    ":contractId",
+                    "taskings"
+                  ],
+                  "host": [
+                    "task",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "taskingIds",
+                      "value": "<array>"
+                    },
+                    {
+                      "key": "customerRef",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "program",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<array>"
+                    },
+                    {
+                      "key": "mission",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "progTypeNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "acquisitionDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "icrEndOfPeriodDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasProposedSegments",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "startPage",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sortKeys",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contractId",
+                      "description": "(Required) It corresponds to an internal id for the customer contract - you will be provided the contractId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cee1335-4c25-4122-a6a6-9eb0582b635f",
+          "name": "Get Tasking by Id",
+          "request": {
+            "name": "Get Tasking by Id",
+            "description": {
+              "content": "Get tasking by tasking id",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "contracts",
+                ":contractId",
+                "taskings",
+                ":taskingId"
+              ],
+              "host": [
+                "task",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contractId",
+                  "description": "(Required) It corresponds to an internal id for the customer contract - you will be provided the contractId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskingId",
+                  "description": "(Required) The tasking id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8638cd49-fb77-4435-bdf1-19d898d3f42b",
+              "name": "List of tasking",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "contracts",
+                    ":contractId",
+                    "taskings",
+                    ":taskingId"
+                  ],
+                  "host": [
+                    "task",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contractId",
+                      "description": "(Required) It corresponds to an internal id for the customer contract - you will be provided the contractId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskingId",
+                      "description": "(Required) The tasking id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1aaab657-26c6-4ede-9da8-ab69c006d335",
+          "name": "Cancel Tasking",
+          "request": {
+            "name": "Cancel Tasking",
+            "description": {
+              "content": "Cancel tasking",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "contracts",
+                ":contractId",
+                "taskings",
+                ":taskingId",
+                "cancel"
+              ],
+              "host": [
+                "task",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contractId",
+                  "description": "(Required) It corresponds to an internal id for the customer contract - you will be provided the contractId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskingId",
+                  "description": "(Required) The tasking id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d17f5b73-e01f-422b-926e-5ee01eb05d1f",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "",
+                    "api",
+                    "v1",
+                    "contracts",
+                    ":contractId",
+                    "taskings",
+                    ":taskingId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "task",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contractId",
+                      "description": "(Required) It corresponds to an internal id for the customer contract - you will be provided the contractId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskingId",
+                      "description": "(Required) The tasking id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6d94fde2-ae43-4237-8913-55011bc257b6",
+    "name": "OneAtlas WorldDEM Access Tasking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

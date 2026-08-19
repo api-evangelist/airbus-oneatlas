@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Format API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Format",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Format Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/items/:catalogItemId/format",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              },
+              {
+                "name": "X-Ads-Priority",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "catalogItemId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "Identifier of an IDP catalog item (property `id` of a search result)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Defines the format for the given catalog item id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

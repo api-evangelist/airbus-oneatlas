@@ -1,0 +1,303 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Subscriptions API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Contract by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/contracts/:contractId",
+            "params": [
+              {
+                "name": "contractId",
+                "value": "",
+                "type": "path",
+                "description": "It corresponds to an internal id for the customer contract - you will be provided the contractId"
+              }
+            ]
+          },
+          "docs": "Get contract by id"
+        },
+        {
+          "info": {
+            "name": "Get All Contract Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/contracts/:contractId/payments",
+            "params": [
+              {
+                "name": "contractId",
+                "value": "",
+                "type": "path",
+                "description": "It corresponds to an internal id for the customer contract - you will be provided the contractId"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number, defaults to '1'"
+              },
+              {
+                "name": "itemsPerPage",
+                "value": "",
+                "type": "query",
+                "description": "Amount of items per page, defaults to '10'"
+              }
+            ]
+          },
+          "docs": "Get all payments for the user contract"
+        },
+        {
+          "info": {
+            "name": "Get All Subscriptions by Contract Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/contracts/:contractId/subscriptions",
+            "params": [
+              {
+                "name": "contractId",
+                "value": "",
+                "type": "path",
+                "description": "It corresponds to an internal id for the customer contract - you will be provided the contractId"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number, defaults to '1'"
+              },
+              {
+                "name": "itemsPerPage",
+                "value": "",
+                "type": "query",
+                "description": "Amount of items per page, defaults to '10'"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter subscriptions by type"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter subscriptions by status"
+              }
+            ]
+          },
+          "docs": "Get all subscriptions by contract id"
+        },
+        {
+          "info": {
+            "name": "User Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/me"
+          },
+          "docs": "Get user informations about contract"
+        },
+        {
+          "info": {
+            "name": "Services the Current User Can Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/me/services"
+          },
+          "docs": "Returns the different services the current user can access based on his contract"
+        },
+        {
+          "info": {
+            "name": "Get Payment by Order Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/orders/:orderId/payments",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "The order id"
+              }
+            ]
+          },
+          "docs": "Get payment for the user contract and order id"
+        },
+        {
+          "info": {
+            "name": "Get All Payments for the Current User Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/payments",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number, defaults to '1'"
+              },
+              {
+                "name": "itemsPerPage",
+                "value": "",
+                "type": "query",
+                "description": "Amount of items per page, defaults to '10'"
+              }
+            ]
+          },
+          "docs": "Get all payments for the current user contract"
+        },
+        {
+          "info": {
+            "name": "Get Payment by Payment Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/payments/:paymentId",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "The payment id"
+              }
+            ]
+          },
+          "docs": "Get payment for the user contract and payment id"
+        },
+        {
+          "info": {
+            "name": "Get All Subscriptions for the Current User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/subscriptions",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number, defaults to '1'"
+              },
+              {
+                "name": "itemsPerPage",
+                "value": "",
+                "type": "query",
+                "description": "Amount of items per page, defaults to '10'"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter subscriptions by type"
+              }
+            ]
+          },
+          "docs": "Get all subscriptions for the current user"
+        },
+        {
+          "info": {
+            "name": "Get Subscription by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The subscription id"
+              }
+            ]
+          },
+          "docs": "Get subscription by id"
+        },
+        {
+          "info": {
+            "name": "Get All Payments by Subscription Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/subscriptions/:subscriptionId/payments",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The subscription id"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number, defaults to '1'"
+              },
+              {
+                "name": "itemsPerPage",
+                "value": "",
+                "type": "query",
+                "description": "Amount of items per page, defaults to '10'"
+              }
+            ]
+          },
+          "docs": "Get all payments for the user contract and subscription id"
+        },
+        {
+          "info": {
+            "name": "Revoke a Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/subscriptions/:subscriptionId/revoke",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The subscription id"
+              }
+            ]
+          },
+          "docs": "Revoke a subscription by contract and subscription id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

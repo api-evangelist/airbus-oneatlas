@@ -1,0 +1,416 @@
+{
+  "item": [
+    {
+      "id": "36902159-146e-4957-8f20-eaff888c00fe",
+      "name": "SPOT and Pleiades specific",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac4be310-e713-45d1-a5d4-18590c0a0423",
+          "name": "Track Your Orders",
+          "request": {
+            "name": "Track Your Orders",
+            "description": {
+              "content": "You can see all your tasking orders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "contracts",
+                ":cisContractId",
+                "taskings"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3dfdcacd-8f41-47f5-a155-671c3a860692",
+          "name": "Track an Order",
+          "request": {
+            "name": "Track an Order",
+            "description": {
+              "content": "To see the status of a dedicated tasking, you can use the following endpoint after having retrieved the <taskingId>, available in the email notification under ICR_ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "contracts",
+                ":cisContractId",
+                "taskings",
+                ":taskingId"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "755d05e7-7a8a-44cc-a048-3bbaafbb45db",
+          "name": "Track Orders with Customerref",
+          "request": {
+            "name": "Track Orders with Customerref",
+            "description": {
+              "content": "Track orders attached to a customer reference.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "contracts",
+                ":cisContractId",
+                "taskings"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [
+                {
+                  "key": "customerRef",
+                  "value": "yourCustomerReference"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "CustomerReference",
+                  "description": "(Required) The Customer Reference"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9af636d9-c0c6-4977-b60f-f5501099b8be",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "contracts",
+                    ":cisContractId",
+                    "taskings"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "CustomerReference",
+                      "description": "(Required) The Customer Reference"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"taskings\": [\n    {\n      \"sal\": \"SALXXXXXX\",\n      \"so\": \"SOXXXXX\",\n      \"icr\": {\n        \"id\": \"ICR_FC_XXXXX\",\n        \"aoi\": {\n          \"type\": \"Polygon\",\n          \"coordinates\": [\n            [\n              [\n                122.680848001114,\n                -24.4983000806924\n              ],\n              [\n                122.837192701615,\n                -24.494335091697\n              ],\n              [\n                122.834119286537,\n                -24.3386542248409\n              ],\n              [\n                122.6804797677,\n                -24.3373016179506\n              ],\n              [\n                122.680848001114,\n                -24.4983000806924\n              ]\n            ]\n          ]\n        },\n        \"progTypeName\": \"OneDay\",\n        \"status\": \"Completed\",\n        \"nbProposedSegments\": 0,\n        \"nbTotalSegments\": 0,\n        \"period\": {\n          \"startDate\": \"2021-03-03T01:54:44Z\",\n          \"endDate\": \"2021-03-03T02:24:47Z\"\n        },\n        \"seriesInformation\": null,\n        \"customerRef\": \"customer ref\",\n        \"taskingProgress\": {\n          \"orderedArea\": 275718686.400068,\n          \"validatedArea\": 0\n        },\n        \"attempts\": \"2021-03-03T02:09:44.999Z 2021-03-03T02:09:47.001Z\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1687f709-9e6f-4e3d-980c-4e4f408a1263",
+          "name": "Retrieve Acquisitions on an Order",
+          "request": {
+            "name": "Retrieve Acquisitions on an Order",
+            "description": {},
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "contracts",
+                ":CisContractId",
+                "taskings",
+                ":taskingId",
+                "segments"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1c2feb1-7cff-477a-a14f-879744f4649c",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "contracts",
+                    ":CisContractId",
+                    "taskings",
+                    ":taskingId",
+                    "segments"
+                  ],
+                  "host": [
+                    "order",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"segments\": [\n    {\n      \"id\": \"AS_FC_XXXX_1_2\",\n      \"status\": \"Proposed\",\n      \"asDetail1\": {\n        \"catalogId\": \"DS_PHR1B_XXXXXX\",\n        \"footprint\": {\n          \"type\": \"Polygon\",\n          \"coordinates\": \"coordinates\"\n        },\n        \"incidenceAngle\": 15.1072,\n        \"clearSkyRate\": 88.8973,\n        \"acquisitionDate\": \"2021-04-18T10:53:38Z\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fff8a43-5dd7-4dae-a7af-6f35a6d0e9d1",
+          "name": "Accept Acquisition",
+          "request": {
+            "name": "Accept Acquisition",
+            "description": {
+              "content": "To accept an acquisition, use the following endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "contracts",
+                ":CisContractId",
+                "taskings",
+                ":tasking_Id",
+                "segments",
+                ":segmentId",
+                "accept"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a299007-e6e0-48d9-918c-52d07c694315",
+          "name": "Refuse Acquisition",
+          "request": {
+            "name": "Refuse Acquisition",
+            "description": {
+              "content": "To refuse an acquisition, use the following endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "",
+                "api",
+                "v1",
+                "contracts",
+                ":CisContractId",
+                "taskings",
+                ":tasking_Id",
+                "segments",
+                ":segmentId",
+                "refuse"
+              ],
+              "host": [
+                "order",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "270879b1-e589-4120-bcaf-2c8c9fde03b9",
+    "name": "OneAtlas WorldDEM Access SPOT and Pleiades specific API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

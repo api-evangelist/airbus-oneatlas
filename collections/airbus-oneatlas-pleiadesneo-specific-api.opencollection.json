@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access PleiadesNeo specific API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PleiadesNeo specific",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Track Your Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v2/orders/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to see all your orders"
+        },
+        {
+          "info": {
+            "name": "Retrieve Acquisitions on an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/coverages/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can retrieve coverage items using this endpoint"
+        },
+        {
+          "info": {
+            "name": "Accept an Acquisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1api/v1/coverages/:coverageItemId/accept"
+          },
+          "docs": "You can accept an acquisition using this endpoint"
+        },
+        {
+          "info": {
+            "name": "Refuse an Acquisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1api/v1/coverages/:coverageItemId/refuse"
+          },
+          "docs": "You can refuse an acquisition using this endpoint"
+        },
+        {
+          "info": {
+            "name": "Stop a Tasking Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1api/v1/orders/:orderItemId/stop"
+          },
+          "docs": "To stop a tasking order, use the following endpoint"
+        },
+        {
+          "info": {
+            "name": "Track Your Quotations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1api/v2/orders/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can track your quotations using this endpoint"
+        },
+        {
+          "info": {
+            "name": "Get a PDF Quotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/quotations/:quotationId/export"
+          },
+          "docs": "To generate a PDF of a specific quotation, use the following endpoint"
+        },
+        {
+          "info": {
+            "name": "Accept a Quotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/quotations/:quotationId/export"
+          },
+          "docs": "You can accept a quotation using this endpoint"
+        },
+        {
+          "info": {
+            "name": "Refuse a Quotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/contracts/:CisContractId/quotations/:quotationId/refuse"
+          },
+          "docs": "You can refuse a quotation using this endpoint"
+        },
+        {
+          "info": {
+            "name": "Cancel a Tasking Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1api/v1/orders/:orderItemId/cancel"
+          },
+          "docs": "To Cancel a tasking order, use the following endpoint"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

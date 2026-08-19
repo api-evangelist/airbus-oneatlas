@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Tasking API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tasking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Taskings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/contracts/:contractId/taskings",
+            "params": [
+              {
+                "name": "contractId",
+                "value": "",
+                "type": "path",
+                "description": "It corresponds to an internal id for the customer contract - you will be provided the contractId"
+              },
+              {
+                "name": "taskingIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "customerRef",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "program",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mission",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "progTypeNames",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "acquisitionDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "icrEndOfPeriodDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hasProposedSegments",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortKeys",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "get taskings"
+        },
+        {
+          "info": {
+            "name": "Get Tasking by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/contracts/:contractId/taskings/:taskingId",
+            "params": [
+              {
+                "name": "contractId",
+                "value": "",
+                "type": "path",
+                "description": "It corresponds to an internal id for the customer contract - you will be provided the contractId"
+              },
+              {
+                "name": "taskingId",
+                "value": "",
+                "type": "path",
+                "description": "The tasking id"
+              }
+            ]
+          },
+          "docs": "Get tasking by tasking id"
+        },
+        {
+          "info": {
+            "name": "Cancel Tasking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/contracts/:contractId/taskings/:taskingId/cancel",
+            "params": [
+              {
+                "name": "contractId",
+                "value": "",
+                "type": "path",
+                "description": "It corresponds to an internal id for the customer contract - you will be provided the contractId"
+              },
+              {
+                "name": "taskingId",
+                "value": "",
+                "type": "path",
+                "description": "The tasking id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel tasking"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

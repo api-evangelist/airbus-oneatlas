@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access accounting/transactions API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "accounting/transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Transactions of the Current User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/accounting/transactions"
+          },
+          "docs": "Get Transactions of the Current User"
+        },
+        {
+          "info": {
+            "name": "Get Specific Transaction of the Current User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/accounting/transactions/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "UUID of requested transaction"
+              }
+            ]
+          },
+          "docs": "Get Specific Transaction of the Current User"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access accounting/balance API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "accounting/balance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/accounting/balance"
+          },
+          "docs": "Get the Balance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

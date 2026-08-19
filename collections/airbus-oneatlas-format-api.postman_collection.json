@@ -1,0 +1,267 @@
+{
+  "item": [
+    {
+      "id": "84a51b8b-22ba-48e5-9b54-cf12b12c1526",
+      "name": "Format",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1801e3ce-a488-4bfe-8473-604c3dc86c57",
+          "name": "Format Product",
+          "request": {
+            "name": "Format Product",
+            "description": {
+              "content": "Defines the format for the given catalog item id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "items",
+                ":catalogItemId",
+                "format"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "catalogItemId",
+                  "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "disabled": false,
+                "description": "Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.",
+                "key": "X-Ads-Priority",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"checksum\": {\n    \"parameters\": {\n      \"crcCode\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"compression\": \"<string>\",\n  \"packaging\": {\n    \"parameters\": {\n      \"imageFormat\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a79ea653-b323-4ec8-9647-a422bfb12ee7",
+              "name": "If last format (if exists) has the same payload. In this case X-Ads-CorrelationId header is ignored.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "items",
+                    ":catalogItemId",
+                    "format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.",
+                    "key": "X-Ads-Priority",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"checksum\": {\n    \"parameters\": {\n      \"crcCode\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"compression\": \"<string>\",\n  \"packaging\": {\n    \"parameters\": {\n      \"imageFormat\": \"image/jp2\"\n    },\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"history\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"monitoring\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    }\n  },\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69b1e801-e569-4829-a3fc-22b94d5f5853",
+              "name": "Creation of the format activity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "items",
+                    ":catalogItemId",
+                    "format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "catalogItemId",
+                      "description": "(Required) Identifier of an IDP catalog item (property `id` of a search result)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.",
+                    "key": "X-Ads-Priority",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"checksum\": {\n    \"parameters\": {\n      \"crcCode\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"compression\": \"<string>\",\n  \"packaging\": {\n    \"parameters\": {\n      \"imageFormat\": \"image/jp2\"\n    },\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"history\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"monitoring\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    }\n  },\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4b076e16-1238-4d82-86ed-d892e59c712c",
+    "name": "OneAtlas WorldDEM Access Format API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

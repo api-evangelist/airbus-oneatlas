@@ -1,0 +1,3807 @@
+{
+  "item": [
+    {
+      "id": "0aad440f-bb46-4db2-bbe2-8d41df3b16fc",
+      "name": "elevation/orders",
+      "description": {
+        "content": "All operations needed to order DEM data:\n  * place orders\n  * show placed orders\n  * download purchased data\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1526b3f2-0555-4024-8112-e4c973bd7cf6",
+          "name": "Create New Order",
+          "request": {
+            "name": "Create New Order",
+            "description": {},
+            "url": {
+              "path": [
+                "elevation",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"<string>\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"<string>\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"<string>\",\n  \"customer\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97e3da7b-2cd8-40d7-ad5e-6c87fb1e30e1",
+              "name": "id of and link to the order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"b9071d6c-b275-4929-8ba1-eefb013abc5f\",\n  \"self\": {\n    \"href\": \"/orders/b9071d6c-b275-4929-8ba1-eefb013abc5f/\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e12f0ede-5bc0-434f-968e-063ce6444788",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71288df5-099a-49fe-8e8c-1575c31e1ee1",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fc9667a-d1d4-4adc-9ccb-a4de640047c2",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2c06d60-e9ef-4732-91e1-8614d4086b96",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ac1f560-b07a-4975-8421-75e8791c83f8",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1096ea1-0561-4463-a78b-5d85fc4bdeb6",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4ee1848-897a-4bd3-9b6f-88e34317a94f",
+          "name": "Get All Orders as References",
+          "request": {
+            "name": "Get All Orders as References",
+            "description": {},
+            "url": {
+              "path": [
+                "elevation",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e266ef21-675d-480c-8c84-0513d5f81dea",
+              "name": "array containing the id of and link to the orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"b9071d6c-b275-4929-8ba1-eefb013abc5f\",\n    \"order\": {\n      \"href\": \"/orders/b9071d6c-b275-4929-8ba1-eefb013abc5f/\"\n    },\n    \"self\": {\n      \"href\": \"/orders/b9071d6c-b275-4929-8ba1-eefb013abc5f/\"\n    }\n  },\n  {\n    \"id\": \"b9071d6c-b275-4929-8ba1-eefb013abc5f\",\n    \"order\": {\n      \"href\": \"/orders/b9071d6c-b275-4929-8ba1-eefb013abc5f/\"\n    },\n    \"self\": {\n      \"href\": \"/orders/b9071d6c-b275-4929-8ba1-eefb013abc5f/\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15bd62f1-fd28-48f1-a4f0-8037886013f3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df41f832-2c40-4f83-b76f-073c6c33b857",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91037b83-8f7a-4283-8bc1-a36d6db66197",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b20a4b8-ccee-4a07-9bd8-fdecb1f17f33",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f99f88d4-ef78-4dfc-865b-c10266253e56",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80b67986-6d02-435f-8a33-0278e3539e76",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9807ecc5-ab62-454d-a995-9870caf5b827",
+          "name": "Get All Orders",
+          "request": {
+            "name": "Get All Orders",
+            "description": {},
+            "url": {
+              "path": [
+                "elevation",
+                "orders",
+                "full"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45ddaf87-1418-40ef-b5a9-aa4015f6a6f5",
+              "name": "array containing the all full orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"kind\": \"order\",\n    \"title\": \"Friedrichshafen\",\n    \"customer\": \"Airbus Intelligence Germany\",\n    \"areaKm2\": 20.85,\n    \"billableAreaKm2\": 15.23,\n    \"price\": {\n      \"amountUnit\": \"CREDITS\",\n      \"amount\": 83.4\n    },\n    \"createdAt\": \"2020-07-27T16:07:23.308Z\",\n    \"createdBy\": \"0e203d66-578a-4661-9b40-ccf87a80e6a1\",\n    \"id\": \"11186097-2e15-4f3a-abb1-0ed4ac3bb57f\",\n    \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n    \"itemFormat\": \"GeoTIFF\",\n    \"itemType\": \"dem.wdneo\",\n    \"status\": \"ready\",\n    \"aoi\": {\n      \"type\": \"Point\",\n      \"coordinates\": [\n        9.3,\n        47.7\n      ]\n    },\n    \"_links\": {\n      \"item\": {\n        \"href\": \"/items/e332914b-3ee2-4881-b050-300352363124\"\n      },\n      \"items\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items\"\n      },\n      \"order\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n      },\n      \"orders\": {\n        \"href\": \"/orders\"\n      },\n      \"self\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n      }\n    },\n    \"items\": [\n      {\n        \"_links\": {\n          \"download\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124/download\"\n          },\n          \"items\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items\"\n          },\n          \"order\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n          },\n          \"orders\": {\n            \"href\": \"/orders\"\n          },\n          \"self\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124\"\n          }\n        },\n        \"aoi\": {\n          \"type\": \"Point\",\n          \"coordinates\": [\n            9.3,\n            47.7\n          ]\n        },\n        \"areaKm2\": 20.85,\n        \"billableAreaKm2\": 15.23,\n        \"price\": {\n          \"amountUnit\": \"EUR\",\n          \"amount\": 83.4,\n          \"amountPerKm2\": 4\n        },\n        \"createdAt\": \"2020-07-27T16:07:23.308Z\",\n        \"createdBy\": \"0e203d66-578a-4661-9b40-ccf87a80e6a1\",\n        \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n        \"orderId\": \"11186097-2e15-4f3a-abb1-0ed4ac3bb57f\",\n        \"itemId\": \"e332914b-3ee2-4881-b050-300352363124\",\n        \"orderItemId\": 1,\n        \"itemFormat\": \"GeoTIFF\",\n        \"itemType\": \"dem.wdneo\",\n        \"kind\": \"order.item\",\n        \"status\": \"ready\",\n        \"customer\": \"Airbus Intelligence Germany\",\n        \"discounts\": {\n          \"reseller\": {\n            \"basePrice\": {\n              \"amountUnit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amountPerKm2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"percentage\": 34.56,\n            \"amount\": -123.45,\n            \"amountPerKm2\": -0.5,\n            \"amountUnit\": \"USD\"\n          },\n          \"volume\": {\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"percentage\": 34.56,\n            \"amount\": -123.45,\n            \"amountPerKm2\": -0.5,\n            \"amountUnit\": \"USD\",\n            \"nextDiscount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"total\": {\n            \"basePrice\": {\n              \"amountUnit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amountPerKm2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"percentage\": 34.56,\n            \"amount\": -123.45,\n            \"amountPerKm2\": -0.5,\n            \"amountUnit\": \"EUR\"\n          }\n        }\n      },\n      {\n        \"_links\": {\n          \"download\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124/download\"\n          },\n          \"items\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items\"\n          },\n          \"order\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n          },\n          \"orders\": {\n            \"href\": \"/orders\"\n          },\n          \"self\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124\"\n          }\n        },\n        \"aoi\": {\n          \"type\": \"Point\",\n          \"coordinates\": [\n            9.3,\n            47.7\n          ]\n        },\n        \"areaKm2\": 20.85,\n        \"billableAreaKm2\": 15.23,\n        \"price\": {\n          \"amountUnit\": \"USD\",\n          \"amount\": 83.4,\n          \"amountPerKm2\": 4\n        },\n        \"createdAt\": \"2020-07-27T16:07:23.308Z\",\n        \"createdBy\": \"0e203d66-578a-4661-9b40-ccf87a80e6a1\",\n        \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n        \"orderId\": \"11186097-2e15-4f3a-abb1-0ed4ac3bb57f\",\n        \"itemId\": \"e332914b-3ee2-4881-b050-300352363124\",\n        \"orderItemId\": 1,\n        \"itemFormat\": \"GeoTIFF\",\n        \"itemType\": \"dem.wdneo\",\n        \"kind\": \"order.item\",\n        \"status\": \"ready\",\n        \"customer\": \"Airbus Intelligence Germany\",\n        \"discounts\": {\n          \"reseller\": {\n            \"basePrice\": {\n              \"amountUnit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amountPerKm2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"percentage\": 34.56,\n            \"amount\": -123.45,\n            \"amountPerKm2\": -0.5,\n            \"amountUnit\": \"USD\"\n          },\n          \"volume\": {\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"percentage\": 34.56,\n            \"amount\": -123.45,\n            \"amountPerKm2\": -0.5,\n            \"amountUnit\": \"EUR\",\n            \"nextDiscount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"total\": {\n            \"basePrice\": {\n              \"amountUnit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amountPerKm2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"percentage\": 34.56,\n            \"amount\": -123.45,\n            \"amountPerKm2\": -0.5,\n            \"amountUnit\": \"CREDITS\"\n          }\n        }\n      }\n    ]\n  },\n  {\n    \"kind\": \"order\",\n    \"title\": \"Friedrichshafen\",\n    \"customer\": \"Airbus Intelligence Germany\",\n    \"areaKm2\": 20.85,\n    \"billableAreaKm2\": 15.23,\n    \"price\": {\n      \"amountUnit\": \"CREDITS\",\n      \"amount\": 83.4\n    },\n    \"createdAt\": \"2020-07-27T16:07:23.308Z\",\n    \"createdBy\": \"0e203d66-578a-4661-9b40-ccf87a80e6a1\",\n    \"id\": \"11186097-2e15-4f3a-abb1-0ed4ac3bb57f\",\n    \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n    \"itemFormat\": \"GeoTIFF\",\n    \"itemType\": \"dem.wdneo\",\n    \"status\": \"ready\",\n    \"aoi\": {\n      \"type\": \"Point\",\n      \"coordinates\": [\n        9.3,\n        47.7\n      ]\n    },\n    \"_links\": {\n      \"item\": {\n        \"href\": \"/items/e332914b-3ee2-4881-b050-300352363124\"\n      },\n      \"items\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items\"\n      },\n      \"order\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n      },\n      \"orders\": {\n        \"href\": \"/orders\"\n      },\n      \"self\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n      }\n    },\n    \"items\": [\n      {\n        \"_links\": {\n          \"download\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124/download\"\n          },\n          \"items\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items\"\n          },\n          \"order\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n          },\n          \"orders\": {\n            \"href\": \"/orders\"\n          },\n          \"self\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124\"\n          }\n        },\n        \"aoi\": {\n          \"type\": \"Point\",\n          \"coordinates\": [\n            9.3,\n            47.7\n          ]\n        },\n        \"areaKm2\": 20.85,\n        \"billableAreaKm2\": 15.23,\n        \"price\": {\n          \"amountUnit\": \"CREDITS\",\n          \"amount\": 83.4,\n          \"amountPerKm2\": 4\n        },\n        \"createdAt\": \"2020-07-27T16:07:23.308Z\",\n        \"createdBy\": \"0e203d66-578a-4661-9b40-ccf87a80e6a1\",\n        \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n        \"orderId\": \"11186097-2e15-4f3a-abb1-0ed4ac3bb57f\",\n        \"itemId\": \"e332914b-3ee2-4881-b050-300352363124\",\n        \"orderItemId\": 1,\n        \"itemFormat\": \"GeoTIFF\",\n        \"itemType\": \"dem.wdneo\",\n        \"kind\": \"order.item\",\n        \"status\": \"ready\",\n        \"customer\": \"Airbus Intelligence Germany\",\n        \"discounts\": {\n          \"reseller\": {\n            \"basePrice\": {\n              \"amountUnit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amountPerKm2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"percentage\": 34.56,\n            \"amount\": -123.45,\n            \"amountPerKm2\": -0.5,\n            \"amountUnit\": \"EUR\"\n          },\n          \"volume\": {\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"percentage\": 34.56,\n            \"amount\": -123.45,\n            \"amountPerKm2\": -0.5,\n            \"amountUnit\": \"CREDITS\",\n            \"nextDiscount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"total\": {\n            \"basePrice\": {\n              \"amountUnit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amountPerKm2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"percentage\": 34.56,\n            \"amount\": -123.45,\n            \"amountPerKm2\": -0.5,\n            \"amountUnit\": \"USD\"\n          }\n        }\n      },\n      {\n        \"_links\": {\n          \"download\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124/download\"\n          },\n          \"items\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items\"\n          },\n          \"order\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n          },\n          \"orders\": {\n            \"href\": \"/orders\"\n          },\n          \"self\": {\n            \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124\"\n          }\n        },\n        \"aoi\": {\n          \"type\": \"Point\",\n          \"coordinates\": [\n            9.3,\n            47.7\n          ]\n        },\n        \"areaKm2\": 20.85,\n        \"billableAreaKm2\": 15.23,\n        \"price\": {\n          \"amountUnit\": \"USD\",\n          \"amount\": 83.4,\n          \"amountPerKm2\": 4\n        },\n        \"createdAt\": \"2020-07-27T16:07:23.308Z\",\n        \"createdBy\": \"0e203d66-578a-4661-9b40-ccf87a80e6a1\",\n        \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n        \"orderId\": \"11186097-2e15-4f3a-abb1-0ed4ac3bb57f\",\n        \"itemId\": \"e332914b-3ee2-4881-b050-300352363124\",\n        \"orderItemId\": 1,\n        \"itemFormat\": \"GeoTIFF\",\n        \"itemType\": \"dem.wdneo\",\n        \"kind\": \"order.item\",\n        \"status\": \"ready\",\n        \"customer\": \"Airbus Intelligence Germany\",\n        \"discounts\": {\n          \"reseller\": {\n            \"basePrice\": {\n              \"amountUnit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amountPerKm2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"percentage\": 34.56,\n            \"amount\": -123.45,\n            \"amountPerKm2\": -0.5,\n            \"amountUnit\": \"CREDITS\"\n          },\n          \"volume\": {\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"percentage\": 34.56,\n            \"amount\": -123.45,\n            \"amountPerKm2\": -0.5,\n            \"amountUnit\": \"EUR\",\n            \"nextDiscount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"total\": {\n            \"basePrice\": {\n              \"amountUnit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"amountPerKm2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"percentage\": 34.56,\n            \"amount\": -123.45,\n            \"amountPerKm2\": -0.5,\n            \"amountUnit\": \"CREDITS\"\n          }\n        }\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1896d61-7f9a-4e05-9dda-53db858bc278",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d8eda7e-6752-4f98-96c7-ce23040fa2aa",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9ab2d24-094e-403c-8f98-be2c1079c500",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f691ce3-9a2c-41f3-a919-a328892f3d3f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c60ee5e-6469-4e19-9edd-ad0ba5957cc2",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "202e9de2-5bbe-42f6-a752-16158f8d03b8",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c07e694c-f542-4e44-a94b-0118575afbb3",
+          "name": "Get Order Information by the Id with References to the Items",
+          "request": {
+            "name": "Get Order Information by the Id with References to the Items",
+            "description": {},
+            "url": {
+              "path": [
+                "elevation",
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "orderId",
+                  "description": "(Required) requested order id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b896c0e7-bec4-4ab4-bb63-1ea982f1f522",
+              "name": "Order information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"order\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\",\n  \"areaKm2\": 20.85,\n  \"billableAreaKm2\": 15.23,\n  \"price\": {\n    \"amountUnit\": \"USD\",\n    \"amount\": 83.4\n  },\n  \"createdAt\": \"2020-07-27T16:07:23.308Z\",\n  \"createdBy\": \"0e203d66-578a-4661-9b40-ccf87a80e6a1\",\n  \"id\": \"11186097-2e15-4f3a-abb1-0ed4ac3bb57f\",\n  \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n  \"itemFormat\": \"GeoTIFF\",\n  \"itemType\": \"dem.wdneo\",\n  \"status\": \"ready\",\n  \"aoi\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      9.3,\n      47.7\n    ]\n  },\n  \"_links\": {\n    \"item\": {\n      \"href\": \"/items/e332914b-3ee2-4881-b050-300352363124\"\n    },\n    \"items\": {\n      \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items\"\n    },\n    \"order\": {\n      \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n    },\n    \"orders\": {\n      \"href\": \"/orders\"\n    },\n    \"self\": {\n      \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n    }\n  },\n  \"items\": [\n    {\n      \"id\": \"e332914b-3ee2-4881-b050-300352363124\",\n      \"self\": {\n        \"href\": \"/orders/b9071d6c-b275-4929-8ba1-eefb013abc5f/items/5429b53a-8fd1-4b3e-8af6-a24f654caff3\"\n      },\n      \"_links\": {\n        \"self\": {\n          \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124\"\n        },\n        \"download\": {\n          \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124/download\"\n        }\n      }\n    },\n    {\n      \"id\": \"e332914b-3ee2-4881-b050-300352363124\",\n      \"self\": {\n        \"href\": \"/orders/b9071d6c-b275-4929-8ba1-eefb013abc5f/items/5429b53a-8fd1-4b3e-8af6-a24f654caff3\"\n      },\n      \"_links\": {\n        \"self\": {\n          \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124\"\n        },\n        \"download\": {\n          \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124/download\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a73d61f0-371f-4713-81e7-c15c1689b850",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "574ed8e5-0026-4053-ab94-2ef29b675170",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1cdb239-ba46-4bdf-8891-9c451cf86e53",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "008c5abb-2764-4ed9-b962-7d552d17cfb0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad99b829-d455-4853-831d-79165cd07c47",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0759fea0-6c2e-4587-bf31-bd0c24d23b7c",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2e27c3f-9953-4d04-978e-17da003b00b6",
+          "name": "Get Order Information by the Id with Full Items",
+          "request": {
+            "name": "Get Order Information by the Id with Full Items",
+            "description": {},
+            "url": {
+              "path": [
+                "elevation",
+                "orders",
+                ":orderId",
+                "full"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "orderId",
+                  "description": "(Required) requested order id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f995b71b-8592-45c1-a077-7f629cd803a6",
+              "name": "Order information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"order\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\",\n  \"areaKm2\": 20.85,\n  \"billableAreaKm2\": 15.23,\n  \"price\": {\n    \"amountUnit\": \"USD\",\n    \"amount\": 83.4\n  },\n  \"createdAt\": \"2020-07-27T16:07:23.308Z\",\n  \"createdBy\": \"0e203d66-578a-4661-9b40-ccf87a80e6a1\",\n  \"id\": \"11186097-2e15-4f3a-abb1-0ed4ac3bb57f\",\n  \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n  \"itemFormat\": \"GeoTIFF\",\n  \"itemType\": \"dem.wdneo\",\n  \"status\": \"ready\",\n  \"aoi\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      9.3,\n      47.7\n    ]\n  },\n  \"_links\": {\n    \"item\": {\n      \"href\": \"/items/e332914b-3ee2-4881-b050-300352363124\"\n    },\n    \"items\": {\n      \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items\"\n    },\n    \"order\": {\n      \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n    },\n    \"orders\": {\n      \"href\": \"/orders\"\n    },\n    \"self\": {\n      \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n    }\n  },\n  \"items\": [\n    {\n      \"_links\": {\n        \"download\": {\n          \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124/download\"\n        },\n        \"items\": {\n          \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items\"\n        },\n        \"order\": {\n          \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n        },\n        \"orders\": {\n          \"href\": \"/orders\"\n        },\n        \"self\": {\n          \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124\"\n        }\n      },\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"areaKm2\": 20.85,\n      \"billableAreaKm2\": 15.23,\n      \"price\": {\n        \"amountUnit\": \"EUR\",\n        \"amount\": 83.4,\n        \"amountPerKm2\": 4\n      },\n      \"createdAt\": \"2020-07-27T16:07:23.308Z\",\n      \"createdBy\": \"0e203d66-578a-4661-9b40-ccf87a80e6a1\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"orderId\": \"11186097-2e15-4f3a-abb1-0ed4ac3bb57f\",\n      \"itemId\": \"e332914b-3ee2-4881-b050-300352363124\",\n      \"orderItemId\": 1,\n      \"itemFormat\": \"GeoTIFF\",\n      \"itemType\": \"dem.wdneo\",\n      \"kind\": \"order.item\",\n      \"status\": \"ready\",\n      \"customer\": \"Airbus Intelligence Germany\",\n      \"discounts\": {\n        \"reseller\": {\n          \"basePrice\": {\n            \"amountUnit\": \"USD\",\n            \"amount\": 83.4,\n            \"amountPerKm2\": 4\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"USD\"\n        },\n        \"volume\": {\n          \"basePrice\": {\n            \"amountUnit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amountPerKm2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"USD\",\n          \"nextDiscount\": {\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"percentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amountPerKm2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amountUnit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"missingKm2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"total\": {\n          \"basePrice\": {\n            \"amountUnit\": \"EUR\",\n            \"amount\": 83.4,\n            \"amountPerKm2\": 4\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"USD\"\n        }\n      }\n    },\n    {\n      \"_links\": {\n        \"download\": {\n          \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124/download\"\n        },\n        \"items\": {\n          \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items\"\n        },\n        \"order\": {\n          \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n        },\n        \"orders\": {\n          \"href\": \"/orders\"\n        },\n        \"self\": {\n          \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124\"\n        }\n      },\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"areaKm2\": 20.85,\n      \"billableAreaKm2\": 15.23,\n      \"price\": {\n        \"amountUnit\": \"EUR\",\n        \"amount\": 83.4,\n        \"amountPerKm2\": 4\n      },\n      \"createdAt\": \"2020-07-27T16:07:23.308Z\",\n      \"createdBy\": \"0e203d66-578a-4661-9b40-ccf87a80e6a1\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"orderId\": \"11186097-2e15-4f3a-abb1-0ed4ac3bb57f\",\n      \"itemId\": \"e332914b-3ee2-4881-b050-300352363124\",\n      \"orderItemId\": 1,\n      \"itemFormat\": \"GeoTIFF\",\n      \"itemType\": \"dem.wdneo\",\n      \"kind\": \"order.item\",\n      \"status\": \"ready\",\n      \"customer\": \"Airbus Intelligence Germany\",\n      \"discounts\": {\n        \"reseller\": {\n          \"basePrice\": {\n            \"amountUnit\": \"USD\",\n            \"amount\": 83.4,\n            \"amountPerKm2\": 4\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"USD\"\n        },\n        \"volume\": {\n          \"basePrice\": {\n            \"amountUnit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amountPerKm2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"EUR\",\n          \"nextDiscount\": {\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"percentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amountPerKm2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amountUnit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"missingKm2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"total\": {\n          \"basePrice\": {\n            \"amountUnit\": \"USD\",\n            \"amount\": 83.4,\n            \"amountPerKm2\": 4\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"CREDITS\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60e64252-e489-4ac6-a803-a679bd4b4dd2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19ee478e-b2fa-4f0d-bda8-780c9010e3db",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6587594c-97c1-4069-827e-6449951ccee1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9471a188-d577-4254-aef9-f400fca78cd9",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0148b96a-0a53-4408-9517-009528217e6c",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0daeee04-6d38-4b9c-b0fa-29f79581b9f9",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab5825bf-00c0-4f7c-a1ad-34dea6033b0d",
+          "name": "Get Reference of Items of the Specified Order",
+          "request": {
+            "name": "Get Reference of Items of the Specified Order",
+            "description": {},
+            "url": {
+              "path": [
+                "elevation",
+                "orders",
+                ":orderId",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "orderId",
+                  "description": "(Required) requested order id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ecd6eea9-a721-48cc-8839-bbe983695d63",
+              "name": "id of and link to all items of the order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"e332914b-3ee2-4881-b050-300352363124\",\n    \"self\": {\n      \"href\": \"/orders/b9071d6c-b275-4929-8ba1-eefb013abc5f/items/5429b53a-8fd1-4b3e-8af6-a24f654caff3\"\n    },\n    \"_links\": {\n      \"self\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124\"\n      },\n      \"download\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124/download\"\n      }\n    }\n  },\n  {\n    \"id\": \"e332914b-3ee2-4881-b050-300352363124\",\n    \"self\": {\n      \"href\": \"/orders/b9071d6c-b275-4929-8ba1-eefb013abc5f/items/5429b53a-8fd1-4b3e-8af6-a24f654caff3\"\n    },\n    \"_links\": {\n      \"self\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124\"\n      },\n      \"download\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124/download\"\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41ed294c-0f46-4c43-80a9-a24586dce8db",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2de2a465-9678-408d-ab0a-2646012fe2b6",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77214fa1-673c-4a68-9ef1-39a46ef7c1ab",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9b1978f-84e8-4d22-bb4e-313f9d15488f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99db743c-96f9-4ead-8817-8fcae8bb8661",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "528ff963-b423-4c94-af4c-ec0a6c0490ed",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1cf54b04-1bfd-49d6-8079-2545dd326bbf",
+          "name": "Get Full Items of the Specified Order",
+          "request": {
+            "name": "Get Full Items of the Specified Order",
+            "description": {},
+            "url": {
+              "path": [
+                "elevation",
+                "orders",
+                ":orderId",
+                "items",
+                "full"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "orderId",
+                  "description": "(Required) requested order id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62daa9b5-f9c5-4bef-9039-293fcd81e6e6",
+              "name": "all items of the order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_links\": {\n      \"download\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124/download\"\n      },\n      \"items\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items\"\n      },\n      \"order\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n      },\n      \"orders\": {\n        \"href\": \"/orders\"\n      },\n      \"self\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124\"\n      }\n    },\n    \"aoi\": {\n      \"type\": \"Point\",\n      \"coordinates\": [\n        9.3,\n        47.7\n      ]\n    },\n    \"areaKm2\": 20.85,\n    \"billableAreaKm2\": 15.23,\n    \"price\": {\n      \"amountUnit\": \"EUR\",\n      \"amount\": 83.4,\n      \"amountPerKm2\": 4\n    },\n    \"createdAt\": \"2020-07-27T16:07:23.308Z\",\n    \"createdBy\": \"0e203d66-578a-4661-9b40-ccf87a80e6a1\",\n    \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n    \"orderId\": \"11186097-2e15-4f3a-abb1-0ed4ac3bb57f\",\n    \"itemId\": \"e332914b-3ee2-4881-b050-300352363124\",\n    \"orderItemId\": 1,\n    \"itemFormat\": \"GeoTIFF\",\n    \"itemType\": \"dem.wdneo\",\n    \"kind\": \"order.item\",\n    \"status\": \"ready\",\n    \"customer\": \"Airbus Intelligence Germany\",\n    \"discounts\": {\n      \"reseller\": {\n        \"basePrice\": {\n          \"amountUnit\": \"USD\",\n          \"amount\": 83.4,\n          \"amountPerKm2\": 4\n        },\n        \"percentage\": 34.56,\n        \"amount\": -123.45,\n        \"amountPerKm2\": -0.5,\n        \"amountUnit\": \"USD\"\n      },\n      \"volume\": {\n        \"basePrice\": {\n          \"amountUnit\": \"EUR\",\n          \"amount\": 83.4,\n          \"amountPerKm2\": 4\n        },\n        \"percentage\": 34.56,\n        \"amount\": -123.45,\n        \"amountPerKm2\": -0.5,\n        \"amountUnit\": \"USD\",\n        \"nextDiscount\": {\n          \"basePrice\": {\n            \"amountUnit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amountPerKm2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"CREDITS\",\n          \"missingKm2\": 1401.7978626667893\n        }\n      },\n      \"total\": {\n        \"basePrice\": {\n          \"amountUnit\": \"USD\",\n          \"amount\": 83.4,\n          \"amountPerKm2\": 4\n        },\n        \"percentage\": 34.56,\n        \"amount\": -123.45,\n        \"amountPerKm2\": -0.5,\n        \"amountUnit\": \"EUR\"\n      }\n    }\n  },\n  {\n    \"_links\": {\n      \"download\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124/download\"\n      },\n      \"items\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items\"\n      },\n      \"order\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n      },\n      \"orders\": {\n        \"href\": \"/orders\"\n      },\n      \"self\": {\n        \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124\"\n      }\n    },\n    \"aoi\": {\n      \"type\": \"Point\",\n      \"coordinates\": [\n        9.3,\n        47.7\n      ]\n    },\n    \"areaKm2\": 20.85,\n    \"billableAreaKm2\": 15.23,\n    \"price\": {\n      \"amountUnit\": \"USD\",\n      \"amount\": 83.4,\n      \"amountPerKm2\": 4\n    },\n    \"createdAt\": \"2020-07-27T16:07:23.308Z\",\n    \"createdBy\": \"0e203d66-578a-4661-9b40-ccf87a80e6a1\",\n    \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n    \"orderId\": \"11186097-2e15-4f3a-abb1-0ed4ac3bb57f\",\n    \"itemId\": \"e332914b-3ee2-4881-b050-300352363124\",\n    \"orderItemId\": 1,\n    \"itemFormat\": \"GeoTIFF\",\n    \"itemType\": \"dem.wdneo\",\n    \"kind\": \"order.item\",\n    \"status\": \"ready\",\n    \"customer\": \"Airbus Intelligence Germany\",\n    \"discounts\": {\n      \"reseller\": {\n        \"basePrice\": {\n          \"amountUnit\": \"CREDITS\",\n          \"amount\": 83.4,\n          \"amountPerKm2\": 4\n        },\n        \"percentage\": 34.56,\n        \"amount\": -123.45,\n        \"amountPerKm2\": -0.5,\n        \"amountUnit\": \"EUR\"\n      },\n      \"volume\": {\n        \"basePrice\": {\n          \"amountUnit\": \"USD\",\n          \"amount\": 83.4,\n          \"amountPerKm2\": 4\n        },\n        \"percentage\": 34.56,\n        \"amount\": -123.45,\n        \"amountPerKm2\": -0.5,\n        \"amountUnit\": \"USD\",\n        \"nextDiscount\": {\n          \"basePrice\": {\n            \"amountUnit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amountPerKm2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"USD\",\n          \"missingKm2\": 9548.46520329957\n        }\n      },\n      \"total\": {\n        \"basePrice\": {\n          \"amountUnit\": \"EUR\",\n          \"amount\": 83.4,\n          \"amountPerKm2\": 4\n        },\n        \"percentage\": 34.56,\n        \"amount\": -123.45,\n        \"amountPerKm2\": -0.5,\n        \"amountUnit\": \"CREDITS\"\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d32149f-c298-492b-b44d-cfb5e62c0c4a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "555dca56-b7f4-44d1-b4e4-cbc3fb9c93e1",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86b7bee3-1390-44a8-a417-61cda637aba5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70422e3e-b758-4b76-8203-fd62026acb3a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f4ae921-21a5-4bb1-94aa-c47d1a1f941f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75f8651d-f2e0-4949-a377-38257f0bce2d",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    "full"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7ee2456-76a5-4c97-93f2-9a3d0968b8ee",
+          "name": "Get Metadata of the Specified Item",
+          "request": {
+            "name": "Get Metadata of the Specified Item",
+            "description": {},
+            "url": {
+              "path": [
+                "elevation",
+                "orders",
+                ":orderId",
+                "items",
+                ":itemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "orderId",
+                  "description": "(Required) requested order id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "itemId",
+                  "description": "(Required) requested item id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a1b0419-41b9-42c2-a05e-7dbb42575f78",
+              "name": "Item information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"download\": {\n      \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124/download\"\n    },\n    \"items\": {\n      \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items\"\n    },\n    \"order\": {\n      \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f\"\n    },\n    \"orders\": {\n      \"href\": \"/orders\"\n    },\n    \"self\": {\n      \"href\": \"/orders/11186097-2e15-4f3a-abb1-0ed4ac3bb57f/items/e332914b-3ee2-4881-b050-300352363124\"\n    }\n  },\n  \"aoi\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      9.3,\n      47.7\n    ]\n  },\n  \"areaKm2\": 20.85,\n  \"billableAreaKm2\": 15.23,\n  \"price\": {\n    \"amountUnit\": \"EUR\",\n    \"amount\": 83.4,\n    \"amountPerKm2\": 4\n  },\n  \"createdAt\": \"2020-07-27T16:07:23.308Z\",\n  \"createdBy\": \"0e203d66-578a-4661-9b40-ccf87a80e6a1\",\n  \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n  \"orderId\": \"11186097-2e15-4f3a-abb1-0ed4ac3bb57f\",\n  \"itemId\": \"e332914b-3ee2-4881-b050-300352363124\",\n  \"orderItemId\": 1,\n  \"itemFormat\": \"GeoTIFF\",\n  \"itemType\": \"dem.wdneo\",\n  \"kind\": \"order.item\",\n  \"status\": \"ready\",\n  \"customer\": \"Airbus Intelligence Germany\",\n  \"discounts\": {\n    \"reseller\": {\n      \"basePrice\": {\n        \"amountUnit\": \"USD\",\n        \"amount\": 83.4,\n        \"amountPerKm2\": 4\n      },\n      \"percentage\": 34.56,\n      \"amount\": -123.45,\n      \"amountPerKm2\": -0.5,\n      \"amountUnit\": \"EUR\"\n    },\n    \"volume\": {\n      \"basePrice\": {\n        \"amountUnit\": \"USD\",\n        \"amount\": 83.4,\n        \"amountPerKm2\": 4\n      },\n      \"percentage\": 34.56,\n      \"amount\": -123.45,\n      \"amountPerKm2\": -0.5,\n      \"amountUnit\": \"USD\",\n      \"nextDiscount\": {\n        \"basePrice\": {\n          \"amountUnit\": \"USD\",\n          \"amount\": 83.4,\n          \"amountPerKm2\": 4\n        },\n        \"percentage\": 34.56,\n        \"amount\": -123.45,\n        \"amountPerKm2\": -0.5,\n        \"amountUnit\": \"USD\",\n        \"missingKm2\": 5924.610426821279\n      }\n    },\n    \"total\": {\n      \"basePrice\": {\n        \"amountUnit\": \"USD\",\n        \"amount\": 83.4,\n        \"amountPerKm2\": 4\n      },\n      \"percentage\": 34.56,\n      \"amount\": -123.45,\n      \"amountPerKm2\": -0.5,\n      \"amountUnit\": \"EUR\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ebd50a1-0f28-4249-8344-107918e75c49",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87ef603f-60e9-4c7d-87bd-c2c2889badf9",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63f82590-1657-4d78-a63c-bbe77a60b6ca",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09347cf3-242b-49f0-9235-dd8dbc98ab23",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6274f3b7-b2b0-4401-a846-284b6ab7a91e",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dde38611-52ac-4e30-af2b-b5cbd42610b3",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9dbf6f8-b6ce-4d19-8ab8-81c407163369",
+          "name": "Download the Specified Item",
+          "request": {
+            "name": "Download the Specified Item",
+            "description": {},
+            "url": {
+              "path": [
+                "elevation",
+                "orders",
+                ":orderId",
+                "items",
+                ":itemId",
+                "download"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "orderId",
+                  "description": "(Required) requested order id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "itemId",
+                  "description": "(Required) requested item id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/tiff"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6671afc9-7c05-408b-9438-53896cc49054",
+              "name": "the item in response format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/tiff"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"Polygon\",\n  \"coordinates\": [\n    [\n      [\n        9.3,\n        47.7\n      ],\n      [\n        9.3,\n        47.2\n      ],\n      [\n        9.5,\n        47.2\n      ],\n      [\n        9.5,\n        47.7\n      ],\n      [\n        9.3,\n        47.7\n      ]\n    ]\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4b9e7fb-d665-4b63-8b71-969d373a934d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed05ab6e-8645-42c4-9e7e-805ffec04731",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4931ae61-191b-4da7-8267-30bf7bf54efe",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a860550-0efb-4e72-9d34-e662f74337dd",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24bd8bd4-ec80-408c-9f64-f1e08b23195e",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da7be58c-a65c-475e-9a1d-c20d2480ac3e",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "orders",
+                    ":orderId",
+                    "items",
+                    ":itemId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "orderId",
+                      "description": "(Required) requested order id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "itemId",
+                      "description": "(Required) requested item id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8171,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "25a0a580-83b2-4120-851b-3648205eca1d",
+    "name": "OneAtlas WorldDEM Access elevation/orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

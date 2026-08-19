@@ -1,0 +1,335 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Workspaces API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workspaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Give a User Read Access on a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/privileges",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Give a User Read Access on a Workspace"
+        },
+        {
+          "info": {
+            "name": "Add Privileges in Bulk Mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/privileges/bulk",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Privileges in Bulk Mode"
+        },
+        {
+          "info": {
+            "name": "Search the Privileges",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/privileges/search",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search the Privileges"
+        },
+        {
+          "info": {
+            "name": "Delete an Existing User Privilege",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/privileges/:privilegeId",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "privilegeId",
+                "value": "74686081-d328-4de4-91bb-4fbb7dc992a5",
+                "type": "path",
+                "description": "The id of the privilege to delete"
+              }
+            ]
+          },
+          "docs": "Delete an Existing User Privilege"
+        },
+        {
+          "info": {
+            "name": "Create a User Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/workspaces",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a User Workspace"
+        },
+        {
+          "info": {
+            "name": "Search for Workspaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/workspaces/search",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search for Workspaces"
+        },
+        {
+          "info": {
+            "name": "Get a User Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/workspaces/:workspace",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "workspace",
+                "value": "\"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\" or \"MySuperWorkspace\"",
+                "type": "path",
+                "description": "The workspace's identifier, that can be either its name or its id"
+              }
+            ]
+          },
+          "docs": "Get a User Workspace"
+        },
+        {
+          "info": {
+            "name": "Update a User Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/workspaces/:workspace",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "workspace",
+                "value": "\"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\" or \"MySuperWorkspace\"",
+                "type": "path",
+                "description": "The workspace's identifier, that can be either its name or its id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a User Workspace"
+        },
+        {
+          "info": {
+            "name": "Delete a User Workspace.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/workspaces/:workspace",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "workspace",
+                "value": "\"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\" or \"MySuperWorkspace\"",
+                "type": "path",
+                "description": "The workspace's identifier, that can be either its name or its id"
+              }
+            ]
+          },
+          "docs": "It will delete all catalog items linked to this workspace."
+        },
+        {
+          "info": {
+            "name": "Remove an Item from a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/workspaces/:workspace/items/:catalogItemId",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "workspace",
+                "value": "\"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\" or \"MySuperWorkspace\"",
+                "type": "path",
+                "description": "The workspace's identifier, that can be either its name or its id"
+              },
+              {
+                "name": "catalogItemId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "Identifier of an IDP catalog item (property `id` of a search result)."
+              }
+            ]
+          },
+          "docs": "Remove an Item from a Workspace"
+        },
+        {
+          "info": {
+            "name": "Copy an Item from a Workspace to an Other",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/workspaces/:workspace/items/:catalogItemId/copy",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "workspace",
+                "value": "\"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\" or \"MySuperWorkspace\"",
+                "type": "path",
+                "description": "The workspace's identifier, that can be either its name or its id"
+              },
+              {
+                "name": "catalogItemId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "Identifier of an IDP catalog item (property `id` of a search result)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Copy an Item from a Workspace to an Other"
+        },
+        {
+          "info": {
+            "name": "Move an Item from a Workspace to an Other",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/workspaces/:workspace/items/:catalogItemId/move",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "workspace",
+                "value": "\"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\" or \"MySuperWorkspace\"",
+                "type": "path",
+                "description": "The workspace's identifier, that can be either its name or its id"
+              },
+              {
+                "name": "catalogItemId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "Identifier of an IDP catalog item (property `id` of a search result)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Move an Item from a Workspace to an Other"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

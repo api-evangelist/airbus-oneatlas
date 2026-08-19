@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Sar/Monitoring API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sar/Monitoring",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get List of Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/orders"
+          },
+          "docs": "Airbus OneAtlas Get List of Orders"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Order Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/orders/:orderIdOrBasketId",
+            "params": [
+              {
+                "name": "orderIdOrBasketId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Airbus OneAtlas Get Order Details"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Status of Items with Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/orders/*/items/status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Get Status of Items with Filter"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Items Only with OrderItemId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/orders/*/items",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Get Items Only with OrderItemId"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Contract related Information API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contract related Information",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "User Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/me"
+          },
+          "docs": "Allow to retrieve the list of contracts on which you have been authorized to place orders"
+        },
+        {
+          "info": {
+            "name": "Get Contracts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/contracts"
+          },
+          "docs": "Get all contracts"
+        },
+        {
+          "info": {
+            "name": "Get Product Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/contracts/:CisContractId/productTypes"
+          },
+          "docs": "This request displays the possible ordered product types associated to a contract."
+        },
+        {
+          "info": {
+            "name": "Get Markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/:cisContractId/properties"
+          },
+          "docs": "Allow to retrieve the list of markets (ex - AGRI). Market is a mandatory information."
+        },
+        {
+          "info": {
+            "name": "Get Delivery Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/:cisContractId/deliveryTypes"
+          },
+          "docs": "Get the list of available delivery types."
+        },
+        {
+          "info": {
+            "name": "Get Production Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/contracts/:cisContractId/productTypes/:productTypeId/options",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Allow to retrieve the production options available on your contract for one given product type"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

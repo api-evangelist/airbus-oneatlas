@@ -1,0 +1,455 @@
+{
+  "item": [
+    {
+      "id": "8eb8ce07-93a6-4ffe-ae8a-42362c48dc24",
+      "name": "elevation/price",
+      "description": {
+        "content": "Endpoint to query to price of an elevation order.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6c16426f-a15e-4a29-beaa-837b9503b739",
+          "name": "Get the Price of Elevation Item/download Request",
+          "request": {
+            "name": "Get the Price of Elevation Item/download Request",
+            "description": {},
+            "url": {
+              "path": [
+                "elevation",
+                "price"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"<string>\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          \"<number>\",\n          \"<number>\"\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"<string>\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"<string>\",\n  \"customer\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f0831379-d663-453d-9c40-b689d836b732",
+              "name": "Object that can be sent to /orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"order.item\",\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"areaKm2\": 20.85,\n      \"billableAreaKm2\": 15.23,\n      \"itemType\": \"dem.wd30\",\n      \"price\": {\n        \"amountUnit\": \"EUR\",\n        \"amount\": 83.4,\n        \"amountPerKm2\": 4\n      },\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"GeoJSON\",\n      \"discounts\": {\n        \"reseller\": {\n          \"basePrice\": {\n            \"amountUnit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amountPerKm2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"EUR\"\n        },\n        \"volume\": {\n          \"basePrice\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"USD\",\n          \"nextDiscount\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"total\": {\n          \"basePrice\": {\n            \"amountUnit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amountPerKm2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"EUR\"\n        }\n      }\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"areaKm2\": 20.85,\n      \"billableAreaKm2\": 15.23,\n      \"itemType\": \"dem.wddsm\",\n      \"price\": {\n        \"amountUnit\": \"USD\",\n        \"amount\": 83.4,\n        \"amountPerKm2\": 4\n      },\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"GeoTIFF\",\n      \"discounts\": {\n        \"reseller\": {\n          \"basePrice\": {\n            \"amountUnit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amountPerKm2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"CREDITS\"\n        },\n        \"volume\": {\n          \"basePrice\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"USD\",\n          \"nextDiscount\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"total\": {\n          \"basePrice\": {\n            \"amountUnit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amountPerKm2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"percentage\": 34.56,\n          \"amount\": -123.45,\n          \"amountPerKm2\": -0.5,\n          \"amountUnit\": \"EUR\"\n        }\n      }\n    }\n  ],\n  \"price\": {\n    \"amountUnit\": \"USD\",\n    \"amount\": 83.4\n  },\n  \"billableAreaKm2\": 15.23,\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\",\n  \"areaKm2\": 20.85,\n  \"orderable\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "455a966d-a567-4029-9809-aabf035a05a6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9878,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d23717b2-bbf0-48b6-810d-bd5d0892268c",
+              "name": "Authorization information is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9878,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93ad8f85-04b0-49fe-99ee-b8ff744aad74",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9878,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "978bd129-37ed-4a82-a768-7e81cbb4c921",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9878,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5612e0e4-b349-43f9-b9d4-aa54029077dd",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9878,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59202781-e9d6-4516-a90c-e95857964e35",
+              "name": "Connection to internal service error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "elevation",
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    },\n    {\n      \"aoi\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          9.3,\n          47.7\n        ]\n      },\n      \"itemType\": \"<string>\",\n      \"crsCode\": \"urn:ogc:def:crs:EPSG::4326\",\n      \"itemFormat\": \"<string>\"\n    }\n  ],\n  \"kind\": \"<string>\",\n  \"title\": \"Friedrichshafen\",\n  \"customer\": \"Airbus Intelligence Germany\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9878,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "92b90d6f-d398-4df1-8bcb-c6eb2e418fa9",
+    "name": "OneAtlas WorldDEM Access elevation/price API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

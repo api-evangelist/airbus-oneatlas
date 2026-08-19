@@ -1,0 +1,2079 @@
+{
+  "item": [
+    {
+      "id": "0a50c383-df5b-4d65-a28f-8d8fd38ad9ba",
+      "name": "Deliver",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a8dd7e23-d739-4a9e-ac7c-e7e326f56656",
+          "name": "Fail Activity",
+          "request": {
+            "name": "Fail Activity",
+            "description": {
+              "content": "Set activity status to `FAILED` only for manual activities such as physical delivering.\n\nIf the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "activities",
+                ":activityId",
+                "fail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "activityId",
+                  "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"now\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a0d77dbd-3542-44cc-b67e-8aa487286495",
+              "name": "If last stage is a fail stage with the same payload. In this case X-Ads-CorrelationId header is ignored.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "fail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"cancel\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"catalogItems\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"history\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"hold\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"nexts\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"rerun\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    }\n  },\n  \"creationDate\": \"string\",\n  \"endDate\": \"string\",\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"lastStageName\": \"string\",\n  \"message\": \"string\",\n  \"payload\": {},\n  \"priority\": 5,\n  \"progress\": 0,\n  \"startDate\": \"string\",\n  \"status\": \"QUEUED\",\n  \"type\": \"ingestion\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99eb6def-62dc-4f0a-8cd2-ae9b3a835917",
+              "name": "The activity stage is created and the activity status is set to `FAILED`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "fail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"cancel\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"catalogItems\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"history\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"hold\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"nexts\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"rerun\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    }\n  },\n  \"creationDate\": \"string\",\n  \"endDate\": \"string\",\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"lastStageName\": \"string\",\n  \"message\": \"string\",\n  \"payload\": {},\n  \"priority\": 5,\n  \"progress\": 0,\n  \"startDate\": \"string\",\n  \"status\": \"QUEUED\",\n  \"type\": \"ingestion\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0163b378-b848-4ae0-a690-cdcb7d84ada8",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "fail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3aeb0bfc-3c5b-4e8e-b466-58a4c4cf6338",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "fail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c8bdb78-eb2c-441e-a092-700d30d8f21b",
+              "name": "User has not enough rights to consume the item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "fail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba61176f-2439-45f8-a0e6-c579116e8d13",
+              "name": "Item not found in catalog or resource not found in item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "fail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9678d34-b82a-42fe-9f94-9a5ac98bee87",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "fail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cae395c7-0049-41fa-be78-405b55eb0bbb",
+          "name": "Hold Activity",
+          "request": {
+            "name": "Hold Activity",
+            "description": {
+              "content": "Hold activity and set activity status to `ON_HOLD` only for manual activities such as control or physical delivering.\n\nIf the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "activities",
+                ":activityId",
+                "hold"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "activityId",
+                  "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"now\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0bc4cb68-e0a7-4fd9-9eaa-c7e5fb7c48e9",
+              "name": "If last stage is an hold stage with the same payload. In this case X-Ads-CorrelationId header is ignored.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "hold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"cancel\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"catalogItems\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"history\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"hold\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"nexts\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"rerun\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    }\n  },\n  \"creationDate\": \"string\",\n  \"endDate\": \"string\",\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"lastStageName\": \"string\",\n  \"message\": \"string\",\n  \"payload\": {},\n  \"priority\": 5,\n  \"progress\": 0,\n  \"startDate\": \"string\",\n  \"status\": \"QUEUED\",\n  \"type\": \"ingestion\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "950515b2-c89a-429a-a49d-33a87ef2e1f7",
+              "name": "The activity stage is created and the activity status is set to `ON_HOLD`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "hold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"cancel\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"catalogItems\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"history\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"hold\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"nexts\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"rerun\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    }\n  },\n  \"creationDate\": \"string\",\n  \"endDate\": \"string\",\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"lastStageName\": \"string\",\n  \"message\": \"string\",\n  \"payload\": {},\n  \"priority\": 5,\n  \"progress\": 0,\n  \"startDate\": \"string\",\n  \"status\": \"QUEUED\",\n  \"type\": \"ingestion\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3d38cce-55c5-43c6-816c-a59a607c46ae",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "hold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "443c8c42-5f38-402f-b1fa-d11b21fba1b0",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "hold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79afd772-1b0b-472f-b939-d7e37a29b8ab",
+              "name": "User has not enough rights to consume the item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "hold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a4b4600-dfed-406b-869f-afb04d420b6b",
+              "name": "Item not found in catalog or resource not found in item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "hold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee0d41b7-2af0-49f9-abcf-d33691501bb8",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "hold"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3c66287-fa19-4362-88d5-124ef6e78164",
+          "name": "Succeed Activity",
+          "request": {
+            "name": "Succeed Activity",
+            "description": {
+              "content": "Set activity status to `SUCCESSED` only for manual activities such as physical delivering.\n\nIf the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "activities",
+                ":activityId",
+                "succeed"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "activityId",
+                  "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"now\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2a78fca-c4d6-446b-97e0-658be3231f1d",
+              "name": "If last stage is a succed stage with the same payload. In this case X-Ads-CorrelationId header is ignored.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "succeed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"cancel\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"catalogItems\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"history\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"hold\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"nexts\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"rerun\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    }\n  },\n  \"creationDate\": \"string\",\n  \"endDate\": \"string\",\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"lastStageName\": \"string\",\n  \"message\": \"string\",\n  \"payload\": {},\n  \"priority\": 5,\n  \"progress\": 0,\n  \"startDate\": \"string\",\n  \"status\": \"QUEUED\",\n  \"type\": \"ingestion\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93bfa996-3a41-4ca6-acb2-87a1e0516f8a",
+              "name": "The activity stage is created and the activity status is set to `SUCCESSED`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "succeed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"cancel\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"catalogItems\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"history\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"hold\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"nexts\": [\n      {\n        \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n        \"method\": \"GET\",\n        \"name\": \"Self\",\n        \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"type\": \"application/json\"\n      }\n    ],\n    \"rerun\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    }\n  },\n  \"creationDate\": \"string\",\n  \"endDate\": \"string\",\n  \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"lastStageName\": \"string\",\n  \"message\": \"string\",\n  \"payload\": {},\n  \"priority\": 5,\n  \"progress\": 0,\n  \"startDate\": \"string\",\n  \"status\": \"QUEUED\",\n  \"type\": \"ingestion\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8c55bb3-457c-43ce-97ed-44f7e6c187dc",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "succeed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c96f9b92-d271-41f3-8e11-553453a74e0b",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "succeed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55fa6346-2be3-4e81-b3fe-7011291f7a82",
+              "name": "User has not enough rights to consume the item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "succeed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d215cfcf-dde7-497d-916b-cbb059c6e7e7",
+              "name": "Item not found in catalog or resource not found in item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "succeed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "682e28a9-f811-48f0-8be5-a1fe0ebf829f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "activities",
+                    ":activityId",
+                    "succeed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"date\": \"2018-06-12T11:24:31.254Z\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"userId\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b321833d-adf4-4cd7-b08d-e07d200a9f90",
+          "name": "Deliver Products",
+          "request": {
+            "name": "Deliver Products",
+            "description": {
+              "content": "Deliver the requested catalog items to a workspace. The workspace may be configured to copy the items to an external data storage. This configuration can only be done via a non public endpoint. When delivered, each item emits a stage with name `ITEM_DELIVERED_TO_WORKSPACE`. When all items are delivered in the workspace, a stage with name `ALL_ITEMS_DELIVERED_TO_WORKSPACE` is emit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "deliveries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "disabled": false,
+                "description": "Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.",
+                "key": "X-Ads-Priority",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"catalogItemsId\": [\n    \"<uuid>\"\n  ],\n  \"workspace\": \"public\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b190936e-99b3-47f6-b27f-1fb9e2ead2e0",
+              "name": "If a delivery has already been requested for the same payload. In this case X-Ads-CorrelationId header is ignored.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.",
+                    "key": "X-Ads-Priority",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"catalogItemsId\": [\n    \"799246d8-4172-11e8-b045-e7011a379ec4\"\n  ],\n  \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"history\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"monitoring\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    }\n  },\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1023e1ab-fbba-4958-9236-e23a61ea533d",
+              "name": "Creation of the delivery activity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.",
+                    "key": "X-Ads-Priority",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"catalogItemsId\": [\n    \"799246d8-4172-11e8-b045-e7011a379ec4\"\n  ],\n  \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"history\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    },\n    \"monitoring\": {\n      \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n      \"method\": \"GET\",\n      \"name\": \"Self\",\n      \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"type\": \"application/json\"\n    }\n  },\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee2f9dcc-3b89-4a10-98a4-ab8c519f58ae",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.",
+                    "key": "X-Ads-Priority",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"catalogItemsId\": [\n    \"799246d8-4172-11e8-b045-e7011a379ec4\"\n  ],\n  \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a874082-94c8-4e96-a0ea-53c0206fb01f",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.",
+                    "key": "X-Ads-Priority",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"catalogItemsId\": [\n    \"799246d8-4172-11e8-b045-e7011a379ec4\"\n  ],\n  \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8749f95-6990-4419-bc5e-4ed7bdbf37e0",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "deliveries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.",
+                    "key": "X-Ads-Priority",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"catalogItemsId\": [\n    \"799246d8-4172-11e8-b045-e7011a379ec4\"\n  ],\n  \"workspace\": \"799246d8-4172-11e8-b045-e7011a379ec4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8e505498-eb73-40bc-870e-4b646311c25b",
+    "name": "OneAtlas WorldDEM Access Deliver API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

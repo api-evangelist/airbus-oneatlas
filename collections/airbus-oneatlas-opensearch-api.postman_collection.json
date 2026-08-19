@@ -1,0 +1,124 @@
+{
+  "item": [
+    {
+      "id": "59b307a5-3708-40b0-b054-7179221ad420",
+      "name": "Opensearch",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3f01df6a-515e-49dd-9952-b51fb1d3527d",
+          "name": "/api/v1/opensearch",
+          "request": {
+            "name": "/api/v1/opensearch",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "opensearch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a230513-925a-484d-b2e0-f911baea07b8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "opensearch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": false,\n  \"features\": [\n    {\n      \"_links\": {\n        \"buffer\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n          \"type\": \"application/json\"\n        },\n        \"download\": [\n          {\n            \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n            \"method\": \"GET\",\n            \"name\": \"Self\",\n            \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n            \"type\": \"application/json\"\n          }\n        ],\n        \"imagesMetadata\": [\n          {\n            \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n            \"method\": \"GET\",\n            \"name\": \"Self\",\n            \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n            \"type\": \"application/json\"\n          }\n        ],\n        \"quicklook\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n          \"type\": \"application/json\"\n        },\n        \"thumbnail\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n          \"type\": \"application/json\"\n        },\n        \"wms\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n          \"type\": \"application/json\"\n        },\n        \"wmts\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n          \"type\": \"application/json\"\n        }\n      },\n      \"geometry\": {\n        \"geometry\": {},\n        \"type\": \"string\"\n      },\n      \"properties\": {\n        \"acquisitionDate\": \"2018-02-28T11:00:29.027Z\",\n        \"acquisitionStation\": \"FR1\",\n        \"archivingCenter\": \"FR1\",\n        \"azimuthAngle\": 180.0016489732347,\n        \"cloudCover\": 40.6133,\n        \"constellation\": \"SPOT\",\n        \"correlationId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n        \"format\": \"image/jp2\",\n        \"id\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n        \"illuminationAzimuthAngle\": 153.1708281261751,\n        \"illuminationElevationAngle\": 41.29941056994953,\n        \"incidenceAngle\": 18.92724363373624,\n        \"incidenceAngleAcrossTrack\": 13.90087672831772,\n        \"incidenceAngleAlongTrack\": 13.35195258346335,\n        \"organisationName\": \"AIRBUS DS GEO\",\n        \"parentIdentifier\": \"DS_PHR1A_201703101042018_FR1_PX_E002N41_0311_03240\",\n        \"platform\": \"SPOT6\",\n        \"processingCenter\": \"FCMUGC\",\n        \"processingDate\": \"2017-11-22T10:54:33.987\",\n        \"processingLevel\": \"SENSOR\",\n        \"processorName\": \"IPU V_05_03vV_05_03\",\n        \"productType\": \"bundle\",\n        \"productionStatus\": {\n          \"archive\": {\n            \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n          },\n          \"nearline\": {\n            \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n          },\n          \"online\": {\n            \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n          }\n        },\n        \"publicationDate\": \"2018-03-31T10:59:16.537577277Z\",\n        \"qualified\": false,\n        \"resolution\": 0.5,\n        \"sensorType\": \"OPTICAL\",\n        \"snowCover\": 0,\n        \"sourceIdentifier\": \"DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233\",\n        \"spectralRange\": \"VISIBLE\",\n        \"title\": \"DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233\",\n        \"workspaceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n        \"workspaceName\": \"public\",\n        \"workspaceTitle\": \"Public\"\n      },\n      \"rights\": {\n        \"associatedData\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"browse\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"buffer\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"download\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"wms\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"wmts\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        }\n      },\n      \"type\": \"Feature\"\n    },\n    {\n      \"_links\": {\n        \"buffer\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n          \"type\": \"application/json\"\n        },\n        \"download\": [\n          {\n            \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n            \"method\": \"GET\",\n            \"name\": \"Self\",\n            \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n            \"type\": \"application/json\"\n          }\n        ],\n        \"imagesMetadata\": [\n          {\n            \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n            \"method\": \"GET\",\n            \"name\": \"Self\",\n            \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n            \"type\": \"application/json\"\n          }\n        ],\n        \"quicklook\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n          \"type\": \"application/json\"\n        },\n        \"thumbnail\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n          \"type\": \"application/json\"\n        },\n        \"wms\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n          \"type\": \"application/json\"\n        },\n        \"wmts\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n          \"type\": \"application/json\"\n        }\n      },\n      \"geometry\": {\n        \"geometry\": {},\n        \"type\": \"string\"\n      },\n      \"properties\": {\n        \"acquisitionDate\": \"2018-02-28T11:00:29.027Z\",\n        \"acquisitionStation\": \"FR1\",\n        \"archivingCenter\": \"FR1\",\n        \"azimuthAngle\": 180.0016489732347,\n        \"cloudCover\": 40.6133,\n        \"constellation\": \"SENTINEL-2\",\n        \"correlationId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n        \"format\": \"image/jp2\",\n        \"id\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n        \"illuminationAzimuthAngle\": 153.1708281261751,\n        \"illuminationElevationAngle\": 41.29941056994953,\n        \"incidenceAngle\": 18.92724363373624,\n        \"incidenceAngleAcrossTrack\": 13.90087672831772,\n        \"incidenceAngleAlongTrack\": 13.35195258346335,\n        \"organisationName\": \"AIRBUS DS GEO\",\n        \"parentIdentifier\": \"DS_PHR1A_201703101042018_FR1_PX_E002N41_0311_03240\",\n        \"platform\": \"SPOT6\",\n        \"processingCenter\": \"FCMUGC\",\n        \"processingDate\": \"2017-11-22T10:54:33.987\",\n        \"processingLevel\": \"SENSOR\",\n        \"processorName\": \"IPU V_05_03vV_05_03\",\n        \"productType\": \"mono\",\n        \"productionStatus\": {\n          \"archive\": {\n            \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n          },\n          \"nearline\": {\n            \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n          },\n          \"online\": {\n            \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n          }\n        },\n        \"publicationDate\": \"2018-03-31T10:59:16.537577277Z\",\n        \"qualified\": false,\n        \"resolution\": 0.5,\n        \"sensorType\": \"OPTICAL\",\n        \"snowCover\": 0,\n        \"sourceIdentifier\": \"DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233\",\n        \"spectralRange\": \"VISIBLE\",\n        \"title\": \"DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233\",\n        \"workspaceId\": \"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8\",\n        \"workspaceName\": \"public\",\n        \"workspaceTitle\": \"Public\"\n      },\n      \"rights\": {\n        \"associatedData\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"browse\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"buffer\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"download\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"wms\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"wmts\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        }\n      },\n      \"type\": \"Feature\"\n    }\n  ],\n  \"itemsPerPage\": 100,\n  \"startIndex\": 0,\n  \"totalResults\": 7728,\n  \"type\": \"FeatureCollection\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9be22a5e-a123-4eb1-9d98-77308779fa67",
+    "name": "OneAtlas WorldDEM Access Opensearch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

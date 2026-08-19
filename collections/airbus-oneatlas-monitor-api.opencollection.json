@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Monitor API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Monitor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/activities/search",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "creationDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "itemsPerPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "payload",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "progress",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search activities depending on given parameters."
+        },
+        {
+          "info": {
+            "name": "Search Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/activities/search",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search activities depending on given parameters."
+        },
+        {
+          "info": {
+            "name": "Get Activity Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/activities/:activityId",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "activityId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+              }
+            ]
+          },
+          "docs": "Get the detail of an activity.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or create process response."
+        },
+        {
+          "info": {
+            "name": "Cancel Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/activities/:activityId/cancel",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "activityId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel an activity.\n\nIf the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity."
+        },
+        {
+          "info": {
+            "name": "Run Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/activities/:activityId/rerun",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "activityId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set activity status to `RUNNING` only for manual activities such as physical delivering.\n\nIf the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.\n"
+        },
+        {
+          "info": {
+            "name": "Get Activity Stages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/activities/:activityId/stages",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "activityId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request."
+              }
+            ]
+          },
+          "docs": "Get the stages of an activity. This url is not forged but directly retrieved using the monitoring key in the ingestion/process/format order response.\n\nThis endpoints **should not be forged** but retrieved from the `_links` map in list activities response or create process response."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

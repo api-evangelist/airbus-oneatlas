@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Attempts API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attempts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Attempts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/attempts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Get tasking attempts\n-\tThis path is used for ONEDAY and ONENOWATTEMPTS requests\n-\tThis API allows to get the first possible attempts matching your criteria\n- Note that, as of today, the API responds in some cases with a 500 error\n-\tEven if the parameter is mandatory, maxCloudCover is NOT yet used for calculations.\n-\tStartDate can be set at any time. Note that if you try to set it in the past, the value will be replace by the current date\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

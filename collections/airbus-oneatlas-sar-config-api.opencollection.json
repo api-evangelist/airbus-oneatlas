@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Sar/Config API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sar/Config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Retrieve Entire Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/config"
+          },
+          "docs": "Airbus OneAtlas Retrieve Entire Configuration"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Retrieve List of Order Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/config/orderTemplates"
+          },
+          "docs": "Airbus OneAtlas Retrieve List of Order Templates"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get User Permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/config/permissions"
+          },
+          "docs": "Airbus OneAtlas Get User Permissions"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Allowed Receiving Stations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/config/receivingStations"
+          },
+          "docs": "Airbus OneAtlas Get Allowed Receiving Stations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

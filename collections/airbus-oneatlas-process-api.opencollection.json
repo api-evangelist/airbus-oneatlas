@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Process API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Process",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Processes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/processes",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns the available processes.\n"
+        },
+        {
+          "info": {
+            "name": "Describe Process",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/processes/:processID",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "processID",
+                "value": "com.airbus.massive.ortho",
+                "type": "path",
+                "description": "The identifier of the process"
+              }
+            ]
+          },
+          "docs": "Returns the description of the given {processID} process.\n\nThis endpoint **should not be forged** but retrieved from the `_links` map in list processes response.\n"
+        },
+        {
+          "info": {
+            "name": "Create Processing Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/processes/:processID/jobs",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              },
+              {
+                "name": "X-Ads-Priority",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "processID",
+                "value": "com.airbus.massive.ortho",
+                "type": "path",
+                "description": "The identifier of the process"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new instance of the process with specified id {processID} and executes it ASYNCHRONOUSLY.\n\nThis endpoint **should not be forged** but retrieved from the `_links` map in list processes response or describe process response.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

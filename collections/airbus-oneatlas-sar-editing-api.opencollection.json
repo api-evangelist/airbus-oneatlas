@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Sar/Editing API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sar/Editing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Swath Editing Information for Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/swathedit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Get Swath Editing Information for Items"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Update Swath Editing Information for Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/swathedit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Update Swath Editing Information for Items"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Update Order Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/orderOptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Update Order Options"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

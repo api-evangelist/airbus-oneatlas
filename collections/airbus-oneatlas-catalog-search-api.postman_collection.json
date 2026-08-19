@@ -1,0 +1,3216 @@
+{
+  "item": [
+    {
+      "id": "30e7db96-86c9-47e1-b554-4eddc606c5d6",
+      "name": "Catalog search",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3fe671b-8e0b-4f33-bcc3-2ee84b0c8c71",
+          "name": "Opensearch Description Xml",
+          "request": {
+            "name": "Opensearch Description Xml",
+            "description": {
+              "content": "Get opensearch description document",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v2",
+                "opensearch",
+                "description.xml"
+              ],
+              "host": [
+                "search",
+                "foundation",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "774a0745-7d06-4cd1-8178-b0ce1ea7924f",
+              "name": "Updated",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch",
+                    "description.xml"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "28e34bbe-5aea-4846-bf0f-034256472c8a",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch",
+                    "description.xml"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64ea7036-68c7-4f5d-8a21-5a7dd4ad6c54",
+              "name": "User has not enough rights to consume the item",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch",
+                    "description.xml"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3cfe850-3cbb-49b8-be90-cd4c73affd43",
+          "name": "Search Catalog Items with Opensearch",
+          "request": {
+            "name": "Search Catalog Items with Opensearch",
+            "description": {
+              "content": "Search catalog items. Search is case sensitive. Results match all\nparameters.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v2",
+                "opensearch"
+              ],
+              "host": [
+                "search",
+                "foundation",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bbox",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "geometry",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "acquisitionDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "acquisitionStation",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "archiveAnonymousIdentifier",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "archivingCenter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "archiveIdentifier",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "azimuthAngle",
+                  "value": "<float>"
+                },
+                {
+                  "disabled": false,
+                  "key": "class",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "center",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cloudCover",
+                  "value": "<float>"
+                },
+                {
+                  "disabled": false,
+                  "key": "comment",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "commercialReference",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "constellation",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "correlationId",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "downloadingRequested",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "expirationDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "featureCount",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "icr",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "illuminationAngleSeparation",
+                  "value": "<float>"
+                },
+                {
+                  "disabled": false,
+                  "key": "illuminationAzimuthAngle",
+                  "value": "<float>"
+                },
+                {
+                  "disabled": false,
+                  "key": "illuminationElevationAngle",
+                  "value": "<float>"
+                },
+                {
+                  "disabled": false,
+                  "key": "incidenceAngle",
+                  "value": "<float>"
+                },
+                {
+                  "disabled": false,
+                  "key": "incidenceAngleAcrossTrack",
+                  "value": "<float>"
+                },
+                {
+                  "disabled": false,
+                  "key": "incidenceAngleAlongTrack",
+                  "value": "<float>"
+                },
+                {
+                  "disabled": false,
+                  "key": "index",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "meanDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "orbit",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "organisationName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "parentIdenfifier",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "platform",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "processingCenter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "processingDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "processingLevel",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "processorName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "productCategory",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "productionStatus",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "productType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "publicationDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "relation",
+                  "value": "intersects"
+                },
+                {
+                  "disabled": false,
+                  "key": "resolution",
+                  "value": "<float>"
+                },
+                {
+                  "disabled": false,
+                  "key": "resourceId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "satellite",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sensorType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "snowCover",
+                  "value": "<float>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceIdentifier",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "spectralRange",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "station",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "stereoMethod",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "viewingAngleSeparation",
+                  "value": "<float>"
+                },
+                {
+                  "disabled": false,
+                  "key": "workspace",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "itemsPerPage",
+                  "value": "50"
+                },
+                {
+                  "disabled": false,
+                  "key": "startPage",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "-acquisitionDate,cloudCover"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e6ff2f2-cfb5-4994-9351-519477dbf1bd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "1.8292,48.5821,2.9718,49.0811"
+                    },
+                    {
+                      "key": "geometry",
+                      "value": "POLYGON((1 1,5 1,5 5,1 5,1 1))"
+                    },
+                    {
+                      "key": "q",
+                      "value": "PHR AND OPTICAL"
+                    },
+                    {
+                      "key": "acquisitionDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "acquisitionStation",
+                      "value": "SV1"
+                    },
+                    {
+                      "key": "archiveAnonymousIdentifier",
+                      "value": "31476131"
+                    },
+                    {
+                      "key": "archivingCenter",
+                      "value": "FR1"
+                    },
+                    {
+                      "key": "archiveIdentifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "azimuthAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "class",
+                      "value": "changesDetection"
+                    },
+                    {
+                      "key": "center",
+                      "value": "NC"
+                    },
+                    {
+                      "key": "cloudCover",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "comment",
+                      "value": "a comment on my item"
+                    },
+                    {
+                      "key": "commercialReference",
+                      "value": "SO17011862-6"
+                    },
+                    {
+                      "key": "constellation",
+                      "value": "PHR,Sentinel"
+                    },
+                    {
+                      "key": "correlationId",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "downloadingRequested",
+                      "value": "JS1"
+                    },
+                    {
+                      "key": "expirationDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "featureCount",
+                      "value": "42"
+                    },
+                    {
+                      "key": "format",
+                      "value": "application/vnd.geo+json"
+                    },
+                    {
+                      "key": "icr",
+                      "value": "52487"
+                    },
+                    {
+                      "key": "id",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "illuminationAngleSeparation",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "illuminationAzimuthAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "illuminationElevationAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngleAcrossTrack",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngleAlongTrack",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "index",
+                      "value": "satellite_imagery"
+                    },
+                    {
+                      "key": "meanDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "orbit",
+                      "value": "54"
+                    },
+                    {
+                      "key": "organisationName",
+                      "value": "AIRBUS DS"
+                    },
+                    {
+                      "key": "parentIdenfifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "PHR1A"
+                    },
+                    {
+                      "key": "processingCenter",
+                      "value": "MOC"
+                    },
+                    {
+                      "key": "processingDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "processingLevel",
+                      "value": "SENSOR"
+                    },
+                    {
+                      "key": "processorName",
+                      "value": "DRS-MM V2.7.1vV2.7.1"
+                    },
+                    {
+                      "key": "productCategory",
+                      "value": "image"
+                    },
+                    {
+                      "key": "productionStatus",
+                      "value": "IN_CLOUD"
+                    },
+                    {
+                      "key": "productType",
+                      "value": "changeDetectionReport,mono"
+                    },
+                    {
+                      "key": "publicationDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "relation",
+                      "value": "intersects"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "resourceId",
+                      "value": "dc143057-3457-47b3-af19-4ef8d26d2064"
+                    },
+                    {
+                      "key": "satellite",
+                      "value": "PHR1A"
+                    },
+                    {
+                      "key": "sensorType",
+                      "value": "OPTICAL"
+                    },
+                    {
+                      "key": "snowCover",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "sourceIdentifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "spectralRange",
+                      "value": "VISIBLE,MULTISPECTRAL"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "station",
+                      "value": "NC"
+                    },
+                    {
+                      "key": "stereoMethod",
+                      "value": "NONE"
+                    },
+                    {
+                      "key": "tags",
+                      "value": ""
+                    },
+                    {
+                      "key": "title",
+                      "value": "My title"
+                    },
+                    {
+                      "key": "viewingAngleSeparation",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "workspace",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "itemsPerPage",
+                      "value": "100"
+                    },
+                    {
+                      "key": "startPage",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "-acquisitionDate,cloudCover"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": false,\n  \"features\": [\n    {\n      \"_links\": {\n        \"buffer\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n          \"type\": \"application/json\"\n        },\n        \"download\": [\n          {\n            \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n            \"method\": \"GET\",\n            \"name\": \"Self\",\n            \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n            \"type\": \"application/json\"\n          }\n        ],\n        \"imagesMetadata\": [\n          {\n            \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n            \"method\": \"GET\",\n            \"name\": \"Self\",\n            \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n            \"type\": \"application/json\"\n          }\n        ],\n        \"quicklook\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n          \"type\": \"application/json\"\n        },\n        \"thumbnail\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n          \"type\": \"application/json\"\n        },\n        \"wms\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n          \"type\": \"application/json\"\n        },\n        \"wmts\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n          \"type\": \"application/json\"\n        }\n      },\n      \"geometry\": {\n        \"geometry\": {},\n        \"type\": \"string\"\n      },\n      \"properties\": {\n        \"acquisitionDate\": \"2018-02-28T11:00:29.027Z\",\n        \"acquisitionStation\": \"FR1\",\n        \"archivingCenter\": \"FR1\",\n        \"azimuthAngle\": 180.0016489732347,\n        \"cloudCover\": 40.6133,\n        \"constellation\": \"PLEIADES\",\n        \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"format\": \"image/jp2\",\n        \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"illuminationAzimuthAngle\": 153.1708281261751,\n        \"illuminationElevationAngle\": 41.29941056994953,\n        \"incidenceAngle\": 18.92724363373624,\n        \"incidenceAngleAcrossTrack\": 13.90087672831772,\n        \"incidenceAngleAlongTrack\": 13.35195258346335,\n        \"organisationName\": \"AIRBUS DS GEO\",\n        \"parentIdentifier\": \"DS_PHR1A_201703101042018_FR1_PX_E002N41_0311_03240\",\n        \"platform\": \"SENTINEL2-A\",\n        \"processingCenter\": \"FCMUGC\",\n        \"processingDate\": \"2017-11-22T10:54:33.987\",\n        \"processingLevel\": \"SENSOR\",\n        \"processorName\": \"IPU V_05_03vV_05_03\",\n        \"productType\": \"multispectral\",\n        \"productionStatus\": {\n          \"archive\": {\n            \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n          },\n          \"nearline\": {\n            \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n          },\n          \"online\": {\n            \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n          }\n        },\n        \"publicationDate\": \"2018-03-31T10:59:16.537577277Z\",\n        \"qualified\": false,\n        \"resolution\": 0.5,\n        \"sensorType\": \"OPTICAL\",\n        \"snowCover\": 0,\n        \"sourceIdentifier\": \"DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233\",\n        \"spectralRange\": \"VISIBLE\",\n        \"title\": \"DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233\",\n        \"workspaceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"workspaceName\": \"public\",\n        \"workspaceTitle\": \"Public\"\n      },\n      \"rights\": {\n        \"associatedData\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"browse\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"buffer\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"download\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"wms\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"wmts\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        }\n      },\n      \"type\": \"Feature\"\n    },\n    {\n      \"_links\": {\n        \"buffer\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n          \"type\": \"application/json\"\n        },\n        \"download\": [\n          {\n            \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n            \"method\": \"GET\",\n            \"name\": \"Self\",\n            \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n            \"type\": \"application/json\"\n          }\n        ],\n        \"imagesMetadata\": [\n          {\n            \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n            \"method\": \"GET\",\n            \"name\": \"Self\",\n            \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n            \"type\": \"application/json\"\n          }\n        ],\n        \"quicklook\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n          \"type\": \"application/json\"\n        },\n        \"thumbnail\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n          \"type\": \"application/json\"\n        },\n        \"wms\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n          \"type\": \"application/json\"\n        },\n        \"wmts\": {\n          \"href\": \"https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051\",\n          \"method\": \"GET\",\n          \"name\": \"Self\",\n          \"resourceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n          \"type\": \"application/json\"\n        }\n      },\n      \"geometry\": {\n        \"geometry\": {},\n        \"type\": \"string\"\n      },\n      \"properties\": {\n        \"acquisitionDate\": \"2018-02-28T11:00:29.027Z\",\n        \"acquisitionStation\": \"FR1\",\n        \"archivingCenter\": \"FR1\",\n        \"azimuthAngle\": 180.0016489732347,\n        \"cloudCover\": 40.6133,\n        \"constellation\": \"SPOT\",\n        \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"format\": \"image/jp2\",\n        \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"illuminationAzimuthAngle\": 153.1708281261751,\n        \"illuminationElevationAngle\": 41.29941056994953,\n        \"incidenceAngle\": 18.92724363373624,\n        \"incidenceAngleAcrossTrack\": 13.90087672831772,\n        \"incidenceAngleAlongTrack\": 13.35195258346335,\n        \"organisationName\": \"AIRBUS DS GEO\",\n        \"parentIdentifier\": \"DS_PHR1A_201703101042018_FR1_PX_E002N41_0311_03240\",\n        \"platform\": \"SPOT6\",\n        \"processingCenter\": \"FCMUGC\",\n        \"processingDate\": \"2017-11-22T10:54:33.987\",\n        \"processingLevel\": \"SENSOR\",\n        \"processorName\": \"IPU V_05_03vV_05_03\",\n        \"productType\": \"panchromatic\",\n        \"productionStatus\": {\n          \"archive\": {\n            \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n          },\n          \"nearline\": {\n            \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n          },\n          \"online\": {\n            \"expirationDate\": \"2019-03-31T10:59:16.537577277Z\"\n          }\n        },\n        \"publicationDate\": \"2018-03-31T10:59:16.537577277Z\",\n        \"qualified\": false,\n        \"resolution\": 0.5,\n        \"sensorType\": \"OPTICAL\",\n        \"snowCover\": 0,\n        \"sourceIdentifier\": \"DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233\",\n        \"spectralRange\": \"VISIBLE\",\n        \"title\": \"DS_PHR1A_201703101041248_FR1_PX_E002N41_0311_03233\",\n        \"workspaceId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n        \"workspaceName\": \"public\",\n        \"workspaceTitle\": \"Public\"\n      },\n      \"rights\": {\n        \"associatedData\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"browse\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"buffer\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"download\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"wms\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        },\n        \"wmts\": {\n          \"privileges\": [\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            },\n            {\n              \"filter\": {\n                \"workspace\": \"public\"\n              },\n              \"rights\": {\n                \"browse\": {},\n                \"wmts\": {}\n              },\n              \"userId\": \"de2d5963-a8a5-41b5-9f2a-ed6d478eb3af\"\n            }\n          ]\n        }\n      },\n      \"type\": \"Feature\"\n    }\n  ],\n  \"itemsPerPage\": 100,\n  \"startIndex\": 0,\n  \"totalResults\": 2375,\n  \"type\": \"FeatureCollection\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fbb16d8-df85-431c-8546-38b221713232",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "1.8292,48.5821,2.9718,49.0811"
+                    },
+                    {
+                      "key": "geometry",
+                      "value": "POLYGON((1 1,5 1,5 5,1 5,1 1))"
+                    },
+                    {
+                      "key": "q",
+                      "value": "PHR AND OPTICAL"
+                    },
+                    {
+                      "key": "acquisitionDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "acquisitionStation",
+                      "value": "SV1"
+                    },
+                    {
+                      "key": "archiveAnonymousIdentifier",
+                      "value": "31476131"
+                    },
+                    {
+                      "key": "archivingCenter",
+                      "value": "FR1"
+                    },
+                    {
+                      "key": "archiveIdentifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "azimuthAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "class",
+                      "value": "changesDetection"
+                    },
+                    {
+                      "key": "center",
+                      "value": "NC"
+                    },
+                    {
+                      "key": "cloudCover",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "comment",
+                      "value": "a comment on my item"
+                    },
+                    {
+                      "key": "commercialReference",
+                      "value": "SO17011862-6"
+                    },
+                    {
+                      "key": "constellation",
+                      "value": "PHR,Sentinel"
+                    },
+                    {
+                      "key": "correlationId",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "downloadingRequested",
+                      "value": "JS1"
+                    },
+                    {
+                      "key": "expirationDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "featureCount",
+                      "value": "42"
+                    },
+                    {
+                      "key": "format",
+                      "value": "application/vnd.geo+json"
+                    },
+                    {
+                      "key": "icr",
+                      "value": "52487"
+                    },
+                    {
+                      "key": "id",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "illuminationAngleSeparation",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "illuminationAzimuthAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "illuminationElevationAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngleAcrossTrack",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngleAlongTrack",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "index",
+                      "value": "satellite_imagery"
+                    },
+                    {
+                      "key": "meanDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "orbit",
+                      "value": "54"
+                    },
+                    {
+                      "key": "organisationName",
+                      "value": "AIRBUS DS"
+                    },
+                    {
+                      "key": "parentIdenfifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "PHR1A"
+                    },
+                    {
+                      "key": "processingCenter",
+                      "value": "MOC"
+                    },
+                    {
+                      "key": "processingDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "processingLevel",
+                      "value": "SENSOR"
+                    },
+                    {
+                      "key": "processorName",
+                      "value": "DRS-MM V2.7.1vV2.7.1"
+                    },
+                    {
+                      "key": "productCategory",
+                      "value": "image"
+                    },
+                    {
+                      "key": "productionStatus",
+                      "value": "IN_CLOUD"
+                    },
+                    {
+                      "key": "productType",
+                      "value": "changeDetectionReport,mono"
+                    },
+                    {
+                      "key": "publicationDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "relation",
+                      "value": "intersects"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "resourceId",
+                      "value": "dc143057-3457-47b3-af19-4ef8d26d2064"
+                    },
+                    {
+                      "key": "satellite",
+                      "value": "PHR1A"
+                    },
+                    {
+                      "key": "sensorType",
+                      "value": "OPTICAL"
+                    },
+                    {
+                      "key": "snowCover",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "sourceIdentifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "spectralRange",
+                      "value": "VISIBLE,MULTISPECTRAL"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "station",
+                      "value": "NC"
+                    },
+                    {
+                      "key": "stereoMethod",
+                      "value": "NONE"
+                    },
+                    {
+                      "key": "tags",
+                      "value": ""
+                    },
+                    {
+                      "key": "title",
+                      "value": "My title"
+                    },
+                    {
+                      "key": "viewingAngleSeparation",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "workspace",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "itemsPerPage",
+                      "value": "100"
+                    },
+                    {
+                      "key": "startPage",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "-acquisitionDate,cloudCover"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6d97213-f67b-40b2-90db-a6b33a52ed32",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "1.8292,48.5821,2.9718,49.0811"
+                    },
+                    {
+                      "key": "geometry",
+                      "value": "POLYGON((1 1,5 1,5 5,1 5,1 1))"
+                    },
+                    {
+                      "key": "q",
+                      "value": "PHR AND OPTICAL"
+                    },
+                    {
+                      "key": "acquisitionDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "acquisitionStation",
+                      "value": "SV1"
+                    },
+                    {
+                      "key": "archiveAnonymousIdentifier",
+                      "value": "31476131"
+                    },
+                    {
+                      "key": "archivingCenter",
+                      "value": "FR1"
+                    },
+                    {
+                      "key": "archiveIdentifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "azimuthAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "class",
+                      "value": "changesDetection"
+                    },
+                    {
+                      "key": "center",
+                      "value": "NC"
+                    },
+                    {
+                      "key": "cloudCover",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "comment",
+                      "value": "a comment on my item"
+                    },
+                    {
+                      "key": "commercialReference",
+                      "value": "SO17011862-6"
+                    },
+                    {
+                      "key": "constellation",
+                      "value": "PHR,Sentinel"
+                    },
+                    {
+                      "key": "correlationId",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "downloadingRequested",
+                      "value": "JS1"
+                    },
+                    {
+                      "key": "expirationDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "featureCount",
+                      "value": "42"
+                    },
+                    {
+                      "key": "format",
+                      "value": "application/vnd.geo+json"
+                    },
+                    {
+                      "key": "icr",
+                      "value": "52487"
+                    },
+                    {
+                      "key": "id",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "illuminationAngleSeparation",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "illuminationAzimuthAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "illuminationElevationAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngleAcrossTrack",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngleAlongTrack",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "index",
+                      "value": "satellite_imagery"
+                    },
+                    {
+                      "key": "meanDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "orbit",
+                      "value": "54"
+                    },
+                    {
+                      "key": "organisationName",
+                      "value": "AIRBUS DS"
+                    },
+                    {
+                      "key": "parentIdenfifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "PHR1A"
+                    },
+                    {
+                      "key": "processingCenter",
+                      "value": "MOC"
+                    },
+                    {
+                      "key": "processingDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "processingLevel",
+                      "value": "SENSOR"
+                    },
+                    {
+                      "key": "processorName",
+                      "value": "DRS-MM V2.7.1vV2.7.1"
+                    },
+                    {
+                      "key": "productCategory",
+                      "value": "image"
+                    },
+                    {
+                      "key": "productionStatus",
+                      "value": "IN_CLOUD"
+                    },
+                    {
+                      "key": "productType",
+                      "value": "changeDetectionReport,mono"
+                    },
+                    {
+                      "key": "publicationDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "relation",
+                      "value": "intersects"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "resourceId",
+                      "value": "dc143057-3457-47b3-af19-4ef8d26d2064"
+                    },
+                    {
+                      "key": "satellite",
+                      "value": "PHR1A"
+                    },
+                    {
+                      "key": "sensorType",
+                      "value": "OPTICAL"
+                    },
+                    {
+                      "key": "snowCover",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "sourceIdentifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "spectralRange",
+                      "value": "VISIBLE,MULTISPECTRAL"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "station",
+                      "value": "NC"
+                    },
+                    {
+                      "key": "stereoMethod",
+                      "value": "NONE"
+                    },
+                    {
+                      "key": "tags",
+                      "value": ""
+                    },
+                    {
+                      "key": "title",
+                      "value": "My title"
+                    },
+                    {
+                      "key": "viewingAngleSeparation",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "workspace",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "itemsPerPage",
+                      "value": "100"
+                    },
+                    {
+                      "key": "startPage",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "-acquisitionDate,cloudCover"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a810ebb6-e3f3-480b-84bd-1f82ab4df81d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "1.8292,48.5821,2.9718,49.0811"
+                    },
+                    {
+                      "key": "geometry",
+                      "value": "POLYGON((1 1,5 1,5 5,1 5,1 1))"
+                    },
+                    {
+                      "key": "q",
+                      "value": "PHR AND OPTICAL"
+                    },
+                    {
+                      "key": "acquisitionDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "acquisitionStation",
+                      "value": "SV1"
+                    },
+                    {
+                      "key": "archiveAnonymousIdentifier",
+                      "value": "31476131"
+                    },
+                    {
+                      "key": "archivingCenter",
+                      "value": "FR1"
+                    },
+                    {
+                      "key": "archiveIdentifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "azimuthAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "class",
+                      "value": "changesDetection"
+                    },
+                    {
+                      "key": "center",
+                      "value": "NC"
+                    },
+                    {
+                      "key": "cloudCover",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "comment",
+                      "value": "a comment on my item"
+                    },
+                    {
+                      "key": "commercialReference",
+                      "value": "SO17011862-6"
+                    },
+                    {
+                      "key": "constellation",
+                      "value": "PHR,Sentinel"
+                    },
+                    {
+                      "key": "correlationId",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "downloadingRequested",
+                      "value": "JS1"
+                    },
+                    {
+                      "key": "expirationDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "featureCount",
+                      "value": "42"
+                    },
+                    {
+                      "key": "format",
+                      "value": "application/vnd.geo+json"
+                    },
+                    {
+                      "key": "icr",
+                      "value": "52487"
+                    },
+                    {
+                      "key": "id",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "illuminationAngleSeparation",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "illuminationAzimuthAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "illuminationElevationAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngleAcrossTrack",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngleAlongTrack",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "index",
+                      "value": "satellite_imagery"
+                    },
+                    {
+                      "key": "meanDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "orbit",
+                      "value": "54"
+                    },
+                    {
+                      "key": "organisationName",
+                      "value": "AIRBUS DS"
+                    },
+                    {
+                      "key": "parentIdenfifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "PHR1A"
+                    },
+                    {
+                      "key": "processingCenter",
+                      "value": "MOC"
+                    },
+                    {
+                      "key": "processingDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "processingLevel",
+                      "value": "SENSOR"
+                    },
+                    {
+                      "key": "processorName",
+                      "value": "DRS-MM V2.7.1vV2.7.1"
+                    },
+                    {
+                      "key": "productCategory",
+                      "value": "image"
+                    },
+                    {
+                      "key": "productionStatus",
+                      "value": "IN_CLOUD"
+                    },
+                    {
+                      "key": "productType",
+                      "value": "changeDetectionReport,mono"
+                    },
+                    {
+                      "key": "publicationDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "relation",
+                      "value": "intersects"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "resourceId",
+                      "value": "dc143057-3457-47b3-af19-4ef8d26d2064"
+                    },
+                    {
+                      "key": "satellite",
+                      "value": "PHR1A"
+                    },
+                    {
+                      "key": "sensorType",
+                      "value": "OPTICAL"
+                    },
+                    {
+                      "key": "snowCover",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "sourceIdentifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "spectralRange",
+                      "value": "VISIBLE,MULTISPECTRAL"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "station",
+                      "value": "NC"
+                    },
+                    {
+                      "key": "stereoMethod",
+                      "value": "NONE"
+                    },
+                    {
+                      "key": "tags",
+                      "value": ""
+                    },
+                    {
+                      "key": "title",
+                      "value": "My title"
+                    },
+                    {
+                      "key": "viewingAngleSeparation",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "workspace",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "itemsPerPage",
+                      "value": "100"
+                    },
+                    {
+                      "key": "startPage",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "-acquisitionDate,cloudCover"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64968877-89a9-41dd-b8a0-afebb1c985ae",
+              "name": "The server is currently unavailable (because it is overloaded or down for maintenance). Generally, this is a temporary state.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "1.8292,48.5821,2.9718,49.0811"
+                    },
+                    {
+                      "key": "geometry",
+                      "value": "POLYGON((1 1,5 1,5 5,1 5,1 1))"
+                    },
+                    {
+                      "key": "q",
+                      "value": "PHR AND OPTICAL"
+                    },
+                    {
+                      "key": "acquisitionDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "acquisitionStation",
+                      "value": "SV1"
+                    },
+                    {
+                      "key": "archiveAnonymousIdentifier",
+                      "value": "31476131"
+                    },
+                    {
+                      "key": "archivingCenter",
+                      "value": "FR1"
+                    },
+                    {
+                      "key": "archiveIdentifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "azimuthAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "class",
+                      "value": "changesDetection"
+                    },
+                    {
+                      "key": "center",
+                      "value": "NC"
+                    },
+                    {
+                      "key": "cloudCover",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "comment",
+                      "value": "a comment on my item"
+                    },
+                    {
+                      "key": "commercialReference",
+                      "value": "SO17011862-6"
+                    },
+                    {
+                      "key": "constellation",
+                      "value": "PHR,Sentinel"
+                    },
+                    {
+                      "key": "correlationId",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "downloadingRequested",
+                      "value": "JS1"
+                    },
+                    {
+                      "key": "expirationDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "featureCount",
+                      "value": "42"
+                    },
+                    {
+                      "key": "format",
+                      "value": "application/vnd.geo+json"
+                    },
+                    {
+                      "key": "icr",
+                      "value": "52487"
+                    },
+                    {
+                      "key": "id",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "illuminationAngleSeparation",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "illuminationAzimuthAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "illuminationElevationAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngle",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngleAcrossTrack",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "incidenceAngleAlongTrack",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "index",
+                      "value": "satellite_imagery"
+                    },
+                    {
+                      "key": "meanDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "orbit",
+                      "value": "54"
+                    },
+                    {
+                      "key": "organisationName",
+                      "value": "AIRBUS DS"
+                    },
+                    {
+                      "key": "parentIdenfifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "PHR1A"
+                    },
+                    {
+                      "key": "processingCenter",
+                      "value": "MOC"
+                    },
+                    {
+                      "key": "processingDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "processingLevel",
+                      "value": "SENSOR"
+                    },
+                    {
+                      "key": "processorName",
+                      "value": "DRS-MM V2.7.1vV2.7.1"
+                    },
+                    {
+                      "key": "productCategory",
+                      "value": "image"
+                    },
+                    {
+                      "key": "productionStatus",
+                      "value": "IN_CLOUD"
+                    },
+                    {
+                      "key": "productType",
+                      "value": "changeDetectionReport,mono"
+                    },
+                    {
+                      "key": "publicationDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "relation",
+                      "value": "intersects"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "resourceId",
+                      "value": "dc143057-3457-47b3-af19-4ef8d26d2064"
+                    },
+                    {
+                      "key": "satellite",
+                      "value": "PHR1A"
+                    },
+                    {
+                      "key": "sensorType",
+                      "value": "OPTICAL"
+                    },
+                    {
+                      "key": "snowCover",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "sourceIdentifier",
+                      "value": "DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709"
+                    },
+                    {
+                      "key": "spectralRange",
+                      "value": "VISIBLE,MULTISPECTRAL"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2017-08-29T00:00:00Z"
+                    },
+                    {
+                      "key": "station",
+                      "value": "NC"
+                    },
+                    {
+                      "key": "stereoMethod",
+                      "value": "NONE"
+                    },
+                    {
+                      "key": "tags",
+                      "value": ""
+                    },
+                    {
+                      "key": "title",
+                      "value": "My title"
+                    },
+                    {
+                      "key": "viewingAngleSeparation",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "workspace",
+                      "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                    },
+                    {
+                      "key": "itemsPerPage",
+                      "value": "100"
+                    },
+                    {
+                      "key": "startPage",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "-acquisitionDate,cloudCover"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e46f5b8d-ac55-4b1c-a651-186b2f154971",
+          "name": "Search Catalog Items with Opensearch",
+          "request": {
+            "name": "Search Catalog Items with Opensearch",
+            "description": {
+              "content": "Search catalog items. Search is case sensitive. Results match all\nparameters.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v2",
+                "opensearch"
+              ],
+              "host": [
+                "search",
+                "foundation",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemsPerPage\": \"<integer>\",\n  \"constellation\": \"<string>\",\n  \"customerReference\": \"<string>\",\n  \"internalReference\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"startPage\": \"<integer>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"cloudCover\": \"<float>\",\n  \"incidenceAngle\": \"<float>\",\n  \"sortBy\": \"<string>\",\n  \"processingLevel\": \"<string>\",\n  \"relation\": \"<string>\",\n  \"geometry\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<float>\",\n          \"<float>\"\n        ],\n        [\n          \"<float>\",\n          \"<float>\"\n        ]\n      ],\n      [\n        [\n          \"<float>\",\n          \"<float>\"\n        ],\n        [\n          \"<float>\",\n          \"<float>\"\n        ]\n      ]\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dfa28097-005c-46b7-9d43-cd3bf5af870f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"itemsPerPage\": \"<integer>\",\n  \"constellation\": \"<string>\",\n  \"customerReference\": \"<string>\",\n  \"internalReference\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"startPage\": \"<integer>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"cloudCover\": \"<float>\",\n  \"incidenceAngle\": \"<float>\",\n  \"sortBy\": \"<string>\",\n  \"processingLevel\": \"<string>\",\n  \"relation\": \"<string>\",\n  \"geometry\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<float>\",\n          \"<float>\"\n        ],\n        [\n          \"<float>\",\n          \"<float>\"\n        ]\n      ],\n      [\n        [\n          \"<float>\",\n          \"<float>\"\n        ],\n        [\n          \"<float>\",\n          \"<float>\"\n        ]\n      ]\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": false,\n  \"itemsPerPage\": 12,\n  \"startIndex\": 0,\n  \"totalResults\": 6,\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"_links\": {\n        \"delete\": {\n          \"href\": \"https://search.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d\",\n          \"name\": \"Delete\",\n          \"type\": \"HTTP\"\n        },\n        \"imagesGetBuffer\": {\n          \"href\": \"https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/images/fff8faf9-5d77-45dd-acd3-89143d1b481f/buffer\",\n          \"name\": \"getBuffer\",\n          \"resourceId\": \"fff8faf9-5d77-45dd-acd3-89143d1b481f\"\n        },\n        \"imagesMetadata\": {\n          \"href\": \"https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/images/fff8faf9-5d77-45dd-acd3-89143d1b481f/metadata\",\n          \"type\": \"application/geo+json\",\n          \"resourceId\": \"fff8faf9-5d77-45dd-acd3-89143d1b481f\"\n        },\n        \"imagesWcs\": {\n          \"href\": \"https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/images/fff8faf9-5d77-45dd-acd3-89143d1b481f/wcs\",\n          \"type\": \"WCS\",\n          \"resourceId\": \"fff8faf9-5d77-45dd-acd3-89143d1b481f\"\n        },\n        \"imagesWms\": {\n          \"href\": \"https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/images/fff8faf9-5d77-45dd-acd3-89143d1b481f/wms\",\n          \"type\": \"WMS\",\n          \"resourceId\": \"fff8faf9-5d77-45dd-acd3-89143d1b481f\"\n        },\n        \"imagesWmts\": {\n          \"href\": \"https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/images/fff8faf9-5d77-45dd-acd3-89143d1b481f/wmts\",\n          \"type\": \"WMTS\",\n          \"resourceId\": \"fff8faf9-5d77-45dd-acd3-89143d1b481f\"\n        },\n        \"quicklook\": {\n          \"href\": \"https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/quicklook\",\n          \"name\": \"QuickLook\",\n          \"type\": \"HTTP\"\n        },\n        \"self\": {\n          \"href\": \"https://search.foundation.api.oneatlas.airbus.com/api/v1/opensearch?id=a1ba2510-49e5-46a6-8e3f-0c1d0603217d\",\n          \"method\": \"GET\",\n          \"name\": \"self\",\n          \"resourceId\": \"a1ba2510-49e5-46a6-8e3f-0c1d0603217d\"\n        },\n        \"thumbnail\": {\n          \"href\": \"https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/thumbnail\",\n          \"name\": \"Thumbnail\",\n          \"type\": \"HTTP\"\n        },\n        \"wms\": {\n          \"href\": \"https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/wms\",\n          \"name\": \"WMS\",\n          \"type\": \"WMS\"\n        },\n        \"wmts\": {\n          \"href\": \"https://access.foundation.api.oneatlas.airbus.com/api/v1/items/a1ba2510-49e5-46a6-8e3f-0c1d0603217d/wmts\",\n          \"name\": \"WMTS\",\n          \"type\": \"WMTS\"\n        }\n      },\n      \"dataAccess\": {\n        \"metadata\": \"http://datastore-vaas/api/v1/genericProduct/packs/513817e5-be0a-4a69-b36f-e6fc8b046449\",\n        \"packImages\": [\n          {\n            \"href\": \"http://datastore-vaas/api/v1/packs/513817e5-be0a-4a69-b36f-e6fc8b046449/images/fff8faf9-5d77-45dd-acd3-89143d1b481f\",\n            \"resourceId\": \"fff8faf9-5d77-45dd-acd3-89143d1b481f\"\n          }\n        ],\n        \"resourceId\": \"513817e5-be0a-4a69-b36f-e6fc8b046449\"\n      },\n      \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n          [\n            [\n              2.025436887670608,\n              41.40851104009538\n            ],\n            [\n              2.025555377420286,\n              41.27623680002298\n            ],\n            [\n              2.02556116053385,\n              41.275418756377334\n            ],\n            [\n              2.025681391470222,\n              41.24999195896341\n            ],\n            [\n              2.21033395944357,\n              41.25448242372612\n            ],\n            [\n              2.210375350974231,\n              41.279805555666066\n            ],\n            [\n              2.210375686628162,\n              41.28062047981729\n            ],\n            [\n              2.210986871245927,\n              41.41232255845239\n            ],\n            [\n              2.025436887670608,\n              41.40851104009538\n            ]\n          ]\n        ]\n      },\n      \"properties\": {\n        \"acquisitionDate\": \"2021-11-18T10:41:03.696Z\",\n        \"acquisitionIdentifier\": \"ACQ_PNEO3_00832700845861\",\n        \"acquisitionStation\": \"FR1\",\n        \"activityId\": \"72b2883b-127f-473a-a157-d37efaf40f84\",\n        \"archiveAnonymousIdentifier\": \"300052126\",\n        \"archiveIdentifier\": \"DS_PNEO3_202111181041037_FR1_FR1_FR1_E002N41_003840\",\n        \"archivingCenter\": \"FR1\",\n        \"azimuthAngle\": 180.09135799114546,\n        \"cloudCover\": 0.2,\n        \"constellation\": \"PNEO\",\n        \"correlationId\": \"mmcat_53262aff6076219585493ed03598ef96\",\n        \"expirationDate\": \"2031-11-16T13:02:26.868210663Z\",\n        \"id\": \"a1ba2510-49e5-46a6-8e3f-0c1d0603217d\",\n        \"illuminationAzimuthAngle\": 165.02055829218722,\n        \"illuminationElevationAngle\": 28.596944896000977,\n        \"incidenceAngle\": 18.64756541854424,\n        \"incidenceAngleAcrossTrack\": 17.97878935952823,\n        \"incidenceAngleAlongTrack\": -5.860919226891595,\n        \"lastUpdateDate\": \"2021-11-19T07:50:32.93579542Z\",\n        \"organisationName\": \"AIRBUS DS GEO\",\n        \"parentIdentifier\": \"DS_PNEO3_202111181041037_FR1_FR1_FR1_E002N41_003840\",\n        \"platform\": \"PNEO3\",\n        \"processingCenter\": \"MOC\",\n        \"processingDate\": \"2021-11-18T12:16:05.039Z\",\n        \"processingLevel\": \"ALBUM\",\n        \"processorName\": \"MMCAT\",\n        \"productCategory\": \"image\",\n        \"productType\": \"mono\",\n        \"productionStatus\": \"ARCHIVED\",\n        \"publicationDate\": \"2021-11-19T07:50:32.93579542Z\",\n        \"qualified\": false,\n        \"resolution\": 0.3,\n        \"sensorType\": \"OPTICAL\",\n        \"snowCover\": 0,\n        \"sourceIdentifier\": \"DS_PNEO3_202111181041037_FR1_FR1_FR1_E002N41_003840\",\n        \"spectralRange\": \"VISIBLE\",\n        \"workspaceId\": \"3e88441b-adc9-4be6-bd80-59d4fb69d5a7\",\n        \"workspaceName\": \"public-pneo\",\n        \"workspaceTitle\": \"Workspace temporaire pour la data pneo\"\n      },\n      \"rights\": {\n        \"associatedData\": {\n          \"privileges\": [\n            {\n              \"id\": \"81cba660-0769-4867-8388-25c70e9b6c24\",\n              \"filter\": {\n                \"workspaceId\": \"3e88441b-adc9-4be6-bd80-59d4fb69d5a7\"\n              }\n            }\n          ]\n        },\n        \"browse\": {\n          \"privileges\": [\n            {\n              \"id\": \"487cb9fe-8164-4d8b-9f86-0e350a450ecc\",\n              \"subscriptionId\": \"f3e2cb98-f68a-45b1-b97b-56ad17a79ca7\",\n              \"filter\": {\n                \"workspaceId\": \"3e88441b-adc9-4be6-bd80-59d4fb69d5a7\"\n              }\n            }\n          ]\n        },\n        \"create\": {\n          \"privileges\": [\n            {\n              \"id\": \"88ce066a-62a7-4102-a36b-d6ca820e92e4\",\n              \"filter\": {\n                \"workspaceId\": \"3e88441b-adc9-4be6-bd80-59d4fb69d5a7\"\n              }\n            }\n          ]\n        },\n        \"wmts\": {\n          \"privileges\": [\n            {\n              \"id\": \"690fd94f-fa70-4c90-9a7c-9acb886697a5\",\n              \"filter\": {\n                \"workspaceId\": \"3e88441b-adc9-4be6-bd80-59d4fb69d5a7\"\n              }\n            }\n          ]\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f0f3866-b591-4040-a96b-8ae262a845f5",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"itemsPerPage\": \"<integer>\",\n  \"constellation\": \"<string>\",\n  \"customerReference\": \"<string>\",\n  \"internalReference\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"startPage\": \"<integer>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"cloudCover\": \"<float>\",\n  \"incidenceAngle\": \"<float>\",\n  \"sortBy\": \"<string>\",\n  \"processingLevel\": \"<string>\",\n  \"relation\": \"<string>\",\n  \"geometry\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<float>\",\n          \"<float>\"\n        ],\n        [\n          \"<float>\",\n          \"<float>\"\n        ]\n      ],\n      [\n        [\n          \"<float>\",\n          \"<float>\"\n        ],\n        [\n          \"<float>\",\n          \"<float>\"\n        ]\n      ]\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f1d847a-a510-4c28-96c6-9f55dfdbe5fa",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"itemsPerPage\": \"<integer>\",\n  \"constellation\": \"<string>\",\n  \"customerReference\": \"<string>\",\n  \"internalReference\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"startPage\": \"<integer>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"cloudCover\": \"<float>\",\n  \"incidenceAngle\": \"<float>\",\n  \"sortBy\": \"<string>\",\n  \"processingLevel\": \"<string>\",\n  \"relation\": \"<string>\",\n  \"geometry\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<float>\",\n          \"<float>\"\n        ],\n        [\n          \"<float>\",\n          \"<float>\"\n        ]\n      ],\n      [\n        [\n          \"<float>\",\n          \"<float>\"\n        ],\n        [\n          \"<float>\",\n          \"<float>\"\n        ]\n      ]\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d66c76ee-e76f-423b-a3d1-22dffb18faa2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"itemsPerPage\": \"<integer>\",\n  \"constellation\": \"<string>\",\n  \"customerReference\": \"<string>\",\n  \"internalReference\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"startPage\": \"<integer>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"cloudCover\": \"<float>\",\n  \"incidenceAngle\": \"<float>\",\n  \"sortBy\": \"<string>\",\n  \"processingLevel\": \"<string>\",\n  \"relation\": \"<string>\",\n  \"geometry\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<float>\",\n          \"<float>\"\n        ],\n        [\n          \"<float>\",\n          \"<float>\"\n        ]\n      ],\n      [\n        [\n          \"<float>\",\n          \"<float>\"\n        ],\n        [\n          \"<float>\",\n          \"<float>\"\n        ]\n      ]\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1cea8fb8-a26d-4470-8ed6-031b0c24194b",
+              "name": "The server is currently unavailable (because it is overloaded or down for maintenance). Generally, this is a temporary state.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"itemsPerPage\": \"<integer>\",\n  \"constellation\": \"<string>\",\n  \"customerReference\": \"<string>\",\n  \"internalReference\": \"<string>\",\n  \"workspace\": \"<string>\",\n  \"startPage\": \"<integer>\",\n  \"acquisitionDate\": {\n    \"startDate\": \"<datetime>\",\n    \"endDate\": \"<datetime>\"\n  },\n  \"cloudCover\": \"<float>\",\n  \"incidenceAngle\": \"<float>\",\n  \"sortBy\": \"<string>\",\n  \"processingLevel\": \"<string>\",\n  \"relation\": \"<string>\",\n  \"geometry\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      [\n        [\n          \"<float>\",\n          \"<float>\"\n        ],\n        [\n          \"<float>\",\n          \"<float>\"\n        ]\n      ],\n      [\n        [\n          \"<float>\",\n          \"<float>\"\n        ],\n        [\n          \"<float>\",\n          \"<float>\"\n        ]\n      ]\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "325d233b-20e8-4da1-b404-e73e2fc894df",
+          "name": "Get Domain for a Given Property",
+          "request": {
+            "name": "Get Domain for a Given Property",
+            "description": {
+              "content": "Given a property name, it returns the eligible existing values for querying items looking for this particular property\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v2",
+                "opensearch",
+                "domains",
+                ":propertyName"
+              ],
+              "host": [
+                "search",
+                "foundation",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "propertyName",
+                  "description": "(Required) The name of a queryable item property"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1efcfd9a-7533-49db-8a16-66cfd7768686",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch",
+                    "domains",
+                    ":propertyName"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyName",
+                      "description": "(Required) The name of a queryable item property"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"warning\": \"Result is not exhaustive\",\n  \"processingLevel\": [\n    \"ORTHO\",\n    \"SENSOR\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea2c4bcd-f4ed-40de-bd26-c00aaa30ae99",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch",
+                    "domains",
+                    ":propertyName"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyName",
+                      "description": "(Required) The name of a queryable item property"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36a81ee3-9242-4fa0-ad5f-9e4c06de79a3",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch",
+                    "domains",
+                    ":propertyName"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyName",
+                      "description": "(Required) The name of a queryable item property"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b735eb59-4a5b-4cc7-b905-58c4083ce0b6",
+              "name": "The server is currently unavailable (because it is overloaded or down for maintenance). Generally, this is a temporary state.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v2",
+                    "opensearch",
+                    "domains",
+                    ":propertyName"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "propertyName",
+                      "description": "(Required) The name of a queryable item property"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8881156f-d3be-41ac-97e4-6ced54be26e9",
+          "name": "Search Deleted Catalog Items",
+          "request": {
+            "name": "Search Deleted Catalog Items",
+            "description": {
+              "content": "Search deleted catalog items by deleted date.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "api",
+                "v1",
+                "deleted",
+                "search"
+              ],
+              "host": [
+                "search",
+                "foundation",
+                "api",
+                "oneatlas",
+                "airbus",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                "key": "X-Ads-Correlation-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deletedDate\": \"<dateTime>\",\n  \"itemsPerPage\": 50,\n  \"startIndex\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52490f8c-0d7d-41f6-b54b-58d6ab520a0d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "deleted",
+                    "search"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deletedDate\": \"2017-08-29T00:00:00Z\",\n  \"itemsPerPage\": 100,\n  \"startIndex\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"itemsPerPage\": 100,\n  \"startIndex\": 0,\n  \"totalResults\": 956126,\n  \"data\": [\n    {\n      \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"deletedDate\": \"2017-08-29T00:00:00Z\"\n    },\n    {\n      \"id\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n      \"deletedDate\": \"2017-08-29T00:00:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36ec6e9c-384d-4028-b5ae-35883eb7202b",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "deleted",
+                    "search"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deletedDate\": \"2017-08-29T00:00:00Z\",\n  \"itemsPerPage\": 100,\n  \"startIndex\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78629e5a-f587-420a-bcdc-c45060159811",
+              "name": "User is not authenticated",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "deleted",
+                    "search"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deletedDate\": \"2017-08-29T00:00:00Z\",\n  \"itemsPerPage\": 100,\n  \"startIndex\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c843712f-7266-4e67-a0f0-2128b0b436ab",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "deleted",
+                    "search"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deletedDate\": \"2017-08-29T00:00:00Z\",\n  \"itemsPerPage\": 100,\n  \"startIndex\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29e623e1-0040-4b27-9401-e37f782f0d7c",
+              "name": "The server is currently unavailable (because it is overloaded or down for maintenance). Generally, this is a temporary state.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "api",
+                    "v1",
+                    "deleted",
+                    "search"
+                  ],
+                  "host": [
+                    "search",
+                    "foundation",
+                    "api",
+                    "oneatlas",
+                    "airbus",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.",
+                    "key": "X-Ads-Correlation-Id",
+                    "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deletedDate\": \"2017-08-29T00:00:00Z\",\n  \"itemsPerPage\": 100,\n  \"startIndex\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"799246d8-4172-11e8-b045-e7011a379ec4\",\n  \"hint\": \"string\",\n  \"internalCode\": 400,\n  \"message\": \"string\",\n  \"timestamp\": 1530088354390\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e783333a-68e2-4ffa-b5cd-a0b076872399",
+    "name": "OneAtlas WorldDEM Access Catalog search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access APIkey management API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "APIkey management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns the List of Authenticated or Impersonated User's Apikeys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/apikeys"
+          },
+          "docs": "Returns the list of authenticated or impersonated user's apikeys"
+        },
+        {
+          "info": {
+            "name": "Create a New API Key Attached to the Authenticated or Impersonated User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/apikeys"
+          },
+          "docs": "Create a new API Key attached to the authenticated or impersonated user"
+        },
+        {
+          "info": {
+            "name": "Delete a User's API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/apikeys/:apikey_id",
+            "params": [
+              {
+                "name": "apikey_id",
+                "value": "",
+                "type": "path",
+                "description": "id of the API Key to delete"
+              }
+            ]
+          },
+          "docs": "Delete a User's API Key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Sar/Shopcart API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sar/Shopcart",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Shopcart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart"
+          },
+          "docs": "Airbus OneAtlas Get Shopcart"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Update Shopcart Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Update Shopcart Parameters"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Add Items to Shopcart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart/addItems",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Add Items to Shopcart"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Remove Items from Shopcart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart/removeItems",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Remove Items from Shopcart"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Update Item Parameters.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart/items",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Update Item Parameters."
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Update Item Parameters.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart/items/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "item to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Update Item Parameters."
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Submit Shopcart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/shopcart/submit"
+          },
+          "docs": "Airbus OneAtlas Submit Shopcart"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

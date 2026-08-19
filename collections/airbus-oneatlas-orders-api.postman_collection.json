@@ -1,0 +1,590 @@
+{
+  "item": [
+    {
+      "id": "84eb89c7-a9a6-4b15-92e7-b63ea62c51ec",
+      "name": "Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6b4aae60-7669-4ef6-bbc6-aa7619e51e49",
+          "name": "Get All Orders",
+          "request": {
+            "name": "Get All Orders",
+            "description": {
+              "content": "Get all orders",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "Page number, defaults to '1'"
+                },
+                {
+                  "disabled": false,
+                  "key": "itemsPerPage",
+                  "value": "<number>",
+                  "description": "Amount of items per page, defaults to '10'"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter orders by status"
+                },
+                {
+                  "disabled": false,
+                  "key": "kind",
+                  "value": "<string>",
+                  "description": "Filter orders by kind"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Filter orders by tags, comma-separated values"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4cb7b7a-7654-4653-8c23-f137a6ba80bd",
+              "name": "List of all orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "itemsPerPage",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kind",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"products\": {\n      \"id\": \"string\",\n      \"aoi\": {\n        \"coordinates\": [\n          [\n            [\n              1047.200337096994,\n              6936.519440467432\n            ],\n            [\n              5503.254059614349,\n              8227.495974798007\n            ],\n            [\n              2092.416478586685,\n              5790.103078530058\n            ],\n            [\n              4853.84225666451,\n              1924.1001076246246\n            ]\n          ]\n        ],\n        \"type\": \"string\"\n      },\n      \"productType\": \"string\",\n      \"radiometricProcessing\": \"REFLECTANCE\",\n      \"imageFormat\": \"image/jp2\",\n      \"crsCode\": {},\n      \"sourceId\": \"string\"\n    },\n    \"kind\": {},\n    \"tags\": [\n      \"h\",\n      \"w\"\n    ]\n  },\n  {\n    \"products\": {\n      \"id\": \"string\",\n      \"aoi\": {\n        \"coordinates\": [\n          [\n            [\n              685.3263961646661,\n              9174.771824753514\n            ],\n            [\n              495.575956194485,\n              460.8391526687494\n            ],\n            [\n              8603.822891614307,\n              6279.250320600801\n            ],\n            [\n              8260.94405585787,\n              8041.439695006139\n            ]\n          ]\n        ],\n        \"type\": \"string\"\n      },\n      \"productType\": \"string\",\n      \"radiometricProcessing\": \"REFLECTANCE\",\n      \"imageFormat\": \"image/geotiff\",\n      \"crsCode\": {},\n      \"sourceId\": \"string\"\n    },\n    \"kind\": {},\n    \"tags\": [\n      \"rOXERXoToU\",\n      \"GLcigXE\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f80235c-15ba-4715-9f8a-09b9ecd618b2",
+          "name": "Create an Order",
+          "request": {
+            "name": "Create an Order",
+            "description": {
+              "content": "Create an order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"products\": {\n    \"id\": \"<string>\",\n    \"aoi\": {\n      \"coordinates\": [\n        [\n          [\n            \"<number>\",\n            \"<number>\"\n          ],\n          [\n            \"<number>\",\n            \"<number>\"\n          ],\n          [\n            \"<number>\",\n            \"<number>\"\n          ],\n          [\n            \"<number>\",\n            \"<number>\"\n          ]\n        ]\n      ],\n      \"type\": \"<string>\"\n    },\n    \"productType\": \"<string>\",\n    \"radiometricProcessing\": \"<string>\",\n    \"imageFormat\": \"<string>\",\n    \"crsCode\": {},\n    \"sourceId\": \"<string>\"\n  },\n  \"kind\": {},\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4023dfb1-235c-453e-867d-1d6ff512bab2",
+              "name": "order created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"products\": {\n    \"id\": \"<string>\",\n    \"aoi\": {\n      \"coordinates\": [\n        [\n          [\n            \"<number>\",\n            \"<number>\"\n          ],\n          [\n            \"<number>\",\n            \"<number>\"\n          ],\n          [\n            \"<number>\",\n            \"<number>\"\n          ],\n          [\n            \"<number>\",\n            \"<number>\"\n          ]\n        ]\n      ],\n      \"type\": \"<string>\"\n    },\n    \"productType\": \"<string>\",\n    \"radiometricProcessing\": \"<string>\",\n    \"imageFormat\": \"<string>\",\n    \"crsCode\": {},\n    \"sourceId\": \"<string>\"\n  },\n  \"kind\": {},\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"products\": {\n    \"id\": \"string\",\n    \"aoi\": {\n      \"coordinates\": [\n        [\n          [\n            4582.933441501482,\n            1690.2517753105005\n          ],\n          [\n            8611.469459622052,\n            8079.419362163779\n          ],\n          [\n            1062.9259667008096,\n            4101.765346883652\n          ],\n          [\n            8296.468239924745,\n            9702.34855434524\n          ]\n        ]\n      ],\n      \"type\": \"string\"\n    },\n    \"productType\": \"string\",\n    \"radiometricProcessing\": \"DISPLAY\",\n    \"imageFormat\": \"image/jp2\",\n    \"crsCode\": {},\n    \"sourceId\": \"string\"\n  },\n  \"kind\": {},\n  \"tags\": [\n    \"LTYvt\",\n    \"u\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12d6a1e1-4c90-4a0f-b6dc-450f229e5d7a",
+          "name": "Get Order by Id",
+          "request": {
+            "name": "Get Order by Id",
+            "description": {
+              "content": "Get order by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) The order id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a78a1aa-4cc6-4693-a5ce-5e435735a988",
+              "name": "an order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The order id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"products\": {},\n  \"kind\": {},\n  \"tags\": [\n    \"OHxdntIu\",\n    \"pX\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d281156c-c716-4135-97dc-a69edc50bd08",
+          "name": "Get Price",
+          "request": {
+            "name": "Get Price",
+            "description": {
+              "content": "Get an order price",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "prices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"products\": {},\n  \"kind\": {},\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "22688f79-a41b-4cd7-b054-53d172f1dc6d",
+              "name": "a price",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"products\": {},\n  \"kind\": {},\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"products\": {},\n  \"kind\": {},\n  \"tags\": [\n    \"OHxdntIu\",\n    \"pX\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28f33567-c08d-4a84-9efd-a84b1e77f47e",
+          "name": "Get Price",
+          "request": {
+            "name": "Get Price",
+            "description": {
+              "content": "Get an order price",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                " ",
+                "api",
+                "v1",
+                "prices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"products\": {},\n  \"kind\": {},\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f254128e-0b65-40a2-a751-7611557424b1",
+              "name": "a price",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    " ",
+                    "api",
+                    "v1",
+                    "prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"products\": {},\n  \"kind\": {},\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"products\": {},\n  \"kind\": {},\n  \"tags\": [\n    \"OHxdntIu\",\n    \"pX\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sar.api.oneatlas.airbus.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "05244dfd-84c0-4300-8071-2929d6e6b3d9",
+    "name": "OneAtlas WorldDEM Access Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.\n\nContact Support:\n Email: dl-geo-webservices@airbus.com",
+      "type": "text/plain"
+    }
+  }
+}

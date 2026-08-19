@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Sar/Replication API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sar/Replication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Replicate Catalogue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/catalogue/replication",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of datatakes to be returned per request. The actual number returned can be less depending on the workload of the server."
+              },
+              {
+                "name": "since",
+                "value": "2022-10-31 07:28:00",
+                "type": "query",
+                "description": "Return datatakes that were added to the catalogue since the given date."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token used to retrieve the next set of datatakes. Tokens do not expire and can be used for incremental updates on a weekly, daily, or even on a hourly schedule."
+              }
+            ]
+          },
+          "docs": "Replicate the catalogue and retrieve latest datatakes."
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Download Complete Catalogue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/catalogue/download"
+          },
+          "docs": "Download the complete catalogue as vector dataset suitable for GIS analysis."
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Catalogue Revocations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/catalogue/revocation",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of revocations to be returned per request. The actual number returned can be less depending on the workload of the server."
+              },
+              {
+                "name": "since",
+                "value": "2022-10-31 07:28:00",
+                "type": "query",
+                "description": "Return revocations issued since the given date."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Continuation token used to retrieve the next set of revocations. Tokens do not expire and can be used for incremental updates on a weekly, daily, or even on a hourly schedule."
+              }
+            ]
+          },
+          "docs": "Retrieve catalogue revocations, i.e. catalogue datatakes that cannot be ordered anymore."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

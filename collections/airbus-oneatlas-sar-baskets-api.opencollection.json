@@ -1,0 +1,193 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Sar/Baskets API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sar/Baskets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get All Baskets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets"
+          },
+          "docs": "Airbus OneAtlas Get All Baskets"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Create Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Create Basket"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Get Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Airbus OneAtlas Get Basket"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Replace Basket Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Replace Basket Parameters"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Update Basket Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Update Basket Parameters"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Delete Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Airbus OneAtlas Delete Basket"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Add Items to Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId/addItems",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Add Items to Basket"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Remove Items from Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId/removeItems",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Airbus OneAtlas Remove Items from Basket"
+        },
+        {
+          "info": {
+            "name": "Airbus OneAtlas Submit Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/sar/baskets/:basketId/submit",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Airbus OneAtlas Submit Basket"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

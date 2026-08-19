@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OneAtlas WorldDEM Access Pilot API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pilot",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Formatted Product Checksum",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "https://sar.api.oneatlas.airbus.com/v1/api/v1/items/:catalogItemId/download",
+            "headers": [
+              {
+                "name": "X-Ads-Correlation-Id",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4"
+              }
+            ],
+            "params": [
+              {
+                "name": "catalogItemId",
+                "value": "799246d8-4172-11e8-b045-e7011a379ec4",
+                "type": "path",
+                "description": "Identifier of an IDP catalog item (property `id` of a search result)."
+              }
+            ]
+          },
+          "docs": "Dry run version of the download endpoint, useful to get the checkum headers without downloading the data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

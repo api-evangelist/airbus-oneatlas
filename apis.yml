@@ -247,6 +247,8 @@ apis:
   description: The APIkey management API from Airbus OneAtlas — 2 operation(s) for apikey management.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
+  - API Key Management
+  tags_raw:
   - APIkey management
   properties:
   - type: OpenAPI
@@ -281,6 +283,8 @@ apis:
   description: The Catalog search API from Airbus OneAtlas — 4 operation(s) for catalog search.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
+  - Catalog Search
+  tags_raw:
   - Catalog search
   properties:
   - type: OpenAPI
@@ -524,6 +528,8 @@ apis:
   description: The Monitor API from Airbus OneAtlas — 5 operation(s) for monitor.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
+  - Monitors
+  tags_raw:
   - Monitor
   properties:
   - type: OpenAPI
@@ -541,6 +547,8 @@ apis:
   description: The Notifications API from Airbus OneAtlas — 1 operation(s) for notifications.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
+  - Notification
+  tags_raw:
   - Notifications
   properties:
   - type: OpenAPI
@@ -575,6 +583,8 @@ apis:
   description: The Opensearch API from Airbus OneAtlas — 1 operation(s) for opensearch.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
+  - OpenSearch
+  tags_raw:
   - Opensearch
   properties:
   - type: OpenAPI
@@ -609,6 +619,8 @@ apis:
   description: The Orders API from Airbus OneAtlas — 4 operation(s) for orders.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -626,6 +638,8 @@ apis:
   description: The payments API from Airbus OneAtlas — 1 operation(s) for payments.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
+  - Payments
+  tags_raw:
   - payments
   properties:
   - type: OpenAPI
@@ -678,6 +692,8 @@ apis:
   description: The Process API from Airbus OneAtlas — 3 operation(s) for process.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
+  - Processes
+  tags_raw:
   - Process
   properties:
   - type: OpenAPI
@@ -867,6 +883,8 @@ apis:
   description: The Subscriptions API from Airbus OneAtlas — 12 operation(s) for subscriptions.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -918,6 +936,8 @@ apis:
   description: Endpoint for generic user information.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
+  - User
+  tags_raw:
   - user
   properties:
   - type: OpenAPI

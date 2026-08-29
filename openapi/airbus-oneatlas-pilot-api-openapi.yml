@@ -1,15 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OneAtlas WorldDEM Access Pilot API
-  version: 1.0.1
   contact:
-    email: dl-geo-webservices@airbus.com
-  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+    email: intelligence-customertechnicalsupport@fr.airbus.com
+    name: API support
+    url: https://oneatlas.airbus.com
+  title: OneAtlas Data Living Library Pilot API
+  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery. The library is constantly updated with the latest data, ensuring that users have access to accurate and timely information for their projects. Users can easily search for and find the data they need, whether it be for environmental monitoring, urban planning, agriculture, or any other application. The platform also offers tools for analysis and visualization, allowing users to derive insights and make informed decisions based on the data they have access to. Overall, OneAtlas Data Living Library is a valuable resource for anyone looking to harness the power of geospatial data for their work.
 servers:
-- url: https://sar.api.oneatlas.airbus.com/v1
-  description: OneAtlas - Elevation
-security:
-- basicAuth: []
+- description: API server
+  url: https://data.api.oneatlas.airbus.com
 tags:
 - name: Pilot
 paths:
@@ -40,19 +39,19 @@ paths:
       - Pilot
 components:
   parameters:
-    CorrelationID:
-      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Correlation-Id
-      schema:
-        $ref: '#/components/schemas/Id'
     CatalogItemId:
       description: Identifier of an IDP catalog item (property `id` of a search result).
       example: 799246d8-4172-11e8-b045-e7011a379ec4
       in: path
       name: catalogItemId
       required: true
+      schema:
+        $ref: '#/components/schemas/Id'
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
       schema:
         $ref: '#/components/schemas/Id'
   schemas:
@@ -62,7 +61,15 @@ components:
       format: uuid
       readOnly: true
       type: string
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+x-tagGroups:
+- name: Authentication
+  tags:
+  - APIkey management
+  - Token retrieval
+- name: Catalog search
+  tags:
+  - Catalog search
+- name: Living Library ordering
+  tags:
+  - Orders
+  - Subscriptions

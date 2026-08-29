@@ -1,15 +1,17 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OneAtlas WorldDEM Access Control API
-  version: 1.0.1
+  title: Airbus Oneatlas Control API
   contact:
-    email: dl-geo-webservices@airbus.com
-  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+    email: intelligence-customertechnicalsupport@fr.airbus.com
+    name: API support
+    url: https://oneatlas.airbus.com
+  version: '1.0'
+  description: 'Operations tagged Control across 3 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://sar.api.oneatlas.airbus.com/v1
-  description: OneAtlas - Elevation
-security:
-- basicAuth: []
+- description: API server
+  url: https://data.api.oneatlas.airbus.com
+- description: API server
+  url: https://order.api.oneatlas.airbus.com
 tags:
 - name: Control
 paths:
@@ -58,57 +60,42 @@ paths:
       summary: Hold Activity
       tags:
       - Control
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
 components:
+  responses:
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '404':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Item not found in catalog or resource not found in item
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
   schemas:
-    ApiError:
-      properties:
-        correlationId:
-          $ref: '#/components/schemas/Id'
-        hint:
-          type: string
-        internalCode:
-          example: 400
-          format: integer
-          type: number
-        message:
-          type: string
-        timestamp:
-          description: Number of seconds since 01/01/1970
-          example: 1530088354390
-          format: integer
-          type: number
-      type: object
-    ActivityStage:
-      properties:
-        date:
-          default: now
-          description: Date of the stage
-          example: '2018-06-12T11:24:31.254Z'
-          format: datetime
-          type: string
-        message:
-          type: string
-        name:
-          description: Name of the completed stage
-          type: string
-        status:
-          description: Status of the activity
-          enum:
-          - QUEUED
-          - RUNNING
-          - ON_HOLD
-          - CANCELED
-          - WAITING_CANCEL
-          - SUCCEEDED
-          - FAILED
-          - ARCHIVED
-          type: string
-        userId:
-          allOf:
-          - readOnly: true
-          - $ref: '#/components/schemas/Id'
-          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
-      type: object
     Activity:
       properties:
         _links:
@@ -214,6 +201,61 @@ components:
           - $ref: '#/components/schemas/Id'
           - description: The id of the user that is the origin of the activity (extracted from the X-Forwarded-User request header)
       type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    ActivityStage:
+      properties:
+        date:
+          default: now
+          description: Date of the stage
+          example: '2018-06-12T11:24:31.254Z'
+          format: datetime
+          type: string
+        message:
+          type: string
+        name:
+          description: Name of the completed stage
+          type: string
+        status:
+          description: Status of the activity
+          enum:
+          - QUEUED
+          - RUNNING
+          - ON_HOLD
+          - CANCELED
+          - WAITING_CANCEL
+          - SUCCEEDED
+          - FAILED
+          - ARCHIVED
+          type: string
+        userId:
+          allOf:
+          - readOnly: true
+          - $ref: '#/components/schemas/Id'
+          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
+      type: object
     Link:
       description: Link object
       properties:
@@ -245,12 +287,6 @@ components:
       required:
       - href
       type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
   parameters:
     CorrelationID:
       description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
@@ -267,38 +303,7 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/Id'
-  responses:
-    '404':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Item not found in catalog or resource not found in item
-    '400':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Bad request
-    '401':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User is not authenticated
-    '403':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User has not enough rights to consume the item
-    '500':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Internal server error
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+x-refined-from:
+- oneatlas-data-living-library-openapi.yml
+- oneatlas-data-pay-per-order-api-openapi.yml
+- oneatlas-data-pay-per-order-tasking-api-openapi.yml

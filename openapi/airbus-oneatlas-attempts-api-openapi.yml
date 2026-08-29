@@ -1,15 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OneAtlas WorldDEM Access Attempts API
-  version: 1.0.1
   contact:
-    email: dl-geo-webservices@airbus.com
-  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+    email: intelligence-customertechnicalsupport@fr.airbus.com
+    name: API support
+    url: https://oneatlas.airbus.com
+  title: OneAtlas Data Living Library Attempts API
+  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery. The library is constantly updated with the latest data, ensuring that users have access to accurate and timely information for their projects. Users can easily search for and find the data they need, whether it be for environmental monitoring, urban planning, agriculture, or any other application. The platform also offers tools for analysis and visualization, allowing users to derive insights and make informed decisions based on the data they have access to. Overall, OneAtlas Data Living Library is a valuable resource for anyone looking to harness the power of geospatial data for their work.
 servers:
-- url: https://sar.api.oneatlas.airbus.com/v1
-  description: OneAtlas - Elevation
-security:
-- basicAuth: []
+- description: API server
+  url: https://data.api.oneatlas.airbus.com
 tags:
 - name: Attempts
 paths:
@@ -155,6 +154,20 @@ paths:
         url: https://task.api.oneatlas.airbus.com/
 components:
   schemas:
+    Optical:
+      properties:
+        acquisitionMode:
+          enum:
+          - MONO
+          - STEREO
+          - TRISTEREO
+          type: string
+        maxCloudCover:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
     segment:
       type: object
       properties:
@@ -186,15 +199,20 @@ components:
         maxIncidenceAngle:
           format: float
           type: number
-    footprint:
+    NoSensorAvailable:
       type: object
       properties:
-        geometry:
-          type: string
-          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
-        center:
-          type: string
-          example: POINT(23.755357 37.97611)
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                example: ERR_NO_SENSOR_AVAILABLE
+                type: string
+              locator:
+                example: UNKNOWN
+                type: string
     TaskingAttempt:
       type: array
       items:
@@ -234,35 +252,24 @@ components:
           format: datetime
           pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
           description: Defines the acquisition end date
-    Optical:
-      properties:
-        acquisitionMode:
-          enum:
-          - MONO
-          - STEREO
-          - TRISTEREO
-          type: string
-        maxCloudCover:
-          format: float
-          type: number
-        maxIncidenceAngle:
-          format: float
-          type: number
-    NoSensorAvailable:
+    footprint:
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                example: ERR_NO_SENSOR_AVAILABLE
-                type: string
-              locator:
-                example: UNKNOWN
-                type: string
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+        geometry:
+          type: string
+          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
+        center:
+          type: string
+          example: POINT(23.755357 37.97611)
+x-tagGroups:
+- name: Authentication
+  tags:
+  - APIkey management
+  - Token retrieval
+- name: Catalog search
+  tags:
+  - Catalog search
+- name: Living Library ordering
+  tags:
+  - Orders
+  - Subscriptions

@@ -1,15 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OneAtlas WorldDEM Access Get Capabilities API
-  version: 1.0.1
-  contact:
-    email: dl-geo-webservices@airbus.com
-  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+  title: OneAtlas Basemap Get Capabilities API
+  description: OneAtlas Basemap API is a geospatial service that provides access to high-resolution satellite imagery and basemaps. It allows users to retrieve up-to-date visual information of any location on Earth, enabling them to analyze and monitor changes in the environment, infrastructure, and land use. The API offers a seamless and easy-to-use interface for developers to integrate mapping capabilities into their applications, providing valuable insights for a wide range of industries such as agriculture, urban planning, disaster management, and more. With OneAtlas Basemap API, users can access reliable and accurate geospatial data to support decision-making processes and enhance their understanding of the world around them.
+  version: '2.0'
 servers:
-- url: https://sar.api.oneatlas.airbus.com/v1
-  description: OneAtlas - Elevation
-security:
-- basicAuth: []
+- url: https://view-bm.api.oneatlas.airbus.com
 tags:
 - name: Get Capabilities
 paths:
@@ -28,6 +23,8 @@ paths:
       - Get Capabilities
 components:
   securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: 'Enter the token with the `Bearer: ` prefix, e.g. "Bearer abcde12345".'

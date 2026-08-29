@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OneAtlas WorldDEM Access elevation/orders API
+  title: Airbus Oneatlas Elevation/orders API
   version: 1.0.1
   contact:
     email: dl-geo-webservices@airbus.com
-  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+  description: 'Operations tagged elevation/orders across 2 of this provider''s published API definitions: airbus-oneatlas-worlddem-api-openapi.yml, oneatlas-worlddem-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://sar.api.oneatlas.airbus.com/v1
   description: OneAtlas - Elevation
@@ -1326,6 +1326,9 @@ paths:
                     type: integer
                   message:
                     type: string
+    servers:
+    - url: https://sar.api.oneatlas.airbus.com/v1
+      description: OneAtlas - Elevation
   /elevation/orders/full:
     get:
       summary: Get All Orders
@@ -2243,6 +2246,9 @@ paths:
                     type: integer
                   message:
                     type: string
+    servers:
+    - url: https://sar.api.oneatlas.airbus.com/v1
+      description: OneAtlas - Elevation
   /elevation/orders/{orderId}:
     get:
       summary: Get Order Information by the Id with References to the Items
@@ -2684,6 +2690,9 @@ paths:
                     type: integer
                   message:
                     type: string
+    servers:
+    - url: https://sar.api.oneatlas.airbus.com/v1
+      description: OneAtlas - Elevation
   /elevation/orders/{orderId}/full:
     get:
       summary: Get Order Information by the Id with Full Items
@@ -3609,6 +3618,9 @@ paths:
                     type: integer
                   message:
                     type: string
+    servers:
+    - url: https://sar.api.oneatlas.airbus.com/v1
+      description: OneAtlas - Elevation
   /elevation/orders/{orderId}/items:
     get:
       summary: Get Reference of Items of the Specified Order
@@ -3740,6 +3752,9 @@ paths:
                     type: integer
                   message:
                     type: string
+    servers:
+    - url: https://sar.api.oneatlas.airbus.com/v1
+      description: OneAtlas - Elevation
   /elevation/orders/{orderId}/items/full:
     get:
       summary: Get Full Items of the Specified Order
@@ -4355,6 +4370,9 @@ paths:
                     type: integer
                   message:
                     type: string
+    servers:
+    - url: https://sar.api.oneatlas.airbus.com/v1
+      description: OneAtlas - Elevation
   /elevation/orders/{orderId}/items/{itemId}:
     get:
       summary: Get Metadata of the Specified Item
@@ -4977,6 +4995,9 @@ paths:
                     type: integer
                   message:
                     type: string
+    servers:
+    - url: https://sar.api.oneatlas.airbus.com/v1
+      description: OneAtlas - Elevation
   /elevation/orders/{orderId}/items/{itemId}/download:
     get:
       summary: Download the Specified Item
@@ -5149,8 +5170,14 @@ paths:
                     type: integer
                   message:
                     type: string
+    servers:
+    - url: https://sar.api.oneatlas.airbus.com/v1
+      description: OneAtlas - Elevation
 components:
   securitySchemes:
     basicAuth:
       type: http
       scheme: basic
+x-refined-from:
+- airbus-oneatlas-worlddem-api-openapi.yml
+- oneatlas-worlddem-api-openapi.yml

@@ -1,15 +1,17 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OneAtlas WorldDEM Access Monitor API
-  version: 1.0.1
+  title: Airbus Oneatlas Monitor API
   contact:
-    email: dl-geo-webservices@airbus.com
-  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+    email: intelligence-customertechnicalsupport@fr.airbus.com
+    name: API support
+    url: https://oneatlas.airbus.com
+  version: '1.0'
+  description: 'Operations tagged Monitor across 3 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://sar.api.oneatlas.airbus.com/v1
-  description: OneAtlas - Elevation
-security:
-- basicAuth: []
+- description: API server
+  url: https://data.api.oneatlas.airbus.com
+- description: API server
+  url: https://order.api.oneatlas.airbus.com
 tags:
 - name: Monitor
 paths:
@@ -105,6 +107,9 @@ paths:
       summary: Search Activities
       tags:
       - Monitor
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
   /api/v1/activities/{activityId}:
     get:
       description: 'Get the detail of an activity.
@@ -132,6 +137,9 @@ paths:
       summary: Get Activity Status
       tags:
       - Monitor
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
   /api/v1/activities/{activityId}/cancel:
     post:
       description: 'Cancel an activity.
@@ -175,6 +183,9 @@ paths:
       summary: Cancel Activity
       tags:
       - Monitor
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
   /api/v1/activities/{activityId}/rerun:
     post:
       description: 'Set activity status to `RUNNING` only for manual activities such as physical delivering.
@@ -220,6 +231,9 @@ paths:
       summary: Run Activity
       tags:
       - Monitor
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
   /api/v1/activities/{activityId}/stages:
     get:
       description: 'Get the stages of an activity. This url is not forged but directly retrieved using the monitoring key in the ingestion/process/format order response.
@@ -249,6 +263,9 @@ paths:
       summary: Get Activity Stages
       tags:
       - Monitor
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
 components:
   schemas:
     ActivitySearchOptions:
@@ -344,6 +361,24 @@ components:
           type: string
         userId:
           $ref: '#/components/schemas/Id'
+      type: object
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
       type: object
     ActivityStages:
       properties:
@@ -526,24 +561,6 @@ components:
           - $ref: '#/components/schemas/Id'
           - description: The id of the user that is the origin of the activity (extracted from the X-Forwarded-User request header)
       type: object
-    ApiError:
-      properties:
-        correlationId:
-          $ref: '#/components/schemas/Id'
-        hint:
-          type: string
-        internalCode:
-          example: 400
-          format: integer
-          type: number
-        message:
-          type: string
-        timestamp:
-          description: Number of seconds since 01/01/1970
-          example: 1530088354390
-          format: integer
-          type: number
-      type: object
     ActivitySearchResponse:
       properties:
         data:
@@ -572,6 +589,12 @@ components:
           type: number
       type: object
   responses:
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
     '401':
       content:
         application/json:
@@ -584,12 +607,6 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: User has not enough rights to consume the item
-    '500':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Internal server error
     '404':
       content:
         application/json:
@@ -618,7 +635,7 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/Id'
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+x-refined-from:
+- oneatlas-data-living-library-openapi.yml
+- oneatlas-data-pay-per-order-api-openapi.yml
+- oneatlas-data-pay-per-order-tasking-api-openapi.yml

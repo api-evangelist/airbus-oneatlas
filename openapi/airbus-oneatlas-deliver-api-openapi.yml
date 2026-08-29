@@ -1,15 +1,17 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OneAtlas WorldDEM Access Deliver API
-  version: 1.0.1
+  title: Airbus Oneatlas Deliver API
   contact:
-    email: dl-geo-webservices@airbus.com
-  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+    email: intelligence-customertechnicalsupport@fr.airbus.com
+    name: API support
+    url: https://oneatlas.airbus.com
+  version: '1.0'
+  description: 'Operations tagged Deliver across 3 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://sar.api.oneatlas.airbus.com/v1
-  description: OneAtlas - Elevation
-security:
-- basicAuth: []
+- description: API server
+  url: https://data.api.oneatlas.airbus.com
+- description: API server
+  url: https://order.api.oneatlas.airbus.com
 tags:
 - name: Deliver
 paths:
@@ -58,6 +60,9 @@ paths:
       summary: Fail Activity
       tags:
       - Deliver
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
   /api/v1/activities/{activityId}/hold:
     post:
       description: 'Hold activity and set activity status to `ON_HOLD` only for manual activities such as control or physical delivering.
@@ -103,6 +108,9 @@ paths:
       summary: Hold Activity
       tags:
       - Deliver
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
   /api/v1/activities/{activityId}/succeed:
     post:
       description: 'Set activity status to `SUCCESSED` only for manual activities such as physical delivering.
@@ -148,6 +156,9 @@ paths:
       summary: Succeed Activity
       tags:
       - Deliver
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
   /api/v1/deliveries:
     post:
       description: Deliver the requested catalog items to a workspace. The workspace may be configured to copy the items to an external data storage. This configuration can only be done via a non public endpoint. When delivered, each item emits a stage with name `ITEM_DELIVERED_TO_WORKSPACE`. When all items are delivered in the workspace, a stage with name `ALL_ITEMS_DELIVERED_TO_WORKSPACE` is emit.
@@ -181,6 +192,9 @@ paths:
       summary: Deliver Products
       tags:
       - Deliver
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
 components:
   parameters:
     Priority:
@@ -205,81 +219,38 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/Id'
+  responses:
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '404':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Item not found in catalog or resource not found in item
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
   schemas:
-    ApiError:
-      properties:
-        correlationId:
-          $ref: '#/components/schemas/Id'
-        hint:
-          type: string
-        internalCode:
-          example: 400
-          format: integer
-          type: number
-        message:
-          type: string
-        timestamp:
-          description: Number of seconds since 01/01/1970
-          example: 1530088354390
-          format: integer
-          type: number
-      type: object
-    ActivitySmall:
-      properties:
-        _links:
-          properties:
-            history:
-              allOf:
-              - description: See [Get activity stages](#/paths/~1api~1v1~1activities~1{correlationId}~1stages/get)
-              - $ref: '#/components/schemas/Link'
-            monitoring:
-              allOf:
-              - description: See [Get activity](#/paths/~1api~1v1~1activities~1{correlationId}/get)
-              - $ref: '#/components/schemas/Link'
-          readOnly: true
-          type: object
-        message:
-          description: A free text (copy of the last stage message)
-          readOnly: true
-          type: string
-      type: object
-    ActivityStage:
-      properties:
-        date:
-          default: now
-          description: Date of the stage
-          example: '2018-06-12T11:24:31.254Z'
-          format: datetime
-          type: string
-        message:
-          type: string
-        name:
-          description: Name of the completed stage
-          type: string
-        status:
-          description: Status of the activity
-          enum:
-          - QUEUED
-          - RUNNING
-          - ON_HOLD
-          - CANCELED
-          - WAITING_CANCEL
-          - SUCCEEDED
-          - FAILED
-          - ARCHIVED
-          type: string
-        userId:
-          allOf:
-          - readOnly: true
-          - $ref: '#/components/schemas/Id'
-          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
-      type: object
-    WorkspaceIdentifier:
-      oneOf:
-      - $ref: '#/components/schemas/Id'
-      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
-        example: MySuperWorkspace
-        type: string
     Activity:
       properties:
         _links:
@@ -385,6 +356,12 @@ components:
           - $ref: '#/components/schemas/Id'
           - description: The id of the user that is the origin of the activity (extracted from the X-Forwarded-User request header)
       type: object
+    WorkspaceIdentifier:
+      oneOf:
+      - $ref: '#/components/schemas/Id'
+      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
+        example: MySuperWorkspace
+        type: string
     Delivery:
       properties:
         catalogItemsId:
@@ -400,6 +377,61 @@ components:
           default: public
       required:
       - catalogItemsId
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    ActivityStage:
+      properties:
+        date:
+          default: now
+          description: Date of the stage
+          example: '2018-06-12T11:24:31.254Z'
+          format: datetime
+          type: string
+        message:
+          type: string
+        name:
+          description: Name of the completed stage
+          type: string
+        status:
+          description: Status of the activity
+          enum:
+          - QUEUED
+          - RUNNING
+          - ON_HOLD
+          - CANCELED
+          - WAITING_CANCEL
+          - SUCCEEDED
+          - FAILED
+          - ARCHIVED
+          type: string
+        userId:
+          allOf:
+          - readOnly: true
+          - $ref: '#/components/schemas/Id'
+          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
       type: object
     Link:
       description: Link object
@@ -432,44 +464,26 @@ components:
       required:
       - href
       type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
-  responses:
-    '404':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Item not found in catalog or resource not found in item
-    '400':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Bad request
-    '401':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User is not authenticated
-    '403':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User has not enough rights to consume the item
-    '500':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Internal server error
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+    ActivitySmall:
+      properties:
+        _links:
+          properties:
+            history:
+              allOf:
+              - description: See [Get activity stages](#/paths/~1api~1v1~1activities~1{correlationId}~1stages/get)
+              - $ref: '#/components/schemas/Link'
+            monitoring:
+              allOf:
+              - description: See [Get activity](#/paths/~1api~1v1~1activities~1{correlationId}/get)
+              - $ref: '#/components/schemas/Link'
+          readOnly: true
+          type: object
+        message:
+          description: A free text (copy of the last stage message)
+          readOnly: true
+          type: string
+      type: object
+x-refined-from:
+- oneatlas-data-living-library-openapi.yml
+- oneatlas-data-pay-per-order-api-openapi.yml
+- oneatlas-data-pay-per-order-tasking-api-openapi.yml

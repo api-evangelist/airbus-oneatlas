@@ -1,15 +1,15 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OneAtlas WorldDEM Access PleiadesNeo specific API
-  version: 1.0.1
+  title: Airbus Oneatlas PleiadesNeo specific API
   contact:
-    email: dl-geo-webservices@airbus.com
-  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+    email: intelligence-customertechnicalsupport@fr.airbus.com
+    name: API support
+    url: https://oneatlas.airbus.com
+  version: '1.0'
+  description: 'Operations tagged PleiadesNeo specific across 2 of this provider''s published API definitions: oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://sar.api.oneatlas.airbus.com/v1
-  description: OneAtlas - Elevation
-security:
-- basicAuth: []
+- description: API server
+  url: https://order.api.oneatlas.airbus.com
 tags:
 - name: PleiadesNeo specific
 paths:
@@ -286,6 +286,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
   /api/v1/coverages/search:
     post:
       tags:
@@ -395,6 +398,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
   api/v1/coverages/{coverageItemId}/accept:
     post:
       tags:
@@ -404,6 +410,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
   api/v1/coverages/{coverageItemId}/refuse:
     post:
       tags:
@@ -413,6 +422,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
   api/v1/orders/{orderItemId}/stop:
     post:
       summary: Stop a Tasking Order
@@ -422,6 +434,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
   api/v2/orders/search:
     post:
       tags:
@@ -468,6 +483,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
   /api/v1/quotations/{quotationId}/export:
     /api/v1/contracts/{CisContractId}/quotations/{quotationId}/accept: null
     get:
@@ -483,12 +501,18 @@ paths:
       - PleiadesNeo specific
       summary: Accept a Quotation
       description: You can accept a quotation using this endpoint
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
   /api/v1/contracts/{CisContractId}/quotations/{quotationId}/refuse:
     put:
       tags:
       - PleiadesNeo specific
       summary: Refuse a Quotation
       description: You can refuse a quotation using this endpoint
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
   api/v1/orders/{orderItemId}/cancel:
     post:
       summary: Cancel a Tasking Order
@@ -498,8 +522,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
-components:
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
+x-refined-from:
+- oneatlas-data-pay-per-order-api-openapi.yml
+- oneatlas-data-pay-per-order-tasking-api-openapi.yml

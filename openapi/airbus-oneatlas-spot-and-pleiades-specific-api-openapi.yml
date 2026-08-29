@@ -1,15 +1,15 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OneAtlas WorldDEM Access SPOT and Pleiades specific API
-  version: 1.0.1
+  title: Airbus Oneatlas SPOT and Pleiades specific API
   contact:
-    email: dl-geo-webservices@airbus.com
-  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+    email: intelligence-customertechnicalsupport@fr.airbus.com
+    name: API support
+    url: https://oneatlas.airbus.com
+  version: '1.0'
+  description: 'Operations tagged SPOT and Pleiades specific across 2 of this provider''s published API definitions: oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://sar.api.oneatlas.airbus.com/v1
-  description: OneAtlas - Elevation
-security:
-- basicAuth: []
+- description: API server
+  url: https://order.api.oneatlas.airbus.com
 tags:
 - name: SPOT and Pleiades specific
 paths:
@@ -22,6 +22,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
   api/v1/contracts/{cisContractId}/taskings/{taskingId}:
     get:
       summary: Track an Order
@@ -31,6 +34,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
   api/v1/contracts/{cisContractId}/taskings?customerRef=yourCustomerReference:
     get:
       summary: Track Orders with Customerref
@@ -78,6 +84,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
   api/v1/contracts/{CisContractId}/taskings/{taskingId}/segments:
     get:
       summary: Retrieve Acquisitions on an Order
@@ -102,6 +111,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
   api/v1/contracts/{CisContractId}/taskings/{tasking_Id}/segments/{segmentId}/accept:
     post:
       summary: Accept Acquisition
@@ -111,6 +123,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
   api/v1/contracts/{CisContractId}/taskings/{tasking_Id}/segments/{segmentId}/refuse:
     post:
       summary: Refuse Acquisition
@@ -120,6 +135,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
+    servers:
+    - description: API server
+      url: https://order.api.oneatlas.airbus.com
 components:
   parameters:
     CustomerReference:
@@ -129,7 +147,6 @@ components:
       required: true
       schema:
         type: string
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+x-refined-from:
+- oneatlas-data-pay-per-order-api-openapi.yml
+- oneatlas-data-pay-per-order-tasking-api-openapi.yml

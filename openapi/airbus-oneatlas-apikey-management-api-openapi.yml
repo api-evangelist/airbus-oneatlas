@@ -1,15 +1,17 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OneAtlas WorldDEM Access APIkey management API
-  version: 1.0.1
+  title: Airbus Oneatlas APIkey management API
   contact:
-    email: dl-geo-webservices@airbus.com
-  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+    email: intelligence-customertechnicalsupport@fr.airbus.com
+    name: API support
+    url: https://oneatlas.airbus.com
+  version: '1.0'
+  description: 'Operations tagged APIkey management across 3 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://sar.api.oneatlas.airbus.com/v1
-  description: OneAtlas - Elevation
-security:
-- basicAuth: []
+- description: API server
+  url: https://data.api.oneatlas.airbus.com
+- description: API server
+  url: https://order.api.oneatlas.airbus.com
 tags:
 - name: APIkey management
 paths:
@@ -70,15 +72,16 @@ paths:
       servers:
       - description: Prod authenticate server
         url: https://authenticate.foundation.api.oneatlas.airbus.com/api/v1
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
 components:
   schemas:
-    ApiKeyPage:
+    HumanReadableOperationSummary:
       properties:
-        items:
-          description: API Keys
-          items:
-            $ref: '#/components/schemas/ApiKey'
-          type: array
+        message:
+          description: Human readable summary of the operation execution
+          type: string
       type: object
     ApiKey:
       properties:
@@ -103,11 +106,13 @@ components:
       - date
       - expirationDate
       type: object
-    HumanReadableOperationSummary:
+    ApiKeyPage:
       properties:
-        message:
-          description: Human readable summary of the operation execution
-          type: string
+        items:
+          description: API Keys
+          items:
+            $ref: '#/components/schemas/ApiKey'
+          type: array
       type: object
   responses:
     UnauthorizedError:
@@ -120,7 +125,7 @@ components:
         WWW-Authenticate:
           schema:
             type: string
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+x-refined-from:
+- oneatlas-data-living-library-openapi.yml
+- oneatlas-data-pay-per-order-api-openapi.yml
+- oneatlas-data-pay-per-order-tasking-api-openapi.yml

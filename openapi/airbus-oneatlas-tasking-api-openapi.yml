@@ -1,15 +1,17 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OneAtlas WorldDEM Access Tasking API
-  version: 1.0.1
+  title: Airbus Oneatlas Tasking API
   contact:
-    email: dl-geo-webservices@airbus.com
-  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+    email: intelligence-customertechnicalsupport@fr.airbus.com
+    name: API support
+    url: https://oneatlas.airbus.com
+  version: '1.0'
+  description: 'Operations tagged Tasking across 3 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://sar.api.oneatlas.airbus.com/v1
-  description: OneAtlas - Elevation
-security:
-- basicAuth: []
+- description: API server
+  url: https://data.api.oneatlas.airbus.com
+- description: API server
+  url: https://order.api.oneatlas.airbus.com
 tags:
 - name: Tasking
 paths:
@@ -78,6 +80,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://task.api.oneatlas.airbus.com/
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
   /api/v1/contracts/{contractId}/taskings/{taskingId}:
     parameters:
     - $ref: '#/components/parameters/contractId'
@@ -96,6 +101,9 @@ paths:
       servers:
       - description: Tasking API server
         url: https://task.api.oneatlas.airbus.com/
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
   /api/v1/contracts/{contractId}/taskings/{taskingId}/cancel:
     parameters:
     - $ref: '#/components/parameters/contractId'
@@ -120,48 +128,79 @@ paths:
       servers:
       - description: Tasking API server
         url: https://task.api.oneatlas.airbus.com/
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
 components:
-  parameters:
-    contractId:
-      description: It corresponds to an internal id for the customer contract - you will be provided the contractId
-      in: path
-      name: contractId
-      required: true
-      schema:
-        type: string
-    taskingId:
-      description: The tasking id
-      in: path
-      name: taskingId
-      required: true
-      schema:
-        type: string
   schemas:
     tasking:
       properties:
-        customerRef:
-          name: customerRef
-          in: query
-          description: Customer reference
+        contractId:
+          name: contractId
+          in: path
+          required: true
+          description: The contract id
+          schema:
+            type: string
+        orderId:
+          name: orderId
+          in: path
+          required: true
+          description: The order id
+          schema:
+            type: string
+        productTypeId:
+          name: productTypeId
+          in: path
+          required: true
+          description: The product type id
+          schema:
+            type: string
+        customerId:
+          name: customerId
+          in: path
+          required: true
+          description: The customer id
+          schema:
+            type: string
+        taskingId:
+          name: taskingId
+          in: path
+          required: true
+          description: The tasking id
           type: string
           schema:
             type: string
-        icrEndOfPeriodDate:
-          name: icrEndOfPeriodDate
-          in: query
-          description: 'A date or date interval that must match the icr end of period date. Only taskings in this range are returned in the response. Example: [2017-01-01,2017-02-01[ to select all taskings done in January 2017.'
-          type: string
+        segmentId:
+          name: segmentId
+          in: path
+          required: true
+          description: The segment id
           schema:
             type: string
-            format: Interval of dates in ISO 8601
-        sortKeys:
-          name: sortKeys
-          in: query
-          description: 'A sorting request to the server conforming the OpenSearch SRU specification. Example: sortKeys=acquisitionDate,,0 meaning a request to sort by newest acquired image first or sortKeys=cloudCover,,1 to sort by the smallest cloud coverage percentage. Available values are: status, startDate, endDate, taskingProgress'
-          type: string
+        licenceId:
+          name: licenceId
+          in: path
+          required: true
+          description: The licence id
           schema:
             type: string
-            format: OpenSearch SRU
+        quotationId:
+          name: quotationId
+          in: path
+          required: true
+          description: The quotation id
+          schema:
+            type: string
+        taskingIds:
+          name: taskingIds
+          in: query
+          description: ICR's list
+          type: array
+          schema:
+            type: array
+            items:
+              type: string
         count:
           name: count
           in: query
@@ -170,6 +209,20 @@ components:
           schema:
             type: integer
             default: 10
+        customerRef:
+          name: customerRef
+          in: query
+          description: Customer reference
+          type: string
+          schema:
+            type: string
+        program:
+          name: program
+          in: query
+          description: Program name
+          type: string
+          schema:
+            type: string
         status:
           name: status
           in: query
@@ -185,23 +238,6 @@ components:
               - Paused
               - Canceled
               - Completed
-        taskingIds:
-          name: taskingIds
-          in: query
-          description: ICR's list
-          type: array
-          schema:
-            type: array
-            items:
-              type: string
-        startPage:
-          name: startPage
-          in: query
-          description: The desired page, starting from 1 for the first page.
-          type: integer
-          schema:
-            type: integer
-            default: 1
         mission:
           name: mission
           in: query
@@ -212,28 +248,6 @@ components:
             enum:
             - SPOT
             - PLEIADES
-        program:
-          name: program
-          in: query
-          description: Program name
-          type: string
-          schema:
-            type: string
-        hasProposedSegments:
-          name: hasProposedSegments
-          in: query
-          description: Indicates whether the search should filter on proposed segments. If set to true, only ICR with proposed segments should be returned. If set to false, only ICR with no proposed segments. If not set, returns all ICR ignoring presence/absence of proposed segments
-          type: boolean
-          schema:
-            type: boolean
-        acquisitionDate:
-          name: acquisitionDate
-          in: query
-          description: 'A date or date interval that must match the product acquisition date. Only taskings in this range are returned in the response. Example: [2017-01-01,2017-02-01[ to select all taskings done in January 2017.'
-          type: string
-          schema:
-            type: string
-            format: Interval of dates in ISO 8601
         progTypeNames:
           name: progTypeNames
           in: query
@@ -246,7 +260,66 @@ components:
             - ONENOW
             - ONEPLAN
             - ONESERIES
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+        acquisitionDate:
+          name: acquisitionDate
+          in: query
+          description: 'A date or date interval that must match the product acquisition date. Only taskings in this range are returned in the response. Example: [2017-01-01,2017-02-01[ to select all taskings done in January 2017.'
+          type: string
+          schema:
+            type: string
+            format: Interval of dates in ISO 8601
+        icrEndOfPeriodDate:
+          name: icrEndOfPeriodDate
+          in: query
+          description: 'A date or date interval that must match the icr end of period date. Only taskings in this range are returned in the response. Example: [2017-01-01,2017-02-01[ to select all taskings done in January 2017.'
+          type: string
+          schema:
+            type: string
+            format: Interval of dates in ISO 8601
+        hasProposedSegments:
+          name: hasProposedSegments
+          in: query
+          description: Indicates whether the search should filter on proposed segments. If set to true, only ICR with proposed segments should be returned. If set to false, only ICR with no proposed segments. If not set, returns all ICR ignoring presence/absence of proposed segments
+          type: boolean
+          schema:
+            type: boolean
+        startPage:
+          name: startPage
+          in: query
+          description: The desired page, starting from 1 for the first page.
+          type: integer
+          schema:
+            type: integer
+            default: 1
+        sortKeys:
+          name: sortKeys
+          in: query
+          description: 'A sorting request to the server conforming the OpenSearch SRU specification. Example: sortKeys=acquisitionDate,,0 meaning a request to sort by newest acquired image first or sortKeys=cloudCover,,1 to sort by the smallest cloud coverage percentage. Available values are: status, startDate, endDate, taskingProgress'
+          type: string
+          schema:
+            type: string
+            format: OpenSearch SRU
+      securitySchemes:
+        bearerAuth:
+          type: http
+          scheme: bearer
+          bearerFormat: JWT
+  parameters:
+    contractId:
+      description: It corresponds to an internal id for the customer contract - you will be provided the contractId
+      in: path
+      name: contractId
+      required: true
+      schema:
+        type: string
+    taskingId:
+      description: The tasking id
+      in: path
+      name: taskingId
+      required: true
+      schema:
+        type: string
+x-refined-from:
+- oneatlas-data-living-library-openapi.yml
+- oneatlas-data-pay-per-order-api-openapi.yml
+- oneatlas-data-pay-per-order-tasking-api-openapi.yml

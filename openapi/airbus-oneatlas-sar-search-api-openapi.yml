@@ -1,13 +1,13 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OneAtlas WorldDEM Access Sar/Search API
-  version: 1.0.1
+  title: Airbus OneAtlas OneAtlas Radar Sar/Search API
+  version: 1.0.0
   contact:
-    email: dl-geo-webservices@airbus.com
-  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+    email: dl_webservices_geo@airbus.com
+  description: OneAtlas Radar API is a powerful tool that allows developers to access and integrate radar satellite data into their applications and processes. By utilizing this API, users can access real-time and historical radar imagery, which can be used for a wide range of applications including agriculture, disaster management, urban planning, and security. The API provides high-resolution radar images that can be used for monitoring changes in land cover, detecting anomalies, and analyzing patterns over time. With OneAtlas Radar API, users can access valuable radar data to enhance their decision-making processes and improve their overall operational efficiency.
 servers:
 - url: https://sar.api.oneatlas.airbus.com/v1
-  description: OneAtlas - Elevation
+  description: OneAtlas - Radar Tasking & Archive
 security:
 - basicAuth: []
 tags:

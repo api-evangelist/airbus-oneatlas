@@ -1,15 +1,17 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OneAtlas WorldDEM Access Orders API
-  version: 1.0.1
+  title: Airbus Oneatlas Orders API
   contact:
-    email: dl-geo-webservices@airbus.com
-  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data. This data, collected by satellites and processed using advanced technologies, offers a detailed and accurate representation of the Earth's surface. By integrating the WorldDEM API into their applications, users can benefit from precise terrain information for a wide range of use cases, such as urban planning, disaster response, agriculture, and infrastructure development. This API allows developers to easily incorporate elevation data into their projects, enabling them to create more accurate and effective solutions.
+    email: intelligence-customertechnicalsupport@fr.airbus.com
+    name: API support
+    url: https://oneatlas.airbus.com
+  version: '1.0'
+  description: 'Operations tagged Orders across 3 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://sar.api.oneatlas.airbus.com/v1
-  description: OneAtlas - Elevation
-security:
-- basicAuth: []
+- description: API server
+  url: https://data.api.oneatlas.airbus.com
+- description: API server
+  url: https://order.api.oneatlas.airbus.com
 tags:
 - name: Orders
 paths:
@@ -1065,6 +1067,9 @@ paths:
       summary: Create an Order
       tags:
       - Orders
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
   /api/v1/orders/{orderId}:
     get:
       description: Get order by id
@@ -1391,6 +1396,9 @@ paths:
                   type: object
                 title: Orders
           description: an order
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
   /api/v1/prices:
     post:
       description: Get an order price
@@ -2031,6 +2039,9 @@ paths:
       summary: Get Price
       tags:
       - Orders
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
   ' /api/v1/prices':
     post:
       tags:
@@ -2671,8 +2682,18 @@ paths:
                 title: Orders
           description: a price
       summary: Get Price
+    servers:
+    - description: API server
+      url: https://data.api.oneatlas.airbus.com
 components:
   parameters:
+    page:
+      description: Page number, defaults to '1'
+      in: query
+      name: page
+      schema:
+        minimum: 1
+        type: number
     orderId:
       description: The order id
       in: path
@@ -2687,14 +2708,7 @@ components:
       schema:
         minimum: 1
         type: number
-    page:
-      description: Page number, defaults to '1'
-      in: query
-      name: page
-      schema:
-        minimum: 1
-        type: number
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
+x-refined-from:
+- oneatlas-data-living-library-openapi.yml
+- oneatlas-data-pay-per-order-api-openapi.yml
+- oneatlas-data-pay-per-order-tasking-api-openapi.yml

@@ -999,6 +999,9 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/airbus-oneatlas.png
 access: 3rd-Party
 common:
+  - type: CapabilityMap
+    url: capabilities/airbus-oneatlas-capability-edges.yml
+    name: Airbus OneAtlas Business Capability Map
   - type: AgenticAccess
     url: agentic-access/airbus-oneatlas-agentic-access.yml
   - type: VulnerabilityDisclosure

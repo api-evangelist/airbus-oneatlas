@@ -247,7 +247,7 @@ apis:
   description: The APIkey management API from Airbus OneAtlas — 2 operation(s) for apikey management.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
-  - API Key Management
+  - APIkey management
   tags_raw:
   - APIkey management
   properties:
@@ -283,7 +283,7 @@ apis:
   description: The Catalog search API from Airbus OneAtlas — 4 operation(s) for catalog search.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
-  - Catalog Search
+  - Catalog search
   tags_raw:
   - Catalog search
   properties:
@@ -583,7 +583,7 @@ apis:
   description: The Opensearch API from Airbus OneAtlas — 1 operation(s) for opensearch.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
-  - OpenSearch
+  - Opensearch
   tags_raw:
   - Opensearch
   properties:

@@ -1528,7 +1528,7 @@ common:
     url: examples/oneatlas-workspace-search-response-example.json
 created: '2025-02-06'
 modified: '2026-05-19'
-position: Consumer
+position: Consuming
 description: >-
   Airbus OneAtlas is the commercial geospatial platform from Airbus Defence and Space, providing developer APIs for
   accessing high-resolution satellite imagery, elevation data, basemaps, and radar data. The platform covers optical

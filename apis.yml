@@ -242,25 +242,6 @@ apis:
     url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/notebooks/
   - type: ChangeLog
     url: https://api.oneatlas.airbus.com/releases/#worlddem
-- aid: airbus-oneatlas:airbus-oneatlas-apikey-management-api
-  name: Airbus OneAtlas APIkey management API
-  description: The APIkey management API from Airbus OneAtlas — 2 operation(s) for apikey management.
-  humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
-  tags:
-  - API Key Management
-  tags_raw:
-  - APIkey management
-  properties:
-  - type: OpenAPI
-    url: openapi/airbus-oneatlas-apikey-management-api-openapi.yml
-  - type: Tutorials
-    url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/tutorials/
-  - type: JupyterNotebook
-    url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/notebooks/
-  - type: PostmanCollection
-    url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/notebooks/
-  - type: ChangeLog
-    url: https://api.oneatlas.airbus.com/releases/#worlddem
 - aid: airbus-oneatlas:airbus-oneatlas-attempts-api
   name: Airbus OneAtlas Attempts API
   description: The Attempts API from Airbus OneAtlas — 1 operation(s) for attempts.
@@ -570,25 +551,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/airbus-oneatlas-notify-api-openapi.yml
-  - type: Tutorials
-    url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/tutorials/
-  - type: JupyterNotebook
-    url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/notebooks/
-  - type: PostmanCollection
-    url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/notebooks/
-  - type: ChangeLog
-    url: https://api.oneatlas.airbus.com/releases/#worlddem
-- aid: airbus-oneatlas:airbus-oneatlas-opensearch-api
-  name: Airbus OneAtlas Opensearch API
-  description: The Opensearch API from Airbus OneAtlas — 1 operation(s) for opensearch.
-  humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
-  tags:
-  - OpenSearch
-  tags_raw:
-  - Opensearch
-  properties:
-  - type: OpenAPI
-    url: openapi/airbus-oneatlas-opensearch-api-openapi.yml
   - type: Tutorials
     url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/tutorials/
   - type: JupyterNotebook
@@ -959,6 +921,40 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/airbus-oneatlas-workspaces-api-openapi.yml
+  - type: Tutorials
+    url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/tutorials/
+  - type: JupyterNotebook
+    url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/notebooks/
+  - type: PostmanCollection
+    url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/notebooks/
+  - type: ChangeLog
+    url: https://api.oneatlas.airbus.com/releases/#worlddem
+- aid: airbus-oneatlas:airbus-oneatlas-api-key-management-api
+  name: Airbus OneAtlas API Key Management API
+  description: The API Key Management API from Airbus OneAtlas — 2 operation(s) for api key management.
+  humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
+  tags:
+  - API Key Management
+  properties:
+  - type: OpenAPI
+    url: openapi/airbus-oneatlas-api-key-management-api-openapi.yml
+  - type: Tutorials
+    url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/tutorials/
+  - type: JupyterNotebook
+    url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/notebooks/
+  - type: PostmanCollection
+    url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/notebooks/
+  - type: ChangeLog
+    url: https://api.oneatlas.airbus.com/releases/#worlddem
+- aid: airbus-oneatlas:airbus-oneatlas-open-search-api
+  name: Airbus OneAtlas Open Search API
+  description: The Open Search API from Airbus OneAtlas — 1 operation(s) for open search.
+  humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
+  tags:
+  - Open Search
+  properties:
+  - type: OpenAPI
+    url: openapi/airbus-oneatlas-open-search-api-openapi.yml
   - type: Tutorials
     url: https://api.oneatlas.airbus.com/api-catalog-v2/worlddem/tutorials/
   - type: JupyterNotebook

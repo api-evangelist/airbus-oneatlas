@@ -8,6 +8,14 @@ apis:
   - Geospatial
   - Imagery
   - Remote Sensing
+  - Satellite
+  - Satellite Imagery
+  - Streaming
+  tags_raw:
+  - Airbus
+  - Geospatial
+  - Imagery
+  - Remote Sensing
   - Satellites
   - Satellite Imagery
   - Streaming
@@ -48,6 +56,14 @@ apis:
   - Geospatial
   - Imagery
   - Pay-Per-Order
+  - Satellite
+  - Satellite Imagery
+  tags_raw:
+  - Airbus
+  - Archives
+  - Geospatial
+  - Imagery
+  - Pay-Per-Order
   - Satellites
   - Satellite Imagery
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-ppo-archives/overview/index.html
@@ -81,6 +97,14 @@ apis:
 - aid: airbus-oneatlas:oneatlas-data-pay-per-order-tasking-api
   name: OneAtlas Data Pay-Per-Order Tasking API
   tags:
+  - Airbus
+  - Geospatial
+  - Imagery
+  - Pay-Per-Order
+  - Satellite
+  - Satellite Imagery
+  - Tasking
+  tags_raw:
   - Airbus
   - Geospatial
   - Imagery
@@ -125,6 +149,14 @@ apis:
   - Geospatial
   - Imagery
   - Maps
+  - Satellite
+  - Tiles
+  tags_raw:
+  - Airbus
+  - Basemap
+  - Geospatial
+  - Imagery
+  - Maps
   - Satellites
   - Tiles
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-basemap/overview/index.html
@@ -156,6 +188,14 @@ apis:
 - aid: airbus-oneatlas:oneatlas-radar-api
   name: OneAtlas Radar API
   tags:
+  - Airbus
+  - Geospatial
+  - Imagery
+  - Radar
+  - SAR
+  - Satellite
+  - Tasking
+  tags_raw:
   - Airbus
   - Geospatial
   - Imagery
@@ -917,6 +957,8 @@ apis:
   description: The Workspaces API from Airbus OneAtlas — 10 operation(s) for workspaces.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
+  - Workspace
+  tags_raw:
   - Workspaces
   properties:
   - type: OpenAPI
@@ -951,6 +993,8 @@ apis:
   description: The Open Search API from Airbus OneAtlas — 1 operation(s) for open search.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
+  - OpenSearch
+  tags_raw:
   - Open Search
   properties:
   - type: OpenAPI
@@ -965,6 +1009,9 @@ apis:
     url: https://api.oneatlas.airbus.com/releases/#worlddem
 name: Airbus OneAtlas
 tags:
+  - Imagery
+  - Satellite
+tags_raw:
   - Imagery
   - Satellites
 type: Index

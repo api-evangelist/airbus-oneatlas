@@ -14,7 +14,8 @@ capability_model:
 edge_count: 2
 edges:
 - tag: APIkey management
-  spec_file: airbus-oneatlas-apikey-management-api-openapi.yml
+  spec_file: airbus-oneatlas-api-key-management-api-openapi.yml
+  reanchored_from: airbus-oneatlas-apikey-management-api-openapi.yml
   capability_id: BC-4270.40
   capability_id_l1: BC-4270
   capability_name: Developer Identity & Credential Management

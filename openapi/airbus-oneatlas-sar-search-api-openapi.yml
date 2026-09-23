@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   contact:
     email: dl_webservices_geo@airbus.com
-  description: OneAtlas Radar API is a powerful tool that allows developers to access and integrate radar satellite data into their applications and processes. By utilizing this API, users can access real-time and historical radar imagery, which can be used for a wide range of applications including agriculture, disaster management, urban planning, and security. The API provides high-resolution radar images that can be used for monitoring changes in land cover, detecting anomalies, and analyzing patterns over time. With OneAtlas Radar API, users can access valuable radar data to enhance their decision-making processes and improve their overall operational efficiency.
+  description: OneAtlas Radar API is a powerful tool that allows developers to access and integrate radar satellite data into their applications and processes.
 servers:
 - url: https://sar.api.oneatlas.airbus.com/v1
   description: OneAtlas - Radar Tasking & Archive
@@ -12,9 +12,7 @@ security:
 - basicAuth: []
 tags:
 - name: Sar/Search
-  description: 'Endpoint to search for possible SAR acquisitions.
-
-    '
+  description: Endpoint to search for possible SAR acquisitions.
 paths:
   /sar/feasibility:
     post:
@@ -914,6 +912,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: postSarFeasibility
+      x-operation-id-source: derived
   /sar/catalogue:
     post:
       summary: Airbus OneAtlas Search for Possible Acquisitions in Catalogue
@@ -1752,6 +1752,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: postSarCatalogue
+      x-operation-id-source: derived
   /sar/catalogue/retrieve:
     post:
       summary: Airbus OneAtlas Retrieve Ordered Items from Catalogue
@@ -2275,6 +2277,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: postSarCatalogueRetrieve
+      x-operation-id-source: derived
   /sar/stacks:
     post:
       summary: Airbus OneAtlas Create Stacks from Template Items
@@ -2865,6 +2869,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: postSarStacks
+      x-operation-id-source: derived
 components:
   securitySchemes:
     basicAuth:

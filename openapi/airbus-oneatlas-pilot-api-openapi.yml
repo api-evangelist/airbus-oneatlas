@@ -5,7 +5,7 @@ info:
     name: API support
     url: https://oneatlas.airbus.com
   title: OneAtlas Data Living Library Pilot API
-  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery. The library is constantly updated with the latest data, ensuring that users have access to accurate and timely information for their projects. Users can easily search for and find the data they need, whether it be for environmental monitoring, urban planning, agriculture, or any other application. The platform also offers tools for analysis and visualization, allowing users to derive insights and make informed decisions based on the data they have access to. Overall, OneAtlas Data Living Library is a valuable resource for anyone looking to harness the power of geospatial data for their work.
+  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery.
 servers:
 - description: API server
   url: https://data.api.oneatlas.airbus.com
@@ -37,8 +37,24 @@ paths:
       summary: Retrieve Formatted Product Checksum
       tags:
       - Pilot
+      operationId: headApiV1ItemsByCatalogItemIdDownload
+      x-operation-id-source: derived
 components:
+  schemas:
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
   parameters:
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
     CatalogItemId:
       description: Identifier of an IDP catalog item (property `id` of a search result).
       example: 799246d8-4172-11e8-b045-e7011a379ec4
@@ -47,20 +63,6 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/Id'
-    CorrelationID:
-      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Correlation-Id
-      schema:
-        $ref: '#/components/schemas/Id'
-  schemas:
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
 x-tagGroups:
 - name: Authentication
   tags:

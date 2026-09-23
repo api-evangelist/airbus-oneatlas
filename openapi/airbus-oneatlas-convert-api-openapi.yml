@@ -5,7 +5,7 @@ info:
     name: API support
     url: https://oneatlas.airbus.com
   title: OneAtlas Data Living Library Convert API
-  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery. The library is constantly updated with the latest data, ensuring that users have access to accurate and timely information for their projects. Users can easily search for and find the data they need, whether it be for environmental monitoring, urban planning, agriculture, or any other application. The platform also offers tools for analysis and visualization, allowing users to derive insights and make informed decisions based on the data they have access to. Overall, OneAtlas Data Living Library is a valuable resource for anyone looking to harness the power of geospatial data for their work.
+  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery.
 servers:
 - description: API server
   url: https://data.api.oneatlas.airbus.com
@@ -52,27 +52,10 @@ paths:
       summary: To Geojson
       tags:
       - Convert
+      operationId: postApiV1Convert
+      x-operation-id-source: derived
 components:
   schemas:
-    kmz:
-      description: A geometry in kmz format. Is a zip containing kml file and associated files.
-      format: binary
-    multipart:
-      description: 'First part: the equivalent vector file in geojson format.
-
-
-        Second part: metadata about the vector file.
-
-        '
-      format: multipart/related
-    json:
-      description: A json representing a file in a Google Cloud Storage bucket. The appropriate content type must be set in Google Cloud Storage
-      example:
-        gcsUri: gs://bucket-name/path/to/file.kmz
-      format: json
-    geoshape:
-      description: A geometry in shape format. Is a zip containing a .shp files and associated files.
-      format: binary
     Id:
       description: Unique Id of an element. Follows UUID v4 standard.
       example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
@@ -97,6 +80,22 @@ components:
           format: integer
           type: number
       type: object
+    multipart:
+      description: 'First part: the equivalent vector file in geojson format.
+
+
+        Second part: metadata about the vector file.
+
+        '
+      format: multipart/related
+    kmz:
+      description: A geometry in kmz format. Is a zip containing kml file and associated files.
+      format: binary
+    json:
+      description: A json representing a file in a Google Cloud Storage bucket. The appropriate content type must be set in Google Cloud Storage
+      example:
+        gcsUri: gs://bucket-name/path/to/file.kmz
+      format: json
     kml:
       description: A geometry in kml format
       format: binary
@@ -111,6 +110,9 @@ components:
           enum:
           - Polygon
       type: object
+    geoshape:
+      description: A geometry in shape format. Is a zip containing a .shp files and associated files.
+      format: binary
   responses:
     '401':
       content:

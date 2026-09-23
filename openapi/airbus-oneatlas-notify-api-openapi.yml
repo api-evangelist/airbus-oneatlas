@@ -5,7 +5,7 @@ info:
     name: API support
     url: https://oneatlas.airbus.com
   title: OneAtlas Data Living Library Notify API
-  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery. The library is constantly updated with the latest data, ensuring that users have access to accurate and timely information for their projects. Users can easily search for and find the data they need, whether it be for environmental monitoring, urban planning, agriculture, or any other application. The platform also offers tools for analysis and visualization, allowing users to derive insights and make informed decisions based on the data they have access to. Overall, OneAtlas Data Living Library is a valuable resource for anyone looking to harness the power of geospatial data for their work.
+  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery.
 servers:
 - description: API server
   url: https://data.api.oneatlas.airbus.com
@@ -39,6 +39,8 @@ paths:
       summary: Search the Notifications
       tags:
       - Notify
+      operationId: postApiV1NotificationsSearch
+      x-operation-id-source: derived
   /api/v1/notifications/{notificationId}:
     delete:
       description: Delete a subscription.
@@ -59,39 +61,54 @@ paths:
       summary: Delete a Notification Subscription
       tags:
       - Notify
+      operationId: deleteApiV1NotificationsByNotificationId
+      x-operation-id-source: derived
 components:
   responses:
-    '401':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User is not authenticated
-    '403':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User has not enough rights to consume the item
-    '500':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Internal server error
     '404':
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Item not found in catalog or resource not found in item
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
     '400':
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Bad request
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
   schemas:
+    NotificationSearchOptions:
+      properties:
+        userId:
+          $ref: '#/components/schemas/Id'
+      required:
+      - userId
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
     WebhookNotificationParameters:
       properties:
         url:
@@ -101,135 +118,35 @@ components:
       required:
       - url
       type: object
-    NotificationSearchResponse:
+    ApiError:
       properties:
-        data:
-          items:
-            $ref: '#/components/schemas/NotificationSubscription'
-          type: array
-          uniqueItems: true
-      type: object
-    ActivitySearchOptions:
-      properties:
-        creationDate:
-          description: The creation date or creation date range of the activity
-          oneOf:
-          - description: The creation date of the activity.
-            example: '2017-08-29T00:00:00Z'
-            format: date-time
-            type: string
-          - description: "The creation dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
-            example: '[2017-08-29T00:00:00Z'
-            format: date-time-range
-            type: string
-        endDate:
-          description: The end date pf the activity (copy of the date associated to the SUCCEEDED or FAILED stage)
-          format: datetime
-          oneOf:
-          - description: The end date of the activity.
-            example: '2017-08-29T00:00:00Z'
-            format: date-time
-            type: string
-          - description: "The end dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
-            example: '[2017-08-29T00:00:00Z'
-            format: date-time-range
-            type: string
-          type: string
-        itemsPerPage:
-          description: Number of requested items per page
-          example: 50
-          format: integer
-          minimum: 1
-          type: number
-        payload:
-          description: The copy of the origin user request. It could be the whole object or only some elements.
-          oneOf:
-          - description: The json object.
-            example:
-            - workspace: public
-            type: object
-          - description: String representation of the json object.
-            example: '{"workspace":"public"}'
-            type: string
-        progress:
-          description: A progress indicator between 0 and 100
-          format: integer
-          maximum: 100
-          minimum: 0
-          type: number
-        sortBy:
-          description: Unbounded list or parameters to sort by. The '+' indicates ascendant ordering, the '-' indicates descendant ordering. If not precised, default to '+'
-          example: +startDate,-endDate
-          type: string
-        startDate:
-          description: The start date of the activity (date of the first stage that is not QUEUED)
-          format: datetime
-          oneOf:
-          - description: The start date of the activity.
-            example: '2017-08-29T00:00:00Z'
-            format: date-time
-            type: string
-          - description: "The start dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
-            example: '[2017-08-29T00:00:00Z'
-            format: date-time-range
-            type: string
-          type: string
-        startIndex:
-          description: The index of the first item present in the response
-          example: 1
-          format: integer
-          minimum: 0
-          type: number
-        status:
-          description: The status or status list (comma separated list) of the activity.
-          enum:
-          - QUEUED
-          - RUNNING
-          - ON_HOLD
-          - CANCELED
-          - WAITING_CANCEL
-          - SUCCEEDED
-          - FAILED
-          - ARCHIVED
-          type: string
-        type:
-          description: Type of activity
-          enum:
-          - ingestion
-          - processing
-          - formatting
-          - delivering
-          type: string
-        userId:
+        correlationId:
           $ref: '#/components/schemas/Id'
-      type: object
-    MessagequeueNotificationParameters:
-      properties:
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
         message:
-          description: ''
-          properties:
-            header:
-              description: Message headers transmitted in message queue request.
-              example:
-                routing-key: magic-key
-              type: object
-            properties:
-              description: Message properties transmitted in message queue request.
-              example:
-                correlation-id: magic-id
-              type: object
-          type: object
-        target:
-          description: Name of the target in message queue service.
-          example: magic-queue
           type: string
-        url:
-          description: 'URL form is verified. To be done: Endpoint need to be validated.'
-          example: amqp://user:password@hostname:port/virtualHost
-          format: url
-          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    EmailNotificationParameters:
+      properties:
+        addresses:
+          items:
+            description: 'To be done: Email need to be validated.'
+            format: email
+            type: string
+          minItems: 1
+          type: array
       required:
-      - url
+      - addresses
       type: object
     NotificationSubscription:
       properties:
@@ -291,19 +208,6 @@ components:
       - channels
       - type
       type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
-    NotificationSearchOptions:
-      properties:
-        userId:
-          $ref: '#/components/schemas/Id'
-      required:
-      - userId
-      type: object
     GeojsonGeometry:
       externalDocs:
         url: http://geojson.org/geojson-spec.html#geometry-objects
@@ -314,36 +218,6 @@ components:
         type:
           enum:
           - Polygon
-      type: object
-    ApiError:
-      properties:
-        correlationId:
-          $ref: '#/components/schemas/Id'
-        hint:
-          type: string
-        internalCode:
-          example: 400
-          format: integer
-          type: number
-        message:
-          type: string
-        timestamp:
-          description: Number of seconds since 01/01/1970
-          example: 1530088354390
-          format: integer
-          type: number
-      type: object
-    EmailNotificationParameters:
-      properties:
-        addresses:
-          items:
-            description: 'To be done: Email need to be validated.'
-            format: email
-            type: string
-          minItems: 1
-          type: array
-      required:
-      - addresses
       type: object
     SearchOptions:
       properties:
@@ -507,20 +381,150 @@ components:
           example: dc143057-3457-47b3-af19-4ef8d26d2064
           type: string
       type: object
+    NotificationSearchResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/NotificationSubscription'
+          type: array
+          uniqueItems: true
+      type: object
+    ActivitySearchOptions:
+      properties:
+        creationDate:
+          description: The creation date or creation date range of the activity
+          oneOf:
+          - description: The creation date of the activity.
+            example: '2017-08-29T00:00:00Z'
+            format: date-time
+            type: string
+          - description: "The creation dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
+            example: '[2017-08-29T00:00:00Z'
+            format: date-time-range
+            type: string
+        endDate:
+          description: The end date pf the activity (copy of the date associated to the SUCCEEDED or FAILED stage)
+          format: datetime
+          oneOf:
+          - description: The end date of the activity.
+            example: '2017-08-29T00:00:00Z'
+            format: date-time
+            type: string
+          - description: "The end dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
+            example: '[2017-08-29T00:00:00Z'
+            format: date-time-range
+            type: string
+          type: string
+        itemsPerPage:
+          description: Number of requested items per page
+          example: 50
+          format: integer
+          minimum: 1
+          type: number
+        payload:
+          description: The copy of the origin user request. It could be the whole object or only some elements.
+          oneOf:
+          - description: The json object.
+            example:
+            - workspace: public
+            type: object
+          - description: String representation of the json object.
+            example: '{"workspace":"public"}'
+            type: string
+        progress:
+          description: A progress indicator between 0 and 100
+          format: integer
+          maximum: 100
+          minimum: 0
+          type: number
+        sortBy:
+          description: Unbounded list or parameters to sort by. The '+' indicates ascendant ordering, the '-' indicates descendant ordering. If not precised, default to '+'
+          example: +startDate,-endDate
+          type: string
+        startDate:
+          description: The start date of the activity (date of the first stage that is not QUEUED)
+          format: datetime
+          oneOf:
+          - description: The start date of the activity.
+            example: '2017-08-29T00:00:00Z'
+            format: date-time
+            type: string
+          - description: "The start dates range.\n\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*"
+            example: '[2017-08-29T00:00:00Z'
+            format: date-time-range
+            type: string
+          type: string
+        startIndex:
+          description: The index of the first item present in the response
+          example: 1
+          format: integer
+          minimum: 0
+          type: number
+        status:
+          description: The status or status list (comma separated list) of the activity.
+          enum:
+          - QUEUED
+          - RUNNING
+          - ON_HOLD
+          - CANCELED
+          - WAITING_CANCEL
+          - SUCCEEDED
+          - FAILED
+          - ARCHIVED
+          type: string
+        type:
+          description: Type of activity
+          enum:
+          - ingestion
+          - processing
+          - formatting
+          - delivering
+          type: string
+        userId:
+          $ref: '#/components/schemas/Id'
+      type: object
+    MessagequeueNotificationParameters:
+      properties:
+        message:
+          description: ''
+          properties:
+            header:
+              description: Message headers transmitted in message queue request.
+              example:
+                routing-key: magic-key
+              type: object
+            properties:
+              description: Message properties transmitted in message queue request.
+              example:
+                correlation-id: magic-id
+              type: object
+          type: object
+        target:
+          description: Name of the target in message queue service.
+          example: magic-queue
+          type: string
+        url:
+          description: 'URL form is verified. To be done: Endpoint need to be validated.'
+          example: amqp://user:password@hostname:port/virtualHost
+          format: url
+          type: string
+      required:
+      - url
+      type: object
   parameters:
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
     NotificationId:
       description: the identifier of the notification subscription
       example: 799246d8-4172-11e8-b045-e7011a379ec4
       in: path
       name: notificationId
       required: true
-      schema:
-        $ref: '#/components/schemas/Id'
-    CorrelationID:
-      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Correlation-Id
       schema:
         $ref: '#/components/schemas/Id'
 x-tagGroups:

@@ -6,7 +6,7 @@ info:
     name: API support
     url: https://oneatlas.airbus.com
   version: '1.0'
-  description: 'Operations tagged Catalog search across 3 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Catalog search across 2 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - description: API server
   url: https://data.api.oneatlas.airbus.com
@@ -39,6 +39,8 @@ paths:
           $ref: '#/components/responses/401'
         '403':
           $ref: '#/components/responses/403'
+      operationId: getApiV2OpensearchDescriptionXml
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -47,9 +49,7 @@ paths:
       summary: Search Catalog Items with Opensearch
       description: 'Search catalog items. Search is case sensitive. Results match all
 
-        parameters.
-
-        '
+        parameters.'
       tags:
       - Catalog search
       servers:
@@ -316,13 +316,13 @@ paths:
           $ref: '#/components/responses/500'
         '503':
           $ref: '#/components/responses/503'
+      operationId: getApiV2Opensearch
+      x-operation-id-source: derived
     post:
       summary: Search Catalog Items with Opensearch
       description: 'Search catalog items. Search is case sensitive. Results match all
 
-        parameters.
-
-        '
+        parameters.'
       tags:
       - Catalog search
       servers:
@@ -558,15 +558,15 @@ paths:
           $ref: '#/components/responses/500'
         '503':
           $ref: '#/components/responses/503'
+      operationId: postApiV2Opensearch
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
   /api/v2/opensearch/domains/{propertyName}:
     get:
       summary: Get Domain for a Given Property
-      description: 'Given a property name, it returns the eligible existing values for querying items looking for this particular property
-
-        '
+      description: Given a property name, it returns the eligible existing values for querying items looking for this particular property
       tags:
       - Catalog search
       servers:
@@ -594,15 +594,15 @@ paths:
           $ref: '#/components/responses/500'
         '503':
           $ref: '#/components/responses/503'
+      operationId: getApiV2OpensearchDomainsByPropertyName
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
   /api/v1/deleted/search:
     post:
       summary: Search Deleted Catalog Items
-      description: 'Search deleted catalog items by deleted date.
-
-        '
+      description: Search deleted catalog items by deleted date.
       tags:
       - Catalog search
       servers:
@@ -635,6 +635,8 @@ paths:
           $ref: '#/components/responses/500'
         '503':
           $ref: '#/components/responses/503'
+      operationId: postApiV1DeletedSearch
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -1134,6 +1136,420 @@ components:
             '
           default: -acquisitionDate,cloudCover
           example: -acquisitionDate,cloudCover
+    workspace:
+      type: string
+      description: Workspace value will be provided to you. It depends on the set-up on your contract.
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    SearchResponse:
+      properties:
+        error:
+          example: false
+          type: boolean
+        features:
+          items:
+            $ref: '#/components/schemas/CatalogItem'
+          type: array
+        itemsPerPage:
+          description: Number of requested items per page
+          example: 100
+          minimum: 1
+          type: integer
+        startIndex:
+          description: The index of the first item present in the response
+          example: 0
+          minimum: 0
+          type: integer
+        totalResults:
+          description: The total number of items present in the catalog
+          example: 956126
+          maximum: 10000
+          minimum: 0
+          type: integer
+        type:
+          example: FeatureCollection
+          type: string
+      type: object
+    geometry:
+      type: object
+      properties:
+        type:
+          enum:
+          - Polygon
+          type: string
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: array
+              items:
+                format: float
+                type: number
+              maxItems: 2
+    geo-json-multilinestring:
+      title: GeoJSON MultiLineString
+      type: object
+      required:
+      - type
+      - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+          - MultiLineString
+        coordinates:
+          type: array
+          items:
+            type: array
+            minItems: 2
+            items:
+              type: array
+              minItems: 2
+              items:
+                type: number
+        bbox:
+          type: array
+          minItems: 4
+          items:
+            type: number
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    search-deleted-response:
+      type: object
+      properties:
+        itemsPerPage:
+          type: integer
+          description: Number of requested items per page
+          example: 100
+          minimum: 1
+        startIndex:
+          type: integer
+          description: The index of the first item present in the response
+          example: 0
+          minimum: 0
+        totalResults:
+          type: integer
+          description: The total number of items present in the catalog
+          example: 956126
+          minimum: 0
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/deleted-item'
+    search-deleted-options:
+      type: object
+      properties:
+        deletedDate:
+          description: The date of items deletions
+          oneOf:
+          - type: string
+            format: date-time
+            description: The downloading start date.
+            example: '2017-08-29T00:00:00Z'
+          - type: string
+            format: date-time-range
+            description: "The downloading start dates range.\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[2017-08-29T00:00:00Z'
+        itemsPerPage:
+          type: integer
+          format: int32
+          description: The maximum number of items that the response can contain.
+          default: 50
+          maximum: 500
+          example: 100
+        startIndex:
+          type: integer
+          format: int32
+          description: The number of skipped items
+          default: 0
+          example: 10
+    deleted-item:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        deletedDate:
+          type: string
+          format: date-time
+          description: 'Date of deletion of the data in the platform and deletion of the metadata item if no other production status is defined.
+
+            '
+          example: '2017-08-29T00:00:00Z'
+    AcquisitionDate:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
+        endDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition end date
+    geo-json-linestring:
+      title: GeoJSON LineString
+      type: object
+      required:
+      - type
+      - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+          - LineString
+        coordinates:
+          type: array
+          minItems: 2
+          items:
+            type: array
+            minItems: 2
+            items:
+              type: number
+        bbox:
+          type: array
+          minItems: 4
+          items:
+            type: number
+    search-options-v2:
+      allOf:
+      - $ref: '#/components/schemas/search-options'
+      - properties:
+          acquisitionIdentifier:
+            type: string
+            description: The acquisition identifier
+            example: DS_PNEO3_201602011017034
+          archiveAnonymousIdentifier:
+            type: string
+            description: The archive anonymous identifier
+            example: '31476131'
+          archiveIdentifier:
+            type: string
+            description: The archive identifier
+            example: DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709
+    Privilege:
+      example:
+        filter:
+          workspace: public
+        rights:
+          browse: {}
+          wmts: {}
+        userId: de2d5963-a8a5-41b5-9f2a-ed6d478eb3af
+      properties:
+        createdAt:
+          description: The creation time of the created Privilege. This is returned when the Privilege is properly created.
+          format: datetime
+          readOnly: true
+          type: string
+        filter:
+          description: Filters the scope of the privilege (e.g. by workspace, id)
+          properties:
+            id:
+              $ref: '#/components/schemas/Id'
+            workspace:
+              $ref: '#/components/schemas/WorkspaceIdentifier'
+          required:
+          - workspace
+          type: object
+        id:
+          $ref: '#/components/schemas/Id'
+        priority:
+          description: The priority of the privilege
+          example: 10
+          format: int64
+          type: integer
+        rights:
+          description: List of rights granted to a user. For now, only "browse" is supported. Therefore, it will give all the rights for now.
+          properties:
+            browse:
+              description: Indicates that the user is granted the right to browse the target of the privilege
+              type: object
+            buffer:
+              description: Indicates that the user is granted the right to request buffer dissemination
+              type: object
+            download:
+              description: Indicates that the user is granted the right to request download dissemination
+              type: object
+            wms:
+              description: Indicates that the user is granted the right to request WMS disseminatione
+              type: object
+            wmts:
+              description: Indicates that the user is granted the right to request WMTS dissemination
+              type: object
+          type: object
+        subscriptionId:
+          $ref: '#/components/schemas/Id'
+        userId:
+          $ref: '#/components/schemas/Id'
+      required:
+      - userId
+      - filter
+      - rights
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    geo-json-polygon:
+      title: GeoJSON Polygon
+      type: object
+      required:
+      - type
+      - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+          - Polygon
+        coordinates:
+          type: array
+          items:
+            type: array
+            minItems: 4
+            items:
+              type: array
+              minItems: 2
+              items:
+                type: number
+        bbox:
+          type: array
+          minItems: 4
+          items:
+            type: number
+    WorkspaceIdentifier:
+      oneOf:
+      - $ref: '#/components/schemas/Id'
+      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
+        example: MySuperWorkspace
+        type: string
+    geo-json-point:
+      title: GeoJSON Point
+      type: object
+      required:
+      - type
+      - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+          - Point
+        coordinates:
+          type: array
+          minItems: 2
+          items:
+            type: number
+        bbox:
+          type: array
+          minItems: 4
+          items:
+            type: number
+    get-domain-response:
+      type: object
+      properties:
+        warning:
+          description: Warning message when the result does not contain all possible values
+          type: string
+      additionalProperties:
+        description: Possible values for the queried property
+        type: array
+        items:
+          type: string
+      example:
+        warning: Result is not exhaustive
+        processingLevel:
+        - ORTHO
+        - SENSOR
+    CustomerReference:
+      type: string
+      description: The customerReference can be used throughout the ordering process to get the status of your order and find the images in your delivery workspace. It is as a consequence better to use 1 customerReference specific for each order. It is also the reference that will appear on your bill (for pay-per-order customers)
+    geo-json-multipolygon:
+      title: GeoJSON MultiPolygon
+      type: object
+      required:
+      - type
+      - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+          - MultiPolygon
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: array
+              minItems: 4
+              items:
+                type: array
+                minItems: 2
+                items:
+                  type: number
+        bbox:
+          type: array
+          minItems: 4
+          items:
+            type: number
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
     CatalogItem:
       properties:
         _links:
@@ -1409,420 +1825,22 @@ components:
           readOnly: true
           type: string
       type: object
-    geo-json-polygon:
-      title: GeoJSON Polygon
-      type: object
-      required:
-      - type
-      - coordinates
-      properties:
-        type:
-          type: string
-          enum:
-          - Polygon
-        coordinates:
-          type: array
-          items:
-            type: array
-            minItems: 4
-            items:
-              type: array
-              minItems: 2
-              items:
-                type: number
-        bbox:
-          type: array
-          minItems: 4
-          items:
-            type: number
-    geo-json-multipolygon:
-      title: GeoJSON MultiPolygon
-      type: object
-      required:
-      - type
-      - coordinates
-      properties:
-        type:
-          type: string
-          enum:
-          - MultiPolygon
-        coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: array
-              minItems: 4
-              items:
-                type: array
-                minItems: 2
-                items:
-                  type: number
-        bbox:
-          type: array
-          minItems: 4
-          items:
-            type: number
-    WorkspaceIdentifier:
-      oneOf:
-      - $ref: '#/components/schemas/Id'
-      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
-        example: MySuperWorkspace
+  parameters:
+    property-name:
+      in: path
+      name: propertyName
+      description: The name of a queryable item property
+      schema:
         type: string
-    AcquisitionDate:
-      type: object
-      properties:
-        startDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
-        endDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition end date
-    geo-json-point:
-      title: GeoJSON Point
-      type: object
-      required:
-      - type
-      - coordinates
-      properties:
-        type:
-          type: string
-          enum:
-          - Point
-        coordinates:
-          type: array
-          minItems: 2
-          items:
-            type: number
-        bbox:
-          type: array
-          minItems: 4
-          items:
-            type: number
-    deleted-item:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/Id'
-        deletedDate:
-          type: string
-          format: date-time
-          description: 'Date of deletion of the data in the platform and deletion of the metadata item if no other production status is defined.
-
-            '
-          example: '2017-08-29T00:00:00Z'
-    search-options-v2:
-      allOf:
-      - $ref: '#/components/schemas/search-options'
-      - properties:
-          acquisitionIdentifier:
-            type: string
-            description: The acquisition identifier
-            example: DS_PNEO3_201602011017034
-          archiveAnonymousIdentifier:
-            type: string
-            description: The archive anonymous identifier
-            example: '31476131'
-          archiveIdentifier:
-            type: string
-            description: The archive identifier
-            example: DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709
-    GeojsonGeometry:
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#geometry-objects
-      properties:
-        geometry:
-          description: A valid geojson geometry coordinates
-          type: object
-        type:
-          enum:
-          - Polygon
-      type: object
-    search-deleted-response:
-      type: object
-      properties:
-        itemsPerPage:
-          type: integer
-          description: Number of requested items per page
-          example: 100
-          minimum: 1
-        startIndex:
-          type: integer
-          description: The index of the first item present in the response
-          example: 0
-          minimum: 0
-        totalResults:
-          type: integer
-          description: The total number of items present in the catalog
-          example: 956126
-          minimum: 0
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/deleted-item'
-    workspace:
-      type: string
-      description: Workspace value will be provided to you. It depends on the set-up on your contract.
-    SearchResponse:
-      properties:
-        error:
-          example: false
-          type: boolean
-        features:
-          items:
-            $ref: '#/components/schemas/CatalogItem'
-          type: array
-        itemsPerPage:
-          description: Number of requested items per page
-          example: 100
-          minimum: 1
-          type: integer
-        startIndex:
-          description: The index of the first item present in the response
-          example: 0
-          minimum: 0
-          type: integer
-        totalResults:
-          description: The total number of items present in the catalog
-          example: 956126
-          maximum: 10000
-          minimum: 0
-          type: integer
-        type:
-          example: FeatureCollection
-          type: string
-      type: object
-    Privilege:
-      example:
-        filter:
-          workspace: public
-        rights:
-          browse: {}
-          wmts: {}
-        userId: de2d5963-a8a5-41b5-9f2a-ed6d478eb3af
-      properties:
-        createdAt:
-          description: The creation time of the created Privilege. This is returned when the Privilege is properly created.
-          format: datetime
-          readOnly: true
-          type: string
-        filter:
-          description: Filters the scope of the privilege (e.g. by workspace, id)
-          properties:
-            id:
-              $ref: '#/components/schemas/Id'
-            workspace:
-              $ref: '#/components/schemas/WorkspaceIdentifier'
-          required:
-          - workspace
-          type: object
-        id:
-          $ref: '#/components/schemas/Id'
-        priority:
-          description: The priority of the privilege
-          example: 10
-          format: int64
-          type: integer
-        rights:
-          description: List of rights granted to a user. For now, only "browse" is supported. Therefore, it will give all the rights for now.
-          properties:
-            browse:
-              description: Indicates that the user is granted the right to browse the target of the privilege
-              type: object
-            buffer:
-              description: Indicates that the user is granted the right to request buffer dissemination
-              type: object
-            download:
-              description: Indicates that the user is granted the right to request download dissemination
-              type: object
-            wms:
-              description: Indicates that the user is granted the right to request WMS disseminatione
-              type: object
-            wmts:
-              description: Indicates that the user is granted the right to request WMTS dissemination
-              type: object
-          type: object
-        subscriptionId:
-          $ref: '#/components/schemas/Id'
-        userId:
-          $ref: '#/components/schemas/Id'
-      required:
-      - userId
-      - filter
-      - rights
-      type: object
-    Link:
-      description: Link object
-      properties:
-        href:
-          description: The absolute web link
-          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
-          format: uri
-          type: string
-        method:
-          default: GET
-          description: HTTP verb to distinguish between several possible actions on the same ressource.
-          enum:
-          - GET
-          - POST
-          - PUT
-          - DELETE
-          - HEAD
-          type: string
-        name:
-          description: The name of the link
-          example: Self
-          type: string
-        resourceId:
-          $ref: '#/components/schemas/Id'
-        type:
-          description: The mime-type when deferencing the link
-          example: application/json
-          type: string
-      required:
-      - href
-      type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
-    get-domain-response:
-      type: object
-      properties:
-        warning:
-          description: Warning message when the result does not contain all possible values
-          type: string
-      additionalProperties:
-        description: Possible values for the queried property
-        type: array
-        items:
-          type: string
-      example:
-        warning: Result is not exhaustive
-        processingLevel:
-        - ORTHO
-        - SENSOR
-    geo-json-linestring:
-      title: GeoJSON LineString
-      type: object
-      required:
-      - type
-      - coordinates
-      properties:
-        type:
-          type: string
-          enum:
-          - LineString
-        coordinates:
-          type: array
-          minItems: 2
-          items:
-            type: array
-            minItems: 2
-            items:
-              type: number
-        bbox:
-          type: array
-          minItems: 4
-          items:
-            type: number
-    geo-json-multilinestring:
-      title: GeoJSON MultiLineString
-      type: object
-      required:
-      - type
-      - coordinates
-      properties:
-        type:
-          type: string
-          enum:
-          - MultiLineString
-        coordinates:
-          type: array
-          items:
-            type: array
-            minItems: 2
-            items:
-              type: array
-              minItems: 2
-              items:
-                type: number
-        bbox:
-          type: array
-          minItems: 4
-          items:
-            type: number
-    geometry:
-      type: object
-      properties:
-        type:
-          enum:
-          - Polygon
-          type: string
-        coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: array
-              items:
-                format: float
-                type: number
-              maxItems: 2
-    ApiError:
-      properties:
-        correlationId:
-          $ref: '#/components/schemas/Id'
-        hint:
-          type: string
-        internalCode:
-          example: 400
-          format: integer
-          type: number
-        message:
-          type: string
-        timestamp:
-          description: Number of seconds since 01/01/1970
-          example: 1530088354390
-          format: integer
-          type: number
-      type: object
-    search-deleted-options:
-      type: object
-      properties:
-        deletedDate:
-          description: The date of items deletions
-          oneOf:
-          - type: string
-            format: date-time
-            description: The downloading start date.
-            example: '2017-08-29T00:00:00Z'
-          - type: string
-            format: date-time-range
-            description: "The downloading start dates range.\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
-            example: '[2017-08-29T00:00:00Z'
-        itemsPerPage:
-          type: integer
-          format: int32
-          description: The maximum number of items that the response can contain.
-          default: 50
-          maximum: 500
-          example: 100
-        startIndex:
-          type: integer
-          format: int32
-          description: The number of skipped items
-          default: 0
-          example: 10
-    CustomerReference:
-      type: string
-      description: The customerReference can be used throughout the ordering process to get the status of your order and find the images in your delivery workspace. It is as a consequence better to use 1 customerReference specific for each order. It is also the reference that will appear on your bill (for pay-per-order customers)
+      required: true
+      example: processingLevel
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
   responses:
     '500':
       content:
@@ -1830,6 +1848,12 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Internal server error
+    '503':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: The server is currently unavailable (because it is overloaded or down for maintenance). Generally, this is a temporary state.
     '401':
       content:
         application/json:
@@ -1842,35 +1866,12 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: User has not enough rights to consume the item
-    '503':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: The server is currently unavailable (because it is overloaded or down for maintenance). Generally, this is a temporary state.
     '400':
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Bad request
-  parameters:
-    CorrelationID:
-      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Correlation-Id
-      schema:
-        $ref: '#/components/schemas/Id'
-    property-name:
-      in: path
-      name: propertyName
-      description: The name of a queryable item property
-      schema:
-        type: string
-      required: true
-      example: processingLevel
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml
-- oneatlas-data-pay-per-order-tasking-api-openapi.yml

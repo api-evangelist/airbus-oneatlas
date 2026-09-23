@@ -5,7 +5,7 @@ info:
     name: API support
     url: https://oneatlas.airbus.com
   title: OneAtlas Data Living Library Freemium API
-  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery. The library is constantly updated with the latest data, ensuring that users have access to accurate and timely information for their projects. Users can easily search for and find the data they need, whether it be for environmental monitoring, urban planning, agriculture, or any other application. The platform also offers tools for analysis and visualization, allowing users to derive insights and make informed decisions based on the data they have access to. Overall, OneAtlas Data Living Library is a valuable resource for anyone looking to harness the power of geospatial data for their work.
+  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery.
 servers:
 - description: API server
   url: https://data.api.oneatlas.airbus.com
@@ -100,6 +100,8 @@ paths:
       summary: Create Freemium Acces
       tags:
       - freemium
+      operationId: postApiV1Register
+      x-operation-id-source: derived
 x-tagGroups:
 - name: Authentication
   tags:

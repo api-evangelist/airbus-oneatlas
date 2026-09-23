@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: OneAtlas Basemap Maps API
-  description: OneAtlas Basemap API is a geospatial service that provides access to high-resolution satellite imagery and basemaps. It allows users to retrieve up-to-date visual information of any location on Earth, enabling them to analyze and monitor changes in the environment, infrastructure, and land use. The API offers a seamless and easy-to-use interface for developers to integrate mapping capabilities into their applications, providing valuable insights for a wide range of industries such as agriculture, urban planning, disaster management, and more. With OneAtlas Basemap API, users can access reliable and accurate geospatial data to support decision-making processes and enhance their understanding of the world around them.
+  description: OneAtlas Basemap API is a geospatial service that provides access to high-resolution satellite imagery and basemaps.
   version: '2.0'
 servers:
 - url: https://view-bm.api.oneatlas.airbus.com
@@ -10,16 +10,14 @@ tags:
 paths:
   ? /basemap/wmts?layer=advancedBasemap&tilematrixset={tileSet}&Service={service}&Request={request}&Version=1.0.0&Format={format}&TileMatrix={zoomLevel}&TileCol={tileColumn}&TileRow={tileRow}
   : get:
-      summary: Returns a Tile from a Layer.
+      summary: Returns a Tile from a Layer
       description: 'Returns a 256x256 tile from a layer in JPEG or PNG format.
 
 
         __IMPORTANT:__ whatever the requested image format is, a transparent image will be delivered in PNG format if no tile is found at the specified location.
 
 
-        __Example__: https://view-bm.api.oneatlas.airbus.com/basemap/wmts?layer=advancedBasemap&style=default&tilematrixset=3857&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/unknown&TileMatrix=18&TileCol=132063&TileRow=95710
-
-        '
+        __Example__: https://view-bm.api.oneatlas.airbus.com/basemap/wmts?layer=advancedBasemap&style=default&tilematrixset=3857&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/unknown&TileMatrix=18&TileCol=132063&TileRow=95710'
       security:
       - Bearer: []
       parameters:
@@ -110,6 +108,8 @@ paths:
           description: 'Unauthorized: the authorization is missing or has expired.'
       tags:
       - Maps
+      operationId: getBasemapWmts?layer=advancedBasemap&tilematrixset={tileSet}&Service={service}&Request={request}&Version=100&Format={format}&TileMatrix={zoomLevel}&TileCol={tileColumn}&TileRow={tileRow}
+      x-operation-id-source: derived
 components:
   securitySchemes:
     Bearer:

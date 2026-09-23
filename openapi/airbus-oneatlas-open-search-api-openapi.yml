@@ -6,14 +6,14 @@ info:
     name: API support
     url: https://oneatlas.airbus.com
   version: '1.0'
-  description: 'Operations tagged Opensearch across 3 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Opensearch across 2 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - description: API server
   url: https://data.api.oneatlas.airbus.com
 - description: API server
   url: https://order.api.oneatlas.airbus.com
 tags:
-- name: Opensearch
+- name: Open Search
 paths:
   /api/v1/opensearch:
     get:
@@ -25,24 +25,68 @@ paths:
                 $ref: '#/components/schemas/SearchResponse'
           description: OK
       tags:
-      - Opensearch
+      - Open Search
+      summary: Get api opensearch
+      x-summary-source: derived
+      operationId: getApiV1Opensearch
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
 components:
   schemas:
-    WorkspaceIdentifier:
-      oneOf:
-      - $ref: '#/components/schemas/Id'
-      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
-        example: MySuperWorkspace
-        type: string
     Id:
       description: Unique Id of an element. Follows UUID v4 standard.
       example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
       format: uuid
       readOnly: true
       type: string
+    WorkspaceIdentifier:
+      oneOf:
+      - $ref: '#/components/schemas/Id'
+      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
+        example: MySuperWorkspace
+        type: string
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
+    SearchResponse:
+      properties:
+        error:
+          example: false
+          type: boolean
+        features:
+          items:
+            $ref: '#/components/schemas/CatalogItem'
+          type: array
+        itemsPerPage:
+          description: Number of requested items per page
+          example: 100
+          minimum: 1
+          type: integer
+        startIndex:
+          description: The index of the first item present in the response
+          example: 0
+          minimum: 0
+          type: integer
+        totalResults:
+          description: The total number of items present in the catalog
+          example: 956126
+          maximum: 10000
+          minimum: 0
+          type: integer
+        type:
+          example: FeatureCollection
+          type: string
+      type: object
     CatalogItem:
       properties:
         _links:
@@ -318,46 +362,6 @@ components:
           readOnly: true
           type: string
       type: object
-    GeojsonGeometry:
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#geometry-objects
-      properties:
-        geometry:
-          description: A valid geojson geometry coordinates
-          type: object
-        type:
-          enum:
-          - Polygon
-      type: object
-    SearchResponse:
-      properties:
-        error:
-          example: false
-          type: boolean
-        features:
-          items:
-            $ref: '#/components/schemas/CatalogItem'
-          type: array
-        itemsPerPage:
-          description: Number of requested items per page
-          example: 100
-          minimum: 1
-          type: integer
-        startIndex:
-          description: The index of the first item present in the response
-          example: 0
-          minimum: 0
-          type: integer
-        totalResults:
-          description: The total number of items present in the catalog
-          example: 956126
-          maximum: 10000
-          minimum: 0
-          type: integer
-        type:
-          example: FeatureCollection
-          type: string
-      type: object
     Privilege:
       example:
         filter:
@@ -451,4 +455,3 @@ components:
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml
-- oneatlas-data-pay-per-order-tasking-api-openapi.yml

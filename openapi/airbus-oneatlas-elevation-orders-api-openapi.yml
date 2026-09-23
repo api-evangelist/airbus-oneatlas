@@ -1,10 +1,10 @@
 openapi: 3.2.0
 info:
-  title: Airbus Oneatlas Elevation/orders API
+  title: OneAtlas WorldDEM Elevation/orders API
   version: 1.0.1
   contact:
     email: dl-geo-webservices@airbus.com
-  description: 'Operations tagged elevation/orders across 2 of this provider''s published API definitions: airbus-oneatlas-worlddem-api-openapi.yml, oneatlas-worlddem-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data.
 servers:
 - url: https://sar.api.oneatlas.airbus.com/v1
   description: OneAtlas - Elevation
@@ -12,7 +12,13 @@ security:
 - basicAuth: []
 tags:
 - name: elevation/orders
-  description: "All operations needed to order DEM data:\n  * place orders\n  * show placed orders\n  * download purchased data\n"
+  description: 'All operations needed to order DEM data:
+
+    * place orders
+
+    * show placed orders
+
+    * download purchased data'
 paths:
   /elevation/orders:
     post:
@@ -1216,6 +1222,8 @@ paths:
                     type: integer
                   message:
                     type: string
+      operationId: postElevationOrders
+      x-operation-id-source: derived
     get:
       summary: Get All Orders as References
       tags:
@@ -1326,9 +1334,8 @@ paths:
                     type: integer
                   message:
                     type: string
-    servers:
-    - url: https://sar.api.oneatlas.airbus.com/v1
-      description: OneAtlas - Elevation
+      operationId: getElevationOrders
+      x-operation-id-source: derived
   /elevation/orders/full:
     get:
       summary: Get All Orders
@@ -2246,9 +2253,8 @@ paths:
                     type: integer
                   message:
                     type: string
-    servers:
-    - url: https://sar.api.oneatlas.airbus.com/v1
-      description: OneAtlas - Elevation
+      operationId: getElevationOrdersFull
+      x-operation-id-source: derived
   /elevation/orders/{orderId}:
     get:
       summary: Get Order Information by the Id with References to the Items
@@ -2690,9 +2696,8 @@ paths:
                     type: integer
                   message:
                     type: string
-    servers:
-    - url: https://sar.api.oneatlas.airbus.com/v1
-      description: OneAtlas - Elevation
+      operationId: getElevationOrdersByOrderId
+      x-operation-id-source: derived
   /elevation/orders/{orderId}/full:
     get:
       summary: Get Order Information by the Id with Full Items
@@ -3618,9 +3623,8 @@ paths:
                     type: integer
                   message:
                     type: string
-    servers:
-    - url: https://sar.api.oneatlas.airbus.com/v1
-      description: OneAtlas - Elevation
+      operationId: getElevationOrdersByOrderIdFull
+      x-operation-id-source: derived
   /elevation/orders/{orderId}/items:
     get:
       summary: Get Reference of Items of the Specified Order
@@ -3752,9 +3756,8 @@ paths:
                     type: integer
                   message:
                     type: string
-    servers:
-    - url: https://sar.api.oneatlas.airbus.com/v1
-      description: OneAtlas - Elevation
+      operationId: getElevationOrdersByOrderIdItems
+      x-operation-id-source: derived
   /elevation/orders/{orderId}/items/full:
     get:
       summary: Get Full Items of the Specified Order
@@ -4370,9 +4373,8 @@ paths:
                     type: integer
                   message:
                     type: string
-    servers:
-    - url: https://sar.api.oneatlas.airbus.com/v1
-      description: OneAtlas - Elevation
+      operationId: getElevationOrdersByOrderIdItemsFull
+      x-operation-id-source: derived
   /elevation/orders/{orderId}/items/{itemId}:
     get:
       summary: Get Metadata of the Specified Item
@@ -4995,9 +4997,8 @@ paths:
                     type: integer
                   message:
                     type: string
-    servers:
-    - url: https://sar.api.oneatlas.airbus.com/v1
-      description: OneAtlas - Elevation
+      operationId: getElevationOrdersByOrderIdItemsByItemId
+      x-operation-id-source: derived
   /elevation/orders/{orderId}/items/{itemId}/download:
     get:
       summary: Download the Specified Item
@@ -5170,14 +5171,10 @@ paths:
                     type: integer
                   message:
                     type: string
-    servers:
-    - url: https://sar.api.oneatlas.airbus.com/v1
-      description: OneAtlas - Elevation
+      operationId: getElevationOrdersByOrderIdItemsByItemIdDownload
+      x-operation-id-source: derived
 components:
   securitySchemes:
     basicAuth:
       type: http
       scheme: basic
-x-refined-from:
-- airbus-oneatlas-worlddem-api-openapi.yml
-- oneatlas-worlddem-api-openapi.yml

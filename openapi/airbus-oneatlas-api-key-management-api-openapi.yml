@@ -6,14 +6,14 @@ info:
     name: API support
     url: https://oneatlas.airbus.com
   version: '1.0'
-  description: 'Operations tagged APIkey management across 3 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged APIkey management across 2 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - description: API server
   url: https://data.api.oneatlas.airbus.com
 - description: API server
   url: https://order.api.oneatlas.airbus.com
 tags:
-- name: APIkey management
+- name: API Key Management
 paths:
   /apikeys:
     servers:
@@ -32,7 +32,9 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
       summary: Returns the List of Authenticated or Impersonated User's Apikeys
       tags:
-      - APIkey management
+      - API Key Management
+      operationId: getApikeys
+      x-operation-id-source: derived
     post:
       description: Create a new API Key attached to the authenticated or impersonated user
       responses:
@@ -46,10 +48,11 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
       summary: Create a New API Key Attached to the Authenticated or Impersonated User
       tags:
-      - APIkey management
+      - API Key Management
+      operationId: postApikeys
+      x-operation-id-source: derived
   /apikeys/{apikey_id}:
     delete:
-      description: Delete a User's API Key
       parameters:
       - description: id of the API Key to delete
         in: path
@@ -68,20 +71,41 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
       summary: Delete a User's API Key
       tags:
-      - APIkey management
+      - API Key Management
       servers:
       - description: Prod authenticate server
         url: https://authenticate.foundation.api.oneatlas.airbus.com/api/v1
+      operationId: deleteApikeysByApikeyId
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
 components:
+  responses:
+    UnauthorizedError:
+      content:
+        application/json:
+          schema:
+            type: string
+      description: API key is missing or invalid
+      headers:
+        WWW-Authenticate:
+          schema:
+            type: string
   schemas:
     HumanReadableOperationSummary:
       properties:
         message:
           description: Human readable summary of the operation execution
           type: string
+      type: object
+    ApiKeyPage:
+      properties:
+        items:
+          description: API Keys
+          items:
+            $ref: '#/components/schemas/ApiKey'
+          type: array
       type: object
     ApiKey:
       properties:
@@ -106,26 +130,6 @@ components:
       - date
       - expirationDate
       type: object
-    ApiKeyPage:
-      properties:
-        items:
-          description: API Keys
-          items:
-            $ref: '#/components/schemas/ApiKey'
-          type: array
-      type: object
-  responses:
-    UnauthorizedError:
-      content:
-        application/json:
-          schema:
-            type: string
-      description: API key is missing or invalid
-      headers:
-        WWW-Authenticate:
-          schema:
-            type: string
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml
-- oneatlas-data-pay-per-order-tasking-api-openapi.yml

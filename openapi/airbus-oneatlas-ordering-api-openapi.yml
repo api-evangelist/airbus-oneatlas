@@ -1,12 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Airbus Oneatlas Ordering API
   contact:
     email: intelligence-customertechnicalsupport@fr.airbus.com
     name: API support
     url: https://oneatlas.airbus.com
-  version: '1.0'
-  description: 'Operations tagged Ordering across 2 of this provider''s published API definitions: oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  title: OneAtlas Data Pay-Per-Order Ordering API
+  description: The OneAtlas Data Pay-Per-Order API is a powerful tool that enables users to access and purchase high-resolution satellite imagery, elevation data, and other geospatial information on a pay-as-you-go basis.
 servers:
 - description: API server
   url: https://order.api.oneatlas.airbus.com
@@ -288,9 +287,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: postApiV1Feasibility
+      x-operation-id-source: derived
   /api/v1/attempts:
     post:
       summary: Retrieve Attempts
@@ -547,9 +545,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: postApiV1Attempts
+      x-operation-id-source: derived
   /api/v1/prices:
     post:
       summary: Calculate a Price
@@ -558,9 +555,7 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
-      description: '<h3>Archive and Tasking ordering</h3>
-
-        '
+      description: Archive and Tasking ordering
       requestBody:
         content:
           application/json:
@@ -3274,9 +3269,8 @@ paths:
                     type: string
                 example:
                   code: UNEXPECTED_SERVER_ERROR
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: postApiV1Prices
+      x-operation-id-source: derived
   /api/v1/quotations:
     post:
       description: Request a quotation
@@ -4785,9 +4779,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: postApiV1Quotations
+      x-operation-id-source: derived
   ' /api/v1/orders':
     post:
       summary: Place an Order
@@ -7463,35 +7456,20 @@ paths:
                     type: string
                 example:
                   code: UNEXPECTED_SERVER_ERROR
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: post ApiV1Orders
+      x-operation-id-source: derived
 components:
   schemas:
-    SegmentKey:
-      type: string
-      description: The segmentKey is the value of the property "segmentKey" of the selected acquisition from the attempt request
-    dem:
+    delivery:
       type: object
-      title: digital elevation model
       properties:
-        key:
+        type:
+          type: string
           enum:
-          - dem_i
-        value:
-          description: Defines the digital elevation model, i refers to the aoi's id (To be filled only if processing_level = ortho)
-          enum:
-          - best_available
-          - FLAT_DEM_WITH_GTOPO30_WAT
-          - FLAT_DEM_WITH_WAT
-          - GTOPO30
-          - MIXEDDEM
-          - PAS-DEM
-          - PAS-DEM_IVV
-          - REF3D-DEM
-          - REF3D-DEM_IVV
-          - SRTMV4
-          - SRTMV4_IVV
+          - network
+    salesOrderId:
+      type: string
+      description: The salesOrderId is sent back in the server response and can be used to search for your order.
     TaskingAttempt:
       type: array
       items:
@@ -7518,20 +7496,147 @@ components:
                     $ref: '#/components/schemas/segment'
                 available:
                   type: boolean
-    Optical:
+    footprint:
+      type: object
       properties:
-        acquisitionMode:
-          enum:
-          - MONO
-          - STEREO
-          - TRISTEREO
+        geometry:
           type: string
-        maxCloudCover:
-          format: float
-          type: number
-        maxIncidenceAngle:
-          format: float
-          type: number
+          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
+        center:
+          type: string
+          example: POINT(23.755357 37.97611)
+    deliveryPNEO:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - network
+    AcquisitionDate:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
+        endDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition end date
+    AcqPerod:
+      type: string
+      pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+      description: Defines the acquisition period
+      format: datetime
+    CustomerReference:
+      type: string
+      description: The customerReference can be used throughout the ordering process to get the status of your order and find the images in your delivery workspace. It is as a consequence better to use 1 customerReference specific for each order. It is also the reference that will appear on your bill (for pay-per-order customers)
+    Mission:
+      type: string
+      enum:
+      - PLEIADES
+      - SPOT
+    Channels:
+      type: array
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - email
+          addressee:
+            type: object
+            properties:
+              to:
+                type: array
+                items:
+                  type: string
+                description: 'recipients: list of people that need to receive notification regarding the tasking'
+              cc:
+                type: array
+                items:
+                  type: string
+                description: list of people being in copy
+    dem:
+      type: object
+      title: digital elevation model
+      properties:
+        key:
+          enum:
+          - dem_i
+        value:
+          description: Defines the digital elevation model, i refers to the aoi's id (To be filled only if processing_level = ortho)
+          enum:
+          - best_available
+          - FLAT_DEM_WITH_GTOPO30_WAT
+          - FLAT_DEM_WITH_WAT
+          - GTOPO30
+          - MIXEDDEM
+          - PAS-DEM
+          - PAS-DEM_IVV
+          - REF3D-DEM
+          - REF3D-DEM_IVV
+          - SRTMV4
+          - SRTMV4_IVV
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
+    DataSourceIds:
+      type: array
+      items:
+        type: object
+        properties:
+          catalogId:
+            enum:
+            - PublicMOC
+          catalogItemId:
+            type: string
+    pixelCoding:
+      type: object
+      title: pixel_coding
+      properties:
+        key:
+          enum:
+          - pixel_coding
+        value:
+          enum:
+          - 8bits
+          - 12bits
+          description: Defines the pixel coding. <br>'8bits' when radiometric_processing = 'display'<br>, '12bits' otherwise
+    Comments:
+      type: string
+      description: It is possible to leave a comment here intended for the Airbus team
+    quotationId:
+      type: string
+      description: The quotationId is sent back in the server response and can be used to search for your order.
+    NoSensorAvailable:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                example: ERR_NO_SENSOR_AVAILABLE
+                type: string
+              locator:
+                example: UNKNOWN
+                type: string
+    contractId:
+      description: It corresponds to an internal id for the customer contract. It will be provided to you.
+      type: string
     segment:
       type: object
       properties:
@@ -7563,139 +7668,37 @@ components:
         maxIncidenceAngle:
           format: float
           type: number
-    NoSensorAvailable:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                example: ERR_NO_SENSOR_AVAILABLE
-                type: string
-              locator:
-                example: UNKNOWN
-                type: string
-    pixelCoding:
-      type: object
-      title: pixel_coding
-      properties:
-        key:
-          enum:
-          - pixel_coding
-        value:
-          enum:
-          - 8bits
-          - 12bits
-          description: Defines the pixel coding. <br>'8bits' when radiometric_processing = 'display'<br>, '12bits' otherwise
-    Channels:
-      type: array
-      items:
-        type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - email
-          addressee:
-            type: object
-            properties:
-              to:
-                type: array
-                items:
-                  type: string
-                description: 'recipients: list of people that need to receive notification regarding the tasking'
-              cc:
-                type: array
-                items:
-                  type: string
-                description: list of people being in copy
-    deliveryPNEO:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - network
-    AcquisitionDate:
-      type: object
-      properties:
-        startDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
-        endDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition end date
-    footprint:
-      type: object
-      properties:
-        geometry:
-          type: string
-          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
-        center:
-          type: string
-          example: POINT(23.755357 37.97611)
-    AcqPerod:
-      type: string
-      pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-      description: Defines the acquisition period
-      format: datetime
-    DataSourceIds:
-      type: array
-      items:
-        type: object
-        properties:
-          catalogId:
-            enum:
-            - PublicMOC
-          catalogItemId:
-            type: string
-    GeojsonGeometry:
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#geometry-objects
-      properties:
-        geometry:
-          description: A valid geojson geometry coordinates
-          type: object
-        type:
-          enum:
-          - Polygon
-      type: object
-    salesOrderId:
-      type: string
-      description: The salesOrderId is sent back in the server response and can be used to search for your order.
-    contractId:
-      description: It corresponds to an internal id for the customer contract. It will be provided to you.
-      type: string
-    quotationId:
-      type: string
-      description: The quotationId is sent back in the server response and can be used to search for your order.
-    CustomerReference:
-      type: string
-      description: The customerReference can be used throughout the ordering process to get the status of your order and find the images in your delivery workspace. It is as a consequence better to use 1 customerReference specific for each order. It is also the reference that will appear on your bill (for pay-per-order customers)
     DatastripIds:
       type: string
       description: Datastrip identifier
-    Comments:
-      type: string
-      description: It is possible to leave a comment here intended for the Airbus team
-    Mission:
-      type: string
-      enum:
-      - PLEIADES
-      - SPOT
-    delivery:
-      type: object
+    Optical:
       properties:
-        type:
-          type: string
+        acquisitionMode:
           enum:
-          - network
-x-refined-from:
-- oneatlas-data-pay-per-order-api-openapi.yml
-- oneatlas-data-pay-per-order-tasking-api-openapi.yml
+          - MONO
+          - STEREO
+          - TRISTEREO
+          type: string
+        maxCloudCover:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
+    SegmentKey:
+      type: string
+      description: The segmentKey is the value of the property "segmentKey" of the selected acquisition from the attempt request
+x-tagGroups:
+- name: Authentication
+  tags:
+  - APIkey management
+  - Token retrieval
+- name: Catalog search
+  tags:
+  - Catalog search
+- name: Pay-per-Order ordering
+  tags:
+  - Contract related Information
+  - Ordering
+  - PleiadesNeo specific
+  - SPOT and Pleiades specific

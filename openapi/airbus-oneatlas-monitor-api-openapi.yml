@@ -6,7 +6,7 @@ info:
     name: API support
     url: https://oneatlas.airbus.com
   version: '1.0'
-  description: 'Operations tagged Monitor across 3 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Monitor across 2 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - description: API server
   url: https://data.api.oneatlas.airbus.com
@@ -80,6 +80,8 @@ paths:
       summary: Search Activities
       tags:
       - Monitor
+      operationId: getApiV1ActivitiesSearch
+      x-operation-id-source: derived
     post:
       description: Search activities depending on given parameters.
       parameters:
@@ -107,6 +109,8 @@ paths:
       summary: Search Activities
       tags:
       - Monitor
+      operationId: postApiV1ActivitiesSearch
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -137,6 +141,8 @@ paths:
       summary: Get Activity Status
       tags:
       - Monitor
+      operationId: getApiV1ActivitiesByActivityId
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -183,6 +189,8 @@ paths:
       summary: Cancel Activity
       tags:
       - Monitor
+      operationId: postApiV1ActivitiesByActivityIdCancel
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -194,9 +202,7 @@ paths:
         If the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.
 
 
-        This endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.
-
-        '
+        This endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.'
       parameters:
       - $ref: '#/components/parameters/CorrelationID'
       - $ref: '#/components/parameters/ActivityId'
@@ -231,6 +237,8 @@ paths:
       summary: Run Activity
       tags:
       - Monitor
+      operationId: postApiV1ActivitiesByActivityIdRerun
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -263,6 +271,8 @@ paths:
       summary: Get Activity Stages
       tags:
       - Monitor
+      operationId: getApiV1ActivitiesByActivityIdStages
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -362,24 +372,6 @@ components:
         userId:
           $ref: '#/components/schemas/Id'
       type: object
-    ApiError:
-      properties:
-        correlationId:
-          $ref: '#/components/schemas/Id'
-        hint:
-          type: string
-        internalCode:
-          example: 400
-          format: integer
-          type: number
-        message:
-          type: string
-        timestamp:
-          description: Number of seconds since 01/01/1970
-          example: 1530088354390
-          format: integer
-          type: number
-      type: object
     ActivityStages:
       properties:
         data:
@@ -419,43 +411,57 @@ components:
       required:
       - href
       type: object
+    ActivitySearchResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Activity'
+          type: array
+          uniqueItems: true
+        itemsPerPage:
+          description: Number of requested items per page
+          example: 100
+          format: integer
+          minimum: 1
+          type: number
+        startIndex:
+          description: The index of the first item present in the response
+          example: 0
+          format: integer
+          minimum: 0
+          type: number
+        totalResults:
+          description: The total number of activities
+          example: 582
+          format: integer
+          maximum: 10000
+          minimum: 0
+          type: number
+      type: object
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
     Id:
       description: Unique Id of an element. Follows UUID v4 standard.
       example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
       format: uuid
       readOnly: true
       type: string
-    ActivityStage:
-      properties:
-        date:
-          default: now
-          description: Date of the stage
-          example: '2018-06-12T11:24:31.254Z'
-          format: datetime
-          type: string
-        message:
-          type: string
-        name:
-          description: Name of the completed stage
-          type: string
-        status:
-          description: Status of the activity
-          enum:
-          - QUEUED
-          - RUNNING
-          - ON_HOLD
-          - CANCELED
-          - WAITING_CANCEL
-          - SUCCEEDED
-          - FAILED
-          - ARCHIVED
-          type: string
-        userId:
-          allOf:
-          - readOnly: true
-          - $ref: '#/components/schemas/Id'
-          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
-      type: object
     Activity:
       properties:
         _links:
@@ -561,32 +567,36 @@ components:
           - $ref: '#/components/schemas/Id'
           - description: The id of the user that is the origin of the activity (extracted from the X-Forwarded-User request header)
       type: object
-    ActivitySearchResponse:
+    ActivityStage:
       properties:
-        data:
-          items:
-            $ref: '#/components/schemas/Activity'
-          type: array
-          uniqueItems: true
-        itemsPerPage:
-          description: Number of requested items per page
-          example: 100
-          format: integer
-          minimum: 1
-          type: number
-        startIndex:
-          description: The index of the first item present in the response
-          example: 0
-          format: integer
-          minimum: 0
-          type: number
-        totalResults:
-          description: The total number of activities
-          example: 582
-          format: integer
-          maximum: 10000
-          minimum: 0
-          type: number
+        date:
+          default: now
+          description: Date of the stage
+          example: '2018-06-12T11:24:31.254Z'
+          format: datetime
+          type: string
+        message:
+          type: string
+        name:
+          description: Name of the completed stage
+          type: string
+        status:
+          description: Status of the activity
+          enum:
+          - QUEUED
+          - RUNNING
+          - ON_HOLD
+          - CANCELED
+          - WAITING_CANCEL
+          - SUCCEEDED
+          - FAILED
+          - ARCHIVED
+          type: string
+        userId:
+          allOf:
+          - readOnly: true
+          - $ref: '#/components/schemas/Id'
+          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
       type: object
   responses:
     '500':
@@ -595,30 +605,30 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Internal server error
-    '401':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User is not authenticated
     '403':
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: User has not enough rights to consume the item
-    '404':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Item not found in catalog or resource not found in item
     '400':
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Bad request
+    '404':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Item not found in catalog or resource not found in item
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
   parameters:
     CorrelationID:
       description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
@@ -638,4 +648,3 @@ components:
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml
-- oneatlas-data-pay-per-order-tasking-api-openapi.yml

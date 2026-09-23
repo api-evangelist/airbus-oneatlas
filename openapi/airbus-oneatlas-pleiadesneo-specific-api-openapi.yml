@@ -1,12 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Airbus Oneatlas PleiadesNeo specific API
   contact:
     email: intelligence-customertechnicalsupport@fr.airbus.com
     name: API support
     url: https://oneatlas.airbus.com
-  version: '1.0'
-  description: 'Operations tagged PleiadesNeo specific across 2 of this provider''s published API definitions: oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  title: OneAtlas Data Pay-Per-Order PleiadesNeo specific API
+  description: The OneAtlas Data Pay-Per-Order API is a powerful tool that enables users to access and purchase high-resolution satellite imagery, elevation data, and other geospatial information on a pay-as-you-go basis.
 servers:
 - description: API server
   url: https://order.api.oneatlas.airbus.com
@@ -286,9 +285,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: postApiV2OrdersSearch
+      x-operation-id-source: derived
   /api/v1/coverages/search:
     post:
       tags:
@@ -398,9 +396,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: postApiV1CoveragesSearch
+      x-operation-id-source: derived
   api/v1/coverages/{coverageItemId}/accept:
     post:
       tags:
@@ -410,9 +407,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: postApiV1CoveragesByCoverageItemIdAccept
+      x-operation-id-source: derived
   api/v1/coverages/{coverageItemId}/refuse:
     post:
       tags:
@@ -422,9 +418,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: postApiV1CoveragesByCoverageItemIdRefuse
+      x-operation-id-source: derived
   api/v1/orders/{orderItemId}/stop:
     post:
       summary: Stop a Tasking Order
@@ -434,9 +429,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: postApiV1OrdersByOrderItemIdStop
+      x-operation-id-source: derived
   api/v2/orders/search:
     post:
       tags:
@@ -483,9 +477,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: postApiV2OrdersSearch
+      x-operation-id-source: derived
   /api/v1/quotations/{quotationId}/export:
     /api/v1/contracts/{CisContractId}/quotations/{quotationId}/accept: null
     get:
@@ -496,23 +489,23 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
+      operationId: getApiV1QuotationsByQuotationIdExport
+      x-operation-id-source: derived
     put:
       tags:
       - PleiadesNeo specific
       summary: Accept a Quotation
       description: You can accept a quotation using this endpoint
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: putApiV1QuotationsByQuotationIdExport
+      x-operation-id-source: derived
   /api/v1/contracts/{CisContractId}/quotations/{quotationId}/refuse:
     put:
       tags:
       - PleiadesNeo specific
       summary: Refuse a Quotation
       description: You can refuse a quotation using this endpoint
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: putApiV1ContractsByCisContractIdQuotationsByQuotationIdRefuse
+      x-operation-id-source: derived
   api/v1/orders/{orderItemId}/cancel:
     post:
       summary: Cancel a Tasking Order
@@ -522,9 +515,19 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
-x-refined-from:
-- oneatlas-data-pay-per-order-api-openapi.yml
-- oneatlas-data-pay-per-order-tasking-api-openapi.yml
+      operationId: postApiV1OrdersByOrderItemIdCancel
+      x-operation-id-source: derived
+x-tagGroups:
+- name: Authentication
+  tags:
+  - APIkey management
+  - Token retrieval
+- name: Catalog search
+  tags:
+  - Catalog search
+- name: Pay-per-Order ordering
+  tags:
+  - Contract related Information
+  - Ordering
+  - PleiadesNeo specific
+  - SPOT and Pleiades specific

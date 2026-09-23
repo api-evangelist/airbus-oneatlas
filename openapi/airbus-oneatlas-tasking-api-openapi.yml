@@ -6,7 +6,7 @@ info:
     name: API support
     url: https://oneatlas.airbus.com
   version: '1.0'
-  description: 'Operations tagged Tasking across 3 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Tasking across 2 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - description: API server
   url: https://data.api.oneatlas.airbus.com
@@ -80,6 +80,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://task.api.oneatlas.airbus.com/
+      operationId: getApiV1ContractsByContractIdTaskings
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -101,6 +103,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://task.api.oneatlas.airbus.com/
+      operationId: getApiV1ContractsByContractIdTaskingsByTaskingId
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -128,6 +132,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://task.api.oneatlas.airbus.com/
+      operationId: postApiV1ContractsByContractIdTaskingsByTaskingIdCancel
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -305,13 +311,6 @@ components:
           scheme: bearer
           bearerFormat: JWT
   parameters:
-    contractId:
-      description: It corresponds to an internal id for the customer contract - you will be provided the contractId
-      in: path
-      name: contractId
-      required: true
-      schema:
-        type: string
     taskingId:
       description: The tasking id
       in: path
@@ -319,7 +318,13 @@ components:
       required: true
       schema:
         type: string
+    contractId:
+      description: It corresponds to an internal id for the customer contract - you will be provided the contractId
+      in: path
+      name: contractId
+      required: true
+      schema:
+        type: string
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml
-- oneatlas-data-pay-per-order-tasking-api-openapi.yml

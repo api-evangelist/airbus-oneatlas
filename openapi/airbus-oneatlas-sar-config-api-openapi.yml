@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   contact:
     email: dl_webservices_geo@airbus.com
-  description: OneAtlas Radar API is a powerful tool that allows developers to access and integrate radar satellite data into their applications and processes. By utilizing this API, users can access real-time and historical radar imagery, which can be used for a wide range of applications including agriculture, disaster management, urban planning, and security. The API provides high-resolution radar images that can be used for monitoring changes in land cover, detecting anomalies, and analyzing patterns over time. With OneAtlas Radar API, users can access valuable radar data to enhance their decision-making processes and improve their overall operational efficiency.
+  description: OneAtlas Radar API is a powerful tool that allows developers to access and integrate radar satellite data into their applications and processes.
 servers:
 - url: https://sar.api.oneatlas.airbus.com/v1
   description: OneAtlas - Radar Tasking & Archive
@@ -12,9 +12,7 @@ security:
 - basicAuth: []
 tags:
 - name: Sar/Config
-  description: 'Endpoint for SAR specific user configuration.
-
-    '
+  description: Endpoint for SAR specific user configuration.
 paths:
   /sar/config:
     get:
@@ -168,6 +166,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: getSarConfig
+      x-operation-id-source: derived
   /sar/config/orderTemplates:
     get:
       summary: Airbus OneAtlas Retrieve List of Order Templates
@@ -294,6 +294,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: getSarConfigOrderTemplates
+      x-operation-id-source: derived
   /sar/config/permissions:
     get:
       summary: Airbus OneAtlas Get User Permissions
@@ -425,6 +427,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: getSarConfigPermissions
+      x-operation-id-source: derived
   /sar/config/receivingStations:
     get:
       summary: Airbus OneAtlas Get Allowed Receiving Stations
@@ -547,6 +551,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: getSarConfigReceivingStations
+      x-operation-id-source: derived
 components:
   securitySchemes:
     basicAuth:

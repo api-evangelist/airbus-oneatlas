@@ -2,23 +2,21 @@ openapi: 3.2.0
 info:
   title: Airbus Oneatlas User API
   version: '1.0'
-  description: 'Operations tagged user across 3 of this provider''s published API definitions: airbus-oneatlas-worlddem-api-openapi.yml, oneatlas-radar-api-openapi.yml, oneatlas-worlddem-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged user across 2 of this provider''s published API definitions: airbus-oneatlas-worlddem-api-openapi.yml, oneatlas-radar-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://sar.api.oneatlas.airbus.com/v1
   description: OneAtlas - Elevation
 security:
 - basicAuth: []
 tags:
-- name: user
-  description: 'Endpoint for generic user information.
-
-    '
+- name: User
+  description: Endpoint for generic user information.
 paths:
   /user/whoami:
     get:
       summary: Return Account Information of the Current User
       tags:
-      - user
+      - User
       responses:
         '200':
           description: Basic account information
@@ -204,6 +202,8 @@ paths:
                 required:
                 - type
                 - title
+      operationId: getUserWhoami
+      x-operation-id-source: derived
     servers:
     - url: https://sar.api.oneatlas.airbus.com/v1
       description: OneAtlas - Elevation
@@ -215,4 +215,3 @@ components:
 x-refined-from:
 - airbus-oneatlas-worlddem-api-openapi.yml
 - oneatlas-radar-api-openapi.yml
-- oneatlas-worlddem-api-openapi.yml

@@ -5,7 +5,7 @@ info:
     name: API support
     url: https://oneatlas.airbus.com
   title: OneAtlas Data Living Library Attempts API
-  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery. The library is constantly updated with the latest data, ensuring that users have access to accurate and timely information for their projects. Users can easily search for and find the data they need, whether it be for environmental monitoring, urban planning, agriculture, or any other application. The platform also offers tools for analysis and visualization, allowing users to derive insights and make informed decisions based on the data they have access to. Overall, OneAtlas Data Living Library is a valuable resource for anyone looking to harness the power of geospatial data for their work.
+  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery.
 servers:
 - description: API server
   url: https://data.api.oneatlas.airbus.com
@@ -17,7 +17,17 @@ paths:
       summary: Retrieve Attempts
       tags:
       - Attempts
-      description: "### Get tasking attempts\n-\tThis path is used for ONEDAY and ONENOWATTEMPTS requests\n-\tThis API allows to get the first possible attempts matching your criteria\n- Note that, as of today, the API responds in some cases with a 500 error\n-\tEven if the parameter is mandatory, maxCloudCover is NOT yet used for calculations.\n-\tStartDate can be set at any time. Note that if you try to set it in the past, the value will be replace by the current date\n"
+      description: '### Get tasking attempts
+
+        - This path is used for ONEDAY and ONENOWATTEMPTS requests
+
+        - This API allows to get the first possible attempts matching your criteria
+
+        - Note that, as of today, the API responds in some cases with a 500 error
+
+        - Even if the parameter is mandatory, maxCloudCover is NOT yet used for calculations.
+
+        - StartDate can be set at any time. Note that if you try to set it in the past, the value will be replace by the current date'
       requestBody:
         content:
           application/json:
@@ -152,6 +162,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://task.api.oneatlas.airbus.com/
+      operationId: postApiV1Attempts
+      x-operation-id-source: derived
 components:
   schemas:
     Optical:
@@ -163,37 +175,6 @@ components:
           - TRISTEREO
           type: string
         maxCloudCover:
-          format: float
-          type: number
-        maxIncidenceAngle:
-          format: float
-          type: number
-    segment:
-      type: object
-      properties:
-        id:
-          type: string
-        footprint:
-          $ref: '#/components/schemas/footprint'
-        instrumentMode:
-          type: string
-        orderDeadline:
-          format: datetime
-          type: string
-        extendedAngle:
-          type: boolean
-        acquisitionStartDate:
-          format: datetime
-          type: string
-        acquisitionEndDate:
-          format: datetime
-          type: string
-        incidenceAngle:
-          format: float
-          type: number
-        segmentKey:
-          type: string
-        acrossTrackIncidenceAngle:
           format: float
           type: number
         maxIncidenceAngle:
@@ -239,6 +220,15 @@ components:
                     $ref: '#/components/schemas/segment'
                 available:
                   type: boolean
+    footprint:
+      type: object
+      properties:
+        geometry:
+          type: string
+          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
+        center:
+          type: string
+          example: POINT(23.755357 37.97611)
     AcquisitionDate:
       type: object
       properties:
@@ -252,15 +242,37 @@ components:
           format: datetime
           pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
           description: Defines the acquisition end date
-    footprint:
+    segment:
       type: object
       properties:
-        geometry:
+        id:
           type: string
-          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
-        center:
+        footprint:
+          $ref: '#/components/schemas/footprint'
+        instrumentMode:
           type: string
-          example: POINT(23.755357 37.97611)
+        orderDeadline:
+          format: datetime
+          type: string
+        extendedAngle:
+          type: boolean
+        acquisitionStartDate:
+          format: datetime
+          type: string
+        acquisitionEndDate:
+          format: datetime
+          type: string
+        incidenceAngle:
+          format: float
+          type: number
+        segmentKey:
+          type: string
+        acrossTrackIncidenceAngle:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
 x-tagGroups:
 - name: Authentication
   tags:

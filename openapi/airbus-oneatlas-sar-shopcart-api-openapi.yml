@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   contact:
     email: dl_webservices_geo@airbus.com
-  description: OneAtlas Radar API is a powerful tool that allows developers to access and integrate radar satellite data into their applications and processes. By utilizing this API, users can access real-time and historical radar imagery, which can be used for a wide range of applications including agriculture, disaster management, urban planning, and security. The API provides high-resolution radar images that can be used for monitoring changes in land cover, detecting anomalies, and analyzing patterns over time. With OneAtlas Radar API, users can access valuable radar data to enhance their decision-making processes and improve their overall operational efficiency.
+  description: OneAtlas Radar API is a powerful tool that allows developers to access and integrate radar satellite data into their applications and processes.
 servers:
 - url: https://sar.api.oneatlas.airbus.com/v1
   description: OneAtlas - Radar Tasking & Archive
@@ -12,9 +12,7 @@ security:
 - basicAuth: []
 tags:
 - name: Sar/Shopcart
-  description: '<b>Deprecated!</b> Please use baskets instead.
-
-    '
+  description: Deprecated! Please use baskets instead.
 paths:
   /sar/shopcart:
     get:
@@ -1150,6 +1148,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: getSarShopcart
+      x-operation-id-source: derived
     patch:
       deprecated: true
       summary: Airbus OneAtlas Update Shopcart Parameters
@@ -2355,6 +2355,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: patchSarShopcart
+      x-operation-id-source: derived
   /sar/shopcart/addItems:
     post:
       deprecated: true
@@ -3032,6 +3034,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: postSarShopcartAddItems
+      x-operation-id-source: derived
   /sar/shopcart/removeItems:
     post:
       deprecated: true
@@ -3185,10 +3189,12 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: postSarShopcartRemoveItems
+      x-operation-id-source: derived
   /sar/shopcart/items:
     patch:
       deprecated: true
-      summary: Airbus OneAtlas Update Item Parameters.
+      summary: Airbus OneAtlas Update Item Parameters
       tags:
       - Sar/Shopcart
       requestBody:
@@ -3848,6 +3854,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: patchSarShopcartItems
+      x-operation-id-source: derived
   /sar/shopcart/items/{itemId}:
     parameters:
     - name: itemId
@@ -3859,7 +3867,7 @@ paths:
         format: uuid
     patch:
       deprecated: true
-      summary: Airbus OneAtlas Update Item Parameters.
+      summary: Airbus OneAtlas Update Item Parameters
       tags:
       - Sar/Shopcart
       requestBody:
@@ -4511,6 +4519,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: patchSarShopcartItemsByItemId
+      x-operation-id-source: derived
   /sar/shopcart/submit:
     post:
       deprecated: true
@@ -5689,6 +5699,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: postSarShopcartSubmit
+      x-operation-id-source: derived
 components:
   securitySchemes:
     basicAuth:

@@ -1,10 +1,10 @@
 openapi: 3.2.0
 info:
-  title: Airbus Oneatlas Accounting/balance API
+  title: OneAtlas WorldDEM Accounting/balance API
   version: 1.0.1
   contact:
     email: dl-geo-webservices@airbus.com
-  description: 'Operations tagged accounting/balance across 2 of this provider''s published API definitions: airbus-oneatlas-worlddem-api-openapi.yml, oneatlas-worlddem-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data.
 servers:
 - url: https://sar.api.oneatlas.airbus.com/v1
   description: OneAtlas - Elevation
@@ -12,9 +12,7 @@ security:
 - basicAuth: []
 tags:
 - name: accounting/balance
-  description: 'Allows users to query their current balance.
-
-    '
+  description: Allows users to query their current balance.
 paths:
   /accounting/balance:
     get:
@@ -122,14 +120,10 @@ paths:
                     type: integer
                   message:
                     type: string
-    servers:
-    - url: https://sar.api.oneatlas.airbus.com/v1
-      description: OneAtlas - Elevation
+      operationId: getAccountingBalance
+      x-operation-id-source: derived
 components:
   securitySchemes:
     basicAuth:
       type: http
       scheme: basic
-x-refined-from:
-- airbus-oneatlas-worlddem-api-openapi.yml
-- oneatlas-worlddem-api-openapi.yml

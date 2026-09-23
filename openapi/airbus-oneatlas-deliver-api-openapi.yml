@@ -6,7 +6,7 @@ info:
     name: API support
     url: https://oneatlas.airbus.com
   version: '1.0'
-  description: 'Operations tagged Deliver across 3 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Deliver across 2 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - description: API server
   url: https://data.api.oneatlas.airbus.com
@@ -23,9 +23,7 @@ paths:
         If the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.
 
 
-        This endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.
-
-        '
+        This endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.'
       parameters:
       - $ref: '#/components/parameters/CorrelationID'
       - $ref: '#/components/parameters/ActivityId'
@@ -60,6 +58,8 @@ paths:
       summary: Fail Activity
       tags:
       - Deliver
+      operationId: postApiV1ActivitiesByActivityIdFail
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -71,9 +71,7 @@ paths:
         If the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.
 
 
-        This endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.
-
-        '
+        This endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.'
       parameters:
       - $ref: '#/components/parameters/CorrelationID'
       - $ref: '#/components/parameters/ActivityId'
@@ -108,6 +106,8 @@ paths:
       summary: Hold Activity
       tags:
       - Deliver
+      operationId: postApiV1ActivitiesByActivityIdHold
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -119,9 +119,7 @@ paths:
         If the activity is already terminated (status `ARCHIVED`, `CANCELED`, `FAILED` or `SUCCESSED`), the response is an HTTP `400` error code.
 
 
-        This endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.
-
-        '
+        This endpoints **should not be forged** but retrieved from the `_links` map in list activities response or any endpoint that create or modify an activity.'
       parameters:
       - $ref: '#/components/parameters/CorrelationID'
       - $ref: '#/components/parameters/ActivityId'
@@ -156,6 +154,8 @@ paths:
       summary: Succeed Activity
       tags:
       - Deliver
+      operationId: postApiV1ActivitiesByActivityIdSucceed
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -192,34 +192,19 @@ paths:
       summary: Deliver Products
       tags:
       - Deliver
+      operationId: postApiV1Deliveries
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
 components:
-  parameters:
-    Priority:
-      description: Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Priority
-      schema:
-        $ref: '#/components/schemas/Id'
-    CorrelationID:
-      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Correlation-Id
-      schema:
-        $ref: '#/components/schemas/Id'
-    ActivityId:
-      description: The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: path
-      name: activityId
-      required: true
-      schema:
-        $ref: '#/components/schemas/Id'
   responses:
+    '404':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Item not found in catalog or resource not found in item
     '403':
       content:
         application/json:
@@ -238,19 +223,132 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Internal server error
-    '404':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Item not found in catalog or resource not found in item
     '400':
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Bad request
+  parameters:
+    ActivityId:
+      description: The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: path
+      name: activityId
+      required: true
+      schema:
+        $ref: '#/components/schemas/Id'
+    Priority:
+      description: Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Priority
+      schema:
+        $ref: '#/components/schemas/Id'
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
   schemas:
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    ActivityStage:
+      properties:
+        date:
+          default: now
+          description: Date of the stage
+          example: '2018-06-12T11:24:31.254Z'
+          format: datetime
+          type: string
+        message:
+          type: string
+        name:
+          description: Name of the completed stage
+          type: string
+        status:
+          description: Status of the activity
+          enum:
+          - QUEUED
+          - RUNNING
+          - ON_HOLD
+          - CANCELED
+          - WAITING_CANCEL
+          - SUCCEEDED
+          - FAILED
+          - ARCHIVED
+          type: string
+        userId:
+          allOf:
+          - readOnly: true
+          - $ref: '#/components/schemas/Id'
+          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
+      type: object
+    WorkspaceIdentifier:
+      oneOf:
+      - $ref: '#/components/schemas/Id'
+      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
+        example: MySuperWorkspace
+        type: string
+    Delivery:
+      properties:
+        catalogItemsId:
+          description: The list of catalog items to deliver
+          items:
+            $ref: '#/components/schemas/Id'
+          minItems: 1
+          type: array
+        workspace:
+          allOf:
+          - $ref: '#/components/schemas/WorkspaceIdentifier'
+          - default: public
+          default: public
+      required:
+      - catalogItemsId
+      type: object
+    ActivitySmall:
+      properties:
+        _links:
+          properties:
+            history:
+              allOf:
+              - description: See [Get activity stages](#/paths/~1api~1v1~1activities~1{correlationId}~1stages/get)
+              - $ref: '#/components/schemas/Link'
+            monitoring:
+              allOf:
+              - description: See [Get activity](#/paths/~1api~1v1~1activities~1{correlationId}/get)
+              - $ref: '#/components/schemas/Link'
+          readOnly: true
+          type: object
+        message:
+          description: A free text (copy of the last stage message)
+          readOnly: true
+          type: string
+      type: object
     Activity:
       properties:
         _links:
@@ -356,83 +454,6 @@ components:
           - $ref: '#/components/schemas/Id'
           - description: The id of the user that is the origin of the activity (extracted from the X-Forwarded-User request header)
       type: object
-    WorkspaceIdentifier:
-      oneOf:
-      - $ref: '#/components/schemas/Id'
-      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
-        example: MySuperWorkspace
-        type: string
-    Delivery:
-      properties:
-        catalogItemsId:
-          description: The list of catalog items to deliver
-          items:
-            $ref: '#/components/schemas/Id'
-          minItems: 1
-          type: array
-        workspace:
-          allOf:
-          - $ref: '#/components/schemas/WorkspaceIdentifier'
-          - default: public
-          default: public
-      required:
-      - catalogItemsId
-      type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
-    ApiError:
-      properties:
-        correlationId:
-          $ref: '#/components/schemas/Id'
-        hint:
-          type: string
-        internalCode:
-          example: 400
-          format: integer
-          type: number
-        message:
-          type: string
-        timestamp:
-          description: Number of seconds since 01/01/1970
-          example: 1530088354390
-          format: integer
-          type: number
-      type: object
-    ActivityStage:
-      properties:
-        date:
-          default: now
-          description: Date of the stage
-          example: '2018-06-12T11:24:31.254Z'
-          format: datetime
-          type: string
-        message:
-          type: string
-        name:
-          description: Name of the completed stage
-          type: string
-        status:
-          description: Status of the activity
-          enum:
-          - QUEUED
-          - RUNNING
-          - ON_HOLD
-          - CANCELED
-          - WAITING_CANCEL
-          - SUCCEEDED
-          - FAILED
-          - ARCHIVED
-          type: string
-        userId:
-          allOf:
-          - readOnly: true
-          - $ref: '#/components/schemas/Id'
-          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
-      type: object
     Link:
       description: Link object
       properties:
@@ -464,26 +485,6 @@ components:
       required:
       - href
       type: object
-    ActivitySmall:
-      properties:
-        _links:
-          properties:
-            history:
-              allOf:
-              - description: See [Get activity stages](#/paths/~1api~1v1~1activities~1{correlationId}~1stages/get)
-              - $ref: '#/components/schemas/Link'
-            monitoring:
-              allOf:
-              - description: See [Get activity](#/paths/~1api~1v1~1activities~1{correlationId}/get)
-              - $ref: '#/components/schemas/Link'
-          readOnly: true
-          type: object
-        message:
-          description: A free text (copy of the last stage message)
-          readOnly: true
-          type: string
-      type: object
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml
-- oneatlas-data-pay-per-order-tasking-api-openapi.yml

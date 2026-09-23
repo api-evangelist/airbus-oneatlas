@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: OneAtlas Basemap Get Capabilities API
-  description: OneAtlas Basemap API is a geospatial service that provides access to high-resolution satellite imagery and basemaps. It allows users to retrieve up-to-date visual information of any location on Earth, enabling them to analyze and monitor changes in the environment, infrastructure, and land use. The API offers a seamless and easy-to-use interface for developers to integrate mapping capabilities into their applications, providing valuable insights for a wide range of industries such as agriculture, urban planning, disaster management, and more. With OneAtlas Basemap API, users can access reliable and accurate geospatial data to support decision-making processes and enhance their understanding of the world around them.
+  description: OneAtlas Basemap API is a geospatial service that provides access to high-resolution satellite imagery and basemaps.
   version: '2.0'
 servers:
 - url: https://view-bm.api.oneatlas.airbus.com
@@ -10,7 +10,7 @@ tags:
 paths:
   /basemap/wmts?SERVICE=WMTS&REQUEST=GetCapabilities:
     get:
-      summary: Service Capabilities.
+      summary: Service Capabilities
       description: Allows authorized users to see the capacities of the service.
       security:
       - Bearer: []
@@ -21,6 +21,8 @@ paths:
           description: 'Unauthorized: the authorization is missing or has expired.'
       tags:
       - Get Capabilities
+      operationId: getBasemapWmts?SERVICE=WMTS&REQUEST=GetCapabilities
+      x-operation-id-source: derived
 components:
   securitySchemes:
     Bearer:

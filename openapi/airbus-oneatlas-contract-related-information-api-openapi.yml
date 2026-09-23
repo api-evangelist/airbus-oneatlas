@@ -1,12 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Airbus Oneatlas Contract related Information API
   contact:
     email: intelligence-customertechnicalsupport@fr.airbus.com
     name: API support
     url: https://oneatlas.airbus.com
-  version: '1.0'
-  description: 'Operations tagged Contract related Information across 2 of this provider''s published API definitions: oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  title: OneAtlas Data Pay-Per-Order Contract related Information API
+  description: The OneAtlas Data Pay-Per-Order API is a powerful tool that enables users to access and purchase high-resolution satellite imagery, elevation data, and other geospatial information on a pay-as-you-go basis.
 servers:
 - description: API server
   url: https://order.api.oneatlas.airbus.com
@@ -76,9 +75,8 @@ paths:
                 - contractId: d9307572-4f50-4dd5-b5de-94085beb6709
                   kind: contract.user
                   userId: 5406642f-e3e8-4250-7c7f-7ac2be36021b
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: getApiV1Me
+      x-operation-id-source: derived
   /api/v1/contracts:
     get:
       summary: Get Contracts
@@ -152,9 +150,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: getApiV1Contracts
+      x-operation-id-source: derived
   /api/v1/contracts/{CisContractId}/productTypes:
     get:
       summary: Get Product Types
@@ -202,9 +199,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: getApiV1ContractsByCisContractIdProductTypes
+      x-operation-id-source: derived
   /api/v1/{cisContractId}/properties:
     get:
       summary: Get Markets
@@ -228,9 +224,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: getApiV1ByCisContractIdProperties
+      x-operation-id-source: derived
   /api/v1/{cisContractId}/deliveryTypes:
     get:
       summary: Get Delivery Types
@@ -250,9 +245,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: getApiV1ByCisContractIdDeliveryTypes
+      x-operation-id-source: derived
   /api/v1/contracts/{cisContractId}/productTypes/{productTypeId}/options:
     post:
       summary: Get Production Options
@@ -524,11 +518,21 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: postApiV1ContractsByCisContractIdProductTypesByProductTypeIdOptions
+      x-operation-id-source: derived
 components:
   schemas:
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
     Feasibility:
       type: object
       properties:
@@ -572,17 +576,17 @@ components:
                 type: array
             type: object
           type: array
-    GeojsonGeometry:
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#geometry-objects
-      properties:
-        geometry:
-          description: A valid geojson geometry coordinates
-          type: object
-        type:
-          enum:
-          - Polygon
-      type: object
-x-refined-from:
-- oneatlas-data-pay-per-order-api-openapi.yml
-- oneatlas-data-pay-per-order-tasking-api-openapi.yml
+x-tagGroups:
+- name: Authentication
+  tags:
+  - APIkey management
+  - Token retrieval
+- name: Catalog search
+  tags:
+  - Catalog search
+- name: Pay-per-Order ordering
+  tags:
+  - Contract related Information
+  - Ordering
+  - PleiadesNeo specific
+  - SPOT and Pleiades specific

@@ -1,10 +1,10 @@
 openapi: 3.2.0
 info:
-  title: Airbus Oneatlas Elevation/price API
+  title: OneAtlas WorldDEM Elevation/price API
   version: 1.0.1
   contact:
     email: dl-geo-webservices@airbus.com
-  description: 'Operations tagged elevation/price across 2 of this provider''s published API definitions: airbus-oneatlas-worlddem-api-openapi.yml, oneatlas-worlddem-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data.
 servers:
 - url: https://sar.api.oneatlas.airbus.com/v1
   description: OneAtlas - Elevation
@@ -12,9 +12,7 @@ security:
 - basicAuth: []
 tags:
 - name: elevation/price
-  description: 'Endpoint to query to price of an elevation order.
-
-    '
+  description: Endpoint to query to price of an elevation order.
 paths:
   /elevation/price:
     post:
@@ -889,14 +887,10 @@ paths:
                     type: integer
                   message:
                     type: string
-    servers:
-    - url: https://sar.api.oneatlas.airbus.com/v1
-      description: OneAtlas - Elevation
+      operationId: postElevationPrice
+      x-operation-id-source: derived
 components:
   securitySchemes:
     basicAuth:
       type: http
       scheme: basic
-x-refined-from:
-- airbus-oneatlas-worlddem-api-openapi.yml
-- oneatlas-worlddem-api-openapi.yml

@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   contact:
     email: dl_webservices_geo@airbus.com
-  description: OneAtlas Radar API is a powerful tool that allows developers to access and integrate radar satellite data into their applications and processes. By utilizing this API, users can access real-time and historical radar imagery, which can be used for a wide range of applications including agriculture, disaster management, urban planning, and security. The API provides high-resolution radar images that can be used for monitoring changes in land cover, detecting anomalies, and analyzing patterns over time. With OneAtlas Radar API, users can access valuable radar data to enhance their decision-making processes and improve their overall operational efficiency.
+  description: OneAtlas Radar API is a powerful tool that allows developers to access and integrate radar satellite data into their applications and processes.
 servers:
 - url: https://sar.api.oneatlas.airbus.com/v1
   description: OneAtlas - Radar Tasking & Archive
@@ -395,6 +395,8 @@ paths:
                     type: object
         '503':
           description: Catalogue replication is temporarily not available.
+      operationId: getSarCatalogueReplication
+      x-operation-id-source: derived
   /sar/catalogue/download:
     get:
       summary: Airbus OneAtlas Download Complete Catalogue
@@ -512,6 +514,8 @@ paths:
                     type: object
         '503':
           description: Catalogue download is temporarily not available.
+      operationId: getSarCatalogueDownload
+      x-operation-id-source: derived
   /sar/catalogue/revocation:
     parameters:
     - in: query
@@ -686,6 +690,8 @@ paths:
                     type: object
         '503':
           description: Catalogue revocations are temporarily not available.
+      operationId: getSarCatalogueRevocation
+      x-operation-id-source: derived
 components:
   securitySchemes:
     basicAuth:

@@ -1,12 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Airbus Oneatlas SPOT and Pleiades ordering API
   contact:
     email: intelligence-customertechnicalsupport@fr.airbus.com
     name: API support
     url: https://oneatlas.airbus.com
-  version: '1.0'
-  description: 'Operations tagged SPOT and Pleiades ordering across 2 of this provider''s published API definitions: oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  title: OneAtlas Data Pay-Per-Order SPOT and Pleiades ordering API
+  description: The OneAtlas Data Pay-Per-Order API is a powerful tool that enables users to access and purchase high-resolution satellite imagery, elevation data, and other geospatial information on a pay-as-you-go basis.
 servers:
 - description: API server
   url: https://order.api.oneatlas.airbus.com
@@ -357,9 +356,8 @@ paths:
                   title: Orders
                 type: array
           description: List of all orders
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: getApiV1Orders
+      x-operation-id-source: derived
 components:
   parameters:
     page:
@@ -376,6 +374,17 @@ components:
       schema:
         minimum: 1
         type: number
-x-refined-from:
-- oneatlas-data-pay-per-order-api-openapi.yml
-- oneatlas-data-pay-per-order-tasking-api-openapi.yml
+x-tagGroups:
+- name: Authentication
+  tags:
+  - APIkey management
+  - Token retrieval
+- name: Catalog search
+  tags:
+  - Catalog search
+- name: Pay-per-Order ordering
+  tags:
+  - Contract related Information
+  - Ordering
+  - PleiadesNeo specific
+  - SPOT and Pleiades specific

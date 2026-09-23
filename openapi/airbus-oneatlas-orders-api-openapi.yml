@@ -6,7 +6,7 @@ info:
     name: API support
     url: https://oneatlas.airbus.com
   version: '1.0'
-  description: 'Operations tagged Orders across 3 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Orders across 2 of this provider''s published API definitions: oneatlas-data-living-library-openapi.yml, oneatlas-data-pay-per-order-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - description: API server
   url: https://data.api.oneatlas.airbus.com
@@ -382,6 +382,8 @@ paths:
       summary: Get All Orders
       tags:
       - Orders
+      operationId: getApiV1Orders
+      x-operation-id-source: derived
     post:
       description: Create an order
       requestBody:
@@ -1067,6 +1069,8 @@ paths:
       summary: Create an Order
       tags:
       - Orders
+      operationId: postApiV1Orders
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -1396,6 +1400,8 @@ paths:
                   type: object
                 title: Orders
           description: an order
+      operationId: getApiV1OrdersByOrderId
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -2039,6 +2045,8 @@ paths:
       summary: Get Price
       tags:
       - Orders
+      operationId: postApiV1Prices
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -2682,6 +2690,8 @@ paths:
                 title: Orders
           description: a price
       summary: Get Price
+      operationId: post ApiV1Prices
+      x-operation-id-source: derived
     servers:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
@@ -2694,13 +2704,6 @@ components:
       schema:
         minimum: 1
         type: number
-    orderId:
-      description: The order id
-      in: path
-      name: orderId
-      required: true
-      schema:
-        type: string
     itemsPerPage:
       description: Amount of items per page, defaults to '10'
       in: query
@@ -2708,7 +2711,13 @@ components:
       schema:
         minimum: 1
         type: number
+    orderId:
+      description: The order id
+      in: path
+      name: orderId
+      required: true
+      schema:
+        type: string
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml
-- oneatlas-data-pay-per-order-tasking-api-openapi.yml

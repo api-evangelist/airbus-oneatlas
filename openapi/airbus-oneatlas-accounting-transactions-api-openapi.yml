@@ -1,10 +1,10 @@
 openapi: 3.2.0
 info:
-  title: Airbus Oneatlas Accounting/transactions API
+  title: OneAtlas WorldDEM Accounting/transactions API
   version: 1.0.1
   contact:
     email: dl-geo-webservices@airbus.com
-  description: 'Operations tagged accounting/transactions across 2 of this provider''s published API definitions: airbus-oneatlas-worlddem-api-openapi.yml, oneatlas-worlddem-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: The OneAtlas WorldDEM API is a tool that provides access to high-resolution global elevation data.
 servers:
 - url: https://sar.api.oneatlas.airbus.com/v1
   description: OneAtlas - Elevation
@@ -12,9 +12,7 @@ security:
 - basicAuth: []
 tags:
 - name: accounting/transactions
-  description: 'Allows users to query their transactions.
-
-    '
+  description: Allows users to query their transactions.
 paths:
   /accounting/transactions:
     get:
@@ -140,9 +138,8 @@ paths:
                     type: integer
                   message:
                     type: string
-    servers:
-    - url: https://sar.api.oneatlas.airbus.com/v1
-      description: OneAtlas - Elevation
+      operationId: getAccountingTransactions
+      x-operation-id-source: derived
   /accounting/transactions/{itemId}:
     parameters:
     - in: path
@@ -290,14 +287,10 @@ paths:
                     type: integer
                   message:
                     type: string
-    servers:
-    - url: https://sar.api.oneatlas.airbus.com/v1
-      description: OneAtlas - Elevation
+      operationId: getAccountingTransactionsByItemId
+      x-operation-id-source: derived
 components:
   securitySchemes:
     basicAuth:
       type: http
       scheme: basic
-x-refined-from:
-- airbus-oneatlas-worlddem-api-openapi.yml
-- oneatlas-worlddem-api-openapi.yml

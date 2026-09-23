@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   contact:
     email: dl_webservices_geo@airbus.com
-  description: OneAtlas Radar API is a powerful tool that allows developers to access and integrate radar satellite data into their applications and processes. By utilizing this API, users can access real-time and historical radar imagery, which can be used for a wide range of applications including agriculture, disaster management, urban planning, and security. The API provides high-resolution radar images that can be used for monitoring changes in land cover, detecting anomalies, and analyzing patterns over time. With OneAtlas Radar API, users can access valuable radar data to enhance their decision-making processes and improve their overall operational efficiency.
+  description: OneAtlas Radar API is a powerful tool that allows developers to access and integrate radar satellite data into their applications and processes.
 servers:
 - url: https://sar.api.oneatlas.airbus.com/v1
   description: OneAtlas - Radar Tasking & Archive
@@ -12,9 +12,7 @@ security:
 - basicAuth: []
 tags:
 - name: Sar/Baskets
-  description: 'Handle your baskets to order SAR acquisitions.
-
-    '
+  description: Handle your baskets to order SAR acquisitions.
 paths:
   /sar/baskets:
     get:
@@ -208,6 +206,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: getSarBaskets
+      x-operation-id-source: derived
     post:
       summary: Airbus OneAtlas Create Basket
       tags:
@@ -944,6 +944,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: postSarBaskets
+      x-operation-id-source: derived
   /sar/baskets/{basketId}:
     parameters:
     - name: basketId
@@ -1604,6 +1606,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: getSarBasketsByBasketId
+      x-operation-id-source: derived
     patch:
       summary: Airbus OneAtlas Update Basket Parameters
       tags:
@@ -2326,6 +2330,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: patchSarBasketsByBasketId
+      x-operation-id-source: derived
     put:
       summary: Airbus OneAtlas Replace Basket Parameters
       tags:
@@ -3048,6 +3054,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: putSarBasketsByBasketId
+      x-operation-id-source: derived
     delete:
       summary: Airbus OneAtlas Delete Basket
       tags:
@@ -3162,6 +3170,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: deleteSarBasketsByBasketId
+      x-operation-id-source: derived
   /sar/baskets/{basketId}/addItems:
     parameters:
     - name: basketId
@@ -3895,6 +3905,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: postSarBasketsByBasketIdAddItems
+      x-operation-id-source: derived
   /sar/baskets/{basketId}/removeItems:
     parameters:
     - name: basketId
@@ -4580,6 +4592,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: postSarBasketsByBasketIdRemoveItems
+      x-operation-id-source: derived
   /sar/baskets/{basketId}/submit:
     parameters:
     - name: basketId
@@ -5267,6 +5281,8 @@ paths:
                     type: string
                   params:
                     type: object
+      operationId: postSarBasketsByBasketIdSubmit
+      x-operation-id-source: derived
 components:
   securitySchemes:
     basicAuth:

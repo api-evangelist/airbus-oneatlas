@@ -1,12 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Airbus Oneatlas SPOT and Pleiades specific API
   contact:
     email: intelligence-customertechnicalsupport@fr.airbus.com
     name: API support
     url: https://oneatlas.airbus.com
-  version: '1.0'
-  description: 'Operations tagged SPOT and Pleiades specific across 2 of this provider''s published API definitions: oneatlas-data-pay-per-order-api-openapi.yml, oneatlas-data-pay-per-order-tasking-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  title: OneAtlas Data Pay-Per-Order SPOT and Pleiades specific API
+  description: The OneAtlas Data Pay-Per-Order API is a powerful tool that enables users to access and purchase high-resolution satellite imagery, elevation data, and other geospatial information on a pay-as-you-go basis.
 servers:
 - description: API server
   url: https://order.api.oneatlas.airbus.com
@@ -22,21 +21,19 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: getApiV1ContractsByCisContractIdTaskings
+      x-operation-id-source: derived
   api/v1/contracts/{cisContractId}/taskings/{taskingId}:
     get:
       summary: Track an Order
       tags:
       - SPOT and Pleiades specific
-      description: To see the status of a dedicated tasking, you can use the following endpoint after having retrieved the <taskingId>, available in the email notification under ICR_ID.
+      description: To see the status of a dedicated tasking, you can use the following endpoint after having retrieved the , available in the email notification under ICR_ID.
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: getApiV1ContractsByCisContractIdTaskingsByTaskingId
+      x-operation-id-source: derived
   api/v1/contracts/{cisContractId}/taskings?customerRef=yourCustomerReference:
     get:
       summary: Track Orders with Customerref
@@ -84,9 +81,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: getApiV1ContractsByCisContractIdTaskings?customerRef=yourCustomerReference
+      x-operation-id-source: derived
   api/v1/contracts/{CisContractId}/taskings/{taskingId}/segments:
     get:
       summary: Retrieve Acquisitions on an Order
@@ -111,9 +107,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: getApiV1ContractsByCisContractIdTaskingsByTaskingIdSegments
+      x-operation-id-source: derived
   api/v1/contracts/{CisContractId}/taskings/{tasking_Id}/segments/{segmentId}/accept:
     post:
       summary: Accept Acquisition
@@ -123,9 +118,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: postApiV1ContractsByCisContractIdTaskingsByTaskingIdSegmentsBySegmentIdAccept
+      x-operation-id-source: derived
   api/v1/contracts/{CisContractId}/taskings/{tasking_Id}/segments/{segmentId}/refuse:
     post:
       summary: Refuse Acquisition
@@ -135,9 +129,8 @@ paths:
       servers:
       - description: Tasking API server
         url: https://order.api.oneatlas.airbus.com/
-    servers:
-    - description: API server
-      url: https://order.api.oneatlas.airbus.com
+      operationId: postApiV1ContractsByCisContractIdTaskingsByTaskingIdSegmentsBySegmentIdRefuse
+      x-operation-id-source: derived
 components:
   parameters:
     CustomerReference:
@@ -147,6 +140,17 @@ components:
       required: true
       schema:
         type: string
-x-refined-from:
-- oneatlas-data-pay-per-order-api-openapi.yml
-- oneatlas-data-pay-per-order-tasking-api-openapi.yml
+x-tagGroups:
+- name: Authentication
+  tags:
+  - APIkey management
+  - Token retrieval
+- name: Catalog search
+  tags:
+  - Catalog search
+- name: Pay-per-Order ordering
+  tags:
+  - Contract related Information
+  - Ordering
+  - PleiadesNeo specific
+  - SPOT and Pleiades specific

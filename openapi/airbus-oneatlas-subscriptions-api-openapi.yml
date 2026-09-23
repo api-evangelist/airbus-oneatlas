@@ -5,7 +5,7 @@ info:
     name: API support
     url: https://oneatlas.airbus.com
   title: OneAtlas Data Living Library Subscriptions API
-  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery. The library is constantly updated with the latest data, ensuring that users have access to accurate and timely information for their projects. Users can easily search for and find the data they need, whether it be for environmental monitoring, urban planning, agriculture, or any other application. The platform also offers tools for analysis and visualization, allowing users to derive insights and make informed decisions based on the data they have access to. Overall, OneAtlas Data Living Library is a valuable resource for anyone looking to harness the power of geospatial data for their work.
+  description: OneAtlas Data Living Library is a platform that provides users with access to a diverse range of geospatial data and satellite imagery.
 servers:
 - description: API server
   url: https://data.api.oneatlas.airbus.com
@@ -371,6 +371,8 @@ paths:
                   type: object
                 title: Contracts
           description: contract
+      operationId: getApiV1ContractsByContractId
+      x-operation-id-source: derived
   /api/v1/contracts/{contractId}/payments:
     parameters:
     - $ref: '#/components/parameters/contractId'
@@ -416,6 +418,8 @@ paths:
                   type: object
                 type: array
           description: payment list
+      operationId: getApiV1ContractsByContractIdPayments
+      x-operation-id-source: derived
   /api/v1/contracts/{contractId}/subscriptions:
     parameters:
     - $ref: '#/components/parameters/contractId'
@@ -619,6 +623,8 @@ paths:
                   title: Subscriptions
                 type: array
           description: subscription list
+      operationId: getApiV1ContractsByContractIdSubscriptions
+      x-operation-id-source: derived
   /api/v1/me:
     get:
       description: Get user informations about contract
@@ -628,6 +634,8 @@ paths:
       summary: User Information
       tags:
       - Subscriptions
+      operationId: getApiV1Me
+      x-operation-id-source: derived
   /api/v1/me/services:
     get:
       description: Returns the different services the current user can access based on his contract
@@ -637,6 +645,8 @@ paths:
       summary: Services the Current User Can Access
       tags:
       - Subscriptions
+      operationId: getApiV1MeServices
+      x-operation-id-source: derived
   /api/v1/orders/{orderId}/payments:
     parameters:
     - $ref: '#/components/parameters/orderId'
@@ -679,6 +689,8 @@ paths:
                   type: object
                 type: array
           description: payment
+      operationId: getApiV1OrdersByOrderIdPayments
+      x-operation-id-source: derived
   /api/v1/payments:
     get:
       description: Get all payments for the current user contract
@@ -722,6 +734,8 @@ paths:
                   type: object
                 type: array
           description: payment list
+      operationId: getApiV1Payments
+      x-operation-id-source: derived
   /api/v1/payments/{paymentId}:
     parameters:
     - $ref: '#/components/parameters/paymentId'
@@ -762,6 +776,8 @@ paths:
                 title: Payment schema
                 type: object
           description: payment
+      operationId: getApiV1PaymentsByPaymentId
+      x-operation-id-source: derived
   /api/v1/subscriptions:
     get:
       description: Get all subscriptions for the current user
@@ -953,6 +969,8 @@ paths:
                   title: Subscriptions
                 type: array
           description: subscription list
+      operationId: getApiV1Subscriptions
+      x-operation-id-source: derived
   /api/v1/subscriptions/{subscriptionId}:
     parameters:
     - $ref: '#/components/parameters/subscriptionId'
@@ -1133,6 +1151,8 @@ paths:
                   type: object
                 title: Subscriptions
           description: subscription
+      operationId: getApiV1SubscriptionsBySubscriptionId
+      x-operation-id-source: derived
   /api/v1/subscriptions/{subscriptionId}/payments:
     parameters:
     - $ref: '#/components/parameters/subscriptionId'
@@ -1178,6 +1198,8 @@ paths:
                   type: object
                 type: array
           description: payment list
+      operationId: getApiV1SubscriptionsBySubscriptionIdPayments
+      x-operation-id-source: derived
   /api/v1/subscriptions/{subscriptionId}/revoke:
     parameters:
     - $ref: '#/components/parameters/subscriptionId'
@@ -1193,15 +1215,17 @@ paths:
               schema:
                 type: object
           description: Message related to the revokation
+      operationId: putApiV1SubscriptionsBySubscriptionIdRevoke
+      x-operation-id-source: derived
 components:
   parameters:
-    subscriptionId:
-      description: The subscription id
-      in: path
-      name: subscriptionId
-      required: true
+    page:
+      description: Page number, defaults to '1'
+      in: query
+      name: page
       schema:
-        type: string
+        minimum: 1
+        type: number
     paymentId:
       description: The payment id
       in: path
@@ -1216,17 +1240,10 @@ components:
       schema:
         minimum: 1
         type: number
-    page:
-      description: Page number, defaults to '1'
-      in: query
-      name: page
-      schema:
-        minimum: 1
-        type: number
-    contractId:
-      description: It corresponds to an internal id for the customer contract - you will be provided the contractId
+    subscriptionId:
+      description: The subscription id
       in: path
-      name: contractId
+      name: subscriptionId
       required: true
       schema:
         type: string
@@ -1234,6 +1251,13 @@ components:
       description: The order id
       in: path
       name: orderId
+      required: true
+      schema:
+        type: string
+    contractId:
+      description: It corresponds to an internal id for the customer contract - you will be provided the contractId
+      in: path
+      name: contractId
       required: true
       schema:
         type: string

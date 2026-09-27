@@ -124,20 +124,29 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Optical:
+    progTypeNames:
+      items:
+        enum:
+        - ONEDAY
+        - ONEPLAN
+        - ONENOWATTEMPTS
+        - ONENOWWEATHER
+        default: ONEPLAN
+        type: string
+      type: array
+    AcquisitionDate:
+      type: object
       properties:
-        acquisitionMode:
-          enum:
-          - MONO
-          - STEREO
-          - TRISTEREO
+        startDate:
           type: string
-        maxCloudCover:
-          format: float
-          type: number
-        maxIncidenceAngle:
-          format: float
-          type: number
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
+        endDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition end date
     Feasibility:
       type: object
       properties:
@@ -181,29 +190,20 @@ components:
                 type: array
             type: object
           type: array
-    AcquisitionDate:
-      type: object
+    Optical:
       properties:
-        startDate:
+        acquisitionMode:
+          enum:
+          - MONO
+          - STEREO
+          - TRISTEREO
           type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
-        endDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition end date
-    progTypeNames:
-      items:
-        enum:
-        - ONEDAY
-        - ONEPLAN
-        - ONENOWATTEMPTS
-        - ONENOWWEATHER
-        default: ONEPLAN
-        type: string
-      type: array
+        maxCloudCover:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
 x-tagGroups:
 - name: Authentication
   tags:

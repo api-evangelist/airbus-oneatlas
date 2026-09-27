@@ -56,12 +56,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
     ApiError:
       properties:
         correlationId:
@@ -80,25 +74,15 @@ components:
           format: integer
           type: number
       type: object
-    multipart:
-      description: 'First part: the equivalent vector file in geojson format.
-
-
-        Second part: metadata about the vector file.
-
-        '
-      format: multipart/related
     kmz:
       description: A geometry in kmz format. Is a zip containing kml file and associated files.
       format: binary
-    json:
-      description: A json representing a file in a Google Cloud Storage bucket. The appropriate content type must be set in Google Cloud Storage
-      example:
-        gcsUri: gs://bucket-name/path/to/file.kmz
-      format: json
-    kml:
-      description: A geometry in kml format
-      format: binary
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
     GeojsonGeometry:
       externalDocs:
         url: http://geojson.org/geojson-spec.html#geometry-objects
@@ -110,9 +94,25 @@ components:
           enum:
           - Polygon
       type: object
+    kml:
+      description: A geometry in kml format
+      format: binary
+    multipart:
+      description: 'First part: the equivalent vector file in geojson format.
+
+
+        Second part: metadata about the vector file.
+
+        '
+      format: multipart/related
     geoshape:
       description: A geometry in shape format. Is a zip containing a .shp files and associated files.
       format: binary
+    json:
+      description: A json representing a file in a Google Cloud Storage bucket. The appropriate content type must be set in Google Cloud Storage
+      example:
+        gcsUri: gs://bucket-name/path/to/file.kmz
+      format: json
   responses:
     '401':
       content:

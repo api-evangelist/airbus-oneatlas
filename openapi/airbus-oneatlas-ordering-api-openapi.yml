@@ -7460,16 +7460,49 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    delivery:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - network
-    salesOrderId:
+    CustomerReference:
       type: string
-      description: The salesOrderId is sent back in the server response and can be used to search for your order.
+      description: The customerReference can be used throughout the ordering process to get the status of your order and find the images in your delivery workspace. It is as a consequence better to use 1 customerReference specific for each order. It is also the reference that will appear on your bill (for pay-per-order customers)
+    pixelCoding:
+      type: object
+      title: pixel_coding
+      properties:
+        key:
+          enum:
+          - pixel_coding
+        value:
+          enum:
+          - 8bits
+          - 12bits
+          description: Defines the pixel coding. <br>'8bits' when radiometric_processing = 'display'<br>, '12bits' otherwise
+    quotationId:
+      type: string
+      description: The quotationId is sent back in the server response and can be used to search for your order.
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
+    Optical:
+      properties:
+        acquisitionMode:
+          enum:
+          - MONO
+          - STEREO
+          - TRISTEREO
+          type: string
+        maxCloudCover:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
     TaskingAttempt:
       type: array
       items:
@@ -7496,15 +7529,6 @@ components:
                     $ref: '#/components/schemas/segment'
                 available:
                   type: boolean
-    footprint:
-      type: object
-      properties:
-        geometry:
-          type: string
-          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
-        center:
-          type: string
-          example: POINT(23.755357 37.97611)
     deliveryPNEO:
       type: object
       properties:
@@ -7512,32 +7536,16 @@ components:
           type: string
           enum:
           - network
-    AcquisitionDate:
-      type: object
-      properties:
-        startDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
-        endDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition end date
-    AcqPerod:
-      type: string
-      pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-      description: Defines the acquisition period
-      format: datetime
-    CustomerReference:
-      type: string
-      description: The customerReference can be used throughout the ordering process to get the status of your order and find the images in your delivery workspace. It is as a consequence better to use 1 customerReference specific for each order. It is also the reference that will appear on your bill (for pay-per-order customers)
-    Mission:
-      type: string
-      enum:
-      - PLEIADES
-      - SPOT
+    DataSourceIds:
+      type: array
+      items:
+        type: object
+        properties:
+          catalogId:
+            enum:
+            - PublicMOC
+          catalogItemId:
+            type: string
     Channels:
       type: array
       items:
@@ -7560,6 +7568,15 @@ components:
                 items:
                   type: string
                 description: list of people being in copy
+    footprint:
+      type: object
+      properties:
+        geometry:
+          type: string
+          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
+        center:
+          type: string
+          example: POINT(23.755357 37.97611)
     dem:
       type: object
       title: digital elevation model
@@ -7581,45 +7598,6 @@ components:
           - REF3D-DEM_IVV
           - SRTMV4
           - SRTMV4_IVV
-    GeojsonGeometry:
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#geometry-objects
-      properties:
-        geometry:
-          description: A valid geojson geometry coordinates
-          type: object
-        type:
-          enum:
-          - Polygon
-      type: object
-    DataSourceIds:
-      type: array
-      items:
-        type: object
-        properties:
-          catalogId:
-            enum:
-            - PublicMOC
-          catalogItemId:
-            type: string
-    pixelCoding:
-      type: object
-      title: pixel_coding
-      properties:
-        key:
-          enum:
-          - pixel_coding
-        value:
-          enum:
-          - 8bits
-          - 12bits
-          description: Defines the pixel coding. <br>'8bits' when radiometric_processing = 'display'<br>, '12bits' otherwise
-    Comments:
-      type: string
-      description: It is possible to leave a comment here intended for the Airbus team
-    quotationId:
-      type: string
-      description: The quotationId is sent back in the server response and can be used to search for your order.
     NoSensorAvailable:
       type: object
       properties:
@@ -7634,9 +7612,11 @@ components:
               locator:
                 example: UNKNOWN
                 type: string
-    contractId:
-      description: It corresponds to an internal id for the customer contract. It will be provided to you.
+    Mission:
       type: string
+      enum:
+      - PLEIADES
+      - SPOT
     segment:
       type: object
       properties:
@@ -7668,26 +7648,46 @@ components:
         maxIncidenceAngle:
           format: float
           type: number
+    delivery:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - network
     DatastripIds:
       type: string
       description: Datastrip identifier
-    Optical:
-      properties:
-        acquisitionMode:
-          enum:
-          - MONO
-          - STEREO
-          - TRISTEREO
-          type: string
-        maxCloudCover:
-          format: float
-          type: number
-        maxIncidenceAngle:
-          format: float
-          type: number
+    Comments:
+      type: string
+      description: It is possible to leave a comment here intended for the Airbus team
+    contractId:
+      description: It corresponds to an internal id for the customer contract. It will be provided to you.
+      type: string
+    AcqPerod:
+      type: string
+      pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+      description: Defines the acquisition period
+      format: datetime
     SegmentKey:
       type: string
       description: The segmentKey is the value of the property "segmentKey" of the selected acquisition from the attempt request
+    AcquisitionDate:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
+        endDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition end date
+    salesOrderId:
+      type: string
+      description: The salesOrderId is sent back in the server response and can be used to search for your order.
 x-tagGroups:
 - name: Authentication
   tags:

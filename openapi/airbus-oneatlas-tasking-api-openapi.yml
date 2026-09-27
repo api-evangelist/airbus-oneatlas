@@ -311,17 +311,17 @@ components:
           scheme: bearer
           bearerFormat: JWT
   parameters:
-    taskingId:
-      description: The tasking id
-      in: path
-      name: taskingId
-      required: true
-      schema:
-        type: string
     contractId:
       description: It corresponds to an internal id for the customer contract - you will be provided the contractId
       in: path
       name: contractId
+      required: true
+      schema:
+        type: string
+    taskingId:
+      description: The tasking id
+      in: path
+      name: taskingId
       required: true
       schema:
         type: string

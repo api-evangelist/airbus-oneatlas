@@ -78,6 +78,25 @@ components:
         crcCode:
           type: string
       type: object
+    ActivitySmall:
+      properties:
+        _links:
+          properties:
+            history:
+              allOf:
+              - description: See [Get activity stages](#/paths/~1api~1v1~1activities~1{correlationId}~1stages/get)
+              - $ref: '#/components/schemas/Link'
+            monitoring:
+              allOf:
+              - description: See [Get activity](#/paths/~1api~1v1~1activities~1{correlationId}/get)
+              - $ref: '#/components/schemas/Link'
+          readOnly: true
+          type: object
+        message:
+          description: A free text (copy of the last stage message)
+          readOnly: true
+          type: string
+      type: object
     Format:
       properties:
         checksum:
@@ -118,25 +137,6 @@ components:
           - image/jp2
           - image/geotiff
           example: image/jp2
-          type: string
-      type: object
-    ActivitySmall:
-      properties:
-        _links:
-          properties:
-            history:
-              allOf:
-              - description: See [Get activity stages](#/paths/~1api~1v1~1activities~1{correlationId}~1stages/get)
-              - $ref: '#/components/schemas/Link'
-            monitoring:
-              allOf:
-              - description: See [Get activity](#/paths/~1api~1v1~1activities~1{correlationId}/get)
-              - $ref: '#/components/schemas/Link'
-          readOnly: true
-          type: object
-        message:
-          description: A free text (copy of the last stage message)
-          readOnly: true
           type: string
       type: object
     Link:

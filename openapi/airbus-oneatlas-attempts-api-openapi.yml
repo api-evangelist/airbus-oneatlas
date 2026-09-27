@@ -166,20 +166,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Optical:
+    footprint:
+      type: object
       properties:
-        acquisitionMode:
-          enum:
-          - MONO
-          - STEREO
-          - TRISTEREO
+        geometry:
           type: string
-        maxCloudCover:
-          format: float
-          type: number
-        maxIncidenceAngle:
-          format: float
-          type: number
+          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
+        center:
+          type: string
+          example: POINT(23.755357 37.97611)
     NoSensorAvailable:
       type: object
       properties:
@@ -194,6 +189,33 @@ components:
               locator:
                 example: UNKNOWN
                 type: string
+    AcquisitionDate:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
+        endDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition end date
+    Optical:
+      properties:
+        acquisitionMode:
+          enum:
+          - MONO
+          - STEREO
+          - TRISTEREO
+          type: string
+        maxCloudCover:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
     TaskingAttempt:
       type: array
       items:
@@ -220,28 +242,6 @@ components:
                     $ref: '#/components/schemas/segment'
                 available:
                   type: boolean
-    footprint:
-      type: object
-      properties:
-        geometry:
-          type: string
-          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
-        center:
-          type: string
-          example: POINT(23.755357 37.97611)
-    AcquisitionDate:
-      type: object
-      properties:
-        startDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
-        endDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition end date
     segment:
       type: object
       properties:

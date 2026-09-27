@@ -405,7 +405,7 @@ apis:
   - type: ChangeLog
     url: https://api.oneatlas.airbus.com/releases/#worlddem
 - aid: airbus-oneatlas:airbus-oneatlas-elevation-orders-api
-  name: Airbus OneAtlas elevation/orders API
+  name: Airbus OneAtlas Elevation/orders API
   description: >-
     All operations needed to order DEM data:
       * place orders
@@ -426,7 +426,7 @@ apis:
   - type: ChangeLog
     url: https://api.oneatlas.airbus.com/releases/#worlddem
 - aid: airbus-oneatlas:airbus-oneatlas-elevation-price-api
-  name: Airbus OneAtlas elevation/price API
+  name: Airbus OneAtlas Elevation/price API
   description: Endpoint to query to price of an elevation order.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
@@ -477,7 +477,7 @@ apis:
   - type: ChangeLog
     url: https://api.oneatlas.airbus.com/releases/#worlddem
 - aid: airbus-oneatlas:airbus-oneatlas-freemium-api
-  name: Airbus OneAtlas freemium API
+  name: Airbus OneAtlas Freemium API
   description: The freemium API from Airbus OneAtlas — 1 operation(s) for freemium.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
@@ -636,7 +636,7 @@ apis:
   - type: ChangeLog
     url: https://api.oneatlas.airbus.com/releases/#worlddem
 - aid: airbus-oneatlas:airbus-oneatlas-payments-api
-  name: Airbus OneAtlas payments API
+  name: Airbus OneAtlas Payments API
   description: The payments API from Airbus OneAtlas — 1 operation(s) for payments.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
@@ -934,7 +934,7 @@ apis:
   - type: ChangeLog
     url: https://api.oneatlas.airbus.com/releases/#worlddem
 - aid: airbus-oneatlas:airbus-oneatlas-user-api
-  name: Airbus OneAtlas user API
+  name: Airbus OneAtlas User API
   description: Endpoint for generic user information.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
@@ -993,8 +993,6 @@ apis:
   description: The Open Search API from Airbus OneAtlas — 1 operation(s) for open search.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
-  - OpenSearch
-  tags_raw:
   - Open Search
   properties:
   - type: OpenAPI
@@ -1011,9 +1009,11 @@ name: Airbus OneAtlas
 tags:
   - Imagery
   - Satellite
+  - Geospatial
 tags_raw:
   - Imagery
   - Satellites
+  - Geospatial
 type: Index
 deliveryModel:
   model: unknown

@@ -40,13 +40,6 @@ paths:
       operationId: headApiV1ItemsByCatalogItemIdDownload
       x-operation-id-source: derived
 components:
-  schemas:
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
   parameters:
     CorrelationID:
       description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
@@ -63,6 +56,13 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/Id'
+  schemas:
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
 x-tagGroups:
 - name: Authentication
   tags:

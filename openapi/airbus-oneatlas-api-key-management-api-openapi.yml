@@ -81,32 +81,7 @@ paths:
     - description: API server
       url: https://data.api.oneatlas.airbus.com
 components:
-  responses:
-    UnauthorizedError:
-      content:
-        application/json:
-          schema:
-            type: string
-      description: API key is missing or invalid
-      headers:
-        WWW-Authenticate:
-          schema:
-            type: string
   schemas:
-    HumanReadableOperationSummary:
-      properties:
-        message:
-          description: Human readable summary of the operation execution
-          type: string
-      type: object
-    ApiKeyPage:
-      properties:
-        items:
-          description: API Keys
-          items:
-            $ref: '#/components/schemas/ApiKey'
-          type: array
-      type: object
     ApiKey:
       properties:
         date:
@@ -130,6 +105,31 @@ components:
       - date
       - expirationDate
       type: object
+    ApiKeyPage:
+      properties:
+        items:
+          description: API Keys
+          items:
+            $ref: '#/components/schemas/ApiKey'
+          type: array
+      type: object
+    HumanReadableOperationSummary:
+      properties:
+        message:
+          description: Human readable summary of the operation execution
+          type: string
+      type: object
+  responses:
+    UnauthorizedError:
+      content:
+        application/json:
+          schema:
+            type: string
+      description: API key is missing or invalid
+      headers:
+        WWW-Authenticate:
+          schema:
+            type: string
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml

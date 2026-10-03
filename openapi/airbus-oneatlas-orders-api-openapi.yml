@@ -2697,6 +2697,13 @@ paths:
       url: https://data.api.oneatlas.airbus.com
 components:
   parameters:
+    orderId:
+      description: The order id
+      in: path
+      name: orderId
+      required: true
+      schema:
+        type: string
     page:
       description: Page number, defaults to '1'
       in: query
@@ -2711,13 +2718,6 @@ components:
       schema:
         minimum: 1
         type: number
-    orderId:
-      description: The order id
-      in: path
-      name: orderId
-      required: true
-      schema:
-        type: string
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml

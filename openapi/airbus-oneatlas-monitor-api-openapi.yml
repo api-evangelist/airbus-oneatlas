@@ -278,6 +278,14 @@ paths:
       url: https://data.api.oneatlas.airbus.com
 components:
   schemas:
+    ActivityStages:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ActivityStage'
+          type: array
+          uniqueItems: true
+      type: object
     ActivitySearchOptions:
       properties:
         creationDate:
@@ -372,6 +380,70 @@ components:
         userId:
           $ref: '#/components/schemas/Id'
       type: object
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    ActivitySearchResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Activity'
+          type: array
+          uniqueItems: true
+        itemsPerPage:
+          description: Number of requested items per page
+          example: 100
+          format: integer
+          minimum: 1
+          type: number
+        startIndex:
+          description: The index of the first item present in the response
+          example: 0
+          format: integer
+          minimum: 0
+          type: number
+        totalResults:
+          description: The total number of activities
+          example: 582
+          format: integer
+          maximum: 10000
+          minimum: 0
+          type: number
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
     ApiError:
       properties:
         correlationId:
@@ -526,78 +598,6 @@ components:
           - $ref: '#/components/schemas/Id'
           - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
       type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
-    Link:
-      description: Link object
-      properties:
-        href:
-          description: The absolute web link
-          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
-          format: uri
-          type: string
-        method:
-          default: GET
-          description: HTTP verb to distinguish between several possible actions on the same ressource.
-          enum:
-          - GET
-          - POST
-          - PUT
-          - DELETE
-          - HEAD
-          type: string
-        name:
-          description: The name of the link
-          example: Self
-          type: string
-        resourceId:
-          $ref: '#/components/schemas/Id'
-        type:
-          description: The mime-type when deferencing the link
-          example: application/json
-          type: string
-      required:
-      - href
-      type: object
-    ActivityStages:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ActivityStage'
-          type: array
-          uniqueItems: true
-      type: object
-    ActivitySearchResponse:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/Activity'
-          type: array
-          uniqueItems: true
-        itemsPerPage:
-          description: Number of requested items per page
-          example: 100
-          format: integer
-          minimum: 1
-          type: number
-        startIndex:
-          description: The index of the first item present in the response
-          example: 0
-          format: integer
-          minimum: 0
-          type: number
-        totalResults:
-          description: The total number of activities
-          example: 582
-          format: integer
-          maximum: 10000
-          minimum: 0
-          type: number
-      type: object
   parameters:
     ActivityId:
       description: The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request.
@@ -615,12 +615,12 @@ components:
       schema:
         $ref: '#/components/schemas/Id'
   responses:
-    '401':
+    '400':
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
-      description: User is not authenticated
+      description: Bad request
     '500':
       content:
         application/json:
@@ -633,18 +633,18 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Item not found in catalog or resource not found in item
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
     '403':
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: User has not enough rights to consume the item
-    '400':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Bad request
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml

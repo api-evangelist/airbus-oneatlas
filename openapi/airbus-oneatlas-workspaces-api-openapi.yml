@@ -442,6 +442,54 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
     ApiError:
       properties:
         correlationId:
@@ -459,37 +507,6 @@ components:
           example: 1530088354390
           format: integer
           type: number
-      type: object
-    TargetWorkspace:
-      properties:
-        targetWorkspace:
-          $ref: '#/components/schemas/WorkspaceIdentifier'
-        ttl:
-          description: The ttl for the item, in seconds. If not set, the default will be the target workspace ttl.
-          example: 123456
-          format: int
-          minimum: 1
-          type: number
-      type: object
-    GeojsonGeometry:
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#geometry-objects
-      properties:
-        geometry:
-          description: A valid geojson geometry coordinates
-          type: object
-        type:
-          enum:
-          - Polygon
-      type: object
-    WorkspaceSearchOptions:
-      properties:
-        name:
-          description: The name of the workspace
-          example: workspace de Jean-Charles
-          type: string
-        userId:
-          $ref: '#/components/schemas/Id'
       type: object
     CatalogItem:
       properties:
@@ -766,31 +783,13 @@ components:
           readOnly: true
           type: string
       type: object
-    DeleteOperationResult:
+    PrivilegeSearchOptions:
       properties:
-        deleted:
-          description: The number of deleted items
-          format: integer
-          type: number
-        failures:
-          description: The number of item deletion failures
-          format: integer
-          type: number
-        notFound:
-          description: The number of items not found
-          format: integer
-          type: number
-        total:
-          description: The number of processed items
-          format: integer
-          type: number
+        userId:
+          $ref: '#/components/schemas/Id'
+      required:
+      - userId
       type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
     Workspace:
       properties:
         createdAt:
@@ -830,50 +829,59 @@ components:
       required:
       - userId
       type: object
+    WorkspaceSearchOptions:
+      properties:
+        name:
+          description: The name of the workspace
+          example: workspace de Jean-Charles
+          type: string
+        userId:
+          $ref: '#/components/schemas/Id'
+      type: object
+    DeleteOperationResult:
+      properties:
+        deleted:
+          description: The number of deleted items
+          format: integer
+          type: number
+        failures:
+          description: The number of item deletion failures
+          format: integer
+          type: number
+        notFound:
+          description: The number of items not found
+          format: integer
+          type: number
+        total:
+          description: The number of processed items
+          format: integer
+          type: number
+      type: object
+    TargetWorkspace:
+      properties:
+        targetWorkspace:
+          $ref: '#/components/schemas/WorkspaceIdentifier'
+        ttl:
+          description: The ttl for the item, in seconds. If not set, the default will be the target workspace ttl.
+          example: 123456
+          format: int
+          minimum: 1
+          type: number
+      type: object
+    WorkspaceSearchResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Workspace'
+          type: array
+          uniqueItems: true
+      type: object
     PrivilegeSearchResponse:
       properties:
         data:
           items:
             $ref: '#/components/schemas/Privilege'
           type: array
-      type: object
-    Link:
-      description: Link object
-      properties:
-        href:
-          description: The absolute web link
-          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
-          format: uri
-          type: string
-        method:
-          default: GET
-          description: HTTP verb to distinguish between several possible actions on the same ressource.
-          enum:
-          - GET
-          - POST
-          - PUT
-          - DELETE
-          - HEAD
-          type: string
-        name:
-          description: The name of the link
-          example: Self
-          type: string
-        resourceId:
-          $ref: '#/components/schemas/Id'
-        type:
-          description: The mime-type when deferencing the link
-          example: application/json
-          type: string
-      required:
-      - href
-      type: object
-    PrivilegeSearchOptions:
-      properties:
-        userId:
-          $ref: '#/components/schemas/Id'
-      required:
-      - userId
       type: object
     WorkspaceIdentifier:
       oneOf:
@@ -940,21 +948,13 @@ components:
       - filter
       - rights
       type: object
-    WorkspaceSearchResponse:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/Workspace'
-          type: array
-          uniqueItems: true
-      type: object
   responses:
-    '401':
+    '400':
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
-      description: User is not authenticated
+      description: Bad request
     '500':
       content:
         application/json:
@@ -967,27 +967,19 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Item not found in catalog or resource not found in item
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
     '403':
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: User has not enough rights to consume the item
-    '400':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Bad request
   parameters:
-    CatalogItemId:
-      description: Identifier of an IDP catalog item (property `id` of a search result).
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: path
-      name: catalogItemId
-      required: true
-      schema:
-        $ref: '#/components/schemas/Id'
     WorkspaceIdentifier:
       description: The workspace's identifier, that can be either its name or its id
       example: '"d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8" or "MySuperWorkspace"'
@@ -1001,6 +993,14 @@ components:
       example: 799246d8-4172-11e8-b045-e7011a379ec4
       in: header
       name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
+    CatalogItemId:
+      description: Identifier of an IDP catalog item (property `id` of a search result).
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: path
+      name: catalogItemId
+      required: true
       schema:
         $ref: '#/components/schemas/Id'
 x-tagGroups:

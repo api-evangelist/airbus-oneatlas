@@ -642,36 +642,6 @@ paths:
       url: https://data.api.oneatlas.airbus.com
 components:
   schemas:
-    search-deleted-options:
-      type: object
-      properties:
-        deletedDate:
-          description: The date of items deletions
-          oneOf:
-          - type: string
-            format: date-time
-            description: The downloading start date.
-            example: '2017-08-29T00:00:00Z'
-          - type: string
-            format: date-time-range
-            description: "The downloading start dates range.\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
-            example: '[2017-08-29T00:00:00Z'
-        itemsPerPage:
-          type: integer
-          format: int32
-          description: The maximum number of items that the response can contain.
-          default: 50
-          maximum: 500
-          example: 100
-        startIndex:
-          type: integer
-          format: int32
-          description: The number of skipped items
-          default: 0
-          example: 10
-    CustomerReference:
-      type: string
-      description: The customerReference can be used throughout the ordering process to get the status of your order and find the images in your delivery workspace. It is as a consequence better to use 1 customerReference specific for each order. It is also the reference that will appear on your bill (for pay-per-order customers)
     search-options:
       type: object
       properties:
@@ -1166,75 +1136,6 @@ components:
             '
           default: -acquisitionDate,cloudCover
           example: -acquisitionDate,cloudCover
-    GeojsonGeometry:
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#geometry-objects
-      properties:
-        geometry:
-          description: A valid geojson geometry coordinates
-          type: object
-        type:
-          enum:
-          - Polygon
-      type: object
-    deleted-item:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/Id'
-        deletedDate:
-          type: string
-          format: date-time
-          description: 'Date of deletion of the data in the platform and deletion of the metadata item if no other production status is defined.
-
-            '
-          example: '2017-08-29T00:00:00Z'
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
-    ApiError:
-      properties:
-        correlationId:
-          $ref: '#/components/schemas/Id'
-        hint:
-          type: string
-        internalCode:
-          example: 400
-          format: integer
-          type: number
-        message:
-          type: string
-        timestamp:
-          description: Number of seconds since 01/01/1970
-          example: 1530088354390
-          format: integer
-          type: number
-      type: object
-    search-deleted-response:
-      type: object
-      properties:
-        itemsPerPage:
-          type: integer
-          description: Number of requested items per page
-          example: 100
-          minimum: 1
-        startIndex:
-          type: integer
-          description: The index of the first item present in the response
-          example: 0
-          minimum: 0
-        totalResults:
-          type: integer
-          description: The total number of items present in the catalog
-          example: 956126
-          minimum: 0
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/deleted-item'
     search-options-v2:
       allOf:
       - $ref: '#/components/schemas/search-options'
@@ -1251,71 +1152,6 @@ components:
             type: string
             description: The archive identifier
             example: DS_SPOT7_201412071054567_FR1_FR1_FR1_FR1_W003N39_01709
-    WorkspaceIdentifier:
-      oneOf:
-      - $ref: '#/components/schemas/Id'
-      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
-        example: MySuperWorkspace
-        type: string
-    Privilege:
-      example:
-        filter:
-          workspace: public
-        rights:
-          browse: {}
-          wmts: {}
-        userId: de2d5963-a8a5-41b5-9f2a-ed6d478eb3af
-      properties:
-        createdAt:
-          description: The creation time of the created Privilege. This is returned when the Privilege is properly created.
-          format: datetime
-          readOnly: true
-          type: string
-        filter:
-          description: Filters the scope of the privilege (e.g. by workspace, id)
-          properties:
-            id:
-              $ref: '#/components/schemas/Id'
-            workspace:
-              $ref: '#/components/schemas/WorkspaceIdentifier'
-          required:
-          - workspace
-          type: object
-        id:
-          $ref: '#/components/schemas/Id'
-        priority:
-          description: The priority of the privilege
-          example: 10
-          format: int64
-          type: integer
-        rights:
-          description: List of rights granted to a user. For now, only "browse" is supported. Therefore, it will give all the rights for now.
-          properties:
-            browse:
-              description: Indicates that the user is granted the right to browse the target of the privilege
-              type: object
-            buffer:
-              description: Indicates that the user is granted the right to request buffer dissemination
-              type: object
-            download:
-              description: Indicates that the user is granted the right to request download dissemination
-              type: object
-            wms:
-              description: Indicates that the user is granted the right to request WMS disseminatione
-              type: object
-            wmts:
-              description: Indicates that the user is granted the right to request WMTS dissemination
-              type: object
-          type: object
-        subscriptionId:
-          $ref: '#/components/schemas/Id'
-        userId:
-          $ref: '#/components/schemas/Id'
-      required:
-      - userId
-      - filter
-      - rights
-      type: object
     geo-json-polygon:
       title: GeoJSON Polygon
       type: object
@@ -1342,6 +1178,23 @@ components:
           minItems: 4
           items:
             type: number
+    geometry:
+      type: object
+      properties:
+        type:
+          enum:
+          - Polygon
+          type: string
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: array
+              items:
+                format: float
+                type: number
+              maxItems: 2
     geo-json-multilinestring:
       title: GeoJSON MultiLineString
       type: object
@@ -1368,37 +1221,87 @@ components:
           minItems: 4
           items:
             type: number
-    SearchResponse:
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
       properties:
-        error:
-          example: false
-          type: boolean
-        features:
-          items:
-            $ref: '#/components/schemas/CatalogItem'
-          type: array
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
+    search-deleted-response:
+      type: object
+      properties:
         itemsPerPage:
+          type: integer
           description: Number of requested items per page
           example: 100
           minimum: 1
-          type: integer
         startIndex:
+          type: integer
           description: The index of the first item present in the response
           example: 0
           minimum: 0
-          type: integer
         totalResults:
+          type: integer
           description: The total number of items present in the catalog
           example: 956126
-          maximum: 10000
           minimum: 0
-          type: integer
-        type:
-          example: FeatureCollection
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/deleted-item'
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
           type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
       type: object
-    geo-json-multipolygon:
-      title: GeoJSON MultiPolygon
+    get-domain-response:
+      type: object
+      properties:
+        warning:
+          description: Warning message when the result does not contain all possible values
+          type: string
+      additionalProperties:
+        description: Possible values for the queried property
+        type: array
+        items:
+          type: string
+      example:
+        warning: Result is not exhaustive
+        processingLevel:
+        - ORTHO
+        - SENSOR
+    deleted-item:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        deletedDate:
+          type: string
+          format: date-time
+          description: 'Date of deletion of the data in the platform and deletion of the metadata item if no other production status is defined.
+
+            '
+          example: '2017-08-29T00:00:00Z'
+    geo-json-point:
+      title: GeoJSON Point
       type: object
       required:
       - type
@@ -1407,24 +1310,26 @@ components:
         type:
           type: string
           enum:
-          - MultiPolygon
+          - Point
         coordinates:
           type: array
+          minItems: 2
           items:
-            type: array
-            items:
-              type: array
-              minItems: 4
-              items:
-                type: array
-                minItems: 2
-                items:
-                  type: number
+            type: number
         bbox:
           type: array
           minItems: 4
           items:
             type: number
+    workspace:
+      type: string
+      description: Workspace value will be provided to you. It depends on the set-up on your contract.
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
     CatalogItem:
       properties:
         _links:
@@ -1700,8 +1605,94 @@ components:
           readOnly: true
           type: string
       type: object
-    geo-json-point:
-      title: GeoJSON Point
+    search-deleted-options:
+      type: object
+      properties:
+        deletedDate:
+          description: The date of items deletions
+          oneOf:
+          - type: string
+            format: date-time
+            description: The downloading start date.
+            example: '2017-08-29T00:00:00Z'
+          - type: string
+            format: date-time-range
+            description: "The downloading start dates range.\nRanges are expressed as follow:\n  - Comma to separate start value from end value\n  - Start value or end value can be omitted (it means values are infinite)\n  - Start with `[` means *start value is included*\n  - Start with `]` means *start value is excluded*\n  - End with `[` means *end value is included*\n  - End with `]` means *end value is excluded*\n"
+            example: '[2017-08-29T00:00:00Z'
+        itemsPerPage:
+          type: integer
+          format: int32
+          description: The maximum number of items that the response can contain.
+          default: 50
+          maximum: 500
+          example: 100
+        startIndex:
+          type: integer
+          format: int32
+          description: The number of skipped items
+          default: 0
+          example: 10
+    Privilege:
+      example:
+        filter:
+          workspace: public
+        rights:
+          browse: {}
+          wmts: {}
+        userId: de2d5963-a8a5-41b5-9f2a-ed6d478eb3af
+      properties:
+        createdAt:
+          description: The creation time of the created Privilege. This is returned when the Privilege is properly created.
+          format: datetime
+          readOnly: true
+          type: string
+        filter:
+          description: Filters the scope of the privilege (e.g. by workspace, id)
+          properties:
+            id:
+              $ref: '#/components/schemas/Id'
+            workspace:
+              $ref: '#/components/schemas/WorkspaceIdentifier'
+          required:
+          - workspace
+          type: object
+        id:
+          $ref: '#/components/schemas/Id'
+        priority:
+          description: The priority of the privilege
+          example: 10
+          format: int64
+          type: integer
+        rights:
+          description: List of rights granted to a user. For now, only "browse" is supported. Therefore, it will give all the rights for now.
+          properties:
+            browse:
+              description: Indicates that the user is granted the right to browse the target of the privilege
+              type: object
+            buffer:
+              description: Indicates that the user is granted the right to request buffer dissemination
+              type: object
+            download:
+              description: Indicates that the user is granted the right to request download dissemination
+              type: object
+            wms:
+              description: Indicates that the user is granted the right to request WMS disseminatione
+              type: object
+            wmts:
+              description: Indicates that the user is granted the right to request WMTS dissemination
+              type: object
+          type: object
+        subscriptionId:
+          $ref: '#/components/schemas/Id'
+        userId:
+          $ref: '#/components/schemas/Id'
+      required:
+      - userId
+      - filter
+      - rights
+      type: object
+    geo-json-multipolygon:
+      title: GeoJSON MultiPolygon
       type: object
       required:
       - type
@@ -1710,12 +1701,19 @@ components:
         type:
           type: string
           enum:
-          - Point
+          - MultiPolygon
         coordinates:
           type: array
-          minItems: 2
           items:
-            type: number
+            type: array
+            items:
+              type: array
+              minItems: 4
+              items:
+                type: array
+                minItems: 2
+                items:
+                  type: number
         bbox:
           type: array
           minItems: 4
@@ -1752,42 +1750,6 @@ components:
       required:
       - href
       type: object
-    geometry:
-      type: object
-      properties:
-        type:
-          enum:
-          - Polygon
-          type: string
-        coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: array
-              items:
-                format: float
-                type: number
-              maxItems: 2
-    workspace:
-      type: string
-      description: Workspace value will be provided to you. It depends on the set-up on your contract.
-    get-domain-response:
-      type: object
-      properties:
-        warning:
-          description: Warning message when the result does not contain all possible values
-          type: string
-      additionalProperties:
-        description: Possible values for the queried property
-        type: array
-        items:
-          type: string
-      example:
-        warning: Result is not exhaustive
-        processingLevel:
-        - ORTHO
-        - SENSOR
     AcquisitionDate:
       type: object
       properties:
@@ -1801,6 +1763,35 @@ components:
           format: datetime
           pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
           description: Defines the acquisition end date
+    SearchResponse:
+      properties:
+        error:
+          example: false
+          type: boolean
+        features:
+          items:
+            $ref: '#/components/schemas/CatalogItem'
+          type: array
+        itemsPerPage:
+          description: Number of requested items per page
+          example: 100
+          minimum: 1
+          type: integer
+        startIndex:
+          description: The index of the first item present in the response
+          example: 0
+          minimum: 0
+          type: integer
+        totalResults:
+          description: The total number of items present in the catalog
+          example: 956126
+          maximum: 10000
+          minimum: 0
+          type: integer
+        type:
+          example: FeatureCollection
+          type: string
+      type: object
     geo-json-linestring:
       title: GeoJSON LineString
       type: object
@@ -1825,6 +1816,15 @@ components:
           minItems: 4
           items:
             type: number
+    CustomerReference:
+      type: string
+      description: The customerReference can be used throughout the ordering process to get the status of your order and find the images in your delivery workspace. It is as a consequence better to use 1 customerReference specific for each order. It is also the reference that will appear on your bill (for pay-per-order customers)
+    WorkspaceIdentifier:
+      oneOf:
+      - $ref: '#/components/schemas/Id'
+      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
+        example: MySuperWorkspace
+        type: string
   parameters:
     property-name:
       in: path
@@ -1854,12 +1854,6 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Internal server error
-    '401':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User is not authenticated
     '403':
       content:
         application/json:
@@ -1872,6 +1866,12 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Bad request
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml

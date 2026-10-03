@@ -91,6 +91,12 @@ paths:
       url: https://data.api.oneatlas.airbus.com
 components:
   schemas:
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
     ApiError:
       properties:
         correlationId:
@@ -109,13 +115,13 @@ components:
           format: integer
           type: number
       type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
   responses:
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
     '500':
       content:
         application/json:
@@ -128,12 +134,6 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: User has not enough rights to consume the item
-    '400':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Bad request
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml

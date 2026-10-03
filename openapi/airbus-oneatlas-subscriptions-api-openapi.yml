@@ -1219,38 +1219,10 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    contractId:
-      description: It corresponds to an internal id for the customer contract - you will be provided the contractId
-      in: path
-      name: contractId
-      required: true
-      schema:
-        type: string
     subscriptionId:
       description: The subscription id
       in: path
       name: subscriptionId
-      required: true
-      schema:
-        type: string
-    page:
-      description: Page number, defaults to '1'
-      in: query
-      name: page
-      schema:
-        minimum: 1
-        type: number
-    paymentId:
-      description: The payment id
-      in: path
-      name: paymentId
-      required: true
-      schema:
-        type: string
-    orderId:
-      description: The order id
-      in: path
-      name: orderId
       required: true
       schema:
         type: string
@@ -1261,6 +1233,34 @@ components:
       schema:
         minimum: 1
         type: number
+    orderId:
+      description: The order id
+      in: path
+      name: orderId
+      required: true
+      schema:
+        type: string
+    page:
+      description: Page number, defaults to '1'
+      in: query
+      name: page
+      schema:
+        minimum: 1
+        type: number
+    contractId:
+      description: It corresponds to an internal id for the customer contract - you will be provided the contractId
+      in: path
+      name: contractId
+      required: true
+      schema:
+        type: string
+    paymentId:
+      description: The payment id
+      in: path
+      name: paymentId
+      required: true
+      schema:
+        type: string
 x-tagGroups:
 - name: Authentication
   tags:

@@ -124,30 +124,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Optical:
-      properties:
-        acquisitionMode:
-          enum:
-          - MONO
-          - STEREO
-          - TRISTEREO
-          type: string
-        maxCloudCover:
-          format: float
-          type: number
-        maxIncidenceAngle:
-          format: float
-          type: number
-    progTypeNames:
-      items:
-        enum:
-        - ONEDAY
-        - ONEPLAN
-        - ONENOWATTEMPTS
-        - ONENOWWEATHER
-        default: ONEPLAN
-        type: string
-      type: array
     Feasibility:
       type: object
       properties:
@@ -204,6 +180,30 @@ components:
           format: datetime
           pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
           description: Defines the acquisition end date
+    progTypeNames:
+      items:
+        enum:
+        - ONEDAY
+        - ONEPLAN
+        - ONENOWATTEMPTS
+        - ONENOWWEATHER
+        default: ONEPLAN
+        type: string
+      type: array
+    Optical:
+      properties:
+        acquisitionMode:
+          enum:
+          - MONO
+          - STEREO
+          - TRISTEREO
+          type: string
+        maxCloudCover:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
 x-tagGroups:
 - name: Authentication
   tags:

@@ -43,36 +43,7 @@ paths:
       operationId: postApiV1ItemsByCatalogItemIdFormat
       x-operation-id-source: derived
 components:
-  parameters:
-    CorrelationID:
-      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Correlation-Id
-      schema:
-        $ref: '#/components/schemas/Id'
-    CatalogItemId:
-      description: Identifier of an IDP catalog item (property `id` of a search result).
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: path
-      name: catalogItemId
-      required: true
-      schema:
-        $ref: '#/components/schemas/Id'
-    Priority:
-      description: Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Priority
-      schema:
-        $ref: '#/components/schemas/Id'
   schemas:
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
     ActivitySmall:
       properties:
         _links:
@@ -90,51 +61,6 @@ components:
         message:
           description: A free text (copy of the last stage message)
           readOnly: true
-          type: string
-      type: object
-    Link:
-      description: Link object
-      properties:
-        href:
-          description: The absolute web link
-          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
-          format: uri
-          type: string
-        method:
-          default: GET
-          description: HTTP verb to distinguish between several possible actions on the same ressource.
-          enum:
-          - GET
-          - POST
-          - PUT
-          - DELETE
-          - HEAD
-          type: string
-        name:
-          description: The name of the link
-          example: Self
-          type: string
-        resourceId:
-          $ref: '#/components/schemas/Id'
-        type:
-          description: The mime-type when deferencing the link
-          example: application/json
-          type: string
-      required:
-      - href
-      type: object
-    Md5ChecksumParameters:
-      properties:
-        crcCode:
-          type: string
-      type: object
-    DimapV2PackagingParameters:
-      properties:
-        imageFormat:
-          enum:
-          - image/jp2
-          - image/geotiff
-          example: image/jp2
           type: string
       type: object
     Format:
@@ -170,6 +96,80 @@ components:
               type: string
           type: object
       type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    Md5ChecksumParameters:
+      properties:
+        crcCode:
+          type: string
+      type: object
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    DimapV2PackagingParameters:
+      properties:
+        imageFormat:
+          enum:
+          - image/jp2
+          - image/geotiff
+          example: image/jp2
+          type: string
+      type: object
+  parameters:
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
+    CatalogItemId:
+      description: Identifier of an IDP catalog item (property `id` of a search result).
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: path
+      name: catalogItemId
+      required: true
+      schema:
+        $ref: '#/components/schemas/Id'
+    Priority:
+      description: Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Priority
+      schema:
+        $ref: '#/components/schemas/Id'
 x-tagGroups:
 - name: Authentication
   tags:

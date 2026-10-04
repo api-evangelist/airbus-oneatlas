@@ -1219,10 +1219,10 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    subscriptionId:
-      description: The subscription id
+    orderId:
+      description: The order id
       in: path
-      name: subscriptionId
+      name: orderId
       required: true
       schema:
         type: string
@@ -1233,10 +1233,10 @@ components:
       schema:
         minimum: 1
         type: number
-    orderId:
-      description: The order id
+    paymentId:
+      description: The payment id
       in: path
-      name: orderId
+      name: paymentId
       required: true
       schema:
         type: string
@@ -1254,10 +1254,10 @@ components:
       required: true
       schema:
         type: string
-    paymentId:
-      description: The payment id
+    subscriptionId:
+      description: The subscription id
       in: path
-      name: paymentId
+      name: subscriptionId
       required: true
       schema:
         type: string

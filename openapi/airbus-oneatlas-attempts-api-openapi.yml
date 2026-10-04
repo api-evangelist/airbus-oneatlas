@@ -166,6 +166,82 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    AcquisitionDate:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
+        endDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition end date
+    footprint:
+      type: object
+      properties:
+        geometry:
+          type: string
+          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
+        center:
+          type: string
+          example: POINT(23.755357 37.97611)
+    NoSensorAvailable:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                example: ERR_NO_SENSOR_AVAILABLE
+                type: string
+              locator:
+                example: UNKNOWN
+                type: string
+    TaskingAttempt:
+      type: array
+      items:
+        type: object
+        properties:
+          mission:
+            enum:
+            - PLEIADESNEO
+            type: string
+          progTypes:
+            type: array
+            items:
+              type: object
+              properties:
+                name:
+                  type: string
+                mission:
+                  enum:
+                  - PLEIADESNEO
+                  type: string
+                segments:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/segment'
+                available:
+                  type: boolean
+    Optical:
+      properties:
+        acquisitionMode:
+          enum:
+          - MONO
+          - STEREO
+          - TRISTEREO
+          type: string
+        maxCloudCover:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
     segment:
       type: object
       properties:
@@ -197,82 +273,6 @@ components:
         maxIncidenceAngle:
           format: float
           type: number
-    NoSensorAvailable:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                example: ERR_NO_SENSOR_AVAILABLE
-                type: string
-              locator:
-                example: UNKNOWN
-                type: string
-    Optical:
-      properties:
-        acquisitionMode:
-          enum:
-          - MONO
-          - STEREO
-          - TRISTEREO
-          type: string
-        maxCloudCover:
-          format: float
-          type: number
-        maxIncidenceAngle:
-          format: float
-          type: number
-    AcquisitionDate:
-      type: object
-      properties:
-        startDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
-        endDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition end date
-    TaskingAttempt:
-      type: array
-      items:
-        type: object
-        properties:
-          mission:
-            enum:
-            - PLEIADESNEO
-            type: string
-          progTypes:
-            type: array
-            items:
-              type: object
-              properties:
-                name:
-                  type: string
-                mission:
-                  enum:
-                  - PLEIADESNEO
-                  type: string
-                segments:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/segment'
-                available:
-                  type: boolean
-    footprint:
-      type: object
-      properties:
-        geometry:
-          type: string
-          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
-        center:
-          type: string
-          example: POINT(23.755357 37.97611)
 x-tagGroups:
 - name: Authentication
   tags:

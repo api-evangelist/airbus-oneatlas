@@ -41,19 +41,19 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    CorrelationID:
-      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Correlation-Id
-      schema:
-        $ref: '#/components/schemas/Id'
     CatalogItemId:
       description: Identifier of an IDP catalog item (property `id` of a search result).
       example: 799246d8-4172-11e8-b045-e7011a379ec4
       in: path
       name: catalogItemId
       required: true
+      schema:
+        $ref: '#/components/schemas/Id'
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
       schema:
         $ref: '#/components/schemas/Id'
   schemas:

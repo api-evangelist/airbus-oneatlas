@@ -199,28 +199,12 @@ paths:
       url: https://data.api.oneatlas.airbus.com
 components:
   schemas:
-    Delivery:
-      properties:
-        catalogItemsId:
-          description: The list of catalog items to deliver
-          items:
-            $ref: '#/components/schemas/Id'
-          minItems: 1
-          type: array
-        workspace:
-          allOf:
-          - $ref: '#/components/schemas/WorkspaceIdentifier'
-          - default: public
-          default: public
-      required:
-      - catalogItemsId
-      type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
+    WorkspaceIdentifier:
+      oneOf:
+      - $ref: '#/components/schemas/Id'
+      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
+        example: MySuperWorkspace
+        type: string
     ActivitySmall:
       properties:
         _links:
@@ -239,86 +223,6 @@ components:
           description: A free text (copy of the last stage message)
           readOnly: true
           type: string
-      type: object
-    Link:
-      description: Link object
-      properties:
-        href:
-          description: The absolute web link
-          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
-          format: uri
-          type: string
-        method:
-          default: GET
-          description: HTTP verb to distinguish between several possible actions on the same ressource.
-          enum:
-          - GET
-          - POST
-          - PUT
-          - DELETE
-          - HEAD
-          type: string
-        name:
-          description: The name of the link
-          example: Self
-          type: string
-        resourceId:
-          $ref: '#/components/schemas/Id'
-        type:
-          description: The mime-type when deferencing the link
-          example: application/json
-          type: string
-      required:
-      - href
-      type: object
-    ApiError:
-      properties:
-        correlationId:
-          $ref: '#/components/schemas/Id'
-        hint:
-          type: string
-        internalCode:
-          example: 400
-          format: integer
-          type: number
-        message:
-          type: string
-        timestamp:
-          description: Number of seconds since 01/01/1970
-          example: 1530088354390
-          format: integer
-          type: number
-      type: object
-    ActivityStage:
-      properties:
-        date:
-          default: now
-          description: Date of the stage
-          example: '2018-06-12T11:24:31.254Z'
-          format: datetime
-          type: string
-        message:
-          type: string
-        name:
-          description: Name of the completed stage
-          type: string
-        status:
-          description: Status of the activity
-          enum:
-          - QUEUED
-          - RUNNING
-          - ON_HOLD
-          - CANCELED
-          - WAITING_CANCEL
-          - SUCCEEDED
-          - FAILED
-          - ARCHIVED
-          type: string
-        userId:
-          allOf:
-          - readOnly: true
-          - $ref: '#/components/schemas/Id'
-          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
       type: object
     Activity:
       properties:
@@ -425,18 +329,152 @@ components:
           - $ref: '#/components/schemas/Id'
           - description: The id of the user that is the origin of the activity (extracted from the X-Forwarded-User request header)
       type: object
-    WorkspaceIdentifier:
-      oneOf:
-      - $ref: '#/components/schemas/Id'
-      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
-        example: MySuperWorkspace
-        type: string
+    Delivery:
+      properties:
+        catalogItemsId:
+          description: The list of catalog items to deliver
+          items:
+            $ref: '#/components/schemas/Id'
+          minItems: 1
+          type: array
+        workspace:
+          allOf:
+          - $ref: '#/components/schemas/WorkspaceIdentifier'
+          - default: public
+          default: public
+      required:
+      - catalogItemsId
+      type: object
+    ActivityStage:
+      properties:
+        date:
+          default: now
+          description: Date of the stage
+          example: '2018-06-12T11:24:31.254Z'
+          format: datetime
+          type: string
+        message:
+          type: string
+        name:
+          description: Name of the completed stage
+          type: string
+        status:
+          description: Status of the activity
+          enum:
+          - QUEUED
+          - RUNNING
+          - ON_HOLD
+          - CANCELED
+          - WAITING_CANCEL
+          - SUCCEEDED
+          - FAILED
+          - ARCHIVED
+          type: string
+        userId:
+          allOf:
+          - readOnly: true
+          - $ref: '#/components/schemas/Id'
+          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+  responses:
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
+    '404':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Item not found in catalog or resource not found in item
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
   parameters:
     CorrelationID:
       description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
       example: 799246d8-4172-11e8-b045-e7011a379ec4
       in: header
       name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
+    Priority:
+      description: Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Priority
       schema:
         $ref: '#/components/schemas/Id'
     ActivityId:
@@ -447,44 +485,6 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/Id'
-    Priority:
-      description: Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Priority
-      schema:
-        $ref: '#/components/schemas/Id'
-  responses:
-    '404':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Item not found in catalog or resource not found in item
-    '400':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Bad request
-    '401':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User is not authenticated
-    '500':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Internal server error
-    '403':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User has not enough rights to consume the item
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml

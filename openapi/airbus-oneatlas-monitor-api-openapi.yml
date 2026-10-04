@@ -278,14 +278,6 @@ paths:
       url: https://data.api.oneatlas.airbus.com
 components:
   schemas:
-    ActivityStages:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ActivityStage'
-          type: array
-          uniqueItems: true
-      type: object
     ActivitySearchOptions:
       properties:
         creationDate:
@@ -380,36 +372,60 @@ components:
         userId:
           $ref: '#/components/schemas/Id'
       type: object
-    Link:
-      description: Link object
+    ActivityStage:
       properties:
-        href:
-          description: The absolute web link
-          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
-          format: uri
+        date:
+          default: now
+          description: Date of the stage
+          example: '2018-06-12T11:24:31.254Z'
+          format: datetime
           type: string
-        method:
-          default: GET
-          description: HTTP verb to distinguish between several possible actions on the same ressource.
-          enum:
-          - GET
-          - POST
-          - PUT
-          - DELETE
-          - HEAD
+        message:
           type: string
         name:
-          description: The name of the link
-          example: Self
+          description: Name of the completed stage
           type: string
-        resourceId:
+        status:
+          description: Status of the activity
+          enum:
+          - QUEUED
+          - RUNNING
+          - ON_HOLD
+          - CANCELED
+          - WAITING_CANCEL
+          - SUCCEEDED
+          - FAILED
+          - ARCHIVED
+          type: string
+        userId:
+          allOf:
+          - readOnly: true
+          - $ref: '#/components/schemas/Id'
+          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    ApiError:
+      properties:
+        correlationId:
           $ref: '#/components/schemas/Id'
-        type:
-          description: The mime-type when deferencing the link
-          example: application/json
+        hint:
           type: string
-      required:
-      - href
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
       type: object
     ActivitySearchResponse:
       properties:
@@ -436,30 +452,6 @@ components:
           format: integer
           maximum: 10000
           minimum: 0
-          type: number
-      type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
-    ApiError:
-      properties:
-        correlationId:
-          $ref: '#/components/schemas/Id'
-        hint:
-          type: string
-        internalCode:
-          example: 400
-          format: integer
-          type: number
-        message:
-          type: string
-        timestamp:
-          description: Number of seconds since 01/01/1970
-          example: 1530088354390
-          format: integer
           type: number
       type: object
     Activity:
@@ -567,36 +559,44 @@ components:
           - $ref: '#/components/schemas/Id'
           - description: The id of the user that is the origin of the activity (extracted from the X-Forwarded-User request header)
       type: object
-    ActivityStage:
+    ActivityStages:
       properties:
-        date:
-          default: now
-          description: Date of the stage
-          example: '2018-06-12T11:24:31.254Z'
-          format: datetime
+        data:
+          items:
+            $ref: '#/components/schemas/ActivityStage'
+          type: array
+          uniqueItems: true
+      type: object
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
           type: string
-        message:
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
           type: string
         name:
-          description: Name of the completed stage
+          description: The name of the link
+          example: Self
           type: string
-        status:
-          description: Status of the activity
-          enum:
-          - QUEUED
-          - RUNNING
-          - ON_HOLD
-          - CANCELED
-          - WAITING_CANCEL
-          - SUCCEEDED
-          - FAILED
-          - ARCHIVED
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
           type: string
-        userId:
-          allOf:
-          - readOnly: true
-          - $ref: '#/components/schemas/Id'
-          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
+      required:
+      - href
       type: object
   parameters:
     ActivityId:
@@ -615,36 +615,36 @@ components:
       schema:
         $ref: '#/components/schemas/Id'
   responses:
-    '400':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Bad request
-    '500':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Internal server error
     '404':
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Item not found in catalog or resource not found in item
-    '401':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User is not authenticated
     '403':
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: User has not enough rights to consume the item
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml

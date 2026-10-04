@@ -82,14 +82,6 @@ paths:
       url: https://data.api.oneatlas.airbus.com
 components:
   schemas:
-    ApiKeyPage:
-      properties:
-        items:
-          description: API Keys
-          items:
-            $ref: '#/components/schemas/ApiKey'
-          type: array
-      type: object
     HumanReadableOperationSummary:
       properties:
         message:
@@ -118,6 +110,14 @@ components:
       - description
       - date
       - expirationDate
+      type: object
+    ApiKeyPage:
+      properties:
+        items:
+          description: API Keys
+          items:
+            $ref: '#/components/schemas/ApiKey'
+          type: array
       type: object
   responses:
     UnauthorizedError:

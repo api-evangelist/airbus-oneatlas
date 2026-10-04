@@ -55,13 +55,26 @@ paths:
       operationId: postApiV1Convert
       x-operation-id-source: derived
 components:
+  responses:
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
   schemas:
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
     GeojsonGeometry:
       externalDocs:
         url: http://geojson.org/geojson-spec.html#geometry-objects
@@ -73,9 +86,34 @@ components:
           enum:
           - Polygon
       type: object
+    kml:
+      description: A geometry in kml format
+      format: binary
+    kmz:
+      description: A geometry in kmz format. Is a zip containing kml file and associated files.
+      format: binary
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    json:
+      description: A json representing a file in a Google Cloud Storage bucket. The appropriate content type must be set in Google Cloud Storage
+      example:
+        gcsUri: gs://bucket-name/path/to/file.kmz
+      format: json
     geoshape:
       description: A geometry in shape format. Is a zip containing a .shp files and associated files.
       format: binary
+    multipart:
+      description: 'First part: the equivalent vector file in geojson format.
+
+
+        Second part: metadata about the vector file.
+
+        '
+      format: multipart/related
     ApiError:
       properties:
         correlationId:
@@ -94,44 +132,6 @@ components:
           format: integer
           type: number
       type: object
-    kmz:
-      description: A geometry in kmz format. Is a zip containing kml file and associated files.
-      format: binary
-    multipart:
-      description: 'First part: the equivalent vector file in geojson format.
-
-
-        Second part: metadata about the vector file.
-
-        '
-      format: multipart/related
-    kml:
-      description: A geometry in kml format
-      format: binary
-    json:
-      description: A json representing a file in a Google Cloud Storage bucket. The appropriate content type must be set in Google Cloud Storage
-      example:
-        gcsUri: gs://bucket-name/path/to/file.kmz
-      format: json
-  responses:
-    '400':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Bad request
-    '401':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User is not authenticated
-    '500':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Internal server error
 x-tagGroups:
 - name: Authentication
   tags:

@@ -121,6 +121,58 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    processHALLinkCatalog:
+      allOf:
+      - properties:
+          description:
+            allOf:
+            - description: See [Describe process](#/paths/~1api~1v1~1processes~1{processId}/post)
+            - $ref: '#/components/schemas/Link'
+        type: object
+      - $ref: '#/components/schemas/processHALLinkCommon'
+    ProcessesResponse:
+      description: response to a get processes call.
+      properties:
+        _embedded:
+          properties:
+            processes:
+              items:
+                $ref: '#/components/schemas/processHALCatalog'
+              type: array
+          type: object
+        _links:
+          properties:
+            self:
+              $ref: '#/components/schemas/Link'
+          type: object
+      required:
+      - _links
+      - _embedded
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
     ActivitySmall:
       properties:
         _links:
@@ -140,65 +192,6 @@ components:
           readOnly: true
           type: string
       type: object
-    Link:
-      description: Link object
-      properties:
-        href:
-          description: The absolute web link
-          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
-          format: uri
-          type: string
-        method:
-          default: GET
-          description: HTTP verb to distinguish between several possible actions on the same ressource.
-          enum:
-          - GET
-          - POST
-          - PUT
-          - DELETE
-          - HEAD
-          type: string
-        name:
-          description: The name of the link
-          example: Self
-          type: string
-        resourceId:
-          $ref: '#/components/schemas/Id'
-        type:
-          description: The mime-type when deferencing the link
-          example: application/json
-          type: string
-      required:
-      - href
-      type: object
-    DescribeProcessLinks:
-      allOf:
-      - $ref: '#/components/schemas/processHALLinkCommon'
-      - properties:
-          self:
-            allOf:
-            - $ref: '#/components/schemas/Link'
-            - description: The resource that return this process description
-        type: object
-      - properties:
-          execution:
-            allOf:
-            - description: See [Describe process](#/paths/~1api~1v1~1processes~1{processId}/post)
-            - $ref: '#/components/schemas/Link'
-        type: object
-    processHALCatalog:
-      allOf:
-      - $ref: '#/components/schemas/process'
-      - properties:
-          _links:
-            $ref: '#/components/schemas/processHALLinkCatalog'
-        type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
     processHALLinkCommon:
       description: the HAL target uri for a process
       properties:
@@ -215,6 +208,21 @@ components:
           - $ref: '#/components/schemas/Link'
           - description: The target resource to retrieve the license of this process
       type: object
+    DescribeProcessLinks:
+      allOf:
+      - $ref: '#/components/schemas/processHALLinkCommon'
+      - properties:
+          self:
+            allOf:
+            - $ref: '#/components/schemas/Link'
+            - description: The resource that return this process description
+        type: object
+      - properties:
+          execution:
+            allOf:
+            - description: See [Describe process](#/paths/~1api~1v1~1processes~1{processId}/post)
+            - $ref: '#/components/schemas/Link'
+        type: object
     process:
       description: a JSON Object that conforms to the InfoObject as specified in the Describe Process Specification v1.0
       properties:
@@ -233,47 +241,6 @@ components:
         version:
           example: 1
           type: string
-      type: object
-    ApiError:
-      properties:
-        correlationId:
-          $ref: '#/components/schemas/Id'
-        hint:
-          type: string
-        internalCode:
-          example: 400
-          format: integer
-          type: number
-        message:
-          type: string
-        timestamp:
-          description: Number of seconds since 01/01/1970
-          example: 1530088354390
-          format: integer
-          type: number
-      type: object
-    processHALLinkCatalog:
-      allOf:
-      - properties:
-          description:
-            allOf:
-            - description: See [Describe process](#/paths/~1api~1v1~1processes~1{processId}/post)
-            - $ref: '#/components/schemas/Link'
-        type: object
-      - $ref: '#/components/schemas/processHALLinkCommon'
-    DescribeProcessInput:
-      description: A JSON Object that conforms to the InputObject as specified in the Describe Process Specification v1.0. It describes the input schema needed in the job creation payload.
-      properties:
-        definitions:
-          type: object
-        properties:
-          type: object
-        required:
-          items:
-            type: string
-          type: array
-      required:
-      - properties
       type: object
     DescribeProcessResponse:
       description: a JSON Object that conforms to the Describe Process Specification v1.0
@@ -504,25 +471,89 @@ components:
       - input
       - links
       type: object
-    ProcessesResponse:
-      description: response to a get processes call.
+    processHALCatalog:
+      allOf:
+      - $ref: '#/components/schemas/process'
+      - properties:
+          _links:
+            $ref: '#/components/schemas/processHALLinkCatalog'
+        type: object
+    Link:
+      description: Link object
       properties:
-        _embedded:
-          properties:
-            processes:
-              items:
-                $ref: '#/components/schemas/processHALCatalog'
-              type: array
-          type: object
-        _links:
-          properties:
-            self:
-              $ref: '#/components/schemas/Link'
-          type: object
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
       required:
-      - _links
-      - _embedded
+      - href
       type: object
+    DescribeProcessInput:
+      description: A JSON Object that conforms to the InputObject as specified in the Describe Process Specification v1.0. It describes the input schema needed in the job creation payload.
+      properties:
+        definitions:
+          type: object
+        properties:
+          type: object
+        required:
+          items:
+            type: string
+          type: array
+      required:
+      - properties
+      type: object
+  responses:
+    '404':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Item not found in catalog or resource not found in item
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
   parameters:
     acceptLanguageParameterHeader:
       description: the natural language that is preferred as a response to the request
@@ -554,37 +585,6 @@ components:
       name: X-Ads-Priority
       schema:
         $ref: '#/components/schemas/Id'
-  responses:
-    '400':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Bad request
-    '500':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Internal server error
-    '404':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Item not found in catalog or resource not found in item
-    '401':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User is not authenticated
-    '403':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User has not enough rights to consume the item
 x-tagGroups:
 - name: Authentication
   tags:

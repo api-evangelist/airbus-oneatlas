@@ -993,6 +993,8 @@ apis:
   description: The Open Search API from Airbus OneAtlas — 1 operation(s) for open search.
   humanURL: https://api.oneatlas.airbus.com/api-catalog-v2/oad-living-library/overview/index.html
   tags:
+  - OpenSearch
+  tags_raw:
   - Open Search
   properties:
   - type: OpenAPI

@@ -1042,6 +1042,8 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/airbus-oneatlas.png
 access: 3rd-Party
 common:
+  - url: https://www.airbus.com/en/rss.xml
+    type: BlogRSS
   - type: CapabilityMap
     url: capabilities/airbus-oneatlas-capability-edges.yml
     name: Airbus OneAtlas Business Capability Map
@@ -1570,7 +1572,7 @@ common:
   - type: Examples
     url: examples/oneatlas-workspace-search-response-example.json
 created: '2025-02-06'
-modified: '2026-05-19'
+modified: '2026-10-06'
 position: Consuming
 description: >-
   Airbus OneAtlas is the commercial geospatial platform from Airbus Defence and Space, providing developer APIs for

@@ -1042,6 +1042,12 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/airbus-oneatlas.png
 access: 3rd-Party
 common:
+  - type: Plans
+    url: plans/airbus-oneatlas-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/airbus-oneatlas-rate-limits.yml
+  - type: FinOps
+    url: finops/airbus-oneatlas-finops.yml
   - url: https://www.airbus.com/en/rss.xml
     type: BlogRSS
   - type: CapabilityMap

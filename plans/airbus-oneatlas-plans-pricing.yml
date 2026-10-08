@@ -111,3 +111,46 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - metered
+  - subscription
+  units:
+  - negotiated
+  - transaction
+  plans:
+  - name: Living Library Subscription
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - negotiated
+    periods:
+    - month
+  - name: Pay-Per-Order (Archive)
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - transaction
+    periods:
+    - per-use
+  - name: Tasking
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - other
+    periods:
+    - per-use
+  - name: Guest / Trial Access
+    access: freemium
+    model: free
+    model_how: derived
+    units:
+    - other
+    periods:
+    - per-use

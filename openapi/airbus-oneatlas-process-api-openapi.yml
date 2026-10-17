@@ -121,6 +121,66 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    DescribeProcessInput:
+      description: A JSON Object that conforms to the InputObject as specified in the Describe Process Specification v1.0. It describes the input schema needed in the job creation payload.
+      properties:
+        definitions:
+          type: object
+        properties:
+          type: object
+        required:
+          items:
+            type: string
+          type: array
+      required:
+      - properties
+      type: object
+    DescribeProcessLinks:
+      allOf:
+      - $ref: '#/components/schemas/processHALLinkCommon'
+      - properties:
+          self:
+            allOf:
+            - $ref: '#/components/schemas/Link'
+            - description: The resource that return this process description
+        type: object
+      - properties:
+          execution:
+            allOf:
+            - description: See [Describe process](#/paths/~1api~1v1~1processes~1{processId}/post)
+            - $ref: '#/components/schemas/Link'
+        type: object
     processHALLinkCatalog:
       allOf:
       - properties:
@@ -130,24 +190,50 @@ components:
             - $ref: '#/components/schemas/Link'
         type: object
       - $ref: '#/components/schemas/processHALLinkCommon'
-    ProcessesResponse:
-      description: response to a get processes call.
+    ActivitySmall:
       properties:
-        _embedded:
-          properties:
-            processes:
-              items:
-                $ref: '#/components/schemas/processHALCatalog'
-              type: array
-          type: object
         _links:
           properties:
-            self:
-              $ref: '#/components/schemas/Link'
+            history:
+              allOf:
+              - description: See [Get activity stages](#/paths/~1api~1v1~1activities~1{correlationId}~1stages/get)
+              - $ref: '#/components/schemas/Link'
+            monitoring:
+              allOf:
+              - description: See [Get activity](#/paths/~1api~1v1~1activities~1{correlationId}/get)
+              - $ref: '#/components/schemas/Link'
+          readOnly: true
           type: object
-      required:
-      - _links
-      - _embedded
+        message:
+          description: A free text (copy of the last stage message)
+          readOnly: true
+          type: string
+      type: object
+    processHALCatalog:
+      allOf:
+      - $ref: '#/components/schemas/process'
+      - properties:
+          _links:
+            $ref: '#/components/schemas/processHALLinkCatalog'
+        type: object
+    process:
+      description: a JSON Object that conforms to the InfoObject as specified in the Describe Process Specification v1.0
+      properties:
+        description:
+          example: process ortho rectification of a pack
+          type: string
+        family:
+          example: Ortho
+          type: string
+        id:
+          example: com.airbus.massive.ortho
+          type: string
+        label:
+          example: MassiveOrtho
+          type: string
+        version:
+          example: 1
+          type: string
       type: object
     Id:
       description: Unique Id of an element. Follows UUID v4 standard.
@@ -173,74 +259,24 @@ components:
           format: integer
           type: number
       type: object
-    ActivitySmall:
+    ProcessesResponse:
+      description: response to a get processes call.
       properties:
+        _embedded:
+          properties:
+            processes:
+              items:
+                $ref: '#/components/schemas/processHALCatalog'
+              type: array
+          type: object
         _links:
           properties:
-            history:
-              allOf:
-              - description: See [Get activity stages](#/paths/~1api~1v1~1activities~1{correlationId}~1stages/get)
-              - $ref: '#/components/schemas/Link'
-            monitoring:
-              allOf:
-              - description: See [Get activity](#/paths/~1api~1v1~1activities~1{correlationId}/get)
-              - $ref: '#/components/schemas/Link'
-          readOnly: true
+            self:
+              $ref: '#/components/schemas/Link'
           type: object
-        message:
-          description: A free text (copy of the last stage message)
-          readOnly: true
-          type: string
-      type: object
-    processHALLinkCommon:
-      description: the HAL target uri for a process
-      properties:
-        documentation:
-          allOf:
-          - $ref: '#/components/schemas/Link'
-          - description: The target resource to retrieve the documentation of this process
-        icon:
-          allOf:
-          - $ref: '#/components/schemas/Link'
-          - description: The target resource to retrieve the icon of this process
-        license:
-          allOf:
-          - $ref: '#/components/schemas/Link'
-          - description: The target resource to retrieve the license of this process
-      type: object
-    DescribeProcessLinks:
-      allOf:
-      - $ref: '#/components/schemas/processHALLinkCommon'
-      - properties:
-          self:
-            allOf:
-            - $ref: '#/components/schemas/Link'
-            - description: The resource that return this process description
-        type: object
-      - properties:
-          execution:
-            allOf:
-            - description: See [Describe process](#/paths/~1api~1v1~1processes~1{processId}/post)
-            - $ref: '#/components/schemas/Link'
-        type: object
-    process:
-      description: a JSON Object that conforms to the InfoObject as specified in the Describe Process Specification v1.0
-      properties:
-        description:
-          example: process ortho rectification of a pack
-          type: string
-        family:
-          example: Ortho
-          type: string
-        id:
-          example: com.airbus.massive.ortho
-          type: string
-        label:
-          example: MassiveOrtho
-          type: string
-        version:
-          example: 1
-          type: string
+      required:
+      - _links
+      - _embedded
       type: object
     DescribeProcessResponse:
       description: a JSON Object that conforms to the Describe Process Specification v1.0
@@ -471,58 +507,53 @@ components:
       - input
       - links
       type: object
-    processHALCatalog:
-      allOf:
-      - $ref: '#/components/schemas/process'
-      - properties:
-          _links:
-            $ref: '#/components/schemas/processHALLinkCatalog'
-        type: object
-    Link:
-      description: Link object
+    processHALLinkCommon:
+      description: the HAL target uri for a process
       properties:
-        href:
-          description: The absolute web link
-          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
-          format: uri
-          type: string
-        method:
-          default: GET
-          description: HTTP verb to distinguish between several possible actions on the same ressource.
-          enum:
-          - GET
-          - POST
-          - PUT
-          - DELETE
-          - HEAD
-          type: string
-        name:
-          description: The name of the link
-          example: Self
-          type: string
-        resourceId:
-          $ref: '#/components/schemas/Id'
-        type:
-          description: The mime-type when deferencing the link
-          example: application/json
-          type: string
-      required:
-      - href
+        documentation:
+          allOf:
+          - $ref: '#/components/schemas/Link'
+          - description: The target resource to retrieve the documentation of this process
+        icon:
+          allOf:
+          - $ref: '#/components/schemas/Link'
+          - description: The target resource to retrieve the icon of this process
+        license:
+          allOf:
+          - $ref: '#/components/schemas/Link'
+          - description: The target resource to retrieve the license of this process
       type: object
-    DescribeProcessInput:
-      description: A JSON Object that conforms to the InputObject as specified in the Describe Process Specification v1.0. It describes the input schema needed in the job creation payload.
-      properties:
-        definitions:
-          type: object
-        properties:
-          type: object
-        required:
-          items:
-            type: string
-          type: array
-      required:
-      - properties
-      type: object
+  parameters:
+    ProcessID:
+      description: The identifier of the process
+      example: com.airbus.massive.ortho
+      in: path
+      name: processID
+      required: true
+      schema:
+        type: string
+    Priority:
+      description: Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Priority
+      schema:
+        $ref: '#/components/schemas/Id'
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
+    acceptLanguageParameterHeader:
+      description: the natural language that is preferred as a response to the request
+      in: header
+      name: Accept-Language
+      required: false
+      schema:
+        type: string
+        x-example: en-US
   responses:
     '404':
       content:
@@ -530,18 +561,6 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Item not found in catalog or resource not found in item
-    '403':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User has not enough rights to consume the item
-    '500':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Internal server error
     '400':
       content:
         application/json:
@@ -554,37 +573,18 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: User is not authenticated
-  parameters:
-    acceptLanguageParameterHeader:
-      description: the natural language that is preferred as a response to the request
-      in: header
-      name: Accept-Language
-      required: false
-      schema:
-        type: string
-        x-example: en-US
-    ProcessID:
-      description: The identifier of the process
-      example: com.airbus.massive.ortho
-      in: path
-      name: processID
-      required: true
-      schema:
-        type: string
-    CorrelationID:
-      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Correlation-Id
-      schema:
-        $ref: '#/components/schemas/Id'
-    Priority:
-      description: Priority is a header to sort activities. The highest priority is 1, the lowest is 9. If not specified, priority is set to 5.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Priority
-      schema:
-        $ref: '#/components/schemas/Id'
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
 x-tagGroups:
 - name: Authentication
   tags:

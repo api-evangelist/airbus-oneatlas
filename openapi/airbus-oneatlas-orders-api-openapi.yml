@@ -2697,13 +2697,6 @@ paths:
       url: https://data.api.oneatlas.airbus.com
 components:
   parameters:
-    page:
-      description: Page number, defaults to '1'
-      in: query
-      name: page
-      schema:
-        minimum: 1
-        type: number
     orderId:
       description: The order id
       in: path
@@ -2715,6 +2708,13 @@ components:
       description: Amount of items per page, defaults to '10'
       in: query
       name: itemsPerPage
+      schema:
+        minimum: 1
+        type: number
+    page:
+      description: Page number, defaults to '1'
+      in: query
+      name: page
       schema:
         minimum: 1
         type: number

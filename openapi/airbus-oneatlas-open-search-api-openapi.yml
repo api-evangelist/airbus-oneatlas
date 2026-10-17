@@ -35,6 +35,89 @@ paths:
       url: https://data.api.oneatlas.airbus.com
 components:
   schemas:
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    WorkspaceIdentifier:
+      oneOf:
+      - $ref: '#/components/schemas/Id'
+      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
+        example: MySuperWorkspace
+        type: string
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    SearchResponse:
+      properties:
+        error:
+          example: false
+          type: boolean
+        features:
+          items:
+            $ref: '#/components/schemas/CatalogItem'
+          type: array
+        itemsPerPage:
+          description: Number of requested items per page
+          example: 100
+          minimum: 1
+          type: integer
+        startIndex:
+          description: The index of the first item present in the response
+          example: 0
+          minimum: 0
+          type: integer
+        totalResults:
+          description: The total number of items present in the catalog
+          example: 956126
+          maximum: 10000
+          minimum: 0
+          type: integer
+        type:
+          example: FeatureCollection
+          type: string
+      type: object
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
     Privilege:
       example:
         filter:
@@ -93,41 +176,6 @@ components:
       - userId
       - filter
       - rights
-      type: object
-    WorkspaceIdentifier:
-      oneOf:
-      - $ref: '#/components/schemas/Id'
-      - description: The name of the workspace, must be seen as a human readable technique id. Can not be formatted like an id. Must be unique in the platform. Auto-generated if not provided at the creation of the workspace.
-        example: MySuperWorkspace
-        type: string
-    SearchResponse:
-      properties:
-        error:
-          example: false
-          type: boolean
-        features:
-          items:
-            $ref: '#/components/schemas/CatalogItem'
-          type: array
-        itemsPerPage:
-          description: Number of requested items per page
-          example: 100
-          minimum: 1
-          type: integer
-        startIndex:
-          description: The index of the first item present in the response
-          example: 0
-          minimum: 0
-          type: integer
-        totalResults:
-          description: The total number of items present in the catalog
-          example: 956126
-          maximum: 10000
-          minimum: 0
-          type: integer
-        type:
-          example: FeatureCollection
-          type: string
       type: object
     CatalogItem:
       properties:
@@ -403,54 +451,6 @@ components:
           example: Feature
           readOnly: true
           type: string
-      type: object
-    GeojsonGeometry:
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#geometry-objects
-      properties:
-        geometry:
-          description: A valid geojson geometry coordinates
-          type: object
-        type:
-          enum:
-          - Polygon
-      type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
-    Link:
-      description: Link object
-      properties:
-        href:
-          description: The absolute web link
-          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
-          format: uri
-          type: string
-        method:
-          default: GET
-          description: HTTP verb to distinguish between several possible actions on the same ressource.
-          enum:
-          - GET
-          - POST
-          - PUT
-          - DELETE
-          - HEAD
-          type: string
-        name:
-          description: The name of the link
-          example: Self
-          type: string
-        resourceId:
-          $ref: '#/components/schemas/Id'
-        type:
-          description: The mime-type when deferencing the link
-          example: application/json
-          type: string
-      required:
-      - href
       type: object
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml

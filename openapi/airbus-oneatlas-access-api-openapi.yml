@@ -452,21 +452,216 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    step:
-      description: Resolution (step) of the image in the output referential. Unit must respect the srs definition.
+    Link:
+      description: Link object
       properties:
-        unit:
-          description: Unit of the step
-          enum:
-          - degree
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
           type: string
-        x:
-          type: number
-        y:
-          type: number
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
       required:
-      - x
-      - y
+      - href
+      type: object
+    HistogramResponse:
+      properties:
+        histograms:
+          items:
+            properties:
+              band:
+                example: B0
+                type: string
+              max:
+                example: 9613
+                format: integer
+                minimum: 1
+                type: number
+              mean:
+                example: 785.7152806485769
+                format: float
+                minimum: 1
+                type: number
+              min:
+                example: 1
+                format: integer
+                minimum: 1
+                type: number
+              stdev:
+                example: 364.8379459959255
+                format: float
+                minimum: 1
+                type: number
+              step:
+                example: 1
+                format: integer
+                minimum: 1
+                type: number
+              values:
+                example:
+                - 3
+                - 0
+                - 0
+                - 6
+                items:
+                  format: integer
+                  minimum: 0
+                  type: number
+                minItems: 1
+                type: array
+            type: object
+          minItems: 1
+          type: array
+      type: object
+    srsExpression:
+      properties:
+        axes:
+          example:
+          - abbreviation: Lat
+            direction: north
+          - abbreviation: Lon
+            direction: east
+          items:
+            properties:
+              abbreviation:
+                type: string
+              direction:
+                type: string
+            type: object
+          type: array
+          uniqueItems: true
+        names:
+          items:
+            $ref: '#/components/schemas/srs'
+          type: array
+          uniqueItems: true
+      type: object
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
+    AssociatedDataLink:
+      properties:
+        content:
+          example: GML MASK
+          type: string
+        mimeType:
+          example: application/gml+xml
+          type: string
+        path:
+          example: MASKS/ROI_SPOT6_P_201602011017034_SEN_2551123101_MSK.GML
+          type: string
+        title:
+          example: LUT Mask
+          type: string
+        url:
+          description: See [Get associated data](#/paths/~1api~1v1~1items~1{catalogItemId}~1images~1{imageId}~1associatedData~1{associatedDataType}~1data/get)
+          example: https://view.foundation.api.oneatlas.com/api/v1/items/f494e323-e132-4aac-aad2-5123176a6800/images/5a277ab0-5315-4042-a676-267152d71e17/associatedData/LUT/data
+          format: url
+          type: string
+      type: object
+    bbox:
+      properties:
+        lr:
+          $ref: '#/components/schemas/point'
+        srs:
+          allOf:
+          - $ref: '#/components/schemas/srs'
+          - description: Referential for the points of this bbox.
+            properties:
+              type:
+                enum:
+                - urn
+                - epsg
+                - image
+            type: object
+        ul:
+          $ref: '#/components/schemas/point'
+      required:
+      - srs
+      - ul
+      - lr
+      type: object
+    band:
+      properties:
+        actualBitDepth:
+          description: cf ABPP de NITF
+          example: 8
+          format: integer
+          minimum: 0
+          type: number
+        colorInterpretation:
+          description: possible values one of `RED`, `GREEN`, `BLUE`, `GRAY`, `ALPHA` or a custom string (ex `NIR`)
+          example: GRAY
+          type: string
+        compression:
+          description: TO BE DISCUSSED (raw, deflate,...)
+          example: raw
+          type: string
+        description:
+          example: band panchromatic
+          type: string
+        isMask:
+          example: false
+          type: boolean
+        name:
+          description: "The name of the **mask bands** are normalized as:\n  - `CLD` for Cloud Cotation\n  - `COR` for Correlation\n  - `DET` for Detector Quality\n  - `EXO` for Exogenous mask\n  - `MER` for Dem merging mask\n  - `QTE` for Technical Index\n  - `REG` for Regulation mask\n  - `ROI` for Area of interest\n  - `SLT` for Saturation Cotation\n  - `SNW` for Snow Cotation\n  - `VAL` for Validated area mask\n  - `VIS` for Visibility / occlusion\n  - `VQA` for Visual control\n  - `WAT` for Water mask\n\n\nMask is a binary data always encoded in 8 bits with only 2 values:\n  - 0 value means exclusion\n  - 1 value means inclusion\n\n\nThere is no **spectral band** name convention, it depends of the sensor. By example:\n  - `B2`, `B1`, `B0`, `B3`, `P` for SPOT and PLEIADES\n  - `B03`, `B01`, `B02`, `B04`, `B05`, `B06`, `B07`, `B08`, `B8A`, `B09`, `B10`, `B11`, `B12` for Sentinel2\n  - `P` for Ref3D Ortho\n"
+          example: PAN
+          type: string
+        noDataValue:
+          description: the value of a pixel that does not correspond to a real data
+          example: 0
+          format: float
+          type: number
+        offset:
+          description: offset used in the buffer for this band
+          example: 0
+          format: integer
+          minimum: 0
+          type: number
+        pixelType:
+          description: the type of pixel of the buffer
+          enum:
+          - Byte
+          - UInt16
+          - Int16
+          - UInt32
+          - Int32
+          - Float32
+          - Float64
+          type: string
+        size:
+          description: size of this band in the buffer
+          example: 25
+          format: integer
+          minimum: 0
+          type: number
       type: object
     srs:
       description: Referential
@@ -483,6 +678,19 @@ components:
       required:
       - type
       - value
+      type: object
+    point:
+      description: A geo point.
+      properties:
+        x:
+          description: x coordinate
+          type: number
+        y:
+          description: y coordinate
+          type: number
+      required:
+      - x
+      - y
       type: object
     imageSize:
       description: size (in pixels) of the result
@@ -504,6 +712,139 @@ components:
       required:
       - columns
       - lines
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
+    bufferDescription:
+      properties:
+        bands:
+          default: all bands
+          description: Ordered list of requested bands. Bands can be retrieve with `metadata` link given in `_links` property of a feature.
+          items:
+            example: R
+            type: string
+          type: array
+        bbox:
+          $ref: '#/components/schemas/bbox'
+        step:
+          $ref: '#/components/schemas/step'
+        target-model:
+          description: specification of the output buffer
+          properties:
+            crs:
+              default: Bbox srs
+              description: Output crs.
+              example: epsg:4326
+              type: string
+            size:
+              $ref: '#/components/schemas/imageSize'
+          type: object
+      required:
+      - bbox
+      - step
+      - target-model
+      type: object
+    ApiError:
+      properties:
+        correlationId:
+          $ref: '#/components/schemas/Id'
+        hint:
+          type: string
+        internalCode:
+          example: 400
+          format: integer
+          type: number
+        message:
+          type: string
+        timestamp:
+          description: Number of seconds since 01/01/1970
+          example: 1530088354390
+          format: integer
+          type: number
+      type: object
+    responseBufferInformation:
+      description: GeoJSon feature describing a buffer
+      properties:
+        geometry:
+          $ref: '#/components/schemas/GeojsonGeometry'
+        properties:
+          properties:
+            aoi:
+              $ref: '#/components/schemas/bbox'
+            bands:
+              items:
+                $ref: '#/components/schemas/band'
+              minItems: 1
+              type: array
+            format:
+              description: the MIME type of the buffer
+              enum:
+              - image/jp2
+              - image/jpeg
+              - image/png
+              - application/octet-stream
+              type: string
+            height:
+              description: height of the buffer
+              example: 500
+              format: integer
+              maximum: 5000
+              minimum: 1
+              type: number
+            imageID:
+              $ref: '#/components/schemas/Id'
+            interleave:
+              description: the interleave type of the buffer
+              enum:
+              - band
+              - line
+              - pixel
+              type: string
+            nbBands:
+              description: the number of bands of the buffer
+              example: 1
+              format: integer
+              minimum: 1
+              type: number
+            noDataValue:
+              description: the value of a pixel that does not correspond to a real data
+              format: integer
+              minimum: 0
+              type: number
+            pixelType:
+              description: the type of pixel of the buffer
+              example: UInt16
+              type: string
+            processingLevel:
+              example: processingLevel
+              type: string
+            radiometricProcessing:
+              example: reflectance
+              type: string
+            roi:
+              $ref: '#/components/schemas/bbox'
+            spectralProcessing:
+              example: P
+              type: string
+            step:
+              $ref: '#/components/schemas/step'
+            width:
+              description: width of the buffer
+              example: 500
+              format: integer
+              maximum: 5000
+              minimum: 1
+              type: number
+          type: object
+        type:
+          description: the type of the GeoJSon object
+          enum:
+          - Feature
+          type: string
       type: object
     Metadata:
       description: Metadata of a product.
@@ -722,364 +1063,30 @@ components:
           example: Feature
           type: string
       type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
-    ApiError:
+    step:
+      description: Resolution (step) of the image in the output referential. Unit must respect the srs definition.
       properties:
-        correlationId:
-          $ref: '#/components/schemas/Id'
-        hint:
-          type: string
-        internalCode:
-          example: 400
-          format: integer
-          type: number
-        message:
-          type: string
-        timestamp:
-          description: Number of seconds since 01/01/1970
-          example: 1530088354390
-          format: integer
-          type: number
-      type: object
-    band:
-      properties:
-        actualBitDepth:
-          description: cf ABPP de NITF
-          example: 8
-          format: integer
-          minimum: 0
-          type: number
-        colorInterpretation:
-          description: possible values one of `RED`, `GREEN`, `BLUE`, `GRAY`, `ALPHA` or a custom string (ex `NIR`)
-          example: GRAY
-          type: string
-        compression:
-          description: TO BE DISCUSSED (raw, deflate,...)
-          example: raw
-          type: string
-        description:
-          example: band panchromatic
-          type: string
-        isMask:
-          example: false
-          type: boolean
-        name:
-          description: "The name of the **mask bands** are normalized as:\n  - `CLD` for Cloud Cotation\n  - `COR` for Correlation\n  - `DET` for Detector Quality\n  - `EXO` for Exogenous mask\n  - `MER` for Dem merging mask\n  - `QTE` for Technical Index\n  - `REG` for Regulation mask\n  - `ROI` for Area of interest\n  - `SLT` for Saturation Cotation\n  - `SNW` for Snow Cotation\n  - `VAL` for Validated area mask\n  - `VIS` for Visibility / occlusion\n  - `VQA` for Visual control\n  - `WAT` for Water mask\n\n\nMask is a binary data always encoded in 8 bits with only 2 values:\n  - 0 value means exclusion\n  - 1 value means inclusion\n\n\nThere is no **spectral band** name convention, it depends of the sensor. By example:\n  - `B2`, `B1`, `B0`, `B3`, `P` for SPOT and PLEIADES\n  - `B03`, `B01`, `B02`, `B04`, `B05`, `B06`, `B07`, `B08`, `B8A`, `B09`, `B10`, `B11`, `B12` for Sentinel2\n  - `P` for Ref3D Ortho\n"
-          example: PAN
-          type: string
-        noDataValue:
-          description: the value of a pixel that does not correspond to a real data
-          example: 0
-          format: float
-          type: number
-        offset:
-          description: offset used in the buffer for this band
-          example: 0
-          format: integer
-          minimum: 0
-          type: number
-        pixelType:
-          description: the type of pixel of the buffer
+        unit:
+          description: Unit of the step
           enum:
-          - Byte
-          - UInt16
-          - Int16
-          - UInt32
-          - Int32
-          - Float32
-          - Float64
+          - degree
           type: string
-        size:
-          description: size of this band in the buffer
-          example: 25
-          format: integer
-          minimum: 0
-          type: number
-      type: object
-    GeojsonGeometry:
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#geometry-objects
-      properties:
-        geometry:
-          description: A valid geojson geometry coordinates
-          type: object
-        type:
-          enum:
-          - Polygon
-      type: object
-    bbox:
-      properties:
-        lr:
-          $ref: '#/components/schemas/point'
-        srs:
-          allOf:
-          - $ref: '#/components/schemas/srs'
-          - description: Referential for the points of this bbox.
-            properties:
-              type:
-                enum:
-                - urn
-                - epsg
-                - image
-            type: object
-        ul:
-          $ref: '#/components/schemas/point'
-      required:
-      - srs
-      - ul
-      - lr
-      type: object
-    HistogramResponse:
-      properties:
-        histograms:
-          items:
-            properties:
-              band:
-                example: B0
-                type: string
-              max:
-                example: 9613
-                format: integer
-                minimum: 1
-                type: number
-              mean:
-                example: 785.7152806485769
-                format: float
-                minimum: 1
-                type: number
-              min:
-                example: 1
-                format: integer
-                minimum: 1
-                type: number
-              stdev:
-                example: 364.8379459959255
-                format: float
-                minimum: 1
-                type: number
-              step:
-                example: 1
-                format: integer
-                minimum: 1
-                type: number
-              values:
-                example:
-                - 3
-                - 0
-                - 0
-                - 6
-                items:
-                  format: integer
-                  minimum: 0
-                  type: number
-                minItems: 1
-                type: array
-            type: object
-          minItems: 1
-          type: array
-      type: object
-    srsExpression:
-      properties:
-        axes:
-          example:
-          - abbreviation: Lat
-            direction: north
-          - abbreviation: Lon
-            direction: east
-          items:
-            properties:
-              abbreviation:
-                type: string
-              direction:
-                type: string
-            type: object
-          type: array
-          uniqueItems: true
-        names:
-          items:
-            $ref: '#/components/schemas/srs'
-          type: array
-          uniqueItems: true
-      type: object
-    bufferDescription:
-      properties:
-        bands:
-          default: all bands
-          description: Ordered list of requested bands. Bands can be retrieve with `metadata` link given in `_links` property of a feature.
-          items:
-            example: R
-            type: string
-          type: array
-        bbox:
-          $ref: '#/components/schemas/bbox'
-        step:
-          $ref: '#/components/schemas/step'
-        target-model:
-          description: specification of the output buffer
-          properties:
-            crs:
-              default: Bbox srs
-              description: Output crs.
-              example: epsg:4326
-              type: string
-            size:
-              $ref: '#/components/schemas/imageSize'
-          type: object
-      required:
-      - bbox
-      - step
-      - target-model
-      type: object
-    responseBufferInformation:
-      description: GeoJSon feature describing a buffer
-      properties:
-        geometry:
-          $ref: '#/components/schemas/GeojsonGeometry'
-        properties:
-          properties:
-            aoi:
-              $ref: '#/components/schemas/bbox'
-            bands:
-              items:
-                $ref: '#/components/schemas/band'
-              minItems: 1
-              type: array
-            format:
-              description: the MIME type of the buffer
-              enum:
-              - image/jp2
-              - image/jpeg
-              - image/png
-              - application/octet-stream
-              type: string
-            height:
-              description: height of the buffer
-              example: 500
-              format: integer
-              maximum: 5000
-              minimum: 1
-              type: number
-            imageID:
-              $ref: '#/components/schemas/Id'
-            interleave:
-              description: the interleave type of the buffer
-              enum:
-              - band
-              - line
-              - pixel
-              type: string
-            nbBands:
-              description: the number of bands of the buffer
-              example: 1
-              format: integer
-              minimum: 1
-              type: number
-            noDataValue:
-              description: the value of a pixel that does not correspond to a real data
-              format: integer
-              minimum: 0
-              type: number
-            pixelType:
-              description: the type of pixel of the buffer
-              example: UInt16
-              type: string
-            processingLevel:
-              example: processingLevel
-              type: string
-            radiometricProcessing:
-              example: reflectance
-              type: string
-            roi:
-              $ref: '#/components/schemas/bbox'
-            spectralProcessing:
-              example: P
-              type: string
-            step:
-              $ref: '#/components/schemas/step'
-            width:
-              description: width of the buffer
-              example: 500
-              format: integer
-              maximum: 5000
-              minimum: 1
-              type: number
-          type: object
-        type:
-          description: the type of the GeoJSon object
-          enum:
-          - Feature
-          type: string
-      type: object
-    point:
-      description: A geo point.
-      properties:
         x:
-          description: x coordinate
           type: number
         y:
-          description: y coordinate
           type: number
       required:
       - x
       - y
       type: object
-    AssociatedDataLink:
-      properties:
-        content:
-          example: GML MASK
-          type: string
-        mimeType:
-          example: application/gml+xml
-          type: string
-        path:
-          example: MASKS/ROI_SPOT6_P_201602011017034_SEN_2551123101_MSK.GML
-          type: string
-        title:
-          example: LUT Mask
-          type: string
-        url:
-          description: See [Get associated data](#/paths/~1api~1v1~1items~1{catalogItemId}~1images~1{imageId}~1associatedData~1{associatedDataType}~1data/get)
-          example: https://view.foundation.api.oneatlas.com/api/v1/items/f494e323-e132-4aac-aad2-5123176a6800/images/5a277ab0-5315-4042-a676-267152d71e17/associatedData/LUT/data
-          format: url
-          type: string
-      type: object
-    Link:
-      description: Link object
-      properties:
-        href:
-          description: The absolute web link
-          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
-          format: uri
-          type: string
-        method:
-          default: GET
-          description: HTTP verb to distinguish between several possible actions on the same ressource.
-          enum:
-          - GET
-          - POST
-          - PUT
-          - DELETE
-          - HEAD
-          type: string
-        name:
-          description: The name of the link
-          example: Self
-          type: string
-        resourceId:
-          $ref: '#/components/schemas/Id'
-        type:
-          description: The mime-type when deferencing the link
-          example: application/json
-          type: string
-      required:
-      - href
-      type: object
   parameters:
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
     CatalogItemId:
       description: Identifier of an IDP catalog item (property `id` of a search result).
       example: 799246d8-4172-11e8-b045-e7011a379ec4
@@ -1088,6 +1095,17 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/Id'
+    AssociatedDataType:
+      description: The type of the associated data
+      example: imageDimap
+      in: path
+      name: associatedDataType
+      required: true
+      schema:
+        enum:
+        - imageDimap
+        - LUT
+        type: string
     ResponseBufferFormatParameterHeader:
       description: "The encoding of the output image buffer.\n\nAccepted values are:\n - 'image/jp2' for jpeg2000\n - 'image/jpeg' for jpeg\n - 'image/png' for png\n - 'application/octet-stream' for raw\n"
       in: header
@@ -1102,24 +1120,6 @@ components:
         - application/octet-stream
         example: image/jpeg
         type: string
-    AssociatedDataType:
-      description: The type of the associated data
-      example: imageDimap
-      in: path
-      name: associatedDataType
-      required: true
-      schema:
-        enum:
-        - imageDimap
-        - LUT
-        type: string
-    CorrelationID:
-      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Correlation-Id
-      schema:
-        $ref: '#/components/schemas/Id'
     ImageId:
       description: The identifier of the requested image
       example: 543246d8-2a72-11e8-b045-e7011a379452
@@ -1135,18 +1135,6 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Item not found in catalog or resource not found in item
-    '403':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User has not enough rights to consume the item
-    '500':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Internal server error
     '400':
       content:
         application/json:
@@ -1159,6 +1147,18 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: User is not authenticated
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
 x-tagGroups:
 - name: Authentication
   tags:

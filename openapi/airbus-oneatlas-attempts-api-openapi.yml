@@ -166,19 +166,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    AcquisitionDate:
-      type: object
-      properties:
-        startDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
-        endDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition end date
     footprint:
       type: object
       properties:
@@ -188,6 +175,51 @@ components:
         center:
           type: string
           example: POINT(23.755357 37.97611)
+    segment:
+      type: object
+      properties:
+        id:
+          type: string
+        footprint:
+          $ref: '#/components/schemas/footprint'
+        instrumentMode:
+          type: string
+        orderDeadline:
+          format: datetime
+          type: string
+        extendedAngle:
+          type: boolean
+        acquisitionStartDate:
+          format: datetime
+          type: string
+        acquisitionEndDate:
+          format: datetime
+          type: string
+        incidenceAngle:
+          format: float
+          type: number
+        segmentKey:
+          type: string
+        acrossTrackIncidenceAngle:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
+    Optical:
+      properties:
+        acquisitionMode:
+          enum:
+          - MONO
+          - STEREO
+          - TRISTEREO
+          type: string
+        maxCloudCover:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
     NoSensorAvailable:
       type: object
       properties:
@@ -228,51 +260,19 @@ components:
                     $ref: '#/components/schemas/segment'
                 available:
                   type: boolean
-    Optical:
-      properties:
-        acquisitionMode:
-          enum:
-          - MONO
-          - STEREO
-          - TRISTEREO
-          type: string
-        maxCloudCover:
-          format: float
-          type: number
-        maxIncidenceAngle:
-          format: float
-          type: number
-    segment:
+    AcquisitionDate:
       type: object
       properties:
-        id:
+        startDate:
           type: string
-        footprint:
-          $ref: '#/components/schemas/footprint'
-        instrumentMode:
-          type: string
-        orderDeadline:
           format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
+        endDate:
           type: string
-        extendedAngle:
-          type: boolean
-        acquisitionStartDate:
           format: datetime
-          type: string
-        acquisitionEndDate:
-          format: datetime
-          type: string
-        incidenceAngle:
-          format: float
-          type: number
-        segmentKey:
-          type: string
-        acrossTrackIncidenceAngle:
-          format: float
-          type: number
-        maxIncidenceAngle:
-          format: float
-          type: number
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition end date
 x-tagGroups:
 - name: Authentication
   tags:

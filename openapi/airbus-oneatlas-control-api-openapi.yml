@@ -65,12 +65,24 @@ paths:
       url: https://data.api.oneatlas.airbus.com
 components:
   responses:
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
     '500':
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Internal server error
+    '403':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User has not enough rights to consume the item
     '400':
       content:
         application/json:
@@ -83,35 +95,75 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
       description: Item not found in catalog or resource not found in item
-    '403':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User has not enough rights to consume the item
-    '401':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User is not authenticated
-  parameters:
-    CorrelationID:
-      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: header
-      name: X-Ads-Correlation-Id
-      schema:
-        $ref: '#/components/schemas/Id'
-    ActivityId:
-      description: The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request.
-      example: 799246d8-4172-11e8-b045-e7011a379ec4
-      in: path
-      name: activityId
-      required: true
-      schema:
-        $ref: '#/components/schemas/Id'
   schemas:
+    Link:
+      description: Link object
+      properties:
+        href:
+          description: The absolute web link
+          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
+          format: uri
+          type: string
+        method:
+          default: GET
+          description: HTTP verb to distinguish between several possible actions on the same ressource.
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - HEAD
+          type: string
+        name:
+          description: The name of the link
+          example: Self
+          type: string
+        resourceId:
+          $ref: '#/components/schemas/Id'
+        type:
+          description: The mime-type when deferencing the link
+          example: application/json
+          type: string
+      required:
+      - href
+      type: object
+    ActivityStage:
+      properties:
+        date:
+          default: now
+          description: Date of the stage
+          example: '2018-06-12T11:24:31.254Z'
+          format: datetime
+          type: string
+        message:
+          type: string
+        name:
+          description: Name of the completed stage
+          type: string
+        status:
+          description: Status of the activity
+          enum:
+          - QUEUED
+          - RUNNING
+          - ON_HOLD
+          - CANCELED
+          - WAITING_CANCEL
+          - SUCCEEDED
+          - FAILED
+          - ARCHIVED
+          type: string
+        userId:
+          allOf:
+          - readOnly: true
+          - $ref: '#/components/schemas/Id'
+          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
+      type: object
+    Id:
+      description: Unique Id of an element. Follows UUID v4 standard.
+      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
+      format: uuid
+      readOnly: true
+      type: string
     Activity:
       properties:
         _links:
@@ -217,74 +269,6 @@ components:
           - $ref: '#/components/schemas/Id'
           - description: The id of the user that is the origin of the activity (extracted from the X-Forwarded-User request header)
       type: object
-    ActivityStage:
-      properties:
-        date:
-          default: now
-          description: Date of the stage
-          example: '2018-06-12T11:24:31.254Z'
-          format: datetime
-          type: string
-        message:
-          type: string
-        name:
-          description: Name of the completed stage
-          type: string
-        status:
-          description: Status of the activity
-          enum:
-          - QUEUED
-          - RUNNING
-          - ON_HOLD
-          - CANCELED
-          - WAITING_CANCEL
-          - SUCCEEDED
-          - FAILED
-          - ARCHIVED
-          type: string
-        userId:
-          allOf:
-          - readOnly: true
-          - $ref: '#/components/schemas/Id'
-          - description: If exists, the id of the user that is the origin of the activity stage (extracted from the X-Forwarded-User request header)
-      type: object
-    Id:
-      description: Unique Id of an element. Follows UUID v4 standard.
-      example: d1c80fd9-ddf6-4f6a-b6dc-4c8e60be61e8
-      format: uuid
-      readOnly: true
-      type: string
-    Link:
-      description: Link object
-      properties:
-        href:
-          description: The absolute web link
-          example: https://monitoring.oneatlas.geoapi-airbusds.com/api/v1/activities/6b7a749b-64fb-48cd-ae68-39c0bbbe5051
-          format: uri
-          type: string
-        method:
-          default: GET
-          description: HTTP verb to distinguish between several possible actions on the same ressource.
-          enum:
-          - GET
-          - POST
-          - PUT
-          - DELETE
-          - HEAD
-          type: string
-        name:
-          description: The name of the link
-          example: Self
-          type: string
-        resourceId:
-          $ref: '#/components/schemas/Id'
-        type:
-          description: The mime-type when deferencing the link
-          example: application/json
-          type: string
-      required:
-      - href
-      type: object
     ApiError:
       properties:
         correlationId:
@@ -303,6 +287,22 @@ components:
           format: integer
           type: number
       type: object
+  parameters:
+    ActivityId:
+      description: The identifier of the activity. It is the correlation ID given to the ingestion/process/format order request.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: path
+      name: activityId
+      required: true
+      schema:
+        $ref: '#/components/schemas/Id'
+    CorrelationID:
+      description: CorrelationID is a header to track transaction identifier. If not specified, a new one is automatically generated.
+      example: 799246d8-4172-11e8-b045-e7011a379ec4
+      in: header
+      name: X-Ads-Correlation-Id
+      schema:
+        $ref: '#/components/schemas/Id'
 x-refined-from:
 - oneatlas-data-living-library-openapi.yml
 - oneatlas-data-pay-per-order-api-openapi.yml

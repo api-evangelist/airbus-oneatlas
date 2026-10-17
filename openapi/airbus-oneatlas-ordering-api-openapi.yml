@@ -7460,23 +7460,17 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    deliveryPNEO:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - network
     Mission:
       type: string
       enum:
       - PLEIADES
       - SPOT
-    AcqPerod:
+    SegmentKey:
       type: string
-      pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-      description: Defines the acquisition period
-      format: datetime
+      description: The segmentKey is the value of the property "segmentKey" of the selected acquisition from the attempt request
+    quotationId:
+      type: string
+      description: The quotationId is sent back in the server response and can be used to search for your order.
     GeojsonGeometry:
       externalDocs:
         url: http://geojson.org/geojson-spec.html#geometry-objects
@@ -7488,172 +7482,6 @@ components:
           enum:
           - Polygon
       type: object
-    pixelCoding:
-      type: object
-      title: pixel_coding
-      properties:
-        key:
-          enum:
-          - pixel_coding
-        value:
-          enum:
-          - 8bits
-          - 12bits
-          description: Defines the pixel coding. <br>'8bits' when radiometric_processing = 'display'<br>, '12bits' otherwise
-    salesOrderId:
-      type: string
-      description: The salesOrderId is sent back in the server response and can be used to search for your order.
-    delivery:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - network
-    CustomerReference:
-      type: string
-      description: The customerReference can be used throughout the ordering process to get the status of your order and find the images in your delivery workspace. It is as a consequence better to use 1 customerReference specific for each order. It is also the reference that will appear on your bill (for pay-per-order customers)
-    SegmentKey:
-      type: string
-      description: The segmentKey is the value of the property "segmentKey" of the selected acquisition from the attempt request
-    AcquisitionDate:
-      type: object
-      properties:
-        startDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
-        endDate:
-          type: string
-          format: datetime
-          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
-          description: Defines the acquisition end date
-    DataSourceIds:
-      type: array
-      items:
-        type: object
-        properties:
-          catalogId:
-            enum:
-            - PublicMOC
-          catalogItemId:
-            type: string
-    Channels:
-      type: array
-      items:
-        type: object
-        properties:
-          type:
-            type: string
-            enum:
-            - email
-          addressee:
-            type: object
-            properties:
-              to:
-                type: array
-                items:
-                  type: string
-                description: 'recipients: list of people that need to receive notification regarding the tasking'
-              cc:
-                type: array
-                items:
-                  type: string
-                description: list of people being in copy
-    TaskingAttempt:
-      type: array
-      items:
-        type: object
-        properties:
-          mission:
-            enum:
-            - PLEIADESNEO
-            type: string
-          progTypes:
-            type: array
-            items:
-              type: object
-              properties:
-                name:
-                  type: string
-                mission:
-                  enum:
-                  - PLEIADESNEO
-                  type: string
-                segments:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/segment'
-                available:
-                  type: boolean
-    footprint:
-      type: object
-      properties:
-        geometry:
-          type: string
-          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
-        center:
-          type: string
-          example: POINT(23.755357 37.97611)
-    NoSensorAvailable:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                example: ERR_NO_SENSOR_AVAILABLE
-                type: string
-              locator:
-                example: UNKNOWN
-                type: string
-    quotationId:
-      type: string
-      description: The quotationId is sent back in the server response and can be used to search for your order.
-    DatastripIds:
-      type: string
-      description: Datastrip identifier
-    dem:
-      type: object
-      title: digital elevation model
-      properties:
-        key:
-          enum:
-          - dem_i
-        value:
-          description: Defines the digital elevation model, i refers to the aoi's id (To be filled only if processing_level = ortho)
-          enum:
-          - best_available
-          - FLAT_DEM_WITH_GTOPO30_WAT
-          - FLAT_DEM_WITH_WAT
-          - GTOPO30
-          - MIXEDDEM
-          - PAS-DEM
-          - PAS-DEM_IVV
-          - REF3D-DEM
-          - REF3D-DEM_IVV
-          - SRTMV4
-          - SRTMV4_IVV
-    Optical:
-      properties:
-        acquisitionMode:
-          enum:
-          - MONO
-          - STEREO
-          - TRISTEREO
-          type: string
-        maxCloudCover:
-          format: float
-          type: number
-        maxIncidenceAngle:
-          format: float
-          type: number
-    Comments:
-      type: string
-      description: It is possible to leave a comment here intended for the Airbus team
     segment:
       type: object
       properties:
@@ -7685,6 +7513,178 @@ components:
         maxIncidenceAngle:
           format: float
           type: number
+    NoSensorAvailable:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                example: ERR_NO_SENSOR_AVAILABLE
+                type: string
+              locator:
+                example: UNKNOWN
+                type: string
+    salesOrderId:
+      type: string
+      description: The salesOrderId is sent back in the server response and can be used to search for your order.
+    Channels:
+      type: array
+      items:
+        type: object
+        properties:
+          type:
+            type: string
+            enum:
+            - email
+          addressee:
+            type: object
+            properties:
+              to:
+                type: array
+                items:
+                  type: string
+                description: 'recipients: list of people that need to receive notification regarding the tasking'
+              cc:
+                type: array
+                items:
+                  type: string
+                description: list of people being in copy
+    pixelCoding:
+      type: object
+      title: pixel_coding
+      properties:
+        key:
+          enum:
+          - pixel_coding
+        value:
+          enum:
+          - 8bits
+          - 12bits
+          description: Defines the pixel coding. <br>'8bits' when radiometric_processing = 'display'<br>, '12bits' otherwise
+    DatastripIds:
+      type: string
+      description: Datastrip identifier
+    DataSourceIds:
+      type: array
+      items:
+        type: object
+        properties:
+          catalogId:
+            enum:
+            - PublicMOC
+          catalogItemId:
+            type: string
+    footprint:
+      type: object
+      properties:
+        geometry:
+          type: string
+          example: POLYGON((23.642028 38.043069, 23.642495 37.909283, 23.868104 37.908839, 23.868548 38.04307, 23.642028 38.043069, 23.642028 38.043069))
+        center:
+          type: string
+          example: POINT(23.755357 37.97611)
+    CustomerReference:
+      type: string
+      description: The customerReference can be used throughout the ordering process to get the status of your order and find the images in your delivery workspace. It is as a consequence better to use 1 customerReference specific for each order. It is also the reference that will appear on your bill (for pay-per-order customers)
+    Optical:
+      properties:
+        acquisitionMode:
+          enum:
+          - MONO
+          - STEREO
+          - TRISTEREO
+          type: string
+        maxCloudCover:
+          format: float
+          type: number
+        maxIncidenceAngle:
+          format: float
+          type: number
+    delivery:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - network
+    AcqPerod:
+      type: string
+      pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+      description: Defines the acquisition period
+      format: datetime
+    TaskingAttempt:
+      type: array
+      items:
+        type: object
+        properties:
+          mission:
+            enum:
+            - PLEIADESNEO
+            type: string
+          progTypes:
+            type: array
+            items:
+              type: object
+              properties:
+                name:
+                  type: string
+                mission:
+                  enum:
+                  - PLEIADESNEO
+                  type: string
+                segments:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/segment'
+                available:
+                  type: boolean
+    Comments:
+      type: string
+      description: It is possible to leave a comment here intended for the Airbus team
+    AcquisitionDate:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition start date. The parameter can be set at any time. Note that if the parameter is set in the past, the value is replaced by the current date
+        endDate:
+          type: string
+          format: datetime
+          pattern: ^yyyy-MM-dd'T'HH:mm:ss.SSS'Z$
+          description: Defines the acquisition end date
+    dem:
+      type: object
+      title: digital elevation model
+      properties:
+        key:
+          enum:
+          - dem_i
+        value:
+          description: Defines the digital elevation model, i refers to the aoi's id (To be filled only if processing_level = ortho)
+          enum:
+          - best_available
+          - FLAT_DEM_WITH_GTOPO30_WAT
+          - FLAT_DEM_WITH_WAT
+          - GTOPO30
+          - MIXEDDEM
+          - PAS-DEM
+          - PAS-DEM_IVV
+          - REF3D-DEM
+          - REF3D-DEM_IVV
+          - SRTMV4
+          - SRTMV4_IVV
+    deliveryPNEO:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - network
     contractId:
       description: It corresponds to an internal id for the customer contract. It will be provided to you.
       type: string

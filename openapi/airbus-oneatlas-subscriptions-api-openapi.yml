@@ -1219,24 +1219,17 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    orderId:
-      description: The order id
-      in: path
-      name: orderId
-      required: true
-      schema:
-        type: string
-    itemsPerPage:
-      description: Amount of items per page, defaults to '10'
-      in: query
-      name: itemsPerPage
-      schema:
-        minimum: 1
-        type: number
     paymentId:
       description: The payment id
       in: path
       name: paymentId
+      required: true
+      schema:
+        type: string
+    subscriptionId:
+      description: The subscription id
+      in: path
+      name: subscriptionId
       required: true
       schema:
         type: string
@@ -1254,13 +1247,20 @@ components:
       required: true
       schema:
         type: string
-    subscriptionId:
-      description: The subscription id
+    orderId:
+      description: The order id
       in: path
-      name: subscriptionId
+      name: orderId
       required: true
       schema:
         type: string
+    itemsPerPage:
+      description: Amount of items per page, defaults to '10'
+      in: query
+      name: itemsPerPage
+      schema:
+        minimum: 1
+        type: number
 x-tagGroups:
 - name: Authentication
   tags:

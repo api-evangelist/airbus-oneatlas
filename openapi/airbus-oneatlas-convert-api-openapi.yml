@@ -55,39 +55,17 @@ paths:
       operationId: postApiV1Convert
       x-operation-id-source: derived
 components:
-  responses:
-    '500':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Internal server error
-    '400':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: Bad request
-    '401':
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-      description: User is not authenticated
   schemas:
-    GeojsonGeometry:
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#geometry-objects
-      properties:
-        geometry:
-          description: A valid geojson geometry coordinates
-          type: object
-        type:
-          enum:
-          - Polygon
-      type: object
-    kml:
-      description: A geometry in kml format
+    multipart:
+      description: 'First part: the equivalent vector file in geojson format.
+
+
+        Second part: metadata about the vector file.
+
+        '
+      format: multipart/related
+    geoshape:
+      description: A geometry in shape format. Is a zip containing a .shp files and associated files.
       format: binary
     kmz:
       description: A geometry in kmz format. Is a zip containing kml file and associated files.
@@ -103,17 +81,20 @@ components:
       example:
         gcsUri: gs://bucket-name/path/to/file.kmz
       format: json
-    geoshape:
-      description: A geometry in shape format. Is a zip containing a .shp files and associated files.
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
+    kml:
+      description: A geometry in kml format
       format: binary
-    multipart:
-      description: 'First part: the equivalent vector file in geojson format.
-
-
-        Second part: metadata about the vector file.
-
-        '
-      format: multipart/related
     ApiError:
       properties:
         correlationId:
@@ -132,6 +113,25 @@ components:
           format: integer
           type: number
       type: object
+  responses:
+    '401':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: User is not authenticated
+    '500':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Internal server error
+    '400':
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+      description: Bad request
 x-tagGroups:
 - name: Authentication
   tags:

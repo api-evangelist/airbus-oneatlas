@@ -522,6 +522,17 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    GeojsonGeometry:
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+      properties:
+        geometry:
+          description: A valid geojson geometry coordinates
+          type: object
+        type:
+          enum:
+          - Polygon
+      type: object
     Feasibility:
       type: object
       properties:
@@ -565,17 +576,6 @@ components:
                 type: array
             type: object
           type: array
-    GeojsonGeometry:
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#geometry-objects
-      properties:
-        geometry:
-          description: A valid geojson geometry coordinates
-          type: object
-        type:
-          enum:
-          - Polygon
-      type: object
 x-tagGroups:
 - name: Authentication
   tags:
